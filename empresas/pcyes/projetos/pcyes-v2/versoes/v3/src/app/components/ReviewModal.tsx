@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "./ui/dialog";
 import { useTheme } from "./ThemeProvider";
-import { Star, Check, Sparkles, Camera, Video, X as XIcon, ThumbsUp, ThumbsDown, Play } from "lucide-react";
+import { Star, Check, Sparkles, Camera, Video, X as XIcon, Play } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export interface ReviewItem {
@@ -15,21 +15,10 @@ interface Props {
   onClose: () => void;
   orderId: string;
   items: ReviewItem[];
-  onSubmit: (review: { ratings: Record<string, number>; comment: string; tags: string[]; recommends: boolean | null; media: { url: string; type: "image" | "video" }[] }) => void;
+  onSubmit: (review: { ratings: Record<string, number>; comment: string; media: { url: string; type: "image" | "video" }[] }) => void;
 }
 
 const RATING_LABELS = ["", "Péssimo", "Ruim", "Ok", "Bom", "Excelente"];
-
-const QUICK_TAGS = [
-  "Bom acabamento",
-  "Custo-benefício",
-  "Entrega rápida",
-  "Como descrito",
-  "Embalagem caprichada",
-  "Qualidade premium",
-  "Fácil de usar",
-  "Recomendo",
-];
 
 const MAX_MEDIA = 6;
 
@@ -39,8 +28,6 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
   const [ratings, setRatings] = useState<Record<string, number>>({});
   const [hoverRatings, setHoverRatings] = useState<Record<string, number>>({});
   const [comment, setComment] = useState("");
-  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
-  const [recommends, setRecommends] = useState<boolean | null>(null);
   const [media, setMedia] = useState<{ url: string; type: "image" | "video"; file: File }[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [earnedPoints, setEarnedPoints] = useState(0);
@@ -51,8 +38,6 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
       setRatings({});
       setHoverRatings({});
       setComment("");
-      setSelectedTags(new Set());
-      setRecommends(null);
       setMedia((prev) => {
         prev.forEach((m) => URL.revokeObjectURL(m.url));
         return [];
@@ -68,14 +53,6 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
   const total = items.length;
   const allRated = rated === total && total > 0;
   const avgRating = rated > 0 ? Object.values(ratings).reduce((a, b) => a + b, 0) / rated : 0;
-
-  const toggleTag = (tag: string) =>
-    setSelectedTags((prev) => {
-      const next = new Set(prev);
-      if (next.has(tag)) next.delete(tag);
-      else next.add(tag);
-      return next;
-    });
 
   const handleFiles = (files: FileList | null) => {
     if (!files) return;
@@ -107,8 +84,6 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
     onSubmit({
       ratings,
       comment,
-      tags: Array.from(selectedTags),
-      recommends,
       media: media.map(({ url, type }) => ({ url, type })),
     });
     setSubmitted(true);
@@ -182,79 +157,6 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                     </div>
                   );
                 })}
-              </div>
-
-              {/* Recomenda? */}
-              <div className="mt-5">
-                <label className="block mb-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
-                  Você recomenda?
-                </label>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setRecommends(recommends === true ? null : true)}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 cursor-pointer transition-all"
-                    style={{
-                      borderRadius: 10,
-                      background: recommends === true ? "rgba(34,197,94,0.12)" : (isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"),
-                      border: recommends === true ? "1.5px solid rgba(34,197,94,0.45)" : (isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)"),
-                      color: recommends === true ? "#22c55e" : (isDark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)"),
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: "13px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    <ThumbsUp size={14} /> Sim
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setRecommends(recommends === false ? null : false)}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 cursor-pointer transition-all"
-                    style={{
-                      borderRadius: 10,
-                      background: recommends === false ? "rgba(239,68,68,0.12)" : (isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"),
-                      border: recommends === false ? "1.5px solid rgba(239,68,68,0.45)" : (isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)"),
-                      color: recommends === false ? "#ef4444" : (isDark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)"),
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: "13px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    <ThumbsDown size={14} /> Não
-                  </button>
-                </div>
-              </div>
-
-              {/* Tags rápidas */}
-              <div className="mt-5">
-                <label className="block mb-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
-                  O que mais te chamou atenção?
-                </label>
-                <div className="flex flex-wrap gap-1.5">
-                  {QUICK_TAGS.map((tag) => {
-                    const active = selectedTags.has(tag);
-                    return (
-                      <button
-                        key={tag}
-                        type="button"
-                        onClick={() => toggleTag(tag)}
-                        className="cursor-pointer transition-all"
-                        style={{
-                          padding: "6px 11px",
-                          borderRadius: 999,
-                          background: active ? "rgba(255,43,46,0.10)" : (isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"),
-                          border: active ? "1px solid rgba(255,43,46,0.40)" : (isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)"),
-                          color: active ? "var(--primary)" : (isDark ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.75)"),
-                          fontFamily: "var(--font-family-inter)",
-                          fontSize: "11.5px",
-                          fontWeight: 600,
-                        }}
-                      >
-                        {active && <span style={{ marginRight: 4 }}>✓</span>}{tag}
-                      </button>
-                    );
-                  })}
-                </div>
               </div>
 
               {/* Mídia: fotos e vídeos */}
