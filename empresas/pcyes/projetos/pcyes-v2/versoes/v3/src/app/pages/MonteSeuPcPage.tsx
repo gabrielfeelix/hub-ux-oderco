@@ -8,6 +8,7 @@ import {
   ChevronDown,
   Cpu,
   Expand,
+  Gamepad2,
   HardDrive,
   LayoutGrid,
   Monitor,
