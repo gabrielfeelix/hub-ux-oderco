@@ -81,90 +81,78 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
       className="relative overflow-hidden group cursor-pointer"
       onClick={() => navigate(`/produto/${product.id}`)}
       style={{
-        borderRadius: "20px",
-        background: "linear-gradient(180deg, #0c0c0e 0%, #08080a 100%)",
-        border: "1px solid rgba(255,255,255,0.06)",
-        boxShadow: "0 20px 60px -24px rgba(0,0,0,0.6)",
+        borderRadius: "22px",
+        background: "linear-gradient(135deg, #1a0608 0%, #2a0a0d 45%, #1a0608 100%)",
+        border: "1px solid rgba(255,36,25,0.25)",
+        boxShadow: "0 24px 60px -20px rgba(255,36,25,0.35)",
         transition: "border-color 0.4s ease, box-shadow 0.4s ease",
       }}
     >
-      {/* hover accent ring */}
+      {/* red glow */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="pointer-events-none absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-70"
         style={{
-          borderRadius: "20px",
-          background: "radial-gradient(circle at 75% 0%, rgba(255,36,25,0.10) 0%, transparent 55%)",
+          background:
+            "radial-gradient(circle at 80% 0%, rgba(255,36,25,0.25) 0%, transparent 55%), radial-gradient(circle at 10% 100%, rgba(255,200,90,0.12) 0%, transparent 50%)",
+        }}
+      />
+      {/* starfield */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 18% 32%, #fff 0.5px, transparent 1px), radial-gradient(circle at 62% 68%, #fde68a 0.5px, transparent 1px), radial-gradient(circle at 84% 22%, #fff 0.5px, transparent 1px)",
         }}
       />
 
-      <div className="relative grid grid-cols-1 md:grid-cols-[320px_1fr] gap-0">
+      <div className="relative grid grid-cols-1 md:grid-cols-[300px_1fr] gap-0">
         {/* image */}
         <div
-          className="relative h-[280px] md:h-full overflow-hidden"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%), #08080a",
-          }}
+          className="relative h-[260px] md:h-full overflow-hidden"
+          style={{ background: "rgba(255,255,255,0.04)" }}
         >
           <ImageWithFallback
             src={image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          {/* subtle vignette */}
-          <div
-            className="pointer-events-none absolute inset-0"
+          <span
+            className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
             style={{
-              background:
-                "linear-gradient(180deg, transparent 60%, rgba(8,8,10,0.55) 100%)",
+              background: "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)",
+              color: "#fff",
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10px",
+              fontWeight: 900,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              boxShadow: "0 6px 16px -4px rgba(255,36,25,0.6)",
             }}
-          />
+          >
+            <Rocket size={11} strokeWidth={2.6} />
+            Pré-venda
+          </span>
 
-          {/* top badges */}
-          <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
-            <span
-              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
+          {isHot && (
+            <motion.span
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full px-2 py-1"
               style={{
-                background: "rgba(8,8,10,0.7)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255,36,25,0.4)",
-                color: "#ff7770",
+                background: "linear-gradient(135deg, #facc15 0%, #f97316 100%)",
+                color: "#1a0608",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "9.5px",
-                fontWeight: 800,
-                letterSpacing: "0.22em",
+                fontWeight: 900,
+                letterSpacing: "0.14em",
                 textTransform: "uppercase",
+                boxShadow: "0 6px 16px -4px rgba(250,204,21,0.6)",
               }}
             >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: "#ff2419", boxShadow: "0 0 8px rgba(255,36,25,0.9)" }}
-              />
-              Pré-venda
-            </span>
-
-            {isHot && (
-              <motion.span
-                initial={{ scale: 0.85, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="inline-flex items-center gap-1 rounded-full px-2.5 py-1"
-                style={{
-                  background: "rgba(8,8,10,0.7)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(250,204,21,0.4)",
-                  color: "#facc15",
-                  fontFamily: "var(--font-family-inter)",
-                  fontSize: "9.5px",
-                  fontWeight: 800,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                }}
-              >
-                <Flame size={10} strokeWidth={2.6} />
-                Esgotando
-              </motion.span>
-            )}
-          </div>
+              <Flame size={10} strokeWidth={2.8} />
+              Esgotando
+            </motion.span>
+          )}
         </div>
 
         {/* details */}
@@ -206,41 +194,38 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           </p>
 
           {/* countdown row */}
-          <div className="grid grid-cols-4 gap-2 mb-5">
+          <div className="grid grid-cols-4 gap-1.5 mb-4">
             {[
-              { v: days, l: "Dias" },
-              { v: hours, l: "Hrs" },
-              { v: minutes, l: "Min" },
-              { v: seconds, l: "Seg" },
+              { v: days, l: "D" },
+              { v: hours, l: "H" },
+              { v: minutes, l: "M" },
+              { v: seconds, l: "S" },
             ].map((unit) => (
               <div
                 key={unit.l}
-                className="flex flex-col items-center justify-center py-2.5"
+                className="flex items-baseline justify-center gap-1 py-2"
                 style={{
-                  background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(255,255,255,0.05)",
+                  background: "rgba(0,0,0,0.45)",
+                  border: "1px solid rgba(255,255,255,0.08)",
                   borderRadius: "10px",
                 }}
               >
                 <span
-                  className="text-white tabular-nums leading-none"
+                  className="text-white tabular-nums"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "20px",
-                    fontWeight: 600,
-                    letterSpacing: "-0.02em",
+                    fontSize: "18px",
+                    fontWeight: 700,
                   }}
                 >
                   {pad(unit.v)}
                 </span>
                 <span
-                  className="text-white/35 mt-1"
+                  className="text-white/40"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "9.5px",
-                    fontWeight: 600,
-                    letterSpacing: "0.16em",
-                    textTransform: "uppercase",
+                    fontWeight: 700,
                   }}
                 >
                   {unit.l}
@@ -250,44 +235,45 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           </div>
 
           {/* progress */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-2">
+          <div className="mb-4">
+            <div className="flex items-center justify-between mb-1.5">
               <span
-                className="text-white/45"
+                className="text-white/55"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
-                  letterSpacing: "0.18em",
+                  fontSize: "10px",
+                  letterSpacing: "0.16em",
                   textTransform: "uppercase",
-                  fontWeight: 600,
+                  fontWeight: 700,
                 }}
               >
                 Reservas
               </span>
               <span
-                className="text-white/85 tabular-nums"
+                className="text-white tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "11.5px",
-                  fontWeight: 600,
+                  fontWeight: 700,
                 }}
               >
                 {reservedPct}%
               </span>
             </div>
             <div
-              className="relative h-[3px] w-full overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.05)", borderRadius: "999px" }}
+              className="relative h-1.5 w-full overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.06)", borderRadius: "999px" }}
             >
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${reservedPct}%` }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-y-0 left-0"
                 style={{
-                  background: "linear-gradient(90deg, #ff2419 0%, #ff7a3d 100%)",
+                  background: "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
                   borderRadius: "999px",
+                  boxShadow: "0 0 14px rgba(255,36,25,0.55)",
                 }}
               />
             </div>
@@ -345,93 +331,66 @@ function HeroSection({
   totalProducts,
   totalReservations,
   avgReservedPct,
+  featured,
 }: {
   totalProducts: number;
   totalReservations: number;
   avgReservedPct: number;
+  featured?: {
+    name: string;
+    category: string;
+    image: string;
+    price: string;
+    highlight: string;
+  };
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 600], [0, 120]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0.4]);
+  const floatY = useTransform(scrollY, [0, 600], [0, -60]);
 
   return (
     <section
       ref={ref}
       className="relative overflow-hidden"
       style={{
-        minHeight: "82vh",
-        background: "#070708",
+        minHeight: "60vh",
+        background: "#0a0a0a",
       }}
     >
-      {/* mesh gradient orbs (parallax) */}
+      {/* subtle red glow top-right (PCYES identity) */}
       <motion.div
         className="pointer-events-none absolute inset-0"
         style={{ y, opacity }}
       >
-        {/* primary red orb top-right */}
         <div
           className="absolute"
           style={{
-            top: "-15%",
-            right: "-10%",
-            width: "55%",
-            height: "70%",
+            top: "-20%",
+            right: "-15%",
+            width: "70%",
+            height: "90%",
             background:
-              "radial-gradient(circle, rgba(255,36,25,0.22) 0%, rgba(255,36,25,0.08) 35%, transparent 65%)",
-            filter: "blur(60px)",
+              "radial-gradient(circle, rgba(225,6,0,0.18) 0%, rgba(225,6,0,0.05) 40%, transparent 70%)",
+            filter: "blur(70px)",
           }}
         />
-        {/* cool accent left */}
         <div
           className="absolute"
           style={{
-            bottom: "-10%",
-            left: "-15%",
-            width: "55%",
-            height: "65%",
+            bottom: "-15%",
+            left: "-10%",
+            width: "45%",
+            height: "55%",
             background:
-              "radial-gradient(circle, rgba(120,80,255,0.16) 0%, rgba(60,80,220,0.06) 35%, transparent 65%)",
-            filter: "blur(80px)",
-          }}
-        />
-        {/* warm subtle center */}
-        <div
-          className="absolute"
-          style={{
-            top: "30%",
-            left: "35%",
-            width: "40%",
-            height: "40%",
-            background:
-              "radial-gradient(circle, rgba(255,180,90,0.08) 0%, transparent 60%)",
-            filter: "blur(80px)",
+              "radial-gradient(circle, rgba(255,36,25,0.08) 0%, transparent 65%)",
+            filter: "blur(90px)",
           }}
         />
       </motion.div>
 
-      {/* grid pattern */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.045]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-          maskImage:
-            "radial-gradient(ellipse at 50% 40%, black 30%, transparent 70%)",
-        }}
-      />
-
-      {/* noise/dots */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-30"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 14% 24%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 42% 76%, rgba(255,255,255,0.4) 0.5px, transparent 1px), radial-gradient(circle at 68% 32%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 88% 64%, rgba(255,255,255,0.4) 0.5px, transparent 1px)",
-        }}
-      />
-
-      {/* bottom fade */}
+      {/* bottom fade to background */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
         style={{
@@ -440,16 +399,107 @@ function HeroSection({
         }}
       />
 
+      {/* featured product floating */}
+      {featured && (
+        <motion.div
+          initial={{ opacity: 0, x: 80, scale: 0.9 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          style={{ y: floatY }}
+          className="pointer-events-none hidden lg:block absolute top-1/2 right-[5%] xl:right-[8%] -translate-y-1/2 z-10"
+        >
+          {/* glow behind */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 50%, rgba(225,6,0,0.35) 0%, rgba(225,6,0,0.10) 35%, transparent 65%)",
+              filter: "blur(40px)",
+              transform: "scale(1.3)",
+            }}
+          />
+          <motion.div
+            animate={{ y: [0, -16, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+            style={{
+              width: "clamp(360px, 32vw, 480px)",
+              height: "clamp(360px, 32vw, 480px)",
+            }}
+          >
+            <ImageWithFallback
+              src={featured.image}
+              alt={featured.name}
+              className="w-full h-full object-contain"
+              style={{
+                filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.55)) drop-shadow(0 0 60px rgba(225,6,0,0.25))",
+              }}
+            />
+            {/* floating info card */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="absolute -bottom-6 -left-6 pointer-events-auto"
+              style={{
+                background: "rgba(20,5,7,0.85)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,36,25,0.25)",
+                borderRadius: "16px",
+                padding: "14px 18px",
+                boxShadow: "0 20px 50px -16px rgba(225,6,0,0.4)",
+                maxWidth: "260px",
+              }}
+            >
+              <p
+                className="text-white/45 mb-1"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "9.5px",
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                }}
+              >
+                Destaque · {featured.category}
+              </p>
+              <p
+                className="text-white mb-1.5 line-clamp-1"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {featured.name}
+              </p>
+              <p
+                className="text-[#ff7770]"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {featured.price}
+              </p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+
       <div
-        className="relative max-w-[1320px] mx-auto px-6 md:px-10 flex flex-col justify-center"
-        style={{ minHeight: "82vh", paddingTop: "80px", paddingBottom: "100px" }}
+        className="relative max-w-[1600px] mx-auto px-6 md:px-10 flex flex-col justify-center"
+        style={{ minHeight: "60vh", paddingTop: "48px", paddingBottom: "56px" }}
       >
         {/* breadcrumb */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-center gap-2 mb-10"
+          className="flex items-center gap-2 mb-7"
         >
           <Link
             to="/"
@@ -476,7 +526,7 @@ function HeroSection({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="mb-8"
+          className="mb-5"
         >
           <span
             className="relative inline-flex items-center gap-2 rounded-full px-3 py-1.5"
@@ -689,8 +739,8 @@ function FiltersBar({
         borderBottom: "1px solid rgba(255,255,255,0.05)",
       }}
     >
-      <div className="max-w-[1320px] mx-auto px-6 md:px-10 py-4">
-        <div className="flex items-center gap-3 flex-wrap">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-3">
+        <div className="flex items-center gap-2.5 flex-wrap">
           {/* search */}
           <div
             className="flex items-center gap-2.5 px-4 h-10 flex-1 min-w-[200px] max-w-[320px] transition-colors focus-within:border-white/20"
@@ -807,7 +857,7 @@ function FiltersBar({
         </div>
 
         {/* secondary row: delivery + count */}
-        <div className="mt-3.5 flex items-center gap-2 flex-wrap">
+        <div className="mt-2.5 flex items-center gap-2 flex-wrap">
           <span
             className="text-white/35 mr-1"
             style={{
@@ -932,6 +982,23 @@ export function PreOrderPage() {
     return Math.round(total / enriched.length);
   }, [enriched]);
 
+  const featured = useMemo(() => {
+    if (!enriched.length) return undefined;
+    const top = [...enriched].sort(
+      (a, b) =>
+        b.info.reservedUnits / b.info.totalUnits -
+        a.info.reservedUnits / a.info.totalUnits,
+    )[0];
+    if (!top?.product) return undefined;
+    return {
+      name: top.product.name,
+      category: top.product.category,
+      image: getPrimaryProductImage(top.product),
+      price: top.info.preOrderPrice ?? top.product.price,
+      highlight: top.info.highlight,
+    };
+  }, [enriched]);
+
   const filtered = useMemo(() => {
     const now = Date.now();
     const month = 30 * 86_400_000;
@@ -990,11 +1057,12 @@ export function PreOrderPage() {
   };
 
   return (
-    <div className="pt-[64px] min-h-screen bg-background">
+    <div className="pt-[120px] md:pt-[150px] min-h-screen bg-background">
       <HeroSection
         totalProducts={enriched.length}
         totalReservations={totalReservations}
         avgReservedPct={avgReservedPct}
+        featured={featured}
       />
 
       <FiltersBar
@@ -1011,7 +1079,7 @@ export function PreOrderPage() {
       />
 
       {/* grid */}
-      <section className="max-w-[1320px] mx-auto px-6 md:px-10 py-16 md:py-20">
+      <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
             <p
