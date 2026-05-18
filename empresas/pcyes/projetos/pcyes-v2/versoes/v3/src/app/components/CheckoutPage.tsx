@@ -1055,26 +1055,15 @@ export function CheckoutPage() {
                             <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
                               Endereços salvos
                             </span>
-                            {selectedAddressId && (
-                              <button
-                                type="button"
-                                onClick={() => setSelectedAddressId(null)}
-                                className="text-white/55 hover:text-white transition-all cursor-pointer"
-                                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
-                              >
-                                Editar manualmente
-                              </button>
-                            )}
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             {user.addresses.map((a) => {
                               const sel = selectedAddressId === a.id;
                               return (
-                                <button
+                                <div
                                   key={a.id}
-                                  type="button"
+                                  className="relative text-left p-3 transition-all cursor-pointer"
                                   onClick={() => setSelectedAddressId(a.id)}
-                                  className="text-left p-3 transition-all cursor-pointer"
                                   style={{
                                     borderRadius: 12,
                                     background: sel ? "rgba(255,43,46,0.08)" : "rgba(255,255,255,0.02)",
@@ -1092,8 +1081,18 @@ export function CheckoutPage() {
                                         {a.street}, {a.number} · {a.city}/{a.state}
                                       </p>
                                     </div>
+                                    {sel && (
+                                      <button
+                                        type="button"
+                                        onClick={(e) => { e.stopPropagation(); setSelectedAddressId(null); }}
+                                        className="flex-shrink-0 px-2 py-1 text-white/70 hover:text-white transition-all cursor-pointer"
+                                        style={{ borderRadius: 6, background: "rgba(255,255,255,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
+                                      >
+                                        Editar
+                                      </button>
+                                    )}
                                   </div>
-                                </button>
+                                </div>
                               );
                             })}
                             {/* Card 'Adicionar novo' — mesmo tamanho dos demais */}
@@ -1402,26 +1401,15 @@ export function CheckoutPage() {
                                   <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
                                     Cartões salvos
                                   </span>
-                                  {selectedCardId && (
-                                    <button
-                                      type="button"
-                                      onClick={() => setSelectedCardId(null)}
-                                      className="text-white/55 hover:text-white transition-all cursor-pointer"
-                                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
-                                    >
-                                      Usar outro cartão
-                                    </button>
-                                  )}
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                   {user.cards.map((c) => {
                                     const sel = selectedCardId === c.id;
                                     return (
-                                      <button
+                                      <div
                                         key={c.id}
-                                        type="button"
                                         onClick={() => setSelectedCardId(c.id)}
-                                        className="text-left p-3 transition-all cursor-pointer flex items-center gap-2.5"
+                                        className="text-left p-3 transition-all cursor-pointer flex items-center gap-2.5 relative"
                                         style={{
                                           borderRadius: 12,
                                           background: sel ? "rgba(255,43,46,0.08)" : "rgba(255,255,255,0.02)",
@@ -1437,7 +1425,17 @@ export function CheckoutPage() {
                                           <p className="text-white/85 font-mono mt-0.5" style={{ fontSize: "12.5px", fontWeight: 600, letterSpacing: "0.05em" }}>•••• {c.last4}</p>
                                           <p className="text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>Validade {c.expiry}</p>
                                         </div>
-                                      </button>
+                                        {sel && (
+                                          <button
+                                            type="button"
+                                            onClick={(e) => { e.stopPropagation(); setSelectedCardId(null); }}
+                                            className="flex-shrink-0 px-2 py-1 text-white/70 hover:text-white transition-all cursor-pointer"
+                                            style={{ borderRadius: 6, background: "rgba(255,255,255,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
+                                          >
+                                            Editar
+                                          </button>
+                                        )}
+                                      </div>
                                     );
                                   })}
                                   {/* Card 'Adicionar novo' */}

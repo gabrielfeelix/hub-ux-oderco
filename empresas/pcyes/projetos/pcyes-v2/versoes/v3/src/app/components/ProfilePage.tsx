@@ -20,6 +20,7 @@ import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPres
 import { CardBrandLogo } from "./CardBrandLogo";
 import { PcyesCoin } from "./PcyesCoin";
 import { ConfirmDialog } from "./ConfirmDialog";
+import { ReviewModal } from "./ReviewModal";
 
 function OrderStatusTimeline({ status }: { status: Order["status"] }) {
   const steps = [
@@ -137,6 +138,8 @@ export function ProfilePage() {
   }>>([]);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
   const [confirmState, setConfirmState] = useState<{ open: boolean; title: string; description?: string; confirmLabel?: string; action?: () => void; destructive?: boolean }>({ open: false, title: "" });
+  const [reviewOrderId, setReviewOrderId] = useState<string | null>(null);
+  const [reviewedOrders, setReviewedOrders] = useState<Set<string>>(new Set());
   const askConfirm = (cfg: { title: string; description?: string; confirmLabel?: string; action: () => void; destructive?: boolean }) =>
     setConfirmState({ open: true, ...cfg });
   const closeConfirm = () => setConfirmState((s) => ({ ...s, open: false }));
@@ -916,11 +919,18 @@ export function ProfilePage() {
                                         style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                         <ShoppingBag size={12} /> Comprar de novo
                                       </button>
-                                      <button onClick={(e) => e.stopPropagation()}
-                                        className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-all cursor-pointer flex items-center gap-1.5"
-                                        style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
-                                        <Star size={12} /> Avaliar
-                                      </button>
+                                      {reviewedOrders.has(order.id) ? (
+                                        <span className="px-3 py-1.5 text-green-500 flex items-center gap-1.5"
+                                          style={{ borderRadius: "8px", background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.18)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                          <Check size={12} /> Avaliado
+                                        </span>
+                                      ) : (
+                                        <button onClick={(e) => { e.stopPropagation(); setReviewOrderId(order.id); }}
+                                          className="px-3 py-1.5 text-foreground/70 hover:text-yellow-400 transition-all cursor-pointer flex items-center gap-1.5"
+                                          style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                          <Star size={12} /> Avaliar
+                                        </button>
+                                      )}
                                     </>
                                   )}
                                   {isShipped && (
@@ -1786,6 +1796,29 @@ export function ProfilePage() {
         confirmLabel={confirmState.confirmLabel}
         destructive={confirmState.destructive}
       />
+      {(() => {
+        const orderToReview = reviewOrderId ? user.orders.find((o) => o.id === reviewOrderId) : null;
+        if (!orderToReview) return null;
+        return (
+          <ReviewModal
+            open={!!reviewOrderId}
+            onClose={() => setReviewOrderId(null)}
+            orderId={orderToReview.id}
+            items={orderToReview.items.map((it) => ({ name: it.name, image: it.image, price: it.price }))}
+            onSubmit={() => {
+              setReviewedOrders((prev) => new Set(prev).add(orderToReview.id));
+              const earned = orderToReview.items.length * 5;
+              updateUser({
+                pcyesPoints: (user.pcyesPoints ?? 0) + earned,
+                pcyesPointsHistory: [
+                  { id: `tx-review-${orderToReview.id}-${Date.now()}`, date: new Date().toISOString().replace("T", " ").slice(0, 16), type: "bonus", amount: earned, description: `Avaliação do pedido ${orderToReview.id}` },
+                  ...(user.pcyesPointsHistory ?? []),
+                ],
+              });
+            }}
+          />
+        );
+      })()}
       <Footer />
 
       {/* ─── Modais ─── */}
