@@ -426,74 +426,85 @@ export function ProfilePage() {
                     );
                   })()}
 
-                  {/* Próximos passos */}
+                  {/* Card Tier / Benefícios + Missões */}
                   {(() => {
-                    const tasks = [
+                    const missions = [
                       { done: !!user.phone, label: "Adicionar telefone", action: () => setProfileTab("data") },
                       { done: !!user.birthday, label: "Cadastrar data de nascimento", action: () => setProfileTab("data") },
                       { done: user.addresses.length > 0, label: "Cadastrar endereço de entrega", action: () => setProfileTab("addresses") },
                       { done: user.cards.length > 0, label: "Salvar cartão pra checkout rápido", action: () => setProfileTab("cards") },
-                      { done: user.orders.filter((o) => o.status === "delivered").length === 0, label: "Avaliar pedidos entregues", action: () => setProfileTab("orders") },
+                      ...(user.orders.filter((o) => o.status === "delivered").length > 0
+                        ? [{ done: false, label: "Avaliar pedidos entregues", action: () => setProfileTab("orders") }]
+                        : []),
                     ];
-                    const pending = tasks.filter((t) => !t.done);
-                    if (pending.length === 0) return null;
-                    return (
-                      <div className="mb-3 p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                        <div className="flex items-center justify-between mb-3">
-                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Próximos passos</p>
-                          <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
-                            {tasks.length - pending.length}/{tasks.length} concluídos
-                          </span>
-                        </div>
-                        <div className="space-y-1.5">
-                          {pending.slice(0, 3).map((task, i) => (
-                            <button key={i} onClick={task.action}
-                              className="group/task cursor-pointer w-full flex items-center gap-3 px-3 py-2.5 transition-all hover:bg-white/[0.025]"
-                              style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}
-                            >
-                              <div className="w-4 h-4 rounded-full border-2 border-foreground/35 flex-shrink-0 group-hover/task:border-primary transition-colors" />
-                              <p className="text-foreground/80 flex-1 text-left" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 500 }}>{task.label}</p>
-                              <ChevronRight size={13} className="text-foreground/35 group-hover/task:text-primary group-hover/task:translate-x-0.5 transition-all" />
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  })()}
+                    const missionsDone = missions.filter((m) => m.done).length;
+                    const missionsPending = missions.filter((m) => !m.done);
+                    const missionBoost = missionsDone * 0.5;
+                    const effectiveOrders = user.orders.length + missionBoost;
+                    const dynamicTier = getTier(effectiveOrders);
 
-                  {/* Card Tier / Benefícios */}
+                    return (
                   <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     <div className="flex items-center justify-between gap-3 px-5 pt-5 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/12 flex items-center justify-center flex-shrink-0">
-                          <Sparkles size={16} className="text-primary fill-primary/20" />
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(56,189,248,0.12)" }}>
+                          <Sparkles size={16} style={{ color: "#38bdf8", fill: "rgba(56,189,248,0.2)" }} />
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600 }}>{tier.current.name}</span>
-                            <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.08em" }}>NV. {tier.current.level}</span>
+                            <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600 }}>{dynamicTier.current.name}</span>
+                            <span className="px-2 py-0.5 text-white" style={{ borderRadius: "100px", background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.08em" }}>NV. {dynamicTier.current.level}</span>
                           </div>
                           <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
-                            {tier.next
-                              ? `${tier.ordersToNext} ${tier.ordersToNext === 1 ? "pedido" : "pedidos"} pro ${tier.next.name}`
+                            {dynamicTier.next
+                              ? `${dynamicTier.ordersToNext.toFixed(1).replace(".0", "")} ${dynamicTier.ordersToNext === 1 ? "ponto" : "pontos"} pro ${dynamicTier.next.name}`
                               : "Você atingiu o nível máximo!"}
                           </p>
                         </div>
                       </div>
-                      {tier.next && (
+                      {dynamicTier.next && (
                         <div className="text-right">
                           <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Próximo</p>
-                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>{tier.next.name}</p>
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>{dynamicTier.next.name}</p>
                         </div>
                       )}
                     </div>
 
-                    {/* Progress bar */}
+                    {/* Progress bar XP (cyan/azul, não compete com primary nem com points dourados) */}
                     <div className="px-5 pb-4">
                       <div className="h-1.5 w-full rounded-full overflow-hidden" style={{ background: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
-                        <div className="h-full rounded-full transition-all duration-700" style={{ width: `${tier.progress * 100}%`, background: "linear-gradient(90deg, var(--primary) 0%, #ff2419 100%)", boxShadow: "0 0 12px rgba(255,43,46,0.5)" }} />
+                        <div className="h-full rounded-full transition-all duration-700" style={{ width: `${dynamicTier.progress * 100}%`, background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 50%, #67e8f9 100%)", boxShadow: "0 0 10px rgba(56,189,248,0.45)" }} />
                       </div>
+                      <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
+                        {user.orders.length} {user.orders.length === 1 ? "pedido" : "pedidos"} · {missionsDone} {missionsDone === 1 ? "missão" : "missões"} concluída{missionsDone === 1 ? "" : "s"}
+                        {missionBoost > 0 && <span style={{ color: "#38bdf8" }}> · +{missionBoost} XP de bônus</span>}
+                      </p>
                     </div>
+
+                    {/* Missões pendentes — completar acelera o nível */}
+                    {missionsPending.length > 0 && (
+                      <div className="px-5 pb-4">
+                        <div className="flex items-center justify-between mb-2.5">
+                          <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Missões pra avançar</p>
+                          <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                            {missionsDone}/{missions.length} · +0.5 XP cada
+                          </span>
+                        </div>
+                        <div className="space-y-1.5">
+                          {missionsPending.slice(0, 3).map((task, i) => (
+                            <button key={i} onClick={task.action}
+                              className="group/task cursor-pointer w-full flex items-center gap-3 px-3 py-2.5 transition-all hover:bg-white/[0.025]"
+                              style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)", border: "1px solid rgba(56,189,248,0.10)" }}
+                            >
+                              <div className="w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors group-hover/task:border-sky-400" style={{ borderColor: "rgba(56,189,248,0.4)" }} />
+                              <p className="text-foreground/80 flex-1 text-left" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 500 }}>{task.label}</p>
+                              <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.06em", color: "#38bdf8" }}>+0.5 XP</span>
+                              <ChevronRight size={13} className="text-foreground/35 group-hover/task:text-sky-400 group-hover/task:translate-x-0.5 transition-all" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Benefícios desbloqueados / próximos */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 px-5 pb-5">
@@ -539,6 +550,8 @@ export function ProfilePage() {
                       </button>
                     )}
                   </div>
+                    );
+                  })()}
 
                   {/* Grid de cards */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
