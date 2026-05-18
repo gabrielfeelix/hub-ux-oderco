@@ -2804,16 +2804,16 @@ export function MonteSeuPcPage() {
     let baseId = 900000;
     let added = 0;
     categoriesWithSelected.forEach((c) => {
-      const opt = c.selectedOption;
-      if (!opt) return;
-      addItem({
-        cartKey: `mspc-${c.id}-${opt.id}`,
-        id: baseId++,
-        name: opt.name,
-        price: formatCurrency(opt.price),
-        image: opt.image ?? "",
+      c.selectedOptions.forEach((opt) => {
+        addItem({
+          cartKey: `mspc-${c.id}-${opt.id}`,
+          id: baseId++,
+          name: opt.name,
+          price: formatCurrency(opt.price),
+          image: opt.image ?? "",
+        });
+        added++;
       });
-      added++;
     });
     if (added > 0) {
       pushFeedback(`${added} componente${added > 1 ? "s" : ""} adicionado${added > 1 ? "s" : ""} ao carrinho`);
