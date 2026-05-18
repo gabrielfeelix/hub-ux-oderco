@@ -16,6 +16,7 @@ import { allProducts } from "./productsData";
 import { Footer } from "./Footer";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
 import { CardBrandLogo } from "./CardBrandLogo";
+import { PcyesCoin } from "./PcyesCoin";
 
 function OrderStatusTimeline({ status }: { status: Order["status"] }) {
   const steps = [
@@ -198,15 +199,14 @@ export function ProfilePage() {
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>{favorites.size}</p>
             </div>
             <div className="h-8 w-px bg-foreground/10 hidden sm:block" />
-            <div className="hidden sm:block">
-              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Cliente desde</p>
-              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>
-                {(() => {
-                  const oldestOrder = [...user.orders].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0];
-                  if (!oldestOrder) return "Hoje";
-                  return new Date(oldestOrder.date).toLocaleDateString("pt-BR", { month: "short", year: "numeric" }).replace(".", "");
-                })()}
-              </p>
+            <div className="hidden sm:flex items-center gap-3 px-3 py-1.5" style={{ borderRadius: "12px", background: isDark ? "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.04) 100%)" : "linear-gradient(135deg, rgba(250,204,21,0.16) 0%, rgba(180,83,9,0.06) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
+              <PcyesCoin size={28} />
+              <div>
+                <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#facc15" }}>PCYES Points</p>
+                <p style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 700, lineHeight: 1.1, color: "#facc15", textShadow: "0 0 18px rgba(250,204,21,0.35)" }}>
+                  {(user.pcyesPoints ?? 0).toLocaleString("pt-BR")}
+                </p>
+              </div>
             </div>
           </div>
         </div>

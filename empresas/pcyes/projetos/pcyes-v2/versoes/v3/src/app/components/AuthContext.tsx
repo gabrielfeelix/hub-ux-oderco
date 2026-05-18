@@ -47,6 +47,7 @@ export interface UserData {
   birthday?: string;
   updatedAt?: string;
   avatar?: string;
+  pcyesPoints?: number;
   addresses: UserAddress[];
   cards: UserCard[];
   orders: Order[];
@@ -81,6 +82,7 @@ const MOCK_USER: UserData = {
   cpf: "123.456.789-00",
   birthday: "1996-08-22",
   updatedAt: "2026-03-15T10:30:00",
+  pcyesPoints: 480,
   addresses: [
     { id: "1", label: "Casa", street: "Av. Paranavaí", number: "1906", complement: "Sala 3", neighborhood: "Parque Industrial", city: "Maringá", state: "PR", cep: "87070-130", isDefault: true },
     { id: "2", label: "Trabalho", street: "Rua Santos Dumont", number: "500", neighborhood: "Centro", city: "Maringá", state: "PR", cep: "87013-000", isDefault: false },
