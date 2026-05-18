@@ -118,7 +118,7 @@ export function ProfilePage() {
 
   if (!isLoggedIn || !user) {
     return (
-      <div className="pt-[140px] md:pt-[170px] min-h-screen flex items-center justify-center px-8">
+      <div className="pt-[160px] md:pt-[190px] min-h-screen flex items-center justify-center px-8">
         <div className="text-center max-w-md">
           <User size={40} className="text-foreground/30 mx-auto mb-6" />
           <h2 className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-light)" }}>
@@ -138,31 +138,27 @@ export function ProfilePage() {
 
   const favoriteProducts = getVisibleCatalogProducts(allProducts).filter((p) => favorites.has(p.id));
 
-  const totalSpent = user.orders.reduce((acc, o) => acc + parseFloat(o.total.replace(/[^\d,]/g, "").replace(",", ".")), 0);
   const activeOrders = user.orders.filter((o) => o.status === "processing" || o.status === "shipped").length;
 
   return (
-    <div className="pt-[140px] md:pt-[170px]">
+    <div className="pt-[160px] md:pt-[190px]">
       {/* Header */}
-      <div className="px-5 md:px-8 pt-8 pb-7" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
+      <div className="px-5 md:px-8 pt-9 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
           <div className="flex items-center gap-5">
             <div className="relative flex-shrink-0">
-              <div className="w-[72px] h-[72px] rounded-full bg-primary/10 flex items-center justify-center border border-primary/20" style={{ boxShadow: "0 0 0 4px rgba(255,43,46,0.04), 0 24px 60px -28px rgba(255,43,46,0.45)" }}>
-                <span className="text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-medium)" }}>
+              <div className="w-[78px] h-[78px] rounded-full bg-primary/10 flex items-center justify-center border border-primary/20" style={{ boxShadow: "0 0 0 4px rgba(255,43,46,0.04)" }}>
+                <span className="text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "30px", fontWeight: 600 }}>
                   {user.name.charAt(0)}
                 </span>
               </div>
-              <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.06em", boxShadow: "0 4px 12px rgba(255,43,46,0.4)" }}>
-                Nv. {Math.max(1, Math.floor(user.orders.length / 2) + 1)}
-              </span>
             </div>
             <div>
-              <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-medium)" }}>
+              <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "34px", fontWeight: 600, lineHeight: "1.1" }}>
                 E aí, {user.name.split(" ")[0]}
               </h1>
               <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
-                Squad PCYES · {user.email}
+                {user.email}
               </p>
             </div>
           </div>
@@ -178,8 +174,14 @@ export function ProfilePage() {
             </div>
             <div className="h-8 w-px bg-foreground/10 hidden sm:block" />
             <div className="hidden sm:block">
-              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Investido em setup</p>
-              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>R$ {totalSpent.toFixed(0)}</p>
+              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Cliente desde</p>
+              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>
+                {(() => {
+                  const oldestOrder = [...user.orders].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0];
+                  if (!oldestOrder) return "Hoje";
+                  return new Date(oldestOrder.date).toLocaleDateString("pt-BR", { month: "short", year: "numeric" }).replace(".", "");
+                })()}
+              </p>
             </div>
           </div>
         </div>
