@@ -2665,21 +2665,34 @@ function StepMessages({ messages }: { messages: StepMessage[] }) {
 
 function SelectedItemCard({
   category,
-  option,
+  options,
+  onRemove,
   onPrev,
   onNext,
   isFirst,
   isLast,
   nextDisabled = false,
+  maxSlots,
 }: {
   category: Category | undefined;
-  option: Option | undefined;
+  options: Option[];
+  onRemove: (optionId: string) => void;
   onPrev: () => void;
   onNext: () => void;
   isFirst: boolean;
   isLast: boolean;
   nextDisabled?: boolean;
+  maxSlots: number;
 }) {
+  const isMulti = maxSlots > 1;
+  const countLabel = isMulti
+    ? `${options.length}/${maxSlots === 99 ? "∞" : maxSlots}`
+    : null;
+  const total = options.reduce((s, o) => s + o.price, 0);
+  const emptySlots = isMulti && maxSlots !== 99
+    ? Math.max(0, maxSlots - options.length)
+    : 0;
+
   return (
     <div
       className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-gradient-to-b from-[#15151a] to-[#0d0d0d]"
@@ -2689,7 +2702,7 @@ function SelectedItemCard({
       }}
     >
       <div className="border-b border-white/[0.06] bg-gradient-to-b from-primary/[0.06] to-transparent px-5 pt-4 pb-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2">
           <p
             className="uppercase text-primary"
             style={{
@@ -2699,83 +2712,234 @@ function SelectedItemCard({
               fontWeight: 700,
             }}
           >
-            Item selecionado
+            {isMulti ? "Itens selecionados" : "Item selecionado"}
           </p>
-          <span
-            className="text-zinc-500"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
-              fontWeight: 500,
-            }}
-          >
-            {category?.title}
-          </span>
+          <div className="flex items-center gap-2">
+            {countLabel && (
+              <span
+                className="rounded-full bg-primary/15 px-2 py-0.5 text-primary tabular-nums"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10px",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {countLabel}
+              </span>
+            )}
+            <span
+              className="text-zinc-500"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "10.5px",
+                fontWeight: 500,
+              }}
+            >
+              {category?.title}
+            </span>
+          </div>
         </div>
       </div>
-      <div className="px-5 py-4">
-        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] deal-image-bg">
-          {option?.image ? (
-            <img src={option.image} alt={option.name} className="h-full w-full object-contain p-3" />
-          ) : (
-            <div className="text-zinc-400">{category?.icon}</div>
+
+      {!isMulti && options.length > 0 && (
+        <div className="px-5 py-4">
+          <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] deal-image-bg">
+            {options[0].image ? (
+              <img
+                src={options[0].image}
+                alt={options[0].name}
+                className="h-full w-full object-contain p-3"
+              />
+            ) : (
+              <div className="text-zinc-400">{category?.icon}</div>
+            )}
+          </div>
+          <p
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "15px",
+              fontWeight: 700,
+              letterSpacing: "-0.005em",
+              lineHeight: 1.3,
+            }}
+          >
+            {options[0].name}
+          </p>
+          {options[0].highlights && (
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {options[0].highlights.slice(0, 3).map((h) => (
+                <span
+                  key={h}
+                  className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "10px",
+                    fontWeight: 500,
+                  }}
+                >
+                  {h}
+                </span>
+              ))}
+            </div>
+          )}
+          <p
+            className="mt-3 text-white tabular-nums"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "22px",
+              fontWeight: 700,
+              letterSpacing: "-0.015em",
+            }}
+          >
+            {formatBRL(options[0].price)}
+          </p>
+          <p
+            className="mt-0.5 text-zinc-500"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+          >
+            em até 10x de {formatBRL(options[0].price / 10)} sem juros
+          </p>
+        </div>
+      )}
+
+      {isMulti && (
+        <div className="space-y-2 px-4 py-4">
+          {options.map((opt, idx) => (
+            <div
+              key={opt.id}
+              className="flex items-center gap-3 rounded-[12px] border border-emerald-500/30 bg-emerald-500/[0.04] p-2.5"
+              style={{ borderStyle: "dashed" }}
+            >
+              <div className="h-12 w-12 shrink-0 overflow-hidden rounded-[8px] deal-image-bg">
+                {opt.image ? (
+                  <img src={opt.image} alt="" className="h-full w-full object-contain p-1.5" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-zinc-400">
+                    {category?.icon}
+                  </div>
+                )}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p
+                  className="uppercase text-zinc-500"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "9px",
+                    letterSpacing: "0.18em",
+                    fontWeight: 700,
+                  }}
+                >
+                  Slot {String(idx + 1).padStart(2, "0")}
+                </p>
+                <p
+                  className="truncate text-white"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {opt.name}
+                </p>
+                <p
+                  className="mt-0.5 text-primary tabular-nums"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                  }}
+                >
+                  {formatBRL(opt.price)}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => onRemove(opt.id)}
+                aria-label={`Remover ${opt.name}`}
+                className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-red-500/15 hover:text-red-400"
+              >
+                <X size={14} />
+              </button>
+            </div>
+          ))}
+
+          {Array.from({ length: emptySlots }).map((_, idx) => (
+            <div
+              key={`empty-${idx}`}
+              className="flex items-center justify-center rounded-[12px] border border-white/[0.1] bg-white/[0.01] p-3"
+              style={{ borderStyle: "dashed", minHeight: "60px" }}
+            >
+              <p
+                className="uppercase text-zinc-500"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10px",
+                  letterSpacing: "0.22em",
+                  fontWeight: 700,
+                }}
+              >
+                Slot {String(options.length + idx + 1).padStart(2, "0")}
+              </p>
+            </div>
+          ))}
+
+          {options.length === 0 && emptySlots === 0 && (
+            <div className="rounded-[12px] border border-white/[0.08] bg-white/[0.01] p-6 text-center">
+              <p
+                className="text-zinc-500"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "12.5px",
+                }}
+              >
+                Selecione um ou mais itens da lista
+              </p>
+            </div>
+          )}
+
+          {options.length > 0 && (
+            <div className="mt-3 flex items-baseline justify-between rounded-[10px] border border-white/[0.06] bg-white/[0.02] px-3 py-2">
+              <span
+                className="uppercase text-zinc-400"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10px",
+                  letterSpacing: "0.18em",
+                  fontWeight: 700,
+                }}
+              >
+                Total {category?.title}
+              </span>
+              <span
+                className="text-white tabular-nums"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {formatBRL(total)}
+              </span>
+            </div>
           )}
         </div>
-        {option ? (
-          <>
-            <p
-              className="text-white"
-              style={{
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
-                fontWeight: 700,
-                letterSpacing: "-0.005em",
-                lineHeight: 1.3,
-              }}
-            >
-              {option.name}
-            </p>
-            {option.highlights && (
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {option.highlights.slice(0, 3).map((h) => (
-                  <span
-                    key={h}
-                    className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
-                    style={{
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: "10px",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {h}
-                  </span>
-                ))}
-              </div>
-            )}
-            <p
-              className="mt-3 text-white tabular-nums"
-              style={{
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "22px",
-                fontWeight: 700,
-                letterSpacing: "-0.015em",
-              }}
-            >
-              {formatBRL(option.price)}
-            </p>
-            <p className="mt-0.5 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
-              em até 10x de {formatBRL(option.price / 10)} sem juros
-            </p>
-          </>
-        ) : (
+      )}
+
+      {!isMulti && options.length === 0 && (
+        <div className="px-5 py-6 text-center">
           <p
             className="text-zinc-500"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
           >
             Selecione uma opção da lista
           </p>
-        )}
-      </div>
+        </div>
+      )}
+
       <div className="border-t border-white/[0.06] bg-[#0a0a0a] p-4">
         <div className="flex gap-2">
           <button
@@ -3659,7 +3823,16 @@ export function MonteSeuPcPage() {
                     <aside className="space-y-4 lg:sticky lg:top-[180px] lg:self-start">
                       <SelectedItemCard
                         category={currentCategory}
-                        option={stepSelected}
+                        options={stepSelectedOptions}
+                        maxSlots={stepMax}
+                        onRemove={(optId) => {
+                          setSelections((prev) => ({
+                            ...prev,
+                            [currentCategory.id]: (prev[currentCategory.id] ?? []).filter(
+                              (id) => id !== optId,
+                            ),
+                          }));
+                        }}
                         onPrev={goPrev}
                         onNext={goNext}
                         isFirst={isFirst}
