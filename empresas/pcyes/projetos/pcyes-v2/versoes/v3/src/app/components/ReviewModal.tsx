@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "./ui/dialog";
 import { useTheme } from "./ThemeProvider";
-import { Star, Check, Sparkles } from "lucide-react";
+import { Star, Check, Sparkles, Camera, Video, X as XIcon, ThumbsUp, ThumbsDown, Play } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export interface ReviewItem {
@@ -15,10 +15,23 @@ interface Props {
   onClose: () => void;
   orderId: string;
   items: ReviewItem[];
-  onSubmit: (review: { ratings: Record<string, number>; comment: string }) => void;
+  onSubmit: (review: { ratings: Record<string, number>; comment: string; tags: string[]; recommends: boolean | null; media: { url: string; type: "image" | "video" }[] }) => void;
 }
 
 const RATING_LABELS = ["", "Péssimo", "Ruim", "Ok", "Bom", "Excelente"];
+
+const QUICK_TAGS = [
+  "Bom acabamento",
+  "Custo-benefício",
+  "Entrega rápida",
+  "Como descrito",
+  "Embalagem caprichada",
+  "Qualidade premium",
+  "Fácil de usar",
+  "Recomendo",
+];
+
+const MAX_MEDIA = 6;
 
 export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) {
   const { resolvedTheme } = useTheme();
@@ -26,36 +39,85 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
   const [ratings, setRatings] = useState<Record<string, number>>({});
   const [hoverRatings, setHoverRatings] = useState<Record<string, number>>({});
   const [comment, setComment] = useState("");
+  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [recommends, setRecommends] = useState<boolean | null>(null);
+  const [media, setMedia] = useState<{ url: string; type: "image" | "video"; file: File }[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [earnedPoints, setEarnedPoints] = useState(0);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (open) {
       setRatings({});
       setHoverRatings({});
       setComment("");
+      setSelectedTags(new Set());
+      setRecommends(null);
+      setMedia((prev) => {
+        prev.forEach((m) => URL.revokeObjectURL(m.url));
+        return [];
+      });
       setSubmitted(false);
       setEarnedPoints(0);
     }
   }, [open]);
+
+  useEffect(() => () => media.forEach((m) => URL.revokeObjectURL(m.url)), [media]);
 
   const rated = Object.keys(ratings).length;
   const total = items.length;
   const allRated = rated === total && total > 0;
   const avgRating = rated > 0 ? Object.values(ratings).reduce((a, b) => a + b, 0) / rated : 0;
 
+  const toggleTag = (tag: string) =>
+    setSelectedTags((prev) => {
+      const next = new Set(prev);
+      if (next.has(tag)) next.delete(tag);
+      else next.add(tag);
+      return next;
+    });
+
+  const handleFiles = (files: FileList | null) => {
+    if (!files) return;
+    const remaining = MAX_MEDIA - media.length;
+    const accepted: { url: string; type: "image" | "video"; file: File }[] = [];
+    Array.from(files).slice(0, remaining).forEach((file) => {
+      const type: "image" | "video" = file.type.startsWith("video") ? "video" : "image";
+      accepted.push({ url: URL.createObjectURL(file), type, file });
+    });
+    setMedia((prev) => [...prev, ...accepted]);
+  };
+
+  const removeMedia = (idx: number) =>
+    setMedia((prev) => {
+      const next = [...prev];
+      URL.revokeObjectURL(next[idx].url);
+      next.splice(idx, 1);
+      return next;
+    });
+
+  const baseEarn = total * 5;
+  const mediaBonus = media.length > 0 ? 10 : 0;
+  const commentBonus = comment.trim().length >= 20 ? 5 : 0;
+  const projectedPts = baseEarn + mediaBonus + commentBonus;
+
   const handleSubmit = () => {
     if (!allRated) return;
-    const pts = total * 5;
-    setEarnedPoints(pts);
-    onSubmit({ ratings, comment });
+    setEarnedPoints(projectedPts);
+    onSubmit({
+      ratings,
+      comment,
+      tags: Array.from(selectedTags),
+      recommends,
+      media: media.map(({ url, type }) => ({ url, type })),
+    });
     setSubmitted(true);
   };
 
   return (
     <Dialog open={open} onOpenChange={(v) => { if (!v) onClose(); }}>
       <DialogContent
-        className="!max-w-[560px] !p-0 !gap-0 !border-0"
+        className="!max-w-[620px] !p-0 !gap-0 !border-0"
         style={{
           background: isDark ? "#161617" : "#ffffff",
           borderRadius: "20px",
@@ -74,13 +136,14 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                   Avaliar pedido {orderId}
                 </DialogTitle>
                 <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", marginTop: 4, color: isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.6)" }}>
-                  Sua nota ajuda outros gamers a escolherem · Ganhe <span style={{ color: "#facc15", fontWeight: 700 }}>+{total * 5} pts</span>
+                  Sua nota ajuda outros gamers · Ganhe até <span style={{ color: "#facc15", fontWeight: 700 }}>+{baseEarn + 15} pts</span> com foto + comentário
                 </DialogDescription>
               </div>
             </div>
 
-            <div className="px-6 py-4 max-h-[55vh] overflow-y-auto">
-              <div className="space-y-3">
+            <div className="px-6 py-4 max-h-[60vh] overflow-y-auto">
+              {/* Itens com estrelas */}
+              <div className="space-y-2.5">
                 {items.map((item, i) => {
                   const key = `${i}-${item.name}`;
                   const rating = ratings[key] ?? 0;
@@ -121,14 +184,154 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                 })}
               </div>
 
-              <div className="mt-4">
+              {/* Recomenda? */}
+              <div className="mt-5">
+                <label className="block mb-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+                  Você recomenda?
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setRecommends(recommends === true ? null : true)}
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 cursor-pointer transition-all"
+                    style={{
+                      borderRadius: 10,
+                      background: recommends === true ? "rgba(34,197,94,0.12)" : (isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"),
+                      border: recommends === true ? "1.5px solid rgba(34,197,94,0.45)" : (isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)"),
+                      color: recommends === true ? "#22c55e" : (isDark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)"),
+                      fontFamily: "var(--font-family-inter)",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    <ThumbsUp size={14} /> Sim
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRecommends(recommends === false ? null : false)}
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 cursor-pointer transition-all"
+                    style={{
+                      borderRadius: 10,
+                      background: recommends === false ? "rgba(239,68,68,0.12)" : (isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"),
+                      border: recommends === false ? "1.5px solid rgba(239,68,68,0.45)" : (isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)"),
+                      color: recommends === false ? "#ef4444" : (isDark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.7)"),
+                      fontFamily: "var(--font-family-inter)",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    <ThumbsDown size={14} /> Não
+                  </button>
+                </div>
+              </div>
+
+              {/* Tags rápidas */}
+              <div className="mt-5">
+                <label className="block mb-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+                  O que mais te chamou atenção?
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                  {QUICK_TAGS.map((tag) => {
+                    const active = selectedTags.has(tag);
+                    return (
+                      <button
+                        key={tag}
+                        type="button"
+                        onClick={() => toggleTag(tag)}
+                        className="cursor-pointer transition-all"
+                        style={{
+                          padding: "6px 11px",
+                          borderRadius: 999,
+                          background: active ? "rgba(255,43,46,0.10)" : (isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"),
+                          border: active ? "1px solid rgba(255,43,46,0.40)" : (isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)"),
+                          color: active ? "var(--primary)" : (isDark ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.75)"),
+                          fontFamily: "var(--font-family-inter)",
+                          fontSize: "11.5px",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {active && <span style={{ marginRight: 4 }}>✓</span>}{tag}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Mídia: fotos e vídeos */}
+              <div className="mt-5">
+                <div className="flex items-center justify-between mb-2">
+                  <label style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+                    Fotos e vídeos <span style={{ fontWeight: 500, letterSpacing: "0.04em", color: "#facc15" }}>+10 pts</span>
+                  </label>
+                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)" }}>
+                    {media.length}/{MAX_MEDIA}
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {media.map((m, i) => (
+                    <div key={i} className="relative group" style={{ width: 70, height: 70, borderRadius: 10, overflow: "hidden", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                      {m.type === "image" ? (
+                        <img src={m.url} alt="" className="w-full h-full object-cover" />
+                      ) : (
+                        <>
+                          <video src={m.url} className="w-full h-full object-cover" muted />
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ background: "rgba(0,0,0,0.35)" }}>
+                            <Play size={18} className="text-white fill-white" />
+                          </div>
+                        </>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => removeMedia(i)}
+                        className="absolute top-1 right-1 flex items-center justify-center cursor-pointer transition-all"
+                        style={{ width: 18, height: 18, borderRadius: 9999, background: "rgba(0,0,0,0.7)", color: "#fff" }}
+                      >
+                        <XIcon size={11} />
+                      </button>
+                    </div>
+                  ))}
+                  {media.length < MAX_MEDIA && (
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="flex flex-col items-center justify-center gap-1 cursor-pointer transition-all hover:brightness-125"
+                      style={{
+                        width: 70, height: 70, borderRadius: 10,
+                        background: "rgba(250,204,21,0.04)",
+                        border: "1.5px dashed rgba(250,204,21,0.38)",
+                        color: "#facc15",
+                      }}
+                    >
+                      <div className="flex items-center gap-0.5">
+                        <Camera size={13} />
+                        <Video size={13} />
+                      </div>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.04em" }}>Adicionar</span>
+                    </button>
+                  )}
+                </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*,video/*"
+                  multiple
+                  className="hidden"
+                  onChange={(e) => { handleFiles(e.target.files); e.target.value = ""; }}
+                />
+                <p className="mt-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)" }}>
+                  Mostra o produto na sua setup · Vídeos até 30s
+                </p>
+              </div>
+
+              {/* Comentário */}
+              <div className="mt-5">
                 <label className="block mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
-                  Comentário <span style={{ fontWeight: 500, letterSpacing: "0.04em", color: isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)" }}>(opcional)</span>
+                  Conta detalhes <span style={{ fontWeight: 500, letterSpacing: "0.04em", color: "#facc15" }}>+5 pts se 20+ chars</span>
                 </label>
                 <textarea
                   value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  placeholder="Conta pra galera o que achou do produto, entrega, qualidade..."
+                  onChange={(e) => setComment(e.target.value.slice(0, 500))}
+                  placeholder="Como foi a experiência? Qualidade, entrega, encaixou no setup..."
                   rows={3}
                   className="w-full focus:outline-none focus:border-primary/40 transition-all resize-none"
                   style={{
@@ -146,10 +349,15 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
               </div>
             </div>
 
+            {/* Footer */}
             <div className="px-6 pb-5 pt-3 flex items-center justify-between gap-2.5" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-              <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
-                {allRated ? <><Check size={11} className="inline" /> Pronto pra enviar</> : `${rated}/${total} ${rated === 1 ? "item avaliado" : "itens avaliados"}`}
-              </p>
+              <div className="flex items-center gap-2 min-w-0">
+                <p className="truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+                  {allRated ? (
+                    <><Check size={11} className="inline" /> Pronto · Ganhará <span style={{ color: "#facc15", fontWeight: 700 }}>+{projectedPts} pts</span></>
+                  ) : `${rated}/${total} ${rated === 1 ? "item avaliado" : "itens avaliados"}`}
+                </p>
+              </div>
               <div className="flex items-center gap-2">
                 <button type="button" onClick={onClose} className="px-4 py-2 cursor-pointer hover:brightness-110 transition-all"
                   style={{ borderRadius: 10, background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, color: isDark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.85)" }}>

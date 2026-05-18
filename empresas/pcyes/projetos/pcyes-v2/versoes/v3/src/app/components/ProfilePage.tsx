@@ -1805,13 +1805,16 @@ export function ProfilePage() {
             onClose={() => setReviewOrderId(null)}
             orderId={orderToReview.id}
             items={orderToReview.items.map((it) => ({ name: it.name, image: it.image, price: it.price }))}
-            onSubmit={() => {
+            onSubmit={(review) => {
               setReviewedOrders((prev) => new Set(prev).add(orderToReview.id));
-              const earned = orderToReview.items.length * 5;
+              const base = orderToReview.items.length * 5;
+              const mediaBonus = review.media.length > 0 ? 10 : 0;
+              const commentBonus = review.comment.trim().length >= 20 ? 5 : 0;
+              const earned = base + mediaBonus + commentBonus;
               updateUser({
                 pcyesPoints: (user.pcyesPoints ?? 0) + earned,
                 pcyesPointsHistory: [
-                  { id: `tx-review-${orderToReview.id}-${Date.now()}`, date: new Date().toISOString().replace("T", " ").slice(0, 16), type: "bonus", amount: earned, description: `Avaliação do pedido ${orderToReview.id}` },
+                  { id: `tx-review-${orderToReview.id}-${Date.now()}`, date: new Date().toISOString().replace("T", " ").slice(0, 16), type: "bonus", amount: earned, description: `Avaliação do pedido ${orderToReview.id}${review.media.length > 0 ? " com mídia" : ""}` },
                   ...(user.pcyesPointsHistory ?? []),
                 ],
               });
