@@ -617,6 +617,8 @@ type Preset = {
   tagline: string;
   description: string;
   price: number;
+  oldPrice?: number;
+  pixDiscount?: number;
   installments: { count: number; value: number };
   accent: string;
   glow: string;
@@ -624,24 +626,46 @@ type Preset = {
   badge?: string;
   heroImage: string;
   performance: string;
-  highlights: string[];
+  specs: { cpu: string; gpu: string; ram: string; storage: string; psu: string };
+  benchmarks: { game: string; fps: number; resolution: string }[];
+  rating: number;
+  reviews: number;
+  inStock: boolean;
+  deliveryDays: string;
   selections: Record<string, string>;
 };
 
 const presets: Preset[] = [
   {
     id: "start",
-    name: "Start",
-    tagline: "Começo digno",
-    description: "Performance honesta pra jogar em 1080p e dia-a-dia tranquilo.",
+    name: "PCYES Start",
+    tagline: "1080p · Dia-a-dia",
+    description: "Setup honesto para entrar no mundo gamer. Roda os esports com folga.",
     price: 3499,
+    oldPrice: 3899,
+    pixDiscount: 10,
     installments: { count: 10, value: 349.9 },
     accent: "#22c55e",
     glow: "rgba(34,197,94,0.35)",
     icon: <Cpu className="h-5 w-5" />,
     heroImage: "/home/category-computers.png",
-    performance: "1080p / Dia-a-dia",
-    highlights: ["Intel Core i5-12400F", "16GB DDR4 3200MHz", "GPU entrada", "SSD NVMe 1TB", "Fonte 550W Bronze"],
+    performance: "Entrada",
+    specs: {
+      cpu: "Intel Core i5-12400F",
+      gpu: "GeForce RTX 4060",
+      ram: "16GB DDR4 3200MHz",
+      storage: "SSD NVMe 1TB",
+      psu: "550W 80+ Bronze",
+    },
+    benchmarks: [
+      { game: "Valorant", fps: 280, resolution: "1080p" },
+      { game: "Fortnite", fps: 165, resolution: "1080p" },
+      { game: "CS2", fps: 220, resolution: "1080p" },
+    ],
+    rating: 4.7,
+    reviews: 142,
+    inStock: true,
+    deliveryDays: "3-5 dias úteis",
     selections: {
       cpu: "cpu-1", motherboard: "mb-1", ram: "ram-2", gpu: "gpu-1",
       cooling: "cooling-1", storage: "storage-1", case: "case-1",
@@ -650,18 +674,35 @@ const presets: Preset[] = [
   },
   {
     id: "pro",
-    name: "Pro",
-    tagline: "Sweet spot performance",
-    description: "2K 144Hz com folga, edição rápida. Build mais pedida.",
+    name: "PCYES Pro",
+    tagline: "2K 144Hz · Render rápido",
+    description: "Sweet spot do gamer brasileiro. AAA em 2K, edição leve, stream sem travar.",
     price: 7499,
+    oldPrice: 8299,
+    pixDiscount: 12,
     installments: { count: 10, value: 749.9 },
     accent: "#ff2b2e",
     glow: "rgba(255,43,46,0.45)",
     icon: <Zap className="h-5 w-5" />,
     badge: "MAIS PEDIDA",
     heroImage: "/home/category-pc-gamer.png",
-    performance: "2K 144Hz / Render",
-    highlights: ["Intel Core i7-12700K", "32GB DDR5 5600MHz", "GPU high-end", "SSD NVMe 2TB", "Fonte 850W Gold"],
+    performance: "Performance",
+    specs: {
+      cpu: "Intel Core i7-12700K",
+      gpu: "GeForce RTX 4070 Super",
+      ram: "32GB DDR5 5600MHz",
+      storage: "SSD NVMe 2TB",
+      psu: "850W 80+ Gold",
+    },
+    benchmarks: [
+      { game: "Cyberpunk 2077", fps: 95, resolution: "2K Ultra" },
+      { game: "Warzone", fps: 165, resolution: "2K" },
+      { game: "Elden Ring", fps: 120, resolution: "2K" },
+    ],
+    rating: 4.9,
+    reviews: 387,
+    inStock: true,
+    deliveryDays: "2-4 dias úteis",
     selections: {
       cpu: "cpu-2", motherboard: "mb-1", ram: "ram-3", gpu: "gpu-2",
       cooling: "cooling-2", storage: "storage-2", case: "case-2",
@@ -670,17 +711,34 @@ const presets: Preset[] = [
   },
   {
     id: "ultra",
-    name: "Ultra",
-    tagline: "Top tier sem freio",
-    description: "4K alto FPS, render pesado, streaming. Headroom pra anos.",
+    name: "PCYES Ultra",
+    tagline: "4K alto FPS · Workstation",
+    description: "Top de linha. 4K alto FPS, render pesado, streaming dual-PC. Headroom pra anos.",
     price: 14999,
+    oldPrice: 16499,
+    pixDiscount: 15,
     installments: { count: 10, value: 1499.9 },
     accent: "#a78bfa",
     glow: "rgba(167,139,250,0.4)",
     icon: <Sparkles className="h-5 w-5" />,
     heroImage: "/home/hero-videogame.png",
-    performance: "4K alto FPS / Workstation",
-    highlights: ["AMD Ryzen 5 7600 AM5", "32GB DDR5 6000MHz", "GPU flagship", "SSD NVMe 4TB", "Fonte 1000W Gold"],
+    performance: "Extremo",
+    specs: {
+      cpu: "AMD Ryzen 5 7600 AM5",
+      gpu: "GeForce RTX 4090",
+      ram: "32GB DDR5 6000MHz",
+      storage: "SSD NVMe 4TB",
+      psu: "1000W 80+ Gold Full Modular",
+    },
+    benchmarks: [
+      { game: "Cyberpunk 2077", fps: 115, resolution: "4K Path Tracing" },
+      { game: "Alan Wake 2", fps: 90, resolution: "4K Ultra" },
+      { game: "Black Myth Wukong", fps: 100, resolution: "4K" },
+    ],
+    rating: 5.0,
+    reviews: 89,
+    inStock: true,
+    deliveryDays: "5-7 dias úteis",
     selections: {
       cpu: "cpu-3", motherboard: "mb-4", ram: "ram-4", gpu: "gpu-3",
       cooling: "cooling-3", storage: "storage-3", case: "case-3",
@@ -885,6 +943,47 @@ const getSpecIcon = (text: string) => {
   return <Settings size={13} />;
 };
 
+function StarRating({ rating, reviews }: { rating: number; reviews: number }) {
+  const full = Math.floor(rating);
+  const half = rating - full >= 0.5;
+  return (
+    <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-0.5">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <svg
+            key={i}
+            width="11"
+            height="11"
+            viewBox="0 0 24 24"
+            fill={i < full ? "#facc15" : i === full && half ? "url(#half)" : "rgba(255,255,255,0.12)"}
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="half">
+                <stop offset="50%" stopColor="#facc15" />
+                <stop offset="50%" stopColor="rgba(255,255,255,0.12)" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />
+          </svg>
+        ))}
+      </div>
+      <span
+        className="tabular-nums text-white"
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}
+      >
+        {rating.toFixed(1)}
+      </span>
+      <span
+        className="text-zinc-500"
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+      >
+        ({reviews})
+      </span>
+    </div>
+  );
+}
+
 function PresetCard({
   preset,
   isRecommended,
@@ -894,168 +993,323 @@ function PresetCard({
   isRecommended: boolean;
   onApply: () => void;
 }) {
+  const discount = preset.oldPrice
+    ? Math.round(((preset.oldPrice - preset.price) / preset.oldPrice) * 100)
+    : 0;
+  const pixPrice = preset.pixDiscount ? preset.price * (1 - preset.pixDiscount / 100) : preset.price;
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300",
-        isRecommended ? "border-primary/55" : "border-white/[0.08] hover:border-white/[0.2]",
+        "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1",
+        isRecommended ? "border-primary/55" : "border-white/[0.08] hover:border-white/[0.22]",
       )}
       style={
         isRecommended
-          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.2), 0 40px 80px -30px rgba(255,43,46,0.4)" }
-          : undefined
+          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 40px 90px -30px rgba(255,43,46,0.45)" }
+          : { boxShadow: "0 16px 40px -16px rgba(0,0,0,0.5)" }
       }
     >
-      <div className="relative aspect-[16/11] w-full overflow-hidden bg-black">
+      <div className="relative aspect-[16/10] w-full overflow-hidden deal-image-bg">
         <img
           src={preset.heroImage}
           alt={`Setup ${preset.name}`}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-[1.04]"
+          className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.05]"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
           }}
         />
         <div
-          className="absolute inset-0"
+          className="pointer-events-none absolute inset-0"
           style={{
-            background: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 75%, #0d0d0d 100%)",
+            background: `radial-gradient(circle at 30% 100%, ${preset.glow} 0%, transparent 55%)`,
           }}
         />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{ background: `radial-gradient(circle at 50% 100%, ${preset.glow} 0%, transparent 50%)` }}
-        />
-        <div className="absolute left-4 top-4 flex flex-col gap-1.5">
-          {isRecommended && (
+        <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3.5">
+          <div className="flex flex-col gap-1.5">
+            {isRecommended && (
+              <span
+                className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "9.5px",
+                  letterSpacing: "0.16em",
+                  fontWeight: 700,
+                  boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                }}
+              >
+                <Sparkles size={9} /> SUGERIDA PRA VOCÊ
+              </span>
+            )}
+            {preset.badge && !isRecommended && (
+              <span
+                className="inline-flex w-fit items-center rounded-full border border-white/15 bg-black/65 px-2.5 py-1 text-white backdrop-blur"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "9.5px",
+                  letterSpacing: "0.16em",
+                  fontWeight: 700,
+                }}
+              >
+                {preset.badge}
+              </span>
+            )}
+          </div>
+          {discount > 0 && (
             <span
-              className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+              className="inline-flex shrink-0 items-center rounded-full bg-emerald-500 px-2.5 py-1 text-white tabular-nums"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9.5px",
-                letterSpacing: "0.16em",
-                fontWeight: 700,
-                boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                fontSize: "10.5px",
+                fontWeight: 800,
+                letterSpacing: "0.02em",
+                boxShadow: "0 6px 18px -4px rgba(16,185,129,0.55)",
               }}
             >
-              <Sparkles size={9} /> SUGERIDA PRA VOCÊ
-            </span>
-          )}
-          {preset.badge && !isRecommended && (
-            <span
-              className="inline-flex w-fit items-center rounded-full border border-white/15 bg-black/55 px-2.5 py-1 text-white backdrop-blur"
-              style={{
-                fontFamily: "var(--font-family-inter)",
-                fontSize: "9.5px",
-                letterSpacing: "0.16em",
-                fontWeight: 700,
-              }}
-            >
-              {preset.badge}
+              -{discount}%
             </span>
           )}
         </div>
+        <div className="absolute inset-x-0 bottom-0 p-4">
+          <div className="flex items-end justify-between gap-3">
+            <div className="min-w-0">
+              <p
+                className="mb-0.5 uppercase"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "9.5px",
+                  letterSpacing: "0.22em",
+                  fontWeight: 700,
+                  color: preset.accent,
+                }}
+              >
+                {preset.tagline}
+              </p>
+              <h3
+                className="truncate text-white"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "clamp(20px, 2.4vw, 26px)",
+                  fontWeight: 800,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.05,
+                  textShadow: "0 2px 12px rgba(0,0,0,0.55)",
+                }}
+              >
+                {preset.name}
+              </h3>
+            </div>
+            <StarRating rating={preset.rating} reviews={preset.reviews} />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-4">
+        <div className="mb-4 grid grid-cols-5 gap-1.5">
+          {[
+            { icon: <Cpu size={13} />, label: "CPU", value: preset.specs.cpu.split(" ").slice(-1)[0] },
+            { icon: <Monitor size={13} />, label: "GPU", value: preset.specs.gpu.replace(/GeForce |Radeon /i, "") },
+            { icon: <Sparkles size={13} />, label: "RAM", value: preset.specs.ram.split(" ")[0] },
+            { icon: <HardDrive size={13} />, label: "SSD", value: preset.specs.storage.split(" ").slice(-1)[0] },
+            { icon: <Zap size={13} />, label: "PSU", value: preset.specs.psu.split(" ")[0] },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center gap-1 rounded-[10px] border border-white/[0.06] bg-white/[0.02] p-2"
+              title={preset.specs[s.label.toLowerCase() as keyof typeof preset.specs]}
+            >
+              <span className="text-zinc-400">{s.icon}</span>
+              <span
+                className="truncate text-white"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  letterSpacing: "-0.005em",
+                  maxWidth: "100%",
+                }}
+              >
+                {s.value}
+              </span>
+            </div>
+          ))}
+        </div>
+
         <div
-          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md"
+          className="mb-4 rounded-[12px] border border-white/[0.06] bg-white/[0.02] p-3"
           style={{
-            background: `${preset.accent}22`,
-            border: `1px solid ${preset.accent}55`,
-            color: preset.accent,
+            background: `linear-gradient(135deg, ${preset.accent}10 0%, rgba(255,255,255,0.02) 100%)`,
           }}
         >
-          {preset.icon}
-        </div>
-        <div className="absolute inset-x-0 bottom-0 px-5 pb-4">
           <p
-            className="mb-1 uppercase"
+            className="mb-2 uppercase text-zinc-400"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "9.5px",
-              letterSpacing: "0.22em",
+              letterSpacing: "0.2em",
               fontWeight: 700,
-              color: preset.accent,
             }}
           >
-            {preset.performance}
+            Performance estimada
           </p>
-          <h3
-            className="text-white"
-            style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "30px",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-              lineHeight: 1,
-            }}
-          >
-            {preset.name}
-          </h3>
-          <p
-            className="mt-1 text-white/85"
-            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "13.5px", fontWeight: 500 }}
-          >
-            {preset.tagline}
-          </p>
+          <div className="space-y-1.5">
+            {preset.benchmarks.slice(0, 3).map((b) => (
+              <div key={b.game} className="flex items-center justify-between gap-2">
+                <span
+                  className="truncate text-zinc-200"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500 }}
+                >
+                  {b.game}
+                </span>
+                <div className="flex items-baseline gap-1.5 shrink-0">
+                  <span
+                    className="tabular-nums text-white"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "14px",
+                      fontWeight: 800,
+                      letterSpacing: "-0.005em",
+                    }}
+                  >
+                    {b.fps}
+                    <span
+                      className="ml-0.5 text-zinc-500"
+                      style={{ fontSize: "10px", fontWeight: 600 }}
+                    >
+                      fps
+                    </span>
+                  </span>
+                  <span
+                    className="rounded-sm bg-white/[0.06] px-1 py-0.5 text-zinc-400"
+                    style={{
+                      fontFamily: "var(--font-family-inter)",
+                      fontSize: "8.5px",
+                      fontWeight: 700,
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    {b.resolution}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="flex flex-1 flex-col p-5">
+
         <p
-          className="mb-4 text-zinc-400"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", lineHeight: 1.55 }}
+          className="mb-3 text-zinc-400"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.55 }}
         >
           {preset.description}
         </p>
-        <ul className="mb-5 space-y-1.5">
-          {preset.highlights.map((h) => (
-            <li
-              key={h}
-              className="flex items-center gap-2.5 text-zinc-200"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 500 }}
-            >
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-[#1a1a1f] text-zinc-400">
-                {getSpecIcon(h)}
+
+        <div className="mt-auto border-t border-white/[0.06] pt-3.5">
+          <div className="mb-1 flex items-center gap-2">
+            {preset.oldPrice && (
+              <span
+                className="text-zinc-500 line-through tabular-nums"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+              >
+                {formatBRL(preset.oldPrice)}
               </span>
-              {h}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-auto flex items-end justify-between border-t border-white/[0.06] pt-4">
-          <div>
+            )}
+            {preset.pixDiscount && (
+              <span
+                className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "9.5px",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                }}
+              >
+                -{preset.pixDiscount}% no PIX
+              </span>
+            )}
+          </div>
+          <div className="flex items-baseline gap-2">
             <p
               className="text-white tabular-nums"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "24px",
-                fontWeight: 700,
-                letterSpacing: "-0.015em",
+                fontSize: "26px",
+                fontWeight: 800,
+                letterSpacing: "-0.02em",
                 lineHeight: 1,
               }}
             >
               {formatBRL(preset.price)}
             </p>
-            <p className="mt-1 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
-              {preset.installments.count}x de {formatBRL(preset.installments.value)}
-            </p>
+            <span
+              className="text-zinc-500"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+            >
+              à vista
+            </span>
           </div>
-        </div>
-        <button
-          type="button"
-          onClick={onApply}
-          className={cn(
-            "mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] transition-all duration-300",
-            isRecommended
-              ? "bg-primary text-white hover:brightness-110"
-              : "border border-white/[0.12] bg-white/[0.03] text-white hover:border-white/30 hover:bg-white/[0.06]",
+          <p
+            className="mt-1 text-zinc-400"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+          >
+            ou {preset.installments.count}x de{" "}
+            <span className="text-white tabular-nums" style={{ fontWeight: 600 }}>
+              {formatBRL(preset.installments.value)}
+            </span>{" "}
+            sem juros
+          </p>
+          {preset.pixDiscount && (
+            <p
+              className="mt-1 tabular-nums text-emerald-300"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
+            >
+              {formatBRL(pixPrice)} no PIX
+            </p>
           )}
-          style={{
-            fontFamily: "var(--font-family-inter)",
-            fontSize: "13px",
-            fontWeight: 600,
-            letterSpacing: "0.015em",
-          }}
-        >
-          Aplicar e customizar <ArrowRight size={14} />
-        </button>
+
+          <div className="mt-3 flex items-center gap-1.5">
+            <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
+            <span
+              className="text-zinc-300"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 500 }}
+            >
+              {preset.inStock ? "Em estoque" : "Sob encomenda"} · entrega {preset.deliveryDays}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={onApply}
+            className={cn(
+              "mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] transition-all duration-300",
+              isRecommended
+                ? "bg-primary text-white hover:brightness-110"
+                : "bg-white text-black hover:bg-zinc-100",
+            )}
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "13.5px",
+              fontWeight: 700,
+              letterSpacing: "0.01em",
+              boxShadow: isRecommended
+                ? "0 12px 32px -8px rgba(255,43,46,0.55)"
+                : "0 12px 32px -10px rgba(255,255,255,0.18)",
+            }}
+          >
+            <ShoppingCart size={14} /> Quero esse setup
+          </button>
+          <button
+            type="button"
+            onClick={onApply}
+            className="mt-2 h-9 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "11.5px",
+              fontWeight: 600,
+            }}
+          >
+            Personalizar antes
+          </button>
+        </div>
       </div>
     </article>
   );

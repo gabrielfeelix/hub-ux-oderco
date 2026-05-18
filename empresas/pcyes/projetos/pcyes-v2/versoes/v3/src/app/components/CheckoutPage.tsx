@@ -26,6 +26,9 @@ import {
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
 import { useCheckoutPrefs } from "./CheckoutPrefsContext";
+import { useAuth } from "./AuthContext";
+import { AddressFormModal } from "./AddressFormModal";
+import { CardFormModal } from "./CardFormModal";
 import { Footer } from "./Footer";
 
 type Step = 0 | 1 | 2 | 3;
@@ -287,7 +290,14 @@ function Line({ label, value, positive }: { label: string; value: string; positi
 export function CheckoutPage() {
   const { items, clearCart } = useCart();
   const navigate = useNavigate();
+  const { user, isLoggedIn, addAddress, addCard } = useAuth();
   const [step, setStep] = useState<Step>(0);
+  /* Picker state — quando logged in c/ endereços/cartões salvos, preenche o form
+     da etapa correspondente automaticamente quando o usuário seleciona um. */
+  const [selectedAddressId, setSelectedAddressId] = useState<string | null>(null);
+  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
+  const [addressModalOpen, setAddressModalOpen] = useState(false);
+  const [cardModalOpen, setCardModalOpen] = useState(false);
   const [address, setAddress] = useState<Address>({
     zip: "",
     street: "",
@@ -474,6 +484,48 @@ export function CheckoutPage() {
   useEffect(() => {
     if (pointsToUse > maxPointsRedeem) setPointsToUse(maxPointsRedeem);
   }, [maxPointsRedeem, pointsToUse]);
+
+  /* Auto-seleciona endereço default na primeira renderização quando logado. */
+  useEffect(() => {
+    if (!isLoggedIn || !user || selectedAddressId !== null) return;
+    const def = user.addresses.find((a) => a.isDefault) || user.addresses[0];
+    if (def) setSelectedAddressId(def.id);
+  }, [isLoggedIn, user, selectedAddressId]);
+
+  /* Sincroniza form de endereço com o saved selecionado. */
+  useEffect(() => {
+    if (!user || !selectedAddressId) return;
+    const a = user.addresses.find((x) => x.id === selectedAddressId);
+    if (!a) return;
+    setAddress({
+      zip: a.cep,
+      street: a.street,
+      number: a.number,
+      complement: a.complement || "",
+      district: a.neighborhood,
+      city: a.city,
+      state: a.state,
+      recipient: user.name,
+      phone: user.phone,
+    });
+  }, [selectedAddressId, user]);
+
+  /* Auto-seleciona cartão default ao escolher pagamento crédito. */
+  useEffect(() => {
+    if (payment !== "credit" || !isLoggedIn || !user || selectedCardId !== null) return;
+    const def = user.cards.find((c) => c.isDefault) || user.cards[0];
+    if (def) setSelectedCardId(def.id);
+  }, [payment, isLoggedIn, user, selectedCardId]);
+
+  /* Sincroniza form de cartão com o saved selecionado (CVV continua vazio — usuário digita toda vez). */
+  useEffect(() => {
+    if (!user || !selectedCardId) return;
+    const c = user.cards.find((x) => x.id === selectedCardId);
+    if (!c) return;
+    setCardName(c.name);
+    setCardNumber(`•••• •••• •••• ${c.last4}`);
+    setCardExp(c.expiry);
+  }, [selectedCardId, user]);
 
   const copyPix = () => {
     const code = "00020126360014BR.GOV.BCB.PIX0114pcyes@pcyes.com5204000053039865802BR5913PCYES Gamer6009Maringa62070503***6304ABCD";
@@ -969,6 +1021,60 @@ export function CheckoutPage() {
                         Pra onde mandamos sua build?
                       </p>
 
+                      {/* Saved addresses picker — só renderiza se logado com endereços salvos. */}
+                      {isLoggedIn && user && user.addresses.length > 0 && (
+                        <div className="mb-6">
+                          <div className="flex items-center justify-between mb-2.5">
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+                              Endereços salvos
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setAddressModalOpen(true)}
+                              className="text-primary hover:brightness-110 transition-all cursor-pointer"
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                            >
+                              + Adicionar novo
+                            </button>
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            {user.addresses.map((a) => {
+                              const sel = selectedAddressId === a.id;
+                              return (
+                                <button
+                                  key={a.id}
+                                  type="button"
+                                  onClick={() => setSelectedAddressId(a.id)}
+                                  className="text-left p-3 transition-all cursor-pointer"
+                                  style={{
+                                    borderRadius: 12,
+                                    background: sel ? "rgba(255,43,46,0.08)" : "rgba(255,255,255,0.02)",
+                                    border: sel ? "1.5px solid rgba(255,43,46,0.45)" : "1px solid rgba(255,255,255,0.08)",
+                                  }}
+                                >
+                                  <div className="flex items-start gap-2.5">
+                                    <span className="mt-0.5 flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(255,255,255,0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
+                                    <div className="min-w-0 flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <span className="text-white truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>{a.label}</span>
+                                        {a.isDefault && <span className="px-1.5 py-0.5 bg-primary/12 text-primary" style={{ borderRadius: 999, fontFamily: "var(--font-family-inter)", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
+                                      </div>
+                                      <p className="text-white/55 truncate mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                                        {a.street}, {a.number} · {a.city}/{a.state}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </button>
+                              );
+                            })}
+                          </div>
+                          <div className="mt-3 h-px w-full" style={{ background: "rgba(255,255,255,0.06)" }} />
+                          <p className="mt-3 text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                            Ou edite os campos abaixo manualmente.
+                          </p>
+                        </div>
+                      )}
+
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <Field label="CEP" required>
                           <div className="relative">
@@ -1246,6 +1352,56 @@ export function CheckoutPage() {
                             transition={{ duration: 0.2 }}
                             className="overflow-hidden"
                           >
+                            {/* Saved cards picker — só logado + cartões existentes. */}
+                            {isLoggedIn && user && user.cards.length > 0 && (
+                              <div className="mt-3 mb-5">
+                                <div className="flex items-center justify-between mb-2.5">
+                                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+                                    Cartões salvos
+                                  </span>
+                                  <button
+                                    type="button"
+                                    onClick={() => setCardModalOpen(true)}
+                                    className="text-primary hover:brightness-110 transition-all cursor-pointer"
+                                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                                  >
+                                    + Adicionar novo
+                                  </button>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                  {user.cards.map((c) => {
+                                    const sel = selectedCardId === c.id;
+                                    return (
+                                      <button
+                                        key={c.id}
+                                        type="button"
+                                        onClick={() => setSelectedCardId(c.id)}
+                                        className="text-left p-3 transition-all cursor-pointer flex items-center gap-2.5"
+                                        style={{
+                                          borderRadius: 12,
+                                          background: sel ? "rgba(255,43,46,0.08)" : "rgba(255,255,255,0.02)",
+                                          border: sel ? "1.5px solid rgba(255,43,46,0.45)" : "1px solid rgba(255,255,255,0.08)",
+                                        }}
+                                      >
+                                        <span className="flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(255,255,255,0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
+                                        <div className="min-w-0 flex-1">
+                                          <div className="flex items-center gap-2">
+                                            <span className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{c.brand}</span>
+                                            {c.isDefault && <span className="px-1.5 py-0.5 bg-primary/12 text-primary" style={{ borderRadius: 999, fontFamily: "var(--font-family-inter)", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
+                                          </div>
+                                          <p className="text-white/85 font-mono mt-0.5" style={{ fontSize: "12.5px", fontWeight: 600, letterSpacing: "0.05em" }}>•••• {c.last4}</p>
+                                          <p className="text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>Validade {c.expiry}</p>
+                                        </div>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                                <p className="mt-3 text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                                  CVV precisa ser digitado a cada compra por segurança.
+                                </p>
+                              </div>
+                            )}
+
                             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mt-2">
                               <Field label="Nome no cartão" required className="md:col-span-2">
                                 <input
@@ -2049,6 +2205,36 @@ export function CheckoutPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Modais de saved address/card — disponíveis em todos os steps. */}
+      <AddressFormModal
+        open={addressModalOpen}
+        onClose={() => setAddressModalOpen(false)}
+        onSubmit={(data) => {
+          addAddress(data);
+          /* Auto-seleciona o recém-criado: useEffect default-pick não roda se já tem selectedAddressId.
+             Marcar como pending pra seleção via setTimeout depois que setUser atualizar. */
+          setTimeout(() => {
+            if (user) {
+              const latest = [...user.addresses].pop();
+              if (latest) setSelectedAddressId(latest.id);
+            }
+          }, 0);
+        }}
+      />
+      <CardFormModal
+        open={cardModalOpen}
+        onClose={() => setCardModalOpen(false)}
+        onSubmit={(data) => {
+          addCard(data);
+          setTimeout(() => {
+            if (user) {
+              const latest = [...user.cards].pop();
+              if (latest) setSelectedCardId(latest.id);
+            }
+          }, 0);
+        }}
+      />
     </>
   );
 }
