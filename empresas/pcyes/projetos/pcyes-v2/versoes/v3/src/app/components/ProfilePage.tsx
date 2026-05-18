@@ -445,7 +445,19 @@ export function ProfilePage() {
 
                     return (
                   <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                    <div className="flex items-center justify-between gap-3 px-5 pt-5 pb-3">
+                    {/* Título da seção (contextualiza o card pra novos usuários) */}
+                    <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-3" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                      <div className="flex items-center gap-2">
+                        <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                          Seu nível PCYES
+                        </p>
+                        <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: "rgba(56,189,248,0.85)", fontWeight: 600 }}>
+                          · Comprando e completando missões você sobe
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-3">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(56,189,248,0.12)" }}>
                           <Sparkles size={16} style={{ color: "#38bdf8", fill: "rgba(56,189,248,0.2)" }} />
@@ -739,7 +751,7 @@ export function ProfilePage() {
                           <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>Explorar produtos</Link>
                         </div>
                       ) : (
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         {user.orders.map((order) => {
                           const s = STATUS_MAP[order.status];
                           const datePtBr = (d: string) => new Date(d).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
@@ -765,7 +777,7 @@ export function ProfilePage() {
                           return (
                             <div key={order.id}
                               onClick={() => setSelectedOrderId(order.id)}
-                              className="group transition-all cursor-pointer relative overflow-hidden"
+                              className="group order-card cursor-pointer relative overflow-hidden"
                               style={{
                                 borderRadius: "14px",
                                 background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -851,8 +863,8 @@ export function ProfilePage() {
                                   )}
                                   {isShipped && (
                                     <button onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
-                                      className="px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
-                                      style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                      className="px-3 py-1.5 text-blue-400 hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
+                                      style={{ borderRadius: "8px", background: "rgba(96,165,250,0.10)", border: "1px solid rgba(96,165,250,0.22)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                       <Truck size={12} /> Rastrear pedido
                                     </button>
                                   )}

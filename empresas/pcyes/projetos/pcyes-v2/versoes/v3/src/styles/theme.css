@@ -87,6 +87,32 @@
   box-shadow: 0 0 0 1px rgba(225, 6, 0, 0.12), 0 18px 40px -22px rgba(225, 6, 0, 0.35);
 }
 
+/* Order list card hover — sutil elevation + primary stroke */
+.order-card { transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease; }
+.order-card:hover {
+  border-color: rgba(225, 6, 0, 0.22) !important;
+  box-shadow: 0 0 0 1px rgba(225, 6, 0, 0.08), 0 14px 30px -20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Kill browser autofill yellow/blue background while keeping value */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--foreground) !important;
+  transition: background-color 600000s 0s, color 600000s 0s;
+  caret-color: var(--foreground);
+}
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-text-fill-color: rgba(255,255,255,0.95) !important;
+  caret-color: rgba(255,255,255,0.95);
+}
+
 /* Deal card hover treatment */
 .deal-card-img { transition: border-color 300ms ease, box-shadow 300ms ease; }
 .deal-card-img:hover {
