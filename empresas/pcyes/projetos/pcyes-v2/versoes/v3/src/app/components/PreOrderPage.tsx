@@ -328,14 +328,8 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
 }
 
 function HeroSection({
-  totalProducts,
-  totalReservations,
-  avgReservedPct,
   featured,
 }: {
-  totalProducts: number;
-  totalReservations: number;
-  avgReservedPct: number;
   featured?: {
     name: string;
     category: string;
@@ -408,14 +402,14 @@ function HeroSection({
           style={{ y: floatY }}
           className="pointer-events-none hidden lg:block absolute top-1/2 right-[5%] xl:right-[8%] -translate-y-1/2 z-10"
         >
-          {/* glow behind */}
+          {/* glow behind - sutil */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(circle at 50% 50%, rgba(225,6,0,0.35) 0%, rgba(225,6,0,0.10) 35%, transparent 65%)",
-              filter: "blur(40px)",
-              transform: "scale(1.3)",
+                "radial-gradient(circle at 50% 60%, rgba(225,6,0,0.14) 0%, rgba(225,6,0,0.04) 40%, transparent 70%)",
+              filter: "blur(50px)",
+              transform: "scale(1.2)",
             }}
           />
           <motion.div
@@ -641,46 +635,6 @@ function HeroSection({
           ))}
         </motion.div>
 
-        {/* stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-3 max-w-[640px] gap-10 md:gap-14"
-        >
-          {[
-            { v: totalProducts, l: "Lançamentos", suffix: "" },
-            { v: totalReservations.toLocaleString("pt-BR"), l: "Reservas ativas", suffix: "" },
-            { v: avgReservedPct, l: "Adesão média", suffix: "%" },
-          ].map((s) => (
-            <div key={s.l}>
-              <p
-                className="text-white tabular-nums leading-none mb-2"
-                style={{
-                  fontFamily: "var(--font-family-figtree)",
-                  fontSize: "clamp(28px, 2.6vw, 38px)",
-                  fontWeight: 600,
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                {s.v}
-                <span className="text-white/40">{s.suffix}</span>
-              </p>
-              <p
-                className="text-white/45"
-                style={{
-                  fontFamily: "var(--font-family-inter)",
-                  fontSize: "11.5px",
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  fontWeight: 500,
-                }}
-              >
-                {s.l}
-              </p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
@@ -968,34 +922,16 @@ export function PreOrderPage() {
     return Array.from(set);
   }, [enriched]);
 
-  const totalReservations = useMemo(
-    () => enriched.reduce((sum, x) => sum + x.info.reservedUnits, 0),
-    [enriched],
-  );
-
-  const avgReservedPct = useMemo(() => {
-    if (!enriched.length) return 0;
-    const total = enriched.reduce(
-      (sum, x) => sum + (x.info.reservedUnits / x.info.totalUnits) * 100,
-      0,
-    );
-    return Math.round(total / enriched.length);
-  }, [enriched]);
-
   const featured = useMemo(() => {
     if (!enriched.length) return undefined;
-    const top = [...enriched].sort(
-      (a, b) =>
-        b.info.reservedUnits / b.info.totalUnits -
-        a.info.reservedUnits / a.info.totalUnits,
-    )[0];
-    if (!top?.product) return undefined;
+    const chair = enriched.find((x) => x.info.productId === 446) ?? enriched[0];
+    if (!chair?.product) return undefined;
     return {
-      name: top.product.name,
-      category: top.product.category,
-      image: getPrimaryProductImage(top.product),
-      price: top.info.preOrderPrice ?? top.product.price,
-      highlight: top.info.highlight,
+      name: chair.product.name,
+      category: chair.product.category,
+      image: getPrimaryProductImage(chair.product),
+      price: chair.info.preOrderPrice ?? chair.product.price,
+      highlight: chair.info.highlight,
     };
   }, [enriched]);
 
@@ -1058,12 +994,7 @@ export function PreOrderPage() {
 
   return (
     <div className="pt-[120px] md:pt-[150px] min-h-screen bg-background">
-      <HeroSection
-        totalProducts={enriched.length}
-        totalReservations={totalReservations}
-        avgReservedPct={avgReservedPct}
-        featured={featured}
-      />
+      <HeroSection featured={featured} />
 
       <FiltersBar
         categories={categories}
