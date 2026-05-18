@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import {
   Package, Heart, MapPin, User, CreditCard, HelpCircle, Shield, LogOut,
-  ChevronRight, Truck, Check, Clock, X as XIcon, Star, ShoppingBag,
+  ChevronRight, Truck, Check, Clock, X as XIcon, Star, ShoppingBag, Trash2,
   ArrowLeft, Copy, Receipt, Info, Share2, AlertCircle, PackageCheck,
   LayoutDashboard, Sparkles
 } from "lucide-react";
@@ -126,6 +126,15 @@ export function ProfilePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialTab = TABS.some((tab) => tab.key === searchParams.get("tab")) ? searchParams.get("tab") as Tab : "overview";
   const [activeTab, setActiveTab] = useState<Tab>(initialTab);
+  const [favSubTab, setFavSubTab] = useState<"products" | "setups">("products");
+  const [savedBuilds, setSavedBuilds] = useState<Array<{
+    id: string;
+    name: string;
+    selections: Record<string, string[]>;
+    total: number;
+    savedAt: number;
+    items: Array<{ category: string; name: string; price: number; image?: string }>;
+  }>>([]);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
   const [confirmState, setConfirmState] = useState<{ open: boolean; title: string; description?: string; confirmLabel?: string; action?: () => void; destructive?: boolean }>({ open: false, title: "" });
   const askConfirm = (cfg: { title: string; description?: string; confirmLabel?: string; action: () => void; destructive?: boolean }) =>
@@ -150,6 +159,44 @@ export function ProfilePage() {
       setActiveTab("overview");
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (activeTab !== "favorites") return;
+    try {
+      const raw = window.localStorage.getItem("pcyes-saved-builds");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) setSavedBuilds(parsed);
+      }
+    } catch {
+      /* ignore */
+    }
+  }, [activeTab]);
+
+  const deleteSavedBuild = (id: string) => {
+    const next = savedBuilds.filter((b) => b.id !== id);
+    setSavedBuilds(next);
+    try {
+      window.localStorage.setItem("pcyes-saved-builds", JSON.stringify(next));
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const formatRelTime = (ts: number): string => {
+    const diff = Date.now() - ts;
+    const mins = Math.floor(diff / 60000);
+    if (mins < 1) return "agora";
+    if (mins < 60) return `${mins} min atrás`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h atrás`;
+    const days = Math.floor(hrs / 24);
+    if (days < 7) return `${days} dia${days > 1 ? "s" : ""} atrás`;
+    return new Date(ts).toLocaleDateString("pt-BR");
+  };
+
+  const formatBRLBuild = (v: number) =>
+    new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v);
 
   if (!isLoggedIn || !user) {
     return (
@@ -1222,10 +1269,118 @@ export function ProfilePage() {
                 <motion.div key="favorites" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Favoritos</h2>
-                    {favoriteProducts.length > 0 && (
+                    {favSubTab === "products" && favoriteProducts.length > 0 && (
                       <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{favoriteProducts.length} {favoriteProducts.length === 1 ? "produto" : "produtos"}</p>
                     )}
+                    {favSubTab === "setups" && savedBuilds.length > 0 && (
+                      <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{savedBuilds.length} {savedBuilds.length === 1 ? "setup salvo" : "setups salvos"}</p>
+                    )}
                   </div>
+
+                  <div className="mb-5 flex items-center gap-1.5 border-b border-foreground/8" role="tablist" aria-label="Sub-categorias de favoritos">
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={favSubTab === "products"}
+                      onClick={() => setFavSubTab("products")}
+                      className={`flex items-center gap-1.5 px-3 py-2 cursor-pointer transition-all ${favSubTab === "products" ? "text-primary border-b-2 border-primary" : "text-foreground/50 border-b-2 border-transparent hover:text-foreground/80"}`}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, marginBottom: "-1px" }}
+                    >
+                      <Heart size={13} /> Produtos
+                      {favoriteProducts.length > 0 && (
+                        <span className="ml-1 rounded-full bg-foreground/10 px-1.5 text-foreground/60 tabular-nums" style={{ fontSize: "10px", fontWeight: 700 }}>{favoriteProducts.length}</span>
+                      )}
+                    </button>
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={favSubTab === "setups"}
+                      onClick={() => setFavSubTab("setups")}
+                      className={`flex items-center gap-1.5 px-3 py-2 cursor-pointer transition-all ${favSubTab === "setups" ? "text-primary border-b-2 border-primary" : "text-foreground/50 border-b-2 border-transparent hover:text-foreground/80"}`}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, marginBottom: "-1px" }}
+                    >
+                      <Package size={13} /> Setups
+                      {savedBuilds.length > 0 && (
+                        <span className="ml-1 rounded-full bg-primary/15 px-1.5 text-primary tabular-nums" style={{ fontSize: "10px", fontWeight: 700 }}>{savedBuilds.length}</span>
+                      )}
+                    </button>
+                  </div>
+
+                  {favSubTab === "setups" && (
+                    <div>
+                      {savedBuilds.length === 0 ? (
+                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                          <Package size={28} className="text-foreground/30 mx-auto mb-4" />
+                          <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum setup salvo ainda</p>
+                          <p className="text-foreground/45 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Monte sua build e clique em "Salvar" pra guardar aqui.</p>
+                          <Link to="/monte-seu-pc" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>Montar PC</Link>
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                          {savedBuilds.map((b) => (
+                            <div key={b.id} className="overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                              <div className="flex items-start justify-between gap-3 border-b border-foreground/[0.06] p-4">
+                                <div className="min-w-0">
+                                  <p className="uppercase text-foreground/40 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", letterSpacing: "0.18em", fontWeight: 700 }}>
+                                    SETUP PCYES · {formatRelTime(b.savedAt)}
+                                  </p>
+                                  <h3 className="truncate text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 700, letterSpacing: "-0.01em" }}>{b.name}</h3>
+                                  <p className="mt-1 text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{b.items.length} {b.items.length === 1 ? "peça" : "peças"}</p>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => askConfirm({
+                                    title: "Apagar setup",
+                                    description: `Remover "${b.name}" dos seus setups salvos?`,
+                                    confirmLabel: "Apagar",
+                                    destructive: true,
+                                    action: () => deleteSavedBuild(b.id),
+                                  })}
+                                  aria-label={`Apagar ${b.name}`}
+                                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-foreground/40 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                                >
+                                  <Trash2 size={13} />
+                                </button>
+                              </div>
+                              <div className="space-y-1 p-3 max-h-[180px] overflow-y-auto">
+                                {b.items.slice(0, 5).map((item, idx) => (
+                                  <div key={idx} className="flex items-center gap-2.5 rounded-md p-1.5">
+                                    <div className="h-8 w-8 shrink-0 overflow-hidden rounded-md bg-foreground/[0.04]">
+                                      {item.image && <img src={item.image} alt="" className="h-full w-full object-contain p-0.5" />}
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                      <p className="uppercase text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "8.5px", letterSpacing: "0.16em", fontWeight: 700 }}>{item.category}</p>
+                                      <p className="truncate text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500 }}>{item.name}</p>
+                                    </div>
+                                    <span className="shrink-0 tabular-nums text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}>{formatBRLBuild(item.price)}</span>
+                                  </div>
+                                ))}
+                                {b.items.length > 5 && (
+                                  <p className="px-1.5 pt-1 text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>+{b.items.length - 5} {b.items.length - 5 === 1 ? "peça" : "peças"}</p>
+                                )}
+                              </div>
+                              <div className="flex items-center justify-between border-t border-foreground/[0.06] bg-foreground/[0.015] px-4 py-3">
+                                <div>
+                                  <p className="uppercase text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", letterSpacing: "0.18em", fontWeight: 700 }}>Total</p>
+                                  <p className="text-foreground tabular-nums" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "17px", fontWeight: 700, letterSpacing: "-0.01em" }}>{formatBRLBuild(b.total)}</p>
+                                </div>
+                                <Link
+                                  to="/monte-seu-pc"
+                                  className="flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-2 text-primary-foreground transition-all hover:brightness-110"
+                                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                                >
+                                  Abrir setup <ChevronRight size={13} />
+                                </Link>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {favSubTab === "products" && (
+                  <>
                   {favoriteProducts.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <Heart size={28} className="text-foreground/30 mx-auto mb-4" />
@@ -1302,6 +1457,8 @@ export function ProfilePage() {
                         );
                       })}
                     </div>
+                  )}
+                  </>
                   )}
                 </motion.div>
               )}
