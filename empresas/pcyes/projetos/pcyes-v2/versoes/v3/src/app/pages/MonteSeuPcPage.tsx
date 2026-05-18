@@ -33,6 +33,7 @@ import {
   SelectValue,
 } from "../components/ui/select";
 import { cn } from "../components/ui/utils";
+import { ScrollArea } from "../components/ui/scroll-area";
 
 const LOGO_URL =
   "https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png";
@@ -3171,7 +3172,8 @@ function ConfiguracaoSelecionadaCard({
           </p>
         </div>
       ) : (
-        <div className="max-h-[280px] space-y-1 overflow-y-auto px-3 py-3">
+        <ScrollArea type="auto" className="h-[280px]">
+          <div className="space-y-1 px-3 py-3">
           {filled.map((c) => (
             <button
               key={c.id}
@@ -3220,7 +3222,8 @@ function ConfiguracaoSelecionadaCard({
               </span>
             </button>
           ))}
-        </div>
+          </div>
+        </ScrollArea>
       )}
       <div className="border-t border-white/[0.06] bg-[#0a0a0a] px-5 py-3.5">
         <div className="flex items-baseline justify-between">
