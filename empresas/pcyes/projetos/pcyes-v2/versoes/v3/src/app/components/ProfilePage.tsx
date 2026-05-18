@@ -53,12 +53,12 @@ function OrderStatusTimeline({ status }: { status: Order["status"] }) {
           <div key={step.key} className="flex flex-col items-center flex-1 relative z-10">
             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 mb-2.5 ${
               isActive ? (isCancelled ? "bg-red-500 text-white" : "bg-primary text-white shadow-lg shadow-primary/20") 
-              : "bg-foreground/5 text-foreground/20"
+              : "bg-foreground/5 text-foreground/35"
             }`}>
               <step.icon size={18} className={isCurrent ? "animate-pulse" : ""} />
             </div>
             <p className={`text-[10px] sm:text-[11px] text-center font-medium leading-tight ${
-              isActive ? "text-foreground" : "text-foreground/20"
+              isActive ? "text-foreground" : "text-foreground/35"
             }`} style={{ fontFamily: "var(--font-family-inter)" }}>
               {step.label}
             </p>
@@ -120,11 +120,11 @@ export function ProfilePage() {
     return (
       <div className="pt-[180px] md:pt-[220px] min-h-screen flex items-center justify-center px-8">
         <div className="text-center max-w-md">
-          <User size={40} className="text-foreground/15 mx-auto mb-6" />
+          <User size={40} className="text-foreground/30 mx-auto mb-6" />
           <h2 className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-light)" }}>
             Acesse sua conta
           </h2>
-          <p className="text-foreground/35 mb-8" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: "1.7" }}>
+          <p className="text-foreground/50 mb-8" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: "1.7" }}>
             Faça login para acessar seus pedidos, favoritos e informações.
           </p>
           <button onClick={() => setAuthModalOpen(true)}
@@ -156,22 +156,22 @@ export function ProfilePage() {
               <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: "var(--font-weight-medium)" }}>
                 Olá, {user.name.split(" ")[0]}
               </h1>
-              <p className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{user.email}</p>
+              <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{user.email}</p>
             </div>
           </div>
           <div className="md:ml-auto flex items-center gap-6 md:gap-8">
             <div>
-              <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pedidos</p>
+              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pedidos</p>
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>{user.orders.length}</p>
             </div>
             <div className="h-8 w-px bg-foreground/10" />
             <div>
-              <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
+              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>{favorites.size}</p>
             </div>
             <div className="h-8 w-px bg-foreground/10 hidden sm:block" />
             <div className="hidden sm:block">
-              <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Total gasto</p>
+              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Total gasto</p>
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>R$ {totalSpent.toFixed(0)}</p>
             </div>
           </div>
@@ -188,7 +188,7 @@ export function ProfilePage() {
                   className={`w-full flex items-center gap-3 px-3.5 py-2.5 transition-all duration-200 cursor-pointer ${
                     activeTab === tab.key
                       ? "text-primary"
-                      : "text-foreground/45 hover:text-foreground/80"
+                      : "text-foreground/60 hover:text-foreground/88"
                   }`}
                   style={{
                     borderRadius: "10px",
@@ -206,7 +206,7 @@ export function ProfilePage() {
               ))}
               <div className="h-px bg-foreground/8 my-3" />
               <button onClick={logout}
-                className="w-full flex items-center gap-3 px-3.5 py-2.5 text-foreground/35 hover:text-primary transition-all duration-200 cursor-pointer"
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
                 style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 500 }}
               ><LogOut size={15} /> Sair</button>
             </nav>
@@ -238,17 +238,17 @@ export function ProfilePage() {
                           <s.icon size={18} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-foreground/40 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                          <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
                             {nextOrder.status === "shipped" ? "Em trânsito" : "Em preparação"}
                           </p>
                           <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>
                             Pedido {nextOrder.id}
                           </p>
-                          <p className="text-foreground/45 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                          <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
                             {nextOrder.items.length} {nextOrder.items.length === 1 ? "item" : "itens"} · Previsão: 15 de Abril
                           </p>
                         </div>
-                        <ChevronRight size={16} className="text-foreground/20 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                        <ChevronRight size={16} className="text-foreground/35 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                       </button>
                     );
                   })()}
@@ -266,8 +266,8 @@ export function ProfilePage() {
                       }}
                     >
                       <div className="flex items-center justify-between mb-3">
-                        <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Últimos pedidos</p>
-                        <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                        <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Últimos pedidos</p>
+                        <ChevronRight size={14} className="text-foreground/35 group-hover:text-primary transition-colors" />
                       </div>
                       <div className="flex items-center gap-2 mb-3">
                         {user.orders.slice(0, 4).flatMap((o) => o.items).slice(0, 4).map((item, i) => (
@@ -277,7 +277,7 @@ export function ProfilePage() {
                         ))}
                       </div>
                       <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>{user.orders.length} pedidos</p>
-                      <p className="text-foreground/45 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{activeOrders > 0 ? `${activeOrders} em andamento` : "Todos entregues"}</p>
+                      <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{activeOrders > 0 ? `${activeOrders} em andamento` : "Todos entregues"}</p>
                     </button>
 
                     {/* Favoritos */}
@@ -291,8 +291,8 @@ export function ProfilePage() {
                       }}
                     >
                       <div className="flex items-center justify-between mb-3">
-                        <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
-                        <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                        <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
+                        <ChevronRight size={14} className="text-foreground/35 group-hover:text-primary transition-colors" />
                       </div>
                       <div className="flex items-center gap-2 mb-3 min-h-[48px]">
                         {favoriteProducts.slice(0, 4).map((p) => (
@@ -301,11 +301,11 @@ export function ProfilePage() {
                           </div>
                         ))}
                         {favoriteProducts.length === 0 && (
-                          <Heart size={20} className="text-foreground/15" />
+                          <Heart size={20} className="text-foreground/30" />
                         )}
                       </div>
                       <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>{favoriteProducts.length} {favoriteProducts.length === 1 ? "produto" : "produtos"}</p>
-                      <p className="text-foreground/45 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Salvos pra depois</p>
+                      <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Salvos pra depois</p>
                     </button>
 
                     {/* Endereço padrão */}
@@ -320,8 +320,8 @@ export function ProfilePage() {
                         }}
                       >
                         <div className="flex items-center justify-between mb-3">
-                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Endereço padrão</p>
-                          <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                          <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Endereço padrão</p>
+                          <ChevronRight size={14} className="text-foreground/35 group-hover:text-primary transition-colors" />
                         </div>
                         <div className="flex items-start gap-3">
                           <MapPin size={16} className="text-primary/70 mt-0.5 flex-shrink-0" />
@@ -329,7 +329,7 @@ export function ProfilePage() {
                             <p className="text-foreground truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
                               {user.addresses[0].label}
                             </p>
-                            <p className="text-foreground/45 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                            <p className="text-foreground/60 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
                               {user.addresses[0].street}, {user.addresses[0].number} · {user.addresses[0].city}/{user.addresses[0].state}
                             </p>
                           </div>
@@ -351,8 +351,8 @@ export function ProfilePage() {
                           }}
                         >
                           <div className="flex items-center justify-between mb-3">
-                            <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Cartão padrão</p>
-                            <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                            <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Cartão padrão</p>
+                            <ChevronRight size={14} className="text-foreground/35 group-hover:text-primary transition-colors" />
                           </div>
                           <div className="flex items-start gap-3">
                             <CreditCard size={16} className="text-primary/70 mt-0.5 flex-shrink-0" />
@@ -360,7 +360,7 @@ export function ProfilePage() {
                               <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
                                 {c.brand} ·••• {c.last4}
                               </p>
-                              <p className="text-foreground/45 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                              <p className="text-foreground/60 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
                                 {c.name} · Validade {c.expiry}
                               </p>
                             </div>
@@ -378,7 +378,7 @@ export function ProfilePage() {
                         <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
                           Continue de onde parou
                         </p>
-                        <p className="text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                        <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
                           Veja produtos sugeridos baseado nos seus pedidos
                         </p>
                       </div>
@@ -398,8 +398,8 @@ export function ProfilePage() {
                         <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Meus Pedidos</h2>
                         <div className="flex gap-2">
                           <button className="px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px]" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
-                          <button className="px-3 py-1.5 text-foreground/45 hover:text-foreground/70 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
-                          <button className="px-3 py-1.5 text-foreground/45 hover:text-foreground/70 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
+                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
+                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
                         </div>
                       </div>
                       <div className="space-y-2">
@@ -427,13 +427,13 @@ export function ProfilePage() {
                                       {s.label}
                                     </span>
                                   </div>
-                                  <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")}</p>
+                                  <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")}</p>
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Total</p>
+                                  <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Total</p>
                                   <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>{order.total}</p>
                                 </div>
-                                <ChevronRight size={16} className="text-foreground/15 group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                                <ChevronRight size={16} className="text-foreground/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
                               </div>
 
                               {/* Linha 2: thumbs + ação ver detalhes */}
@@ -445,14 +445,14 @@ export function ProfilePage() {
                                     </div>
                                   ))}
                                   {order.items.length > 4 && (
-                                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/40" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/55" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
                                       +{order.items.length - 4}
                                     </div>
                                   )}
                                 </div>
                                 <button
                                   onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
-                                  className="px-3.5 py-1.5 text-foreground/60 hover:text-foreground transition-colors flex-shrink-0"
+                                  className="px-3.5 py-1.5 text-foreground/75 hover:text-foreground transition-colors flex-shrink-0"
                                   style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
                                 >
                                   Ver detalhes
@@ -472,7 +472,7 @@ export function ProfilePage() {
                       <div className="space-y-6">
                         <button 
                           onClick={() => setSelectedOrderId(null)}
-                          className="flex items-center gap-2 text-foreground/40 hover:text-primary transition-colors mb-6 group"
+                          className="flex items-center gap-2 text-foreground/55 hover:text-primary transition-colors mb-6 group"
                           style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                         >
                           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Voltar para pedidos
@@ -486,13 +486,13 @@ export function ProfilePage() {
                                 {s.label}
                               </span>
                             </div>
-                            <p className="text-foreground/30" style={{ fontSize: "13px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")} às 14:30</p>
+                            <p className="text-foreground/45" style={{ fontSize: "13px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")} às 14:30</p>
                           </div>
                           <div className="flex gap-2">
-                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/70 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
+                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/80 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
                               <Receipt size={14} /> Nota Fiscal
                             </button>
-                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/70 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
+                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/80 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
                               <Share2 size={14} /> Compartilhar
                             </button>
                           </div>
@@ -501,7 +501,7 @@ export function ProfilePage() {
                         {/* Visual Tracking */}
                         <div className="bg-foreground/[0.02] border border-foreground/5 p-8" style={{ borderRadius: "var(--radius-card)" }}>
                           <div className="flex items-center justify-between mb-8">
-                            <h3 className="text-foreground/80 font-medium" style={{ fontSize: "16px" }}>Acompanhamento do Pedido</h3>
+                            <h3 className="text-foreground/88 font-medium" style={{ fontSize: "16px" }}>Acompanhamento do Pedido</h3>
                             {order.tracking && (
                               <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/5 text-primary border border-primary/10" style={{ borderRadius: "var(--radius-button)" }}>
                                 <Truck size={14} />
@@ -530,7 +530,7 @@ export function ProfilePage() {
                           <div className="lg:col-span-2 space-y-6">
                             <div className="bg-background border border-foreground/5 overflow-hidden" style={{ borderRadius: "var(--radius-card)" }}>
                               <div className="px-6 py-4 border-b border-foreground/5 bg-foreground/[0.01]">
-                                <h3 className="text-foreground/70 font-medium" style={{ fontSize: "14px" }}>Histórico de Atualizações</h3>
+                                <h3 className="text-foreground/80 font-medium" style={{ fontSize: "14px" }}>Histórico de Atualizações</h3>
                               </div>
                               <div className="p-6">
                                 <div className="space-y-8 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[1px] before:bg-foreground/5">
@@ -540,12 +540,12 @@ export function ProfilePage() {
                                         i === 0 ? "bg-primary" : "bg-foreground/10"
                                       }`} />
                                       <div>
-                                        <p className={`font-medium mb-1 ${i === 0 ? "text-foreground" : "text-foreground/50"}`} style={{ fontSize: "14px" }}>{event.description}</p>
-                                        <p className="text-foreground/30" style={{ fontSize: "12px" }}>{event.date}</p>
+                                        <p className={`font-medium mb-1 ${i === 0 ? "text-foreground" : "text-foreground/65"}`} style={{ fontSize: "14px" }}>{event.description}</p>
+                                        <p className="text-foreground/45" style={{ fontSize: "12px" }}>{event.date}</p>
                                       </div>
                                     </div>
                                   )) || (
-                                    <div className="text-center py-4 text-foreground/30 text-[13px]">
+                                    <div className="text-center py-4 text-foreground/45 text-[13px]">
                                       Nenhum histórico disponível para este pedido.
                                     </div>
                                   )}
@@ -555,7 +555,7 @@ export function ProfilePage() {
 
                             <div className="bg-background border border-foreground/5 overflow-hidden" style={{ borderRadius: "var(--radius-card)" }}>
                               <div className="px-6 py-4 border-b border-foreground/5 bg-foreground/[0.01]">
-                                <h3 className="text-foreground/70 font-medium" style={{ fontSize: "14px" }}>Itens do Pedido</h3>
+                                <h3 className="text-foreground/80 font-medium" style={{ fontSize: "14px" }}>Itens do Pedido</h3>
                               </div>
                               <div className="divide-y divide-foreground/5">
                                 {order.items.map((item, i) => (
@@ -565,11 +565,11 @@ export function ProfilePage() {
                                     </div>
                                     <div className="flex-1 min-w-0">
                                       <h4 className="text-foreground font-medium mb-1 truncate" style={{ fontSize: "14px" }}>{item.name}</h4>
-                                      <p className="text-foreground/30 mb-2" style={{ fontSize: "12px" }}>Quantidade: {item.qty}</p>
+                                      <p className="text-foreground/45 mb-2" style={{ fontSize: "12px" }}>Quantidade: {item.qty}</p>
                                       <div className="flex items-center gap-2">
                                         <button className="text-primary hover:underline font-medium" style={{ fontSize: "12px" }}>Comprar novamente</button>
-                                        <span className="text-foreground/10">•</span>
-                                        <button className="text-foreground/40 hover:text-foreground/60 transition-colors" style={{ fontSize: "12px" }}>Ver produto</button>
+                                        <span className="text-foreground/22">•</span>
+                                        <button className="text-foreground/55 hover:text-foreground/75 transition-colors" style={{ fontSize: "12px" }}>Ver produto</button>
                                       </div>
                                     </div>
                                     <div className="text-right">
@@ -579,11 +579,11 @@ export function ProfilePage() {
                                 ))}
                               </div>
                               <div className="p-6 bg-foreground/[0.01] border-t border-foreground/5 space-y-2">
-                                <div className="flex justify-between text-[13px] text-foreground/40">
+                                <div className="flex justify-between text-[13px] text-foreground/55">
                                   <span>Subtotal</span>
                                   <span>{order.total}</span>
                                 </div>
-                                <div className="flex justify-between text-[13px] text-foreground/40">
+                                <div className="flex justify-between text-[13px] text-foreground/55">
                                   <span>Frete</span>
                                   <span className="text-green-500">Grátis</span>
                                 </div>
@@ -598,12 +598,12 @@ export function ProfilePage() {
                           {/* Sidebar Info */}
                           <div className="space-y-6">
                             <div className="bg-background border border-foreground/5 p-6" style={{ borderRadius: "var(--radius-card)" }}>
-                              <h3 className="text-foreground/70 font-medium mb-4" style={{ fontSize: "14px" }}>Endereço de Entrega</h3>
+                              <h3 className="text-foreground/80 font-medium mb-4" style={{ fontSize: "14px" }}>Endereço de Entrega</h3>
                               <div className="flex items-start gap-3">
-                                <MapPin size={16} className="text-foreground/20 mt-1" />
+                                <MapPin size={16} className="text-foreground/35 mt-1" />
                                 <div>
-                                  <p className="text-foreground/80 font-medium mb-1" style={{ fontSize: "13px" }}>{user.addresses[0].label}</p>
-                                  <p className="text-foreground/40 leading-relaxed" style={{ fontSize: "12px" }}>
+                                  <p className="text-foreground/88 font-medium mb-1" style={{ fontSize: "13px" }}>{user.addresses[0].label}</p>
+                                  <p className="text-foreground/55 leading-relaxed" style={{ fontSize: "12px" }}>
                                     {user.addresses[0].street}, {user.addresses[0].number}<br />
                                     {user.addresses[0].neighborhood}<br />
                                     {user.addresses[0].city} - {user.addresses[0].state}<br />
@@ -614,15 +614,15 @@ export function ProfilePage() {
                             </div>
 
                             <div className="bg-background border border-foreground/5 p-6" style={{ borderRadius: "var(--radius-card)" }}>
-                              <h3 className="text-foreground/70 font-medium mb-4" style={{ fontSize: "14px" }}>Pagamento</h3>
+                              <h3 className="text-foreground/80 font-medium mb-4" style={{ fontSize: "14px" }}>Pagamento</h3>
                               <div className="flex items-center gap-3">
-                                <CreditCard size={16} className="text-foreground/20" />
-                                <p className="text-foreground/60" style={{ fontSize: "13px" }}>{order.paymentMethod || "Cartão de Crédito"}</p>
+                                <CreditCard size={16} className="text-foreground/35" />
+                                <p className="text-foreground/75" style={{ fontSize: "13px" }}>{order.paymentMethod || "Cartão de Crédito"}</p>
                               </div>
                             </div>
 
                             <div className="space-y-3">
-                              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-foreground/10 hover:border-foreground/30 text-foreground/60 transition-all font-medium" 
+                              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-foreground/10 hover:border-foreground/30 text-foreground/75 transition-all font-medium" 
                                 style={{ borderRadius: "var(--radius-button)", fontSize: "13px" }}>
                                 <HelpCircle size={16} /> Preciso de ajuda
                               </button>
@@ -653,14 +653,14 @@ export function ProfilePage() {
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Favoritos</h2>
                     {favoriteProducts.length > 0 && (
-                      <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{favoriteProducts.length} {favoriteProducts.length === 1 ? "produto" : "produtos"}</p>
+                      <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{favoriteProducts.length} {favoriteProducts.length === 1 ? "produto" : "produtos"}</p>
                     )}
                   </div>
                   {favoriteProducts.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                      <Heart size={28} className="text-foreground/15 mx-auto mb-4" />
-                      <p className="text-foreground/40 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum favorito ainda</p>
-                      <p className="text-foreground/30 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Clique no coração nos produtos pra salvá-los aqui.</p>
+                      <Heart size={28} className="text-foreground/30 mx-auto mb-4" />
+                      <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum favorito ainda</p>
+                      <p className="text-foreground/45 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Clique no coração nos produtos pra salvá-los aqui.</p>
                       <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>Ver produtos</Link>
                     </div>
                   ) : (
@@ -677,10 +677,10 @@ export function ProfilePage() {
                           <div className="p-3">
                             <div className="flex items-center gap-1 mb-1">
                               <Star size={9} className="fill-primary text-primary" />
-                              <span className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>{product.rating}</span>
+                              <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>{product.rating}</span>
                             </div>
                             <p className="text-foreground truncate mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: "var(--font-weight-medium)" }}>{product.name}</p>
-                            <p className="text-foreground/55 mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{product.price}</p>
+                            <p className="text-foreground/70 mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{product.price}</p>
                             <button onClick={() => addItem(product)}
                               className="w-full py-1.5 bg-primary text-primary-foreground flex items-center justify-center gap-1.5 hover:brightness-110 transition-all cursor-pointer"
                               style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
@@ -711,12 +711,12 @@ export function ProfilePage() {
                               <span className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{a.label}</span>
                               {a.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
                             </div>
-                            <p className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.55" }}>
+                            <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.55" }}>
                               {a.street}, {a.number}{a.complement ? ` - ${a.complement}` : ""} · {a.neighborhood}<br />{a.city}/{a.state} · CEP {a.cep}
                             </p>
                           </div>
                         </div>
-                        <button className="px-3 py-1.5 text-foreground/55 hover:text-foreground transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                        <button className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                       </div>
                     ))}
                   </div>
@@ -729,20 +729,20 @@ export function ProfilePage() {
                   <div className="p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                       <div>
-                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome</label>
-                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome</label>
+                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
-                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>E-mail</label>
-                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>E-mail</label>
+                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
-                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
-                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
+                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
-                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>CPF</label>
-                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all opacity-50" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>CPF</label>
+                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-50" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                     </div>
                     <button className="px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer"
@@ -762,16 +762,16 @@ export function ProfilePage() {
                     {user.cards.map((c) => (
                       <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                         <div className="w-11 h-7 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "5px", background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)" }}>
-                          <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.04em" }}>{c.brand}</span>
+                          <span className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.04em" }}>{c.brand}</span>
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-0.5">
                             <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>•••• {c.last4}</p>
                             {c.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
                           </div>
-                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{c.name} · Validade {c.expiry}</p>
+                          <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{c.name} · Validade {c.expiry}</p>
                         </div>
-                        <button className="px-3 py-1.5 text-foreground/45 hover:text-red-400 transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                        <button className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                       </div>
                     ))}
                   </div>
@@ -796,9 +796,9 @@ export function ProfilePage() {
                         </div>
                         <div className="text-left flex-1">
                           <p className="text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{item.title}</p>
-                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
+                          <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
                         </div>
-                        <ChevronRight size={16} className="text-foreground/20 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                        <ChevronRight size={16} className="text-foreground/35 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                       </button>
                     ))}
                   </div>
@@ -822,9 +822,9 @@ export function ProfilePage() {
                         </div>
                         <div className="text-left flex-1">
                           <p className={`mb-0.5 ${item.danger ? "text-red-400" : "text-foreground"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{item.title}</p>
-                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
+                          <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
                         </div>
-                        <ChevronRight size={16} className="text-foreground/20 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                        <ChevronRight size={16} className="text-foreground/35 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                       </button>
                     ))}
                   </div>
