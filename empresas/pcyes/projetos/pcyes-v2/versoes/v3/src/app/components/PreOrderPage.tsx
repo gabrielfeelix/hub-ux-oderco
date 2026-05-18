@@ -82,26 +82,18 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
       onClick={() => navigate(`/produto/${product.id}`)}
       style={{
         borderRadius: "22px",
-        background: "linear-gradient(135deg, #1a0608 0%, #2a0a0d 45%, #1a0608 100%)",
-        border: "1px solid rgba(255,36,25,0.25)",
-        boxShadow: "0 24px 60px -20px rgba(255,36,25,0.35)",
+        background: "linear-gradient(135deg, #120608 0%, #1a080b 50%, #120608 100%)",
+        border: "1px solid rgba(255,36,25,0.12)",
+        boxShadow: "0 20px 50px -20px rgba(0,0,0,0.55)",
         transition: "border-color 0.4s ease, box-shadow 0.4s ease",
       }}
     >
-      {/* red glow */}
+      {/* subtle red accent (hover reveals more) */}
       <div
-        className="pointer-events-none absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-70"
+        className="pointer-events-none absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-50"
         style={{
           background:
-            "radial-gradient(circle at 80% 0%, rgba(255,36,25,0.25) 0%, transparent 55%), radial-gradient(circle at 10% 100%, rgba(255,200,90,0.12) 0%, transparent 50%)",
-        }}
-      />
-      {/* starfield */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 18% 32%, #fff 0.5px, transparent 1px), radial-gradient(circle at 62% 68%, #fde68a 0.5px, transparent 1px), radial-gradient(circle at 84% 22%, #fff 0.5px, transparent 1px)",
+            "radial-gradient(circle at 85% 0%, rgba(255,36,25,0.10) 0%, transparent 50%)",
         }}
       />
 
@@ -119,17 +111,16 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           <span
             className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
             style={{
-              background: "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)",
+              background: "#ff2419",
               color: "#fff",
               fontFamily: "var(--font-family-inter)",
               fontSize: "10px",
-              fontWeight: 900,
+              fontWeight: 800,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              boxShadow: "0 6px 16px -4px rgba(255,36,25,0.6)",
             }}
           >
-            <Rocket size={11} strokeWidth={2.6} />
+            <Rocket size={11} strokeWidth={2.4} />
             Pré-venda
           </span>
 
@@ -139,17 +130,18 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
               animate={{ scale: 1, opacity: 1 }}
               className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full px-2 py-1"
               style={{
-                background: "linear-gradient(135deg, #facc15 0%, #f97316 100%)",
-                color: "#1a0608",
+                background: "rgba(20,8,5,0.78)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(250,204,21,0.35)",
+                color: "#facc15",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "9.5px",
-                fontWeight: 900,
+                fontWeight: 700,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                boxShadow: "0 6px 16px -4px rgba(250,204,21,0.6)",
               }}
             >
-              <Flame size={10} strokeWidth={2.8} />
+              <Flame size={10} strokeWidth={2.4} />
               Esgotando
             </motion.span>
           )}
@@ -271,9 +263,8 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-y-0 left-0"
                 style={{
-                  background: "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
+                  background: "linear-gradient(90deg, #ff2419 0%, #ff7a3d 100%)",
                   borderRadius: "999px",
-                  boxShadow: "0 0 14px rgba(255,36,25,0.55)",
                 }}
               />
             </div>
@@ -314,7 +305,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 fontSize: "13px",
                 fontWeight: 600,
                 letterSpacing: "0.02em",
-                boxShadow: "0 12px 32px -10px rgba(255,36,25,0.55)",
+                boxShadow: "0 8px 22px -10px rgba(255,36,25,0.35)",
               }}
             >
               Reservar
