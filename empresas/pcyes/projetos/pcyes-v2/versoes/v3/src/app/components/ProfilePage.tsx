@@ -83,8 +83,8 @@ const TABS: { key: Tab; icon: typeof Package; label: string }[] = [
 ];
 
 const STATUS_MAP = {
-  processing: { label: "Em processamento", color: "text-yellow-500", bg: "bg-yellow-500/10", icon: Clock },
-  shipped: { label: "Enviado", color: "text-blue-400", bg: "bg-blue-400/10", icon: Truck },
+  processing: { label: "Preparando", color: "text-yellow-500", bg: "bg-yellow-500/10", icon: Clock },
+  shipped: { label: "A caminho", color: "text-blue-400", bg: "bg-blue-400/10", icon: Truck },
   delivered: { label: "Entregue", color: "text-green-500", bg: "bg-green-500/10", icon: Check },
   cancelled: { label: "Cancelado", color: "text-red-400", bg: "bg-red-400/10", icon: XIcon },
 };
@@ -154,7 +154,7 @@ export function ProfilePage() {
             </div>
             <div>
               <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: "var(--font-weight-medium)" }}>
-                Olá, {user.name.split(" ")[0]}
+                E aí, {user.name.split(" ")[0]}
               </h1>
               <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{user.email}</p>
             </div>
@@ -171,7 +171,7 @@ export function ProfilePage() {
             </div>
             <div className="h-8 w-px bg-foreground/10 hidden sm:block" />
             <div className="hidden sm:block">
-              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Total gasto</p>
+              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Investido em setup</p>
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>R$ {totalSpent.toFixed(0)}</p>
             </div>
           </div>
@@ -398,7 +398,7 @@ export function ProfilePage() {
                         )}
                       </div>
                       <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>{favoriteProducts.length} {favoriteProducts.length === 1 ? "produto" : "produtos"}</p>
-                      <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Salvos pra depois</p>
+                      <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>No seu stash</p>
                     </button>
 
                     {/* Endereço padrão */}
@@ -469,10 +469,10 @@ export function ProfilePage() {
                       <Sparkles size={18} className="text-primary" />
                       <div>
                         <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
-                          Continue de onde parou
+                          Próxima missão
                         </p>
                         <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
-                          Veja produtos sugeridos baseado nos seus pedidos
+                          Upgrades sugeridos baseado no seu setup atual
                         </p>
                       </div>
                     </div>
