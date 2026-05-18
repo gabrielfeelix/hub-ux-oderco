@@ -1501,6 +1501,28 @@ function ReviewScreen({
         </p>
       </div>
 
+      <div
+        className="mb-6 flex items-start gap-3 rounded-[14px] border border-blue-500/25 bg-blue-500/[0.06] px-4 py-3"
+        role="note"
+      >
+        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-300">
+          <span style={{ fontSize: "11px", fontWeight: 700 }}>i</span>
+        </div>
+        <p
+          className="text-zinc-200"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "12.5px",
+            lineHeight: 1.5,
+          }}
+        >
+          <span className="text-blue-300" style={{ fontWeight: 700 }}>
+            IMPORTANTE:
+          </span>{" "}
+          Configurações montadas aqui são enviadas separadamente, sem montagem. Os valores consideram apenas o preço dos componentes.
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_400px]">
         <div className="space-y-5">
           <section>
@@ -1830,92 +1852,60 @@ function ReviewScreen({
 
 function HeroBuilderBanner({ totalSelected, totalCount }: { totalSelected: number; totalCount: number }) {
   return (
-    <div className="relative overflow-hidden border-b border-white/[0.05]">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(255,43,46,0.22) 0%, rgba(255,43,46,0.1) 38%, transparent 70%), radial-gradient(ellipse 70% 100% at 80% 50%, rgba(255,43,46,0.18) 0%, transparent 60%), linear-gradient(180deg, #15151a 0%, #0d0d10 100%)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-25"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 12% 30%, rgba(255,255,255,0.7) 0.5px, transparent 1px), radial-gradient(circle at 38% 70%, rgba(255,232,31,0.5) 0.5px, transparent 1px), radial-gradient(circle at 64% 25%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 84% 75%, rgba(255,232,31,0.4) 0.5px, transparent 1px), radial-gradient(circle at 22% 85%, rgba(255,255,255,0.4) 0.5px, transparent 1px)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-[140px] opacity-30"
-        style={{
-          background:
-            "linear-gradient(135deg, transparent 0%, rgba(255,43,46,0.3) 100%)",
-        }}
-      />
-      <div className="relative mx-auto flex max-w-[1520px] items-center justify-between gap-4 px-6 py-5 md:px-8 md:py-6">
+    <div className="border-b border-white/[0.05]">
+      <div className="mx-auto flex max-w-[1520px] items-end justify-between gap-6 px-6 py-7 md:px-8 md:py-9">
         <div className="min-w-0">
           <p
-            className="mb-1 uppercase text-primary"
+            className="mb-2 uppercase text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
-              letterSpacing: "0.28em",
+              fontSize: "11px",
+              letterSpacing: "0.3em",
               fontWeight: 700,
             }}
           >
-            // Configurador PCYES
+            // MONTE SEU PC
           </p>
           <h1
             className="text-white"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "clamp(20px, 2.4vw, 28px)",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.05,
+              fontSize: "clamp(26px, 3.2vw, 38px)",
+              fontWeight: 700,
+              lineHeight: 1.04,
+              letterSpacing: "-0.025em",
             }}
           >
-            Construa sua <span className="text-primary">máquina</span>
+            Configure sua máquina
           </h1>
         </div>
-        <div className="hidden items-center gap-2 md:flex">
-          <span
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.1] bg-white/[0.04] px-3 py-1.5 text-zinc-200 backdrop-blur"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          >
-            <Check size={11} className="text-emerald-400" strokeWidth={3} />
-            Compatibilidade garantida
-          </span>
-          <span
-            className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/[0.08] px-3 py-1.5 text-primary backdrop-blur"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
-              fontWeight: 700,
-            }}
-          >
-            <Sparkles size={10} /> Em até 10x sem juros
-          </span>
-          <span
-            className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-black/30 px-3 py-1.5 text-white backdrop-blur tabular-nums"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
-              fontWeight: 700,
-            }}
-          >
-            <span className="text-zinc-400" style={{ fontWeight: 600 }}>
+        <div className="hidden shrink-0 items-center gap-3 md:flex">
+          <div className="text-right">
+            <p
+              className="uppercase text-zinc-500"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "10px",
+                letterSpacing: "0.22em",
+                fontWeight: 700,
+              }}
+            >
               Progresso
-            </span>
-            <span className="text-primary">
-              {totalSelected}/{totalCount}
-            </span>
-          </span>
+            </p>
+            <p
+              className="mt-0.5 text-white tabular-nums"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "20px",
+                fontWeight: 700,
+                letterSpacing: "-0.01em",
+                lineHeight: 1,
+              }}
+            >
+              <span className="text-primary">{totalSelected}</span>
+              <span className="text-zinc-500"> / {totalCount}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -2061,7 +2051,7 @@ function ProductTile({
         )}
         style={shadowStyle}
       >
-        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
+        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-[linear-gradient(180deg,rgba(33,33,36,0.5)_0%,rgba(82,82,90,0.25)_100%)]">
           {option.standard && (
             <span
               className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
@@ -2191,7 +2181,7 @@ function ProductTile({
       >
         {selected && <Check size={11} className="text-white" strokeWidth={3} />}
       </div>
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[linear-gradient(180deg,rgba(33,33,36,0.5)_0%,rgba(82,82,90,0.25)_100%)]">
         {option.image ? (
           <img
             src={option.image}
@@ -2303,7 +2293,7 @@ function SelectedItemCard({
         </div>
       </div>
       <div className="px-5 py-4">
-        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
+        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[linear-gradient(180deg,rgba(33,33,36,0.5)_0%,rgba(82,82,90,0.25)_100%)]">
           {option?.image ? (
             <img src={option.image} alt={option.name} className="h-full w-full object-contain p-3" />
           ) : (
@@ -2934,31 +2924,6 @@ export function MonteSeuPcPage() {
                       setExpandedCategory(id);
                     }}
                   />
-
-                  <div className="mx-auto max-w-[1520px] px-5 pt-5 md:px-8">
-                    <div
-                      className="flex items-start gap-3 rounded-[14px] border border-blue-500/25 bg-blue-500/[0.06] px-4 py-3"
-                      role="note"
-                    >
-                      <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-300">
-                        <span style={{ fontSize: "11px", fontWeight: 700 }}>i</span>
-                      </div>
-                      <p
-                        className="text-zinc-200"
-                        style={{
-                          fontFamily: "var(--font-family-inter)",
-                          fontSize: "12.5px",
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        <span className="text-blue-300" style={{ fontWeight: 700 }}>
-                          IMPORTANTE:
-                        </span>{" "}
-                        Configurações montadas aqui são enviadas separadamente, sem montagem. Os valores
-                        consideram apenas o preço dos componentes.
-                      </p>
-                    </div>
-                  </div>
 
                   <main className="mx-auto grid max-w-[1520px] grid-cols-1 gap-6 px-5 py-6 md:px-8 lg:grid-cols-[1fr_380px]">
                     <section className="min-w-0">
