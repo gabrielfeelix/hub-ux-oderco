@@ -544,57 +544,141 @@ export function ProfilePage() {
                       <div className="space-y-2">
                         {user.orders.map((order) => {
                           const s = STATUS_MAP[order.status];
+                          const datePtBr = (d: string) => new Date(d).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+                          const lastEvent = order.history?.[0];
+                          const isDelivered = order.status === "delivered";
+                          const isShipped = order.status === "shipped";
+                          const isProcessing = order.status === "processing";
+                          const isCancelled = order.status === "cancelled";
+                          const deliveredDate = isDelivered ? datePtBr(lastEvent?.date.split(" ")[0] || order.date) : null;
+                          const returnDeadline = isDelivered ? datePtBr(new Date(new Date(lastEvent?.date.split(" ")[0] || order.date).getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0]) : null;
+                          const statusLineColor = isDelivered ? "text-green-500" : isShipped ? "text-blue-400" : isProcessing ? "text-yellow-500" : "text-red-400";
+                          const statusLineText = isDelivered
+                            ? `Entregue em ${deliveredDate} · Devolução grátis até ${returnDeadline}`
+                            : isShipped
+                            ? `Chega quinta, 18/Abr · em 3 dias`
+                            : isProcessing
+                            ? `Preparando seu pedido · Previsão: 22/Abr`
+                            : `Cancelado em ${datePtBr(lastEvent?.date.split(" ")[0] || order.date)}`;
+                          const StatusLineIcon = isDelivered ? Check : isShipped ? Truck : isProcessing ? Clock : XIcon;
+                          const firstItem = order.items[0];
+                          const extraItems = order.items.length - 1;
+                          const paymentShort = order.paymentMethod?.split(" (")[0] || "Cartão";
                           return (
                             <div key={order.id}
                               onClick={() => setSelectedOrderId(order.id)}
-                              className="group p-4 transition-all cursor-pointer relative"
+                              className="group transition-all cursor-pointer relative overflow-hidden"
                               style={{
                                 borderRadius: "14px",
                                 background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
                                 border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
                               }}
                             >
-                              {/* Linha 1: identidade + status + total */}
-                              <div className="flex items-center gap-4 mb-3">
-                                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${s.bg} ${s.color}`}>
-                                  <s.icon size={16} />
+                              {/* Header: identidade + status + total */}
+                              <div className="flex items-center gap-3 px-4 pt-4 pb-3">
+                                <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${s.bg} ${s.color}`}>
+                                  <s.icon size={15} />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="flex items-center gap-2 mb-0.5">
+                                  <div className="flex items-center gap-2 flex-wrap">
                                     <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>Pedido {order.id}</p>
-                                    <span className={`px-2 py-0.5 flex-shrink-0 ${s.bg} ${s.color}`} style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.03em" }}>
-                                      {s.label}
-                                    </span>
+                                    <span className="text-foreground/40">·</span>
+                                    <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                                      {new Date(order.date).toLocaleDateString("pt-BR")}
+                                    </p>
                                   </div>
-                                  <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")}</p>
+                                  <p className="text-foreground/50 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                                    {order.items.length} {order.items.length === 1 ? "item" : "itens"} · {paymentShort}
+                                  </p>
                                 </div>
+                                <span className={`px-2.5 py-1 flex-shrink-0 ${s.bg} ${s.color}`} style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                                  {s.label}
+                                </span>
                                 <div className="text-right flex-shrink-0">
-                                  <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Total</p>
-                                  <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>{order.total}</p>
+                                  <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: 600 }}>{order.total}</p>
                                 </div>
-                                <ChevronRight size={16} className="text-foreground/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
                               </div>
 
-                              {/* Linha 2: thumbs + ação ver detalhes */}
-                              <div className="flex items-center justify-between gap-3 pl-[56px]">
-                                <div className="flex items-center gap-2 min-w-0">
-                                  {order.items.slice(0, 4).map((item, i) => (
-                                    <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                              {/* Produto: thumb + nome inline */}
+                              <div className="flex items-center gap-3 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                                <div className="flex items-center gap-1.5 flex-shrink-0">
+                                  <div className="w-14 h-14 overflow-hidden border border-foreground/5" style={{ borderRadius: "10px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                    <ImageWithFallback src={firstItem.image} alt={firstItem.name} className="w-full h-full object-cover" />
+                                  </div>
+                                  {order.items.slice(1, 3).map((item, i) => (
+                                    <div key={i} className="w-10 h-10 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                                       <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                     </div>
                                   ))}
-                                  {order.items.length > 4 && (
-                                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/55" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
-                                      +{order.items.length - 4}
+                                  {extraItems > 2 && (
+                                    <div className="w-10 h-10 flex items-center justify-center text-foreground/55" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                                      +{extraItems - 2}
                                     </div>
+                                  )}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-foreground truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
+                                    {firstItem.name}
+                                  </p>
+                                  {extraItems > 0 && (
+                                    <p className="text-foreground/55 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>+ {extraItems} {extraItems === 1 ? "outro item" : "outros itens"}</p>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Status line contextual */}
+                              <div className="flex items-center gap-2 px-4 py-2.5" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}>
+                                <StatusLineIcon size={13} className={`${statusLineColor} flex-shrink-0`} />
+                                <p className={`${statusLineColor} truncate`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                  {statusLineText}
+                                </p>
+                              </div>
+
+                              {/* CTAs contextuais */}
+                              <div className="flex items-center justify-between gap-2 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                                <div className="flex items-center gap-1.5 flex-wrap">
+                                  {isDelivered && (
+                                    <>
+                                      <button onClick={(e) => { e.stopPropagation(); addItem({ ...firstItem, id: firstItem.name, price: firstItem.price, originalPrice: firstItem.price, category: "", brand: "", description: "", rating: 5, reviews: 0, images: [firstItem.image] } as any); }}
+                                        className="px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
+                                        style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                        <ShoppingBag size={12} /> Comprar de novo
+                                      </button>
+                                      <button onClick={(e) => e.stopPropagation()}
+                                        className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-all cursor-pointer flex items-center gap-1.5"
+                                        style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                        <Star size={12} /> Avaliar
+                                      </button>
+                                    </>
+                                  )}
+                                  {isShipped && (
+                                    <button onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
+                                      className="px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
+                                      style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                      <Truck size={12} /> Rastrear pedido
+                                    </button>
+                                  )}
+                                  {isProcessing && (
+                                    <button onClick={(e) => e.stopPropagation()}
+                                      className="px-3 py-1.5 text-red-400 hover:bg-red-500/10 transition-all cursor-pointer flex items-center gap-1.5"
+                                      style={{ borderRadius: "8px", background: "rgba(239,68,68,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                      <XIcon size={12} /> Cancelar
+                                    </button>
+                                  )}
+                                  {isCancelled && (
+                                    <button onClick={(e) => e.stopPropagation()}
+                                      className="px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
+                                      style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                      <ShoppingBag size={12} /> Comprar de novo
+                                    </button>
                                   )}
                                 </div>
                                 <button
                                   onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
-                                  className="px-3.5 py-1.5 text-foreground/75 hover:text-foreground transition-colors flex-shrink-0 cursor-pointer"
-                                  style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
+                                  className="px-3 py-1.5 text-foreground/70 hover:text-primary transition-all flex-shrink-0 cursor-pointer flex items-center gap-1"
+                                  style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
                                 >
-                                  Ver detalhes
+                                  Ver detalhes <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
                                 </button>
                               </div>
                             </div>
