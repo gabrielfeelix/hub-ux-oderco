@@ -736,7 +736,7 @@ export function MonteSeuPcPage() {
 
   return (
     <div className="bg-[#080808] pt-[140px] md:pt-[180px] text-[#f5f5f5]">
-      <header className="sticky top-[92px] z-40 border-b border-white/[0.06] bg-[#090909]/92 backdrop-blur-xl">
+      <header className="sticky top-[92px] z-40 border-b border-white/[0.06] bg-[#101012]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1760px] items-center justify-between gap-4 px-4 py-3 md:px-6 lg:px-8">
           <div className="flex items-center gap-2 md:gap-3">
             <Button
@@ -778,7 +778,7 @@ export function MonteSeuPcPage() {
 
           <div className="text-right">
             <p className="text-lg font-bold tabular-nums">{formatCurrency(priceBreakdown.total)}</p>
-            <p className="text-[10px] text-zinc-500">Valores não incluem frete</p>
+            <p className="text-[10px] text-zinc-400">Valores não incluem frete</p>
           </div>
         </div>
       </header>
@@ -864,7 +864,7 @@ export function MonteSeuPcPage() {
           <div className="px-5 py-6 md:px-6 lg:px-7">
             <div className="mb-6">
               <h1 className="text-[28px] font-semibold tracking-tight text-white">Monte seu PC</h1>
-              <p className="mt-1 text-sm text-zinc-500">
+              <p className="mt-1 text-sm text-zinc-400">
                 O fluxo da escolha fica aqui na direita. Abrimos uma etapa por vez, com imagem e contexto de cada item.
               </p>
             </div>
@@ -879,7 +879,7 @@ export function MonteSeuPcPage() {
                   <div
                     key={category.id}
                     className={cn(
-                      "overflow-hidden rounded-[24px] border bg-white/[0.02] transition-colors",
+                      "overflow-hidden rounded-[24px] border bg-[#0f0f12] transition-colors",
                       hasSelection
                         ? "border-emerald-500/18 bg-emerald-500/[0.03]"
                         : "border-white/[0.06]",
@@ -895,8 +895,8 @@ export function MonteSeuPcPage() {
                           className={cn(
                             "flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border",
                             hasSelection
-                              ? "border-white/[0.08] bg-white/[0.05]"
-                              : "border-white/[0.06] bg-white/[0.05] text-zinc-400",
+                              ? "border-white/[0.1] bg-[#16161a]"
+                              : "border-white/[0.06] bg-[#16161a] text-zinc-400",
                           )}
                         >
                           {category.selectedOption?.image ? (
@@ -912,7 +912,7 @@ export function MonteSeuPcPage() {
                         <div className="min-w-0">
                           <p className="text-base font-semibold text-white">{category.title}</p>
                           {category.selectedOption && (
-                            <p className="mt-1 truncate text-sm text-zinc-500">{category.selectedOption.name}</p>
+                            <p className="mt-1 truncate text-sm text-zinc-300">{category.selectedOption.name}</p>
                           )}
                         </div>
                       </div>
@@ -957,14 +957,14 @@ export function MonteSeuPcPage() {
                                   "group relative flex flex-col rounded-[22px] border p-3.5 text-left transition-all duration-200 md:p-4",
                                   selected
                                     ? "border-emerald-500/22 bg-emerald-500/[0.03] shadow-[0_0_0_1px_rgba(16,185,129,0.06)]"
-                                    : "border-white/[0.07] bg-transparent hover:border-white/[0.14] hover:bg-white/[0.02]",
+                                    : "border-white/[0.07] bg-[#101013] hover:border-white/[0.18] hover:bg-[#15151a]",
                                 )}
                               >
-                                <div className="aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-white/[0.04]">
+                                <div className="aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[#1a1a1f]">
                                   {option.image ? (
                                     <img src={option.image} alt={option.name} className="h-full w-full object-cover" />
                                   ) : (
-                                    <div className="flex h-full w-full items-center justify-center bg-white/[0.03] text-zinc-600">
+                                    <div className="flex h-full w-full items-center justify-center bg-[#15151a] text-zinc-400">
                                       {category.icon}
                                     </div>
                                   )}
@@ -993,7 +993,7 @@ export function MonteSeuPcPage() {
                                       {option.highlights.map((highlight) => (
                                         <span
                                           key={highlight}
-                                          className="rounded-full border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-[11px] text-zinc-300"
+                                          className="rounded-full border border-white/[0.1] bg-[#1a1a1f] px-2.5 py-1 text-[11px] text-zinc-200"
                                         >
                                           {highlight}
                                         </span>
@@ -1023,7 +1023,7 @@ export function MonteSeuPcPage() {
               })}
             </div>
 
-            <div className="mt-6 rounded-[28px] border border-white/[0.06] bg-white/[0.02] p-5 md:p-6">
+            <div className="mt-6 rounded-[28px] border border-white/[0.06] bg-[#0f0f12] p-5 md:p-6">
               <Button
                 type="button"
                 onClick={handleAddToCart}
