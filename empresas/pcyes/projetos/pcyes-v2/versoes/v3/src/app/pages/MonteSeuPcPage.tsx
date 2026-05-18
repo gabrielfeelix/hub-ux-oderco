@@ -2527,6 +2527,142 @@ function ProductTile({
   );
 }
 
+type StepMessageTone = "info" | "success" | "warn" | "error";
+type StepMessage = { tone: StepMessageTone; text: string };
+
+function computeStepMessages(
+  category: Category,
+  selections: Record<string, string[]>,
+): StepMessage[] {
+  const msgs: StepMessage[] = [];
+  const min = getMinSlots(category);
+  const max = getMaxSlots(category);
+  const ids = getSelected(selections, category.id);
+  const opts = ids
+    .map((id) => category.options.find((o) => o.id === id))
+    .filter((o): o is Option => Boolean(o));
+
+  const cpuOpt = (selections.cpu ?? [])
+    .map((id) => categories.find((c) => c.id === "cpu")?.options.find((o) => o.id === id))
+    .filter((o): o is Option => Boolean(o))[0];
+  const mbOpt = (selections.motherboard ?? [])
+    .map((id) => categories.find((c) => c.id === "motherboard")?.options.find((o) => o.id === id))
+    .filter((o): o is Option => Boolean(o))[0];
+
+  if (category.id === "ram" && mbOpt) {
+    msgs.push({ tone: "success", text: `A placa-mãe selecionada suporta ${max} slots de memória.` });
+  }
+
+  if (category.id === "cooling") {
+    const cpuName = cpuOpt?.name?.toLowerCase() ?? "";
+    const hasIntegratedCooler =
+      /box|wraith|stock/.test(cpuName) || /AMD Ryzen 5 5500|i3-10100|i5-10400/i.test(cpuName);
+    if (hasIntegratedCooler) {
+      msgs.push({
+        tone: "info",
+        text: "Refrigeração opcional: o processador selecionado possui cooler integrado.",
+      });
+    } else {
+      msgs.push({
+        tone: "info",
+        text: "Você pode adicionar múltiplos sistemas de refrigeração ao seu PC.",
+      });
+    }
+  }
+
+  if (category.id === "gpu" && cpuOpt) {
+    const hasIGPU =
+      /Vídeo Integrado|Integrado|iGPU|integrated graphics/i.test(cpuOpt.summary ?? "") ||
+      /Vídeo Integrado/i.test((cpuOpt.highlights ?? []).join(" "));
+    if (!hasIGPU) {
+      const fLetter = cpuOpt.name.match(/-(\d+)F\b/i);
+      if (fLetter) {
+        msgs.push({
+          tone: "warn",
+          text: "O processador selecionado não possui vídeo integrado. GPU obrigatória.",
+        });
+      }
+    }
+  }
+
+  if (category.id === "storage") {
+    msgs.push({
+      tone: "info",
+      text: `Máximo de ${max} unidades de armazenamento. Atenção aos slots NVMe da placa-mãe.`,
+    });
+  }
+
+  if (category.id === "psu") {
+    const cpuName = cpuOpt?.name ?? "";
+    let baseWatt = 200;
+    if (/i7|Ryzen 7/i.test(cpuName)) baseWatt = 450;
+    else if (/i5|Ryzen 5/i.test(cpuName)) baseWatt = 350;
+    msgs.push({
+      tone: "warn",
+      text: `Recomendamos uma fonte com potência mínima de ${baseWatt}W para estabilidade.`,
+    });
+  }
+
+  if (min === 0 && opts.length === 0) {
+    msgs.push({ tone: "info", text: "Etapa opcional — você pode pular esta etapa." });
+  }
+
+  if (min > 0 && opts.length < min) {
+    msgs.push({
+      tone: "warn",
+      text: `Selecione pelo menos ${min === 1 ? "1 item" : `${min} itens`} para continuar.`,
+    });
+  }
+
+  return msgs;
+}
+
+function StepMessages({ messages }: { messages: StepMessage[] }) {
+  if (messages.length === 0) return null;
+  return (
+    <div className="space-y-2">
+      {messages.map((m, i) => {
+        const tone =
+          m.tone === "success"
+            ? { bg: "bg-emerald-500/[0.08]", border: "border-emerald-500/30", text: "text-emerald-300", icon: "text-emerald-400" }
+            : m.tone === "warn"
+              ? { bg: "bg-amber-500/[0.08]", border: "border-amber-500/30", text: "text-amber-200", icon: "text-amber-400" }
+              : m.tone === "error"
+                ? { bg: "bg-red-500/[0.08]", border: "border-red-500/30", text: "text-red-200", icon: "text-red-400" }
+                : { bg: "bg-blue-500/[0.08]", border: "border-blue-500/30", text: "text-blue-200", icon: "text-blue-400" };
+        return (
+          <div
+            key={i}
+            role={m.tone === "warn" || m.tone === "error" ? "alert" : "status"}
+            className={cn("flex items-start gap-2.5 rounded-[10px] border p-2.5", tone.bg, tone.border)}
+          >
+            <span className={cn("mt-[1px] flex h-3.5 w-3.5 shrink-0 items-center justify-center", tone.icon)}>
+              {m.tone === "success" ? (
+                <Check size={11} strokeWidth={3} />
+              ) : (
+                <span className="flex h-3 w-3 items-center justify-center rounded-full border-2 border-current text-[8px] font-bold">
+                  {m.tone === "warn" || m.tone === "error" ? "!" : "i"}
+                </span>
+              )}
+            </span>
+            <p
+              className={cn(tone.text)}
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "11.5px",
+                lineHeight: 1.45,
+                fontWeight: 500,
+              }}
+            >
+              {m.text}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function SelectedItemCard({
   category,
   option,
@@ -2534,6 +2670,7 @@ function SelectedItemCard({
   onNext,
   isFirst,
   isLast,
+  nextDisabled = false,
 }: {
   category: Category | undefined;
   option: Option | undefined;
@@ -2541,6 +2678,7 @@ function SelectedItemCard({
   onNext: () => void;
   isFirst: boolean;
   isLast: boolean;
+  nextDisabled?: boolean;
 }) {
   return (
     <div
@@ -2652,13 +2790,14 @@ function SelectedItemCard({
           <button
             type="button"
             onClick={onNext}
-            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] bg-primary text-white transition-all hover:brightness-110"
+            disabled={nextDisabled}
+            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] bg-primary text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
               fontWeight: 600,
               letterSpacing: "0.01em",
-              boxShadow: "0 8px 24px -8px rgba(255,43,46,0.5)",
+              boxShadow: nextDisabled ? "none" : "0 8px 24px -8px rgba(255,43,46,0.5)",
             }}
           >
             {isLast ? "Revisar" : "Avançar"} <ArrowRight size={12} />
@@ -3518,7 +3657,9 @@ export function MonteSeuPcPage() {
                         onNext={goNext}
                         isFirst={isFirst}
                         isLast={isLast}
+                        nextDisabled={!stepValid}
                       />
+                      <StepMessages messages={computeStepMessages(currentCategory, selections)} />
                       <ConfiguracaoSelecionadaCard
                         categories={categoriesWithSelected}
                         selections={selections}
