@@ -227,7 +227,7 @@ export function ProfilePage() {
                     return (
                       <button
                         onClick={() => { setProfileTab("orders"); setSelectedOrderId(nextOrder.id); }}
-                        className="group w-full text-left mb-4 p-5 flex items-center gap-4 transition-all hover:bg-white/[0.01]"
+                        className="group cursor-pointer w-full text-left mb-4 p-5 flex items-center gap-4 transition-all hover:bg-white/[0.01]"
                         style={{
                           borderRadius: "14px",
                           background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -258,7 +258,7 @@ export function ProfilePage() {
                     {/* Últimos pedidos */}
                     <button
                       onClick={() => setProfileTab("orders")}
-                      className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                      className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
                       style={{
                         borderRadius: "14px",
                         background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -283,7 +283,7 @@ export function ProfilePage() {
                     {/* Favoritos */}
                     <button
                       onClick={() => setProfileTab("favorites")}
-                      className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                      className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
                       style={{
                         borderRadius: "14px",
                         background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -312,7 +312,7 @@ export function ProfilePage() {
                     {user.addresses[0] && (
                       <button
                         onClick={() => setProfileTab("addresses")}
-                        className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                        className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
                         style={{
                           borderRadius: "14px",
                           background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -343,7 +343,7 @@ export function ProfilePage() {
                       return (
                         <button
                           onClick={() => setProfileTab("cards")}
-                          className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                          className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
                           style={{
                             borderRadius: "14px",
                             background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -397,9 +397,9 @@ export function ProfilePage() {
                       <div className="flex items-center justify-between mb-5">
                         <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Meus Pedidos</h2>
                         <div className="flex gap-2">
-                          <button className="px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px]" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
-                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
-                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
+                          <button className="px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
+                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
+                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
                         </div>
                       </div>
                       <div className="space-y-2">
@@ -452,7 +452,7 @@ export function ProfilePage() {
                                 </div>
                                 <button
                                   onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
-                                  className="px-3.5 py-1.5 text-foreground/75 hover:text-foreground transition-colors flex-shrink-0"
+                                  className="px-3.5 py-1.5 text-foreground/75 hover:text-foreground transition-colors flex-shrink-0 cursor-pointer"
                                   style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
                                 >
                                   Ver detalhes
@@ -472,7 +472,7 @@ export function ProfilePage() {
                       <div className="space-y-6">
                         <button 
                           onClick={() => setSelectedOrderId(null)}
-                          className="flex items-center gap-2 text-foreground/55 hover:text-primary transition-colors mb-6 group"
+                          className="flex items-center gap-2 text-foreground/55 hover:text-primary transition-colors mb-6 group cursor-pointer"
                           style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                         >
                           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Voltar para pedidos
@@ -489,10 +489,10 @@ export function ProfilePage() {
                             <p className="text-foreground/45" style={{ fontSize: "13px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")} às 14:30</p>
                           </div>
                           <div className="flex gap-2">
-                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/80 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
+                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/80 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
                               <Receipt size={14} /> Nota Fiscal
                             </button>
-                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/80 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
+                            <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/80 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
                               <Share2 size={14} /> Compartilhar
                             </button>
                           </div>
@@ -506,7 +506,7 @@ export function ProfilePage() {
                               <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/5 text-primary border border-primary/10" style={{ borderRadius: "var(--radius-button)" }}>
                                 <Truck size={14} />
                                 <span className="font-mono text-[11px] font-bold">{order.tracking}</span>
-                                <button onClick={() => { navigator.clipboard.writeText(order.tracking!); }} className="hover:text-primary/70 transition-colors ml-1">
+                                <button onClick={() => { navigator.clipboard.writeText(order.tracking!); }} className="hover:text-primary/70 transition-colors ml-1 cursor-pointer">
                                   <Copy size={12} />
                                 </button>
                               </div>
@@ -567,9 +567,9 @@ export function ProfilePage() {
                                       <h4 className="text-foreground font-medium mb-1 truncate" style={{ fontSize: "14px" }}>{item.name}</h4>
                                       <p className="text-foreground/45 mb-2" style={{ fontSize: "12px" }}>Quantidade: {item.qty}</p>
                                       <div className="flex items-center gap-2">
-                                        <button className="text-primary hover:underline font-medium" style={{ fontSize: "12px" }}>Comprar novamente</button>
+                                        <button className="text-primary hover:underline font-medium cursor-pointer" style={{ fontSize: "12px" }}>Comprar novamente</button>
                                         <span className="text-foreground/22">•</span>
-                                        <button className="text-foreground/55 hover:text-foreground/75 transition-colors" style={{ fontSize: "12px" }}>Ver produto</button>
+                                        <button className="text-foreground/55 hover:text-foreground/75 transition-colors cursor-pointer" style={{ fontSize: "12px" }}>Ver produto</button>
                                       </div>
                                     </div>
                                     <div className="text-right">
@@ -622,12 +622,12 @@ export function ProfilePage() {
                             </div>
 
                             <div className="space-y-3">
-                              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-foreground/10 hover:border-foreground/30 text-foreground/75 transition-all font-medium" 
+                              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-foreground/10 hover:border-foreground/30 text-foreground/75 transition-all font-medium cursor-pointer"
                                 style={{ borderRadius: "var(--radius-button)", fontSize: "13px" }}>
                                 <HelpCircle size={16} /> Preciso de ajuda
                               </button>
                               {order.status === "processing" && (
-                                <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-500/5 hover:bg-red-500/10 text-red-500 transition-all font-medium border border-red-500/10" 
+                                <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-500/5 hover:bg-red-500/10 text-red-500 transition-all font-medium border border-red-500/10 cursor-pointer"
                                   style={{ borderRadius: "var(--radius-button)", fontSize: "13px" }}>
                                   Cancelar Pedido
                                 </button>
@@ -670,7 +670,7 @@ export function ProfilePage() {
                           <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{ background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                             <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                             <button onClick={(e) => { e.preventDefault(); toggleFavorite(product.id); }}
-                              className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md"
+                              className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md cursor-pointer"
                               style={{ borderRadius: "8px", background: "rgba(0,0,0,0.3)" }}
                             ><Heart size={12} className="fill-primary" /></button>
                           </Link>
@@ -697,7 +697,7 @@ export function ProfilePage() {
                 <motion.div key="addresses" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
-                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   <div className="space-y-2">
                     {user.addresses.map((a) => (
@@ -716,7 +716,7 @@ export function ProfilePage() {
                             </p>
                           </div>
                         </div>
-                        <button className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                        <button className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors flex-shrink-0 cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                       </div>
                     ))}
                   </div>
@@ -745,7 +745,7 @@ export function ProfilePage() {
                         <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-50" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                     </div>
-                    <button className="px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer"
+                    <button className="px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                       style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                     >Salvar alterações</button>
                   </div>
@@ -756,7 +756,7 @@ export function ProfilePage() {
                 <motion.div key="cards" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
-                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   <div className="space-y-2">
                     {user.cards.map((c) => (
@@ -771,7 +771,7 @@ export function ProfilePage() {
                           </div>
                           <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{c.name} · Validade {c.expiry}</p>
                         </div>
-                        <button className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                        <button className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors flex-shrink-0 cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                       </div>
                     ))}
                   </div>
@@ -788,7 +788,7 @@ export function ProfilePage() {
                       { title: "Política de Trocas", desc: "Saiba como trocar ou devolver", icon: Receipt },
                       { title: "Rastrear Pedido", desc: "Acompanhe sua entrega em tempo real", icon: Truck },
                     ].map((item) => (
-                      <button key={item.title} className="group w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
+                      <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
                         style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
                         <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
@@ -814,7 +814,7 @@ export function ProfilePage() {
                       { title: "Cookies", desc: "Gerencie suas preferências de cookies", icon: Info, danger: false },
                       { title: "Excluir minha conta", desc: "Solicite a remoção permanente dos seus dados", icon: XIcon, danger: true },
                     ].map((item) => (
-                      <button key={item.title} className="group w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
+                      <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
                         style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
                         <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${item.danger ? "bg-red-500/10" : ""}`} style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(255,43,46,0.08)" }}>
