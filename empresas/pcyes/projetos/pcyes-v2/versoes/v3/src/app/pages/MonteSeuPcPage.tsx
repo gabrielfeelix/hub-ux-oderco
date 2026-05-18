@@ -225,10 +225,16 @@ const findCatalogProduct = (...needles: string[]) =>
   );
 
 const cpuImages = {
-  intelI5: "https://target.scene7.com/is/image/Target/GUEST_cb002eb7-a18f-41a8-9ca4-da7d187ec009?fmt=png-alpha&wid=1000&hei=1000",
-  intelI7: "https://target.scene7.com/is/image/Target/GUEST_3bd1957a-5a46-4a0c-9956-8f52ddd6b783?fmt=png-alpha&wid=1000&hei=1000",
-  amdR5: "https://target.scene7.com/is/image/Target/GUEST_ab1cb31e-6374-4b48-88ac-940a79c03dbc?fmt=png-alpha&wid=1000&hei=1000",
-  amdR7: "https://target.scene7.com/is/image/Target/GUEST_42af582b-5e8c-42c1-b09a-6a073c63494c?fmt=png-alpha&wid=1000&hei=1000",
+  intelI5_12: "https://cdn.oderco.com.br/produtos/305032/2FFD797653408771E0630300A8C0513F",
+  intelI5_10: "https://cdn.oderco.com.br/produtos/254182/15598870FE6B6F3DE0630300A8C01EB4",
+  intelI3_12: "https://cdn.oderco.com.br/produtos/321895/36C3AD706E9C0E8FE0630300A8C09B63",
+  intelI3_10: "https://cdn.oderco.com.br/produtos/192261/F0F8D9B5035E84C8E055DEF401E782F4",
+  intelI3_12_alt: "https://cdn.oderco.com.br/produtos/282483/23E8609192FEEFD1E0630300A8C0B75A",
+  intelI5_12_alt: "https://cdn.oderco.com.br/produtos/305031/2FFD797653418771E0630300A8C0513F",
+  amdR5_5000: "https://cdn.oderco.com.br/produtos/329983/38CDEB0421DEAF0EE0630300A8C0889B",
+  amdR5_7000: "https://cdn.oderco.com.br/produtos/329998/39997AA8896C482FE0630300A8C0F274",
+  intelI7_chip: "https://cdn.oderco.com.br/produtos/365457/486F56C7364D0E16E0630300A8C096E9",
+  intelI7_chip_alt: "https://cdn.oderco.com.br/produtos/305964/48816D65077BD020E0630300A8C0592A",
 };
 
 const motherboardImages = {
@@ -282,7 +288,6 @@ const gpuProducts = getProductsByCategory("Placas de Vídeo", 5);
 const coolingProducts = getProductsByCategory("Refrigeração", 5);
 const storageProducts = getProductsByCategory("SSD e HD", 5);
 const caseProducts = getProductsByCategory("Gabinetes", 5);
-const peripheralProducts = getProductsByCategory("Periféricos", 5);
 
 const categories: Category[] = [
   {
@@ -292,40 +297,67 @@ const categories: Category[] = [
     options: [
       {
         id: "cpu-1",
-        name: "Intel Core i5-13400F",
-        price: 1200,
+        name: "Intel Core i5-12400F",
+        price: 1029,
         standard: true,
-        summary: "Imagem real de caixa, boa leitura visual e ótimo ponto de partida para a vitrine do configurador.",
-        highlights: ["LGA1700", "10 núcleos", "Até 4.6GHz"],
-        image: cpuImages.intelI5,
-        gallery: [cpuImages.intelI5],
+        summary: "6 núcleos / 12 threads, 2.5GHz (4.4GHz Turbo), 18MB Cache, LGA 1700.",
+        highlights: ["LGA1700", "6 núcleos", "Até 4.4GHz"],
+        image: cpuImages.intelI5_12,
+        gallery: [cpuImages.intelI5_12],
       },
       {
         id: "cpu-2",
-        name: "Intel Core i7-14700K",
-        price: 2500,
-        summary: "Outra foto real de produto para a etapa ficar mais parecida com um e-commerce montável de verdade.",
-        highlights: ["LGA1700", "20 núcleos", "Até 5.6GHz"],
-        image: cpuImages.intelI7,
-        gallery: [cpuImages.intelI7],
+        name: "Intel Core i7-12700K",
+        price: 2199,
+        summary: "12 núcleos / 20 threads, 3.6GHz (5.0GHz Turbo), 25MB Cache, LGA 1700.",
+        highlights: ["LGA1700", "12 núcleos", "Até 5.0GHz"],
+        image: cpuImages.intelI7_chip,
+        gallery: [cpuImages.intelI7_chip],
       },
       {
         id: "cpu-3",
         name: "AMD Ryzen 5 7600",
-        price: 1400,
-        summary: "Caixa real do Ryzen para validar como a direita se comporta com fotos de marca conhecidas.",
+        price: 1399,
+        summary: "6 núcleos / 12 threads, 3.8GHz (5.1GHz Boost), AM5, Vídeo integrado.",
         highlights: ["AM5", "6 núcleos", "Até 5.1GHz"],
-        image: cpuImages.amdR5,
-        gallery: [cpuImages.amdR5],
+        image: cpuImages.amdR5_7000,
+        gallery: [cpuImages.amdR5_7000],
       },
       {
         id: "cpu-4",
-        name: "AMD Ryzen 7 7800X3D",
-        price: 2800,
-        summary: "Produto real forte para games, útil para testar visual premium dentro do fluxo.",
-        highlights: ["AM5", "8 núcleos", "3D V-Cache"],
-        image: cpuImages.amdR7,
-        gallery: [cpuImages.amdR7],
+        name: "AMD Ryzen 5 5500",
+        price: 599,
+        summary: "6 núcleos / 12 threads, 3.6GHz (4.2GHz Boost), 19MB Cache, AM4, BOX.",
+        highlights: ["AM4", "6 núcleos", "Até 4.2GHz"],
+        image: cpuImages.amdR5_5000,
+        gallery: [cpuImages.amdR5_5000],
+      },
+      {
+        id: "cpu-5",
+        name: "Intel Core i5-10400",
+        price: 789,
+        summary: "6 núcleos / 12 threads, 2.9GHz (4.3GHz Turbo), 12MB Cache, LGA 1200.",
+        highlights: ["LGA1200", "6 núcleos", "Até 4.3GHz"],
+        image: cpuImages.intelI5_10,
+        gallery: [cpuImages.intelI5_10],
+      },
+      {
+        id: "cpu-6",
+        name: "Intel Core i3-12100F",
+        price: 689,
+        summary: "4 núcleos / 8 threads, 3.3GHz (4.3GHz Turbo), 12MB Cache, LGA 1700.",
+        highlights: ["LGA1700", "4 núcleos", "Até 4.3GHz"],
+        image: cpuImages.intelI3_12,
+        gallery: [cpuImages.intelI3_12],
+      },
+      {
+        id: "cpu-7",
+        name: "Intel Core i3-10100F",
+        price: 499,
+        summary: "4 núcleos / 8 threads, 3.6GHz (4.3GHz Turbo), 6MB Cache, LGA 1200.",
+        highlights: ["LGA1200", "4 núcleos", "Até 4.3GHz"],
+        image: cpuImages.intelI3_10,
+        gallery: [cpuImages.intelI3_10],
       },
     ],
   },
@@ -338,19 +370,19 @@ const categories: Category[] = [
         id: "mb-1",
         name: "B760M AORUS ELITE (Intel)",
         price: 1100,
-        req: ["cpu-1", "cpu-2"],
+        req: ["cpu-1", "cpu-2", "cpu-6"],
         standard: true,
-        summary: "Foto real de placa-mãe para validar melhor leitura de produto escolhido no accordion.",
-        highlights: ["LGA1155", "DDR3", "mATX"],
+        summary: "mATX para Intel 12ª/13ª/14ª geração, DDR4, M.2 NVMe.",
+        highlights: ["LGA1700", "DDR4", "mATX"],
         image: motherboardImages.b75,
         gallery: [motherboardImages.b75],
       },
       {
         id: "mb-2",
         name: "H470 PCYES (Intel)",
-        price: 1800,
-        req: ["cpu-1", "cpu-2"],
-        summary: "Outra placa real da PCYES para comparação visual no fluxo.",
+        price: 600,
+        req: ["cpu-5", "cpu-7"],
+        summary: "mATX para Intel 10ª geração, DDR4, M.2 NVMe.",
         highlights: ["LGA1200", "DDR4", "mATX"],
         image: motherboardImages.h470,
         gallery: [motherboardImages.h470],
@@ -359,8 +391,8 @@ const categories: Category[] = [
         id: "mb-3",
         name: "TUF GAMING B650-PLUS WIFI (AMD)",
         price: 1300,
-        req: ["cpu-3", "cpu-4"],
-        summary: "Imagem real com motherboard e bundle, ótima para testar cards mais densos.",
+        req: ["cpu-3"],
+        summary: "ATX AM5 com WiFi, DDR5, PCIe 5.0, suporte completo Ryzen 7000.",
         highlights: ["AM5", "DDR5", "ATX"],
         image: motherboardImages.b650,
         gallery: [motherboardImages.b650],
@@ -369,11 +401,21 @@ const categories: Category[] = [
         id: "mb-4",
         name: "ROG STRIX B650-A GAMING WIFI (AMD)",
         price: 2500,
-        req: ["cpu-3", "cpu-4"],
-        summary: "Uma opção mais premium com foto real para ver como o bloco aguenta um produto mais sofisticado.",
+        req: ["cpu-3"],
+        summary: "ATX AM5 premium, WiFi 6E, DDR5, VRM reforçado.",
         highlights: ["AM5", "DDR5", "ATX"],
         image: motherboardImages.b650a,
         gallery: [motherboardImages.b650a],
+      },
+      {
+        id: "mb-5",
+        name: "B450M Gaming PCYES (AMD)",
+        price: 549,
+        req: ["cpu-4"],
+        summary: "mATX AM4 econômica, DDR4, suporte Ryzen 5000 series.",
+        highlights: ["AM4", "DDR4", "mATX"],
+        image: motherboardImages.b75,
+        gallery: [motherboardImages.b75],
       },
     ],
   },
@@ -510,17 +552,6 @@ const categories: Category[] = [
       },
     ],
   },
-  {
-    id: "peripherals",
-    title: "Periféricos",
-    icon: <Settings className="h-4 w-4" />,
-    options: peripheralProducts.map((product, index) =>
-      toOptionFromProduct("peripherals", product, index, {
-        standard: index === 0,
-        summary: "Foto real do catálogo para avaliar como itens menores se comportam nos cards da direita.",
-      }),
-    ),
-  },
 ];
 
 interface AmbientConfig {
@@ -585,11 +616,11 @@ const presets: Preset[] = [
     icon: <Cpu className="h-5 w-5" />,
     heroImage: "/home/category-computers.png",
     performance: "1080p / Dia-a-dia",
-    highlights: ["Intel Core i5-13400F", "16GB DDR4 3200MHz", "GPU entrada", "SSD NVMe 1TB", "Fonte 550W Bronze"],
+    highlights: ["Intel Core i5-12400F", "16GB DDR4 3200MHz", "GPU entrada", "SSD NVMe 1TB", "Fonte 550W Bronze"],
     selections: {
       cpu: "cpu-1", motherboard: "mb-1", ram: "ram-2", gpu: "gpu-1",
       cooling: "cooling-1", storage: "storage-1", case: "case-1",
-      psu: "psu-1", peripherals: "peripherals-1",
+      psu: "psu-1",
     },
   },
   {
@@ -605,11 +636,11 @@ const presets: Preset[] = [
     badge: "MAIS PEDIDA",
     heroImage: "/home/category-pc-gamer.png",
     performance: "2K 144Hz / Render",
-    highlights: ["Intel Core i7-14700K", "32GB DDR5 5600MHz", "GPU high-end", "SSD NVMe 2TB", "Fonte 850W Gold"],
+    highlights: ["Intel Core i7-12700K", "32GB DDR5 5600MHz", "GPU high-end", "SSD NVMe 2TB", "Fonte 850W Gold"],
     selections: {
       cpu: "cpu-2", motherboard: "mb-1", ram: "ram-3", gpu: "gpu-2",
       cooling: "cooling-2", storage: "storage-2", case: "case-2",
-      psu: "psu-3", peripherals: "peripherals-2",
+      psu: "psu-3",
     },
   },
   {
@@ -624,11 +655,11 @@ const presets: Preset[] = [
     icon: <Sparkles className="h-5 w-5" />,
     heroImage: "/home/hero-videogame.png",
     performance: "4K alto FPS / Workstation",
-    highlights: ["AMD Ryzen 7 7800X3D", "32GB DDR5 6000MHz", "GPU flagship", "SSD NVMe 4TB", "Fonte 1000W Gold"],
+    highlights: ["AMD Ryzen 5 7600 AM5", "32GB DDR5 6000MHz", "GPU flagship", "SSD NVMe 4TB", "Fonte 1000W Gold"],
     selections: {
-      cpu: "cpu-4", motherboard: "mb-4", ram: "ram-4", gpu: "gpu-3",
+      cpu: "cpu-3", motherboard: "mb-4", ram: "ram-4", gpu: "gpu-3",
       cooling: "cooling-3", storage: "storage-3", case: "case-3",
-      psu: "psu-4", peripherals: "peripherals-3",
+      psu: "psu-4",
     },
   },
 ];
@@ -1066,7 +1097,7 @@ function PresetGallery({
 function TopBar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl">
-      <div className="mx-auto flex h-[64px] max-w-[1760px] items-center justify-between gap-3 px-5 md:px-8">
+      <div className="mx-auto flex h-[64px] max-w-[1520px] items-center justify-between gap-3 px-5 md:px-8">
         <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-80" aria-label="PCYES home">
           <img src={LOGO_URL} alt="PCYES" className="h-[24px] w-auto" />
         </Link>
@@ -1822,7 +1853,7 @@ function HeroBuilderBanner({ totalSelected, totalCount }: { totalSelected: numbe
             "linear-gradient(135deg, transparent 0%, rgba(255,43,46,0.3) 100%)",
         }}
       />
-      <div className="relative mx-auto flex max-w-[1760px] items-center justify-between gap-4 px-6 py-5 md:px-8 md:py-6">
+      <div className="relative mx-auto flex max-w-[1520px] items-center justify-between gap-4 px-6 py-5 md:px-8 md:py-6">
         <div className="min-w-0">
           <p
             className="mb-1 uppercase text-primary"
@@ -1911,7 +1942,7 @@ function HorizontalStepper({
           "linear-gradient(180deg, rgba(15,15,18,0.85) 0%, rgba(10,10,12,0.9) 100%)",
       }}
     >
-      <div className="mx-auto max-w-[1760px] overflow-x-auto px-6 py-6">
+      <div className="mx-auto max-w-[1520px] overflow-x-auto px-6 py-6">
         <div className="relative flex min-w-fit items-start justify-between gap-2">
           <div className="pointer-events-none absolute left-0 right-0 top-[28px] h-[2px] bg-white/[0.06]" />
           <motion.div
@@ -2030,7 +2061,7 @@ function ProductTile({
         )}
         style={shadowStyle}
       >
-        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-[#f4f4f5]">
+        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
           {option.standard && (
             <span
               className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
@@ -2160,7 +2191,7 @@ function ProductTile({
       >
         {selected && <Check size={11} className="text-white" strokeWidth={3} />}
       </div>
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f4f4f5]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
         {option.image ? (
           <img
             src={option.image}
@@ -2272,7 +2303,7 @@ function SelectedItemCard({
         </div>
       </div>
       <div className="px-5 py-4">
-        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[#f4f4f5]">
+        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
           {option?.image ? (
             <img src={option.image} alt={option.name} className="h-full w-full object-contain p-3" />
           ) : (
@@ -2525,7 +2556,6 @@ export function MonteSeuPcPage() {
     storage: "storage-1",
     case: "case-2",
     psu: "psu-1",
-    peripherals: "peripherals-1",
   });
   const [activeCategory, setActiveCategory] = useState<string>("cpu");
   const [expandedCategory, setExpandedCategory] = useState<string>("cpu");
@@ -2905,7 +2935,7 @@ export function MonteSeuPcPage() {
                     }}
                   />
 
-                  <div className="mx-auto max-w-[1760px] px-5 pt-5 md:px-8">
+                  <div className="mx-auto max-w-[1520px] px-5 pt-5 md:px-8">
                     <div
                       className="flex items-start gap-3 rounded-[14px] border border-blue-500/25 bg-blue-500/[0.06] px-4 py-3"
                       role="note"
@@ -2930,7 +2960,7 @@ export function MonteSeuPcPage() {
                     </div>
                   </div>
 
-                  <main className="mx-auto grid max-w-[1760px] grid-cols-1 gap-6 px-5 py-6 md:px-8 lg:grid-cols-[1fr_380px]">
+                  <main className="mx-auto grid max-w-[1520px] grid-cols-1 gap-6 px-5 py-6 md:px-8 lg:grid-cols-[1fr_380px]">
                     <section className="min-w-0">
                       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                         <div>
