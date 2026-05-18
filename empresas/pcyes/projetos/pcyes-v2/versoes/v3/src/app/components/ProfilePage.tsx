@@ -925,27 +925,44 @@ export function ProfilePage() {
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
                     <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
+                  {user.addresses.length === 0 ? (
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <MapPin size={28} className="text-foreground/35 mx-auto mb-4" />
+                      <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum endereço cadastrado</p>
+                      <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione um endereço pra receber seus pedidos.</p>
+                      <button className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar endereço</button>
+                    </div>
+                  ) : (
                   <div className="space-y-2">
                     {user.addresses.map((a) => (
-                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                        <div className="flex items-start gap-3 min-w-0">
+                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: a.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                        <div className="flex items-start gap-3 min-w-0 flex-1">
                           <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
                             <MapPin size={15} className="text-primary" />
                           </div>
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2 mb-1 flex-wrap">
                               <span className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{a.label}</span>
-                              {a.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
+                              {a.isDefault && <span className="px-2 py-0.5 bg-primary/12 text-primary flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><Check size={9} /> PADRÃO</span>}
                             </div>
-                            <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.55" }}>
-                              {a.street}, {a.number}{a.complement ? ` - ${a.complement}` : ""} · {a.neighborhood}<br />{a.city}/{a.state} · CEP {a.cep}
+                            <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.55" }}>
+                              {a.street}, {a.number}{a.complement ? ` - ${a.complement}` : ""} · {a.neighborhood}<br />{a.city}/{a.state}
+                            </p>
+                            <p className="mt-1.5 text-foreground/50 font-mono" style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.04em" }}>
+                              CEP {a.cep}
                             </p>
                           </div>
                         </div>
-                        <button className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors flex-shrink-0 cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                        <div className="flex flex-col gap-1.5 flex-shrink-0">
+                          {!a.isDefault && (
+                            <button className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer flex items-center gap-1" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                          )}
+                          <button className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                        </div>
                       </div>
                     ))}
                   </div>
+                  )}
                 </motion.div>
               )}
 
@@ -984,37 +1001,98 @@ export function ProfilePage() {
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
                     <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
+                  {user.cards.length === 0 ? (
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <CreditCard size={28} className="text-foreground/35 mx-auto mb-4" />
+                      <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum cartão salvo</p>
+                      <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione pra checkout mais rápido. Seus dados ficam criptografados.</p>
+                      <button className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar cartão</button>
+                    </div>
+                  ) : (
                   <div className="space-y-2">
-                    {user.cards.map((c) => (
-                      <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                        <div className="w-11 h-7 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "5px", background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)" }}>
-                          <span className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.04em" }}>{c.brand}</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-0.5">
-                            <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>•••• {c.last4}</p>
-                            {c.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
+                    {user.cards.map((c) => {
+                      const [mm, yy] = c.expiry.split("/").map((s) => parseInt(s, 10));
+                      const expDate = new Date(2000 + (yy ?? 0), (mm ?? 1) - 1, 1);
+                      const today = new Date(2026, 4, 18);
+                      const monthsLeft = (expDate.getFullYear() - today.getFullYear()) * 12 + (expDate.getMonth() - today.getMonth());
+                      const isExpired = monthsLeft < 0;
+                      const isExpiringSoon = !isExpired && monthsLeft <= 3;
+                      const brandColor = c.brand.toLowerCase().includes("visa") ? "rgba(26,49,142,0.85)" : c.brand.toLowerCase().includes("master") ? "rgba(255,95,0,0.85)" : "rgba(255,255,255,0.06)";
+                      return (
+                        <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                          <div className="w-11 h-7 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "5px", background: brandColor }}>
+                            <span className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.brand}</span>
                           </div>
-                          <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{c.name} · Validade {c.expiry}</p>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+                              <p className="text-foreground font-mono" style={{ fontSize: "13.5px", fontWeight: 600, letterSpacing: "0.05em" }}>•••• {c.last4}</p>
+                              {c.isDefault && <span className="px-2 py-0.5 bg-primary/12 text-primary flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><Check size={9} /> PADRÃO</span>}
+                              {isExpired && <span className="px-2 py-0.5 bg-red-500/15 text-red-400 flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><AlertCircle size={9} /> VENCIDO</span>}
+                              {isExpiringSoon && <span className="px-2 py-0.5 bg-yellow-500/15 text-yellow-500 flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><AlertCircle size={9} /> VENCE EM BREVE</span>}
+                            </div>
+                            <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{c.name} · Validade {c.expiry}</p>
+                          </div>
+                          <div className="flex flex-col gap-1.5 flex-shrink-0">
+                            {!c.isDefault && (
+                              <button className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                            )}
+                            <button className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                          </div>
                         </div>
-                        <button className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors flex-shrink-0 cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
+                  )}
                 </motion.div>
               )}
 
               {activeTab === "help" && (
                 <motion.div key="help" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Ajuda e Suporte</h2>
+
+                  {/* Contato direto destaque */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                    <a href="https://wa.me/5500000000000" target="_blank" rel="noreferrer" className="group cursor-pointer flex items-center gap-3 p-4 transition-all hover:bg-white/[0.025] profile-card"
+                      style={{ borderRadius: "14px", background: isDark ? "rgba(34,197,94,0.05)" : "rgba(34,197,94,0.04)", border: "1px solid rgba(34,197,94,0.18)" }}
+                    >
+                      <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-green-500/12">
+                        <Share2 size={15} className="text-green-500" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>WhatsApp</p>
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+                          </span>
+                          <span className="text-green-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Online</span>
+                        </div>
+                        <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>Resposta em ~2 minutos</p>
+                      </div>
+                      <ChevronRight size={16} className="text-foreground/35 group-hover:text-green-500 group-hover:translate-x-0.5 transition-all" />
+                    </a>
+                    <button className="group cursor-pointer flex items-center gap-3 p-4 transition-all hover:bg-white/[0.025] profile-card text-left"
+                      style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                    >
+                      <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
+                        <User size={15} className="text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>Chat ao vivo</p>
+                        <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>Seg-Sex 9h-22h · Sáb 10h-18h</p>
+                      </div>
+                      <ChevronRight size={16} className="text-foreground/35 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                    </button>
+                  </div>
+
                   <div className="space-y-2">
                     {[
-                      { title: "Central de Ajuda", desc: "Encontre respostas para suas dúvidas", icon: HelpCircle },
-                      { title: "Fale Conosco", desc: "Entre em contato via chat ou e-mail", icon: User },
-                      { title: "Política de Trocas", desc: "Saiba como trocar ou devolver", icon: Receipt },
+                      { title: "Central de Ajuda", desc: "FAQ, tutoriais e respostas rápidas", icon: HelpCircle },
+                      { title: "Política de Trocas e Devolução", desc: "Você tem 7 dias após receber", icon: Receipt },
                       { title: "Rastrear Pedido", desc: "Acompanhe sua entrega em tempo real", icon: Truck },
+                      { title: "E-mail", desc: "suporte@pcyes.com.br · resposta em até 24h", icon: Info },
                     ].map((item) => (
-                      <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
+                      <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
                         style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
                         <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
@@ -1033,17 +1111,35 @@ export function ProfilePage() {
 
               {activeTab === "privacy" && (
                 <motion.div key="privacy" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Privacidade</h2>
+                  <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Privacidade e Segurança</h2>
+
+                  {/* 2FA toggle destaque */}
+                  <div className="flex items-center gap-4 p-4 mb-3" style={{ borderRadius: "14px", background: isDark ? "rgba(34,197,94,0.04)" : "rgba(34,197,94,0.03)", border: "1px solid rgba(34,197,94,0.18)" }}>
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-green-500/12">
+                      <Shield size={15} className="text-green-500" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>Autenticação em 2 fatores</p>
+                        <span className="px-2 py-0.5 bg-yellow-500/15 text-yellow-500" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>RECOMENDADO</span>
+                      </div>
+                      <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Adicione uma camada extra de segurança ao seu login</p>
+                    </div>
+                    <button className="px-3.5 py-1.5 bg-green-500 text-white hover:brightness-110 transition-all cursor-pointer flex-shrink-0" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Ativar</button>
+                  </div>
+
                   <div className="space-y-2">
                     {[
+                      { title: "Baixar meus dados", desc: "Exporte todas as suas informações (LGPD)", icon: Receipt, danger: false },
+                      { title: "Dispositivos conectados", desc: "Veja e gerencie sessões ativas", icon: User, danger: false },
                       { title: "Política de Privacidade", desc: "Como tratamos seus dados pessoais", icon: Shield, danger: false },
                       { title: "Cookies", desc: "Gerencie suas preferências de cookies", icon: Info, danger: false },
                       { title: "Excluir minha conta", desc: "Solicite a remoção permanente dos seus dados", icon: XIcon, danger: true },
                     ].map((item) => (
-                      <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
+                      <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
                         style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
-                        <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${item.danger ? "bg-red-500/10" : ""}`} style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(255,43,46,0.08)" }}>
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(255,43,46,0.08)" }}>
                           <item.icon size={15} className={item.danger ? "text-red-400" : "text-primary"} />
                         </div>
                         <div className="text-left flex-1">
