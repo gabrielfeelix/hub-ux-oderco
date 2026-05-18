@@ -684,7 +684,7 @@ function FiltersBar({
         borderBottom: "1px solid rgba(255,255,255,0.05)",
       }}
     >
-      <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-3">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-5">
         <div className="flex items-center gap-2.5 flex-wrap">
           {/* search */}
           <div

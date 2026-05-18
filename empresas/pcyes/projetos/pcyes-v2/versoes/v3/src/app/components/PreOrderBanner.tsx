@@ -328,7 +328,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           }}
         >
           <Rocket size={15} strokeWidth={2.4} />
-          {remaining > 0 ? "Reservar agora" : "Esgotado"}
+          {remaining > 0 ? "Comprar agora" : "Esgotado"}
         </button>
 
         {/* guarantees */}
