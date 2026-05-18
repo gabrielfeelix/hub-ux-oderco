@@ -112,6 +112,7 @@ function Field({ label, children, required, className }: { label: string; childr
 function PaymentOption({
   icon,
   label,
+  description,
   badge,
   active,
   onClick,
@@ -119,41 +120,53 @@ function PaymentOption({
 }: {
   icon: React.ReactNode;
   label: string;
+  description?: string;
   badge?: string;
   active: boolean;
   onClick: () => void;
   color?: string;
 }) {
+  const accent = color ?? "var(--primary)";
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-2 px-3 py-3 transition-all"
+      className="relative flex flex-col items-start gap-2 px-4 py-4 transition-all cursor-pointer text-left"
       style={{
-        borderRadius: "12px",
+        borderRadius: "14px",
         background: active ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.02)",
-        border: active ? `1.5px solid ${color ?? "var(--primary)"}` : "1px solid rgba(255,255,255,0.08)",
-        boxShadow: active ? `0 14px 32px -16px ${color ?? "rgba(225,6,0,0.4)"}` : "none",
+        border: active ? `1.5px solid ${accent}` : "1px solid rgba(255,255,255,0.08)",
+        boxShadow: active ? `0 18px 40px -20px ${color ?? "rgba(225,6,0,0.5)"}, inset 0 1px 0 rgba(255,255,255,0.04)` : "none",
         color: active ? "#fff" : "rgba(255,255,255,0.65)",
+        minHeight: 84,
       }}
     >
-      <span style={{ color: active ? (color ?? "var(--primary)") : "rgba(255,255,255,0.55)" }}>{icon}</span>
-      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, letterSpacing: "0.02em" }}>{label}</span>
-      {badge && (
-        <span
-          className="ml-auto inline-flex items-center"
-          style={{
-            padding: "2px 6px",
-            borderRadius: "6px",
-            background: "rgba(34,197,94,0.15)",
-            color: "#22c55e",
-            fontFamily: "var(--font-family-inter)",
-            fontSize: "10px",
-            fontWeight: 800,
-            letterSpacing: "0.04em",
-          }}
-        >
-          {badge}
+      <div className="flex w-full items-center gap-2.5">
+        <span className="flex items-center justify-center" style={{ width: 32, height: 32, borderRadius: 9, background: active ? `${color ? color.replace("1)", "0.14)") : "rgba(255,43,46,0.14)"}` : "rgba(255,255,255,0.05)", color: active ? accent : "rgba(255,255,255,0.6)" }}>
+          {icon}
         </span>
+        <span className="flex-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 700, letterSpacing: "0.01em", color: active ? "#fff" : "rgba(255,255,255,0.85)" }}>{label}</span>
+        {badge && (
+          <span
+            className="inline-flex items-center"
+            style={{
+              padding: "3px 7px",
+              borderRadius: "6px",
+              background: "rgba(34,197,94,0.18)",
+              color: "#22c55e",
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10px",
+              fontWeight: 800,
+              letterSpacing: "0.04em",
+            }}
+          >
+            {badge}
+          </span>
+        )}
+      </div>
+      {description && (
+        <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500, color: active ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.45)", lineHeight: 1.4 }}>
+          {description}
+        </p>
       )}
     </button>
   );
@@ -1028,14 +1041,16 @@ export function CheckoutPage() {
                             <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
                               Endereços salvos
                             </span>
-                            <button
-                              type="button"
-                              onClick={() => setAddressModalOpen(true)}
-                              className="text-primary hover:brightness-110 transition-all cursor-pointer"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
-                            >
-                              + Adicionar novo
-                            </button>
+                            {selectedAddressId && (
+                              <button
+                                type="button"
+                                onClick={() => setSelectedAddressId(null)}
+                                className="text-white/55 hover:text-white transition-all cursor-pointer"
+                                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
+                              >
+                                Editar manualmente
+                              </button>
+                            )}
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             {user.addresses.map((a) => {
@@ -1067,14 +1082,27 @@ export function CheckoutPage() {
                                 </button>
                               );
                             })}
+                            {/* Card 'Adicionar novo' — mesmo tamanho dos demais */}
+                            <button
+                              type="button"
+                              onClick={() => setAddressModalOpen(true)}
+                              className="flex items-center gap-2 justify-center p-3 transition-all cursor-pointer hover:brightness-110"
+                              style={{
+                                borderRadius: 12,
+                                background: "rgba(255,43,46,0.04)",
+                                border: "1.5px dashed rgba(255,43,46,0.35)",
+                                minHeight: 60,
+                              }}
+                            >
+                              <span style={{ width: 24, height: 24, borderRadius: 9999, background: "rgba(255,43,46,0.18)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--primary)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 700, lineHeight: 1 }}>+</span>
+                              <span className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}>Adicionar novo endereço</span>
+                            </button>
                           </div>
-                          <div className="mt-3 h-px w-full" style={{ background: "rgba(255,255,255,0.06)" }} />
-                          <p className="mt-3 text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
-                            Ou edite os campos abaixo manualmente.
-                          </p>
                         </div>
                       )}
 
+                      {/* Form só aparece se: não logado / sem endereços salvos / clicou em 'Editar manualmente' (selectedAddressId === null) */}
+                      {(!isLoggedIn || !user || user.addresses.length === 0 || selectedAddressId === null) && (
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <Field label="CEP" required>
                           <div className="relative">
@@ -1168,6 +1196,7 @@ export function CheckoutPage() {
                           />
                         </Field>
                       </div>
+                      )}
                     </>
                   )}
 
@@ -1336,10 +1365,10 @@ export function CheckoutPage() {
                       </div>
 
                       {/* Traditional methods */}
-                      <div className="grid grid-cols-1 gap-2.5 md:grid-cols-3 mb-6">
-                        <PaymentOption icon={<Zap size={16} strokeWidth={2.4} fill="currentColor" />} label="PIX" badge="-10%" active={payment === "pix"} onClick={() => setPayment("pix")} color="#22c55e" />
-                        <PaymentOption icon={<CreditCard size={16} strokeWidth={2} />} label="Cartão" active={payment === "credit"} onClick={() => setPayment("credit")} />
-                        <PaymentOption icon={<Wallet size={16} strokeWidth={2} />} label="Boleto" active={payment === "boleto"} onClick={() => setPayment("boleto")} />
+                      <div className="grid grid-cols-1 gap-3 md:grid-cols-3 mb-6">
+                        <PaymentOption icon={<Zap size={18} strokeWidth={2.4} fill="currentColor" />} label="Pix" description="Aprovação instantânea · 10% OFF" badge="-10%" active={payment === "pix"} onClick={() => setPayment("pix")} color="#22c55e" />
+                        <PaymentOption icon={<CreditCard size={18} strokeWidth={2} />} label="Cartão" description="Até 12x · seu cartão salvo" active={payment === "credit"} onClick={() => setPayment("credit")} />
+                        <PaymentOption icon={<Wallet size={18} strokeWidth={2} />} label="Boleto" description="Vence em 3 dias úteis" active={payment === "boleto"} onClick={() => setPayment("boleto")} />
                       </div>
 
                       <AnimatePresence mode="wait">
@@ -1359,14 +1388,16 @@ export function CheckoutPage() {
                                   <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
                                     Cartões salvos
                                   </span>
-                                  <button
-                                    type="button"
-                                    onClick={() => setCardModalOpen(true)}
-                                    className="text-primary hover:brightness-110 transition-all cursor-pointer"
-                                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
-                                  >
-                                    + Adicionar novo
-                                  </button>
+                                  {selectedCardId && (
+                                    <button
+                                      type="button"
+                                      onClick={() => setSelectedCardId(null)}
+                                      className="text-white/55 hover:text-white transition-all cursor-pointer"
+                                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
+                                    >
+                                      Usar outro cartão
+                                    </button>
+                                  )}
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                   {user.cards.map((c) => {
@@ -1395,13 +1426,32 @@ export function CheckoutPage() {
                                       </button>
                                     );
                                   })}
+                                  {/* Card 'Adicionar novo' */}
+                                  <button
+                                    type="button"
+                                    onClick={() => setCardModalOpen(true)}
+                                    className="flex items-center gap-2 justify-center p-3 transition-all cursor-pointer hover:brightness-110"
+                                    style={{
+                                      borderRadius: 12,
+                                      background: "rgba(255,43,46,0.04)",
+                                      border: "1.5px dashed rgba(255,43,46,0.35)",
+                                      minHeight: 60,
+                                    }}
+                                  >
+                                    <span style={{ width: 24, height: 24, borderRadius: 9999, background: "rgba(255,43,46,0.18)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--primary)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 700, lineHeight: 1 }}>+</span>
+                                    <span className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}>Adicionar novo cartão</span>
+                                  </button>
                                 </div>
-                                <p className="mt-3 text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
-                                  CVV precisa ser digitado a cada compra por segurança.
-                                </p>
+                                {selectedCardId && (
+                                  <p className="mt-3 text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                                    CVV precisa ser digitado a cada compra por segurança.
+                                  </p>
+                                )}
                               </div>
                             )}
 
+                            {/* Form de novo cartão só aparece se: não logado / sem cartões / clicou em 'Usar outro cartão' */}
+                            {(!isLoggedIn || !user || user.cards.length === 0 || selectedCardId === null) && (
                             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mt-2">
                               <Field label="Nome no cartão" required className="md:col-span-2">
                                 <input
@@ -1446,6 +1496,11 @@ export function CheckoutPage() {
                                   style={inputStyle}
                                 />
                               </Field>
+                            </div>
+                            )}
+
+                            {/* Parcelas — visível sempre que payment=credit (cartão novo ou salvo) */}
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mt-2">
                               <Field label="Parcelas" className="md:col-span-2">
                                 <select
                                   value={installments}
