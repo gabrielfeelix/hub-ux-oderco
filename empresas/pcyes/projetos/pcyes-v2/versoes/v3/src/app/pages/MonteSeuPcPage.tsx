@@ -548,6 +548,517 @@ const getAmbient = (type?: string): AmbientConfig => {
 
 type View = "welcome" | "quiz" | "presets" | "builder" | "review";
 
+type QuizAnswers = { use?: string; budget?: string; priority?: string };
+type PresetTier = "start" | "pro" | "ultra";
+
+type Preset = {
+  id: PresetTier;
+  name: string;
+  tagline: string;
+  description: string;
+  price: number;
+  installments: { count: number; value: number };
+  accent: string;
+  glow: string;
+  icon: React.ReactNode;
+  badge?: string;
+  heroImage: string;
+  performance: string;
+  highlights: string[];
+  selections: Record<string, string>;
+};
+
+const presets: Preset[] = [
+  {
+    id: "start",
+    name: "Start",
+    tagline: "Começo digno",
+    description: "Performance honesta pra jogar em 1080p e dia-a-dia tranquilo.",
+    price: 3499,
+    installments: { count: 10, value: 349.9 },
+    accent: "#22c55e",
+    glow: "rgba(34,197,94,0.35)",
+    icon: <Cpu className="h-5 w-5" />,
+    heroImage: "/home/category-computers.png",
+    performance: "1080p / Dia-a-dia",
+    highlights: ["Intel Core i5-13400F", "16GB DDR4 3200MHz", "GPU entrada", "SSD NVMe 1TB", "Fonte 550W Bronze"],
+    selections: {
+      cpu: "cpu-1", motherboard: "mb-1", ram: "ram-2", gpu: "gpu-1",
+      cooling: "cooling-1", storage: "storage-1", case: "case-1",
+      psu: "psu-1", peripherals: "peripherals-1",
+    },
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    tagline: "Sweet spot performance",
+    description: "2K 144Hz com folga, edição rápida. Build mais pedida.",
+    price: 7499,
+    installments: { count: 10, value: 749.9 },
+    accent: "#ff2b2e",
+    glow: "rgba(255,43,46,0.45)",
+    icon: <Zap className="h-5 w-5" />,
+    badge: "MAIS PEDIDA",
+    heroImage: "/home/category-pc-gamer.png",
+    performance: "2K 144Hz / Render",
+    highlights: ["Intel Core i7-14700K", "32GB DDR5 5600MHz", "GPU high-end", "SSD NVMe 2TB", "Fonte 850W Gold"],
+    selections: {
+      cpu: "cpu-2", motherboard: "mb-1", ram: "ram-3", gpu: "gpu-2",
+      cooling: "cooling-2", storage: "storage-2", case: "case-2",
+      psu: "psu-3", peripherals: "peripherals-2",
+    },
+  },
+  {
+    id: "ultra",
+    name: "Ultra",
+    tagline: "Top tier sem freio",
+    description: "4K alto FPS, render pesado, streaming. Headroom pra anos.",
+    price: 14999,
+    installments: { count: 10, value: 1499.9 },
+    accent: "#a78bfa",
+    glow: "rgba(167,139,250,0.4)",
+    icon: <Sparkles className="h-5 w-5" />,
+    heroImage: "/home/hero-videogame.png",
+    performance: "4K alto FPS / Workstation",
+    highlights: ["AMD Ryzen 7 7800X3D", "32GB DDR5 6000MHz", "GPU flagship", "SSD NVMe 4TB", "Fonte 1000W Gold"],
+    selections: {
+      cpu: "cpu-4", motherboard: "mb-4", ram: "ram-4", gpu: "gpu-3",
+      cooling: "cooling-3", storage: "storage-3", case: "case-3",
+      psu: "psu-4", peripherals: "peripherals-3",
+    },
+  },
+];
+
+const recommendPreset = (a: QuizAnswers): PresetTier => {
+  if (a.budget === "12+" || a.priority === "fps-max") return "ultra";
+  if (a.budget === "8-12" || a.budget === "5-8" || a.priority === "render") return "pro";
+  return "start";
+};
+
+const quizSteps = [
+  {
+    id: "use" as const,
+    title: "Pra que vai usar?",
+    subtitle: "Vamos entender seu uso principal",
+    options: [
+      { id: "gaming-pro", label: "Gaming competitivo", desc: "FPS, esports, low-latency" },
+      { id: "gaming-casual", label: "Gaming casual", desc: "AAA, RPG, single-player" },
+      { id: "edit", label: "Trabalho / Edição", desc: "Vídeo, design, 3D, dev" },
+      { id: "stream", label: "Streaming / Live", desc: "Captura + encode + chat" },
+      { id: "general", label: "Uso geral", desc: "Estudos, leve, multimídia" },
+    ],
+  },
+  {
+    id: "budget" as const,
+    title: "Qual seu orçamento?",
+    subtitle: "Otimizamos a build dentro do seu range",
+    options: [
+      { id: "3-5", label: "R$ 3.000 – 5.000", desc: "Setup entrada digno" },
+      { id: "5-8", label: "R$ 5.000 – 8.000", desc: "Sweet spot custo-benefício" },
+      { id: "8-12", label: "R$ 8.000 – 12.000", desc: "Performance alta sustentada" },
+      { id: "12+", label: "R$ 12.000+", desc: "Top de linha sem freio" },
+    ],
+  },
+  {
+    id: "priority" as const,
+    title: "O que mais importa?",
+    subtitle: "Onde concentrar o investimento",
+    options: [
+      { id: "fps-max", label: "FPS máximo", desc: "GPU > tudo" },
+      { id: "render", label: "Render / Multitarefa", desc: "CPU forte, mais RAM" },
+      { id: "aesthetic", label: "Estética / RGB", desc: "Bonito também conta" },
+      { id: "balance", label: "Equilíbrio total", desc: "Tudo médio-alto" },
+    ],
+  },
+];
+
+function QuizFlow({
+  onComplete,
+  onBack,
+}: {
+  onComplete: (rec: PresetTier) => void;
+  onBack: () => void;
+}) {
+  const [stepIdx, setStepIdx] = useState(0);
+  const [answers, setAnswers] = useState<QuizAnswers>({});
+  const step = quizSteps[stepIdx];
+  const progress = ((stepIdx + 1) / quizSteps.length) * 100;
+
+  const handlePick = (val: string) => {
+    const next = { ...answers, [step.id]: val };
+    setAnswers(next);
+    if (stepIdx < quizSteps.length - 1) setStepIdx(stepIdx + 1);
+    else onComplete(recommendPreset(next));
+  };
+
+  return (
+    <div className="mx-auto max-w-[680px] px-6 py-12 md:py-16">
+      <div className="mb-10">
+        <div className="mb-3 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => (stepIdx === 0 ? onBack() : setStepIdx(stepIdx - 1))}
+            className="flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+          >
+            <ArrowLeft size={13} /> Voltar
+          </button>
+          <span
+            className="uppercase text-zinc-500"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10.5px",
+              letterSpacing: "0.22em",
+              fontWeight: 700,
+            }}
+          >
+            {stepIdx + 1} / {quizSteps.length}
+          </span>
+        </div>
+        <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.06]">
+          <motion.div
+            className="h-full"
+            initial={false}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
+              boxShadow: "0 0 12px rgba(255,43,46,0.55)",
+            }}
+          />
+        </div>
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={step.id}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2
+            className="mb-1 text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "30px",
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {step.title}
+          </h2>
+          <p className="mb-8 text-zinc-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>
+            {step.subtitle}
+          </p>
+          <div role="radiogroup" aria-label={step.title} className="space-y-2.5">
+            {step.options.map((opt) => {
+              const selected = answers[step.id] === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  onClick={() => handlePick(opt.id)}
+                  className={cn(
+                    "group flex w-full cursor-pointer items-center gap-4 rounded-[18px] border p-5 text-left transition-all",
+                    selected
+                      ? "border-primary/55 bg-primary/[0.06]"
+                      : "border-white/[0.08] bg-[#0f0f12] hover:border-primary/40 hover:bg-[#15151a]",
+                  )}
+                  style={
+                    selected
+                      ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.15), 0 18px 50px -20px rgba(255,43,46,0.3)" }
+                      : undefined
+                  }
+                >
+                  <div
+                    className={cn(
+                      "relative flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all",
+                      selected ? "border-primary" : "border-white/25 group-hover:border-primary/60",
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "h-2 w-2 rounded-full transition-all",
+                        selected ? "scale-100 bg-primary" : "scale-0 bg-primary/0 group-hover:scale-50 group-hover:bg-primary/40",
+                      )}
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p
+                      className="text-white"
+                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: 600 }}
+                    >
+                      {opt.label}
+                    </p>
+                    <p
+                      className={cn("mt-0.5 transition-colors", selected ? "text-zinc-300" : "text-zinc-400")}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                    >
+                      {opt.desc}
+                    </p>
+                  </div>
+                  <ArrowRight
+                    size={16}
+                    className={cn(
+                      "transition-all",
+                      selected ? "text-primary" : "text-zinc-600 group-hover:translate-x-1 group-hover:text-primary",
+                    )}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
+const getSpecIcon = (text: string) => {
+  if (/i\d|Ryzen/i.test(text)) return <Cpu size={13} />;
+  if (/GPU|RTX|GTX/i.test(text)) return <Monitor size={13} />;
+  if (/DDR|RAM/i.test(text)) return <Sparkles size={13} />;
+  if (/SSD|HD|NVMe|TB|GB/i.test(text)) return <HardDrive size={13} />;
+  if (/W\b|Watt|Fonte|Gold|Bronze/i.test(text)) return <Zap size={13} />;
+  return <Settings size={13} />;
+};
+
+function PresetCard({
+  preset,
+  isRecommended,
+  onApply,
+}: {
+  preset: Preset;
+  isRecommended: boolean;
+  onApply: () => void;
+}) {
+  return (
+    <article
+      className={cn(
+        "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300",
+        isRecommended ? "border-primary/55" : "border-white/[0.08] hover:border-white/[0.2]",
+      )}
+      style={
+        isRecommended
+          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.2), 0 40px 80px -30px rgba(255,43,46,0.4)" }
+          : undefined
+      }
+    >
+      <div className="relative aspect-[16/11] w-full overflow-hidden bg-black">
+        <img
+          src={preset.heroImage}
+          alt={`Setup ${preset.name}`}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-[1.04]"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = "none";
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 75%, #0d0d0d 100%)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: `radial-gradient(circle at 50% 100%, ${preset.glow} 0%, transparent 50%)` }}
+        />
+        <div className="absolute left-4 top-4 flex flex-col gap-1.5">
+          {isRecommended && (
+            <span
+              className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "9.5px",
+                letterSpacing: "0.16em",
+                fontWeight: 700,
+                boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+              }}
+            >
+              <Sparkles size={9} /> SUGERIDA PRA VOCÊ
+            </span>
+          )}
+          {preset.badge && !isRecommended && (
+            <span
+              className="inline-flex w-fit items-center rounded-full border border-white/15 bg-black/55 px-2.5 py-1 text-white backdrop-blur"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "9.5px",
+                letterSpacing: "0.16em",
+                fontWeight: 700,
+              }}
+            >
+              {preset.badge}
+            </span>
+          )}
+        </div>
+        <div
+          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-md"
+          style={{
+            background: `${preset.accent}22`,
+            border: `1px solid ${preset.accent}55`,
+            color: preset.accent,
+          }}
+        >
+          {preset.icon}
+        </div>
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-4">
+          <p
+            className="mb-1 uppercase"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "9.5px",
+              letterSpacing: "0.22em",
+              fontWeight: 700,
+              color: preset.accent,
+            }}
+          >
+            {preset.performance}
+          </p>
+          <h3
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "30px",
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              lineHeight: 1,
+            }}
+          >
+            {preset.name}
+          </h3>
+          <p
+            className="mt-1 text-white/85"
+            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "13.5px", fontWeight: 500 }}
+          >
+            {preset.tagline}
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <p
+          className="mb-4 text-zinc-400"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", lineHeight: 1.55 }}
+        >
+          {preset.description}
+        </p>
+        <ul className="mb-5 space-y-1.5">
+          {preset.highlights.map((h) => (
+            <li
+              key={h}
+              className="flex items-center gap-2.5 text-zinc-200"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 500 }}
+            >
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-[#1a1a1f] text-zinc-400">
+                {getSpecIcon(h)}
+              </span>
+              {h}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-auto flex items-end justify-between border-t border-white/[0.06] pt-4">
+          <div>
+            <p
+              className="text-white tabular-nums"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "24px",
+                fontWeight: 700,
+                letterSpacing: "-0.015em",
+                lineHeight: 1,
+              }}
+            >
+              {formatBRL(preset.price)}
+            </p>
+            <p className="mt-1 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
+              {preset.installments.count}x de {formatBRL(preset.installments.value)}
+            </p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={onApply}
+          className={cn(
+            "mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] transition-all duration-300",
+            isRecommended
+              ? "bg-primary text-white hover:brightness-110"
+              : "border border-white/[0.12] bg-white/[0.03] text-white hover:border-white/30 hover:bg-white/[0.06]",
+          )}
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "13px",
+            fontWeight: 600,
+            letterSpacing: "0.015em",
+          }}
+        >
+          Aplicar e customizar <ArrowRight size={14} />
+        </button>
+      </div>
+    </article>
+  );
+}
+
+function PresetGallery({
+  recommended,
+  onApply,
+  onBack,
+}: {
+  recommended: PresetTier | null;
+  onApply: (preset: Preset) => void;
+  onBack: () => void;
+}) {
+  return (
+    <div className="mx-auto max-w-[1320px] px-6 py-12 md:py-14">
+      <button
+        type="button"
+        onClick={onBack}
+        className="mb-8 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white cursor-pointer"
+        style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600 }}
+      >
+        <ArrowLeft size={14} /> Voltar
+      </button>
+      <div className="mb-10 text-center">
+        <p
+          className="mb-3 uppercase text-zinc-500"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "10.5px",
+            letterSpacing: "0.28em",
+            fontWeight: 700,
+          }}
+        >
+          // Builds prontas
+        </p>
+        <h2
+          className="mb-3 text-white"
+          style={{
+            fontFamily: "var(--font-family-figtree)",
+            fontSize: "clamp(28px, 4vw, 42px)",
+            fontWeight: 700,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Escolha seu <span className="text-primary">setup</span>
+        </h2>
+        <p
+          className="mx-auto max-w-[520px] text-zinc-400"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "14.5px", lineHeight: 1.6 }}
+        >
+          Builds montadas e testadas. Aplique e customize qualquer peça antes de finalizar.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+        {presets.map((p) => (
+          <PresetCard key={p.id} preset={p} isRecommended={recommended === p.id} onApply={() => onApply(p)} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TopBar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl">
@@ -749,9 +1260,23 @@ export function MonteSeuPcPage() {
   const [activeView, setActiveView] = useState(0);
   const [actionFeedback, setActionFeedback] = useState("");
   const [view, setView] = useState<View>("welcome");
+  const [quizRec, setQuizRec] = useState<PresetTier | null>(null);
 
   const handlePath = (p: "builder" | "quiz" | "presets") => setView(p);
-  const goToWelcome = () => setView("welcome");
+  const goToWelcome = () => {
+    setQuizRec(null);
+    setView("welcome");
+  };
+  const handleQuizComplete = (rec: PresetTier) => {
+    setQuizRec(rec);
+    setView("presets");
+  };
+  const handleApplyPreset = (preset: Preset) => {
+    setSelections(preset.selections);
+    setActiveCategory("cpu");
+    setExpandedCategory("cpu");
+    setView("builder");
+  };
 
   const categoriesWithSelected = useMemo(
     () =>
@@ -952,22 +1477,8 @@ export function MonteSeuPcPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="mx-auto max-w-[720px] px-6 py-16 text-center"
           >
-            <p className="mb-2 text-zinc-500" style={{ fontSize: "11px", letterSpacing: "0.24em", fontWeight: 700 }}>
-              // QUIZ — em construção (Fase B)
-            </p>
-            <h2 className="text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: 700 }}>
-              3 perguntas pra recomendar sua build
-            </h2>
-            <button
-              type="button"
-              onClick={goToWelcome}
-              className="mt-6 rounded-full border border-white/20 px-5 py-2 text-zinc-300 hover:bg-white/[0.06]"
-              style={{ fontSize: "13px", fontWeight: 600 }}
-            >
-              <ArrowLeft size={13} className="mr-1.5 inline" /> Voltar
-            </button>
+            <QuizFlow onComplete={handleQuizComplete} onBack={goToWelcome} />
           </motion.div>
         )}
         {view === "presets" && (
@@ -977,22 +1488,12 @@ export function MonteSeuPcPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="mx-auto max-w-[1180px] px-6 py-16 text-center"
           >
-            <p className="mb-2 text-zinc-500" style={{ fontSize: "11px", letterSpacing: "0.24em", fontWeight: 700 }}>
-              // BUILDS PRONTAS — em construção (Fase B)
-            </p>
-            <h2 className="text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: 700 }}>
-              Start · Pro · Ultra
-            </h2>
-            <button
-              type="button"
-              onClick={goToWelcome}
-              className="mt-6 rounded-full border border-white/20 px-5 py-2 text-zinc-300 hover:bg-white/[0.06]"
-              style={{ fontSize: "13px", fontWeight: 600 }}
-            >
-              <ArrowLeft size={13} className="mr-1.5 inline" /> Voltar
-            </button>
+            <PresetGallery
+              recommended={quizRec}
+              onApply={handleApplyPreset}
+              onBack={() => setView(quizRec ? "quiz" : "welcome")}
+            />
           </motion.div>
         )}
         {view === "review" && (
