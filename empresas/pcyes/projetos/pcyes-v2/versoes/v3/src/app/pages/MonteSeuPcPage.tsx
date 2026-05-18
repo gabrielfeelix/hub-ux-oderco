@@ -1807,7 +1807,13 @@ function HorizontalStepper({
 }) {
   const currentIdx = categories.findIndex((c) => c.id === currentId);
   return (
-    <div className="border-b border-white/[0.05] bg-[#0a0a0a]/95 backdrop-blur-xl">
+    <div
+      className="border-b border-white/[0.05] backdrop-blur-xl"
+      style={{
+        background:
+          "linear-gradient(180deg, rgba(15,15,18,0.85) 0%, rgba(10,10,12,0.9) 100%)",
+      }}
+    >
       <div className="mx-auto max-w-[1760px] overflow-x-auto px-6 py-6">
         <div className="relative flex min-w-fit items-start justify-between gap-2">
           <div className="pointer-events-none absolute left-0 right-0 top-[28px] h-[2px] bg-white/[0.06]" />
@@ -1902,65 +1908,88 @@ function ProductRow({
       aria-pressed={selected}
       aria-label={`Selecionar ${option.name}${option.standard ? " (sugerida PCYES)" : ""}`}
       className={cn(
-        "group flex w-full cursor-pointer items-center gap-4 rounded-[16px] border p-4 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]",
+        "group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[16px] border text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]",
         selected
-          ? "border-primary bg-primary/[0.05]"
-          : "border-white/[0.08] bg-[#0f0f12] hover:border-white/[0.18] hover:bg-[#15151a]",
+          ? "border-primary bg-gradient-to-br from-primary/[0.08] to-primary/[0.02] -translate-y-0.5"
+          : "border-white/[0.08] bg-gradient-to-br from-[#15151a] to-[#0f0f12] hover:border-white/[0.22] hover:from-[#1a1a20] hover:to-[#15151a] hover:-translate-y-0.5",
       )}
       style={
         selected
-          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.45), 0 18px 50px -20px rgba(255,43,46,0.35)" }
-          : undefined
+          ? {
+              boxShadow:
+                "0 0 0 1px rgba(255,43,46,0.4), 0 22px 60px -22px rgba(255,43,46,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
+            }
+          : {
+              boxShadow:
+                "0 8px 24px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03)",
+            }
       }
     >
-      <div className="h-[88px] w-[88px] shrink-0 overflow-hidden rounded-lg bg-[#1a1a1f]">
+      {option.standard && (
+        <span
+          className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 text-white"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "9px",
+            letterSpacing: "0.16em",
+            fontWeight: 700,
+            boxShadow: "0 6px 18px -4px rgba(255,43,46,0.55)",
+          }}
+        >
+          <Sparkles size={8} /> SUGERIDA
+        </span>
+      )}
+      <div
+        className={cn(
+          "absolute right-3 top-3 z-10 flex h-6 w-6 items-center justify-center rounded-md border-2 transition-all",
+          selected ? "border-primary bg-primary" : "border-white/30 bg-black/30 backdrop-blur-sm group-hover:border-primary/60",
+        )}
+      >
+        {selected && <Check size={13} className="text-white" strokeWidth={3} />}
+      </div>
+      <div className="relative aspect-[5/4] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06), transparent 60%)",
+          }}
+        />
         {option.image ? (
           <img
             src={option.image}
             alt=""
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+            className="absolute inset-0 h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-[1.06]"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-zinc-500">{category.icon}</div>
+          <div className="flex h-full w-full items-center justify-center text-zinc-500">
+            {category.icon}
+          </div>
         )}
       </div>
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-center gap-2">
-          <p
-            className="text-white"
-            style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "14px",
-              fontWeight: 600,
-              letterSpacing: "-0.005em",
-              lineHeight: 1.3,
-            }}
-          >
-            {option.name}
-          </p>
-          {option.standard && (
-            <span
-              className="rounded-full bg-primary/15 px-2 py-0.5 text-primary"
-              style={{
-                fontFamily: "var(--font-family-inter)",
-                fontSize: "9px",
-                letterSpacing: "0.16em",
-                fontWeight: 700,
-              }}
-            >
-              SUGERIDA
-            </span>
-          )}
-        </div>
+      <div className="flex flex-1 flex-col gap-2.5 border-t border-white/[0.05] p-4">
+        <p
+          className="line-clamp-2 text-white"
+          style={{
+            fontFamily: "var(--font-family-figtree)",
+            fontSize: "13.5px",
+            fontWeight: 600,
+            letterSpacing: "-0.005em",
+            lineHeight: 1.35,
+            minHeight: "36px",
+          }}
+        >
+          {option.name}
+        </p>
         {option.highlights && option.highlights.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {option.highlights.slice(0, 4).map((h) => (
+          <div className="flex flex-wrap gap-1">
+            {option.highlights.slice(0, 3).map((h) => (
               <span
                 key={h}
-                className="rounded border border-white/[0.08] bg-[#1a1a1f] px-2 py-0.5 text-zinc-300"
+                className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
+                  fontSize: "10px",
                   fontWeight: 500,
                 }}
               >
@@ -1969,26 +1998,27 @@ function ProductRow({
             ))}
           </div>
         )}
-      </div>
-      <div className="flex shrink-0 flex-col items-end gap-2">
-        <span
-          className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
-          style={{
-            fontFamily: "var(--font-family-figtree)",
-            fontSize: "17px",
-            fontWeight: 700,
-            letterSpacing: "-0.005em",
-          }}
-        >
-          {formatBRL(option.price)}
-        </span>
-        <div
-          className={cn(
-            "relative flex h-6 w-6 items-center justify-center rounded-md border-2 transition-all",
-            selected ? "border-primary bg-primary" : "border-white/25 group-hover:border-primary/60",
-          )}
-        >
-          {selected && <Check size={13} className="text-white" strokeWidth={3} />}
+        <div className="mt-auto flex items-baseline justify-between pt-1">
+          <span
+            className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "18px",
+              fontWeight: 700,
+              letterSpacing: "-0.005em",
+            }}
+          >
+            {formatBRL(option.price)}
+          </span>
+          <span
+            className="text-zinc-500"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10.5px",
+            }}
+          >
+            10x {formatBRL(option.price / 10)}
+          </span>
         </div>
       </div>
     </button>
@@ -2011,11 +2041,17 @@ function SelectedItemCard({
   isLast: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0d0d0d]">
-      <div className="border-b border-white/[0.06] px-5 pt-4 pb-3">
+    <div
+      className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-gradient-to-b from-[#15151a] to-[#0d0d0d]"
+      style={{
+        boxShadow:
+          "0 16px 40px -16px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)",
+      }}
+    >
+      <div className="border-b border-white/[0.06] bg-gradient-to-b from-primary/[0.06] to-transparent px-5 pt-4 pb-3">
         <div className="flex items-center justify-between">
           <p
-            className="uppercase text-zinc-400"
+            className="uppercase text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "10px",
@@ -2144,7 +2180,13 @@ function ConfiguracaoSelecionadaCard({
 }) {
   const filled = categories.filter((c) => c.selectedOption);
   return (
-    <div className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0d0d0d]">
+    <div
+      className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-gradient-to-b from-[#13131a] to-[#0d0d0d]"
+      style={{
+        boxShadow:
+          "0 16px 40px -16px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)",
+      }}
+    >
       <div className="border-b border-white/[0.06] px-5 pt-4 pb-3">
         <div className="flex items-baseline justify-between">
           <p
@@ -2515,7 +2557,21 @@ export function MonteSeuPcPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080808] text-[#f5f5f5]">
+    <div
+      className="relative min-h-screen text-[#f5f5f5]"
+      style={{
+        background:
+          "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,43,46,0.07) 0%, transparent 55%), radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255,43,46,0.04) 0%, transparent 60%), linear-gradient(180deg, #0a0a0c 0%, #080808 40%, #0a0a0c 100%)",
+      }}
+    >
+      <div
+        className="pointer-events-none fixed inset-0 opacity-[0.025]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 12% 22%, #fff 0.5px, transparent 1px), radial-gradient(circle at 38% 78%, #fff 0.5px, transparent 1px), radial-gradient(circle at 64% 30%, #fff 0.5px, transparent 1px), radial-gradient(circle at 84% 65%, #fff 0.5px, transparent 1px), radial-gradient(circle at 22% 88%, #fff 0.5px, transparent 1px)",
+        }}
+        aria-hidden="true"
+      />
       <TopBar />
       <AnimatePresence mode="wait">
         {view === "welcome" && (
@@ -2785,10 +2841,10 @@ export function MonteSeuPcPage() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -16 }}
                           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                          className="space-y-2.5"
+                          className="grid grid-cols-1 gap-3 sm:grid-cols-2"
                         >
                           {visibleOptions.length === 0 ? (
-                            <div className="rounded-[14px] border border-white/[0.06] bg-[#0f0f12] px-6 py-12 text-center">
+                            <div className="rounded-[14px] border border-white/[0.06] bg-[#0f0f12] px-6 py-12 text-center sm:col-span-2">
                               <p
                                 className="text-white"
                                 style={{
