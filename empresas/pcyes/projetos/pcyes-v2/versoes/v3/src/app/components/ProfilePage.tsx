@@ -318,7 +318,10 @@ export function ProfilePage() {
 
                   {/* Hero card: pedido em rota com timeline anti-ansiedade OU estado de calma */}
                   {(() => {
-                    const nextOrder = user.orders.find((o) => o.status === "shipped" || o.status === "processing");
+                    const activeOrdersAll = user.orders.filter((o) => o.status === "shipped" || o.status === "processing");
+                    const shippedFirst = [...activeOrdersAll].sort((a, b) => (a.status === "shipped" ? -1 : 1));
+                    const nextOrder = shippedFirst[0];
+                    const otherActiveCount = activeOrdersAll.length - 1;
                     if (!nextOrder) {
                       return (
                         <div
@@ -381,6 +384,15 @@ export function ProfilePage() {
                             <span className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
                               {nextOrder.status === "shipped" ? "A caminho" : "Preparando loadout"}
                             </span>
+                            {otherActiveCount > 0 && (
+                              <button
+                                onClick={() => setProfileTab("orders")}
+                                className="cursor-pointer px-2 py-0.5 text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
+                                style={{ borderRadius: "100px", background: "rgba(255,255,255,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.06em" }}
+                              >
+                                +{otherActiveCount} {otherActiveCount === 1 ? "outro pedido" : "outros pedidos"} em rota
+                              </button>
+                            )}
                           </div>
                           <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>
                             {eta}
@@ -532,7 +544,7 @@ export function ProfilePage() {
                     {/* Progress bar XP (cyan/azul, não compete com primary nem com points dourados) */}
                     <div className="px-5 pb-4">
                       <div className="h-1.5 w-full rounded-full overflow-hidden" style={{ background: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
-                        <div className="h-full rounded-full transition-all duration-700" style={{ width: `${dynamicTier.progress * 100}%`, background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 50%, #67e8f9 100%)", boxShadow: "0 0 10px rgba(56,189,248,0.45)" }} />
+                        <div className="h-full rounded-full transition-all duration-700" style={{ width: `${Math.max(dynamicTier.progress, dynamicTier.next ? 0.22 : 1) * 100}%`, background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 50%, #67e8f9 100%)", boxShadow: "0 0 10px rgba(56,189,248,0.45)" }} />
                       </div>
                       <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
                         {user.orders.length} {user.orders.length === 1 ? "pedido" : "pedidos"} · {missionsDone} {missionsDone === 1 ? "missão" : "missões"} concluída{missionsDone === 1 ? "" : "s"}
@@ -565,29 +577,32 @@ export function ProfilePage() {
                       </div>
                     )}
 
-                    {/* Benefícios desbloqueados / próximos */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 px-5 pb-5">
-                      {TIERS.map((t) => {
-                        const unlocked = user.orders.length >= t.minOrders;
-                        const isCurrent = t.level === tier.current.level;
-                        return (
-                          <div key={t.level} className="flex items-start gap-2 p-3" style={{ borderRadius: "10px", background: unlocked ? (isDark ? "rgba(34,197,94,0.04)" : "rgba(34,197,94,0.03)") : (isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)"), border: unlocked ? "1px solid rgba(34,197,94,0.18)" : (isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)") }}>
-                            {unlocked ? (
-                              <Check size={13} className="text-green-500 mt-0.5 flex-shrink-0" />
-                            ) : (
-                              <div className="w-[13px] h-[13px] rounded-full border border-foreground/30 mt-0.5 flex-shrink-0" />
-                            )}
-                            <div className="min-w-0 flex-1">
-                              <p className={`${unlocked ? "text-foreground" : "text-foreground/50"} truncate`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: isCurrent ? 700 : 500 }}>
+                    {/* Benefícios desbloqueados / próximos - lista flat */}
+                    <div className="px-5 pb-5">
+                      <p className="text-foreground/65 mb-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                        Benefícios
+                      </p>
+                      <div className="space-y-1">
+                        {TIERS.map((t) => {
+                          const unlocked = user.orders.length >= t.minOrders;
+                          const isCurrent = t.level === dynamicTier.current.level;
+                          return (
+                            <div key={t.level} className="flex items-center gap-2.5 py-1.5">
+                              {unlocked ? (
+                                <Check size={13} className="text-green-500 flex-shrink-0" />
+                              ) : (
+                                <div className="w-[13px] h-[13px] rounded-full border border-foreground/25 flex-shrink-0" />
+                              )}
+                              <p className={`${unlocked ? "text-foreground" : "text-foreground/35"} flex-1 min-w-0`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: isCurrent ? 600 : 500 }}>
                                 {t.benefit}
                               </p>
-                              <p className={`${unlocked ? "text-green-500" : "text-foreground/40"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.04em" }}>
-                                {unlocked ? `Desbloqueado · ${t.name}` : `${t.name} · ${t.minOrders}+ pedidos`}
-                              </p>
+                              <span className={`${unlocked ? "text-green-500" : "text-foreground/30"} flex-shrink-0`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.04em" }}>
+                                {unlocked ? t.name : `${t.name} · ${t.minOrders}+`}
+                              </span>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
 
                     {/* Callout PCYES Points */}
