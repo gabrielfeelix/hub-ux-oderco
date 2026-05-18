@@ -547,6 +547,7 @@ const getAmbient = (type?: string): AmbientConfig => {
 };
 
 type View = "welcome" | "quiz" | "presets" | "builder" | "review";
+type SortMode = "suggested" | "price-asc" | "price-desc" | "name";
 
 type QuizAnswers = { use?: string; budget?: string; priority?: string };
 type PresetTier = "start" | "pro" | "ultra";
@@ -1238,6 +1239,482 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
   );
 }
 
+function HorizontalStepper({
+  categories,
+  currentId,
+  completedIds,
+  onJump,
+}: {
+  categories: { id: string; title: string; icon: React.ReactNode }[];
+  currentId: string;
+  completedIds: string[];
+  onJump: (id: string) => void;
+}) {
+  const currentIdx = categories.findIndex((c) => c.id === currentId);
+  return (
+    <div className="border-b border-white/[0.05] bg-[#0a0a0a]/95 backdrop-blur-xl">
+      <div className="mx-auto max-w-[1760px] overflow-x-auto px-6 py-6">
+        <div className="relative flex min-w-fit items-start justify-between gap-2">
+          <div className="pointer-events-none absolute left-0 right-0 top-[28px] h-[2px] bg-white/[0.06]" />
+          <motion.div
+            className="pointer-events-none absolute left-0 top-[28px] h-[2px]"
+            initial={false}
+            animate={{
+              width: `${categories.length > 1 ? (currentIdx / (categories.length - 1)) * 100 : 0}%`,
+            }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
+              boxShadow: "0 0 12px rgba(255,43,46,0.45)",
+            }}
+          />
+          {categories.map((c) => {
+            const done = completedIds.includes(c.id);
+            const active = c.id === currentId;
+            return (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => onJump(c.id)}
+                aria-current={active ? "step" : undefined}
+                aria-label={`${c.title}${done ? " (concluída)" : ""}`}
+                className="group relative z-10 flex shrink-0 cursor-pointer flex-col items-center gap-2 px-2 focus-visible:outline-none"
+              >
+                <div
+                  className={cn(
+                    "relative flex h-[56px] w-[56px] items-center justify-center rounded-full transition-all",
+                    active
+                      ? "bg-primary text-white"
+                      : done
+                        ? "bg-primary/15 text-primary"
+                        : "bg-[#16161a] text-zinc-500 group-hover:bg-[#1c1c20] group-hover:text-zinc-300",
+                  )}
+                  style={
+                    active
+                      ? {
+                          boxShadow:
+                            "0 0 0 4px rgba(255,43,46,0.18), 0 0 28px -4px rgba(255,43,46,0.55)",
+                        }
+                      : done
+                        ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25)" }
+                        : { boxShadow: "0 0 0 1px rgba(255,255,255,0.05)" }
+                  }
+                >
+                  {done && !active ? (
+                    <Check size={18} strokeWidth={3} />
+                  ) : (
+                    c.icon
+                  )}
+                </div>
+                <span
+                  className={cn(
+                    "max-w-[80px] text-center transition-colors",
+                    active ? "text-primary" : done ? "text-zinc-200" : "text-zinc-500",
+                  )}
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "11.5px",
+                    fontWeight: active ? 700 : 600,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {c.title}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProductRow({
+  option,
+  category,
+  selected,
+  onSelect,
+}: {
+  option: Option;
+  category: Category;
+  selected: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-pressed={selected}
+      aria-label={`Selecionar ${option.name}${option.standard ? " (sugerida PCYES)" : ""}`}
+      className={cn(
+        "group flex w-full cursor-pointer items-center gap-4 rounded-[16px] border p-4 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]",
+        selected
+          ? "border-primary bg-primary/[0.05]"
+          : "border-white/[0.08] bg-[#0f0f12] hover:border-white/[0.18] hover:bg-[#15151a]",
+      )}
+      style={
+        selected
+          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.45), 0 18px 50px -20px rgba(255,43,46,0.35)" }
+          : undefined
+      }
+    >
+      <div className="h-[88px] w-[88px] shrink-0 overflow-hidden rounded-lg bg-[#1a1a1f]">
+        {option.image ? (
+          <img
+            src={option.image}
+            alt=""
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-zinc-500">{category.icon}</div>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <p
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "14px",
+              fontWeight: 600,
+              letterSpacing: "-0.005em",
+              lineHeight: 1.3,
+            }}
+          >
+            {option.name}
+          </p>
+          {option.standard && (
+            <span
+              className="rounded-full bg-primary/15 px-2 py-0.5 text-primary"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "9px",
+                letterSpacing: "0.16em",
+                fontWeight: 700,
+              }}
+            >
+              SUGERIDA
+            </span>
+          )}
+        </div>
+        {option.highlights && option.highlights.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {option.highlights.slice(0, 4).map((h) => (
+              <span
+                key={h}
+                className="rounded border border-white/[0.08] bg-[#1a1a1f] px-2 py-0.5 text-zinc-300"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10.5px",
+                  fontWeight: 500,
+                }}
+              >
+                {h}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="flex shrink-0 flex-col items-end gap-2">
+        <span
+          className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
+          style={{
+            fontFamily: "var(--font-family-figtree)",
+            fontSize: "17px",
+            fontWeight: 700,
+            letterSpacing: "-0.005em",
+          }}
+        >
+          {formatBRL(option.price)}
+        </span>
+        <div
+          className={cn(
+            "relative flex h-6 w-6 items-center justify-center rounded-md border-2 transition-all",
+            selected ? "border-primary bg-primary" : "border-white/25 group-hover:border-primary/60",
+          )}
+        >
+          {selected && <Check size={13} className="text-white" strokeWidth={3} />}
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function SelectedItemCard({
+  category,
+  option,
+  onPrev,
+  onNext,
+  isFirst,
+  isLast,
+}: {
+  category: Category | undefined;
+  option: Option | undefined;
+  onPrev: () => void;
+  onNext: () => void;
+  isFirst: boolean;
+  isLast: boolean;
+}) {
+  return (
+    <div className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0d0d0d]">
+      <div className="border-b border-white/[0.06] px-5 pt-4 pb-3">
+        <div className="flex items-center justify-between">
+          <p
+            className="uppercase text-zinc-400"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10px",
+              letterSpacing: "0.22em",
+              fontWeight: 700,
+            }}
+          >
+            Item selecionado
+          </p>
+          <span
+            className="text-zinc-500"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10.5px",
+              fontWeight: 500,
+            }}
+          >
+            {category?.title}
+          </span>
+        </div>
+      </div>
+      <div className="px-5 py-4">
+        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[#15151a]">
+          {option?.image ? (
+            <img src={option.image} alt={option.name} className="h-full w-full object-contain p-3" />
+          ) : (
+            <div className="text-zinc-600">{category?.icon}</div>
+          )}
+        </div>
+        {option ? (
+          <>
+            <p
+              className="text-white"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "15px",
+                fontWeight: 700,
+                letterSpacing: "-0.005em",
+                lineHeight: 1.3,
+              }}
+            >
+              {option.name}
+            </p>
+            {option.highlights && (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {option.highlights.slice(0, 3).map((h) => (
+                  <span
+                    key={h}
+                    className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                    style={{
+                      fontFamily: "var(--font-family-inter)",
+                      fontSize: "10px",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {h}
+                  </span>
+                ))}
+              </div>
+            )}
+            <p
+              className="mt-3 text-white tabular-nums"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "22px",
+                fontWeight: 700,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              {formatBRL(option.price)}
+            </p>
+            <p className="mt-0.5 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+              em até 10x de {formatBRL(option.price / 10)} sem juros
+            </p>
+          </>
+        ) : (
+          <p
+            className="text-zinc-500"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+          >
+            Selecione uma opção da lista
+          </p>
+        )}
+      </div>
+      <div className="border-t border-white/[0.06] bg-[#0a0a0a] p-4">
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={onPrev}
+            disabled={isFirst}
+            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-white/[0.1] bg-white/[0.02] text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white disabled:cursor-not-allowed disabled:opacity-25"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}
+          >
+            <ArrowLeft size={12} /> Voltar
+          </button>
+          <button
+            type="button"
+            onClick={onNext}
+            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] bg-primary text-white transition-all hover:brightness-110"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "12.5px",
+              fontWeight: 600,
+              letterSpacing: "0.01em",
+              boxShadow: "0 8px 24px -8px rgba(255,43,46,0.5)",
+            }}
+          >
+            {isLast ? "Revisar" : "Avançar"} <ArrowRight size={12} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ConfiguracaoSelecionadaCard({
+  categories,
+  selections,
+  total,
+  onEdit,
+}: {
+  categories: Array<Category & { selectedOption?: Option }>;
+  selections: Record<string, string>;
+  total: number;
+  onEdit: (id: string) => void;
+}) {
+  const filled = categories.filter((c) => c.selectedOption);
+  return (
+    <div className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0d0d0d]">
+      <div className="border-b border-white/[0.06] px-5 pt-4 pb-3">
+        <div className="flex items-baseline justify-between">
+          <p
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "14px",
+              fontWeight: 700,
+              letterSpacing: "-0.005em",
+            }}
+          >
+            Configuração selecionada
+          </p>
+          <span
+            className="rounded-full bg-primary/[0.12] px-2 py-0.5 text-primary tabular-nums"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10px",
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+            }}
+          >
+            {filled.length}/{categories.length}
+          </span>
+        </div>
+      </div>
+      {filled.length === 0 ? (
+        <div className="px-5 py-6 text-center">
+          <p
+            className="text-zinc-500"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+          >
+            Nenhum componente selecionado ainda.
+            <br />
+            Comece escolhendo as peças.
+          </p>
+        </div>
+      ) : (
+        <div className="max-h-[280px] space-y-1 overflow-y-auto px-3 py-3">
+          {filled.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={() => onEdit(c.id)}
+              className="group flex w-full cursor-pointer items-center gap-2.5 rounded-[10px] p-2 text-left transition-colors hover:bg-white/[0.04]"
+              aria-label={`Editar ${c.title}`}
+            >
+              <div className="h-9 w-9 shrink-0 overflow-hidden rounded-md bg-[#1a1a1f]">
+                {c.selectedOption?.image ? (
+                  <img src={c.selectedOption.image} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-zinc-600">{c.icon}</div>
+                )}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p
+                  className="uppercase text-zinc-500"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "9px",
+                    letterSpacing: "0.18em",
+                    fontWeight: 700,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {c.title}
+                </p>
+                <p
+                  className="mt-0.5 truncate text-white"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {c.selectedOption?.name}
+                </p>
+              </div>
+              <span
+                className="shrink-0 tabular-nums text-primary"
+                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "11.5px", fontWeight: 700 }}
+              >
+                {formatBRL(c.selectedOption!.price)}
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="border-t border-white/[0.06] bg-[#0a0a0a] px-5 py-3.5">
+        <div className="flex items-baseline justify-between">
+          <span
+            className="uppercase text-zinc-500"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "9.5px",
+              letterSpacing: "0.2em",
+              fontWeight: 700,
+            }}
+          >
+            Total parcial
+          </span>
+          <span
+            className="text-white tabular-nums"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "20px",
+              fontWeight: 700,
+              letterSpacing: "-0.015em",
+            }}
+          >
+            {formatBRL(total)}
+          </span>
+        </div>
+        <p
+          className="mt-0.5 text-right tabular-nums text-zinc-500"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+        >
+          10x de {formatBRL(total / 10)} sem juros
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function MonteSeuPcPage() {
   const navigate = useNavigate();
   const { addItem } = useCart();
@@ -1261,6 +1738,13 @@ export function MonteSeuPcPage() {
   const [actionFeedback, setActionFeedback] = useState("");
   const [view, setView] = useState<View>("welcome");
   const [quizRec, setQuizRec] = useState<PresetTier | null>(null);
+  const [completedSteps, setCompletedSteps] = useState<string[]>([]);
+  const [stepSearch, setStepSearch] = useState<string>("");
+  const [sortMode, setSortMode] = useState<SortMode>("suggested");
+
+  useEffect(() => {
+    setStepSearch("");
+  }, [activeCategory]);
 
   const handlePath = (p: "builder" | "quiz" | "presets") => setView(p);
   const goToWelcome = () => {
@@ -1518,306 +2002,293 @@ export function MonteSeuPcPage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-      <header className="sticky top-[64px] z-40 border-b border-white/[0.06] bg-[#101012]/95 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1760px] items-center justify-between gap-4 px-4 py-3 md:px-6 lg:px-8">
-          <div className="flex items-center gap-2 md:gap-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={goToWelcome}
-              className="gap-2 rounded-full px-3 text-sm text-zinc-300 hover:bg-white/[0.06] hover:text-white"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span className="hidden sm:inline">Início</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleSave}
-              className="gap-2 rounded-full px-3 text-sm text-zinc-400 hover:bg-white/[0.06] hover:text-white"
-            >
-              <Save className="h-4 w-4" />
-              <span className="hidden sm:inline">Salvar</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleShare}
-              className="gap-2 rounded-full px-3 text-sm text-zinc-400 hover:bg-white/[0.06] hover:text-white"
-            >
-              <Share2 className="h-4 w-4" />
-              <span className="hidden sm:inline">Compartilhar</span>
-            </Button>
-          </div>
+            {currentCategory && (() => {
+              const currentIdx = categories.findIndex((c) => c.id === activeCategory);
+              const allCompat = currentCategory.options.filter(
+                (o) => !o.req || o.req.includes(selections.cpu),
+              );
+              const q = stepSearch.trim().toLowerCase();
+              const visibleOptions = q
+                ? allCompat.filter(
+                    (o) =>
+                      o.name.toLowerCase().includes(q) ||
+                      (o.highlights ?? []).some((h) => h.toLowerCase().includes(q)) ||
+                      (o.summary ?? "").toLowerCase().includes(q),
+                  )
+                : allCompat;
+              const isFirst = currentIdx === 0;
+              const isLast = currentIdx === categories.length - 1;
+              const stepSelectedId = selections[currentCategory.id];
+              const stepSelected = currentCategory.options.find((o) => o.id === stepSelectedId);
 
-          <div className="hidden text-center md:block">
-            <p className="text-sm font-semibold tracking-[0.18em] text-zinc-100">
-              MONTE SEU PC
-              <span className="ml-2 text-xs font-normal tracking-[0.12em] text-zinc-500">PCYES</span>
-            </p>
-            {actionFeedback && <p className="mt-1 text-[11px] text-zinc-400">{actionFeedback}</p>}
-          </div>
+              const goNext = () => {
+                if (isLast) {
+                  setView("review");
+                  return;
+                }
+                const next = categories[currentIdx + 1];
+                if (next) {
+                  setActiveCategory(next.id);
+                  setExpandedCategory(next.id);
+                  setCompletedSteps((prev) =>
+                    prev.includes(currentCategory.id) ? prev : [...prev, currentCategory.id],
+                  );
+                }
+              };
+              const goPrev = () => {
+                const prev = categories[currentIdx - 1];
+                if (prev) {
+                  setActiveCategory(prev.id);
+                  setExpandedCategory(prev.id);
+                }
+              };
 
-          <div className="text-right">
-            <p className="text-lg font-bold tabular-nums">{formatCurrency(priceBreakdown.total)}</p>
-            <p className="text-[10px] text-zinc-400">Valores não incluem frete</p>
-          </div>
-        </div>
-      </header>
+              return (
+                <>
+                  <HorizontalStepper
+                    categories={categoriesWithSelected.map((c) => ({
+                      id: c.id,
+                      title: c.title,
+                      icon: c.icon,
+                    }))}
+                    currentId={activeCategory}
+                    completedIds={completedSteps}
+                    onJump={(id) => {
+                      setActiveCategory(id);
+                      setExpandedCategory(id);
+                    }}
+                  />
 
-      <main className="mx-auto flex max-w-[1760px] flex-col gap-0 md:h-[calc(100vh-151px)] md:overflow-hidden md:flex-row">
-        <section className="border-b border-white/[0.05] md:h-full md:w-[63%] md:border-b-0 md:border-r md:border-white/[0.04]">
-          <div className="flex h-full flex-col px-4 pb-6 pt-4 md:px-6 md:pb-8 lg:px-8">
-            <div
-              ref={previewRef}
-              className="relative min-h-[420px] flex-1 overflow-hidden rounded-[28px] border border-white/[0.06] shadow-[0_30px_120px_rgba(0,0,0,0.45)]"
-              style={{ background: ambient.bg }}
-            >
-              <div
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px] transition-all duration-700 md:h-[480px] md:w-[480px]"
-                style={{ backgroundColor: ambient.glow }}
-              />
-
-              {currentGallery[activeView] ? (
-                <img
-                  src={currentGallery[activeView]}
-                  alt={currentPreviewOption?.name ?? "Prévia da configuração"}
-                  className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
-                />
-              ) : (
-                <div className="absolute inset-0 animate-pulse bg-white/[0.04]" />
-              )}
-
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/50" />
-
-              <button
-                type="button"
-                onClick={handleFullscreen}
-                className="absolute right-5 top-5 z-20 rounded-2xl border border-white/10 bg-black/35 p-3 text-zinc-100 transition hover:bg-black/55"
-                aria-label="Abrir em tela cheia"
-              >
-                <Expand className="h-4 w-4" />
-              </button>
-
-              <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-5 pb-5 pt-20 md:px-7 md:pb-7">
-                <div className="max-w-[560px]">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-400">{currentCategory?.title ?? "Configuração"}</p>
-                  <h2 className="mt-2 text-2xl font-semibold text-white md:text-[32px]">{currentPreviewOption?.name ?? configurationName}</h2>
-                  {currentPreviewOption?.summary && <p className="mt-2 max-w-[46ch] text-sm text-zinc-300 md:text-[15px]">{currentPreviewOption.summary}</p>}
-                  {currentPreviewOption?.highlights && (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {currentPreviewOption.highlights.map((highlight) => (
-                        <span
-                          key={highlight}
-                          className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[11px] text-zinc-200"
-                        >
-                          {highlight}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {currentGallery.length > 1 && (
-              <div className="mt-4 flex flex-wrap gap-3">
-                {currentGallery.map((image, index) => (
-                  <button
-                    key={`${currentPreviewOption?.id ?? "preview"}-${index}`}
-                    type="button"
-                    onClick={() => setActiveView(index)}
-                    className={cn(
-                      "h-20 w-24 overflow-hidden rounded-2xl border transition",
-                      activeView === index
-                        ? "border-white/30 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
-                        : "border-white/[0.08] opacity-70 hover:border-white/20 hover:opacity-100",
-                    )}
-                  >
-                    <img src={image} alt={`${currentPreviewOption?.name ?? "Prévia"} ${index + 1}`} className="h-full w-full object-cover" />
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
-        <aside className="w-full md:h-full md:w-[37%] md:overflow-y-auto">
-          <div className="px-5 py-6 md:px-6 lg:px-7">
-            <div className="mb-6">
-              <h1 className="text-[28px] font-semibold tracking-tight text-white">Monte seu PC</h1>
-              <p className="mt-1 text-sm text-zinc-400">
-                O fluxo da escolha fica aqui na direita. Abrimos uma etapa por vez, com imagem e contexto de cada item.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {categoriesWithSelected.map((category) => {
-                const isOpen = expandedCategory === category.id;
-                const visibleOptions = getVisibleOptions(category);
-                const hasSelection = Boolean(category.selectedOption);
-
-                return (
-                  <div
-                    key={category.id}
-                    className={cn(
-                      "overflow-hidden rounded-[24px] border bg-[#0f0f12] transition-colors",
-                      hasSelection
-                        ? "border-emerald-500/18 bg-emerald-500/[0.03]"
-                        : "border-white/[0.06]",
-                    )}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => toggleSection(category.id)}
-                      className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left md:px-5"
-                    >
-                      <div className="flex min-w-0 items-center gap-3">
-                        <div
-                          className={cn(
-                            "flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border",
-                            hasSelection
-                              ? "border-white/[0.1] bg-[#16161a]"
-                              : "border-white/[0.06] bg-[#16161a] text-zinc-400",
-                          )}
-                        >
-                          {category.selectedOption?.image ? (
-                            <img
-                              src={category.selectedOption.image}
-                              alt={category.selectedOption.name}
-                              className="h-full w-full object-cover"
-                            />
-                          ) : (
-                            category.icon
-                          )}
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-base font-semibold text-white">{category.title}</p>
-                          {category.selectedOption && (
-                            <p className="mt-1 truncate text-sm text-zinc-300">{category.selectedOption.name}</p>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        {category.selectedOption && (
-                          <span
-                            className={cn(
-                              "text-sm tabular-nums",
-                              hasSelection ? "text-emerald-400/95" : "text-zinc-300",
-                            )}
-                          >
-                            {formatCurrency(category.selectedOption.price)}
-                          </span>
-                        )}
-                        <ChevronDown
-                          className={cn(
-                            "h-4 w-4 shrink-0 text-zinc-500 transition-transform duration-200",
-                            isOpen && "rotate-180",
-                          )}
-                        />
-                      </div>
-                    </button>
-
+                  <div className="mx-auto max-w-[1760px] px-5 pt-5 md:px-8">
                     <div
-                      className={cn(
-                        "overflow-hidden transition-all duration-300",
-                        isOpen ? "max-h-[2400px] opacity-100" : "max-h-0 opacity-0",
-                      )}
+                      className="flex items-start gap-3 rounded-[14px] border border-blue-500/25 bg-blue-500/[0.06] px-4 py-3"
+                      role="note"
                     >
-                      <div className="border-t border-white/[0.05] px-4 py-4 md:px-5">
-                        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                          {visibleOptions.map((option) => {
-                            const selected = selections[category.id] === option.id;
-
-                            return (
-                              <button
-                                key={option.id}
-                                type="button"
-                                onClick={() => handleSelect(category.id, option.id)}
-                                className={cn(
-                                  "group relative flex flex-col rounded-[22px] border p-3.5 text-left transition-all duration-200 md:p-4",
-                                  selected
-                                    ? "border-emerald-500/22 bg-emerald-500/[0.03] shadow-[0_0_0_1px_rgba(16,185,129,0.06)]"
-                                    : "border-white/[0.07] bg-[#101013] hover:border-white/[0.18] hover:bg-[#15151a]",
-                                )}
-                              >
-                                <div className="aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[#1a1a1f]">
-                                  {option.image ? (
-                                    <img src={option.image} alt={option.name} className="h-full w-full object-cover" />
-                                  ) : (
-                                    <div className="flex h-full w-full items-center justify-center bg-[#15151a] text-zinc-400">
-                                      {category.icon}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className="min-w-0 flex-1 pt-3">
-                                  <div className="flex items-start justify-between gap-3">
-                                    <div>
-                                      <span className="block text-sm font-semibold leading-snug text-zinc-100">
-                                        {option.name}
-                                      </span>
-                                      {option.summary && (
-                                        <p className="mt-1 text-sm leading-relaxed text-zinc-400">{option.summary}</p>
-                                      )}
-                                    </div>
-
-                                    {selected && (
-                                      <div className="shrink-0 rounded-full bg-white/12 p-1">
-                                        <Check className="h-3.5 w-3.5 text-white" />
-                                      </div>
-                                    )}
-                                  </div>
-
-                                  {option.highlights && option.highlights.length > 0 && (
-                                    <div className="mt-3 flex flex-wrap gap-1.5">
-                                      {option.highlights.map((highlight) => (
-                                        <span
-                                          key={highlight}
-                                          className="rounded-full border border-white/[0.1] bg-[#1a1a1f] px-2.5 py-1 text-[11px] text-zinc-200"
-                                        >
-                                          {highlight}
-                                        </span>
-                                      ))}
-                                    </div>
-                                  )}
-
-                                  <div className="mt-3 flex items-center justify-between">
-                                    <span
-                                      className={cn(
-                                        "text-sm tabular-nums",
-                                        selected ? "text-emerald-400/95" : "text-zinc-200",
-                                      )}
-                                    >
-                                      {formatCurrency(option.price)}
-                                    </span>
-                                  </div>
-                                </div>
-                              </button>
-                            );
-                          })}
-                        </div>
+                      <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-300">
+                        <span style={{ fontSize: "11px", fontWeight: 700 }}>i</span>
                       </div>
+                      <p
+                        className="text-zinc-200"
+                        style={{
+                          fontFamily: "var(--font-family-inter)",
+                          fontSize: "12.5px",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        <span className="text-blue-300" style={{ fontWeight: 700 }}>
+                          IMPORTANTE:
+                        </span>{" "}
+                        Configurações montadas aqui são enviadas separadamente, sem montagem. Os valores
+                        consideram apenas o preço dos componentes.
+                      </p>
                     </div>
                   </div>
-                );
-              })}
-            </div>
 
-            <div className="mt-6 rounded-[28px] border border-white/[0.06] bg-[#0f0f12] p-5 md:p-6">
-              <Button
-                type="button"
-                onClick={handleAddToCart}
-                className="h-14 w-full rounded-2xl bg-white text-base font-semibold text-black transition hover:bg-white/90"
-              >
-                <ShoppingCart className="mr-2 h-4 w-4" />
-                Comprar
-              </Button>
-            </div>
-          </div>
-        </aside>
-      </main>
+                  <main className="mx-auto grid max-w-[1760px] grid-cols-1 gap-6 px-5 py-6 md:px-8 lg:grid-cols-[1fr_380px]">
+                    <section className="min-w-0">
+                      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                          <p
+                            className="mb-1 uppercase text-zinc-500"
+                            style={{
+                              fontFamily: "var(--font-family-inter)",
+                              fontSize: "10px",
+                              letterSpacing: "0.22em",
+                              fontWeight: 700,
+                            }}
+                          >
+                            Etapa {currentIdx + 1} / {categories.length}
+                          </p>
+                          <h2
+                            className="text-white"
+                            style={{
+                              fontFamily: "var(--font-family-figtree)",
+                              fontSize: "26px",
+                              fontWeight: 700,
+                              letterSpacing: "-0.015em",
+                              lineHeight: 1.1,
+                            }}
+                          >
+                            Escolha {currentCategory.title.toLowerCase()}
+                          </h2>
+                          <p
+                            className="mt-1 text-zinc-400"
+                            style={{
+                              fontFamily: "var(--font-family-inter)",
+                              fontSize: "12.5px",
+                            }}
+                          >
+                            {visibleOptions.length} de {allCompat.length} compatíveis
+                            {q ? ` · busca "${q}"` : null}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_220px]">
+                        <div className="relative">
+                          <label
+                            className="mb-1.5 block uppercase text-zinc-400"
+                            htmlFor="step-search"
+                            style={{
+                              fontFamily: "var(--font-family-inter)",
+                              fontSize: "10px",
+                              letterSpacing: "0.18em",
+                              fontWeight: 700,
+                            }}
+                          >
+                            Buscar
+                          </label>
+                          <input
+                            id="step-search"
+                            type="text"
+                            value={stepSearch}
+                            onChange={(e) => setStepSearch(e.target.value)}
+                            placeholder="Busque por nome ou código"
+                            aria-label={`Buscar em ${currentCategory.title}`}
+                            className="w-full rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a]"
+                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                          />
+                          {stepSearch && (
+                            <button
+                              type="button"
+                              onClick={() => setStepSearch("")}
+                              aria-label="Limpar busca"
+                              className="absolute right-3 top-[34px] flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/10 hover:text-white"
+                            >
+                              <X size={12} />
+                            </button>
+                          )}
+                        </div>
+                        <div className="relative">
+                          <label
+                            className="mb-1.5 block uppercase text-zinc-400"
+                            htmlFor="step-sort"
+                            style={{
+                              fontFamily: "var(--font-family-inter)",
+                              fontSize: "10px",
+                              letterSpacing: "0.18em",
+                              fontWeight: 700,
+                            }}
+                          >
+                            Ordenar por
+                          </label>
+                          <select
+                            id="step-sort"
+                            value={sortMode}
+                            onChange={(e) => setSortMode(e.target.value as SortMode)}
+                            className="w-full appearance-none rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 pr-9 text-white outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] cursor-pointer"
+                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                          >
+                            <option value="suggested">Sugerida primeiro</option>
+                            <option value="price-asc">Menor preço</option>
+                            <option value="price-desc">Maior preço</option>
+                            <option value="name">Nome A-Z</option>
+                          </select>
+                          <ChevronDown
+                            size={14}
+                            className="pointer-events-none absolute right-3 top-[38px] text-zinc-500"
+                          />
+                        </div>
+                      </div>
+
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentCategory.id}
+                          initial={{ opacity: 0, x: 16 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -16 }}
+                          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                          className="space-y-2.5"
+                        >
+                          {visibleOptions.length === 0 ? (
+                            <div className="rounded-[14px] border border-white/[0.06] bg-[#0f0f12] px-6 py-12 text-center">
+                              <p
+                                className="text-white"
+                                style={{
+                                  fontFamily: "var(--font-family-figtree)",
+                                  fontSize: "15px",
+                                  fontWeight: 600,
+                                }}
+                              >
+                                Nada encontrado pra "{stepSearch}"
+                              </p>
+                              <p
+                                className="mt-1 text-zinc-500"
+                                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                              >
+                                Tente outro termo ou limpe a busca
+                              </p>
+                              <button
+                                type="button"
+                                onClick={() => setStepSearch("")}
+                                className="mt-3 rounded-full border border-white/15 px-4 py-1.5 text-zinc-300 transition-colors hover:bg-white/[0.05] hover:text-white cursor-pointer"
+                                style={{
+                                  fontFamily: "var(--font-family-inter)",
+                                  fontSize: "12px",
+                                  fontWeight: 600,
+                                }}
+                              >
+                                Limpar busca
+                              </button>
+                            </div>
+                          ) : (
+                            visibleOptions
+                              .slice()
+                              .sort((a, b) => {
+                                if (sortMode === "suggested")
+                                  return (b.standard ? 1 : 0) - (a.standard ? 1 : 0);
+                                if (sortMode === "price-asc") return a.price - b.price;
+                                if (sortMode === "price-desc") return b.price - a.price;
+                                if (sortMode === "name") return a.name.localeCompare(b.name);
+                                return 0;
+                              })
+                              .map((option) => (
+                                <ProductRow
+                                  key={option.id}
+                                  option={option}
+                                  category={currentCategory}
+                                  selected={stepSelectedId === option.id}
+                                  onSelect={() => {
+                                    setSelections((prev) => ({
+                                      ...prev,
+                                      [currentCategory.id]: option.id,
+                                    }));
+                                    setCompletedSteps((prev) =>
+                                      prev.includes(currentCategory.id)
+                                        ? prev
+                                        : [...prev, currentCategory.id],
+                                    );
+                                  }}
+                                />
+                              ))
+                          )}
+                        </motion.div>
+                      </AnimatePresence>
+                    </section>
+
+                    <aside className="space-y-4 lg:sticky lg:top-[180px] lg:self-start">
+                      <SelectedItemCard
+                        category={currentCategory}
+                        option={stepSelected}
+                        onPrev={goPrev}
+                        onNext={goNext}
+                        isFirst={isFirst}
+                        isLast={isLast}
+                      />
+                      <ConfiguracaoSelecionadaCard
+                        categories={categoriesWithSelected}
+                        selections={selections}
+                        total={priceBreakdown.total}
+                        onEdit={(id) => {
+                          setActiveCategory(id);
+                          setExpandedCategory(id);
+                        }}
+                      />
+                    </aside>
+                  </main>
+                </>
+              );
+            })()}
           </motion.div>
         )}
       </AnimatePresence>
