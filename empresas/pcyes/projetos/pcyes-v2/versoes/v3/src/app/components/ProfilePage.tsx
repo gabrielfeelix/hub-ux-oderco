@@ -147,32 +147,39 @@ export function ProfilePage() {
       <div className="px-5 md:px-8 pt-12 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
           <div className="flex items-center gap-5">
-            <div className="w-[72px] h-[72px] rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/15">
-              <span className="text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: "var(--font-weight-medium)" }}>
-                {user.name.charAt(0)}
+            <div className="relative flex-shrink-0">
+              <div className="w-[72px] h-[72px] rounded-full bg-primary/10 flex items-center justify-center border border-primary/20" style={{ boxShadow: "0 0 0 4px rgba(255,43,46,0.04), 0 24px 60px -28px rgba(255,43,46,0.45)" }}>
+                <span className="text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-medium)" }}>
+                  {user.name.charAt(0)}
+                </span>
+              </div>
+              <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.06em", boxShadow: "0 4px 12px rgba(255,43,46,0.4)" }}>
+                Nv. {Math.max(1, Math.floor(user.orders.length / 2) + 1)}
               </span>
             </div>
             <div>
-              <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: "var(--font-weight-medium)" }}>
+              <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-medium)" }}>
                 E aí, {user.name.split(" ")[0]}
               </h1>
-              <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{user.email}</p>
+              <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                Squad PCYES · {user.email}
+              </p>
             </div>
           </div>
           <div className="md:ml-auto flex items-center gap-6 md:gap-8">
             <div>
               <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pedidos</p>
-              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>{user.orders.length}</p>
+              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>{user.orders.length}</p>
             </div>
             <div className="h-8 w-px bg-foreground/10" />
             <div>
               <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
-              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>{favorites.size}</p>
+              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>{favorites.size}</p>
             </div>
             <div className="h-8 w-px bg-foreground/10 hidden sm:block" />
             <div className="hidden sm:block">
               <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Investido em setup</p>
-              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>R$ {totalSpent.toFixed(0)}</p>
+              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>R$ {totalSpent.toFixed(0)}</p>
             </div>
           </div>
         </div>
@@ -185,7 +192,7 @@ export function ProfilePage() {
             <nav className="space-y-0.5">
               {TABS.map((tab) => (
                 <button key={tab.key} onClick={() => setProfileTab(tab.key)}
-                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 transition-all duration-200 cursor-pointer ${
+                  className={`relative w-full flex items-center gap-3 px-3.5 py-2.5 transition-all duration-200 cursor-pointer ${
                     activeTab === tab.key
                       ? "text-primary"
                       : "text-foreground/60 hover:text-foreground/88"
@@ -193,11 +200,12 @@ export function ProfilePage() {
                   style={{
                     borderRadius: "10px",
                     background: activeTab === tab.key
-                      ? (isDark ? "rgba(255,43,46,0.08)" : "rgba(220,20,20,0.06)")
+                      ? (isDark ? "linear-gradient(90deg, rgba(255,43,46,0.12) 0%, rgba(255,43,46,0.04) 100%)" : "linear-gradient(90deg, rgba(220,20,20,0.08) 0%, rgba(220,20,20,0.02) 100%)")
                       : "transparent",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13px",
                     fontWeight: activeTab === tab.key ? 600 : 500,
+                    boxShadow: activeTab === tab.key ? "inset 2px 0 0 var(--primary)" : "none",
                   }}
                 >
                   <tab.icon size={15} />
@@ -351,7 +359,7 @@ export function ProfilePage() {
                     {/* Últimos pedidos */}
                     <button
                       onClick={() => setProfileTab("orders")}
-                      className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
+                      className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                       style={{
                         borderRadius: "14px",
                         background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -376,7 +384,7 @@ export function ProfilePage() {
                     {/* Favoritos */}
                     <button
                       onClick={() => setProfileTab("favorites")}
-                      className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
+                      className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                       style={{
                         borderRadius: "14px",
                         background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
@@ -405,7 +413,7 @@ export function ProfilePage() {
                     {user.addresses[0] && (
                       <button
                         onClick={() => setProfileTab("addresses")}
-                        className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
+                        className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                         style={{
                           borderRadius: "14px",
                           background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",

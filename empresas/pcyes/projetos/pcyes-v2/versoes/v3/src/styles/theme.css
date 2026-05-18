@@ -80,6 +80,13 @@
 .essential-card-glow { transition: opacity 500ms ease; }
 .essential-card:hover .essential-card-glow { opacity: 1; }
 
+/* Profile dashboard card hover treatment */
+.profile-card { transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease; }
+.profile-card:hover {
+  border-color: rgba(225, 6, 0, 0.28) !important;
+  box-shadow: 0 0 0 1px rgba(225, 6, 0, 0.12), 0 18px 40px -22px rgba(225, 6, 0, 0.35);
+}
+
 /* Deal card hover treatment */
 .deal-card-img { transition: border-color 300ms ease, box-shadow 300ms ease; }
 .deal-card-img:hover {
