@@ -100,7 +100,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
           className="px-6 py-5 grid grid-cols-12 gap-4"
         >
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>Nome do endereço</label>
+            <label style={labelStyle}>Nome do endereço <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               autoFocus
               style={inputStyle}
@@ -110,7 +110,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>CEP</label>
+            <label style={labelStyle}>CEP <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="00000-000"
@@ -120,7 +120,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-9">
-            <label style={labelStyle}>Logradouro</label>
+            <label style={labelStyle}>Logradouro <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="Av. Paranavaí"
@@ -129,7 +129,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-3">
-            <label style={labelStyle}>Número</label>
+            <label style={labelStyle}>Número <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="1906"
@@ -138,7 +138,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>Complemento</label>
+            <label style={labelStyle}>Complemento <span style={{ color: "rgba(255,255,255,0.35)", fontWeight: 500, letterSpacing: "0.04em" }}>(opcional)</span></label>
             <input
               style={inputStyle}
               placeholder="Sala, apto..."
@@ -147,7 +147,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>Bairro</label>
+            <label style={labelStyle}>Bairro <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="Parque Industrial"
@@ -156,7 +156,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-8">
-            <label style={labelStyle}>Cidade</label>
+            <label style={labelStyle}>Cidade <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="Maringá"
@@ -165,7 +165,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-4">
-            <label style={labelStyle}>UF</label>
+            <label style={labelStyle}>UF <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               maxLength={2}

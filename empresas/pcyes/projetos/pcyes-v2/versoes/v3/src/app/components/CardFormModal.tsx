@@ -251,7 +251,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
           className="px-6 pt-3 pb-5 grid grid-cols-12 gap-4"
         >
           <div className="col-span-12">
-            <label style={labelStyle}>Número do cartão</label>
+            <label style={labelStyle}>Número do cartão <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               autoFocus={!initial}
               style={inputStyle}
@@ -264,7 +264,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12">
-            <label style={labelStyle}>Nome impresso no cartão</label>
+            <label style={labelStyle}>Nome impresso no cartão <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="JOÃO DA SILVA"
@@ -274,7 +274,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-7">
-            <label style={labelStyle}>Validade</label>
+            <label style={labelStyle}>Validade <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="MM/AA"
@@ -285,7 +285,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-5">
-            <label style={labelStyle}>CVV</label>
+            <label style={labelStyle}>CVV <span style={{ color: "var(--primary)" }}>*</span></label>
             <input
               style={inputStyle}
               placeholder="123"
