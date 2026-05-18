@@ -62,7 +62,19 @@ type Category = {
   title: string;
   icon: React.ReactNode;
   options: Option[];
+  maxSlots?: number;
+  minSlots?: number;
 };
+
+const getSelected = (selections: Record<string, string[]>, catId: string): string[] => {
+  const v = (selections as Record<string, unknown>)[catId];
+  if (Array.isArray(v)) return v as string[];
+  if (typeof v === 'string') return [v];
+  return [];
+};
+
+const getMaxSlots = (cat: Category): number => cat.maxSlots ?? 1;
+const getMinSlots = (cat: Category): number => cat.minSlots ?? 1;
 
 const CONFIG_STORAGE_KEY = "pcyes-monte-seu-pc-config";
 
@@ -423,6 +435,8 @@ const categories: Category[] = [
     id: "ram",
     title: "Memória RAM",
     icon: <Zap className="h-4 w-4" />,
+    minSlots: 1,
+    maxSlots: 2,
     options: [
       {
         id: "ram-1",
@@ -478,6 +492,8 @@ const categories: Category[] = [
     id: "cooling",
     title: "Refrigeração",
     icon: <Settings className="h-4 w-4" />,
+    minSlots: 0,
+    maxSlots: 99,
     options: coolingProducts.map((product, index) =>
       toOptionFromProduct("cooling", product, index, {
         standard: index === 0,
@@ -489,6 +505,8 @@ const categories: Category[] = [
     id: "storage",
     title: "HD e SSD",
     icon: <HardDrive className="h-4 w-4" />,
+    minSlots: 1,
+    maxSlots: 5,
     options: storageProducts.map((product, index) =>
       toOptionFromProduct("storage", product, index, {
         standard: index === 0,
@@ -2051,7 +2069,7 @@ function ProductTile({
         )}
         style={shadowStyle}
       >
-        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-[linear-gradient(180deg,#1d1d22_0%,#3e3e46_100%)]">
+        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden deal-image-bg">
           {option.standard && (
             <span
               className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
@@ -2181,7 +2199,7 @@ function ProductTile({
       >
         {selected && <Check size={11} className="text-white" strokeWidth={3} />}
       </div>
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[linear-gradient(180deg,#1d1d22_0%,#3e3e46_100%)]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden deal-image-bg">
         {option.image ? (
           <img
             src={option.image}
@@ -2293,7 +2311,7 @@ function SelectedItemCard({
         </div>
       </div>
       <div className="px-5 py-4">
-        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[linear-gradient(180deg,#1d1d22_0%,#3e3e46_100%)]">
+        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] deal-image-bg">
           {option?.image ? (
             <img src={option.image} alt={option.name} className="h-full w-full object-contain p-3" />
           ) : (
@@ -2537,7 +2555,7 @@ export function MonteSeuPcPage() {
   const previewRef = useRef<HTMLDivElement>(null);
   const feedbackTimerRef = useRef<number | null>(null);
 
-  const [selections, setSelections] = useState<Record<string, string>>({});
+  const [selections, setSelections] = useState<Record<string, string[]>>({});
   const [activeCategory, setActiveCategory] = useState<string>("cpu");
   const [expandedCategory, setExpandedCategory] = useState<string>("cpu");
   const [activeView, setActiveView] = useState(0);
@@ -2566,8 +2584,12 @@ export function MonteSeuPcPage() {
     setView("presets");
   };
   const handleApplyPreset = (preset: Preset) => {
-    setSelections(preset.selections);
-    setCompletedSteps(Object.keys(preset.selections));
+    const asArrays: Record<string, string[]> = {};
+    Object.entries(preset.selections).forEach(([k, v]) => {
+      asArrays[k] = [v];
+    });
+    setSelections(asArrays);
+    setCompletedSteps(Object.keys(asArrays));
     setActiveCategory("cpu");
     setExpandedCategory("cpu");
     setView("builder");
@@ -2586,15 +2608,23 @@ export function MonteSeuPcPage() {
 
   const categoriesWithSelected = useMemo(
     () =>
-      categories.map((category) => ({
-        ...category,
-        selectedOption: category.options.find((option) => option.id === selections[category.id]),
-      })),
+      categories.map((category) => {
+        const ids = getSelected(selections, category.id);
+        const selectedOptions = ids
+          .map((id) => category.options.find((o) => o.id === id))
+          .filter((o): o is Option => Boolean(o));
+        return {
+          ...category,
+          selectedOptions,
+          selectedOption: selectedOptions[0],
+        };
+      }),
     [selections],
   );
 
   const currentCategory = categoriesWithSelected.find((category) => category.id === activeCategory);
-  const currentPreviewOption = currentCategory?.selectedOption ?? categoriesWithSelected.find((category) => category.id === "case")?.selectedOption;
+  const currentPreviewOption =
+    currentCategory?.selectedOption ?? categoriesWithSelected.find((category) => category.id === "case")?.selectedOption;
   const currentGallery =
     currentPreviewOption?.gallery?.length
       ? currentPreviewOption.gallery
@@ -2606,20 +2636,14 @@ export function MonteSeuPcPage() {
   const ambient = useMemo(() => getAmbient(currentCase?.type), [currentCase?.type]);
 
   const priceBreakdown = useMemo(() => {
-    let base = 0;
-    let equipment = 0;
-
-    Object.entries(selections).forEach(([categoryId, optionId]) => {
-      const category = categories.find((item) => item.id === categoryId);
-      const option = category?.options.find((item) => item.id === optionId);
-      if (!option) return;
-
-      if (option.standard) base += option.price;
-      else equipment += option.price;
+    let total = 0;
+    categoriesWithSelected.forEach((cat) => {
+      cat.selectedOptions.forEach((opt) => {
+        total += opt.price;
+      });
     });
-
-    return { base, equipment, total: base + equipment };
-  }, [selections]);
+    return { base: 0, equipment: total, total };
+  }, [categoriesWithSelected]);
 
   const configurationName = useMemo(() => {
     const caseName = currentCase?.name ?? "PCYES Custom";
@@ -2636,9 +2660,15 @@ export function MonteSeuPcPage() {
       const raw = window.localStorage.getItem(CONFIG_STORAGE_KEY);
       if (!raw) return;
 
-      const savedSelections = JSON.parse(raw) as Record<string, string>;
-      if (!savedSelections || typeof savedSelections !== "object") return;
-      setSelections((prev) => ({ ...prev, ...savedSelections }));
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== "object") return;
+
+      const normalized: Record<string, string[]> = {};
+      Object.entries(parsed as Record<string, unknown>).forEach(([k, v]) => {
+        if (Array.isArray(v)) normalized[k] = v.filter((x): x is string => typeof x === "string");
+        else if (typeof v === "string") normalized[k] = [v];
+      });
+      setSelections((prev) => ({ ...prev, ...normalized }));
     } catch {
       // Ignore invalid saved data.
     }
@@ -2646,19 +2676,29 @@ export function MonteSeuPcPage() {
 
   useEffect(() => {
     setSelections((prev) => {
+      const cpuIds = prev.cpu ?? [];
+      const currentCpu = cpuIds[0];
+      if (!currentCpu) return prev;
+
       let changed = false;
-      const next = { ...prev };
+      const next: Record<string, string[]> = { ...prev };
 
       categories.forEach((category) => {
-        const selected = category.options.find((option) => option.id === next[category.id]);
-        if (!selected) return;
+        const ids = next[category.id];
+        if (!ids || ids.length === 0) return;
 
-        if (selected.req && !selected.req.includes(next.cpu)) {
-          const fallback = category.options.find((option) => !option.req || option.req.includes(next.cpu));
-          if (fallback) {
-            next[category.id] = fallback.id;
-            changed = true;
-          }
+        const valid = ids.filter((id) => {
+          const opt = category.options.find((o) => o.id === id);
+          if (!opt) return false;
+          if (opt.req && !opt.req.includes(currentCpu)) return false;
+          return true;
+        });
+
+        if (valid.length !== ids.length) {
+          next[category.id] = valid;
+          changed = true;
+          // dropped items dont restore — user picks new
+          void category;
         }
       });
 
@@ -2694,7 +2734,7 @@ export function MonteSeuPcPage() {
     category.options.filter((option) => !option.req || option.req.includes(selections.cpu));
 
   const handleSelect = (categoryId: string, optionId: string) => {
-    setSelections((prev) => ({ ...prev, [categoryId]: optionId }));
+    setSelections((prev) => ({ ...prev, [categoryId]: [optionId] }));
     setActiveCategory(categoryId);
 
     const currentIndex = categories.findIndex((category) => category.id === categoryId);
@@ -3151,7 +3191,7 @@ export function MonteSeuPcPage() {
                                   onSelect={() => {
                                     setSelections((prev) => ({
                                       ...prev,
-                                      [currentCategory.id]: option.id,
+                                      [currentCategory.id]: [option.id],
                                     }));
                                     setCompletedSteps((prev) =>
                                       prev.includes(currentCategory.id)
