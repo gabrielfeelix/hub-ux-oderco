@@ -84,6 +84,8 @@ const getMaxSlots = (cat: Category): number => cat.maxSlots ?? 1;
 const getMinSlots = (cat: Category): number => cat.minSlots ?? 1;
 
 const CONFIG_STORAGE_KEY = "pcyes-monte-seu-pc-config";
+const SAVED_BUILDS_KEY = "pcyes-saved-builds";
+const MAX_SAVED_BUILDS = 20;
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat("pt-BR", {
@@ -3338,7 +3340,44 @@ export function MonteSeuPcPage() {
 
   const handleSave = () => {
     window.localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(selections));
-    pushFeedback("Configuração salva");
+    try {
+      const raw = window.localStorage.getItem(SAVED_BUILDS_KEY);
+      const list: Array<{
+        id: string;
+        name: string;
+        selections: Record<string, string[]>;
+        total: number;
+        savedAt: number;
+        items: Array<{ category: string; name: string; price: number; image?: string }>;
+      }> = raw ? JSON.parse(raw) : [];
+
+      const items = categoriesWithSelected.flatMap((c) =>
+        c.selectedOptions.map((o) => ({
+          category: c.title,
+          name: o.name,
+          price: o.price,
+          image: o.image,
+        })),
+      );
+
+      const entry = {
+        id: `build-${Date.now()}`,
+        name: buildName || configurationName,
+        selections,
+        total: priceBreakdown.total,
+        savedAt: Date.now(),
+        items,
+      };
+
+      const filtered = list.filter(
+        (b) => b.name !== entry.name || JSON.stringify(b.selections) !== JSON.stringify(entry.selections),
+      );
+      const next = [entry, ...filtered].slice(0, MAX_SAVED_BUILDS);
+      window.localStorage.setItem(SAVED_BUILDS_KEY, JSON.stringify(next));
+    } catch {
+      // localStorage quota or parse error — ignore
+    }
+    pushFeedback("Build salva no perfil");
   };
 
   const handleShare = async () => {
