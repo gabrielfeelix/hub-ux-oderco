@@ -986,6 +986,95 @@ function StarRating({ rating, reviews }: { rating: number; reviews: number }) {
   );
 }
 
+function PresetComponentsAccordion({ preset }: { preset: Preset }) {
+  const [open, setOpen] = useState(false);
+  const items = Object.entries(preset.selections)
+    .map(([catId, optId]) => {
+      const cat = categories.find((c) => c.id === catId);
+      const opt = cat?.options.find((o) => o.id === optId);
+      if (!cat || !opt) return null;
+      return { catTitle: cat.title, catIcon: cat.icon, opt };
+    })
+    .filter((x): x is { catTitle: string; catIcon: React.ReactNode; opt: Option } => Boolean(x));
+
+  return (
+    <div className="mt-3 overflow-hidden rounded-[12px] border border-white/[0.06] bg-white/[0.02]">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2.5 text-left transition-colors hover:bg-white/[0.04]"
+      >
+        <span
+          className="flex items-center gap-2 text-white"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+        >
+          <Layers size={13} className="text-primary" />
+          Ver todos os componentes ({items.length})
+        </span>
+        <ChevronDown
+          size={14}
+          className={cn("text-zinc-400 transition-transform", open && "rotate-180")}
+        />
+      </button>
+      {open && (
+        <div className="space-y-1.5 border-t border-white/[0.05] px-2 py-2">
+          {items.map((item) => (
+            <div
+              key={item.opt.id}
+              className="flex items-center gap-2.5 rounded-md p-1.5"
+            >
+              <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md deal-image-bg">
+                {item.opt.image ? (
+                  <img src={item.opt.image} alt="" className="h-full w-full object-contain p-0.5" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-zinc-500">
+                    {item.catIcon}
+                  </div>
+                )}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p
+                  className="uppercase text-zinc-500"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "8.5px",
+                    letterSpacing: "0.18em",
+                    fontWeight: 700,
+                  }}
+                >
+                  {item.catTitle}
+                </p>
+                <p
+                  className="truncate text-white"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "11.5px",
+                    fontWeight: 500,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {item.opt.name}
+                </p>
+              </div>
+              <span
+                className="shrink-0 tabular-nums text-primary"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                }}
+              >
+                {formatBRL(item.opt.price)}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function PresetCard({
   preset,
   isRecommended,
@@ -1160,9 +1249,10 @@ function PresetCard({
             {preset.benchmarks.slice(0, 3).map((b) => (
               <div key={b.game} className="flex items-center justify-between gap-2">
                 <span
-                  className="truncate text-zinc-200"
+                  className="flex items-center gap-1.5 truncate text-zinc-200"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500 }}
                 >
+                  <Gamepad2 size={12} className="shrink-0 text-zinc-500" />
                   {b.game}
                 </span>
                 <div className="flex items-baseline gap-1.5 shrink-0">
@@ -1200,7 +1290,9 @@ function PresetCard({
           </div>
         </div>
 
-        <div className="mt-auto border-t border-white/[0.06] pt-3.5">
+        <PresetComponentsAccordion preset={preset} />
+
+        <div className="mt-3 border-t border-white/[0.06] pt-3.5">
           <div className="mb-1 flex items-center gap-2">
             {preset.oldPrice && (
               <span
