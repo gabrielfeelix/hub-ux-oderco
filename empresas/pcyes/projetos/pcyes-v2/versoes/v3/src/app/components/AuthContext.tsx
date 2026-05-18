@@ -44,6 +44,8 @@ export interface UserData {
   email: string;
   phone: string;
   cpf: string;
+  birthday?: string;
+  updatedAt?: string;
   avatar?: string;
   addresses: UserAddress[];
   cards: UserCard[];
@@ -77,6 +79,8 @@ const MOCK_USER: UserData = {
   email: "joao@email.com",
   phone: "(44) 99999-8888",
   cpf: "123.456.789-00",
+  birthday: "1996-08-22",
+  updatedAt: "2026-03-15T10:30:00",
   addresses: [
     { id: "1", label: "Casa", street: "Av. Paranavaí", number: "1906", complement: "Sala 3", neighborhood: "Parque Industrial", city: "Maringá", state: "PR", cep: "87070-130", isDefault: true },
     { id: "2", label: "Trabalho", street: "Rua Santos Dumont", number: "500", neighborhood: "Centro", city: "Maringá", state: "PR", cep: "87013-000", isDefault: false },

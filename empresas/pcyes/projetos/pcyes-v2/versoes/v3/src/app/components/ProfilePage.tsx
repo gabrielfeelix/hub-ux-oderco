@@ -410,6 +410,41 @@ export function ProfilePage() {
                     );
                   })()}
 
+                  {/* Próximos passos */}
+                  {(() => {
+                    const tasks = [
+                      { done: !!user.phone, label: "Adicionar telefone", action: () => setProfileTab("data") },
+                      { done: !!user.birthday, label: "Cadastrar data de nascimento", action: () => setProfileTab("data") },
+                      { done: user.addresses.length > 0, label: "Cadastrar endereço de entrega", action: () => setProfileTab("addresses") },
+                      { done: user.cards.length > 0, label: "Salvar cartão pra checkout rápido", action: () => setProfileTab("cards") },
+                      { done: user.orders.filter((o) => o.status === "delivered").length === 0, label: "Avaliar pedidos entregues", action: () => setProfileTab("orders") },
+                    ];
+                    const pending = tasks.filter((t) => !t.done);
+                    if (pending.length === 0) return null;
+                    return (
+                      <div className="mb-3 p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <div className="flex items-center justify-between mb-3">
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Próximos passos</p>
+                          <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                            {tasks.length - pending.length}/{tasks.length} concluídos
+                          </span>
+                        </div>
+                        <div className="space-y-1.5">
+                          {pending.slice(0, 3).map((task, i) => (
+                            <button key={i} onClick={task.action}
+                              className="group/task cursor-pointer w-full flex items-center gap-3 px-3 py-2.5 transition-all hover:bg-white/[0.025]"
+                              style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}
+                            >
+                              <div className="w-4 h-4 rounded-full border-2 border-foreground/35 flex-shrink-0 group-hover/task:border-primary transition-colors" />
+                              <p className="text-foreground/80 flex-1 text-left" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 500 }}>{task.label}</p>
+                              <ChevronRight size={13} className="text-foreground/35 group-hover/task:text-primary group-hover/task:translate-x-0.5 transition-all" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })()}
+
                   {/* Card Tier / Benefícios */}
                   <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     <div className="flex items-center justify-between gap-3 px-5 pt-5 pb-3">
@@ -975,29 +1010,63 @@ export function ProfilePage() {
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                      {favoriteProducts.map((product) => (
-                        <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                          <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{ background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
-                            <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                            <button onClick={(e) => { e.preventDefault(); toggleFavorite(product.id); }}
-                              className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md cursor-pointer"
-                              style={{ borderRadius: "8px", background: "rgba(0,0,0,0.3)" }}
-                            ><Heart size={12} className="fill-primary" /></button>
-                          </Link>
-                          <div className="p-3">
-                            <div className="flex items-center gap-1 mb-1">
-                              <Star size={9} className="fill-primary text-primary" />
-                              <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>{product.rating}</span>
+                      {favoriteProducts.map((product) => {
+                        const hasDiscount = !!product.oldPrice;
+                        const inStock = product.inStock !== false;
+                        return (
+                          <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                            <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{ background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                              <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${!inStock ? "opacity-50" : ""}`} />
+                              {/* Badges sobre imagem */}
+                              <div className="absolute top-2 left-2 flex flex-col gap-1">
+                                {hasDiscount && (
+                                  <span className="px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.04em" }}>
+                                    <Sparkles size={8} /> OFERTA
+                                  </span>
+                                )}
+                                {!inStock && (
+                                  <span className="px-1.5 py-0.5 bg-foreground/70 text-background" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.04em" }}>
+                                    SEM ESTOQUE
+                                  </span>
+                                )}
+                              </div>
+                              <button onClick={(e) => { e.preventDefault(); toggleFavorite(product.id); }}
+                                className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md cursor-pointer"
+                                style={{ borderRadius: "8px", background: "rgba(0,0,0,0.3)" }}
+                              ><Heart size={12} className="fill-primary" /></button>
+                            </Link>
+                            <div className="p-3">
+                              <div className="flex items-center justify-between gap-2 mb-1">
+                                <div className="flex items-center gap-1">
+                                  <Star size={9} className="fill-primary text-primary" />
+                                  <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>{product.rating}</span>
+                                </div>
+                                {inStock && (
+                                  <span className="flex items-center gap-1 text-green-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.04em" }}>
+                                    <span className="relative flex h-1.5 w-1.5">
+                                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
+                                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+                                    </span>
+                                    EM ESTOQUE
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-foreground truncate mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: "var(--font-weight-medium)" }}>{product.name}</p>
+                              <div className="flex items-baseline gap-1.5 mb-3">
+                                <p className="text-foreground/80" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>{product.price}</p>
+                                {hasDiscount && (
+                                  <p className="text-foreground/35 line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>{product.oldPrice}</p>
+                                )}
+                              </div>
+                              <button onClick={() => addItem(product)}
+                                disabled={!inStock}
+                                className={`w-full py-1.5 flex items-center justify-center gap-1.5 transition-all cursor-pointer ${inStock ? "bg-primary text-primary-foreground hover:brightness-110" : "bg-foreground/8 text-foreground/40 cursor-not-allowed"}`}
+                                style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
+                              ><ShoppingBag size={11} /> {inStock ? "Adicionar" : "Avisar quando voltar"}</button>
                             </div>
-                            <p className="text-foreground truncate mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: "var(--font-weight-medium)" }}>{product.name}</p>
-                            <p className="text-foreground/70 mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{product.price}</p>
-                            <button onClick={() => addItem(product)}
-                              className="w-full py-1.5 bg-primary text-primary-foreground flex items-center justify-center gap-1.5 hover:brightness-110 transition-all cursor-pointer"
-                              style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
-                            ><ShoppingBag size={11} /> Adicionar</button>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   )}
                 </motion.div>
@@ -1052,29 +1121,78 @@ export function ProfilePage() {
 
               {activeTab === "data" && (
                 <motion.div key="data" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Dados Pessoais</h2>
+                  <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
+                    <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Dados Pessoais</h2>
+                    {user.updatedAt && (
+                      <p className="text-foreground/55 flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                        <Clock size={11} /> Atualizado em {new Date(user.updatedAt).toLocaleDateString("pt-BR")}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Aniversário destaque se próximo */}
+                  {(() => {
+                    if (!user.birthday) return null;
+                    const today = new Date(2026, 4, 18);
+                    const bday = new Date(user.birthday);
+                    const thisBday = new Date(today.getFullYear(), bday.getMonth(), bday.getDate());
+                    if (thisBday < today) thisBday.setFullYear(today.getFullYear() + 1);
+                    const daysToBday = Math.ceil((thisBday.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+                    if (daysToBday > 30) return null;
+                    return (
+                      <div className="flex items-center gap-3 p-4 mb-3" style={{ borderRadius: "14px", background: "linear-gradient(135deg, rgba(255,43,46,0.06) 0%, rgba(255,255,255,0.02) 60%)", border: "1px solid rgba(255,43,46,0.2)" }}>
+                        <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                          <Sparkles size={16} className="text-primary fill-primary/30" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>Seu aniversário tá chegando 🎂</p>
+                          <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                            {daysToBday === 0 ? "É hoje!" : `Em ${daysToBday} ${daysToBday === 1 ? "dia" : "dias"} · Tem cupom esperando você`}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })()}
+
                   <div className="p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                       <div>
-                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome</label>
-                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome completo</label>
+                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
-                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>E-mail</label>
-                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <label className="flex items-center gap-1 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                          E-mail
+                          <Check size={11} className="text-green-500" />
+                          <span className="text-green-500" style={{ letterSpacing: "0.08em" }}>verificado</span>
+                        </label>
+                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
-                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
-                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>CPF</label>
-                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-50" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Data de nascimento</label>
+                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label className="flex items-center gap-1.5 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                          CPF
+                          <Shield size={11} className="text-foreground/45" />
+                          <span className="text-foreground/45" style={{ letterSpacing: "0.06em" }}>não editável</span>
+                        </label>
+                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-60 cursor-not-allowed" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.015)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                     </div>
-                    <button className="px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
-                      style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
-                    >Salvar alterações</button>
+                    <div className="flex items-center gap-2">
+                      <button onClick={() => updateUser({ updatedAt: new Date().toISOString() })} className="px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                        style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                      >Salvar alterações</button>
+                      <button className="px-4 py-2.5 text-foreground/65 hover:text-foreground transition-all cursor-pointer"
+                        style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                      >Cancelar</button>
+                    </div>
                   </div>
                 </motion.div>
               )}
