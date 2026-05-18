@@ -1266,7 +1266,7 @@ export function ProfilePage() {
                                 disabled={!inStock}
                                 className={`w-full py-1.5 flex items-center justify-center gap-1.5 transition-all cursor-pointer ${inStock ? "bg-primary text-primary-foreground hover:brightness-110" : "bg-foreground/8 text-foreground/40 cursor-not-allowed"}`}
                                 style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
-                              ><ShoppingBag size={11} /> {inStock ? "Adicionar" : "Avisar quando voltar"}</button>
+                              ><ShoppingBag size={11} /> {inStock ? "Comprar" : "Avisar quando voltar"}</button>
                             </div>
                           </div>
                         );
