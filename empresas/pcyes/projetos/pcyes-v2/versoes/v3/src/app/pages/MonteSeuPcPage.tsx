@@ -1797,6 +1797,100 @@ function ReviewScreen({
   );
 }
 
+function HeroBuilderBanner({ totalSelected, totalCount }: { totalSelected: number; totalCount: number }) {
+  return (
+    <div className="relative overflow-hidden border-b border-white/[0.05]">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(255,43,46,0.22) 0%, rgba(255,43,46,0.1) 38%, transparent 70%), radial-gradient(ellipse 70% 100% at 80% 50%, rgba(255,43,46,0.18) 0%, transparent 60%), linear-gradient(180deg, #15151a 0%, #0d0d10 100%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-25"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 12% 30%, rgba(255,255,255,0.7) 0.5px, transparent 1px), radial-gradient(circle at 38% 70%, rgba(255,232,31,0.5) 0.5px, transparent 1px), radial-gradient(circle at 64% 25%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 84% 75%, rgba(255,232,31,0.4) 0.5px, transparent 1px), radial-gradient(circle at 22% 85%, rgba(255,255,255,0.4) 0.5px, transparent 1px)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 w-[140px] opacity-30"
+        style={{
+          background:
+            "linear-gradient(135deg, transparent 0%, rgba(255,43,46,0.3) 100%)",
+        }}
+      />
+      <div className="relative mx-auto flex max-w-[1760px] items-center justify-between gap-4 px-6 py-5 md:px-8 md:py-6">
+        <div className="min-w-0">
+          <p
+            className="mb-1 uppercase text-primary"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10.5px",
+              letterSpacing: "0.28em",
+              fontWeight: 700,
+            }}
+          >
+            // Configurador PCYES
+          </p>
+          <h1
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "clamp(20px, 2.4vw, 28px)",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
+            }}
+          >
+            Construa sua <span className="text-primary">máquina</span>
+          </h1>
+        </div>
+        <div className="hidden items-center gap-2 md:flex">
+          <span
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.1] bg-white/[0.04] px-3 py-1.5 text-zinc-200 backdrop-blur"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "11px",
+              fontWeight: 600,
+            }}
+          >
+            <Check size={11} className="text-emerald-400" strokeWidth={3} />
+            Compatibilidade garantida
+          </span>
+          <span
+            className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/[0.08] px-3 py-1.5 text-primary backdrop-blur"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "11px",
+              fontWeight: 700,
+            }}
+          >
+            <Sparkles size={10} /> Em até 10x sem juros
+          </span>
+          <span
+            className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-black/30 px-3 py-1.5 text-white backdrop-blur tabular-nums"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "11px",
+              fontWeight: 700,
+            }}
+          >
+            <span className="text-zinc-400" style={{ fontWeight: 600 }}>
+              Progresso
+            </span>
+            <span className="text-primary">
+              {totalSelected}/{totalCount}
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HorizontalStepper({
   categories,
   currentId,
@@ -1931,42 +2025,50 @@ function ProductTile({
         aria-label={`Selecionar ${option.name}${option.standard ? " (sugerida PCYES)" : ""}`}
         className={cn(
           baseBtnClass,
-          "flex w-full items-stretch gap-3 overflow-hidden rounded-[14px] p-3 hover:-translate-y-0.5",
+          "flex w-full items-stretch overflow-hidden rounded-[14px] hover:-translate-y-0.5",
           selected && "-translate-y-0.5",
         )}
         style={shadowStyle}
       >
-        <div className="relative h-[104px] w-[104px] shrink-0 overflow-hidden rounded-[10px] bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
+        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-[#f4f4f5]">
           {option.standard && (
             <span
-              className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
+              className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "8px",
+                fontSize: "8.5px",
                 letterSpacing: "0.14em",
                 fontWeight: 700,
                 boxShadow: "0 4px 12px -2px rgba(255,43,46,0.55)",
               }}
             >
-              <Sparkles size={7} /> SUG
+              <Sparkles size={8} /> SUGERIDA
             </span>
           )}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 30%, rgba(255,255,255,0.08), transparent 65%)",
+            }}
+          />
           {option.image ? (
             <img
               src={option.image}
               alt=""
-              className="absolute inset-0 h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-[1.07]"
+              className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.06]"
+              style={{ mixBlendMode: "normal" }}
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-zinc-500">{category.icon}</div>
           )}
         </div>
-        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+        <div className="flex min-w-0 flex-1 flex-col gap-2 p-4">
           <p
             className="line-clamp-2 text-white"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "13px",
+              fontSize: "14px",
               fontWeight: 600,
               letterSpacing: "-0.005em",
               lineHeight: 1.3,
@@ -1975,14 +2077,14 @@ function ProductTile({
             {option.name}
           </p>
           {option.highlights && option.highlights.length > 0 && (
-            <div className="flex flex-wrap gap-1">
-              {option.highlights.slice(0, 3).map((h) => (
+            <div className="flex flex-wrap gap-1.5">
+              {option.highlights.slice(0, 4).map((h) => (
                 <span
                   key={h}
                   className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "9.5px",
+                    fontSize: "10px",
                     fontWeight: 500,
                   }}
                 >
@@ -1991,13 +2093,13 @@ function ProductTile({
               ))}
             </div>
           )}
-          <div className="mt-auto flex items-baseline justify-between">
+          <div className="mt-auto flex items-end justify-between pt-1">
             <div>
               <p
                 className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "17px",
+                  fontSize: "20px",
                   fontWeight: 700,
                   letterSpacing: "-0.005em",
                   lineHeight: 1,
@@ -2005,17 +2107,17 @@ function ProductTile({
               >
                 {formatBRL(option.price)}
               </p>
-              <p className="mt-0.5 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px" }}>
-                10x de {formatBRL(option.price / 10)}
+              <p className="mt-1 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
+                10x de {formatBRL(option.price / 10)} sem juros
               </p>
             </div>
             <div
               className={cn(
-                "flex h-6 w-6 items-center justify-center rounded-md border-2 transition-all",
+                "flex h-7 w-7 items-center justify-center rounded-md border-2 transition-all",
                 selected ? "border-primary bg-primary" : "border-white/25 group-hover:border-primary/60",
               )}
             >
-              {selected && <Check size={13} className="text-white" strokeWidth={3} />}
+              {selected && <Check size={14} className="text-white" strokeWidth={3} />}
             </div>
           </div>
         </div>
@@ -2058,7 +2160,7 @@ function ProductTile({
       >
         {selected && <Check size={11} className="text-white" strokeWidth={3} />}
       </div>
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f4f4f5]">
         {option.image ? (
           <img
             src={option.image}
@@ -2170,11 +2272,11 @@ function SelectedItemCard({
         </div>
       </div>
       <div className="px-5 py-4">
-        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[#15151a]">
+        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[#f4f4f5]">
           {option?.image ? (
             <img src={option.image} alt={option.name} className="h-full w-full object-contain p-3" />
           ) : (
-            <div className="text-zinc-600">{category?.icon}</div>
+            <div className="text-zinc-400">{category?.icon}</div>
           )}
         </div>
         {option ? (
@@ -2785,6 +2887,10 @@ export function MonteSeuPcPage() {
 
               return (
                 <>
+                  <HeroBuilderBanner
+                    totalSelected={completedSteps.length}
+                    totalCount={categories.length}
+                  />
                   <HorizontalStepper
                     categories={categoriesWithSelected.map((c) => ({
                       id: c.id,
