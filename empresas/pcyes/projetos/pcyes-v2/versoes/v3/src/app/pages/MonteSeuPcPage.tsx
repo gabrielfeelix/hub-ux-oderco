@@ -2206,19 +2206,19 @@ function HorizontalStepper({
           "linear-gradient(180deg, rgba(15,15,18,0.85) 0%, rgba(10,10,12,0.9) 100%)",
       }}
     >
-      <div className="mx-auto max-w-[1520px] overflow-x-auto px-6 py-6">
+      <div className="mx-auto max-w-[1520px] overflow-x-auto px-6 py-5">
         <div className="relative flex min-w-fit items-start justify-between gap-2">
-          <div className="pointer-events-none absolute left-0 right-0 top-[28px] h-[2px] bg-white/[0.06]" />
+          <div className="pointer-events-none absolute left-0 right-0 top-[20px] h-[2px] bg-white/[0.06]" />
           <motion.div
-            className="pointer-events-none absolute left-0 top-[28px] h-[2px]"
+            className="pointer-events-none absolute left-0 top-[20px] h-[2px]"
             initial={false}
             animate={{
               width: `${categories.length > 1 ? (currentIdx / (categories.length - 1)) * 100 : 0}%`,
             }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
-              boxShadow: "0 0 12px rgba(255,43,46,0.45)",
+              background: "linear-gradient(90deg, rgba(52,211,153,0.5) 0%, rgba(52,211,153,1) 100%)",
+              boxShadow: "0 0 10px rgba(52,211,153,0.4)",
             }}
           />
           {categories.map((c) => {
@@ -2231,38 +2231,40 @@ function HorizontalStepper({
                 onClick={() => onJump(c.id)}
                 aria-current={active ? "step" : undefined}
                 aria-label={`${c.title}${done ? " (concluída)" : ""}`}
-                className="group relative z-10 flex shrink-0 cursor-pointer flex-col items-center gap-2 px-2 focus-visible:outline-none"
+                className="group relative z-10 flex shrink-0 cursor-pointer flex-col items-center gap-1.5 px-2 focus-visible:outline-none"
               >
                 <div
                   className={cn(
-                    "relative flex h-[56px] w-[56px] items-center justify-center rounded-full transition-all",
+                    "relative flex h-[40px] w-[40px] items-center justify-center rounded-full transition-all",
                     active
                       ? "bg-primary text-white"
                       : done
-                        ? "bg-[#1f0d12] text-primary"
+                        ? "bg-[#0d1f14] text-emerald-400"
                         : "bg-[#16161a] text-zinc-500 group-hover:bg-[#1c1c20] group-hover:text-zinc-300",
                   )}
                   style={
                     active
                       ? {
                           boxShadow:
-                            "0 0 0 6px #0a0a0c, 0 0 0 8px rgba(255,43,46,0.45), 0 0 28px -4px rgba(255,43,46,0.55)",
+                            "0 0 0 5px #0a0a0c, 0 0 0 7px rgba(255,43,46,0.45), 0 0 20px -2px rgba(255,43,46,0.5)",
                         }
                       : done
-                        ? { boxShadow: "0 0 0 6px #0a0a0c, 0 0 0 7px rgba(255,43,46,0.35)" }
-                        : { boxShadow: "0 0 0 6px #0a0a0c, 0 0 0 7px rgba(255,255,255,0.08)" }
+                        ? { boxShadow: "0 0 0 5px #0a0a0c, 0 0 0 6px rgba(52,211,153,0.35)" }
+                        : { boxShadow: "0 0 0 5px #0a0a0c, 0 0 0 6px rgba(255,255,255,0.08)" }
                   }
                 >
                   {done && !active ? (
-                    <Check size={18} strokeWidth={3} />
+                    <Check size={14} strokeWidth={3} />
                   ) : (
-                    c.icon
+                    <span className={cn("flex items-center justify-center", active ? "[&>svg]:size-[16px]" : "[&>svg]:size-[14px]")}>
+                      {c.icon}
+                    </span>
                   )}
                 </div>
                 <span
                   className={cn(
                     "max-w-[80px] text-center transition-colors",
-                    active ? "text-primary" : done ? "text-zinc-200" : "text-zinc-500",
+                    active ? "text-primary" : done ? "text-emerald-400" : "text-zinc-500",
                   )}
                   style={{
                     fontFamily: "var(--font-family-inter)",
