@@ -109,6 +109,17 @@ function Field({ label, children, required, className }: { label: string; childr
   );
 }
 
+function PixLogo({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden>
+      <path
+        d="M22.96 22.97a4.42 4.42 0 0 1-3.14-1.3l-4.54-4.54a.86.86 0 0 0-1.19 0l-4.55 4.55a4.42 4.42 0 0 1-3.14 1.3H5.5l5.74 5.73a4.74 4.74 0 0 0 6.71 0l5.75-5.74h-.74Zm-16.56-13.94a4.42 4.42 0 0 1 3.14 1.3l4.55 4.55a.84.84 0 0 0 1.19 0l4.54-4.53a4.42 4.42 0 0 1 3.14-1.3h.45l-5.75-5.75a4.74 4.74 0 0 0-6.71 0L5.21 9.03h1.19Zm21.27 4.62-3.48-3.48a.67.67 0 0 1-.24.05h-1.27c-.86 0-1.7.35-2.3.96l-4.54 4.54a2.17 2.17 0 0 1-3.07 0L8.22 11.18a3.26 3.26 0 0 0-2.3-.96H4.36a.66.66 0 0 1-.23-.04L.65 13.65a4.74 4.74 0 0 0 0 6.71l3.48 3.48a.66.66 0 0 1 .23-.04h1.56c.86 0 1.7-.35 2.3-.96l4.54-4.55a2.23 2.23 0 0 1 3.08 0l4.54 4.54c.6.61 1.44.96 2.3.96h1.27a.67.67 0 0 1 .24.04l3.48-3.47a4.74 4.74 0 0 0 0-6.71"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 function PaymentOption({
   icon,
   label,
@@ -117,6 +128,7 @@ function PaymentOption({
   active,
   onClick,
   color,
+  accentBg,
 }: {
   icon: React.ReactNode;
   label: string;
@@ -125,8 +137,10 @@ function PaymentOption({
   active: boolean;
   onClick: () => void;
   color?: string;
+  accentBg?: string;
 }) {
   const accent = color ?? "var(--primary)";
+  const activeBadgeBg = accentBg ?? "rgba(255,43,46,0.14)";
   return (
     <button
       onClick={onClick}
@@ -141,7 +155,7 @@ function PaymentOption({
       }}
     >
       <div className="flex w-full items-center gap-2.5">
-        <span className="flex items-center justify-center" style={{ width: 32, height: 32, borderRadius: 9, background: active ? `${color ? color.replace("1)", "0.14)") : "rgba(255,43,46,0.14)"}` : "rgba(255,255,255,0.05)", color: active ? accent : "rgba(255,255,255,0.6)" }}>
+        <span className="flex items-center justify-center" style={{ width: 32, height: 32, borderRadius: 9, background: active ? activeBadgeBg : "rgba(255,255,255,0.05)", color: active ? accent : "rgba(255,255,255,0.6)" }}>
           {icon}
         </span>
         <span className="flex-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 700, letterSpacing: "0.01em", color: active ? "#fff" : "rgba(255,255,255,0.85)" }}>{label}</span>
@@ -1366,7 +1380,7 @@ export function CheckoutPage() {
 
                       {/* Traditional methods */}
                       <div className="grid grid-cols-1 gap-3 md:grid-cols-3 mb-6">
-                        <PaymentOption icon={<Zap size={18} strokeWidth={2.4} fill="currentColor" />} label="Pix" description="Aprovação instantânea · 10% OFF" badge="-10%" active={payment === "pix"} onClick={() => setPayment("pix")} color="#22c55e" />
+                        <PaymentOption icon={<PixLogo size={18} />} label="Pix" description="Aprovação instantânea · 10% OFF" badge="-10%" active={payment === "pix"} onClick={() => setPayment("pix")} color="#22c55e" accentBg="rgba(34,197,94,0.14)" />
                         <PaymentOption icon={<CreditCard size={18} strokeWidth={2} />} label="Cartão" description="Até 12x · seu cartão salvo" active={payment === "credit"} onClick={() => setPayment("credit")} />
                         <PaymentOption icon={<Wallet size={18} strokeWidth={2} />} label="Boleto" description="Vence em 3 dias úteis" active={payment === "boleto"} onClick={() => setPayment("boleto")} />
                       </div>
