@@ -8,7 +8,9 @@ import {
   ArrowLeft, Copy, Receipt, Info, Share2, AlertCircle, PackageCheck,
   LayoutDashboard, Sparkles
 } from "lucide-react";
-import { useAuth, type Order } from "./AuthContext";
+import { useAuth, type Order, type UserAddress, type UserCard } from "./AuthContext";
+import { AddressFormModal } from "./AddressFormModal";
+import { CardFormModal } from "./CardFormModal";
 import { useFavorites } from "./FavoritesContext";
 import { useCart } from "./CartContext";
 import { useTheme } from "./ThemeProvider";
@@ -71,11 +73,12 @@ function OrderStatusTimeline({ status }: { status: Order["status"] }) {
   );
 }
 
-type Tab = "overview" | "orders" | "favorites" | "addresses" | "data" | "cards" | "help" | "privacy";
+type Tab = "overview" | "orders" | "points" | "favorites" | "addresses" | "data" | "cards" | "help" | "privacy";
 
 const TABS: { key: Tab; icon: typeof Package; label: string }[] = [
   { key: "overview", icon: LayoutDashboard, label: "Visão Geral" },
   { key: "orders", icon: Package, label: "Meus Pedidos" },
+  { key: "points", icon: Sparkles, label: "PCYES Points" },
   { key: "favorites", icon: Heart, label: "Favoritos" },
   { key: "addresses", icon: MapPin, label: "Endereços" },
   { key: "data", icon: User, label: "Dados Pessoais" },
@@ -110,7 +113,11 @@ function getTier(ordersCount: number) {
 }
 
 export function ProfilePage() {
-  const { user, isLoggedIn, setAuthModalOpen, logout, updateUser } = useAuth();
+  const {
+    user, isLoggedIn, setAuthModalOpen, logout, updateUser,
+    addAddress, updateAddress, removeAddress, setDefaultAddress,
+    addCard, updateCard, removeCard, setDefaultCard,
+  } = useAuth();
   const { favorites, toggleFavorite } = useFavorites();
   const { addItem } = useCart();
   const { resolvedTheme } = useTheme();
@@ -119,6 +126,9 @@ export function ProfilePage() {
   const initialTab = TABS.some((tab) => tab.key === searchParams.get("tab")) ? searchParams.get("tab") as Tab : "overview";
   const [activeTab, setActiveTab] = useState<Tab>(initialTab);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
+  /* Modal state — controla qual modal está aberto e qual item editar (null = novo). */
+  const [addressModal, setAddressModal] = useState<{ open: boolean; editing: UserAddress | null }>({ open: false, editing: null });
+  const [cardModal, setCardModal] = useState<{ open: boolean; editing: UserCard | null }>({ open: false, editing: null });
   const setProfileTab = (tab: Tab) => {
     setActiveTab(tab);
     const next = new URLSearchParams(searchParams);
@@ -504,6 +514,25 @@ export function ProfilePage() {
                         );
                       })}
                     </div>
+
+                    {/* Callout PCYES Points */}
+                    {(user.pcyesPoints ?? 0) > 0 && (
+                      <button onClick={() => setProfileTab("points")}
+                        className="group cursor-pointer w-full flex items-center gap-3 px-5 py-3 transition-all hover:brightness-110"
+                        style={{ borderTop: "1px solid rgba(250,204,21,0.18)", background: "linear-gradient(90deg, rgba(250,204,21,0.06) 0%, rgba(180,83,9,0.02) 100%)" }}
+                      >
+                        <PcyesCoin size={22} />
+                        <div className="flex-1 text-left min-w-0">
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}>
+                            Você tem <span style={{ color: "#facc15" }}>{(user.pcyesPoints ?? 0).toLocaleString("pt-BR")} pts</span> pra usar no próximo pedido
+                          </p>
+                          <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                            Vale R$ {((user.pcyesPoints ?? 0) * 0.1).toFixed(2).replace(".", ",")} em desconto
+                          </p>
+                        </div>
+                        <ChevronRight size={14} className="text-foreground/40 group-hover:text-yellow-500 group-hover:translate-x-0.5 transition-all" />
+                      </button>
+                    )}
                   </div>
 
                   {/* Grid de cards */}
@@ -621,6 +650,35 @@ export function ProfilePage() {
                         </button>
                       );
                     })()}
+
+                    {/* PCYES Points card no grid */}
+                    {(user.pcyesPoints ?? 0) > 0 && (
+                      <button onClick={() => setProfileTab("points")}
+                        className="group cursor-pointer text-left p-5 transition-all relative overflow-hidden md:col-span-2"
+                        style={{
+                          borderRadius: "14px",
+                          background: "linear-gradient(135deg, rgba(250,204,21,0.08) 0%, rgba(180,83,9,0.04) 50%, rgba(255,43,46,0.02) 100%)",
+                          border: "1px solid rgba(250,204,21,0.28)",
+                        }}
+                      >
+                        <div className="flex items-center gap-4">
+                          <PcyesCoin size={44} />
+                          <div className="flex-1 min-w-0">
+                            <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#facc15" }}>PCYES Points</p>
+                            <div className="flex items-baseline gap-2">
+                              <p style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: 700, color: "#facc15", textShadow: "0 0 18px rgba(250,204,21,0.4)" }}>
+                                {(user.pcyesPoints ?? 0).toLocaleString("pt-BR")}
+                              </p>
+                              <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                                = R$ {((user.pcyesPoints ?? 0) * 0.1).toFixed(2).replace(".", ",")}
+                              </p>
+                            </div>
+                            <p className="text-foreground/60 mt-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>Use no próximo pedido · Ver histórico e como ganhar mais</p>
+                          </div>
+                          <ChevronRight size={16} className="text-foreground/40 group-hover:text-yellow-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                        </div>
+                      </button>
+                    )}
                   </div>
 
                   {/* Atalhos rápidos */}
@@ -994,6 +1052,142 @@ export function ProfilePage() {
                 </motion.div>
               )}
 
+              {activeTab === "points" && (() => {
+                const history = user.pcyesPointsHistory ?? [];
+                const totalEarned = history.filter((h) => h.amount > 0).reduce((acc, h) => acc + h.amount, 0);
+                const totalSpent = -history.filter((h) => h.amount < 0).reduce((acc, h) => acc + h.amount, 0);
+                const nextExpiring = history.filter((h) => h.expiresAt && h.amount > 0).sort((a, b) => new Date(a.expiresAt!).getTime() - new Date(b.expiresAt!).getTime())[0];
+                const today = new Date(2026, 4, 18);
+                const daysToExpire = nextExpiring ? Math.ceil((new Date(nextExpiring.expiresAt!).getTime() - today.getTime()) / (1000 * 60 * 60 * 24)) : 0;
+                return (
+                  <motion.div key="points" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
+                    <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
+                      <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>PCYES Points</h2>
+                      <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>1 pt = R$ 0,10 · Use até 30% por pedido</p>
+                    </div>
+
+                    {/* Hero saldo */}
+                    <div className="relative mb-3 overflow-hidden p-6" style={{ borderRadius: "16px", background: "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.05) 50%, rgba(255,43,46,0.03) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
+                      <div className="flex items-center gap-4 mb-4">
+                        <PcyesCoin size={56} />
+                        <div className="flex-1">
+                          <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#facc15" }}>Saldo disponível</p>
+                          <p style={{ fontFamily: "var(--font-family-figtree)", fontSize: "44px", fontWeight: 700, lineHeight: 1, color: "#facc15", textShadow: "0 0 24px rgba(250,204,21,0.4)" }}>
+                            {(user.pcyesPoints ?? 0).toLocaleString("pt-BR")}
+                          </p>
+                          <p className="text-foreground/65 mt-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>
+                            Equivale a <span className="text-foreground font-semibold">R$ {((user.pcyesPoints ?? 0) * 0.1).toFixed(2).replace(".", ",")}</span> em desconto
+                          </p>
+                        </div>
+                      </div>
+
+                      {nextExpiring && daysToExpire > 0 && daysToExpire <= 60 && (
+                        <div className="flex items-center gap-2 p-3 mt-3" style={{ borderRadius: "10px", background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.22)" }}>
+                          <AlertCircle size={14} className="text-yellow-500 flex-shrink-0" />
+                          <p className="text-yellow-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                            {nextExpiring.amount} pts vencem em {daysToExpire} {daysToExpire === 1 ? "dia" : "dias"} · {new Date(nextExpiring.expiresAt!).toLocaleDateString("pt-BR")}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Stats grid */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
+                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Acumulado</p>
+                        <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
+                          {totalEarned} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
+                        </p>
+                      </div>
+                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Resgatado</p>
+                        <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
+                          {totalSpent} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
+                        </p>
+                      </div>
+                      <div className="p-4 col-span-2 md:col-span-1" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Próximo pedido pode usar até</p>
+                        <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
+                          {Math.min(user.pcyesPoints ?? 0, 480)} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Como funciona */}
+                    <div className="p-5 mb-3" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <p className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Como ganhar mais</p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                        {[
+                          { icon: ShoppingBag, title: "Cada compra", desc: "1 pt a cada R$ 10 gastos" },
+                          { icon: Star, title: "Avaliar produtos", desc: "+5 pts por avaliação" },
+                          { icon: Share2, title: "Indicar amigos", desc: "+50 pts quando o amigo compra" },
+                        ].map((item) => (
+                          <div key={item.title} className="flex items-start gap-2.5 p-3" style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}>
+                            <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(250,204,21,0.12)" }}>
+                              <item.icon size={13} style={{ color: "#facc15" }} />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: "var(--font-weight-medium)" }}>{item.title}</p>
+                              <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{item.desc}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Histórico */}
+                    <div className="overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="px-5 py-3 flex items-center justify-between" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                        <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Histórico</p>
+                        <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{history.length} {history.length === 1 ? "transação" : "transações"}</p>
+                      </div>
+                      {history.length === 0 ? (
+                        <div className="text-center py-12 px-6">
+                          <PcyesCoin size={40} />
+                          <p className="text-foreground/55 mt-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Nenhuma transação ainda</p>
+                        </div>
+                      ) : (
+                        <div>
+                          {history.map((tx, idx) => {
+                            const isPositive = tx.amount > 0;
+                            const txDate = new Date(tx.date);
+                            const txTypeMap = {
+                              earn: { label: "Ganhou", color: "text-green-500" },
+                              bonus: { label: "Bônus", color: "text-yellow-500" },
+                              spend: { label: "Resgatou", color: "text-foreground/65" },
+                              expire: { label: "Expirou", color: "text-red-400" },
+                            };
+                            const txStyle = txTypeMap[tx.type];
+                            return (
+                              <div key={tx.id} className="flex items-center gap-3 px-5 py-3" style={{ borderTop: idx > 0 ? (isDark ? "1px solid rgba(255,255,255,0.03)" : "1px solid rgba(0,0,0,0.03)") : undefined }}>
+                                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: isPositive ? "rgba(34,197,94,0.10)" : "rgba(239,68,68,0.08)" }}>
+                                  {isPositive ? <Sparkles size={13} className="text-green-500" /> : <Receipt size={13} className="text-foreground/70" />}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2 mb-0.5">
+                                    <p className="text-foreground truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>{tx.description}</p>
+                                    <span className={`${txStyle.color} flex-shrink-0`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                                      {txStyle.label}
+                                    </span>
+                                  </div>
+                                  <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                                    {txDate.toLocaleDateString("pt-BR")} · {txDate.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}
+                                    {tx.expiresAt && isPositive && ` · vence em ${new Date(tx.expiresAt).toLocaleDateString("pt-BR")}`}
+                                  </p>
+                                </div>
+                                <p className={`flex-shrink-0 ${isPositive ? "text-green-500" : "text-foreground/65"}`} style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: 700 }}>
+                                  {isPositive ? "+" : ""}{tx.amount} <span style={{ fontSize: "11px", fontWeight: 600 }}>pts</span>
+                                </p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })()}
+
               {activeTab === "favorites" && (
                 <motion.div key="favorites" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
@@ -1016,8 +1210,17 @@ export function ProfilePage() {
                         const inStock = product.inStock !== false;
                         return (
                           <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                            <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{ background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
-                              <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${!inStock ? "opacity-50" : ""}`} />
+                            <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{
+                              /* Visual match com ProductCard do ProductShelf: gradient + inner shine. */
+                              background: isDark
+                                ? "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)"
+                                : "linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.01) 100%)",
+                              boxShadow: isDark ? "inset 0 1px 0 rgba(255,255,255,0.05)" : "inset 0 1px 0 rgba(255,255,255,0.6)",
+                            }}>
+                              {isDark && (
+                                <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)" }} />
+                              )}
+                              <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className={`w-full h-full object-contain p-5 group-hover:scale-[1.05] transition-transform duration-500 relative z-[1] ${!inStock ? "opacity-50" : ""}`} />
                               {/* Badges sobre imagem */}
                               <div className="absolute top-2 left-2 flex flex-col gap-1">
                                 {hasDiscount && (
@@ -1077,14 +1280,14 @@ export function ProfilePage() {
                 <motion.div key="addresses" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
-                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setAddressModal({ open: true, editing: null })} className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.addresses.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <MapPin size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum endereço cadastrado</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione um endereço pra receber seus pedidos.</p>
-                      <button className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar endereço</button>
+                      <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar endereço</button>
                     </div>
                   ) : (
                   <div className="space-y-2">
@@ -1109,9 +1312,12 @@ export function ProfilePage() {
                         </div>
                         <div className="flex flex-col gap-1.5 flex-shrink-0">
                           {!a.isDefault && (
-                            <button className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer flex items-center gap-1" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                            <button onClick={() => setDefaultAddress(a.id)} className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer flex items-center gap-1" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                           )}
-                          <button className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                          <button onClick={() => setAddressModal({ open: true, editing: a })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                          {user.addresses.length > 1 && (
+                            <button onClick={() => { if (confirm(`Remover endereço "${a.label}"?`)) removeAddress(a.id); }} className="px-3 py-1.5 text-foreground/55 hover:text-primary transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -1202,14 +1408,14 @@ export function ProfilePage() {
                 <motion.div key="cards" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
-                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setCardModal({ open: true, editing: null })} className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.cards.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <CreditCard size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum cartão salvo</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione pra checkout mais rápido. Seus dados ficam criptografados.</p>
-                      <button className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar cartão</button>
+                      <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar cartão</button>
                     </div>
                   ) : (
                   <div className="space-y-2">
@@ -1234,9 +1440,10 @@ export function ProfilePage() {
                           </div>
                           <div className="flex flex-col gap-1.5 flex-shrink-0">
                             {!c.isDefault && (
-                              <button className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                              <button onClick={() => setDefaultCard(c.id)} className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                             )}
-                            <button className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                            <button onClick={() => setCardModal({ open: true, editing: c })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                            <button onClick={() => { if (confirm(`Remover cartão •••• ${c.last4}?`)) removeCard(c.id); }} className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                           </div>
                         </div>
                       );
@@ -1357,6 +1564,26 @@ export function ProfilePage() {
         </div>
       </div>
       <Footer />
+
+      {/* ─── Modais ─── */}
+      <AddressFormModal
+        open={addressModal.open}
+        initial={addressModal.editing}
+        onClose={() => setAddressModal({ open: false, editing: null })}
+        onSubmit={(data) => {
+          if (addressModal.editing) updateAddress(addressModal.editing.id, data);
+          else addAddress(data);
+        }}
+      />
+      <CardFormModal
+        open={cardModal.open}
+        initial={cardModal.editing}
+        onClose={() => setCardModal({ open: false, editing: null })}
+        onSubmit={(data) => {
+          if (cardModal.editing) updateCard(cardModal.editing.id, data);
+          else addCard(data);
+        }}
+      />
     </div>
   );
 }

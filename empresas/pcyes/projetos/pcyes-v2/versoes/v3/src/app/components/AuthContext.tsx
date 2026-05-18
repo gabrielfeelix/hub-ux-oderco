@@ -39,6 +39,16 @@ export interface Order {
   history?: OrderHistory[];
 }
 
+export interface PcyesPointsTx {
+  id: string;
+  date: string;
+  type: "earn" | "spend" | "expire" | "bonus";
+  amount: number;
+  description: string;
+  orderId?: string;
+  expiresAt?: string;
+}
+
 export interface UserData {
   name: string;
   email: string;
@@ -48,6 +58,7 @@ export interface UserData {
   updatedAt?: string;
   avatar?: string;
   pcyesPoints?: number;
+  pcyesPointsHistory?: PcyesPointsTx[];
   addresses: UserAddress[];
   cards: UserCard[];
   orders: Order[];
@@ -61,6 +72,16 @@ interface AuthContextType {
   register: (name: string, email: string, password: string) => Promise<void>;
   logout: () => void;
   updateUser: (data: Partial<UserData>) => void;
+  /* Address helpers — quando isDefault=true entra, todos outros viram false. */
+  addAddress: (data: Omit<UserAddress, "id">) => void;
+  updateAddress: (id: string, data: Partial<Omit<UserAddress, "id">>) => void;
+  removeAddress: (id: string) => void;
+  setDefaultAddress: (id: string) => void;
+  /* Card helpers — mesma semântica do default. */
+  addCard: (data: Omit<UserCard, "id">) => void;
+  updateCard: (id: string, data: Partial<Omit<UserCard, "id">>) => void;
+  removeCard: (id: string) => void;
+  setDefaultCard: (id: string) => void;
   authModalOpen: boolean;
   setAuthModalOpen: (open: boolean) => void;
   authModalTab: "login" | "register";
@@ -83,6 +104,14 @@ const MOCK_USER: UserData = {
   birthday: "1996-08-22",
   updatedAt: "2026-03-15T10:30:00",
   pcyesPoints: 480,
+  pcyesPointsHistory: [
+    { id: "tx-006", date: "2026-04-05 22:35", type: "earn", amount: 60, description: "Compra: Spectrum Pro Gabinete", orderId: "PCY-2026-003", expiresAt: "2027-04-05" },
+    { id: "tx-005", date: "2026-04-02 12:15", type: "earn", amount: 50, description: "Compra: Teclado + Deskpad", orderId: "PCY-2026-002", expiresAt: "2027-04-02" },
+    { id: "tx-004", date: "2026-03-28 15:45", type: "earn", amount: 19, description: "Compra: Cobra V2 Mouse", orderId: "PCY-2026-001", expiresAt: "2027-03-28" },
+    { id: "tx-003", date: "2026-03-22 10:00", type: "bonus", amount: 100, description: "Bônus: aniversário PCYES", expiresAt: "2026-06-22" },
+    { id: "tx-002", date: "2026-03-15 14:20", type: "spend", amount: -80, description: "Resgate aplicado em pedido anterior" },
+    { id: "tx-001", date: "2026-02-20 09:00", type: "bonus", amount: 250, description: "Bônus de boas-vindas", expiresAt: "2026-08-20" },
+  ],
   addresses: [
     { id: "1", label: "Casa", street: "Av. Paranavaí", number: "1906", complement: "Sala 3", neighborhood: "Parque Industrial", city: "Maringá", state: "PR", cep: "87070-130", isDefault: true },
     { id: "2", label: "Trabalho", street: "Rua Santos Dumont", number: "500", neighborhood: "Centro", city: "Maringá", state: "PR", cep: "87013-000", isDefault: false },
@@ -173,8 +202,95 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser((prev) => prev ? { ...prev, ...data } : null);
   }, []);
 
+  /* ─── Address helpers ─── */
+  const addAddress = useCallback((data: Omit<UserAddress, "id">) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const id = `addr-${Date.now()}`;
+      const becomingDefault = data.isDefault || prev.addresses.length === 0;
+      const next: UserAddress[] = prev.addresses.map((a) => ({ ...a, isDefault: becomingDefault ? false : a.isDefault }));
+      next.push({ ...data, id, isDefault: becomingDefault });
+      return { ...prev, addresses: next };
+    });
+  }, []);
+
+  const updateAddress = useCallback((id: string, data: Partial<Omit<UserAddress, "id">>) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const setNewDefault = data.isDefault === true;
+      const next = prev.addresses.map((a) => {
+        if (a.id === id) return { ...a, ...data };
+        return setNewDefault ? { ...a, isDefault: false } : a;
+      });
+      return { ...prev, addresses: next };
+    });
+  }, []);
+
+  const removeAddress = useCallback((id: string) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const removed = prev.addresses.find((a) => a.id === id);
+      let next = prev.addresses.filter((a) => a.id !== id);
+      /* Quando remove o default, promove o primeiro que sobrou pra default. */
+      if (removed?.isDefault && next.length > 0) {
+        next = next.map((a, i) => ({ ...a, isDefault: i === 0 }));
+      }
+      return { ...prev, addresses: next };
+    });
+  }, []);
+
+  const setDefaultAddress = useCallback((id: string) => {
+    setUser((prev) => prev ? { ...prev, addresses: prev.addresses.map((a) => ({ ...a, isDefault: a.id === id })) } : prev);
+  }, []);
+
+  /* ─── Card helpers ─── */
+  const addCard = useCallback((data: Omit<UserCard, "id">) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const id = `card-${Date.now()}`;
+      const becomingDefault = data.isDefault || prev.cards.length === 0;
+      const next: UserCard[] = prev.cards.map((c) => ({ ...c, isDefault: becomingDefault ? false : c.isDefault }));
+      next.push({ ...data, id, isDefault: becomingDefault });
+      return { ...prev, cards: next };
+    });
+  }, []);
+
+  const updateCard = useCallback((id: string, data: Partial<Omit<UserCard, "id">>) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const setNewDefault = data.isDefault === true;
+      const next = prev.cards.map((c) => {
+        if (c.id === id) return { ...c, ...data };
+        return setNewDefault ? { ...c, isDefault: false } : c;
+      });
+      return { ...prev, cards: next };
+    });
+  }, []);
+
+  const removeCard = useCallback((id: string) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const removed = prev.cards.find((c) => c.id === id);
+      let next = prev.cards.filter((c) => c.id !== id);
+      if (removed?.isDefault && next.length > 0) {
+        next = next.map((c, i) => ({ ...c, isDefault: i === 0 }));
+      }
+      return { ...prev, cards: next };
+    });
+  }, []);
+
+  const setDefaultCard = useCallback((id: string) => {
+    setUser((prev) => prev ? { ...prev, cards: prev.cards.map((c) => ({ ...c, isDefault: c.id === id })) } : prev);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, socialLogin, register, logout, updateUser, authModalOpen, setAuthModalOpen, authModalTab, setAuthModalTab }}>
+    <AuthContext.Provider value={{
+      user, isLoggedIn: !!user,
+      login, socialLogin, register, logout, updateUser,
+      addAddress, updateAddress, removeAddress, setDefaultAddress,
+      addCard, updateCard, removeCard, setDefaultCard,
+      authModalOpen, setAuthModalOpen, authModalTab, setAuthModalTab,
+    }}>
       {children}
     </AuthContext.Provider>
   );
