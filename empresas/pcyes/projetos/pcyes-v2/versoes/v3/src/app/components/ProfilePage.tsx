@@ -19,6 +19,7 @@ import { Footer } from "./Footer";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
 import { CardBrandLogo } from "./CardBrandLogo";
 import { PcyesCoin } from "./PcyesCoin";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 function OrderStatusTimeline({ status }: { status: Order["status"] }) {
   const steps = [
@@ -126,6 +127,10 @@ export function ProfilePage() {
   const initialTab = TABS.some((tab) => tab.key === searchParams.get("tab")) ? searchParams.get("tab") as Tab : "overview";
   const [activeTab, setActiveTab] = useState<Tab>(initialTab);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
+  const [confirmState, setConfirmState] = useState<{ open: boolean; title: string; description?: string; confirmLabel?: string; action?: () => void; destructive?: boolean }>({ open: false, title: "" });
+  const askConfirm = (cfg: { title: string; description?: string; confirmLabel?: string; action: () => void; destructive?: boolean }) =>
+    setConfirmState({ open: true, ...cfg });
+  const closeConfirm = () => setConfirmState((s) => ({ ...s, open: false }));
   /* Modal state — controla qual modal está aberto e qual item editar (null = novo). */
   const [addressModal, setAddressModal] = useState<{ open: boolean; editing: UserAddress | null }>({ open: false, editing: null });
   const [cardModal, setCardModal] = useState<{ open: boolean; editing: UserCard | null }>({ open: false, editing: null });
@@ -1316,7 +1321,13 @@ export function ProfilePage() {
                           )}
                           <button onClick={() => setAddressModal({ open: true, editing: a })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                           {user.addresses.length > 1 && (
-                            <button onClick={() => { if (confirm(`Remover endereço "${a.label}"?`)) removeAddress(a.id); }} className="px-3 py-1.5 text-foreground/55 hover:text-primary transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
+                            <button onClick={() => askConfirm({
+                              title: `Remover endereço "${a.label}"?`,
+                              description: `${a.street}, ${a.number} · ${a.city}/${a.state}. Essa ação não pode ser desfeita.`,
+                              confirmLabel: "Remover endereço",
+                              destructive: true,
+                              action: () => removeAddress(a.id),
+                            })} className="px-3 py-1.5 text-foreground/55 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
                           )}
                         </div>
                       </div>
@@ -1443,7 +1454,13 @@ export function ProfilePage() {
                               <button onClick={() => setDefaultCard(c.id)} className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                             )}
                             <button onClick={() => setCardModal({ open: true, editing: c })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
-                            <button onClick={() => { if (confirm(`Remover cartão •••• ${c.last4}?`)) removeCard(c.id); }} className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                            <button onClick={() => askConfirm({
+                              title: `Remover cartão •••• ${c.last4}?`,
+                              description: `${c.brand || "Cartão"} · ${c.name} · Validade ${c.expiry}. Você precisará adicioná-lo de novo se quiser usar.`,
+                              confirmLabel: "Remover cartão",
+                              destructive: true,
+                              action: () => removeCard(c.id),
+                            })} className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                           </div>
                         </div>
                       );
@@ -1563,6 +1580,15 @@ export function ProfilePage() {
           </div>
         </div>
       </div>
+      <ConfirmDialog
+        open={confirmState.open}
+        onClose={closeConfirm}
+        onConfirm={() => confirmState.action?.()}
+        title={confirmState.title}
+        description={confirmState.description}
+        confirmLabel={confirmState.confirmLabel}
+        destructive={confirmState.destructive}
+      />
       <Footer />
 
       {/* ─── Modais ─── */}

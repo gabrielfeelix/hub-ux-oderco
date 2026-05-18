@@ -3,6 +3,17 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "./ui/dial
 import { useTheme } from "./ThemeProvider";
 import type { UserCard } from "./AuthContext";
 import { CreditCard } from "lucide-react";
+import { CardBrandLogo } from "./CardBrandLogo";
+
+const BRAND_THEMES: Record<string, string> = {
+  visa: "linear-gradient(135deg, #1a1f71 0%, #2a3392 50%, #1a1f71 100%)",
+  mastercard: "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
+  amex: "linear-gradient(135deg, #006FCF 0%, #0085D1 50%, #006FCF 100%)",
+  americanexpress: "linear-gradient(135deg, #006FCF 0%, #0085D1 50%, #006FCF 100%)",
+  elo: "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
+  hipercard: "linear-gradient(135deg, #5a0d10 0%, #7B1418 60%, #5a0d10 100%)",
+  discover: "linear-gradient(135deg, #ff6000 0%, #ff8534 50%, #ff6000 100%)",
+};
 
 interface Props {
   open: boolean;
@@ -64,7 +75,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
   const handleSubmit = () => {
     if (!valid) return;
     onSubmit({
-      brand: brand || "Cartão",
+      brand: brand || "",
       last4,
       name: data.name.toUpperCase(),
       expiry: data.expiry,
@@ -138,27 +149,30 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
               style={{
                 backfaceVisibility: "hidden",
                 borderRadius: 16,
-                background: "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
+                background: BRAND_THEMES[brand.toLowerCase().replace(/\s+/g, "")] ?? "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
                 border: "1px solid rgba(255,255,255,0.12)",
                 boxShadow: "0 18px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06)",
+                transition: "background 0.4s ease",
               }}
             >
               <div className="flex items-start justify-between">
-                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.55)" }}>
-                  CARTÃO {data.isDefault ? "PADRÃO" : ""}
+                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.6)" }}>
+                  {data.isDefault ? "PADRÃO" : " "}
                 </span>
-                <span style={{
-                  padding: "4px 10px",
-                  borderRadius: 6,
-                  background: "rgba(255,255,255,0.08)",
-                  fontFamily: "var(--font-family-figtree)",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  color: "rgba(255,255,255,0.9)",
-                  letterSpacing: "0.05em",
-                }}>
-                  {brand || "—"}
-                </span>
+                {brand ? (
+                  <CardBrandLogo brand={brand} style={{ width: 48, height: 30, borderRadius: 5, overflow: "hidden", display: "block" }} />
+                ) : (
+                  <span style={{
+                    padding: "4px 10px",
+                    borderRadius: 6,
+                    background: "rgba(255,255,255,0.08)",
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    color: "rgba(255,255,255,0.6)",
+                    letterSpacing: "0.1em",
+                  }}>—</span>
+                )}
               </div>
               <div
                 style={{
