@@ -10,6 +10,7 @@ import {
   Expand,
   Gamepad2,
   HardDrive,
+  Layers,
   LayoutGrid,
   Monitor,
   Rows3,
