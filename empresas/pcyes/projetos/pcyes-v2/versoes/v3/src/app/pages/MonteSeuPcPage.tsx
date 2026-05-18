@@ -2731,7 +2731,10 @@ export function MonteSeuPcPage() {
   };
 
   const getVisibleOptions = (category: Category) =>
-    category.options.filter((option) => !option.req || option.req.includes(selections.cpu));
+    category.options.filter((option) => {
+      const currentCpu = getSelected(selections, 'cpu')[0];
+      return !option.req || (currentCpu ? option.req.includes(currentCpu) : true);
+    });
 
   const handleSelect = (categoryId: string, optionId: string) => {
     setSelections((prev) => ({ ...prev, [categoryId]: [optionId] }));
@@ -2902,8 +2905,9 @@ export function MonteSeuPcPage() {
           >
             {currentCategory && (() => {
               const currentIdx = categories.findIndex((c) => c.id === activeCategory);
+              const currentCpuId = getSelected(selections, 'cpu')[0];
               const allCompat = currentCategory.options.filter(
-                (o) => !o.req || o.req.includes(selections.cpu),
+                (o) => !o.req || (currentCpuId ? o.req.includes(currentCpuId) : true),
               );
               const q = stepSearch.trim().toLowerCase();
               const visibleOptions = q
@@ -2916,7 +2920,7 @@ export function MonteSeuPcPage() {
                 : allCompat;
               const isFirst = currentIdx === 0;
               const isLast = currentIdx === categories.length - 1;
-              const stepSelectedId = selections[currentCategory.id];
+              const stepSelectedId = getSelected(selections, currentCategory.id)[0];
               const stepSelected = currentCategory.options.find((o) => o.id === stepSelectedId);
 
               const goNext = () => {
