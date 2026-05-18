@@ -361,25 +361,25 @@ function HeroSection({
         <div
           className="absolute"
           style={{
-            top: "-20%",
-            right: "-15%",
+            top: "-25%",
+            right: "-20%",
             width: "70%",
             height: "90%",
             background:
-              "radial-gradient(circle, rgba(225,6,0,0.18) 0%, rgba(225,6,0,0.05) 40%, transparent 70%)",
-            filter: "blur(70px)",
+              "radial-gradient(circle, rgba(225,6,0,0.09) 0%, rgba(225,6,0,0.025) 40%, transparent 70%)",
+            filter: "blur(90px)",
           }}
         />
         <div
           className="absolute"
           style={{
-            bottom: "-15%",
-            left: "-10%",
+            bottom: "-20%",
+            left: "-12%",
             width: "45%",
             height: "55%",
             background:
-              "radial-gradient(circle, rgba(255,36,25,0.08) 0%, transparent 65%)",
-            filter: "blur(90px)",
+              "radial-gradient(circle, rgba(255,36,25,0.04) 0%, transparent 65%)",
+            filter: "blur(100px)",
           }}
         />
       </motion.div>
@@ -407,9 +407,9 @@ function HeroSection({
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(circle at 50% 60%, rgba(225,6,0,0.14) 0%, rgba(225,6,0,0.04) 40%, transparent 70%)",
-              filter: "blur(50px)",
-              transform: "scale(1.2)",
+                "radial-gradient(circle at 50% 65%, rgba(225,6,0,0.07) 0%, rgba(225,6,0,0.02) 40%, transparent 70%)",
+              filter: "blur(60px)",
+              transform: "scale(1.1)",
             }}
           />
           <motion.div
@@ -426,7 +426,7 @@ function HeroSection({
               alt={featured.name}
               className="w-full h-full object-contain"
               style={{
-                filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.55)) drop-shadow(0 0 60px rgba(225,6,0,0.25))",
+                filter: "drop-shadow(0 30px 50px rgba(0,0,0,0.6))",
               }}
             />
             {/* floating info card */}
