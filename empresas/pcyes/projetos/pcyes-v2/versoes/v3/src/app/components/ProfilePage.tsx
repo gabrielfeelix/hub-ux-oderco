@@ -219,37 +219,130 @@ export function ProfilePage() {
                 <motion.div key="overview" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Visão Geral</h2>
 
-                  {/* Próximo pedido em destaque */}
+                  {/* Hero card: pedido em rota com timeline anti-ansiedade */}
                   {(() => {
                     const nextOrder = user.orders.find((o) => o.status === "shipped" || o.status === "processing");
                     if (!nextOrder) return null;
-                    const s = STATUS_MAP[nextOrder.status];
+                    const stages = [
+                      { key: "received", label: "Recebido", icon: Clock },
+                      { key: "processing", label: "Preparando", icon: Check },
+                      { key: "shipped", label: "A caminho", icon: Truck },
+                      { key: "delivered", label: "Entregue", icon: PackageCheck },
+                    ];
+                    const stageIdx = nextOrder.status === "shipped" ? 2 : nextOrder.status === "processing" ? 1 : 0;
+                    const eta = nextOrder.status === "shipped" ? "Chega quinta, 18/Abr · em 3 dias" : "Previsão: 22/Abr · em 7 dias";
+                    const lastUpdate = nextOrder.history?.[nextOrder.history.length - 1];
                     return (
-                      <button
-                        onClick={() => { setProfileTab("orders"); setSelectedOrderId(nextOrder.id); }}
-                        className="group cursor-pointer w-full text-left mb-4 p-5 flex items-center gap-4 transition-all hover:bg-white/[0.01]"
+                      <div
+                        className="relative mb-4 overflow-hidden"
                         style={{
-                          borderRadius: "14px",
-                          background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
-                          border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                          borderRadius: "16px",
+                          background: isDark
+                            ? "linear-gradient(135deg, rgba(255,43,46,0.05) 0%, rgba(255,255,255,0.02) 60%)"
+                            : "linear-gradient(135deg, rgba(220,20,20,0.04) 0%, rgba(0,0,0,0.015) 60%)",
+                          border: "1px solid rgba(255,43,46,0.18)",
+                          boxShadow: "0 24px 60px -32px rgba(255,43,46,0.35)",
                         }}
                       >
-                        <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 ${s.bg} ${s.color}`}>
-                          <s.icon size={18} />
+                        {/* Header: status + ETA */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 pt-5 pb-4">
+                          <div className="flex items-center gap-2.5">
+                            <span className="relative flex h-2.5 w-2.5">
+                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+                            </span>
+                            <span className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                              {nextOrder.status === "shipped" ? "A caminho" : "Preparando loadout"}
+                            </span>
+                          </div>
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>
+                            {eta}
+                          </p>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                            {nextOrder.status === "shipped" ? "Em trânsito" : "Em preparação"}
-                          </p>
-                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>
-                            Pedido {nextOrder.id}
-                          </p>
-                          <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
-                            {nextOrder.items.length} {nextOrder.items.length === 1 ? "item" : "itens"} · Previsão: 15 de Abril
-                          </p>
+
+                        {/* Pedido + thumbs */}
+                        <div className="flex items-center gap-3 px-5 pb-4">
+                          <div className="flex items-center gap-1.5">
+                            {nextOrder.items.slice(0, 3).map((item, i) => (
+                              <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/8" style={{ borderRadius: "10px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                              </div>
+                            ))}
+                            {nextOrder.items.length > 3 && (
+                              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/60" style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                                +{nextOrder.items.length - 3}
+                              </div>
+                            )}
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>
+                              Pedido {nextOrder.id}
+                            </p>
+                            <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                              {nextOrder.items.length} {nextOrder.items.length === 1 ? "item" : "itens"} · {nextOrder.total}
+                            </p>
+                          </div>
                         </div>
-                        <ChevronRight size={16} className="text-foreground/35 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-                      </button>
+
+                        {/* Timeline horizontal */}
+                        <div className="px-5 pb-4">
+                          <div className="relative flex justify-between items-start">
+                            <div className="absolute top-[11px] left-[6%] right-[6%] h-[2px] bg-foreground/8 z-0" />
+                            <div
+                              className="absolute top-[11px] left-[6%] h-[2px] bg-primary transition-all duration-1000 z-0"
+                              style={{ width: `${(stageIdx / 3) * 88}%` }}
+                            />
+                            {stages.map((stg, idx) => {
+                              const isActive = idx <= stageIdx;
+                              const isCurrent = idx === stageIdx;
+                              return (
+                                <div key={stg.key} className="flex flex-col items-center flex-1 relative z-10">
+                                  <div className={`relative w-6 h-6 rounded-full flex items-center justify-center transition-all duration-500 mb-1.5 ${
+                                    isActive ? "bg-primary text-white" : "bg-foreground/8 text-foreground/30"
+                                  }`}>
+                                    <stg.icon size={11} />
+                                    {isCurrent && (
+                                      <span className="absolute inset-0 rounded-full bg-primary opacity-40 animate-ping" />
+                                    )}
+                                  </div>
+                                  <p className={`text-center leading-tight ${isActive ? "text-foreground/80" : "text-foreground/40"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: isCurrent ? 700 : 500 }}>
+                                    {stg.label}
+                                  </p>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Última atualização */}
+                        {lastUpdate && (
+                          <div className="px-5 py-3 border-t border-foreground/6 flex items-center gap-2" style={{ background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}>
+                            <Info size={12} className="text-primary/70 flex-shrink-0" />
+                            <p className="text-foreground/65 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                              <span className="text-foreground/85">{lastUpdate.description}</span>
+                              <span className="text-foreground/45"> · {lastUpdate.date}</span>
+                            </p>
+                          </div>
+                        )}
+
+                        {/* CTAs */}
+                        <div className="flex items-center gap-2 px-5 py-3 border-t border-foreground/6">
+                          <button
+                            onClick={() => { setProfileTab("orders"); setSelectedOrderId(nextOrder.id); }}
+                            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                            style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                          >
+                            <Truck size={13} /> Rastrear pedido
+                          </button>
+                          <button
+                            onClick={() => setProfileTab("help")}
+                            className="flex items-center justify-center gap-1.5 px-3 py-2 text-foreground/70 hover:text-foreground transition-all cursor-pointer"
+                            style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                          >
+                            <HelpCircle size={13} /> Ajuda
+                          </button>
+                        </div>
+                      </div>
                     );
                   })()}
 
