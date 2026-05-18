@@ -25,6 +25,13 @@ import { Footer } from "../components/Footer";
 import { allProducts } from "../components/productsData";
 import { useCart } from "../components/CartContext";
 import { Button } from "../components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
 import { cn } from "../components/ui/utils";
 
 const LOGO_URL =
@@ -3053,22 +3060,32 @@ export function MonteSeuPcPage() {
                           >
                             Ordenar por
                           </label>
-                          <select
-                            id="step-sort"
-                            value={sortMode}
-                            onChange={(e) => setSortMode(e.target.value as SortMode)}
-                            className="w-full appearance-none rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 pr-9 text-white outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] cursor-pointer"
-                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
-                          >
-                            <option value="suggested">Sugerida primeiro</option>
-                            <option value="price-asc">Menor preço</option>
-                            <option value="price-desc">Maior preço</option>
-                            <option value="name">Nome A-Z</option>
-                          </select>
-                          <ChevronDown
-                            size={14}
-                            className="pointer-events-none absolute right-3 top-[38px] text-zinc-500"
-                          />
+                          <Select value={sortMode} onValueChange={(v) => setSortMode(v as SortMode)}>
+                            <SelectTrigger
+                              id="step-sort"
+                              className="w-full !h-auto rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white transition-all hover:bg-[#15151a] focus:border-primary/45 focus:bg-[#15151a] data-[state=open]:border-primary/45 data-[state=open]:bg-[#15151a] [&_svg]:text-zinc-500"
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                            >
+                              <SelectValue placeholder="Selecionar ordenação" />
+                            </SelectTrigger>
+                            <SelectContent
+                              className="rounded-[12px] border border-white/[0.1] bg-[#0f0f12] text-white shadow-2xl shadow-black/60"
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                            >
+                              <SelectItem value="suggested" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                                Sugerida primeiro
+                              </SelectItem>
+                              <SelectItem value="price-asc" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                                Menor preço
+                              </SelectItem>
+                              <SelectItem value="price-desc" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                                Maior preço
+                              </SelectItem>
+                              <SelectItem value="name" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                                Nome A-Z
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
                         </div>
                         <div className="flex flex-col">
                           <span
