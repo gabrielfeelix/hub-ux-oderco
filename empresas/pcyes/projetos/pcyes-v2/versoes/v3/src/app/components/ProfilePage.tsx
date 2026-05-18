@@ -227,10 +227,41 @@ export function ProfilePage() {
                 <motion.div key="overview" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Visão Geral</h2>
 
-                  {/* Hero card: pedido em rota com timeline anti-ansiedade */}
+                  {/* Hero card: pedido em rota com timeline anti-ansiedade OU estado de calma */}
                   {(() => {
                     const nextOrder = user.orders.find((o) => o.status === "shipped" || o.status === "processing");
-                    if (!nextOrder) return null;
+                    if (!nextOrder) {
+                      return (
+                        <div
+                          className="relative mb-4 p-5 flex items-center gap-4 overflow-hidden"
+                          style={{
+                            borderRadius: "16px",
+                            background: isDark
+                              ? "linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(255,255,255,0.02) 60%)"
+                              : "linear-gradient(135deg, rgba(34,197,94,0.05) 0%, rgba(0,0,0,0.015) 60%)",
+                            border: "1px solid rgba(34,197,94,0.18)",
+                          }}
+                        >
+                          <div className="w-11 h-11 rounded-full bg-green-500/12 flex items-center justify-center flex-shrink-0">
+                            <Check size={18} className="text-green-500" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-green-500 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                              Tudo certo
+                            </p>
+                            <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>
+                              Sem pedidos pendentes
+                            </p>
+                            <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                              Que tal um upgrade no setup?
+                            </p>
+                          </div>
+                          <Link to="/produtos" className="px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                            Explorar
+                          </Link>
+                        </div>
+                      );
+                    }
                     const stages = [
                       { key: "received", label: "Recebido", icon: Clock },
                       { key: "processing", label: "Preparando", icon: Check },
@@ -503,6 +534,14 @@ export function ProfilePage() {
                           <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
                         </div>
                       </div>
+                      {user.orders.length === 0 ? (
+                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                          <Package size={28} className="text-foreground/22 mx-auto mb-4" />
+                          <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum pedido ainda</p>
+                          <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Quando você fizer um pedido, ele aparece aqui.</p>
+                          <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>Explorar produtos</Link>
+                        </div>
+                      ) : (
                       <div className="space-y-2">
                         {user.orders.map((order) => {
                           const s = STATUS_MAP[order.status];
@@ -563,6 +602,7 @@ export function ProfilePage() {
                           );
                         })}
                       </div>
+                      )}
                     </>
                   ) : (() => {
                     const order = user.orders.find(o => o.id === selectedOrderId);
