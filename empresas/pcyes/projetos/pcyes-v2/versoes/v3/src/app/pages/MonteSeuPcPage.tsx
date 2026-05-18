@@ -2751,19 +2751,24 @@ export function MonteSeuPcPage() {
   };
 
   const handleAddToCart = () => {
-    const cartKey = `pc-builder-${Object.entries(selections)
-      .map(([categoryId, optionId]) => `${categoryId}:${optionId}`)
-      .join("|")}`;
-
-    addItem({
-      cartKey,
-      id: 900001,
-      name: configurationName,
-      price: formatCurrency(priceBreakdown.total),
-      image: currentCase?.image ?? currentPreviewOption?.image ?? "",
+    let baseId = 900000;
+    let added = 0;
+    categoriesWithSelected.forEach((c) => {
+      const opt = c.selectedOption;
+      if (!opt) return;
+      addItem({
+        cartKey: `mspc-${c.id}-${opt.id}`,
+        id: baseId++,
+        name: opt.name,
+        price: formatCurrency(opt.price),
+        image: opt.image ?? "",
+      });
+      added++;
     });
-
-    pushFeedback("Configuração adicionada ao carrinho");
+    if (added > 0) {
+      pushFeedback(`${added} componente${added > 1 ? "s" : ""} adicionado${added > 1 ? "s" : ""} ao carrinho`);
+      setTimeout(() => navigate("/carrinho"), 600);
+    }
   };
 
   return (
