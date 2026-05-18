@@ -990,10 +990,12 @@ function PresetCard({
   preset,
   isRecommended,
   onApply,
+  onBuy,
 }: {
   preset: Preset;
   isRecommended: boolean;
   onApply: () => void;
+  onBuy: () => void;
 }) {
   const discount = preset.oldPrice
     ? Math.round(((preset.oldPrice - preset.price) / preset.oldPrice) * 100)
@@ -1022,9 +1024,9 @@ function PresetCard({
           }}
         />
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
           style={{
-            background: `radial-gradient(circle at 30% 100%, ${preset.glow} 0%, transparent 55%)`,
+            background: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 100%)",
           }}
         />
         <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3.5">
@@ -1273,21 +1275,14 @@ function PresetCard({
 
           <button
             type="button"
-            onClick={onApply}
-            className={cn(
-              "mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] transition-all duration-300",
-              isRecommended
-                ? "bg-primary text-white hover:brightness-110"
-                : "bg-white text-black hover:bg-zinc-100",
-            )}
+            onClick={onBuy}
+            className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] bg-emerald-500 text-white transition-all duration-300 hover:bg-emerald-400"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "13.5px",
               fontWeight: 700,
               letterSpacing: "0.01em",
-              boxShadow: isRecommended
-                ? "0 12px 32px -8px rgba(255,43,46,0.55)"
-                : "0 12px 32px -10px rgba(255,255,255,0.18)",
+              boxShadow: "0 12px 32px -8px rgba(16,185,129,0.55)",
             }}
           >
             <ShoppingCart size={14} /> Quero esse setup
@@ -1313,10 +1308,12 @@ function PresetCard({
 function PresetGallery({
   recommended,
   onApply,
+  onBuy,
   onBack,
 }: {
   recommended: PresetTier | null;
   onApply: (preset: Preset) => void;
+  onBuy: (preset: Preset) => void;
   onBack: () => void;
 }) {
   return (
@@ -1361,7 +1358,13 @@ function PresetGallery({
       </div>
       <div className="mx-auto flex max-w-[1080px] flex-col gap-4">
         {presets.map((p) => (
-          <PresetCard key={p.id} preset={p} isRecommended={recommended === p.id} onApply={() => onApply(p)} />
+          <PresetCard
+            key={p.id}
+            preset={p}
+            isRecommended={recommended === p.id}
+            onApply={() => onApply(p)}
+            onBuy={() => onBuy(p)}
+          />
         ))}
       </div>
     </div>
@@ -1467,22 +1470,46 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
   return (
     <div className="relative">
       <div
-        className="relative overflow-hidden border-b border-white/[0.06]"
-        style={{
-          background:
-            "radial-gradient(circle at 25% 30%, rgba(255,43,46,0.18) 0%, transparent 55%), radial-gradient(circle at 75% 70%, rgba(255,43,46,0.12) 0%, transparent 50%), #0a0a0a",
-        }}
+        className="relative overflow-hidden border-b border-white/[0.05]"
+        style={{ background: "#0a0a0a" }}
       >
         <div
-          className="pointer-events-none absolute inset-0 opacity-30"
+          className="pointer-events-none absolute"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 12% 22%, rgba(255,255,255,0.6) 0.5px, transparent 1px), radial-gradient(circle at 38% 78%, rgba(255,232,31,0.5) 0.5px, transparent 1px), radial-gradient(circle at 64% 30%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 84% 65%, rgba(255,232,31,0.4) 0.5px, transparent 1px), radial-gradient(circle at 22% 88%, rgba(255,255,255,0.4) 0.5px, transparent 1px)",
+            top: "-25%",
+            right: "-18%",
+            width: "65%",
+            height: "120%",
+            background:
+              "radial-gradient(circle, rgba(225,6,0,0.09) 0%, rgba(225,6,0,0.025) 40%, transparent 70%)",
+            filter: "blur(90px)",
           }}
         />
-        <div className="relative mx-auto max-w-[1320px] px-6 py-16 md:py-20 lg:py-24 text-center">
-          <p
-            className="mb-3 uppercase text-primary"
+        <div
+          className="pointer-events-none absolute"
+          style={{
+            bottom: "-30%",
+            left: "-12%",
+            width: "45%",
+            height: "70%",
+            background:
+              "radial-gradient(circle, rgba(255,36,25,0.04) 0%, transparent 65%)",
+            filter: "blur(100px)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+          style={{
+            background:
+              "linear-gradient(180deg, transparent 0%, rgba(10,10,10,1) 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-[1320px] px-6 py-20 md:py-24 lg:py-28 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-4 uppercase text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "11px",
@@ -1491,29 +1518,47 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             }}
           >
             // Monte seu PC
-          </p>
-          <h1
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             className="text-white"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "clamp(38px, 6vw, 64px)",
-              fontWeight: 800,
-              letterSpacing: "-0.025em",
-              lineHeight: 1.02,
+              fontSize: "clamp(38px, 6vw, 68px)",
+              fontWeight: 700,
+              letterSpacing: "-0.035em",
+              lineHeight: 1,
             }}
           >
-            Seu setup, <span className="text-primary">sua regra</span>
-          </h1>
-          <p
-            className="mx-auto mt-5 max-w-[560px] text-zinc-300"
+            Seu setup,{" "}
+            <span
+              style={{
+                backgroundImage:
+                  "linear-gradient(120deg, #ffffff 0%, #a0a0a8 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "inline-block",
+              }}
+            >
+              sua regra.
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mx-auto mt-6 max-w-[560px] text-white/55"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "16px",
-              lineHeight: 1.55,
+              lineHeight: 1.6,
             }}
           >
             Configure cada peça do seu jeito ou deixa a gente sugerir. Compatibilidade garantida, preço em tempo real, parcelado em até 10x.
-          </p>
+          </motion.p>
         </div>
       </div>
 
@@ -3174,6 +3219,28 @@ export function MonteSeuPcPage() {
     setView("builder");
   };
 
+  const handleBuyPreset = (preset: Preset) => {
+    let baseId = 900000;
+    let added = 0;
+    Object.entries(preset.selections).forEach(([catId, optId]) => {
+      const cat = categories.find((c) => c.id === catId);
+      const opt = cat?.options.find((o) => o.id === optId);
+      if (!opt) return;
+      addItem({
+        cartKey: `mspc-${catId}-${optId}`,
+        id: baseId++,
+        name: opt.name,
+        price: formatCurrency(opt.price),
+        image: opt.image ?? "",
+      });
+      added++;
+    });
+    if (added > 0) {
+      pushFeedback(`Setup ${preset.name} adicionado (${added} peças)`);
+      setTimeout(() => navigate("/carrinho"), 600);
+    }
+  };
+
   const handleFixStep = (stepId: string) => {
     setActiveCategory(stepId);
     setExpandedCategory(stepId);
@@ -3481,6 +3548,7 @@ export function MonteSeuPcPage() {
             <PresetGallery
               recommended={quizRec}
               onApply={handleApplyPreset}
+              onBuy={handleBuyPreset}
               onBack={() => setView(quizRec ? "quiz" : "welcome")}
             />
           </motion.div>
