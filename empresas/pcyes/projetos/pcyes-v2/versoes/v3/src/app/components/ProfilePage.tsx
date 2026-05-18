@@ -89,6 +89,24 @@ const STATUS_MAP = {
   cancelled: { label: "Cancelado", color: "text-red-400", bg: "bg-red-400/10", icon: XIcon },
 };
 
+const TIERS = [
+  { level: 1, name: "Recruta",  minOrders: 0,  benefit: "Cupom 5% boas-vindas" },
+  { level: 2, name: "Soldado",  minOrders: 2,  benefit: "Frete grátis acima de R$199" },
+  { level: 3, name: "Veterano", minOrders: 5,  benefit: "Acesso antecipado a pré-vendas" },
+  { level: 4, name: "Elite",    minOrders: 10, benefit: "Cashback 2% + brindes exclusivos" },
+  { level: 5, name: "Lendário", minOrders: 20, benefit: "Concierge dedicado + early access GPUs" },
+];
+
+function getTier(ordersCount: number) {
+  const current = [...TIERS].reverse().find((t) => ordersCount >= t.minOrders) ?? TIERS[0];
+  const next = TIERS.find((t) => t.minOrders > ordersCount);
+  const progress = next
+    ? Math.min(1, (ordersCount - current.minOrders) / (next.minOrders - current.minOrders))
+    : 1;
+  const ordersToNext = next ? next.minOrders - ordersCount : 0;
+  return { current, next, progress, ordersToNext };
+}
+
 export function ProfilePage() {
   const { user, isLoggedIn, setAuthModalOpen, logout, updateUser } = useAuth();
   const { favorites, toggleFavorite } = useFavorites();
@@ -139,6 +157,7 @@ export function ProfilePage() {
   const favoriteProducts = getVisibleCatalogProducts(allProducts).filter((p) => favorites.has(p.id));
 
   const activeOrders = user.orders.filter((o) => o.status === "processing" || o.status === "shipped").length;
+  const tier = getTier(user.orders.length);
 
   return (
     <div className="pt-[160px] md:pt-[190px]">
@@ -152,13 +171,18 @@ export function ProfilePage() {
                   {user.name.charAt(0)}
                 </span>
               </div>
+              <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.06em", boxShadow: "0 4px 12px rgba(255,43,46,0.4)" }}>
+                <Sparkles size={8} className="fill-white" /> Nv. {tier.current.level}
+              </span>
             </div>
             <div>
               <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "34px", fontWeight: 600, lineHeight: "1.1" }}>
                 E aí, {user.name.split(" ")[0]}
               </h1>
-              <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
-                {user.email}
+              <p className="text-foreground/60 flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                <span className="text-primary font-semibold">{tier.current.name}</span>
+                <span className="text-foreground/35">·</span>
+                <span>{user.email}</span>
               </p>
             </div>
           </div>
@@ -385,6 +409,66 @@ export function ProfilePage() {
                       </div>
                     );
                   })()}
+
+                  {/* Card Tier / Benefícios */}
+                  <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="flex items-center justify-between gap-3 px-5 pt-5 pb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/12 flex items-center justify-center flex-shrink-0">
+                          <Sparkles size={16} className="text-primary fill-primary/20" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600 }}>{tier.current.name}</span>
+                            <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.08em" }}>NV. {tier.current.level}</span>
+                          </div>
+                          <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                            {tier.next
+                              ? `${tier.ordersToNext} ${tier.ordersToNext === 1 ? "pedido" : "pedidos"} pro ${tier.next.name}`
+                              : "Você atingiu o nível máximo!"}
+                          </p>
+                        </div>
+                      </div>
+                      {tier.next && (
+                        <div className="text-right">
+                          <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Próximo</p>
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>{tier.next.name}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Progress bar */}
+                    <div className="px-5 pb-4">
+                      <div className="h-1.5 w-full rounded-full overflow-hidden" style={{ background: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
+                        <div className="h-full rounded-full transition-all duration-700" style={{ width: `${tier.progress * 100}%`, background: "linear-gradient(90deg, var(--primary) 0%, #ff2419 100%)", boxShadow: "0 0 12px rgba(255,43,46,0.5)" }} />
+                      </div>
+                    </div>
+
+                    {/* Benefícios desbloqueados / próximos */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 px-5 pb-5">
+                      {TIERS.map((t) => {
+                        const unlocked = user.orders.length >= t.minOrders;
+                        const isCurrent = t.level === tier.current.level;
+                        return (
+                          <div key={t.level} className="flex items-start gap-2 p-3" style={{ borderRadius: "10px", background: unlocked ? (isDark ? "rgba(34,197,94,0.04)" : "rgba(34,197,94,0.03)") : (isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)"), border: unlocked ? "1px solid rgba(34,197,94,0.18)" : (isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)") }}>
+                            {unlocked ? (
+                              <Check size={13} className="text-green-500 mt-0.5 flex-shrink-0" />
+                            ) : (
+                              <div className="w-[13px] h-[13px] rounded-full border border-foreground/30 mt-0.5 flex-shrink-0" />
+                            )}
+                            <div className="min-w-0 flex-1">
+                              <p className={`${unlocked ? "text-foreground" : "text-foreground/50"} truncate`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: isCurrent ? 700 : 500 }}>
+                                {t.benefit}
+                              </p>
+                              <p className={`${unlocked ? "text-green-500" : "text-foreground/40"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 600, letterSpacing: "0.04em" }}>
+                                {unlocked ? `Desbloqueado · ${t.name}` : `${t.name} · ${t.minOrders}+ pedidos`}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
 
                   {/* Grid de cards */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
