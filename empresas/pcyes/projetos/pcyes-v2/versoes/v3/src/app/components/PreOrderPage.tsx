@@ -13,7 +13,6 @@ import {
   Search,
   X,
   TrendingUp,
-  CalendarDays,
   Filter,
   ArrowDownUp,
 } from "lucide-react";
@@ -25,9 +24,6 @@ import { PRE_ORDER_ITEMS } from "./PreOrderData";
 import type { PreOrderInfo } from "./PreOrderData";
 
 const pad = (n: number) => String(n).padStart(2, "0");
-
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=2400&q=80";
 
 function useCountdown(targetIso: string) {
   const target = useMemo(() => new Date(targetIso).getTime(), [targetIso]);
@@ -49,7 +45,7 @@ function useCountdown(targetIso: string) {
 function formatReleaseDate(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR", {
     day: "2-digit",
-    month: "long",
+    month: "short",
     year: "numeric",
   });
 }
@@ -80,96 +76,110 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -4 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -6 }}
       className="relative overflow-hidden group cursor-pointer"
       onClick={() => navigate(`/produto/${product.id}`)}
       style={{
-        borderRadius: "22px",
-        background: "linear-gradient(135deg, #1a0608 0%, #2a0a0d 45%, #1a0608 100%)",
-        border: "1px solid rgba(255,36,25,0.25)",
-        boxShadow: "0 24px 60px -20px rgba(255,36,25,0.35)",
-        transition: "box-shadow 0.4s ease",
+        borderRadius: "20px",
+        background: "linear-gradient(180deg, #0c0c0e 0%, #08080a 100%)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        boxShadow: "0 20px 60px -24px rgba(0,0,0,0.6)",
+        transition: "border-color 0.4s ease, box-shadow 0.4s ease",
       }}
     >
+      {/* hover accent ring */}
       <div
-        className="pointer-events-none absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-70"
+        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background:
-            "radial-gradient(circle at 80% 0%, rgba(255,36,25,0.25) 0%, transparent 55%), radial-gradient(circle at 10% 100%, rgba(255,200,90,0.12) 0%, transparent 50%)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 18% 32%, #fff 0.5px, transparent 1px), radial-gradient(circle at 62% 68%, #fde68a 0.5px, transparent 1px), radial-gradient(circle at 84% 22%, #fff 0.5px, transparent 1px)",
+          borderRadius: "20px",
+          background: "radial-gradient(circle at 75% 0%, rgba(255,36,25,0.10) 0%, transparent 55%)",
         }}
       />
 
-      <div className="relative grid grid-cols-1 md:grid-cols-[300px_1fr] gap-0">
+      <div className="relative grid grid-cols-1 md:grid-cols-[320px_1fr] gap-0">
         {/* image */}
         <div
-          className="relative h-[260px] md:h-full overflow-hidden"
-          style={{ background: "rgba(255,255,255,0.04)" }}
+          className="relative h-[280px] md:h-full overflow-hidden"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%), #08080a",
+          }}
         >
           <ImageWithFallback
             src={image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
           />
-          <span
-            className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
+          {/* subtle vignette */}
+          <div
+            className="pointer-events-none absolute inset-0"
             style={{
-              background: "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)",
-              color: "#fff",
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "10px",
-              fontWeight: 900,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              boxShadow: "0 6px 16px -4px rgba(255,36,25,0.6)",
+              background:
+                "linear-gradient(180deg, transparent 60%, rgba(8,8,10,0.55) 100%)",
             }}
-          >
-            <Rocket size={11} strokeWidth={2.6} />
-            Pré-venda
-          </span>
+          />
 
-          {isHot && (
-            <motion.span
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="absolute top-3 right-3 inline-flex items-center gap-1 rounded-full px-2 py-1"
+          {/* top badges */}
+          <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
               style={{
-                background: "linear-gradient(135deg, #facc15 0%, #f97316 100%)",
-                color: "#1a0608",
+                background: "rgba(8,8,10,0.7)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255,36,25,0.4)",
+                color: "#ff7770",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "9.5px",
-                fontWeight: 900,
-                letterSpacing: "0.14em",
+                fontWeight: 800,
+                letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                boxShadow: "0 6px 16px -4px rgba(250,204,21,0.6)",
               }}
             >
-              <Flame size={10} strokeWidth={2.8} />
-              Esgotando
-            </motion.span>
-          )}
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ background: "#ff2419", boxShadow: "0 0 8px rgba(255,36,25,0.9)" }}
+              />
+              Pré-venda
+            </span>
+
+            {isHot && (
+              <motion.span
+                initial={{ scale: 0.85, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="inline-flex items-center gap-1 rounded-full px-2.5 py-1"
+                style={{
+                  background: "rgba(8,8,10,0.7)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(250,204,21,0.4)",
+                  color: "#facc15",
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "9.5px",
+                  fontWeight: 800,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
+              >
+                <Flame size={10} strokeWidth={2.6} />
+                Esgotando
+              </motion.span>
+            )}
+          </div>
         </div>
 
         {/* details */}
-        <div className="p-5 md:p-6 flex flex-col">
+        <div className="p-6 md:p-7 flex flex-col">
           <p
-            className="text-white/45 mb-1.5"
+            className="text-white/40 mb-2"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "10.5px",
-              letterSpacing: "0.2em",
+              letterSpacing: "0.22em",
               textTransform: "uppercase",
-              fontWeight: 700,
+              fontWeight: 600,
             }}
           >
-            // {product.category}
+            {product.category}
           </p>
           <h3
             className="text-white mb-3 line-clamp-2"
@@ -177,58 +187,60 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
               fontFamily: "var(--font-family-figtree)",
               fontSize: "22px",
               fontWeight: 600,
-              letterSpacing: "-0.01em",
-              lineHeight: 1.2,
+              letterSpacing: "-0.015em",
+              lineHeight: 1.22,
             }}
           >
             {product.name}
           </h3>
 
           <p
-            className="text-white/65 mb-4"
+            className="text-white/55 mb-5"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
-              lineHeight: 1.45,
+              fontSize: "13px",
+              lineHeight: 1.55,
             }}
           >
-            <Zap size={12} className="inline mr-1.5 -mt-0.5 text-[#facc15]" strokeWidth={2.4} />
             {info.highlight}
           </p>
 
           {/* countdown row */}
-          <div className="grid grid-cols-4 gap-1.5 mb-4">
+          <div className="grid grid-cols-4 gap-2 mb-5">
             {[
-              { v: days, l: "D" },
-              { v: hours, l: "H" },
-              { v: minutes, l: "M" },
-              { v: seconds, l: "S" },
+              { v: days, l: "Dias" },
+              { v: hours, l: "Hrs" },
+              { v: minutes, l: "Min" },
+              { v: seconds, l: "Seg" },
             ].map((unit) => (
               <div
                 key={unit.l}
-                className="flex items-baseline justify-center gap-1 py-2"
+                className="flex flex-col items-center justify-center py-2.5"
                 style={{
-                  background: "rgba(0,0,0,0.45)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.025)",
+                  border: "1px solid rgba(255,255,255,0.05)",
                   borderRadius: "10px",
                 }}
               >
                 <span
-                  className="text-white tabular-nums"
+                  className="text-white tabular-nums leading-none"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "18px",
-                    fontWeight: 700,
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    letterSpacing: "-0.02em",
                   }}
                 >
                   {pad(unit.v)}
                 </span>
                 <span
-                  className="text-white/40"
+                  className="text-white/35 mt-1"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "9.5px",
-                    fontWeight: 700,
+                    fontWeight: 600,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
                   }}
                 >
                   {unit.l}
@@ -238,90 +250,89 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           </div>
 
           {/* progress */}
-          <div className="mb-4">
-            <div className="flex items-center justify-between mb-1.5">
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-2">
               <span
-                className="text-white/55"
+                className="text-white/45"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
-                  letterSpacing: "0.16em",
+                  fontSize: "10.5px",
+                  letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  fontWeight: 700,
+                  fontWeight: 600,
                 }}
               >
                 Reservas
               </span>
               <span
-                className="text-white tabular-nums"
+                className="text-white/85 tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "11.5px",
-                  fontWeight: 700,
+                  fontWeight: 600,
                 }}
               >
                 {reservedPct}%
               </span>
             </div>
             <div
-              className="relative h-1.5 w-full overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.06)", borderRadius: "999px" }}
+              className="relative h-[3px] w-full overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.05)", borderRadius: "999px" }}
             >
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${reservedPct}%` }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-y-0 left-0"
                 style={{
-                  background: "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
+                  background: "linear-gradient(90deg, #ff2419 0%, #ff7a3d 100%)",
                   borderRadius: "999px",
-                  boxShadow: "0 0 14px rgba(255,36,25,0.55)",
                 }}
               />
             </div>
           </div>
 
           {/* footer row */}
-          <div className="flex items-end justify-between gap-3 mt-auto">
+          <div className="flex items-end justify-between gap-3 mt-auto pt-1">
             <div>
               <p
-                className="text-white/45 mb-0.5"
+                className="text-white/40 mb-1"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
-                  letterSpacing: "0.16em",
+                  fontSize: "10.5px",
+                  letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  fontWeight: 700,
+                  fontWeight: 600,
                 }}
               >
-                {isImminent ? "Chega em breve" : "Entrega"} · {formatReleaseDate(info.releaseDate)}
+                {isImminent ? "Em breve" : "Entrega"} · {formatReleaseDate(info.releaseDate)}
               </p>
               <p
                 className="text-white leading-none"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "22px",
+                  fontSize: "26px",
                   fontWeight: 600,
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.025em",
                 }}
               >
                 {info.preOrderPrice ?? product.price}
               </p>
             </div>
             <span
-              className="inline-flex items-center gap-1 h-10 px-4 rounded-full text-white transition-transform group-hover:scale-105"
+              className="inline-flex items-center gap-1.5 h-11 px-5 rounded-full text-white transition-all duration-300 group-hover:translate-x-0.5"
               style={{
-                background: "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)",
+                background: "#ff2419",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12.5px",
-                fontWeight: 700,
-                letterSpacing: "0.04em",
-                boxShadow: "0 12px 28px -8px rgba(255,36,25,0.6)",
+                fontSize: "13px",
+                fontWeight: 600,
+                letterSpacing: "0.02em",
+                boxShadow: "0 12px 32px -10px rgba(255,36,25,0.55)",
               }}
             >
               Reservar
-              <ChevronRight size={13} strokeWidth={2.6} />
+              <ChevronRight size={14} strokeWidth={2.4} />
             </span>
           </div>
         </div>
@@ -341,121 +352,162 @@ function HeroSection({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 600], [0, 180]);
-  const opacity = useTransform(scrollY, [0, 400], [1, 0.35]);
-  const scale = useTransform(scrollY, [0, 400], [1, 1.08]);
+  const y = useTransform(scrollY, [0, 600], [0, 120]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0.4]);
 
   return (
     <section
       ref={ref}
       className="relative overflow-hidden"
       style={{
-        minHeight: "78vh",
-        background: "linear-gradient(180deg, #050505 0%, #0a0506 60%, var(--color-background) 100%)",
+        minHeight: "82vh",
+        background: "#070708",
       }}
     >
-      {/* parallax background image */}
+      {/* mesh gradient orbs (parallax) */}
       <motion.div
-        className="absolute inset-0"
-        style={{
-          y,
-          scale,
-          opacity,
-          backgroundImage: `url(${HERO_IMAGE})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "brightness(0.42) saturate(1.15) contrast(1.1)",
-        }}
-      />
-
-      {/* gradient overlay top + bottom */}
-      <div
         className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.35) 35%, rgba(5,5,5,0.55) 70%, rgba(10,5,6,1) 100%)",
-        }}
-      />
-
-      {/* radial red glow */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 18% 30%, rgba(255,36,25,0.32) 0%, transparent 55%), radial-gradient(circle at 82% 70%, rgba(255,200,90,0.14) 0%, transparent 50%)",
-        }}
-      />
+        style={{ y, opacity }}
+      >
+        {/* primary red orb top-right */}
+        <div
+          className="absolute"
+          style={{
+            top: "-15%",
+            right: "-10%",
+            width: "55%",
+            height: "70%",
+            background:
+              "radial-gradient(circle, rgba(255,36,25,0.22) 0%, rgba(255,36,25,0.08) 35%, transparent 65%)",
+            filter: "blur(60px)",
+          }}
+        />
+        {/* cool accent left */}
+        <div
+          className="absolute"
+          style={{
+            bottom: "-10%",
+            left: "-15%",
+            width: "55%",
+            height: "65%",
+            background:
+              "radial-gradient(circle, rgba(120,80,255,0.16) 0%, rgba(60,80,220,0.06) 35%, transparent 65%)",
+            filter: "blur(80px)",
+          }}
+        />
+        {/* warm subtle center */}
+        <div
+          className="absolute"
+          style={{
+            top: "30%",
+            left: "35%",
+            width: "40%",
+            height: "40%",
+            background:
+              "radial-gradient(circle, rgba(255,180,90,0.08) 0%, transparent 60%)",
+            filter: "blur(80px)",
+          }}
+        />
+      </motion.div>
 
       {/* grid pattern */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 opacity-[0.045]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-          maskImage: "radial-gradient(ellipse at center, black 35%, transparent 75%)",
+            "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+          maskImage:
+            "radial-gradient(ellipse at 50% 40%, black 30%, transparent 70%)",
         }}
       />
 
-      {/* starfield */}
+      {/* noise/dots */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-50"
+        className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 12% 22%, #fff 0.6px, transparent 1.2px), radial-gradient(circle at 38% 78%, #fde68a 0.5px, transparent 1px), radial-gradient(circle at 64% 30%, #fff 0.5px, transparent 1px), radial-gradient(circle at 84% 65%, #fde68a 0.6px, transparent 1.2px), radial-gradient(circle at 22% 88%, #fff 0.5px, transparent 1px), radial-gradient(circle at 92% 18%, #fff 0.5px, transparent 1px)",
+            "radial-gradient(circle at 14% 24%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 42% 76%, rgba(255,255,255,0.4) 0.5px, transparent 1px), radial-gradient(circle at 68% 32%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 88% 64%, rgba(255,255,255,0.4) 0.5px, transparent 1px)",
         }}
       />
 
-      <div className="relative max-w-[1760px] mx-auto px-5 md:px-8 pt-12 md:pt-16 pb-10 md:pb-12 flex flex-col justify-center" style={{ minHeight: "78vh" }}>
+      {/* bottom fade */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
+        style={{
+          background:
+            "linear-gradient(180deg, transparent 0%, var(--color-background) 100%)",
+        }}
+      />
+
+      <div
+        className="relative max-w-[1320px] mx-auto px-6 md:px-10 flex flex-col justify-center"
+        style={{ minHeight: "82vh", paddingTop: "80px", paddingBottom: "100px" }}
+      >
         {/* breadcrumb */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-center gap-2 mb-6"
+          className="flex items-center gap-2 mb-10"
         >
           <Link
             to="/"
-            className="text-white/40 hover:text-white/70 transition-colors"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+            className="text-white/35 hover:text-white/70 transition-colors"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "12px",
+              fontWeight: 500,
+            }}
           >
             Home
           </Link>
-          <span className="text-white/20" style={{ fontSize: "10px" }}>›</span>
+          <span className="text-white/15" style={{ fontSize: "10px" }}>/</span>
           <span
-            className="text-white/70"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+            className="text-white/65"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500 }}
           >
             Pré-venda
           </span>
         </motion.div>
 
-        {/* badge animated */}
+        {/* badge */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="mb-6"
+          className="mb-8"
         >
           <span
-            className="relative inline-flex items-center gap-1.5 rounded-full px-3 py-1.5"
+            className="relative inline-flex items-center gap-2 rounded-full px-3 py-1.5"
             style={{
-              background: "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)",
-              color: "#fff",
+              background: "rgba(255,36,25,0.08)",
+              border: "1px solid rgba(255,36,25,0.25)",
+              color: "#ff7770",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
-              fontWeight: 900,
-              letterSpacing: "0.22em",
+              fontSize: "11.5px",
+              fontWeight: 600,
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
-              boxShadow: "0 10px 28px -8px rgba(255,36,25,0.65)",
+              backdropFilter: "blur(8px)",
             }}
           >
-            <span
-              className="absolute inset-0 rounded-full animate-ping"
-              style={{ background: "rgba(255,36,25,0.45)", animationDuration: "2.4s" }}
-            />
-            <Rocket size={12} strokeWidth={2.6} className="relative" />
-            <span className="relative">Pré-venda PCYES</span>
+            <span className="relative flex h-1.5 w-1.5">
+              <span
+                className="absolute inset-0 rounded-full animate-ping"
+                style={{ background: "#ff2419", animationDuration: "2.4s", opacity: 0.7 }}
+              />
+              <span
+                className="relative rounded-full"
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  background: "#ff2419",
+                  boxShadow: "0 0 8px rgba(255,36,25,0.9)",
+                }}
+              />
+            </span>
+            Pré-venda PCYES
           </span>
         </motion.div>
 
@@ -463,46 +515,48 @@ function HeroSection({
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-5 max-w-[1100px]"
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-7 max-w-[900px]"
           style={{
             fontFamily: "var(--font-family-figtree)",
-            fontSize: "clamp(42px, 6.5vw, 88px)",
-            fontWeight: 700,
-            letterSpacing: "-0.035em",
+            fontSize: "clamp(40px, 6vw, 76px)",
+            fontWeight: 600,
+            letterSpacing: "-0.04em",
             lineHeight: 0.98,
             color: "#fff",
           }}
         >
-          O futuro chega <br />
+          O futuro do hardware,
+          <br />
           <span
             style={{
-              backgroundImage: "linear-gradient(120deg, #ff2419 0%, #facc15 65%, #ff2419 100%)",
+              backgroundImage:
+                "linear-gradient(120deg, #ffffff 0%, #a0a0a8 100%)",
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              backgroundSize: "200% 100%",
               display: "inline-block",
             }}
           >
-            antes pra você.
+            antes de todo mundo.
           </span>
         </motion.h1>
 
         {/* subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white/70 max-w-[640px] mb-9"
+          className="text-white/55 max-w-[580px] mb-12"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "clamp(15px, 1.3vw, 18px)",
-            lineHeight: 1.55,
+            fontSize: "clamp(15px, 1.15vw, 17px)",
+            lineHeight: 1.6,
+            fontWeight: 400,
           }}
         >
           Lançamentos exclusivos, edições limitadas e tecnologia de ponta em
-          primeira mão. Reserve sem custo. Pague só quando despacharmos.
+          primeira mão. Reserve sem custo — pague apenas no despacho.
         </motion.p>
 
         {/* feature pills */}
@@ -510,75 +564,66 @@ function HeroSection({
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap gap-2.5 mb-10"
+          className="flex flex-wrap gap-2.5 mb-14"
         >
           {[
-            { icon: ShieldCheck, label: "Cancelamento livre antes do envio" },
-            { icon: Clock, label: "Sem cobrança até o despacho" },
-            { icon: Zap, label: "Entrega prioritária no lançamento" },
+            { icon: ShieldCheck, label: "Cancelamento livre" },
+            { icon: Clock, label: "Sem cobrança até envio" },
+            { icon: Zap, label: "Entrega prioritária" },
           ].map((f) => (
             <span
               key={f.label}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-white/85 transition-colors hover:bg-white/10"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-white/75 transition-all hover:text-white hover:bg-white/[0.04]"
               style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.10)",
+                background: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.07)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12px",
-                fontWeight: 600,
+                fontWeight: 500,
                 backdropFilter: "blur(8px)",
               }}
             >
-              <span className="text-[#ff2419]">
-                <f.icon size={13} strokeWidth={2.4} />
+              <span className="text-white/45">
+                <f.icon size={13} strokeWidth={2} />
               </span>
               {f.label}
             </span>
           ))}
         </motion.div>
 
-        {/* stats row */}
+        {/* stats */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-3 max-w-[680px]"
-          style={{
-            background: "rgba(0,0,0,0.55)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "18px",
-            backdropFilter: "blur(12px)",
-          }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="grid grid-cols-3 max-w-[640px] gap-10 md:gap-14"
         >
           {[
             { v: totalProducts, l: "Lançamentos", suffix: "" },
             { v: totalReservations.toLocaleString("pt-BR"), l: "Reservas ativas", suffix: "" },
             { v: avgReservedPct, l: "Adesão média", suffix: "%" },
-          ].map((s, i) => (
-            <div
-              key={s.l}
-              className={`px-5 py-4 ${i > 0 ? "border-l border-white/10" : ""}`}
-            >
+          ].map((s) => (
+            <div key={s.l}>
               <p
-                className="text-white tabular-nums leading-none mb-1.5"
+                className="text-white tabular-nums leading-none mb-2"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "clamp(24px, 2.4vw, 32px)",
-                  fontWeight: 700,
-                  letterSpacing: "-0.02em",
+                  fontSize: "clamp(28px, 2.6vw, 38px)",
+                  fontWeight: 600,
+                  letterSpacing: "-0.03em",
                 }}
               >
                 {s.v}
-                {s.suffix}
+                <span className="text-white/40">{s.suffix}</span>
               </p>
               <p
-                className="text-white/55"
+                className="text-white/45"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
-                  letterSpacing: "0.18em",
+                  fontSize: "11.5px",
+                  letterSpacing: "0.16em",
                   textTransform: "uppercase",
-                  fontWeight: 700,
+                  fontWeight: 500,
                 }}
               >
                 {s.l}
@@ -587,33 +632,6 @@ function HeroSection({
           ))}
         </motion.div>
       </div>
-
-      {/* scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none"
-      >
-        <span
-          className="text-white/40"
-          style={{
-            fontFamily: "var(--font-family-inter)",
-            fontSize: "10px",
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            fontWeight: 700,
-          }}
-        >
-          Role
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="w-[1px] h-7"
-          style={{ background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.7), transparent)" }}
-        />
-      </motion.div>
     </section>
   );
 }
@@ -641,7 +659,8 @@ function FiltersBar({
   setSearch: (v: string) => void;
   resultCount: number;
 }) {
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const deliveryLabels: Record<DeliveryFilter, string> = {
     all: "Todas",
     month: "Este mês",
@@ -665,215 +684,217 @@ function FiltersBar({
       className="sticky z-40"
       style={{
         top: "64px",
-        background: "rgba(10,5,6,0.85)",
-        backdropFilter: "blur(18px)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        background: "rgba(7,7,8,0.78)",
+        backdropFilter: "blur(24px) saturate(140%)",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
       }}
     >
-      <div className="max-w-[1760px] mx-auto px-5 md:px-8 py-3.5 flex items-center gap-3 flex-wrap">
-        {/* search */}
-        <div
-          className="flex items-center gap-2 px-3.5 h-10 flex-1 min-w-[200px] max-w-[340px]"
-          style={{
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "12px",
-          }}
-        >
-          <Search size={14} className="text-white/45" strokeWidth={2.2} />
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar lançamento..."
-            className="bg-transparent outline-none flex-1 text-white placeholder:text-white/35"
+      <div className="max-w-[1320px] mx-auto px-6 md:px-10 py-4">
+        <div className="flex items-center gap-3 flex-wrap">
+          {/* search */}
+          <div
+            className="flex items-center gap-2.5 px-4 h-10 flex-1 min-w-[200px] max-w-[320px] transition-colors focus-within:border-white/20"
             style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
-            }}
-          />
-          {search && (
-            <button onClick={() => setSearch("")} className="text-white/40 hover:text-white cursor-pointer">
-              <X size={13} strokeWidth={2.4} />
-            </button>
-          )}
-        </div>
-
-        {/* category chips (desktop) */}
-        <div className="hidden md:flex items-center gap-1.5 flex-wrap">
-          {["all", ...categories].map((cat) => {
-            const isActive = cat === activeCategory;
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className="px-3 h-10 rounded-full transition-all cursor-pointer"
-                style={{
-                  background: isActive
-                    ? "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)"
-                    : "rgba(255,255,255,0.04)",
-                  border: isActive
-                    ? "1px solid rgba(255,36,25,0.55)"
-                    : "1px solid rgba(255,255,255,0.08)",
-                  color: isActive ? "#fff" : "rgba(255,255,255,0.7)",
-                  fontFamily: "var(--font-family-inter)",
-                  fontSize: "12.5px",
-                  fontWeight: 600,
-                  boxShadow: isActive ? "0 8px 24px -8px rgba(255,36,25,0.6)" : "none",
-                }}
-              >
-                {cat === "all" ? "Todas" : cat}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* mobile filter toggle */}
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex items-center gap-2 h-10 px-3.5 rounded-full text-white cursor-pointer"
-          style={{
-            background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.10)",
-            fontFamily: "var(--font-family-inter)",
-            fontSize: "12.5px",
-            fontWeight: 600,
-          }}
-        >
-          <Filter size={13} strokeWidth={2.4} />
-          Filtros
-          {activeFilters > 0 && (
-            <span
-              className="inline-flex items-center justify-center w-5 h-5 rounded-full"
-              style={{
-                background: "#ff2419",
-                fontSize: "10px",
-                fontWeight: 900,
-              }}
-            >
-              {activeFilters}
-            </span>
-          )}
-        </button>
-
-        <div className="flex-1" />
-
-        {/* sort dropdown */}
-        <div className="relative">
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value as SortKey)}
-            className="appearance-none h-10 pl-9 pr-8 rounded-full text-white cursor-pointer"
-            style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.10)",
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
-              fontWeight: 600,
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              borderRadius: "10px",
             }}
           >
-            {(Object.keys(sortLabels) as SortKey[]).map((k) => (
-              <option key={k} value={k} style={{ background: "#0a0506", color: "#fff" }}>
-                {sortLabels[k]}
-              </option>
-            ))}
-          </select>
-          <ArrowDownUp
-            size={13}
-            strokeWidth={2.2}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-white/55 pointer-events-none"
-          />
-        </div>
-      </div>
-
-      {/* delivery chips row + mobile filters */}
-      <AnimatePresence>
-        {(open || true) && (
-          <motion.div
-            initial={false}
-            className="max-w-[1760px] mx-auto px-5 md:px-8 pb-3 flex items-center gap-2.5 flex-wrap"
-          >
-            <span
-              className="text-white/45"
+            <Search size={14} className="text-white/40" strokeWidth={2} />
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Buscar lançamento..."
+              className="bg-transparent outline-none flex-1 text-white placeholder:text-white/30"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10.5px",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                fontWeight: 700,
+                fontSize: "13px",
               }}
-            >
-              <CalendarDays size={11} className="inline -mt-0.5 mr-1.5" strokeWidth={2.4} />
-              Entrega
-            </span>
-            {(Object.keys(deliveryLabels) as DeliveryFilter[]).map((d) => {
-              const isActive = delivery === d;
+            />
+            {search && (
+              <button
+                onClick={() => setSearch("")}
+                className="text-white/35 hover:text-white cursor-pointer"
+              >
+                <X size={13} strokeWidth={2.2} />
+              </button>
+            )}
+          </div>
+
+          {/* desktop chips */}
+          <div className="hidden md:flex items-center gap-1.5 flex-wrap">
+            {["all", ...categories].map((cat) => {
+              const isActive = cat === activeCategory;
               return (
                 <button
-                  key={d}
-                  onClick={() => setDelivery(d)}
-                  className="px-3 h-8 rounded-full transition-all cursor-pointer"
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className="px-3.5 h-10 rounded-full transition-all cursor-pointer"
                   style={{
-                    background: isActive
-                      ? "rgba(255,36,25,0.15)"
-                      : "rgba(255,255,255,0.04)",
+                    background: isActive ? "rgba(255,255,255,0.08)" : "transparent",
                     border: isActive
-                      ? "1px solid rgba(255,36,25,0.45)"
-                      : "1px solid rgba(255,255,255,0.06)",
-                    color: isActive ? "#ff7770" : "rgba(255,255,255,0.65)",
+                      ? "1px solid rgba(255,255,255,0.18)"
+                      : "1px solid rgba(255,255,255,0.07)",
+                    color: isActive ? "#fff" : "rgba(255,255,255,0.6)",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "11.5px",
-                    fontWeight: 600,
+                    fontSize: "12.5px",
+                    fontWeight: 500,
                   }}
                 >
-                  {deliveryLabels[d]}
+                  {cat === "all" ? "Todas" : cat}
                 </button>
               );
             })}
+          </div>
 
-            {/* mobile category chips */}
-            <div className="md:hidden flex items-center gap-2 flex-wrap w-full mt-1.5">
-              {["all", ...categories].map((cat) => {
-                const isActive = cat === activeCategory;
-                return (
-                  <button
-                    key={cat}
-                    onClick={() => setActiveCategory(cat)}
-                    className="px-3 h-8 rounded-full transition-all cursor-pointer"
-                    style={{
-                      background: isActive
-                        ? "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)"
-                        : "rgba(255,255,255,0.04)",
-                      border: isActive
-                        ? "1px solid rgba(255,36,25,0.55)"
-                        : "1px solid rgba(255,255,255,0.08)",
-                      color: isActive ? "#fff" : "rgba(255,255,255,0.7)",
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: "11.5px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {cat === "all" ? "Todas" : cat}
-                  </button>
-                );
-              })}
-            </div>
+          {/* mobile filter toggle */}
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            className="md:hidden inline-flex items-center gap-2 h-10 px-3.5 rounded-full text-white/75 cursor-pointer"
+            style={{
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(255,255,255,0.07)",
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "12.5px",
+              fontWeight: 500,
+            }}
+          >
+            <Filter size={13} strokeWidth={2.2} />
+            Filtros
+            {activeFilters > 0 && (
+              <span
+                className="inline-flex items-center justify-center w-5 h-5 rounded-full"
+                style={{
+                  background: "#ff2419",
+                  color: "#fff",
+                  fontSize: "10px",
+                  fontWeight: 700,
+                }}
+              >
+                {activeFilters}
+              </span>
+            )}
+          </button>
 
-            <div className="flex-1" />
+          <div className="flex-1" />
 
-            <span
-              className="text-white/55 tabular-nums"
+          {/* sort */}
+          <div className="relative">
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as SortKey)}
+              className="appearance-none h-10 pl-9 pr-9 rounded-full text-white/75 cursor-pointer hover:text-white transition-colors"
               style={{
+                background: "rgba(255,255,255,0.025)",
+                border: "1px solid rgba(255,255,255,0.07)",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11.5px",
-                fontWeight: 600,
+                fontSize: "12.5px",
+                fontWeight: 500,
               }}
             >
-              <TrendingUp size={11} className="inline -mt-0.5 mr-1.5 text-[#facc15]" strokeWidth={2.4} />
-              {resultCount} {resultCount === 1 ? "produto" : "produtos"}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {(Object.keys(sortLabels) as SortKey[]).map((k) => (
+                <option key={k} value={k} style={{ background: "#0a0a0c", color: "#fff" }}>
+                  {sortLabels[k]}
+                </option>
+              ))}
+            </select>
+            <ArrowDownUp
+              size={13}
+              strokeWidth={2}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-white/45 pointer-events-none"
+            />
+          </div>
+        </div>
+
+        {/* secondary row: delivery + count */}
+        <div className="mt-3.5 flex items-center gap-2 flex-wrap">
+          <span
+            className="text-white/35 mr-1"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10.5px",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Entrega
+          </span>
+          {(Object.keys(deliveryLabels) as DeliveryFilter[]).map((d) => {
+            const isActive = delivery === d;
+            return (
+              <button
+                key={d}
+                onClick={() => setDelivery(d)}
+                className="px-3 h-7 rounded-full transition-all cursor-pointer"
+                style={{
+                  background: isActive ? "rgba(255,255,255,0.06)" : "transparent",
+                  border: isActive
+                    ? "1px solid rgba(255,255,255,0.14)"
+                    : "1px solid rgba(255,255,255,0.05)",
+                  color: isActive ? "#fff" : "rgba(255,255,255,0.5)",
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "11.5px",
+                  fontWeight: 500,
+                }}
+              >
+                {deliveryLabels[d]}
+              </button>
+            );
+          })}
+
+          <AnimatePresence>
+            {mobileOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="md:hidden w-full overflow-hidden"
+              >
+                <div className="flex items-center gap-2 flex-wrap mt-2 pt-2 border-t border-white/5">
+                  {["all", ...categories].map((cat) => {
+                    const isActive = cat === activeCategory;
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => setActiveCategory(cat)}
+                        className="px-3 h-7 rounded-full transition-all cursor-pointer"
+                        style={{
+                          background: isActive ? "rgba(255,255,255,0.08)" : "transparent",
+                          border: isActive
+                            ? "1px solid rgba(255,255,255,0.18)"
+                            : "1px solid rgba(255,255,255,0.06)",
+                          color: isActive ? "#fff" : "rgba(255,255,255,0.55)",
+                          fontFamily: "var(--font-family-inter)",
+                          fontSize: "11.5px",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {cat === "all" ? "Todas" : cat}
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="flex-1" />
+
+          <span
+            className="inline-flex items-center gap-1.5 text-white/45 tabular-nums"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "11.5px",
+              fontWeight: 500,
+            }}
+          >
+            <TrendingUp size={11} strokeWidth={2} className="text-white/35" />
+            {resultCount} {resultCount === 1 ? "produto" : "produtos"}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -884,7 +905,6 @@ export function PreOrderPage() {
   const [sort, setSort] = useState<SortKey>("soonest");
   const [search, setSearch] = useState<string>("");
 
-  // join with product data once
   const enriched = useMemo(() => {
     return PRE_ORDER_ITEMS.map((info) => {
       const product = allProducts.find((p) => p.id === info.productId);
@@ -991,28 +1011,29 @@ export function PreOrderPage() {
       />
 
       {/* grid */}
-      <section className="max-w-[1760px] mx-auto px-5 md:px-8 py-10 md:py-14">
-        <div className="flex items-end justify-between mb-6 flex-wrap gap-3">
+      <section className="max-w-[1320px] mx-auto px-6 md:px-10 py-16 md:py-20">
+        <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
             <p
-              className="text-white/45 mb-1.5"
+              className="text-white/40 mb-2"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10.5px",
+                fontSize: "11px",
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                fontWeight: 700,
+                fontWeight: 600,
               }}
             >
-              // Catálogo
+              Catálogo
             </p>
             <h2
-              className="text-foreground"
+              className="text-white"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "clamp(22px, 2.6vw, 32px)",
+                fontSize: "clamp(24px, 2.6vw, 34px)",
                 fontWeight: 600,
-                letterSpacing: "-0.02em",
+                letterSpacing: "-0.025em",
+                lineHeight: 1.1,
               }}
             >
               Lançamentos em pré-venda
@@ -1022,51 +1043,52 @@ export function PreOrderPage() {
 
         {filtered.length === 0 ? (
           <div
-            className="flex flex-col items-center justify-center py-20 text-center"
+            className="flex flex-col items-center justify-center py-24 text-center"
             style={{
-              background: "rgba(255,255,255,0.02)",
-              border: "1px dashed rgba(255,255,255,0.10)",
-              borderRadius: "22px",
+              background: "rgba(255,255,255,0.015)",
+              border: "1px dashed rgba(255,255,255,0.08)",
+              borderRadius: "20px",
             }}
           >
-            <Search size={28} className="text-white/35 mb-4" strokeWidth={1.8} />
+            <Search size={28} className="text-white/30 mb-5" strokeWidth={1.6} />
             <h3
               className="text-white mb-2"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "20px",
                 fontWeight: 600,
+                letterSpacing: "-0.015em",
               }}
             >
               Nenhum lançamento encontrado
             </h3>
             <p
-              className="text-white/50 mb-5 max-w-[360px]"
+              className="text-white/50 mb-6 max-w-[400px]"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
-                lineHeight: 1.5,
+                fontSize: "13.5px",
+                lineHeight: 1.55,
               }}
             >
               Tente ajustar os filtros ou voltar para ver todos os lançamentos disponíveis.
             </p>
             <button
               onClick={clearFilters}
-              className="px-5 h-10 rounded-full text-white cursor-pointer transition-colors"
+              className="px-5 h-10 rounded-full text-white cursor-pointer transition-colors hover:bg-white/95"
               style={{
-                background: "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)",
+                background: "#fff",
+                color: "#0a0a0c",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12.5px",
-                fontWeight: 700,
-                letterSpacing: "0.04em",
-                boxShadow: "0 12px 28px -8px rgba(255,36,25,0.5)",
+                fontWeight: 600,
+                letterSpacing: "0.01em",
               }}
             >
               Limpar filtros
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-7">
             {filtered.map(({ info }) => (
               <PreOrderCard key={info.productId} info={info} />
             ))}
