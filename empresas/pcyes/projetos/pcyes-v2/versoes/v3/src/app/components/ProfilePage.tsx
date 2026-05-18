@@ -5,7 +5,8 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import {
   Package, Heart, MapPin, User, CreditCard, HelpCircle, Shield, LogOut,
   ChevronRight, Truck, Check, Clock, X as XIcon, Eye, Star, ShoppingBag,
-  ArrowLeft, Copy, ExternalLink, Receipt, Info, Share2, AlertCircle, PackageCheck
+  ArrowLeft, Copy, ExternalLink, Receipt, Info, Share2, AlertCircle, PackageCheck,
+  LayoutDashboard, TrendingUp, Wallet, Sparkles
 } from "lucide-react";
 import { useAuth, type Order } from "./AuthContext";
 import { useFavorites } from "./FavoritesContext";
@@ -68,9 +69,10 @@ function OrderStatusTimeline({ status }: { status: Order["status"] }) {
   );
 }
 
-type Tab = "orders" | "favorites" | "addresses" | "data" | "cards" | "help" | "privacy";
+type Tab = "overview" | "orders" | "favorites" | "addresses" | "data" | "cards" | "help" | "privacy";
 
 const TABS: { key: Tab; icon: typeof Package; label: string }[] = [
+  { key: "overview", icon: LayoutDashboard, label: "Visão Geral" },
   { key: "orders", icon: Package, label: "Meus Pedidos" },
   { key: "favorites", icon: Heart, label: "Favoritos" },
   { key: "addresses", icon: MapPin, label: "Endereços" },
@@ -94,13 +96,13 @@ export function ProfilePage() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark" || resolvedTheme === undefined;
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialTab = TABS.some((tab) => tab.key === searchParams.get("tab")) ? searchParams.get("tab") as Tab : "orders";
+  const initialTab = TABS.some((tab) => tab.key === searchParams.get("tab")) ? searchParams.get("tab") as Tab : "overview";
   const [activeTab, setActiveTab] = useState<Tab>(initialTab);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
   const setProfileTab = (tab: Tab) => {
     setActiveTab(tab);
     const next = new URLSearchParams(searchParams);
-    if (tab === "orders") next.delete("tab");
+    if (tab === "overview") next.delete("tab");
     else next.set("tab", tab);
     setSearchParams(next, { replace: true });
   };
@@ -110,7 +112,7 @@ export function ProfilePage() {
     if (TABS.some((tab) => tab.key === tabParam)) {
       setActiveTab(tabParam as Tab);
     } else {
-      setActiveTab("orders");
+      setActiveTab("overview");
     }
   }, [searchParams]);
 
@@ -139,27 +141,48 @@ export function ProfilePage() {
   const inputCls = "w-full px-4 py-3 bg-foreground/[0.03] border border-foreground/8 text-foreground placeholder:text-foreground/20 focus:border-foreground/20 focus:outline-none transition-colors";
   const inputStyle = { borderRadius: "var(--radius-button)" as const, fontFamily: "var(--font-family-inter)", fontSize: "13px" };
 
+  const totalSpent = user.orders.reduce((acc, o) => acc + parseFloat(o.total.replace(/[^\d,]/g, "").replace(",", ".")), 0);
+  const activeOrders = user.orders.filter((o) => o.status === "processing" || o.status === "shipped").length;
+
   return (
     <div className="pt-[180px] md:pt-[220px]">
       {/* Header */}
       <div className="px-5 md:px-8 pt-12 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
-        <div className="max-w-[1760px] mx-auto flex items-center gap-5">
-          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <span className="text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: "var(--font-weight-medium)" }}>
-              {user.name.charAt(0)}
-            </span>
+        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
+          <div className="flex items-center gap-5">
+            <div className="w-[72px] h-[72px] rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/15">
+              <span className="text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: "var(--font-weight-medium)" }}>
+                {user.name.charAt(0)}
+              </span>
+            </div>
+            <div>
+              <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: "var(--font-weight-medium)" }}>
+                Olá, {user.name.split(" ")[0]}
+              </h1>
+              <p className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{user.email}</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: "var(--font-weight-medium)" }}>
-              Olá, {user.name.split(" ")[0]}
-            </h1>
-            <p className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{user.email}</p>
+          <div className="md:ml-auto flex items-center gap-6 md:gap-8">
+            <div>
+              <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pedidos</p>
+              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>{user.orders.length}</p>
+            </div>
+            <div className="h-8 w-px bg-foreground/10" />
+            <div>
+              <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
+              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>{favorites.size}</p>
+            </div>
+            <div className="h-8 w-px bg-foreground/10 hidden sm:block" />
+            <div className="hidden sm:block">
+              <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Total gasto</p>
+              <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>R$ {totalSpent.toFixed(0)}</p>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="px-5 md:px-8 py-10">
-        <div className="max-w-[1760px] mx-auto flex flex-col lg:flex-row gap-10">
+        <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10">
           {/* Sidebar */}
           <aside className="w-full lg:w-[220px] flex-shrink-0">
             <nav className="space-y-1">
@@ -185,74 +208,245 @@ export function ProfilePage() {
           {/* Content */}
           <div className="flex-1 min-w-0">
             <AnimatePresence mode="wait">
+              {activeTab === "overview" && (
+                <motion.div key="overview" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
+                  <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Visão Geral</h2>
+
+                  {/* Próximo pedido em destaque */}
+                  {(() => {
+                    const nextOrder = user.orders.find((o) => o.status === "shipped" || o.status === "processing");
+                    if (!nextOrder) return null;
+                    const s = STATUS_MAP[nextOrder.status];
+                    return (
+                      <button
+                        onClick={() => { setProfileTab("orders"); setSelectedOrderId(nextOrder.id); }}
+                        className="group w-full text-left mb-4 p-5 flex items-center gap-4 transition-all hover:bg-white/[0.01]"
+                        style={{
+                          borderRadius: "14px",
+                          background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
+                          border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                        }}
+                      >
+                        <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 ${s.bg} ${s.color}`}>
+                          <s.icon size={18} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-foreground/40 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                            {nextOrder.status === "shipped" ? "Em trânsito" : "Em preparação"}
+                          </p>
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>
+                            Pedido {nextOrder.id}
+                          </p>
+                          <p className="text-foreground/45 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                            {nextOrder.items.length} {nextOrder.items.length === 1 ? "item" : "itens"} · Previsão: 15 de Abril
+                          </p>
+                        </div>
+                        <ChevronRight size={16} className="text-foreground/20 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                      </button>
+                    );
+                  })()}
+
+                  {/* Grid de cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {/* Últimos pedidos */}
+                    <button
+                      onClick={() => setProfileTab("orders")}
+                      className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                      style={{
+                        borderRadius: "14px",
+                        background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
+                        border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                      }}
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Últimos pedidos</p>
+                        <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                      </div>
+                      <div className="flex items-center gap-2 mb-3">
+                        {user.orders.slice(0, 4).flatMap((o) => o.items).slice(0, 4).map((item, i) => (
+                          <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                            <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                          </div>
+                        ))}
+                      </div>
+                      <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>{user.orders.length} pedidos</p>
+                      <p className="text-foreground/45 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{activeOrders > 0 ? `${activeOrders} em andamento` : "Todos entregues"}</p>
+                    </button>
+
+                    {/* Favoritos */}
+                    <button
+                      onClick={() => setProfileTab("favorites")}
+                      className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                      style={{
+                        borderRadius: "14px",
+                        background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
+                        border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                      }}
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
+                        <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                      </div>
+                      <div className="flex items-center gap-2 mb-3 min-h-[48px]">
+                        {favoriteProducts.slice(0, 4).map((p) => (
+                          <div key={p.id} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                            <ImageWithFallback src={getPrimaryProductImage(p)} alt={p.name} className="w-full h-full object-cover" />
+                          </div>
+                        ))}
+                        {favoriteProducts.length === 0 && (
+                          <Heart size={20} className="text-foreground/15" />
+                        )}
+                      </div>
+                      <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>{favoriteProducts.length} {favoriteProducts.length === 1 ? "produto" : "produtos"}</p>
+                      <p className="text-foreground/45 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Salvos pra depois</p>
+                    </button>
+
+                    {/* Endereço padrão */}
+                    {user.addresses[0] && (
+                      <button
+                        onClick={() => setProfileTab("addresses")}
+                        className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                        style={{
+                          borderRadius: "14px",
+                          background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
+                          border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                        }}
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Endereço padrão</p>
+                          <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <MapPin size={16} className="text-primary/70 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-foreground truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
+                              {user.addresses[0].label}
+                            </p>
+                            <p className="text-foreground/45 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                              {user.addresses[0].street}, {user.addresses[0].number} · {user.addresses[0].city}/{user.addresses[0].state}
+                            </p>
+                          </div>
+                        </div>
+                      </button>
+                    )}
+
+                    {/* Cartão padrão */}
+                    {user.cards.find((c) => c.isDefault) && (() => {
+                      const c = user.cards.find((c) => c.isDefault)!;
+                      return (
+                        <button
+                          onClick={() => setProfileTab("cards")}
+                          className="group text-left p-5 transition-all hover:bg-white/[0.01]"
+                          style={{
+                            borderRadius: "14px",
+                            background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
+                            border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                          }}
+                        >
+                          <div className="flex items-center justify-between mb-3">
+                            <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Cartão padrão</p>
+                            <ChevronRight size={14} className="text-foreground/20 group-hover:text-primary transition-colors" />
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <CreditCard size={16} className="text-primary/70 mt-0.5 flex-shrink-0" />
+                            <div className="min-w-0">
+                              <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
+                                {c.brand} ·••• {c.last4}
+                              </p>
+                              <p className="text-foreground/45 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                                {c.name} · Validade {c.expiry}
+                              </p>
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    })()}
+                  </div>
+
+                  {/* Atalhos rápidos */}
+                  <div className="mt-6 flex items-center justify-between p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,43,46,0.04)" : "rgba(220,20,20,0.03)", border: "1px solid rgba(255,43,46,0.12)" }}>
+                    <div className="flex items-center gap-3">
+                      <Sparkles size={18} className="text-primary" />
+                      <div>
+                        <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
+                          Continue de onde parou
+                        </p>
+                        <p className="text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                          Veja produtos sugeridos baseado nos seus pedidos
+                        </p>
+                      </div>
+                    </div>
+                    <Link to="/produtos" className="px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>
+                      Ver produtos
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+
               {activeTab === "orders" && (
                 <motion.div key="orders" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   {!selectedOrderId ? (
                     <>
-                      <div className="flex items-center justify-between mb-8">
+                      <div className="flex items-center justify-between mb-5">
                         <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Meus Pedidos</h2>
                         <div className="flex gap-2">
-                          <button className="px-3 py-1.5 border border-foreground/5 text-foreground/40 hover:text-foreground/60 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>Todos</button>
-                          <button className="px-3 py-1.5 border border-foreground/5 text-foreground/40 hover:text-foreground/60 transition-colors" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>Em aberto</button>
+                          <button className="px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px]" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
+                          <button className="px-3 py-1.5 text-foreground/45 hover:text-foreground/70 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
+                          <button className="px-3 py-1.5 text-foreground/45 hover:text-foreground/70 transition-colors text-[11px]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
                         </div>
                       </div>
-                      <div className="space-y-4">
+                      <div className="space-y-2">
                         {user.orders.map((order) => {
                           const s = STATUS_MAP[order.status];
                           return (
-                            <div key={order.id} 
+                            <div key={order.id}
                               onClick={() => setSelectedOrderId(order.id)}
-                              className="group border border-foreground/5 p-6 hover:border-primary/20 hover:bg-primary/[0.01] transition-all cursor-pointer relative" 
-                              style={{ borderRadius: "var(--radius-card)" }}
+                              className="group p-4 transition-all cursor-pointer relative"
+                              style={{
+                                borderRadius: "14px",
+                                background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
+                                border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                              }}
                             >
-                              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                                <div className="flex items-center gap-4">
-                                  <div className={`w-12 h-12 rounded-full flex items-center justify-center ${s.bg} ${s.color}`}>
-                                    <s.icon size={20} />
-                                  </div>
-                                  <div>
-                                    <p className="text-foreground font-medium mb-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>Pedido {order.id}</p>
-                                    <p className="text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")}</p>
-                                  </div>
+                              {/* Linha 1: identidade + status + total */}
+                              <div className="flex items-center gap-4 mb-3">
+                                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${s.bg} ${s.color}`}>
+                                  <s.icon size={16} />
                                 </div>
-                                <div className="flex items-center gap-3">
-                                  <span className={`flex items-center gap-1.5 px-3 py-1.5 ${s.bg} ${s.color}`} style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}>
-                                    {s.label}
-                                  </span>
-                                  <ChevronRight size={16} className="text-foreground/10 group-hover:text-primary transition-colors group-hover:translate-x-0.5 duration-300" />
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2 mb-0.5">
+                                    <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>Pedido {order.id}</p>
+                                    <span className={`px-2 py-0.5 flex-shrink-0 ${s.bg} ${s.color}`} style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.03em" }}>
+                                      {s.label}
+                                    </span>
+                                  </div>
+                                  <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")}</p>
                                 </div>
-                              </div>
-                              
-                              <div className="flex items-center gap-3 mb-6 overflow-x-auto pb-2 scrollbar-hide">
-                                {order.items.map((item, i) => (
-                                  <div key={i} className="w-16 h-16 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
-                                    <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                                  </div>
-                                ))}
-                                {order.items.length > 3 && (
-                                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center bg-foreground/5 text-foreground/30 font-medium" style={{ borderRadius: "var(--radius)", fontSize: "12px" }}>
-                                    +{order.items.length - 3}
-                                  </div>
-                                )}
+                                <div className="text-right flex-shrink-0">
+                                  <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Total</p>
+                                  <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>{order.total}</p>
+                                </div>
+                                <ChevronRight size={16} className="text-foreground/15 group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
                               </div>
 
-                              <div className="flex items-center justify-between pt-5 border-t border-foreground/5">
-                                <div className="flex items-center gap-6">
-                                  <div>
-                                    <p className="text-foreground/25 mb-0.5" style={{ fontSize: "10px", fontWeight: "600", letterSpacing: "0.05em" }}>TOTAL</p>
-                                    <p className="text-foreground font-semibold" style={{ fontSize: "15px" }}>{order.total}</p>
-                                  </div>
-                                  {order.tracking && (
-                                    <div className="hidden sm:block">
-                                      <p className="text-foreground/25 mb-0.5" style={{ fontSize: "10px", fontWeight: "600", letterSpacing: "0.05em" }}>RASTREIO</p>
-                                      <p className="text-foreground/60" style={{ fontSize: "13px" }}>{order.tracking}</p>
+                              {/* Linha 2: thumbs + ação ver detalhes */}
+                              <div className="flex items-center justify-between gap-3 pl-[56px]">
+                                <div className="flex items-center gap-2 min-w-0">
+                                  {order.items.slice(0, 4).map((item, i) => (
+                                    <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                      <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                                    </div>
+                                  ))}
+                                  {order.items.length > 4 && (
+                                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/40" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                                      +{order.items.length - 4}
                                     </div>
                                   )}
                                 </div>
-                                <button 
+                                <button
                                   onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
-                                  className="px-4 py-2 border border-foreground/10 hover:border-primary hover:text-primary transition-all text-[12px] font-medium"
-                                  style={{ borderRadius: "var(--radius-button)" }}
+                                  className="px-3.5 py-1.5 text-foreground/60 hover:text-foreground transition-colors flex-shrink-0"
+                                  style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
                                 >
                                   Ver detalhes
                                 </button>
