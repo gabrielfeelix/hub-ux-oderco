@@ -1000,16 +1000,16 @@ function PresetCard({
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1",
+        "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-0.5 md:flex-row md:items-stretch",
         isRecommended ? "border-primary/55" : "border-white/[0.08] hover:border-white/[0.22]",
       )}
       style={
         isRecommended
-          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 40px 90px -30px rgba(255,43,46,0.45)" }
-          : { boxShadow: "0 16px 40px -16px rgba(0,0,0,0.5)" }
+          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 30px 70px -28px rgba(255,43,46,0.4)" }
+          : { boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)" }
       }
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden deal-image-bg">
+      <div className="relative aspect-[16/10] w-full overflow-hidden deal-image-bg md:aspect-auto md:w-[42%] md:flex-shrink-0">
         <img
           src={preset.heroImage}
           alt={`Setup ${preset.name}`}
@@ -1196,13 +1196,6 @@ function PresetCard({
           </div>
         </div>
 
-        <p
-          className="mb-3 text-zinc-400"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.55 }}
-        >
-          {preset.description}
-        </p>
-
         <div className="mt-auto border-t border-white/[0.06] pt-3.5">
           <div className="mb-1 flex items-center gap-2">
             {preset.oldPrice && (
@@ -1364,7 +1357,7 @@ function PresetGallery({
           Builds montadas e testadas. Aplique e customize qualquer peça antes de finalizar.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div className="mx-auto flex max-w-[1080px] flex-col gap-4">
         {presets.map((p) => (
           <PresetCard key={p.id} preset={p} isRecommended={recommended === p.id} onApply={() => onApply(p)} />
         ))}
@@ -2293,15 +2286,20 @@ function ProductTile({
   selected,
   onSelect,
   mode,
+  multiSelect = false,
+  disabled = false,
 }: {
   option: Option;
   category: Category;
   selected: boolean;
   onSelect: () => void;
   mode: ViewMode;
+  multiSelect?: boolean;
+  disabled?: boolean;
 }) {
   const baseBtnClass = cn(
-    "group relative cursor-pointer border text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]",
+    "group relative border text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]",
+    disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer",
     selected
       ? "border-primary bg-gradient-to-br from-primary/[0.08] to-primary/[0.02]"
       : "border-white/[0.08] bg-gradient-to-br from-[#15151a] to-[#0f0f12] hover:border-white/[0.22] hover:from-[#1a1a20] hover:to-[#15151a]",
@@ -2413,11 +2411,14 @@ function ProductTile({
             </div>
             <div
               className={cn(
-                "flex h-7 w-7 items-center justify-center rounded-md border-2 transition-all",
+                "flex h-7 w-7 items-center justify-center border-2 transition-all",
+                multiSelect ? "rounded-md" : "rounded-full",
                 selected ? "border-primary bg-primary" : "border-white/25 group-hover:border-primary/60",
               )}
+              aria-hidden="true"
             >
-              {selected && <Check size={14} className="text-white" strokeWidth={3} />}
+              {selected && multiSelect && <Check size={14} className="text-white" strokeWidth={3} />}
+              {selected && !multiSelect && <span className="h-2.5 w-2.5 rounded-full bg-white" />}
             </div>
           </div>
         </div>
@@ -2454,11 +2455,14 @@ function ProductTile({
       )}
       <div
         className={cn(
-          "absolute right-2.5 top-2.5 z-10 flex h-[22px] w-[22px] items-center justify-center rounded-md border-2 transition-all",
+          "absolute right-2.5 top-2.5 z-10 flex h-[22px] w-[22px] items-center justify-center border-2 transition-all",
+          multiSelect ? "rounded-md" : "rounded-full",
           selected ? "border-primary bg-primary" : "border-white/30 bg-black/30 backdrop-blur-sm group-hover:border-primary/60",
         )}
+        aria-hidden="true"
       >
-        {selected && <Check size={11} className="text-white" strokeWidth={3} />}
+        {selected && multiSelect && <Check size={11} className="text-white" strokeWidth={3} />}
+        {selected && !multiSelect && <span className="h-2 w-2 rounded-full bg-white" />}
       </div>
       <div className="relative aspect-[4/3] w-full overflow-hidden deal-image-bg">
         {option.image ? (
@@ -3181,8 +3185,16 @@ export function MonteSeuPcPage() {
                 : allCompat;
               const isFirst = currentIdx === 0;
               const isLast = currentIdx === categories.length - 1;
-              const stepSelectedId = getSelected(selections, currentCategory.id)[0];
-              const stepSelected = currentCategory.options.find((o) => o.id === stepSelectedId);
+              const stepSelectedIds = getSelected(selections, currentCategory.id);
+              const stepSelectedOptions = stepSelectedIds
+                .map((id) => currentCategory.options.find((o) => o.id === id))
+                .filter((o): o is Option => Boolean(o));
+              const stepSelected = stepSelectedOptions[0];
+              const stepMax = getMaxSlots(currentCategory);
+              const stepMin = getMinSlots(currentCategory);
+              const stepValid = stepSelectedOptions.length >= stepMin;
+              const stepAtMax = stepSelectedOptions.length >= stepMax;
+              const stepMultiSelect = stepMax > 1;
 
               const goNext = () => {
                 if (isLast) {
@@ -3456,26 +3468,43 @@ export function MonteSeuPcPage() {
                                 if (sortMode === "name") return a.name.localeCompare(b.name);
                                 return 0;
                               })
-                              .map((option) => (
-                                <ProductTile
-                                  key={option.id}
-                                  mode={viewMode}
-                                  option={option}
-                                  category={currentCategory}
-                                  selected={stepSelectedId === option.id}
-                                  onSelect={() => {
-                                    setSelections((prev) => ({
-                                      ...prev,
-                                      [currentCategory.id]: [option.id],
-                                    }));
-                                    setCompletedSteps((prev) =>
-                                      prev.includes(currentCategory.id)
-                                        ? prev
-                                        : [...prev, currentCategory.id],
-                                    );
-                                  }}
-                                />
-                              ))
+                              .map((option) => {
+                                const isSelected = stepSelectedIds.includes(option.id);
+                                const disabled = !isSelected && stepAtMax;
+                                return (
+                                  <ProductTile
+                                    key={option.id}
+                                    mode={viewMode}
+                                    option={option}
+                                    category={currentCategory}
+                                    selected={isSelected}
+                                    multiSelect={stepMultiSelect}
+                                    disabled={disabled}
+                                    onSelect={() => {
+                                      if (disabled) return;
+                                      setSelections((prev) => {
+                                        const cur = prev[currentCategory.id] ?? [];
+                                        if (cur.includes(option.id)) {
+                                          return {
+                                            ...prev,
+                                            [currentCategory.id]: cur.filter((id) => id !== option.id),
+                                          };
+                                        }
+                                        if (stepMax === 1) {
+                                          return { ...prev, [currentCategory.id]: [option.id] };
+                                        }
+                                        if (cur.length >= stepMax) return prev;
+                                        return { ...prev, [currentCategory.id]: [...cur, option.id] };
+                                      });
+                                      setCompletedSteps((prev) =>
+                                        prev.includes(currentCategory.id)
+                                          ? prev
+                                          : [...prev, currentCategory.id],
+                                      );
+                                    }}
+                                  />
+                                );
+                              })
                           )}
                         </motion.div>
                       </AnimatePresence>
