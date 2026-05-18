@@ -2978,7 +2978,14 @@ export function MonteSeuPcPage() {
     setStepSearch("");
   }, [activeCategory]);
 
-  const handlePath = (p: "builder" | "quiz" | "presets") => setView(p);
+  const handlePath = (p: "builder" | "quiz" | "presets") => {
+    if (p === "builder") {
+      setSelections({});
+      setCompletedSteps([]);
+      setActiveCategory("cpu");
+    }
+    setView(p);
+  };
   const goToWelcome = () => {
     setQuizRec(null);
     setView("welcome");
@@ -3609,7 +3616,7 @@ export function MonteSeuPcPage() {
                               })
                               .map((option) => {
                                 const isSelected = stepSelectedIds.includes(option.id);
-                                const disabled = !isSelected && stepAtMax;
+                                const disabled = stepMultiSelect && !isSelected && stepAtMax;
                                 return (
                                   <ProductTile
                                     key={option.id}
