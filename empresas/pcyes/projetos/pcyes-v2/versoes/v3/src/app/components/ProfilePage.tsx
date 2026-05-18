@@ -118,7 +118,7 @@ export function ProfilePage() {
 
   if (!isLoggedIn || !user) {
     return (
-      <div className="pt-[180px] md:pt-[220px] min-h-screen flex items-center justify-center px-8">
+      <div className="pt-[140px] md:pt-[170px] min-h-screen flex items-center justify-center px-8">
         <div className="text-center max-w-md">
           <User size={40} className="text-foreground/30 mx-auto mb-6" />
           <h2 className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-light)" }}>
@@ -142,9 +142,9 @@ export function ProfilePage() {
   const activeOrders = user.orders.filter((o) => o.status === "processing" || o.status === "shipped").length;
 
   return (
-    <div className="pt-[180px] md:pt-[220px]">
+    <div className="pt-[140px] md:pt-[170px]">
       {/* Header */}
-      <div className="px-5 md:px-8 pt-12 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
+      <div className="px-5 md:px-8 pt-8 pb-7" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
           <div className="flex items-center gap-5">
             <div className="relative flex-shrink-0">
@@ -270,17 +270,16 @@ export function ProfilePage() {
                     ];
                     const stageIdx = nextOrder.status === "shipped" ? 2 : nextOrder.status === "processing" ? 1 : 0;
                     const eta = nextOrder.status === "shipped" ? "Chega quinta, 18/Abr · em 3 dias" : "Previsão: 22/Abr · em 7 dias";
-                    const lastUpdate = nextOrder.history?.[nextOrder.history.length - 1];
+                    const lastUpdate = nextOrder.history?.[0];
                     return (
                       <div
                         className="relative mb-4 overflow-hidden"
                         style={{
                           borderRadius: "16px",
                           background: isDark
-                            ? "linear-gradient(135deg, rgba(255,43,46,0.05) 0%, rgba(255,255,255,0.02) 60%)"
-                            : "linear-gradient(135deg, rgba(220,20,20,0.04) 0%, rgba(0,0,0,0.015) 60%)",
-                          border: "1px solid rgba(255,43,46,0.18)",
-                          boxShadow: "0 24px 60px -32px rgba(255,43,46,0.35)",
+                            ? "rgba(255,255,255,0.02)"
+                            : "rgba(0,0,0,0.015)",
+                          border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
                         }}
                       >
                         {/* Header: status + ETA */}
@@ -536,7 +535,7 @@ export function ProfilePage() {
                       </div>
                       {user.orders.length === 0 ? (
                         <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                          <Package size={28} className="text-foreground/22 mx-auto mb-4" />
+                          <Package size={28} className="text-foreground/35 mx-auto mb-4" />
                           <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum pedido ainda</p>
                           <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Quando você fizer um pedido, ele aparece aqui.</p>
                           <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>Explorar produtos</Link>
@@ -709,7 +708,7 @@ export function ProfilePage() {
                                       <p className="text-foreground/45 mb-2" style={{ fontSize: "12px" }}>Quantidade: {item.qty}</p>
                                       <div className="flex items-center gap-2">
                                         <button className="text-primary hover:underline font-medium cursor-pointer" style={{ fontSize: "12px" }}>Comprar novamente</button>
-                                        <span className="text-foreground/22">•</span>
+                                        <span className="text-foreground/35">•</span>
                                         <button className="text-foreground/55 hover:text-foreground/75 transition-colors cursor-pointer" style={{ fontSize: "12px" }}>Ver produto</button>
                                       </div>
                                     </div>
