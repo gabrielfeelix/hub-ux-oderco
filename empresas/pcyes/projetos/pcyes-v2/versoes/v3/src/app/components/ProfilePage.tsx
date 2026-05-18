@@ -15,6 +15,7 @@ import { useTheme } from "./ThemeProvider";
 import { allProducts } from "./productsData";
 import { Footer } from "./Footer";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
+import { CardBrandLogo } from "./CardBrandLogo";
 
 function OrderStatusTimeline({ status }: { status: Order["status"] }) {
   const steps = [
@@ -1219,12 +1220,9 @@ export function ProfilePage() {
                       const monthsLeft = (expDate.getFullYear() - today.getFullYear()) * 12 + (expDate.getMonth() - today.getMonth());
                       const isExpired = monthsLeft < 0;
                       const isExpiringSoon = !isExpired && monthsLeft <= 3;
-                      const brandColor = c.brand.toLowerCase().includes("visa") ? "rgba(26,49,142,0.85)" : c.brand.toLowerCase().includes("master") ? "rgba(255,95,0,0.85)" : "rgba(255,255,255,0.06)";
                       return (
                         <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
-                          <div className="w-11 h-7 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "5px", background: brandColor }}>
-                            <span className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.brand}</span>
-                          </div>
+                          <CardBrandLogo brand={c.brand} className="flex-shrink-0" style={{ width: "44px", height: "28px", borderRadius: "5px", overflow: "hidden", display: "block", objectFit: "cover" }} />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-0.5 flex-wrap">
                               <p className="text-foreground font-mono" style={{ fontSize: "13.5px", fontWeight: 600, letterSpacing: "0.05em" }}>•••• {c.last4}</p>
