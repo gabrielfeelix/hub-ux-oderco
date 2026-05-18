@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowLeft,
+  ArrowRight,
   Check,
   ChevronDown,
   Cpu,
@@ -12,6 +14,9 @@ import {
   Settings,
   Share2,
   ShoppingCart,
+  Sparkles,
+  Wand2,
+  X,
   Zap,
 } from "lucide-react";
 import { Footer } from "../components/Footer";
@@ -19,6 +24,12 @@ import { allProducts } from "../components/productsData";
 import { useCart } from "../components/CartContext";
 import { Button } from "../components/ui/button";
 import { cn } from "../components/ui/utils";
+
+const LOGO_URL =
+  "https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png";
+
+const formatBRL = (value: number) =>
+  new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
 
 type VisualKind =
   | "cpu"
@@ -535,6 +546,187 @@ const getAmbient = (type?: string): AmbientConfig => {
   }
 };
 
+type View = "welcome" | "quiz" | "presets" | "builder" | "review";
+
+function TopBar() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl">
+      <div className="mx-auto flex h-[64px] max-w-[1760px] items-center justify-between gap-3 px-5 md:px-8">
+        <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-80" aria-label="PCYES home">
+          <img src={LOGO_URL} alt="PCYES" className="h-[24px] w-auto" />
+        </Link>
+        <Link
+          to="/"
+          className="flex h-9 items-center gap-1.5 rounded-full border border-white/[0.1] bg-white/[0.02] px-4 text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "12.5px",
+            fontWeight: 600,
+          }}
+        >
+          <X size={12} /> Voltar para o Site
+        </Link>
+      </div>
+    </header>
+  );
+}
+
+function PathCard({
+  icon,
+  label,
+  desc,
+  cta,
+  badge,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  desc: string;
+  cta: string;
+  badge?: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="group relative flex flex-col overflow-hidden rounded-[24px] border border-white/[0.08] bg-[#0f0f12] p-7 text-left transition-all duration-300 hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{ background: "radial-gradient(circle at 50% 0%, rgba(255,43,46,0.18), transparent 60%)" }}
+      />
+      {badge && (
+        <span
+          className="absolute right-5 top-5 rounded-full bg-primary px-2 py-0.5 text-white"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "9.5px",
+            letterSpacing: "0.16em",
+            fontWeight: 700,
+            boxShadow: "0 6px 20px -4px rgba(255,43,46,0.6)",
+          }}
+        >
+          {badge}
+        </span>
+      )}
+      <div className="relative">
+        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/25 bg-primary/[0.1] text-primary transition-all group-hover:scale-110 group-hover:border-primary/45 group-hover:bg-primary/15">
+          {icon}
+        </div>
+        <h3
+          className="mb-2 text-white"
+          style={{
+            fontFamily: "var(--font-family-figtree)",
+            fontSize: "20px",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+          }}
+        >
+          {label}
+        </h3>
+        <p
+          className="mb-6 text-zinc-400"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", lineHeight: 1.6 }}
+        >
+          {desc}
+        </p>
+        <div
+          className="flex items-center gap-2 text-primary"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+        >
+          {cta}
+          <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets") => void }) {
+  return (
+    <div className="relative">
+      <div
+        className="relative overflow-hidden border-b border-white/[0.06]"
+        style={{
+          background:
+            "radial-gradient(circle at 25% 30%, rgba(255,43,46,0.18) 0%, transparent 55%), radial-gradient(circle at 75% 70%, rgba(255,43,46,0.12) 0%, transparent 50%), #0a0a0a",
+        }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 12% 22%, rgba(255,255,255,0.6) 0.5px, transparent 1px), radial-gradient(circle at 38% 78%, rgba(255,232,31,0.5) 0.5px, transparent 1px), radial-gradient(circle at 64% 30%, rgba(255,255,255,0.5) 0.5px, transparent 1px), radial-gradient(circle at 84% 65%, rgba(255,232,31,0.4) 0.5px, transparent 1px), radial-gradient(circle at 22% 88%, rgba(255,255,255,0.4) 0.5px, transparent 1px)",
+          }}
+        />
+        <div className="relative mx-auto max-w-[1320px] px-6 py-16 md:py-20 lg:py-24 text-center">
+          <p
+            className="mb-3 uppercase text-primary"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "11px",
+              letterSpacing: "0.3em",
+              fontWeight: 700,
+            }}
+          >
+            // Monte seu PC
+          </p>
+          <h1
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "clamp(38px, 6vw, 64px)",
+              fontWeight: 800,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.02,
+            }}
+          >
+            Seu setup, <span className="text-primary">sua regra</span>
+          </h1>
+          <p
+            className="mx-auto mt-5 max-w-[560px] text-zinc-300"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "16px",
+              lineHeight: 1.55,
+            }}
+          >
+            Configure cada peça do seu jeito ou deixa a gente sugerir. Compatibilidade garantida, preço em tempo real, parcelado em até 10x.
+          </p>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-[1180px] px-6 py-14 md:py-16">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <PathCard
+            icon={<Cpu className="h-5 w-5" />}
+            label="Eu já sei o que quero"
+            desc="Vai direto pro builder. Escolhe cada peça do zero, com filtros, busca e compatibilidade automática."
+            cta="Montar do zero"
+            onClick={() => onPath("builder")}
+          />
+          <PathCard
+            icon={<Wand2 className="h-5 w-5" />}
+            label="Me ajuda a escolher"
+            desc="3 perguntas rápidas sobre seu uso, orçamento e prioridades. Recomendamos a build ideal pra você."
+            cta="Iniciar quiz"
+            badge="POPULAR"
+            onClick={() => onPath("quiz")}
+          />
+          <PathCard
+            icon={<Sparkles className="h-5 w-5" />}
+            label="Quero builds prontas"
+            desc="Setups Start, Pro e Ultra já montados e testados. Aplica e customiza qualquer peça antes de comprar."
+            cta="Ver setups"
+            onClick={() => onPath("presets")}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function MonteSeuPcPage() {
   const navigate = useNavigate();
   const { addItem } = useCart();
@@ -556,6 +748,10 @@ export function MonteSeuPcPage() {
   const [expandedCategory, setExpandedCategory] = useState<string>("cpu");
   const [activeView, setActiveView] = useState(0);
   const [actionFeedback, setActionFeedback] = useState("");
+  const [view, setView] = useState<View>("welcome");
+
+  const handlePath = (p: "builder" | "quiz" | "presets") => setView(p);
+  const goToWelcome = () => setView("welcome");
 
   const categoriesWithSelected = useMemo(
     () =>
@@ -735,18 +931,103 @@ export function MonteSeuPcPage() {
   };
 
   return (
-    <div className="bg-[#080808] pt-[140px] md:pt-[180px] text-[#f5f5f5]">
-      <header className="sticky top-[92px] z-40 border-b border-white/[0.06] bg-[#101012]/95 backdrop-blur-xl">
+    <div className="min-h-screen bg-[#080808] text-[#f5f5f5]">
+      <TopBar />
+      <AnimatePresence mode="wait">
+        {view === "welcome" && (
+          <motion.div
+            key="welcome"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <WelcomeScreen onPath={handlePath} />
+          </motion.div>
+        )}
+        {view === "quiz" && (
+          <motion.div
+            key="quiz"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mx-auto max-w-[720px] px-6 py-16 text-center"
+          >
+            <p className="mb-2 text-zinc-500" style={{ fontSize: "11px", letterSpacing: "0.24em", fontWeight: 700 }}>
+              // QUIZ — em construção (Fase B)
+            </p>
+            <h2 className="text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: 700 }}>
+              3 perguntas pra recomendar sua build
+            </h2>
+            <button
+              type="button"
+              onClick={goToWelcome}
+              className="mt-6 rounded-full border border-white/20 px-5 py-2 text-zinc-300 hover:bg-white/[0.06]"
+              style={{ fontSize: "13px", fontWeight: 600 }}
+            >
+              <ArrowLeft size={13} className="mr-1.5 inline" /> Voltar
+            </button>
+          </motion.div>
+        )}
+        {view === "presets" && (
+          <motion.div
+            key="presets"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mx-auto max-w-[1180px] px-6 py-16 text-center"
+          >
+            <p className="mb-2 text-zinc-500" style={{ fontSize: "11px", letterSpacing: "0.24em", fontWeight: 700 }}>
+              // BUILDS PRONTAS — em construção (Fase B)
+            </p>
+            <h2 className="text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: 700 }}>
+              Start · Pro · Ultra
+            </h2>
+            <button
+              type="button"
+              onClick={goToWelcome}
+              className="mt-6 rounded-full border border-white/20 px-5 py-2 text-zinc-300 hover:bg-white/[0.06]"
+              style={{ fontSize: "13px", fontWeight: 600 }}
+            >
+              <ArrowLeft size={13} className="mr-1.5 inline" /> Voltar
+            </button>
+          </motion.div>
+        )}
+        {view === "review" && (
+          <motion.div
+            key="review"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mx-auto max-w-[1280px] px-6 py-16 text-center"
+          >
+            <p className="mb-2 text-zinc-500" style={{ fontSize: "11px", letterSpacing: "0.24em", fontWeight: 700 }}>
+              // REVISÃO — em construção (Fase D)
+            </p>
+          </motion.div>
+        )}
+        {view === "builder" && (
+          <motion.div
+            key="builder"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+      <header className="sticky top-[64px] z-40 border-b border-white/[0.06] bg-[#101012]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1760px] items-center justify-between gap-4 px-4 py-3 md:px-6 lg:px-8">
           <div className="flex items-center gap-2 md:gap-3">
             <Button
               variant="ghost"
               size="sm"
-              onClick={handleBack}
+              onClick={goToWelcome}
               className="gap-2 rounded-full px-3 text-sm text-zinc-300 hover:bg-white/[0.06] hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
-              <span className="hidden sm:inline">Sair</span>
+              <span className="hidden sm:inline">Início</span>
             </Button>
             <Button
               variant="ghost"
@@ -1036,6 +1317,9 @@ export function MonteSeuPcPage() {
           </div>
         </aside>
       </main>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>

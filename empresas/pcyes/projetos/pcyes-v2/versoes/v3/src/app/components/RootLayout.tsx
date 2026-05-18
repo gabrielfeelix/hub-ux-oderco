@@ -26,9 +26,9 @@ export function RootLayout() {
           <CartProvider>
             <CheckoutPrefsProvider>
               <div className="min-h-screen bg-background text-foreground overflow-x-clip transition-colors duration-300">
-                {pathname !== "/checkout" && pathname !== "/carrinho" && <AnnouncementBar />}
-                {pathname !== "/checkout" && <Navbar />}
-                {pathname !== "/checkout" && <CartDrawer />}
+                {pathname !== "/checkout" && pathname !== "/carrinho" && pathname !== "/monte-seu-pc" && <AnnouncementBar />}
+                {pathname !== "/checkout" && pathname !== "/monte-seu-pc" && <Navbar />}
+                {pathname !== "/checkout" && pathname !== "/monte-seu-pc" && <CartDrawer />}
                 <AuthModal />
                 <WelcomePopup />
                 <CookieConsent />
