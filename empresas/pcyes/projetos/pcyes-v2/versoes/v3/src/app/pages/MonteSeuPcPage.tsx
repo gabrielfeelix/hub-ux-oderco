@@ -9,7 +9,9 @@ import {
   Cpu,
   Expand,
   HardDrive,
+  LayoutGrid,
   Monitor,
+  Rows3,
   Save,
   Settings,
   Share2,
@@ -548,6 +550,7 @@ const getAmbient = (type?: string): AmbientConfig => {
 
 type View = "welcome" | "quiz" | "presets" | "builder" | "review";
 type SortMode = "suggested" | "price-asc" | "price-desc" | "name";
+type ViewMode = "grid" | "list";
 
 type QuizAnswers = { use?: string; budget?: string; priority?: string };
 type PresetTier = "start" | "pro" | "ultra";
@@ -1890,17 +1893,136 @@ function HorizontalStepper({
   );
 }
 
-function ProductRow({
+function ProductTile({
   option,
   category,
   selected,
   onSelect,
+  mode,
 }: {
   option: Option;
   category: Category;
   selected: boolean;
   onSelect: () => void;
+  mode: ViewMode;
 }) {
+  const baseBtnClass = cn(
+    "group relative cursor-pointer border text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]",
+    selected
+      ? "border-primary bg-gradient-to-br from-primary/[0.08] to-primary/[0.02]"
+      : "border-white/[0.08] bg-gradient-to-br from-[#15151a] to-[#0f0f12] hover:border-white/[0.22] hover:from-[#1a1a20] hover:to-[#15151a]",
+  );
+  const shadowStyle = selected
+    ? {
+        boxShadow:
+          "0 0 0 1px rgba(255,43,46,0.4), 0 18px 50px -22px rgba(255,43,46,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
+      }
+    : {
+        boxShadow:
+          "0 8px 24px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03)",
+      };
+
+  if (mode === "list") {
+    return (
+      <button
+        type="button"
+        onClick={onSelect}
+        aria-pressed={selected}
+        aria-label={`Selecionar ${option.name}${option.standard ? " (sugerida PCYES)" : ""}`}
+        className={cn(
+          baseBtnClass,
+          "flex w-full items-stretch gap-3 overflow-hidden rounded-[14px] p-3 hover:-translate-y-0.5",
+          selected && "-translate-y-0.5",
+        )}
+        style={shadowStyle}
+      >
+        <div className="relative h-[104px] w-[104px] shrink-0 overflow-hidden rounded-[10px] bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
+          {option.standard && (
+            <span
+              className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "8px",
+                letterSpacing: "0.14em",
+                fontWeight: 700,
+                boxShadow: "0 4px 12px -2px rgba(255,43,46,0.55)",
+              }}
+            >
+              <Sparkles size={7} /> SUG
+            </span>
+          )}
+          {option.image ? (
+            <img
+              src={option.image}
+              alt=""
+              className="absolute inset-0 h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-[1.07]"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-zinc-500">{category.icon}</div>
+          )}
+        </div>
+        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+          <p
+            className="line-clamp-2 text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "13px",
+              fontWeight: 600,
+              letterSpacing: "-0.005em",
+              lineHeight: 1.3,
+            }}
+          >
+            {option.name}
+          </p>
+          {option.highlights && option.highlights.length > 0 && (
+            <div className="flex flex-wrap gap-1">
+              {option.highlights.slice(0, 3).map((h) => (
+                <span
+                  key={h}
+                  className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "9.5px",
+                    fontWeight: 500,
+                  }}
+                >
+                  {h}
+                </span>
+              ))}
+            </div>
+          )}
+          <div className="mt-auto flex items-baseline justify-between">
+            <div>
+              <p
+                className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "17px",
+                  fontWeight: 700,
+                  letterSpacing: "-0.005em",
+                  lineHeight: 1,
+                }}
+              >
+                {formatBRL(option.price)}
+              </p>
+              <p className="mt-0.5 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px" }}>
+                10x de {formatBRL(option.price / 10)}
+              </p>
+            </div>
+            <div
+              className={cn(
+                "flex h-6 w-6 items-center justify-center rounded-md border-2 transition-all",
+                selected ? "border-primary bg-primary" : "border-white/25 group-hover:border-primary/60",
+              )}
+            >
+              {selected && <Check size={13} className="text-white" strokeWidth={3} />}
+            </div>
+          </div>
+        </div>
+      </button>
+    );
+  }
+
   return (
     <button
       type="button"
@@ -1908,30 +2030,19 @@ function ProductRow({
       aria-pressed={selected}
       aria-label={`Selecionar ${option.name}${option.standard ? " (sugerida PCYES)" : ""}`}
       className={cn(
-        "group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[16px] border text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]",
-        selected
-          ? "border-primary bg-gradient-to-br from-primary/[0.08] to-primary/[0.02] -translate-y-0.5"
-          : "border-white/[0.08] bg-gradient-to-br from-[#15151a] to-[#0f0f12] hover:border-white/[0.22] hover:from-[#1a1a20] hover:to-[#15151a] hover:-translate-y-0.5",
+        baseBtnClass,
+        "flex flex-col overflow-hidden rounded-[14px] hover:-translate-y-0.5",
+        selected && "-translate-y-0.5",
       )}
-      style={
-        selected
-          ? {
-              boxShadow:
-                "0 0 0 1px rgba(255,43,46,0.4), 0 22px 60px -22px rgba(255,43,46,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
-            }
-          : {
-              boxShadow:
-                "0 8px 24px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03)",
-            }
-      }
+      style={shadowStyle}
     >
       {option.standard && (
         <span
-          className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 text-white"
+          className="absolute left-2.5 top-2.5 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 text-white"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "9px",
-            letterSpacing: "0.16em",
+            letterSpacing: "0.14em",
             fontWeight: 700,
             boxShadow: "0 6px 18px -4px rgba(255,43,46,0.55)",
           }}
@@ -1941,55 +2052,46 @@ function ProductRow({
       )}
       <div
         className={cn(
-          "absolute right-3 top-3 z-10 flex h-6 w-6 items-center justify-center rounded-md border-2 transition-all",
+          "absolute right-2.5 top-2.5 z-10 flex h-[22px] w-[22px] items-center justify-center rounded-md border-2 transition-all",
           selected ? "border-primary bg-primary" : "border-white/30 bg-black/30 backdrop-blur-sm group-hover:border-primary/60",
         )}
       >
-        {selected && <Check size={13} className="text-white" strokeWidth={3} />}
+        {selected && <Check size={11} className="text-white" strokeWidth={3} />}
       </div>
-      <div className="relative aspect-[5/4] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.06), transparent 60%)",
-          }}
-        />
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-[#1a1a1f] to-[#0f0f12]">
         {option.image ? (
           <img
             src={option.image}
             alt=""
-            className="absolute inset-0 h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-[1.06]"
+            className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.07]"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-zinc-500">
-            {category.icon}
-          </div>
+          <div className="flex h-full w-full items-center justify-center text-zinc-500">{category.icon}</div>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-2.5 border-t border-white/[0.05] p-4">
+      <div className="flex flex-1 flex-col gap-1.5 border-t border-white/[0.05] p-3">
         <p
           className="line-clamp-2 text-white"
           style={{
             fontFamily: "var(--font-family-figtree)",
-            fontSize: "13.5px",
+            fontSize: "12.5px",
             fontWeight: 600,
             letterSpacing: "-0.005em",
-            lineHeight: 1.35,
-            minHeight: "36px",
+            lineHeight: 1.3,
+            minHeight: "32px",
           }}
         >
           {option.name}
         </p>
         {option.highlights && option.highlights.length > 0 && (
           <div className="flex flex-wrap gap-1">
-            {option.highlights.slice(0, 3).map((h) => (
+            {option.highlights.slice(0, 2).map((h) => (
               <span
                 key={h}
                 className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "9.5px",
                   fontWeight: 500,
                 }}
               >
@@ -2003,20 +2105,14 @@ function ProductRow({
             className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "18px",
+              fontSize: "15px",
               fontWeight: 700,
               letterSpacing: "-0.005em",
             }}
           >
             {formatBRL(option.price)}
           </span>
-          <span
-            className="text-zinc-500"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
-            }}
-          >
+          <span className="text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px" }}>
             10x {formatBRL(option.price / 10)}
           </span>
         </div>
@@ -2338,6 +2434,7 @@ export function MonteSeuPcPage() {
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
   const [stepSearch, setStepSearch] = useState<string>("");
   const [sortMode, setSortMode] = useState<SortMode>("suggested");
+  const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [buildName, setBuildName] = useState<string>("Minha build PCYES");
   const [cepInput, setCepInput] = useState<string>("");
   const [freight, setFreight] = useState<Freight | null>(null);
@@ -2767,7 +2864,7 @@ export function MonteSeuPcPage() {
                         </div>
                       </div>
 
-                      <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_220px]">
+                      <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_200px_auto]">
                         <div className="relative">
                           <label
                             className="mb-1.5 block uppercase text-zinc-400"
@@ -2832,19 +2929,81 @@ export function MonteSeuPcPage() {
                             className="pointer-events-none absolute right-3 top-[38px] text-zinc-500"
                           />
                         </div>
+                        <div className="flex flex-col">
+                          <span
+                            className="mb-1.5 block uppercase text-zinc-400"
+                            style={{
+                              fontFamily: "var(--font-family-inter)",
+                              fontSize: "10px",
+                              letterSpacing: "0.18em",
+                              fontWeight: 700,
+                            }}
+                          >
+                            Exibição
+                          </span>
+                          <div
+                            role="group"
+                            aria-label="Modo de exibição"
+                            className="flex h-[46px] items-center gap-0.5 rounded-[12px] border border-white/[0.1] bg-[#0f0f12] p-1"
+                          >
+                            <button
+                              type="button"
+                              onClick={() => setViewMode("grid")}
+                              aria-pressed={viewMode === "grid"}
+                              aria-label="Modo grade"
+                              className={cn(
+                                "flex h-full w-10 cursor-pointer items-center justify-center rounded-[8px] transition-all",
+                                viewMode === "grid"
+                                  ? "bg-primary text-white"
+                                  : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
+                              )}
+                              style={
+                                viewMode === "grid"
+                                  ? { boxShadow: "0 4px 12px -4px rgba(255,43,46,0.55)" }
+                                  : undefined
+                              }
+                            >
+                              <LayoutGrid size={15} />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setViewMode("list")}
+                              aria-pressed={viewMode === "list"}
+                              aria-label="Modo lista"
+                              className={cn(
+                                "flex h-full w-10 cursor-pointer items-center justify-center rounded-[8px] transition-all",
+                                viewMode === "list"
+                                  ? "bg-primary text-white"
+                                  : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
+                              )}
+                              style={
+                                viewMode === "list"
+                                  ? { boxShadow: "0 4px 12px -4px rgba(255,43,46,0.55)" }
+                                  : undefined
+                              }
+                            >
+                              <Rows3 size={15} />
+                            </button>
+                          </div>
+                        </div>
                       </div>
 
                       <AnimatePresence mode="wait">
                         <motion.div
-                          key={currentCategory.id}
+                          key={`${currentCategory.id}-${viewMode}`}
                           initial={{ opacity: 0, x: 16 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -16 }}
                           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                          className="grid grid-cols-1 gap-3 sm:grid-cols-2"
+                          className={cn(
+                            "grid gap-3",
+                            viewMode === "grid"
+                              ? "grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                              : "grid-cols-1 md:grid-cols-2",
+                          )}
                         >
                           {visibleOptions.length === 0 ? (
-                            <div className="rounded-[14px] border border-white/[0.06] bg-[#0f0f12] px-6 py-12 text-center sm:col-span-2">
+                            <div className="rounded-[14px] border border-white/[0.06] bg-[#0f0f12] px-6 py-12 text-center col-span-full">
                               <p
                                 className="text-white"
                                 style={{
@@ -2886,8 +3045,9 @@ export function MonteSeuPcPage() {
                                 return 0;
                               })
                               .map((option) => (
-                                <ProductRow
+                                <ProductTile
                                   key={option.id}
+                                  mode={viewMode}
                                   option={option}
                                   category={currentCategory}
                                   selected={stepSelectedId === option.id}
