@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import {
   Package, Heart, MapPin, User, CreditCard, HelpCircle, Shield, LogOut,
-  ChevronRight, Truck, Check, Clock, X as XIcon, Eye, Star, ShoppingBag,
-  ArrowLeft, Copy, ExternalLink, Receipt, Info, Share2, AlertCircle, PackageCheck,
-  LayoutDashboard, TrendingUp, Wallet, Sparkles
+  ChevronRight, Truck, Check, Clock, X as XIcon, Star, ShoppingBag,
+  ArrowLeft, Copy, Receipt, Info, Share2, AlertCircle, PackageCheck,
+  LayoutDashboard, Sparkles
 } from "lucide-react";
 import { useAuth, type Order } from "./AuthContext";
 import { useFavorites } from "./FavoritesContext";
@@ -138,9 +138,6 @@ export function ProfilePage() {
 
   const favoriteProducts = getVisibleCatalogProducts(allProducts).filter((p) => favorites.has(p.id));
 
-  const inputCls = "w-full px-4 py-3 bg-foreground/[0.03] border border-foreground/8 text-foreground placeholder:text-foreground/20 focus:border-foreground/20 focus:outline-none transition-colors";
-  const inputStyle = { borderRadius: "var(--radius-button)" as const, fontFamily: "var(--font-family-inter)", fontSize: "13px" };
-
   const totalSpent = user.orders.reduce((acc, o) => acc + parseFloat(o.total.replace(/[^\d,]/g, "").replace(",", ".")), 0);
   const activeOrders = user.orders.filter((o) => o.status === "processing" || o.status === "shipped").length;
 
@@ -184,24 +181,34 @@ export function ProfilePage() {
       <div className="px-5 md:px-8 py-10">
         <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10">
           {/* Sidebar */}
-          <aside className="w-full lg:w-[220px] flex-shrink-0">
-            <nav className="space-y-1">
+          <aside className="w-full lg:w-[230px] flex-shrink-0">
+            <nav className="space-y-0.5">
               {TABS.map((tab) => (
                 <button key={tab.key} onClick={() => setProfileTab(tab.key)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 transition-all duration-300 cursor-pointer ${
-                    activeTab === tab.key ? "bg-primary/10 text-primary" : "text-foreground/40 hover:text-foreground/70 hover:bg-foreground/[0.03]"
+                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 transition-all duration-200 cursor-pointer ${
+                    activeTab === tab.key
+                      ? "text-primary"
+                      : "text-foreground/45 hover:text-foreground/80"
                   }`}
-                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                  style={{
+                    borderRadius: "10px",
+                    background: activeTab === tab.key
+                      ? (isDark ? "rgba(255,43,46,0.08)" : "rgba(220,20,20,0.06)")
+                      : "transparent",
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "13px",
+                    fontWeight: activeTab === tab.key ? 600 : 500,
+                  }}
                 >
-                  <tab.icon size={16} />
+                  <tab.icon size={15} />
                   {tab.label}
                 </button>
               ))}
-              <div className="h-px bg-foreground/5 my-3" />
+              <div className="h-px bg-foreground/8 my-3" />
               <button onClick={logout}
-                className="w-full flex items-center gap-3 px-4 py-3 text-foreground/30 hover:text-primary transition-all duration-300 cursor-pointer"
-                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
-              ><LogOut size={16} /> Sair</button>
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 text-foreground/35 hover:text-primary transition-all duration-200 cursor-pointer"
+                style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 500 }}
+              ><LogOut size={15} /> Sair</button>
             </nav>
           </aside>
 
@@ -643,38 +650,41 @@ export function ProfilePage() {
 
               {activeTab === "favorites" && (
                 <motion.div key="favorites" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Favoritos</h2>
+                  <div className="flex items-center justify-between mb-5">
+                    <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Favoritos</h2>
+                    {favoriteProducts.length > 0 && (
+                      <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{favoriteProducts.length} {favoriteProducts.length === 1 ? "produto" : "produtos"}</p>
+                    )}
+                  </div>
                   {favoriteProducts.length === 0 ? (
-                    <div className="text-center py-16">
-                      <Heart size={32} className="text-foreground/10 mx-auto mb-4" />
-                      <p className="text-foreground/30 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px" }}>Nenhum favorito ainda</p>
-                      <p className="text-foreground/20 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Clique no coração nos produtos para salvá-los aqui.</p>
-                      <Link to="/produtos" className="text-primary hover:underline" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Ver produtos</Link>
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <Heart size={28} className="text-foreground/15 mx-auto mb-4" />
+                      <p className="text-foreground/40 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum favorito ainda</p>
+                      <p className="text-foreground/30 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Clique no coração nos produtos pra salvá-los aqui.</p>
+                      <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>Ver produtos</Link>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                       {favoriteProducts.map((product) => (
-                        <div key={product.id} className="group border border-foreground/5 overflow-hidden" style={{ borderRadius: "var(--radius-card)" }}>
-                          <Link to={`/produto/${product.id}`} className="block relative aspect-square" style={{ background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                        <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                          <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{ background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                             <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <button onClick={(e) => { e.preventDefault(); toggleFavorite(product.id); }}
+                              className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md"
+                              style={{ borderRadius: "8px", background: "rgba(0,0,0,0.3)" }}
+                            ><Heart size={12} className="fill-primary" /></button>
                           </Link>
-                          <div className="p-4">
-                            <div className="flex items-center gap-1.5 mb-1">
-                              <Star size={10} className="fill-primary text-primary" />
-                              <span className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>{product.rating}</span>
+                          <div className="p-3">
+                            <div className="flex items-center gap-1 mb-1">
+                              <Star size={9} className="fill-primary text-primary" />
+                              <span className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>{product.rating}</span>
                             </div>
-                            <p className="text-foreground/80 truncate mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>{product.name}</p>
-                            <p className="text-foreground/50 mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{product.price}</p>
-                            <div className="flex gap-2">
-                              <button onClick={() => addItem(product)}
-                                className="flex-1 py-2 bg-primary text-primary-foreground flex items-center justify-center gap-1.5 hover:brightness-110 transition-all cursor-pointer"
-                                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}
-                              ><ShoppingBag size={12} /> Adicionar</button>
-                              <button onClick={() => toggleFavorite(product.id)}
-                                className="w-9 h-9 border border-foreground/10 flex items-center justify-center text-primary hover:bg-primary/10 transition-all cursor-pointer"
-                                style={{ borderRadius: "var(--radius-button)" }}
-                              ><Heart size={13} className="fill-primary" /></button>
-                            </div>
+                            <p className="text-foreground truncate mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: "var(--font-weight-medium)" }}>{product.name}</p>
+                            <p className="text-foreground/55 mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{product.price}</p>
+                            <button onClick={() => addItem(product)}
+                              className="w-full py-1.5 bg-primary text-primary-foreground flex items-center justify-center gap-1.5 hover:brightness-110 transition-all cursor-pointer"
+                              style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
+                            ><ShoppingBag size={11} /> Adicionar</button>
                           </div>
                         </div>
                       ))}
@@ -685,21 +695,28 @@ export function ProfilePage() {
 
               {activeTab === "addresses" && (
                 <motion.div key="addresses" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
-                  <div className="space-y-3">
+                  <div className="flex items-center justify-between mb-5">
+                    <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
+                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                  </div>
+                  <div className="space-y-2">
                     {user.addresses.map((a) => (
-                      <div key={a.id} className="flex items-start justify-between p-5 border border-foreground/5" style={{ borderRadius: "var(--radius-card)" }}>
-                        <div>
-                          <div className="flex items-center gap-2 mb-1">
-                            <MapPin size={13} className="text-foreground/30" />
-                            <span className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>{a.label}</span>
-                            {a.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontSize: "9px" }}>PADRÃO</span>}
+                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <div className="flex items-start gap-3 min-w-0">
+                          <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
+                            <MapPin size={15} className="text-primary" />
                           </div>
-                          <p className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.6" }}>
-                            {a.street}, {a.number}{a.complement ? ` - ${a.complement}` : ""}<br />{a.neighborhood} · {a.city}/{a.state} · CEP {a.cep}
-                          </p>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{a.label}</span>
+                              {a.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
+                            </div>
+                            <p className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.55" }}>
+                              {a.street}, {a.number}{a.complement ? ` - ${a.complement}` : ""} · {a.neighborhood}<br />{a.city}/{a.state} · CEP {a.cep}
+                            </p>
+                          </div>
                         </div>
-                        <button className="text-foreground/20 hover:text-foreground/50 transition-colors cursor-pointer" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Editar</button>
+                        <button className="px-3 py-1.5 text-foreground/55 hover:text-foreground transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                       </div>
                     ))}
                   </div>
@@ -708,26 +725,28 @@ export function ProfilePage() {
 
               {activeTab === "data" && (
                 <motion.div key="data" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Dados Pessoais</h2>
-                  <div className="space-y-4 max-w-lg">
-                    <div>
-                      <label className="block text-foreground/40 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.05em" }}>NOME</label>
-                      <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className={inputCls} style={inputStyle} />
+                  <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Dados Pessoais</h2>
+                  <div className="p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                      <div>
+                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome</label>
+                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                      </div>
+                      <div>
+                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>E-mail</label>
+                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                      </div>
+                      <div>
+                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
+                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                      </div>
+                      <div>
+                        <label className="block text-foreground/45 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>CPF</label>
+                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/25 focus:outline-none transition-all opacity-50" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-foreground/40 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.05em" }}>E-MAIL</label>
-                      <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className={inputCls} style={inputStyle} />
-                    </div>
-                    <div>
-                      <label className="block text-foreground/40 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.05em" }}>TELEFONE</label>
-                      <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className={inputCls} style={inputStyle} />
-                    </div>
-                    <div>
-                      <label className="block text-foreground/40 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.05em" }}>CPF</label>
-                      <input value={user.cpf} disabled className={`${inputCls} opacity-50`} style={inputStyle} />
-                    </div>
-                    <button className="px-6 py-3 bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 cursor-pointer"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+                    <button className="px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer"
+                      style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                     >Salvar alterações</button>
                   </div>
                 </motion.div>
@@ -735,19 +754,24 @@ export function ProfilePage() {
 
               {activeTab === "cards" && (
                 <motion.div key="cards" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
-                  <div className="space-y-3">
+                  <div className="flex items-center justify-between mb-5">
+                    <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
+                    <button className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                  </div>
+                  <div className="space-y-2">
                     {user.cards.map((c) => (
-                      <div key={c.id} className="flex items-center gap-4 p-5 border border-foreground/5" style={{ borderRadius: "var(--radius-card)" }}>
-                        <div className="w-12 h-8 rounded bg-foreground/5 flex items-center justify-center">
-                          <span className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}>{c.brand}</span>
+                      <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <div className="w-11 h-7 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "5px", background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)" }}>
+                          <span className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.04em" }}>{c.brand}</span>
                         </div>
-                        <div className="flex-1">
-                          <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>•••• •••• •••• {c.last4}</p>
-                          <p className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>{c.name} · Validade {c.expiry}</p>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>•••• {c.last4}</p>
+                            {c.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
+                          </div>
+                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{c.name} · Validade {c.expiry}</p>
                         </div>
-                        {c.isDefault && <span className="px-2 py-0.5 bg-primary/10 text-primary" style={{ borderRadius: "100px", fontSize: "9px" }}>PADRÃO</span>}
-                        <button className="text-foreground/20 hover:text-foreground/50 transition-colors cursor-pointer" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Remover</button>
+                        <button className="px-3 py-1.5 text-foreground/45 hover:text-red-400 transition-colors flex-shrink-0" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                       </div>
                     ))}
                   </div>
@@ -756,44 +780,54 @@ export function ProfilePage() {
 
               {activeTab === "help" && (
                 <motion.div key="help" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Ajuda e Suporte</h2>
-                  {[
-                    { title: "Central de Ajuda", desc: "Encontre respostas para suas dúvidas" },
-                    { title: "Fale Conosco", desc: "Entre em contato via chat ou e-mail" },
-                    { title: "Política de Trocas", desc: "Saiba como trocar ou devolver" },
-                    { title: "Rastrear Pedido", desc: "Acompanhe sua entrega em tempo real" },
-                  ].map((item) => (
-                    <button key={item.title} className="w-full flex items-center justify-between p-5 border border-foreground/5 mb-2 hover:border-foreground/10 transition-all cursor-pointer"
-                      style={{ borderRadius: "var(--radius-card)" }}
-                    >
-                      <div className="text-left">
-                        <p className="text-foreground/60 mb-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>{item.title}</p>
-                        <p className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
-                      </div>
-                      <ChevronRight size={16} className="text-foreground/15" />
-                    </button>
-                  ))}
+                  <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Ajuda e Suporte</h2>
+                  <div className="space-y-2">
+                    {[
+                      { title: "Central de Ajuda", desc: "Encontre respostas para suas dúvidas", icon: HelpCircle },
+                      { title: "Fale Conosco", desc: "Entre em contato via chat ou e-mail", icon: User },
+                      { title: "Política de Trocas", desc: "Saiba como trocar ou devolver", icon: Receipt },
+                      { title: "Rastrear Pedido", desc: "Acompanhe sua entrega em tempo real", icon: Truck },
+                    ].map((item) => (
+                      <button key={item.title} className="group w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
+                        style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                      >
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
+                          <item.icon size={15} className="text-primary" />
+                        </div>
+                        <div className="text-left flex-1">
+                          <p className="text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{item.title}</p>
+                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
+                        </div>
+                        <ChevronRight size={16} className="text-foreground/20 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                      </button>
+                    ))}
+                  </div>
                 </motion.div>
               )}
 
               {activeTab === "privacy" && (
                 <motion.div key="privacy" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-                  <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Privacidade</h2>
-                  {[
-                    { title: "Política de Privacidade", desc: "Como tratamos seus dados pessoais" },
-                    { title: "Cookies", desc: "Gerencie suas preferências de cookies" },
-                    { title: "Excluir minha conta", desc: "Solicite a remoção permanente dos seus dados" },
-                  ].map((item) => (
-                    <button key={item.title} className="w-full flex items-center justify-between p-5 border border-foreground/5 mb-2 hover:border-foreground/10 transition-all cursor-pointer"
-                      style={{ borderRadius: "var(--radius-card)" }}
-                    >
-                      <div className="text-left">
-                        <p className="text-foreground/60 mb-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>{item.title}</p>
-                        <p className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
-                      </div>
-                      <ChevronRight size={16} className="text-foreground/15" />
-                    </button>
-                  ))}
+                  <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Privacidade</h2>
+                  <div className="space-y-2">
+                    {[
+                      { title: "Política de Privacidade", desc: "Como tratamos seus dados pessoais", icon: Shield, danger: false },
+                      { title: "Cookies", desc: "Gerencie suas preferências de cookies", icon: Info, danger: false },
+                      { title: "Excluir minha conta", desc: "Solicite a remoção permanente dos seus dados", icon: XIcon, danger: true },
+                    ].map((item) => (
+                      <button key={item.title} className="group w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.01]"
+                        style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                      >
+                        <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${item.danger ? "bg-red-500/10" : ""}`} style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(255,43,46,0.08)" }}>
+                          <item.icon size={15} className={item.danger ? "text-red-400" : "text-primary"} />
+                        </div>
+                        <div className="text-left flex-1">
+                          <p className={`mb-0.5 ${item.danger ? "text-red-400" : "text-foreground"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{item.title}</p>
+                          <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.desc}</p>
+                        </div>
+                        <ChevronRight size={16} className="text-foreground/20 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                      </button>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
