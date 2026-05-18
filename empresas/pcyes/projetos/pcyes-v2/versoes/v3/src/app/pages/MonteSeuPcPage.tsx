@@ -2237,18 +2237,18 @@ function HorizontalStepper({
                     active
                       ? "bg-primary text-white"
                       : done
-                        ? "bg-primary/15 text-primary"
+                        ? "bg-[#1f0d12] text-primary"
                         : "bg-[#16161a] text-zinc-500 group-hover:bg-[#1c1c20] group-hover:text-zinc-300",
                   )}
                   style={
                     active
                       ? {
                           boxShadow:
-                            "0 0 0 4px rgba(255,43,46,0.18), 0 0 28px -4px rgba(255,43,46,0.55)",
+                            "0 0 0 6px #0a0a0c, 0 0 0 8px rgba(255,43,46,0.45), 0 0 28px -4px rgba(255,43,46,0.55)",
                         }
                       : done
-                        ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25)" }
-                        : { boxShadow: "0 0 0 1px rgba(255,255,255,0.05)" }
+                        ? { boxShadow: "0 0 0 6px #0a0a0c, 0 0 0 7px rgba(255,43,46,0.35)" }
+                        : { boxShadow: "0 0 0 6px #0a0a0c, 0 0 0 7px rgba(255,255,255,0.08)" }
                   }
                 >
                   {done && !active ? (
