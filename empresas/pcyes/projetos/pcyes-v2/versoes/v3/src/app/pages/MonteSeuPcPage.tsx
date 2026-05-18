@@ -2051,7 +2051,7 @@ function ProductTile({
         )}
         style={shadowStyle}
       >
-        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-[linear-gradient(180deg,rgba(33,33,36,0.5)_0%,rgba(82,82,90,0.25)_100%)]">
+        <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden bg-[linear-gradient(180deg,#1d1d22_0%,#3e3e46_100%)]">
           {option.standard && (
             <span
               className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
@@ -2181,7 +2181,7 @@ function ProductTile({
       >
         {selected && <Check size={11} className="text-white" strokeWidth={3} />}
       </div>
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[linear-gradient(180deg,rgba(33,33,36,0.5)_0%,rgba(82,82,90,0.25)_100%)]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[linear-gradient(180deg,#1d1d22_0%,#3e3e46_100%)]">
         {option.image ? (
           <img
             src={option.image}
@@ -2293,7 +2293,7 @@ function SelectedItemCard({
         </div>
       </div>
       <div className="px-5 py-4">
-        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[linear-gradient(180deg,rgba(33,33,36,0.5)_0%,rgba(82,82,90,0.25)_100%)]">
+        <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] bg-[linear-gradient(180deg,#1d1d22_0%,#3e3e46_100%)]">
           {option?.image ? (
             <img src={option.image} alt={option.name} className="h-full w-full object-contain p-3" />
           ) : (
@@ -2537,16 +2537,7 @@ export function MonteSeuPcPage() {
   const previewRef = useRef<HTMLDivElement>(null);
   const feedbackTimerRef = useRef<number | null>(null);
 
-  const [selections, setSelections] = useState<Record<string, string>>({
-    cpu: "cpu-1",
-    motherboard: "mb-1",
-    ram: "ram-1",
-    gpu: "gpu-1",
-    cooling: "cooling-1",
-    storage: "storage-1",
-    case: "case-2",
-    psu: "psu-1",
-  });
+  const [selections, setSelections] = useState<Record<string, string>>({});
   const [activeCategory, setActiveCategory] = useState<string>("cpu");
   const [expandedCategory, setExpandedCategory] = useState<string>("cpu");
   const [activeView, setActiveView] = useState(0);
