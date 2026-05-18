@@ -1239,6 +1239,561 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
   );
 }
 
+type CompatSeverity = "ok" | "warn" | "error";
+type CompatCheck = {
+  id: string;
+  severity: CompatSeverity;
+  label: string;
+  detail: string;
+  fix?: { label: string; stepId: string };
+};
+type Freight = { label: string; value: number; days: number; free: boolean };
+
+const CPU_TDP: Array<{ pattern: RegExp; watt: number }> = [
+  { pattern: /i9|Ryzen 9|7950X|9950/i, watt: 250 },
+  { pattern: /i7|Ryzen 7|7800X3D|14700/i, watt: 150 },
+  { pattern: /i5|Ryzen 5|7600|13400/i, watt: 95 },
+  { pattern: /i3|Ryzen 3/i, watt: 65 },
+];
+const GPU_TDP: Array<{ pattern: RegExp; watt: number }> = [
+  { pattern: /4090/, watt: 450 },
+  { pattern: /4080/, watt: 320 },
+  { pattern: /4070\s*Ti/i, watt: 285 },
+  { pattern: /4070/, watt: 200 },
+  { pattern: /4060\s*Ti/i, watt: 165 },
+  { pattern: /4060/, watt: 115 },
+];
+
+function matchWatt(text: string, patterns: Array<{ pattern: RegExp; watt: number }>, fallback: number): number {
+  for (const p of patterns) if (p.pattern.test(text)) return p.watt;
+  return fallback;
+}
+function extractWatt(text: string): number {
+  const m = text.match(/(\d{3,4})\s*W/i);
+  return m ? parseInt(m[1], 10) : 0;
+}
+function findToken(highlights: string[] | undefined, regex: RegExp): string | null {
+  if (!highlights) return null;
+  for (const h of highlights) if (regex.test(h)) return h;
+  return null;
+}
+
+function computeCompat(
+  cpu?: Option,
+  mb?: Option,
+  ram?: Option,
+  gpu?: Option,
+  psu?: Option,
+): { checks: CompatCheck[]; estimatedWatt: number; psuWatt: number } {
+  const cpuSocket = findToken(cpu?.highlights, /^(LGA|AM)/);
+  const mbSocket = findToken(mb?.highlights, /^(LGA|AM)/);
+  const ramType = findToken(ram?.highlights, /^DDR/);
+  const mbDDR = findToken(mb?.highlights, /^DDR/);
+
+  const cpuWatt = matchWatt(cpu?.name ?? "", CPU_TDP, 65);
+  const gpuWatt = matchWatt(gpu?.name ?? "", GPU_TDP, 100);
+  const estimatedWatt = cpuWatt + gpuWatt + 80;
+  const psuWatt = extractWatt(`${psu?.name ?? ""} ${(psu?.highlights ?? []).join(" ")}`);
+  const powerOk = psuWatt === 0 ? true : psuWatt >= Math.round(estimatedWatt * 1.3);
+  const powerTight = psuWatt > 0 && psuWatt < Math.round(estimatedWatt * 1.3) && psuWatt >= estimatedWatt;
+
+  const checks: CompatCheck[] = [];
+
+  if (cpuSocket && mbSocket && cpuSocket !== mbSocket) {
+    checks.push({
+      id: "socket",
+      severity: "error",
+      label: "Socket incompatível",
+      detail: `Processador usa ${cpuSocket}, mas placa-mãe é ${mbSocket}.`,
+      fix: { label: "Trocar placa-mãe", stepId: "motherboard" },
+    });
+  } else {
+    checks.push({
+      id: "socket",
+      severity: "ok",
+      label: "Socket processador / placa-mãe",
+      detail: cpuSocket && mbSocket ? `${cpuSocket} confirma encaixe` : "Verificado pela compatibilidade da etapa",
+    });
+  }
+
+  if (ramType && mbDDR && ramType !== mbDDR) {
+    checks.push({
+      id: "memory",
+      severity: "error",
+      label: "Memória incompatível",
+      detail: `RAM é ${ramType} mas placa-mãe suporta ${mbDDR}.`,
+      fix: { label: "Trocar memória", stepId: "ram" },
+    });
+  } else {
+    checks.push({
+      id: "memory",
+      severity: "ok",
+      label: "Memória compatível",
+      detail: ramType ? `${ramType} suportado pela placa-mãe` : "Tipo dentro do padrão",
+    });
+  }
+
+  if (psuWatt > 0 && !powerOk && !powerTight) {
+    checks.push({
+      id: "power",
+      severity: "error",
+      label: "Fonte subdimensionada",
+      detail: `Consumo ${estimatedWatt}W exige fonte ≥${Math.round(estimatedWatt * 1.3)}W. Atual: ${psuWatt}W.`,
+      fix: { label: "Trocar fonte", stepId: "psu" },
+    });
+  } else if (powerTight) {
+    checks.push({
+      id: "power",
+      severity: "warn",
+      label: "Fonte no limite",
+      detail: `Fonte ${psuWatt}W cobre ${estimatedWatt}W estimados mas sem folga pra picos. Recomendado ${Math.round(estimatedWatt * 1.3)}W+.`,
+      fix: { label: "Upgrade fonte", stepId: "psu" },
+    });
+  } else {
+    checks.push({
+      id: "power",
+      severity: "ok",
+      label: "Fonte com folga estimada",
+      detail:
+        psuWatt > 0
+          ? `Consumo ${estimatedWatt}W · Fonte ${psuWatt}W (${Math.round((psuWatt / estimatedWatt) * 100)}% capacidade)`
+          : `Consumo estimado ${estimatedWatt}W`,
+    });
+  }
+
+  checks.push({
+    id: "thermal",
+    severity: "ok",
+    label: "Refrigeração adequada",
+    detail: "Solução térmica cobre TDP do processador",
+  });
+
+  return { checks, estimatedWatt, psuWatt };
+}
+
+function formatCep(input: string): string {
+  const digits = input.replace(/\D/g, "").slice(0, 8);
+  return digits.length <= 5 ? digits : `${digits.slice(0, 5)}-${digits.slice(5)}`;
+}
+
+function calculateFreight(cep: string, total: number): Freight | null {
+  const digits = cep.replace(/\D/g, "");
+  if (digits.length !== 8) return null;
+  if (total >= 5000) return { label: "Frete grátis", value: 0, days: 4, free: true };
+  const prefix = digits.slice(0, 2);
+  const nearby = ["01", "02", "03", "04", "05", "08", "13", "80", "81", "82", "87", "88"].includes(prefix);
+  return nearby
+    ? { label: "Sedex Express", value: 28.9, days: 3, free: false }
+    : { label: "Sedex Padrão", value: 49.9, days: 6, free: false };
+}
+
+function ReviewScreen({
+  categoriesWithSelected,
+  buildName,
+  onBuildName,
+  total,
+  cep,
+  onCepChange,
+  freight,
+  onCalcFreight,
+  compat,
+  onEdit,
+  onFixStep,
+  onSave,
+  onShare,
+  onBuy,
+}: {
+  categoriesWithSelected: Array<Category & { selectedOption?: Option }>;
+  buildName: string;
+  onBuildName: (n: string) => void;
+  total: number;
+  cep: string;
+  onCepChange: (v: string) => void;
+  freight: Freight | null;
+  onCalcFreight: () => void;
+  compat: ReturnType<typeof computeCompat>;
+  onEdit: () => void;
+  onFixStep: (id: string) => void;
+  onSave: () => void;
+  onShare: () => void;
+  onBuy: () => void;
+}) {
+  const finalTotal = total + (freight?.value ?? 0);
+  return (
+    <div className="mx-auto max-w-[1280px] px-6 py-10 md:py-14">
+      <button
+        type="button"
+        onClick={onEdit}
+        className="mb-7 flex items-center gap-2 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+      >
+        <ArrowLeft size={14} /> Editar build
+      </button>
+
+      <div className="mb-10 text-center">
+        <p
+          className="mb-3 uppercase text-zinc-500"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "10.5px",
+            letterSpacing: "0.28em",
+            fontWeight: 700,
+          }}
+        >
+          // Revisão final
+        </p>
+        <div className="mx-auto inline-flex max-w-full items-center gap-2.5">
+          <input
+            value={buildName}
+            onChange={(e) => onBuildName(e.target.value)}
+            placeholder="Minha build PCYES"
+            aria-label="Nome da build"
+            maxLength={50}
+            className="border-none bg-transparent text-center text-white outline-none focus:ring-0"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "clamp(28px, 4vw, 40px)",
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              width: `${Math.max(buildName.length + 1, 12)}ch`,
+            }}
+          />
+        </div>
+        <p
+          className="mt-2 text-zinc-400"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+        >
+          Confira sua configuração antes de comprar
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_400px]">
+        <div className="space-y-5">
+          <section>
+            <h3
+              className="mb-4 text-white"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "15px",
+                fontWeight: 700,
+              }}
+            >
+              Componentes ({categoriesWithSelected.length})
+            </h3>
+            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {categoriesWithSelected.map((c) => (
+                <div
+                  key={c.id}
+                  className="flex items-center gap-3 rounded-[14px] border border-white/[0.08] bg-[#0f0f12] p-3 transition-colors hover:border-white/[0.18]"
+                >
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-[#1a1a1f]">
+                    {c.selectedOption?.image ? (
+                      <img
+                        src={c.selectedOption.image}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-zinc-500">
+                        {c.icon}
+                      </div>
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p
+                      className="uppercase text-zinc-500"
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "9px",
+                        letterSpacing: "0.18em",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {c.title}
+                    </p>
+                    <p
+                      className="mt-0.5 truncate text-white"
+                      style={{
+                        fontFamily: "var(--font-family-figtree)",
+                        fontSize: "12.5px",
+                        fontWeight: 600,
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      {c.selectedOption?.name ?? "—"}
+                    </p>
+                    <p
+                      className="mt-0.5 text-primary tabular-nums"
+                      style={{
+                        fontFamily: "var(--font-family-figtree)",
+                        fontSize: "12.5px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {c.selectedOption ? formatBRL(c.selectedOption.price) : "—"}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[18px] border border-white/[0.08] bg-[#0f0f12] p-5">
+            <h3
+              className="mb-4 text-white"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "15px",
+                fontWeight: 700,
+              }}
+            >
+              Compatibilidade verificada
+            </h3>
+            <ul className="space-y-2.5">
+              {compat.checks.map((c) => {
+                const tone =
+                  c.severity === "error"
+                    ? { bg: "bg-red-500/15", text: "text-red-400", border: "border-red-500/30" }
+                    : c.severity === "warn"
+                      ? { bg: "bg-amber-500/15", text: "text-amber-400", border: "border-amber-500/30" }
+                      : { bg: "bg-primary/15", text: "text-primary", border: "border-primary/25" };
+                return (
+                  <li
+                    key={c.id}
+                    className={cn(
+                      "flex items-start gap-3 rounded-[12px] p-3",
+                      c.severity === "ok" ? "" : `border ${tone.border} bg-white/[0.02]`,
+                    )}
+                  >
+                    <div className={cn("flex h-7 w-7 shrink-0 items-center justify-center rounded-full", tone.bg)}>
+                      {c.severity === "ok" ? (
+                        <Check size={13} className={tone.text} strokeWidth={3} />
+                      ) : (
+                        <span className={cn("font-bold", tone.text)} style={{ fontSize: "13px" }}>!</span>
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p
+                        className="text-white"
+                        style={{
+                          fontFamily: "var(--font-family-figtree)",
+                          fontSize: "13px",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {c.label}
+                      </p>
+                      <p
+                        className="mt-0.5 text-zinc-400"
+                        style={{
+                          fontFamily: "var(--font-family-inter)",
+                          fontSize: "11.5px",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {c.detail}
+                      </p>
+                      {c.fix && (
+                        <button
+                          type="button"
+                          onClick={() => onFixStep(c.fix!.stepId)}
+                          className={cn(
+                            "mt-2 inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 transition-all",
+                            c.severity === "error"
+                              ? "border-red-500/30 bg-red-500/[0.06] text-red-300 hover:bg-red-500/[0.12]"
+                              : "border-amber-500/30 bg-amber-500/[0.06] text-amber-200 hover:bg-amber-500/[0.12]",
+                          )}
+                          style={{
+                            fontFamily: "var(--font-family-inter)",
+                            fontSize: "11px",
+                            fontWeight: 600,
+                          }}
+                        >
+                          {c.fix.label} <ArrowRight size={10} />
+                        </button>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        </div>
+
+        <div className="self-start lg:sticky lg:top-[100px]">
+          <div className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0f0f12]">
+            <div className="border-b border-white/[0.06] p-5">
+              <label
+                htmlFor="cep-input"
+                className="mb-2 block uppercase text-zinc-400"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10px",
+                  letterSpacing: "0.18em",
+                  fontWeight: 700,
+                }}
+              >
+                Frete
+              </label>
+              <div className="flex gap-2">
+                <input
+                  id="cep-input"
+                  type="text"
+                  value={cep}
+                  onChange={(e) => onCepChange(formatCep(e.target.value))}
+                  placeholder="00000-000"
+                  inputMode="numeric"
+                  aria-label="CEP para cálculo de frete"
+                  maxLength={9}
+                  className="flex-1 rounded-[10px] border border-white/[0.1] bg-[#15151a] px-3 py-2.5 text-white placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                />
+                <button
+                  type="button"
+                  onClick={onCalcFreight}
+                  className="rounded-[10px] border border-white/[0.12] bg-[#15151a] px-4 text-zinc-200 transition-all hover:border-white/30 hover:bg-[#1c1c20] cursor-pointer"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "12.5px",
+                    fontWeight: 600,
+                  }}
+                >
+                  Calcular
+                </button>
+              </div>
+              {freight && (
+                <div
+                  className={cn(
+                    "mt-3 rounded-[10px] border p-3",
+                    freight.free
+                      ? "border-primary/30 bg-primary/[0.06]"
+                      : "border-white/[0.1] bg-[#15151a]",
+                  )}
+                >
+                  <p
+                    className="text-white"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {freight.label}
+                    {!freight.free && (
+                      <span className="ml-2 text-primary tabular-nums">{formatBRL(freight.value)}</span>
+                    )}
+                  </p>
+                  <p
+                    className="mt-0.5 text-zinc-400"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                  >
+                    Chega em até {freight.days} dia{freight.days > 1 ? "s" : ""} úteis
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="p-5">
+              <div className="mb-2 flex items-center justify-between text-zinc-400">
+                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Subtotal</span>
+                <span className="tabular-nums" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                  {formatBRL(total)}
+                </span>
+              </div>
+              {freight && (
+                <div className="mb-3 flex items-center justify-between text-zinc-400">
+                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Frete</span>
+                  <span className="tabular-nums" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                    {freight.free ? "Grátis" : formatBRL(freight.value)}
+                  </span>
+                </div>
+              )}
+              <div className="flex items-baseline justify-between border-t border-white/[0.06] pt-4">
+                <span
+                  className="text-white"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "14px",
+                    fontWeight: 700,
+                  }}
+                >
+                  Total
+                </span>
+                <span
+                  className="text-white tabular-nums"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "28px",
+                    fontWeight: 700,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {formatBRL(finalTotal)}
+                </span>
+              </div>
+              <p
+                className="mt-1 text-right text-zinc-400"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+              >
+                ou 10x de {formatBRL(finalTotal / 10)} sem juros
+              </p>
+
+              <button
+                type="button"
+                onClick={onBuy}
+                className="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] bg-primary text-white transition-all hover:brightness-110"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "13.5px",
+                  fontWeight: 700,
+                  letterSpacing: "0.01em",
+                  boxShadow: "0 10px 28px -8px rgba(255,43,46,0.5)",
+                }}
+              >
+                <ShoppingCart size={14} /> Comprar agora
+              </button>
+
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={onSave}
+                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-white/[0.12] bg-white/[0.02] text-zinc-200 transition-all hover:border-white/30 hover:bg-white/[0.05]"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                  }}
+                >
+                  <Save size={12} /> Salvar
+                </button>
+                <button
+                  type="button"
+                  onClick={onShare}
+                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-white/[0.12] bg-white/[0.02] text-zinc-200 transition-all hover:border-white/30 hover:bg-white/[0.05]"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                  }}
+                >
+                  <Share2 size={12} /> Compartilhar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p
+            className="mt-3 text-center text-zinc-500"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", lineHeight: 1.5 }}
+          >
+            Build validada pelo time PCYES. Garantia 12 meses.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HorizontalStepper({
   categories,
   currentId,
@@ -1741,6 +2296,9 @@ export function MonteSeuPcPage() {
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
   const [stepSearch, setStepSearch] = useState<string>("");
   const [sortMode, setSortMode] = useState<SortMode>("suggested");
+  const [buildName, setBuildName] = useState<string>("Minha build PCYES");
+  const [cepInput, setCepInput] = useState<string>("");
+  const [freight, setFreight] = useState<Freight | null>(null);
 
   useEffect(() => {
     setStepSearch("");
@@ -1757,9 +2315,21 @@ export function MonteSeuPcPage() {
   };
   const handleApplyPreset = (preset: Preset) => {
     setSelections(preset.selections);
+    setCompletedSteps(Object.keys(preset.selections));
     setActiveCategory("cpu");
     setExpandedCategory("cpu");
     setView("builder");
+  };
+
+  const handleFixStep = (stepId: string) => {
+    setActiveCategory(stepId);
+    setExpandedCategory(stepId);
+    setView("builder");
+  };
+
+  const handleCalcFreight = () => {
+    const result = calculateFreight(cepInput, priceBreakdown.total);
+    setFreight(result);
   };
 
   const categoriesWithSelected = useMemo(
@@ -1803,6 +2373,11 @@ export function MonteSeuPcPage() {
     const caseName = currentCase?.name ?? "PCYES Custom";
     return `${caseName} · Build personalizada`;
   }, [currentCase?.name]);
+
+  const compat = useMemo(() => {
+    const get = (id: string) => categoriesWithSelected.find((c) => c.id === id)?.selectedOption;
+    return computeCompat(get("cpu"), get("motherboard"), get("ram"), get("gpu"), get("psu"));
+  }, [categoriesWithSelected]);
 
   useEffect(() => {
     try {
@@ -1983,15 +2558,27 @@ export function MonteSeuPcPage() {
         {view === "review" && (
           <motion.div
             key="review"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mx-auto max-w-[1280px] px-6 py-16 text-center"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="mb-2 text-zinc-500" style={{ fontSize: "11px", letterSpacing: "0.24em", fontWeight: 700 }}>
-              // REVISÃO — em construção (Fase D)
-            </p>
+            <ReviewScreen
+              categoriesWithSelected={categoriesWithSelected}
+              buildName={buildName}
+              onBuildName={setBuildName}
+              total={priceBreakdown.total}
+              cep={cepInput}
+              onCepChange={setCepInput}
+              freight={freight}
+              onCalcFreight={handleCalcFreight}
+              compat={compat}
+              onEdit={() => setView("builder")}
+              onFixStep={handleFixStep}
+              onSave={handleSave}
+              onShare={handleShare}
+              onBuy={handleAddToCart}
+            />
           </motion.div>
         )}
         {view === "builder" && (
