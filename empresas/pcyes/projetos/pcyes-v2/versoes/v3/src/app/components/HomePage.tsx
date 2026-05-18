@@ -22,6 +22,9 @@ export function HomePage() {
       {/* ── BLOCO 1: Hero ─────────────────────────────── */}
       <HeroSection />
 
+      {/* ── BLOCO 1.5: Benefícios (frete grátis, compra segura, etc.) ── */}
+      <TrustStrip />
+
       {/* ── BLOCO 2: Drop do dia (3 deals selecionados) ── */}
       <DropDoDiaSection />
 
@@ -60,7 +63,6 @@ export function HomePage() {
       <InRealLifeSection />
 
       {/* ── BLOCO 8: Institucional ────────────────────── */}
-      <TrustStrip />
       <Newsletter />
       <Footer />
     </>

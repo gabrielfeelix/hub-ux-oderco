@@ -7,6 +7,8 @@ import { useCart } from "./CartContext";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
+import { PcyesCoin } from "./PcyesCoin";
+import { useCheckoutPrefs } from "./CheckoutPrefsContext";
 
 const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string }[]> = {
   default: [
@@ -25,11 +27,14 @@ const COUPONS: Record<string, number> = {
 
 const GIFT_THRESHOLD = 950;
 
+const USER_PCYES_POINTS = 480;
+
 export function CartDrawer() {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, totalItems, lastAdded, setGiftItem, clearCart } = useCart();
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark" || resolvedTheme === undefined;
   const navigate = useNavigate();
+  const { pointsApplied, setPointsApplied } = useCheckoutPrefs();
 
   const [shippingOpen, setShippingOpen] = useState(false);
   const [couponOpen, setCouponOpen] = useState(false);
@@ -48,6 +53,7 @@ export function CartDrawer() {
 
   const parsePrice = (p: string) => parseFloat(p.replace("R$ ", "").replace(".", "").replace(",", "."));
   const formatPrice = (n: number) => `R$ ${n.toFixed(2).replace(".", ",")}`;
+  const formatInt = (n: number) => n.toLocaleString("pt-BR");
 
   const paidItems = items.filter((item) => !item.isGift);
   const giftItem = items.find((item) => item.isGift) ?? null;
@@ -55,7 +61,9 @@ export function CartDrawer() {
   const discountPct = appliedCoupon ? COUPONS[appliedCoupon] || 0 : 0;
   const discountValue = subtotal * (discountPct / 100);
   const shippingCost = selectedShipping !== null && shippingOptions ? shippingOptions[selectedShipping].price : 0;
-  const total = subtotal - discountValue + shippingCost;
+  const maxPointsRedeem = Math.min(USER_PCYES_POINTS, Math.floor((subtotal - discountValue) * 0.3));
+  const pointsValue = pointsApplied ? maxPointsRedeem : 0;
+  const total = Math.max(0, subtotal - discountValue + shippingCost - pointsValue);
   const giftUnlocked = subtotal >= GIFT_THRESHOLD;
   const giftProgress = Math.min(100, (subtotal / GIFT_THRESHOLD) * 100);
   const remainingForGift = Math.max(0, GIFT_THRESHOLD - subtotal);
@@ -444,6 +452,37 @@ export function CartDrawer() {
                   </AnimatePresence>
                 </div>
 
+                <div>
+                  <button
+                    onClick={() => setPointsApplied(!pointsApplied)}
+                    disabled={maxPointsRedeem <= 0}
+                    className={`flex items-center justify-between w-full py-2 px-3 cursor-pointer group transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                      pointsApplied ? "rounded-[10px] border border-yellow-500/25 bg-yellow-500/[0.06]" : ""
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <PcyesCoin size={16} />
+                      <span
+                        className={pointsApplied ? "text-yellow-400" : "text-foreground/65 group-hover:text-foreground/85 transition-colors"}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                      >
+                        PCYES Points
+                      </span>
+                      <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                        {formatInt(USER_PCYES_POINTS)} disponíveis
+                      </span>
+                    </div>
+                    {maxPointsRedeem > 0 && (
+                      <span
+                        className={pointsApplied ? "text-yellow-400" : "text-foreground/55 group-hover:text-foreground/80 transition-colors"}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}
+                      >
+                        {pointsApplied ? `−${formatPrice(pointsValue)}` : `Usar ${formatInt(maxPointsRedeem)}`}
+                      </span>
+                    )}
+                  </button>
+                </div>
+
                 <div className="h-px bg-foreground/5" />
 
                 <div className="space-y-1.5">
@@ -465,6 +504,12 @@ export function CartDrawer() {
                       </span>
                     </div>
                   )}
+                  {pointsValue > 0 && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-yellow-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>PCYES Points</span>
+                      <span className="text-yellow-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>-{formatPrice(pointsValue)}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
@@ -475,17 +520,17 @@ export function CartDrawer() {
                 <button
                   className="w-full py-4 rounded-full text-white transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
                   style={{
-                    background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13.5px",
                     fontWeight: 800,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
-                    boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                    boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
                   }}
-                  onClick={() => { setIsOpen(false); navigate("/carrinho"); }}
-                  aria-label="Revisar pedido no carrinho completo"
-                >Revisar pedido</button>
+                  onClick={() => { setIsOpen(false); navigate("/checkout"); }}
+                  aria-label="Finalizar pedido"
+                >Finalizar pedido</button>
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <button onClick={() => setIsOpen(false)}
                     className="text-foreground/35 hover:text-foreground/65 transition-colors cursor-pointer"

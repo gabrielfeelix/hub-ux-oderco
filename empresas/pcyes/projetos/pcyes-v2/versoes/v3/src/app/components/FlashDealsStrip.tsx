@@ -203,13 +203,13 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
             }}
             className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
             style={{
-              background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+              background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
               color: "white",
               fontFamily: "var(--font-family-inter)",
               fontSize: "13px",
               fontWeight: 700,
               letterSpacing: "0.04em",
-              boxShadow: "0 10px 24px -8px rgba(225, 6, 0, 0.7)",
+              boxShadow: "0 10px 24px -8px rgba(34,197,94,0.55)",
             }}
           >
             <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>

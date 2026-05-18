@@ -113,9 +113,24 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
   };
 
   return (
-    <div className="flex w-full flex-col items-center gap-4 overflow-visible md:gap-5">
+    <div className="flex w-full flex-col items-stretch gap-4 overflow-visible md:flex-row md:items-start md:gap-4">
+      {images.length > 1 && (
+        <div className="hidden md:flex md:flex-col md:gap-3 md:max-h-[640px] md:overflow-y-auto md:pr-1 scrollbar-none">
+          {images.map((img, i) => (
+            <button
+              key={`vthumb-${i}`}
+              onClick={() => setActive(i)}
+              className={`flex-shrink-0 w-[68px] h-[68px] xl:w-[78px] xl:h-[78px] overflow-hidden border transition-all cursor-pointer ${i === active ? "border-primary ring-1 ring-primary/35" : "border-foreground/10 hover:border-foreground/30"}`}
+              style={{ borderRadius: "8px", background: isDark ? "#2a2a2c" : "#ffffff" }}
+              aria-label={`Ver imagem ${i + 1}`}
+            >
+              <ImageWithFallback src={img} alt={`${name} ${i + 1}`} className="w-full h-full object-contain p-1.5" />
+            </button>
+          ))}
+        </div>
+      )}
       <div
-        className="relative w-full max-w-[560px] aspect-square overflow-hidden group cursor-zoom-in xl:max-w-[620px]"
+        className="relative w-full max-w-full md:flex-1 aspect-square overflow-hidden group cursor-zoom-in"
         style={{
           borderRadius: "20px",
           background: isDark
@@ -182,22 +197,6 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
           </span>
         )}
       </div>
-
-	      {images.length > 1 && (
-	        <div className="relative z-10 hidden w-full max-w-[560px] justify-center gap-3 overflow-x-auto pb-1 scrollbar-none md:flex xl:max-w-[620px]">
-	          {images.map((img, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`flex-shrink-0 w-16 h-16 md:w-[74px] md:h-[74px] overflow-hidden border transition-all cursor-pointer ${i === active ? "border-primary ring-1 ring-primary/35" : "border-foreground/10 hover:border-foreground/30"}`}
-              style={{ borderRadius: "8px", background: isDark ? "#2a2a2c" : "#ffffff" }}
-              aria-label={`Ver imagem ${i + 1}`}
-            >
-              <ImageWithFallback src={img} alt={`${name} ${i + 1}`} className="w-full h-full object-contain p-1.5" />
-            </button>
-          ))}
-	        </div>
-	      )}
 
 	      {images.length > 1 && (
 	        <div className="relative z-10 flex items-center justify-center gap-2 md:hidden" aria-label="Indicadores da galeria">
@@ -1905,6 +1904,25 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           </section>
 
           <section className="border-t border-white/5 px-6 py-10 md:px-10">
+            <p className="mb-3 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
+              // EM VÍDEO
+            </p>
+            <h3 className="mb-6 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3.4vw, 32px)", lineHeight: 1.08, fontWeight: 700, letterSpacing: "-0.02em" }}>
+              Veja {product.name.split(" ").slice(0, 4).join(" ")} em ação
+            </h3>
+            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "22px", background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)" }}>
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src={`https://www.youtube.com/embed/${product.id % 2 === 0 ? "dQw4w9WgXcQ" : "M7lc1UVf-VE"}?rel=0&modestbranding=1`}
+                title={`Vídeo ${product.name}`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </section>
+
+          <section className="border-t border-white/5 px-6 py-10 md:px-10">
             <article className="relative overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
               <div className="relative z-10 w-full p-7 md:w-[62%] md:p-9">
                 <p className="mb-4 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
@@ -2108,16 +2126,16 @@ export function ProductPage() {
 
       {/* Main PDP */}
       <div className="px-5 md:px-8 pt-2 pb-24 lg:pt-6">
-        <div className="max-w-[1760px] mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_380px] items-start gap-8 xl:gap-10">
+        <div className="max-w-[1760px] mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px] items-start gap-6 xl:gap-8">
           <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-            <div className="flex flex-col lg:flex-row items-start gap-8 xl:gap-10">
+            <div className="flex flex-col lg:flex-row items-start gap-6 xl:gap-8">
 
           {/* Gallery */}
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="order-2 w-full lg:order-none lg:w-[50%] xl:w-[52%] flex-shrink-0"
+            className="order-2 w-full lg:order-none lg:w-[56%] xl:w-[58%] flex-shrink-0"
           >
             <ProductGallery images={galleryImages} name={product.name} isDark={isDark} />
           </motion.div>
@@ -2455,13 +2473,13 @@ export function ProductPage() {
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem({ id: rProduct.id, name: rProduct.name, price: rProduct.price, image: getPrimaryProductImage(rProduct) }); toast.success("Adicionado!"); }}
                         className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
                         style={{
-                          background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                          background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                           color: "white",
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "13px",
                           fontWeight: 700,
                           letterSpacing: "0.04em",
-                          boxShadow: "0 10px 26px -6px rgba(225,6,0,0.6)",
+                          boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
                         }}
                       >
                         <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>

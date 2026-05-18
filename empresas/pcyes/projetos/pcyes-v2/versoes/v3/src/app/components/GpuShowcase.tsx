@@ -478,13 +478,13 @@ export function GpuShowcase() {
                   to={`/produto/${product.id}`}
                   className="flex-shrink-0 inline-flex items-center gap-2 whitespace-nowrap rounded-full px-10 py-3 transition-transform hover:scale-[1.04] active:scale-[0.97]"
                   style={{
-                    background: ACCENT_BG,
+                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                     color: "#ffffff",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13px",
                     fontWeight: 700,
                     letterSpacing: "0.04em",
-                    boxShadow: `0 10px 28px -8px ${ACCENT_GLOW}`,
+                    boxShadow: "0 10px 28px -8px rgba(34,197,94,0.55)",
                   }}
                 >
                   Comprar <ArrowRight size={15} strokeWidth={2.4} />

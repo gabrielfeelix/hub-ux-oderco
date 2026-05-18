@@ -197,13 +197,13 @@ function EssentialCard({ product }: EssentialCardProps) {
             className="whitespace-nowrap rounded-full px-7 py-2.5 transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
             style={{
               background:
-                "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
               color: "white",
               fontFamily: "var(--font-family-inter)",
               fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "0.04em",
-              boxShadow: "0 8px 22px -8px rgba(225, 6, 0, 0.65)",
+              boxShadow: "0 8px 22px -8px rgba(34,197,94,0.55)",
             }}
           >
             Comprar

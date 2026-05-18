@@ -306,6 +306,7 @@ export function ProductsPage() {
     initialSubcategory ? new Set([initialSubcategory]) : new Set()
   );
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [selectedAttributes, setSelectedAttributes] = useState<Set<string>>(new Set());
   const [selectedBrands, setSelectedBrands] = useState<Set<string>>(new Set());
   const [selectedColors, setSelectedColors] = useState<Set<string>>(new Set());
   const [priceMin, setPriceMin] = useState(GLOBAL_MIN);
@@ -326,7 +327,7 @@ export function ProductsPage() {
   const [selectedVariantIds, setSelectedVariantIds] = useState<Record<number, number>>({});
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    categories: true, brands: true, tags: true, price: true, color: true, rating: true, promo: true,
+    categories: true, brands: true, tags: true, price: true, color: true, rating: true, promo: true, attributes: true,
   });
 
   const { addItem } = useCart();
@@ -407,7 +408,7 @@ export function ProductsPage() {
   };
 
   const clearAll = () => {
-    setSelectedCategories(new Set()); setSelectedFeaturedCategories(new Set()); setSelectedSubcategories(new Set()); setSelectedTags(new Set()); setSelectedBrands(new Set()); setSelectedColors(new Set());
+    setSelectedCategories(new Set()); setSelectedFeaturedCategories(new Set()); setSelectedSubcategories(new Set()); setSelectedTags(new Set()); setSelectedAttributes(new Set()); setSelectedBrands(new Set()); setSelectedColors(new Set());
     setPriceMin(GLOBAL_MIN); setPriceMax(GLOBAL_MAX); setOnlyDiscount(false); setSelectedDiscounts(new Set()); setSelectedRatings(new Set());
     setInStockOnly(false); setSearchQuery(""); setSelectedVariantIds({});
     const sp = new URLSearchParams(searchParams); sp.delete("category"); sp.delete("subcategory"); sp.delete("search"); setSearchParams(sp, { replace: true });
@@ -439,6 +440,17 @@ export function ProductsPage() {
     }
     if (selectedSubcategories.size > 0) result = result.filter((p) => selectedSubcategories.has(getProductSubcategory(p)));
     if (selectedTags.size > 0) result = result.filter((p) => p.tags.some((t) => selectedTags.has(t)));
+    if (selectedAttributes.size > 0) {
+      result = result.filter((p) => {
+        const haystack = [
+          ...(p.tags ?? []),
+          ...(p.features ?? []),
+          ...(p.specs ?? []).map((s) => s.value),
+          p.name,
+        ].join(" ").toLowerCase();
+        return [...selectedAttributes].every((attr) => haystack.includes(attr.toLowerCase()));
+      });
+    }
     if (selectedBrands.size > 0) result = result.filter((p) => p.brand && selectedBrands.has(p.brand));
     if (onlyDiscount) result = result.filter((p) => getDiscount(getColorMatchedProduct(p)) > 0);
     if (selectedDiscounts.size > 0) {
@@ -457,7 +469,7 @@ export function ProductsPage() {
     if (inStockOnly) result = result.filter((p) => p.inStock !== false);
 
     return result;
-  }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories, selectedTags, selectedBrands, onlyDiscount, selectedDiscounts, selectedRatings, inStockOnly, searchQuery]);
+  }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories, selectedTags, selectedAttributes, selectedBrands, onlyDiscount, selectedDiscounts, selectedRatings, inStockOnly, searchQuery]);
 
   const priceBounds = useMemo(() => {
     const productsForPrice = selectedColors.size > 0
@@ -480,7 +492,7 @@ export function ProductsPage() {
 
   const priceFilterActive = priceMin > priceBounds.min || priceMax < priceBounds.max;
 
-  const activeFilterCount = selectedCategories.size + selectedFeaturedCategories.size + selectedSubcategories.size + selectedTags.size + selectedBrands.size + selectedColors.size
+  const activeFilterCount = selectedCategories.size + selectedFeaturedCategories.size + selectedSubcategories.size + selectedTags.size + selectedAttributes.size + selectedBrands.size + selectedColors.size
     + (priceFilterActive ? 1 : 0) + (onlyDiscount ? 1 : 0)
     + selectedDiscounts.size
     + selectedRatings.size + (searchQuery ? 1 : 0) + (inStockOnly ? 1 : 0);
@@ -492,6 +504,51 @@ export function ProductsPage() {
 
     return result;
   }, [productsWithoutPriceFilter, priceMin, priceMax, priceBounds.min, priceBounds.max]);
+
+  /* ── Atributos: derived from products that pass current category/subcategory ── */
+  const availableAttributes = useMemo(() => {
+    const scope = validProducts.filter((p) => {
+      if (selectedCategories.size > 0 && !selectedCategories.has(p.category)) return false;
+      if (selectedFeaturedCategories.size > 0 && !featuredCategoryFilters.some((f) => selectedFeaturedCategories.has(f.label) && f.matches(p))) return false;
+      if (selectedSubcategories.size > 0 && !selectedSubcategories.has(getProductSubcategory(p))) return false;
+      return true;
+    });
+    if (scope.length === 0) return [] as Array<{ label: string; count: number }>;
+
+    const categoryLabels = new Set(productCategories.map((c) => c.toLowerCase()));
+    const subcategoryLabels = new Set(scope.map((p) => getProductSubcategory(p).toLowerCase()));
+    const brandLabels = new Set(productBrands.map((b) => b.toLowerCase()));
+
+    const counts = new Map<string, number>();
+    scope.forEach((p) => {
+      const seen = new Set<string>();
+      (p.tags ?? []).forEach((tag) => {
+        const trimmed = tag.trim();
+        if (!trimmed) return;
+        const key = trimmed.toLowerCase();
+        if (categoryLabels.has(key)) return;
+        if (subcategoryLabels.has(key)) return;
+        if (brandLabels.has(key)) return;
+        if (seen.has(key)) return;
+        seen.add(key);
+        counts.set(trimmed, (counts.get(trimmed) ?? 0) + 1);
+      });
+    });
+
+    return [...counts.entries()]
+      .map(([label, count]) => ({ label, count }))
+      .filter((entry) => entry.count >= 2)
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 18);
+  }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories]);
+
+  useEffect(() => {
+    const available = new Set(availableAttributes.map((a) => a.label));
+    setSelectedAttributes((prev) => {
+      const next = new Set([...prev].filter((label) => available.has(label)));
+      return next.size === prev.size ? prev : next;
+    });
+  }, [availableAttributes]);
 
   const availableColorFilters = useMemo(() => (
     colorFilters
@@ -554,6 +611,7 @@ export function ProductsPage() {
       {[...selectedSubcategories].map((c) => <FilterPill key={c} label={c} onRemove={() => toggleSet(setSelectedSubcategories, c)} />)}
       {[...selectedBrands].map((b) => <FilterPill key={b} label={b} onRemove={() => toggleSet(setSelectedBrands, b)} />)}
       {[...selectedTags].map((t) => <FilterPill key={t} label={t} onRemove={() => toggleSet(setSelectedTags, t)} />)}
+      {[...selectedAttributes].map((a) => <FilterPill key={`attr-${a}`} label={a} onRemove={() => toggleSet(setSelectedAttributes, a)} />)}
       {[...selectedColors].map((color) => <FilterPill key={color} label={color} onRemove={() => toggleColor(color)} />)}
       {priceFilterActive && <FilterPill label={`R$ ${priceMin} – R$ ${priceMax}`} onRemove={() => { setPriceMin(priceBounds.min); setPriceMax(priceBounds.max); }} />}
       {onlyDiscount && <FilterPill label="Promoção" onRemove={() => setOnlyDiscount(false)} />}
@@ -641,6 +699,28 @@ export function ProductsPage() {
               </button>
             );
           })}
+        </FilterSection>
+      )}
+
+      {availableAttributes.length > 0 && (
+        <FilterSection title="Atributos" expanded={expandedSections.attributes} onToggle={() => toggleSection("attributes")}>
+          <div className="space-y-1 pt-1 max-h-[260px] overflow-y-auto pr-1" style={{ scrollbarWidth: "thin" }}>
+            {availableAttributes.map(({ label, count }) => {
+              const active = selectedAttributes.has(label);
+              return (
+                <label key={label} className="flex items-center gap-3 py-1.5 cursor-pointer group/item">
+                  <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedAttributes, label)} />
+                  <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+                    {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
+                  </span>
+                  <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                    {label}
+                  </span>
+                  <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>({count})</span>
+                </label>
+              );
+            })}
+          </div>
         </FilterSection>
       )}
 
@@ -1066,7 +1146,7 @@ export function ProductsPage() {
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
                               className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
-                              style={{ background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)", color: "white", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 10px 26px -6px rgba(225,6,0,0.6)" }}
+                              style={{ background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", color: "white", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)" }}
                             >
                               <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
                             </button>
@@ -1169,13 +1249,13 @@ export function ProductsPage() {
                             <button onClick={() => handleAddToCart(displayProduct)}
                               className="flex items-center gap-2 px-7 py-3 rounded-full transition-transform hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
                               style={{
-                                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                                 color: "white",
                                 fontFamily: "var(--font-family-inter)",
                                 fontSize: "13px",
                                 fontWeight: 700,
                                 letterSpacing: "0.04em",
-                                boxShadow: "0 10px 26px -6px rgba(225,6,0,0.6)",
+                                boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
                               }}
                             ><ShoppingBag size={14} strokeWidth={2} /> Comprar</button>
                           </div>
@@ -1483,7 +1563,7 @@ export function ProductsPage() {
                     onClick={() => { handleAddToCart(quickViewProduct); setQuickViewProduct(null); }}
                     className="w-full py-4 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer mt-auto"
                     style={{
-                      background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                      background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                       color: "white",
                       borderRadius: "999px",
                       fontFamily: "var(--font-family-inter)",
@@ -1491,7 +1571,7 @@ export function ProductsPage() {
                       fontWeight: 700,
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
-                      boxShadow: "0 12px 32px -10px rgba(225,6,0,0.6)",
+                      boxShadow: "0 12px 32px -10px rgba(34,197,94,0.55)",
                     }}
                   >
                     <ShoppingBag size={16} strokeWidth={2} /> Comprar

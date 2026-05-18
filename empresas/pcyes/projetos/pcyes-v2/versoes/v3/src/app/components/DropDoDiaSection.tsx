@@ -241,13 +241,13 @@ export function DropDoDiaSection() {
                       onClick={handleAdd}
                       className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3 transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                       style={{
-                        background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                        background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                         color: "white",
                         fontFamily: "var(--font-family-inter)",
                         fontSize: "13px",
                         fontWeight: 700,
                         letterSpacing: "0.04em",
-                        boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                        boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
                       }}
                     >
                       <ShoppingBag size={14} strokeWidth={2.2} />

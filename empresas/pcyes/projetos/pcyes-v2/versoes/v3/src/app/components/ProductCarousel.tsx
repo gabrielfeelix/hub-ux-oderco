@@ -313,8 +313,8 @@ export function ProductCarousel({
 
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
                     <button
-                      className="w-full py-2.5 bg-white/95 backdrop-blur-sm text-black flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-colors duration-300"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}
+                      className="w-full py-2.5 text-white flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02]"
+                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem(displayProduct); }}
                     >
                       <ShoppingBag size={13} strokeWidth={1.5} />

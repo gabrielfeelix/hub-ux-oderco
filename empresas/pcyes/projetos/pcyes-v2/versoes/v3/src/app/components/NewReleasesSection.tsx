@@ -171,8 +171,8 @@ export function NewReleasesSection() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => addItem({ id: selected.id, name: selected.name, price: selected.price, image: selected.image })}
-                      className="flex items-center gap-2 px-6 py-3 bg-white text-black hover:bg-primary hover:text-white transition-colors duration-500 cursor-pointer"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+                      className="flex items-center gap-2 px-6 py-3 text-white transition-all duration-300 cursor-pointer hover:scale-[1.02]"
+                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)", background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)" }}
                     >
                       <ShoppingBag size={14} strokeWidth={1.5} />
                       Comprar
