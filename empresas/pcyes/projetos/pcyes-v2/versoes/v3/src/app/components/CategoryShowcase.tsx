@@ -226,9 +226,9 @@ export function CategoryShowcase() {
                     borderRadius: "26px",
                     border: isLit
                       ? "1px solid transparent"
-                      : "1px solid rgba(255,255,255,0.06)",
+                      : "1px solid rgba(var(--foreground-rgb), 0.06)",
                     boxShadow: isFeatured
-                      ? "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 18px -6px rgba(255,36,25,0.2), inset 0 1px 0 rgba(255,255,255,0.06)"
+                      ? "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 18px -6px rgba(255,36,25,0.2), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)"
                       : "none",
                     transition: "border-color 320ms ease, box-shadow 320ms ease",
                   }}
@@ -299,7 +299,7 @@ export function CategoryShowcase() {
                               fontFamily: "var(--font-family-inter)",
                               fontSize: "clamp(12px, 1vw, 14px)",
                               lineHeight: 1.5,
-                              color: "rgba(255,255,255,0.85)",
+                              color: "rgba(var(--foreground-rgb), 0.85)",
                               textShadow: "0 1px 6px rgba(0,0,0,0.55)",
                             }}
                           >
@@ -359,8 +359,8 @@ export function CategoryShowcase() {
                             width: j === activeIdx ? "18px" : "5px",
                             background:
                               j === activeIdx
-                                ? "rgba(255,255,255,0.95)"
-                                : "rgba(255,255,255,0.35)",
+                                ? "rgba(var(--foreground-rgb), 0.95)"
+                                : "rgba(var(--foreground-rgb), 0.35)",
                           }}
                         />
                       ))}
@@ -378,7 +378,7 @@ export function CategoryShowcase() {
           className="absolute left-4 md:left-6 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
           style={{
             background: "rgba(15, 15, 16, 0.85)",
-            border: "1px solid rgba(255,255,255,0.12)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.12)",
             color: "white",
             backdropFilter: "blur(12px)",
             boxShadow: "0 10px 28px -8px rgba(0,0,0,0.6)",
@@ -392,7 +392,7 @@ export function CategoryShowcase() {
           className="absolute right-4 md:right-6 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
           style={{
             background: "rgba(15, 15, 16, 0.85)",
-            border: "1px solid rgba(255,255,255,0.12)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.12)",
             color: "white",
             backdropFilter: "blur(12px)",
             boxShadow: "0 10px 28px -8px rgba(0,0,0,0.6)",

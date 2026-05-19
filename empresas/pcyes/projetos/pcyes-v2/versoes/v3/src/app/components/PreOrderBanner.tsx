@@ -53,7 +53,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           "linear-gradient(135deg, #1a0608 0%, #2a0a0d 45%, #1a0608 100%)",
         border: "1px solid rgba(255,36,25,0.28)",
         boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.06), 0 30px 80px -24px rgba(255,36,25,0.45)",
+          "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 30px 80px -24px rgba(255,36,25,0.45)",
       }}
     >
       {/* radial glow */}
@@ -152,7 +152,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                   className="flex flex-col items-center justify-center py-2.5"
                   style={{
                     background: "rgba(0,0,0,0.45)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                     borderRadius: "12px",
                   }}
                 >
@@ -229,7 +229,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           <div
             className="relative h-2 w-full overflow-hidden"
             style={{
-              background: "rgba(255,255,255,0.06)",
+              background: "rgba(var(--foreground-rgb), 0.06)",
               borderRadius: "999px",
             }}
           >
@@ -262,7 +262,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           className="mb-4 p-3"
           style={{
             background: "rgba(0,0,0,0.35)",
-            border: "1px solid rgba(255,255,255,0.06)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.06)",
             borderRadius: "14px",
           }}
         >

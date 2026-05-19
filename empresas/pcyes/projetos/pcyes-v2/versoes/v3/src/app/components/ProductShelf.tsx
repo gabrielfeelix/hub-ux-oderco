@@ -82,10 +82,10 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
           className="relative aspect-[5/6] overflow-hidden transition-all duration-300"
           style={{
             background:
-              "linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.03) 100%)",
+              "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
             borderRadius: "20px",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
-            boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+            boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
           }}
         >
           {/* Subtle inner shine */}
@@ -93,7 +93,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.06) 0%, transparent 55%)",
+                "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
               borderRadius: "20px",
             }}
           />
@@ -113,7 +113,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
                 fontSize: "15px",
                 fontWeight: 800,
                 letterSpacing: "-0.02em",
-                boxShadow: "0 6px 18px -4px rgba(225,6,0,0.55), inset 0 1px 0 rgba(255,255,255,0.18)",
+                boxShadow: "0 6px 18px -4px rgba(225,6,0,0.55), inset 0 1px 0 rgba(var(--foreground-rgb), 0.18)",
               }}
             >
               {rank}
@@ -159,8 +159,8 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
               className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
               style={{
                 background: isFavorited ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
-                border: isFavorited ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(255, 255, 255, 0.15)",
-                color: isFavorited ? "#ff2419" : "rgba(255, 255, 255, 0.85)",
+                border: isFavorited ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
+                color: isFavorited ? "#ff2419" : "rgba(var(--foreground-rgb), 0.85)",
                 backdropFilter: "blur(8px)",
               }}
               aria-label="Favoritar"
@@ -212,7 +212,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13px",
-                  color: "rgba(255, 255, 255, 0.38)",
+                  color: "rgba(var(--foreground-rgb), 0.38)",
                 }}
               >
                 {product.oldPrice ?? `R$ ${oldPriceNum.toFixed(2).replace(".", ",")}`}
@@ -229,7 +229,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
             >
               {product.price}
             </p>
-            <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
+            <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}>
               No PIX ou 10x de R$ {(product.priceNum / 10).toFixed(2).replace(".", ",")}
             </p>
           </div>
@@ -252,7 +252,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
                 background: s.color,
                 border: selectedSwatchId === s.productId
                   ? "2px solid rgba(225, 6, 0, 0.9)"
-                  : "1px solid rgba(255, 255, 255, 0.18)",
+                  : "1px solid rgba(var(--foreground-rgb), 0.18)",
                 boxShadow: selectedSwatchId === s.productId
                   ? "0 0 8px rgba(225, 6, 0, 0.5)"
                   : "none",
@@ -266,7 +266,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "11px",
-                color: "rgba(255, 255, 255, 0.45)",
+                color: "rgba(var(--foreground-rgb), 0.45)",
               }}
             >
               +{swatches.length - 5}

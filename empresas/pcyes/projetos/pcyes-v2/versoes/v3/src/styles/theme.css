@@ -5,6 +5,10 @@
   /* Light Mode - Clean, professional, high contrast */
   --background: rgba(250, 250, 250, 1.00);
   --foreground: rgba(22, 22, 22, 1.00);
+  /* RGB triplets for use inside rgba() with var() — theme-aware foreground tints
+     (e.g. rgba(var(--foreground-rgb), 0.45) for muted text/borders/overlays). */
+  --foreground-rgb: 22, 22, 22;
+  --background-rgb: 250, 250, 250;
   --card: rgba(255, 255, 255, 1.00);
   --card-foreground: rgba(22, 22, 22, 1.00);
   --popover: rgba(255, 255, 255, 1.00);
@@ -202,6 +206,8 @@ input:-webkit-autofill:active {
 .dark {
   --background: rgba(18, 18, 18, 1.00);
   --foreground: rgba(255, 255, 255, 1.00);
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 18, 18, 18;
   --card: rgba(26, 26, 26, 0.90);
   --card-foreground: rgba(255, 255, 255, 1.00);
   --popover: rgba(22, 22, 22, 0.95);
@@ -528,14 +534,20 @@ html.light [data-page-light-scope] {
    so we match on the rgb() form (both spaced and non-spaced variants). */
 
 /* Near-black inline backgrounds → page bg */
+html.light [data-page-light-scope] [style*="rgb(8, 8, 8)"],
+html.light [data-page-light-scope] [style*="rgb(8,8,8)"],
 html.light [data-page-light-scope] [style*="rgb(10, 10, 10)"],
 html.light [data-page-light-scope] [style*="rgb(10,10,10)"],
 html.light [data-page-light-scope] [style*="rgb(10, 10, 12)"],
 html.light [data-page-light-scope] [style*="rgb(10,10,12)"],
+html.light [data-page-light-scope] [style*="rgb(13, 13, 14)"],
+html.light [data-page-light-scope] [style*="rgb(13,13,14)"],
 html.light [data-page-light-scope] [style*="rgb(14, 14, 14)"],
 html.light [data-page-light-scope] [style*="rgb(14,14,14)"],
 html.light [data-page-light-scope] [style*="rgb(15, 15, 15)"],
 html.light [data-page-light-scope] [style*="rgb(15,15,15)"],
+html.light [data-page-light-scope] [style*="rgb(15, 15, 16)"],
+html.light [data-page-light-scope] [style*="rgb(15,15,16)"],
 html.light [data-page-light-scope] [style*="rgb(7, 7, 8)"],
 html.light [data-page-light-scope] [style*="rgb(7,7,8)"],
 html.light [data-page-light-scope] [style*="rgb(4, 4, 4)"],
@@ -558,7 +570,11 @@ html.light [data-page-light-scope] [style*="rgb(31,28,28)"],
 html.light [data-page-light-scope] [style*="rgb(29, 29, 29)"],
 html.light [data-page-light-scope] [style*="rgb(29,29,29)"],
 html.light [data-page-light-scope] [style*="rgb(18, 18, 20)"],
-html.light [data-page-light-scope] [style*="rgb(18,18,20)"] {
+html.light [data-page-light-scope] [style*="rgb(18,18,20)"],
+html.light [data-page-light-scope] [style*="rgb(21, 21, 23)"],
+html.light [data-page-light-scope] [style*="rgb(21,21,23)"],
+html.light [data-page-light-scope] [style*="rgb(29, 29, 31)"],
+html.light [data-page-light-scope] [style*="rgb(29,29,31)"] {
   background: #ffffff !important;
   background-color: #ffffff !important;
 }
@@ -568,3 +584,44 @@ html.light [data-page-light-scope] [style*="rgb(50,50,50)"] {
   background: #f0f0f0 !important;
   background-color: #f0f0f0 !important;
 }
+
+/* Light mode contrast — Tailwind's text-foreground/X under .light resolves
+   foreground to (22,22,22); low alpha values render as near-invisible
+   light gray on a white page. Bump the effective opacity so muted text
+   remains legible (~AA contrast) while keeping the visual hierarchy. */
+html.light [data-page-light-scope] .text-foreground\/15 { color: rgba(22,22,22,0.50) !important; }
+html.light [data-page-light-scope] .text-foreground\/20 { color: rgba(22,22,22,0.55) !important; }
+html.light [data-page-light-scope] .text-foreground\/25 { color: rgba(22,22,22,0.58) !important; }
+html.light [data-page-light-scope] .text-foreground\/30 { color: rgba(22,22,22,0.60) !important; }
+html.light [data-page-light-scope] .text-foreground\/35 { color: rgba(22,22,22,0.62) !important; }
+html.light [data-page-light-scope] .text-foreground\/40 { color: rgba(22,22,22,0.65) !important; }
+html.light [data-page-light-scope] .text-foreground\/45 { color: rgba(22,22,22,0.68) !important; }
+html.light [data-page-light-scope] .text-foreground\/50 { color: rgba(22,22,22,0.72) !important; }
+html.light [data-page-light-scope] .text-foreground\/55 { color: rgba(22,22,22,0.75) !important; }
+html.light [data-page-light-scope] .text-foreground\/60 { color: rgba(22,22,22,0.78) !important; }
+html.light [data-page-light-scope] .text-foreground\/65 { color: rgba(22,22,22,0.80) !important; }
+html.light [data-page-light-scope] .text-foreground\/70 { color: rgba(22,22,22,0.85) !important; }
+html.light [data-page-light-scope] .text-foreground\/75 { color: rgba(22,22,22,0.88) !important; }
+html.light [data-page-light-scope] .text-foreground\/80 { color: rgba(22,22,22,0.92) !important; }
+html.light [data-page-light-scope] .text-foreground\/85 { color: rgba(22,22,22,0.95) !important; }
+
+/* Same treatment for text-white/X (when text-white is used directly with alpha) */
+html.light [data-page-light-scope] .text-white\/20 { color: rgba(22,22,22,0.55) !important; }
+html.light [data-page-light-scope] .text-white\/25 { color: rgba(22,22,22,0.58) !important; }
+html.light [data-page-light-scope] .text-white\/30 { color: rgba(22,22,22,0.60) !important; }
+html.light [data-page-light-scope] .text-white\/35 { color: rgba(22,22,22,0.62) !important; }
+html.light [data-page-light-scope] .text-white\/40 { color: rgba(22,22,22,0.65) !important; }
+html.light [data-page-light-scope] .text-white\/45 { color: rgba(22,22,22,0.68) !important; }
+html.light [data-page-light-scope] .text-white\/50 { color: rgba(22,22,22,0.72) !important; }
+html.light [data-page-light-scope] .text-white\/55 { color: rgba(22,22,22,0.75) !important; }
+html.light [data-page-light-scope] .text-white\/60 { color: rgba(22,22,22,0.78) !important; }
+html.light [data-page-light-scope] .text-white\/65 { color: rgba(22,22,22,0.80) !important; }
+html.light [data-page-light-scope] .text-white\/70 { color: rgba(22,22,22,0.85) !important; }
+html.light [data-page-light-scope] .text-white\/75 { color: rgba(22,22,22,0.88) !important; }
+html.light [data-page-light-scope] .text-white\/80 { color: rgba(22,22,22,0.92) !important; }
+html.light [data-page-light-scope] .text-white\/85 { color: rgba(22,22,22,0.95) !important; }
+
+/* GlitchWord (IntelligentDevices animated word) hardcodes color:white in CSS.
+   Flip to foreground when in light mode + within page scope. */
+html.light [data-page-light-scope] .glitch-word { color: rgb(22, 22, 22); }
+html.light [data-page-light-scope] .glitch-word-r { color: var(--primary); }

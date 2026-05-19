@@ -47,7 +47,7 @@ export function MegaSaleBanner() {
               "radial-gradient(circle at 18% 20%, rgba(255,90,80,0.4) 0%, transparent 55%), radial-gradient(circle at 85% 80%, rgba(225,6,0,0.45) 0%, transparent 55%), linear-gradient(135deg, #b00500 0%, #6e0200 50%, #2a0000 100%)",
             border: "1.5px solid rgba(255,90,80,0.45)",
             boxShadow:
-              "0 36px 100px -32px rgba(0,0,0,0.7), 0 0 60px -12px rgba(225,6,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12)",
+              "0 36px 100px -32px rgba(0,0,0,0.7), 0 0 60px -12px rgba(225,6,0,0.45), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",
             minHeight: "320px",
           }}
         >
@@ -55,7 +55,7 @@ export function MegaSaleBanner() {
             className="pointer-events-none absolute inset-0 opacity-[0.07]"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.9) 1px, transparent 1px)",
+                "linear-gradient(rgba(var(--foreground-rgb), 0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--foreground-rgb), 0.9) 1px, transparent 1px)",
               backgroundSize: "44px 44px",
             }}
           />
@@ -70,7 +70,7 @@ export function MegaSaleBanner() {
               fontSize: "420px",
               fontWeight: 900,
               lineHeight: 1,
-              color: "rgba(255,255,255,0.06)",
+              color: "rgba(var(--foreground-rgb), 0.06)",
               letterSpacing: "-0.06em",
             }}
           >
@@ -82,8 +82,8 @@ export function MegaSaleBanner() {
               <span
                 className="inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5"
                 style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.25)",
+                  background: "rgba(var(--foreground-rgb), 0.12)",
+                  border: "1px solid rgba(var(--foreground-rgb), 0.25)",
                   backdropFilter: "blur(6px)",
                 }}
               >
@@ -115,7 +115,7 @@ export function MegaSaleBanner() {
               >
                 ATÉ 60% OFF
                 <br />
-                <span style={{ color: "rgba(255,255,255,0.78)", fontWeight: 600, fontSize: "0.4em" }}>
+                <span style={{ color: "rgba(var(--foreground-rgb), 0.78)", fontWeight: 600, fontSize: "0.4em" }}>
                   Use cupom <span style={{ color: "#fff", fontWeight: 800 }}>MEGA10</span> pra 10% extra no PIX
                 </span>
               </h2>
@@ -142,7 +142,7 @@ export function MegaSaleBanner() {
                   className="inline-flex items-center gap-3 rounded-full px-4 py-2.5"
                   style={{
                     background: "rgba(0,0,0,0.45)",
-                    border: "1px solid rgba(255,255,255,0.18)",
+                    border: "1px solid rgba(var(--foreground-rgb), 0.18)",
                     backdropFilter: "blur(6px)",
                   }}
                 >

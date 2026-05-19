@@ -332,7 +332,7 @@ export function ProfilePage() {
                           style={{
                             borderRadius: "16px",
                             background: isDark
-                              ? "linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(255,255,255,0.02) 60%)"
+                              ? "linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(var(--foreground-rgb), 0.02) 60%)"
                               : "linear-gradient(135deg, rgba(34,197,94,0.05) 0%, rgba(0,0,0,0.015) 60%)",
                             border: "1px solid rgba(34,197,94,0.18)",
                           }}
@@ -372,9 +372,9 @@ export function ProfilePage() {
                         style={{
                           borderRadius: "16px",
                           background: isDark
-                            ? "rgba(255,255,255,0.02)"
+                            ? "rgba(var(--foreground-rgb), 0.02)"
                             : "rgba(0,0,0,0.015)",
-                          border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
+                          border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)",
                         }}
                       >
                         {/* Header: status + ETA */}
@@ -391,7 +391,7 @@ export function ProfilePage() {
                               <button
                                 onClick={() => setProfileTab("orders")}
                                 className="cursor-pointer px-2 py-0.5 text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
-                                style={{ borderRadius: "100px", background: "rgba(255,255,255,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.06em" }}
+                                style={{ borderRadius: "100px", background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.06em" }}
                               >
                                 +{otherActiveCount} {otherActiveCount === 1 ? "outro pedido" : "outros pedidos"} em rota
                               </button>
@@ -411,7 +411,7 @@ export function ProfilePage() {
                               </div>
                             ))}
                             {nextOrder.items.length > 3 && (
-                              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/60" style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/60" style={{ borderRadius: "10px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
                                 +{nextOrder.items.length - 3}
                               </div>
                             )}
@@ -458,7 +458,7 @@ export function ProfilePage() {
 
                         {/* Última atualização */}
                         {lastUpdate && (
-                          <div className="px-5 py-3 border-t border-foreground/6 flex items-center gap-2" style={{ background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}>
+                          <div className="px-5 py-3 border-t border-foreground/6 flex items-center gap-2" style={{ background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)" }}>
                             <Info size={12} className="text-primary/70 flex-shrink-0" />
                             <p className="text-foreground/65 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
                               <span className="text-foreground/85">{lastUpdate.description}</span>
@@ -479,7 +479,7 @@ export function ProfilePage() {
                           <button
                             onClick={() => setProfileTab("help")}
                             className="flex items-center justify-center gap-1.5 px-3 py-2 text-foreground/70 hover:text-foreground transition-all cursor-pointer"
-                            style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                            style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
                           >
                             <HelpCircle size={13} /> Ajuda
                           </button>
@@ -506,9 +506,9 @@ export function ProfilePage() {
                     const dynamicTier = getTier(effectiveOrders);
 
                     return (
-                  <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                  <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     {/* Título da seção (contextualiza o card pra novos usuários) */}
-                    <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-3" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                    <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-3" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                       <div className="flex items-center gap-2">
                         <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}>
                           Seu nível PCYES
@@ -546,7 +546,7 @@ export function ProfilePage() {
 
                     {/* Progress bar XP (cyan/azul, não compete com primary nem com points dourados) */}
                     <div className="px-5 pb-4">
-                      <div className="h-1.5 w-full rounded-full overflow-hidden" style={{ background: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
+                      <div className="h-1.5 w-full rounded-full overflow-hidden" style={{ background: isDark ? "rgba(var(--foreground-rgb), 0.06)" : "rgba(0,0,0,0.06)" }}>
                         <div className="h-full rounded-full transition-all duration-700" style={{ width: `${Math.max(dynamicTier.progress, dynamicTier.next ? 0.22 : 1) * 100}%`, background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 50%, #67e8f9 100%)", boxShadow: "0 0 10px rgba(56,189,248,0.45)" }} />
                       </div>
                       <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
@@ -568,7 +568,7 @@ export function ProfilePage() {
                           {missionsPending.slice(0, 3).map((task, i) => (
                             <button key={i} onClick={task.action}
                               className="group/task cursor-pointer w-full flex items-center gap-3 px-3 py-2.5 transition-all hover:bg-white/[0.025]"
-                              style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)", border: "1px solid rgba(56,189,248,0.10)" }}
+                              style={{ borderRadius: "10px", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)", border: "1px solid rgba(56,189,248,0.10)" }}
                             >
                               <div className="w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors group-hover/task:border-sky-400" style={{ borderColor: "rgba(56,189,248,0.4)" }} />
                               <p className="text-foreground/80 flex-1 text-left" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 500 }}>{task.label}</p>
@@ -638,8 +638,8 @@ export function ProfilePage() {
                       className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                       style={{
                         borderRadius: "14px",
-                        background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
-                        border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                        background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
+                        border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                       }}
                     >
                       <div className="flex items-center justify-between mb-3">
@@ -663,8 +663,8 @@ export function ProfilePage() {
                       className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                       style={{
                         borderRadius: "14px",
-                        background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
-                        border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                        background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
+                        border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                       }}
                     >
                       <div className="flex items-center justify-between mb-3">
@@ -692,8 +692,8 @@ export function ProfilePage() {
                         className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                         style={{
                           borderRadius: "14px",
-                          background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
-                          border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                          background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
+                          border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                         }}
                       >
                         <div className="flex items-center justify-between mb-3">
@@ -723,8 +723,8 @@ export function ProfilePage() {
                           className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
                           style={{
                             borderRadius: "14px",
-                            background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
-                            border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                            background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
+                            border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                           }}
                         >
                           <div className="flex items-center justify-between mb-3">
@@ -803,13 +803,13 @@ export function ProfilePage() {
                       <div className="flex items-center justify-between mb-5">
                         <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Meus Pedidos</h2>
                         <div className="flex gap-2">
-                          <button className="px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
+                          <button className="px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
                           <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
                           <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
                         </div>
                       </div>
                       {user.orders.length === 0 ? (
-                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                           <Package size={28} className="text-foreground/35 mx-auto mb-4" />
                           <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum pedido ainda</p>
                           <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Quando você fizer um pedido, ele aparece aqui.</p>
@@ -845,8 +845,8 @@ export function ProfilePage() {
                               className="group order-card cursor-pointer relative overflow-hidden"
                               style={{
                                 borderRadius: "14px",
-                                background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)",
-                                border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)",
+                                background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
+                                border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                               }}
                             >
                               {/* Header: identidade + status + total */}
@@ -875,7 +875,7 @@ export function ProfilePage() {
                               </div>
 
                               {/* Produto: thumb + nome inline */}
-                              <div className="flex items-center gap-3 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                              <div className="flex items-center gap-3 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                                 <div className="flex items-center gap-1.5 flex-shrink-0">
                                   <div className="w-14 h-14 overflow-hidden border border-foreground/5" style={{ borderRadius: "10px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                                     <ImageWithFallback src={firstItem.image} alt={firstItem.name} className="w-full h-full object-cover" />
@@ -886,7 +886,7 @@ export function ProfilePage() {
                                     </div>
                                   ))}
                                   {extraItems > 2 && (
-                                    <div className="w-10 h-10 flex items-center justify-center text-foreground/55" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                                    <div className="w-10 h-10 flex items-center justify-center text-foreground/55" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
                                       +{extraItems - 2}
                                     </div>
                                   )}
@@ -902,7 +902,7 @@ export function ProfilePage() {
                               </div>
 
                               {/* Status line contextual */}
-                              <div className="flex items-center gap-2 px-4 py-2.5" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}>
+                              <div className="flex items-center gap-2 px-4 py-2.5" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)" }}>
                                 <StatusLineIcon size={13} className={`${statusLineColor} flex-shrink-0`} />
                                 <p className={`${statusLineColor} truncate`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                   {statusLineText}
@@ -910,7 +910,7 @@ export function ProfilePage() {
                               </div>
 
                               {/* CTAs contextuais */}
-                              <div className="flex items-center justify-between gap-2 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                              <div className="flex items-center justify-between gap-2 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                                 <div className="flex items-center gap-1.5 flex-wrap">
                                   {isDelivered && (
                                     <>
@@ -927,7 +927,7 @@ export function ProfilePage() {
                                       ) : (
                                         <button onClick={(e) => { e.stopPropagation(); setReviewOrderId(order.id); }}
                                           className="px-3 py-1.5 text-foreground/70 hover:text-yellow-400 transition-all cursor-pointer flex items-center gap-1.5"
-                                          style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                          style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                           <Star size={12} /> Avaliar
                                         </button>
                                       )}
@@ -1195,19 +1195,19 @@ export function ProfilePage() {
 
                     {/* Stats grid */}
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
-                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                         <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Acumulado</p>
                         <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
                           {totalEarned} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
                         </p>
                       </div>
-                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                         <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Resgatado</p>
                         <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
                           {totalSpent} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
                         </p>
                       </div>
-                      <div className="p-4 col-span-2 md:col-span-1" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="p-4 col-span-2 md:col-span-1" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                         <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Próximo pedido pode usar até</p>
                         <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
                           {Math.min(user.pcyesPoints ?? 0, 480)} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
@@ -1216,7 +1216,7 @@ export function ProfilePage() {
                     </div>
 
                     {/* Como funciona */}
-                    <div className="p-5 mb-3" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="p-5 mb-3" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <p className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Como ganhar mais</p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                         {[
@@ -1224,7 +1224,7 @@ export function ProfilePage() {
                           { icon: Star, title: "Avaliar produtos", desc: "+5 pts por avaliação" },
                           { icon: Share2, title: "Indicar amigos", desc: "+50 pts quando o amigo compra" },
                         ].map((item) => (
-                          <div key={item.title} className="flex items-start gap-2.5 p-3" style={{ borderRadius: "10px", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.01)" }}>
+                          <div key={item.title} className="flex items-start gap-2.5 p-3" style={{ borderRadius: "10px", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)" }}>
                             <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(250,204,21,0.12)" }}>
                               <item.icon size={13} style={{ color: "#facc15" }} />
                             </div>
@@ -1238,8 +1238,8 @@ export function ProfilePage() {
                     </div>
 
                     {/* Histórico */}
-                    <div className="overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                      <div className="px-5 py-3 flex items-center justify-between" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                    <div className="overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="px-5 py-3 flex items-center justify-between" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                         <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Histórico</p>
                         <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{history.length} {history.length === 1 ? "transação" : "transações"}</p>
                       </div>
@@ -1261,7 +1261,7 @@ export function ProfilePage() {
                             };
                             const txStyle = txTypeMap[tx.type];
                             return (
-                              <div key={tx.id} className="flex items-center gap-3 px-5 py-3" style={{ borderTop: idx > 0 ? (isDark ? "1px solid rgba(255,255,255,0.03)" : "1px solid rgba(0,0,0,0.03)") : undefined }}>
+                              <div key={tx.id} className="flex items-center gap-3 px-5 py-3" style={{ borderTop: idx > 0 ? (isDark ? "1px solid rgba(var(--foreground-rgb), 0.03)" : "1px solid rgba(0,0,0,0.03)") : undefined }}>
                                 <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: isPositive ? "rgba(34,197,94,0.10)" : "rgba(239,68,68,0.08)" }}>
                                   {isPositive ? <Sparkles size={13} className="text-green-500" /> : <Receipt size={13} className="text-foreground/70" />}
                                 </div>
@@ -1334,7 +1334,7 @@ export function ProfilePage() {
                   {favSubTab === "setups" && (
                     <div>
                       {savedBuilds.length === 0 ? (
-                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                           <Package size={28} className="text-foreground/30 mx-auto mb-4" />
                           <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum setup salvo ainda</p>
                           <p className="text-foreground/45 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Monte sua build e clique em "Salvar" pra guardar aqui.</p>
@@ -1343,7 +1343,7 @@ export function ProfilePage() {
                       ) : (
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                           {savedBuilds.map((b) => (
-                            <div key={b.id} className="overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                            <div key={b.id} className="overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                               <div className="flex items-start justify-between gap-3 border-b border-foreground/[0.06] p-4">
                                 <div className="min-w-0">
                                   <p className="uppercase text-foreground/40 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", letterSpacing: "0.18em", fontWeight: 700 }}>
@@ -1407,7 +1407,7 @@ export function ProfilePage() {
                   {favSubTab === "products" && (
                   <>
                   {favoriteProducts.length === 0 ? (
-                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <Heart size={28} className="text-foreground/30 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum favorito ainda</p>
                       <p className="text-foreground/45 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Clique no coração nos produtos pra salvá-los aqui.</p>
@@ -1419,16 +1419,16 @@ export function ProfilePage() {
                         const hasDiscount = !!product.oldPrice;
                         const inStock = product.inStock !== false;
                         return (
-                          <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                          <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                             <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{
                               /* Visual match com ProductCard do ProductShelf: gradient + inner shine. */
                               background: isDark
-                                ? "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)"
+                                ? "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)"
                                 : "linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.01) 100%)",
-                              boxShadow: isDark ? "inset 0 1px 0 rgba(255,255,255,0.05)" : "inset 0 1px 0 rgba(255,255,255,0.6)",
+                              boxShadow: isDark ? "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)" : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.6)",
                             }}>
                               {isDark && (
-                                <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)" }} />
+                                <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)" }} />
                               )}
                               <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className={`w-full h-full object-contain p-5 group-hover:scale-[1.05] transition-transform duration-500 relative z-[1] ${!inStock ? "opacity-50" : ""}`} />
                               {/* Badges sobre imagem */}
@@ -1495,7 +1495,7 @@ export function ProfilePage() {
                     <button onClick={() => setAddressModal({ open: true, editing: null })} className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.addresses.length === 0 ? (
-                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <MapPin size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum endereço cadastrado</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione um endereço pra receber seus pedidos.</p>
@@ -1504,7 +1504,7 @@ export function ProfilePage() {
                   ) : (
                   <div className="space-y-2">
                     {user.addresses.map((a) => (
-                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: a.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: a.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
                         <div className="flex items-start gap-3 min-w-0 flex-1">
                           <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
                             <MapPin size={15} className="text-primary" />
@@ -1526,7 +1526,7 @@ export function ProfilePage() {
                           {!a.isDefault && (
                             <button onClick={() => setDefaultAddress(a.id)} className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer flex items-center gap-1" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                           )}
-                          <button onClick={() => setAddressModal({ open: true, editing: a })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                          <button onClick={() => setAddressModal({ open: true, editing: a })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                           {user.addresses.length > 1 && (
                             <button onClick={() => askConfirm({
                               title: `Remover endereço "${a.label}"?`,
@@ -1534,7 +1534,7 @@ export function ProfilePage() {
                               confirmLabel: "Remover endereço",
                               destructive: true,
                               action: () => removeAddress(a.id),
-                            })} className="px-3 py-1.5 text-foreground/55 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
+                            })} className="px-3 py-1.5 text-foreground/55 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
                           )}
                         </div>
                       </div>
@@ -1565,7 +1565,7 @@ export function ProfilePage() {
                     const daysToBday = Math.ceil((thisBday.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
                     if (daysToBday > 30) return null;
                     return (
-                      <div className="flex items-center gap-3 p-4 mb-3" style={{ borderRadius: "14px", background: "linear-gradient(135deg, rgba(255,43,46,0.06) 0%, rgba(255,255,255,0.02) 60%)", border: "1px solid rgba(255,43,46,0.2)" }}>
+                      <div className="flex items-center gap-3 p-4 mb-3" style={{ borderRadius: "14px", background: "linear-gradient(135deg, rgba(255,43,46,0.06) 0%, rgba(var(--foreground-rgb), 0.02) 60%)", border: "1px solid rgba(255,43,46,0.2)" }}>
                         <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
                           <Sparkles size={16} className="text-primary fill-primary/30" />
                         </div>
@@ -1579,11 +1579,11 @@ export function ProfilePage() {
                     );
                   })()}
 
-                  <div className="p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                  <div className="p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome completo</label>
-                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="flex items-center gap-1 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -1591,15 +1591,15 @@ export function ProfilePage() {
                           <Check size={11} className="text-green-500" />
                           <span className="text-green-500" style={{ letterSpacing: "0.08em" }}>verificado</span>
                         </label>
-                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
-                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Data de nascimento</label>
-                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
+                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
                       </div>
                       <div className="md:col-span-2">
                         <label className="flex items-center gap-1.5 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -1607,7 +1607,7 @@ export function ProfilePage() {
                           <Shield size={11} className="text-foreground/45" />
                           <span className="text-foreground/45" style={{ letterSpacing: "0.06em" }}>não editável</span>
                         </label>
-                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-60 cursor-not-allowed" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)", background: isDark ? "rgba(255,255,255,0.015)" : "rgba(0,0,0,0.015)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-60 cursor-not-allowed" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.015)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -1615,7 +1615,7 @@ export function ProfilePage() {
                         style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                       >Salvar alterações</button>
                       <button className="px-4 py-2.5 text-foreground/65 hover:text-foreground transition-all cursor-pointer"
-                        style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                        style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                       >Cancelar</button>
                     </div>
                   </div>
@@ -1629,7 +1629,7 @@ export function ProfilePage() {
                     <button onClick={() => setCardModal({ open: true, editing: null })} className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.cards.length === 0 ? (
-                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <CreditCard size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum cartão salvo</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione pra checkout mais rápido. Seus dados ficam criptografados.</p>
@@ -1645,7 +1645,7 @@ export function ProfilePage() {
                       const isExpired = monthsLeft < 0;
                       const isExpiringSoon = !isExpired && monthsLeft <= 3;
                       return (
-                        <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                        <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
                           <CardBrandLogo brand={c.brand} className="flex-shrink-0" style={{ width: "44px", height: "28px", borderRadius: "5px", overflow: "hidden", display: "block", objectFit: "cover" }} />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-0.5 flex-wrap">
@@ -1660,14 +1660,14 @@ export function ProfilePage() {
                             {!c.isDefault && (
                               <button onClick={() => setDefaultCard(c.id)} className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                             )}
-                            <button onClick={() => setCardModal({ open: true, editing: c })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                            <button onClick={() => setCardModal({ open: true, editing: c })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                             <button onClick={() => askConfirm({
                               title: `Remover cartão •••• ${c.last4}?`,
                               description: `${c.brand || "Cartão"} · ${c.name} · Validade ${c.expiry}. Você precisará adicioná-lo de novo se quiser usar.`,
                               confirmLabel: "Remover cartão",
                               destructive: true,
                               action: () => removeCard(c.id),
-                            })} className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                            })} className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                           </div>
                         </div>
                       );
@@ -1703,7 +1703,7 @@ export function ProfilePage() {
                       <ChevronRight size={16} className="text-foreground/35 group-hover:text-green-500 group-hover:translate-x-0.5 transition-all" />
                     </a>
                     <button className="group cursor-pointer flex items-center gap-3 p-4 transition-all hover:bg-white/[0.025] profile-card text-left"
-                      style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                      style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                     >
                       <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
                         <User size={15} className="text-primary" />
@@ -1724,7 +1724,7 @@ export function ProfilePage() {
                       { title: "E-mail", desc: "suporte@pcyes.com.br · resposta em até 24h", icon: Info },
                     ].map((item) => (
                       <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
-                        style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                        style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
                         <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
                           <item.icon size={15} className="text-primary" />
@@ -1768,7 +1768,7 @@ export function ProfilePage() {
                       { title: "Excluir minha conta", desc: "Solicite a remoção permanente dos seus dados", icon: XIcon, danger: true },
                     ].map((item) => (
                       <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
-                        style={{ borderRadius: "14px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                        style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
                         <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(255,43,46,0.08)" }}>
                           <item.icon size={15} className={item.danger ? "text-red-400" : "text-primary"} />

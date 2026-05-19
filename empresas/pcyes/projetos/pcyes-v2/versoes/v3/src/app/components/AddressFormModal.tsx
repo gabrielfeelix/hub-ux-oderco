@@ -50,8 +50,8 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
   const inputStyle: React.CSSProperties = {
     padding: "11px 13px",
     borderRadius: "10px",
-    border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
-    background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
+    border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)",
+    background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)",
     fontFamily: "var(--font-family-inter)",
     fontSize: "13px",
     fontWeight: 500,
@@ -67,7 +67,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
     fontWeight: 700,
     letterSpacing: "0.14em",
     textTransform: "uppercase",
-    color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)",
+    color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)",
   };
 
   return (
@@ -81,7 +81,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
           color: isDark ? "#fafafa" : "#0a0a0a",
         }}
       >
-        <div className="px-6 pt-6 pb-4 flex items-center gap-3" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+        <div className="px-6 pt-6 pb-4 flex items-center gap-3" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
           <div className="flex items-center justify-center" style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(255,43,46,0.12)" }}>
             <MapPin size={18} className="text-primary" />
           </div>
@@ -89,7 +89,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             <DialogTitle style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600, color: isDark ? "#fafafa" : "#0a0a0a" }}>
               {initial ? "Editar endereço" : "Adicionar endereço"}
             </DialogTitle>
-            <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+            <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)" }}>
               Será usado nas suas compras e entregas.
             </DialogDescription>
           </div>
@@ -138,7 +138,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>Complemento <span style={{ color: "rgba(255,255,255,0.35)", fontWeight: 500, letterSpacing: "0.04em" }}>(opcional)</span></label>
+            <label style={labelStyle}>Complemento <span style={{ color: "rgba(var(--foreground-rgb), 0.35)", fontWeight: 500, letterSpacing: "0.04em" }}>(opcional)</span></label>
             <input
               style={inputStyle}
               placeholder="Sala, apto..."
@@ -183,7 +183,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
               className="accent-primary"
               style={{ width: 16, height: 16 }}
             />
-            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.8)" }}>
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(var(--foreground-rgb), 0.8)" : "rgba(0,0,0,0.8)" }}>
               Definir como endereço padrão
             </span>
           </label>
@@ -195,11 +195,11 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
               className="px-4 py-2 cursor-pointer hover:brightness-110 transition-all"
               style={{
                 borderRadius: 10,
-                background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)",
+                background: isDark ? "rgba(var(--foreground-rgb), 0.05)" : "rgba(0,0,0,0.04)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13px",
                 fontWeight: 600,
-                color: isDark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.85)",
+                color: isDark ? "rgba(var(--foreground-rgb), 0.85)" : "rgba(0,0,0,0.85)",
               }}
             >
               Cancelar

@@ -102,9 +102,9 @@ export function DropDoDiaSection() {
                   style={{
                     borderRadius: "24px",
                     background:
-                      "radial-gradient(circle at 18% 20%, rgba(255,90,80,0.18) 0%, transparent 55%), linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+                      "radial-gradient(circle at 18% 20%, rgba(255,90,80,0.18) 0%, transparent 55%), linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                     border: "1px solid rgba(255,90,80,0.25)",
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 24px 60px -24px rgba(0,0,0,0.5)",
+                    boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 24px 60px -24px rgba(0,0,0,0.5)",
                   }}
                 >
                   <Link to={`/produto/${product.id}`} className="block">
@@ -180,7 +180,7 @@ export function DropDoDiaSection() {
                           style={{
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "13px",
-                            color: "rgba(255,255,255,0.38)",
+                            color: "rgba(var(--foreground-rgb), 0.38)",
                           }}
                         >
                           {product.oldPrice}
@@ -202,7 +202,7 @@ export function DropDoDiaSection() {
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "12px",
                             fontWeight: 700,
-                            color: "rgba(255,255,255,0.55)",
+                            color: "rgba(var(--foreground-rgb), 0.55)",
                             letterSpacing: "0.04em",
                           }}
                         >
@@ -214,7 +214,7 @@ export function DropDoDiaSection() {
                         style={{
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "12.5px",
-                          color: "rgba(255,255,255,0.55)",
+                          color: "rgba(var(--foreground-rgb), 0.55)",
                         }}
                       >
                         ou {product.price} em 10x sem juros

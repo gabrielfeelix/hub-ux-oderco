@@ -87,8 +87,8 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
   const inputStyle: React.CSSProperties = {
     padding: "11px 13px",
     borderRadius: "10px",
-    border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
-    background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
+    border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)",
+    background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)",
     fontFamily: "var(--font-family-inter)",
     fontSize: "13px",
     fontWeight: 500,
@@ -104,7 +104,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
     fontWeight: 700,
     letterSpacing: "0.14em",
     textTransform: "uppercase",
-    color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)",
+    color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)",
   };
 
   return (
@@ -118,7 +118,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
           color: isDark ? "#fafafa" : "#0a0a0a",
         }}
       >
-        <div className="px-6 pt-6 pb-4 flex items-center gap-3" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+        <div className="px-6 pt-6 pb-4 flex items-center gap-3" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
           <div className="flex items-center justify-center" style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(255,43,46,0.12)" }}>
             <CreditCard size={18} className="text-primary" />
           </div>
@@ -126,7 +126,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
             <DialogTitle style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600, color: isDark ? "#fafafa" : "#0a0a0a" }}>
               {initial ? "Editar cartão" : "Adicionar cartão"}
             </DialogTitle>
-            <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+            <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)" }}>
               Os dados ficam salvos pra agilizar o checkout.
             </DialogDescription>
           </div>
@@ -150,13 +150,13 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                 backfaceVisibility: "hidden",
                 borderRadius: 16,
                 background: BRAND_THEMES[brand.toLowerCase().replace(/\s+/g, "")] ?? "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                boxShadow: "0 18px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.12)",
+                boxShadow: "0 18px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
                 transition: "background 0.4s ease",
               }}
             >
               <div className="flex items-start justify-between">
-                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.6)" }}>
+                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.6)" }}>
                   {data.isDefault ? "PADRÃO" : " "}
                 </span>
                 {brand ? (
@@ -165,11 +165,11 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                   <span style={{
                     padding: "4px 10px",
                     borderRadius: 6,
-                    background: "rgba(255,255,255,0.08)",
+                    background: "rgba(var(--foreground-rgb), 0.08)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "10px",
                     fontWeight: 700,
-                    color: "rgba(255,255,255,0.6)",
+                    color: "rgba(var(--foreground-rgb), 0.6)",
                     letterSpacing: "0.1em",
                   }}>—</span>
                 )}
@@ -180,7 +180,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                   fontSize: "19px",
                   fontWeight: 600,
                   letterSpacing: "0.12em",
-                  color: "rgba(255,255,255,0.95)",
+                  color: "rgba(var(--foreground-rgb), 0.95)",
                   fontVariantNumeric: "tabular-nums",
                 }}
               >
@@ -188,14 +188,14 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
               </div>
               <div className="flex items-end justify-between gap-3">
                 <div className="min-w-0">
-                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.45)" }}>NOME</p>
-                  <p className="truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600, color: "rgba(255,255,255,0.92)", letterSpacing: "0.04em", marginTop: 3 }}>
+                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.45)" }}>NOME</p>
+                  <p className="truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600, color: "rgba(var(--foreground-rgb), 0.92)", letterSpacing: "0.04em", marginTop: 3 }}>
                     {data.name.toUpperCase() || "SEU NOME"}
                   </p>
                 </div>
                 <div className="text-right shrink-0">
-                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.45)" }}>VALIDADE</p>
-                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600, color: "rgba(255,255,255,0.92)", marginTop: 3, fontVariantNumeric: "tabular-nums" }}>
+                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.45)" }}>VALIDADE</p>
+                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600, color: "rgba(var(--foreground-rgb), 0.92)", marginTop: 3, fontVariantNumeric: "tabular-nums" }}>
                     {data.expiry || "MM/AA"}
                   </p>
                 </div>
@@ -210,13 +210,13 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                 transform: "rotateY(180deg)",
                 borderRadius: 16,
                 background: "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                boxShadow: "0 18px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.12)",
+                boxShadow: "0 18px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
               }}
             >
               <div className="mt-6 h-10 w-full" style={{ background: "rgba(0,0,0,0.6)" }} />
               <div className="flex-1 px-5 pt-6 flex flex-col justify-center gap-2">
-                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.55)" }}>
+                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                   CÓDIGO DE SEGURANÇA (CVV)
                 </span>
                 <div
@@ -225,7 +225,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                     height: 36,
                     minWidth: 80,
                     borderRadius: 6,
-                    background: "rgba(255,255,255,0.92)",
+                    background: "rgba(var(--foreground-rgb), 0.92)",
                     color: "#1a1a1c",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "16px",
@@ -238,7 +238,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                 </div>
               </div>
               <div className="px-5 pb-3">
-                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", color: "rgba(255,255,255,0.45)" }}>
+                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", color: "rgba(var(--foreground-rgb), 0.45)" }}>
                   Esse código está atrás do seu cartão, ao lado da assinatura.
                 </span>
               </div>
@@ -306,7 +306,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
               className="accent-primary"
               style={{ width: 16, height: 16 }}
             />
-            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.8)" }}>
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(var(--foreground-rgb), 0.8)" : "rgba(0,0,0,0.8)" }}>
               Definir como cartão padrão
             </span>
           </label>
@@ -318,11 +318,11 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
               className="px-4 py-2 cursor-pointer hover:brightness-110 transition-all"
               style={{
                 borderRadius: 10,
-                background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)",
+                background: isDark ? "rgba(var(--foreground-rgb), 0.05)" : "rgba(0,0,0,0.04)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13px",
                 fontWeight: 600,
-                color: isDark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.85)",
+                color: isDark ? "rgba(var(--foreground-rgb), 0.85)" : "rgba(0,0,0,0.85)",
               }}
             >
               Cancelar

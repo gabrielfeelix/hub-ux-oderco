@@ -26,21 +26,21 @@ export function CouponBanner() {
             background:
               "linear-gradient(110deg, rgba(225,6,0,0.18) 0%, rgba(255,90,80,0.08) 50%, rgba(225,6,0,0.18) 100%)",
             border: "1px solid rgba(255,90,80,0.35)",
-            boxShadow: "0 14px 40px -16px rgba(225,6,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06)",
+            boxShadow: "0 14px 40px -16px rgba(225,6,0,0.45), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
           }}
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.08]"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.9) 1px, transparent 1px)",
+                "linear-gradient(rgba(var(--foreground-rgb), 0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--foreground-rgb), 0.9) 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }}
           />
           <motion.span
             className="pointer-events-none absolute inset-y-0 w-[140px]"
             style={{
-              background: "linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)",
+              background: "linear-gradient(110deg, transparent 0%, rgba(var(--foreground-rgb), 0.18) 50%, transparent 100%)",
             }}
             initial={{ x: "-50%" }}
             animate={{ x: "180%" }}
@@ -73,7 +73,7 @@ export function CouponBanner() {
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13px",
-                  color: "rgba(255,255,255,0.75)",
+                  color: "rgba(var(--foreground-rgb), 0.75)",
                   lineHeight: 1.3,
                 }}
               >

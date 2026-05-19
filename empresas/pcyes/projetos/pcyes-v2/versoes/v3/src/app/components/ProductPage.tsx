@@ -134,12 +134,12 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
         style={{
           borderRadius: "20px",
           background: isDark
-            ? "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)"
+            ? "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)"
             : "linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.01) 100%)",
-          border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.06)",
+          border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.06)",
           boxShadow: isDark
-            ? "inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 60px -20px rgba(0,0,0,0.4)"
-            : "inset 0 1px 0 rgba(255,255,255,0.6), 0 24px 60px -20px rgba(0,0,0,0.08)",
+            ? "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.4)"
+            : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.6), 0 24px 60px -20px rgba(0,0,0,0.08)",
         }}
         onClick={() => setZoomed(true)}
         onTouchStart={handleTouchStart}
@@ -148,7 +148,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)",
+            background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
             borderRadius: "20px",
           }}
         />
@@ -400,19 +400,19 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
           className="w-full text-foreground placeholder-foreground/30 px-4 py-3 pr-11 focus:outline-none transition-all"
           style={{
             borderRadius: "12px",
-            border: "1px solid rgba(255,255,255,0.10)",
-            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.10)",
+            background: "rgba(var(--foreground-rgb), 0.04)",
             fontFamily: "var(--font-family-inter)",
             fontSize: "14px",
             letterSpacing: "0.02em",
           }}
           onFocus={(e) => {
             e.currentTarget.style.borderColor = "rgba(34,197,94,0.55)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+            e.currentTarget.style.background = "rgba(var(--foreground-rgb), 0.06)";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+            e.currentTarget.style.borderColor = "rgba(var(--foreground-rgb), 0.10)";
+            e.currentTarget.style.background = "rgba(var(--foreground-rgb), 0.04)";
           }}
         />
         <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
@@ -767,15 +767,15 @@ function StickyPriceCard({
         data-purchase-card="product-page"
         style={{
           borderRadius: "20px",
-          background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-          border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+          background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+          border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+          boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
         }}
       >
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            background: "radial-gradient(circle at 30% 0%, rgba(255,255,255,0.05) 0%, transparent 55%)",
+            background: "radial-gradient(circle at 30% 0%, rgba(var(--foreground-rgb), 0.05) 0%, transparent 55%)",
             borderRadius: "20px",
           }}
         />
@@ -790,7 +790,7 @@ function StickyPriceCard({
             <div className="flex items-center gap-2 mb-1.5">
               <span
                 className="line-through leading-none"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(255,255,255,0.38)" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.38)" }}
               >
                 {product.oldPrice}
               </span>
@@ -1596,7 +1596,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                 className="grid w-full max-h-[88vh] overflow-hidden border border-white/10 shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
                 style={{
                   borderRadius: "18px",
-                  background: isDark ? "rgba(16,16,17,0.98)" : "rgba(255,255,255,0.98)",
+                  background: isDark ? "rgba(16,16,17,0.98)" : "rgba(var(--foreground-rgb), 0.98)",
                 }}
                 onClick={(e) => e.stopPropagation()}
               >
@@ -1803,9 +1803,9 @@ function ProductStandardDescription({ product, images }: { product: any; images:
     `${product.name} foi desenvolvido para entregar desempenho, acabamento e confiabilidade no uso diário.`;
 
   const productImageBg = {
-    background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
-    border: "1px solid rgba(255,255,255,0.08)",
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+    background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
+    border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+    boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
   } as const;
 
   return (
@@ -1816,7 +1816,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           style={{
             borderRadius: "30px",
             background: "linear-gradient(180deg, #161617 0%, #131314 100%)",
-            border: "1px solid rgba(255,255,255,0.06)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.06)",
           }}
         >
           <section className="px-6 py-10 text-center md:px-10 md:py-14">
@@ -1833,7 +1833,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
-                  background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)",
+                  background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
                   borderRadius: "24px",
                 }}
               />
@@ -1893,7 +1893,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                   <div
                     className="pointer-events-none absolute inset-0"
                     style={{
-                      background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)",
+                      background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
                       borderRadius: "22px",
                     }}
                   />
@@ -1910,7 +1910,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             <h3 className="mb-6 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3.4vw, 32px)", lineHeight: 1.08, fontWeight: 700, letterSpacing: "-0.02em" }}>
               Veja {product.name.split(" ").slice(0, 4).join(" ")} em ação
             </h3>
-            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "22px", background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "22px", background: "#0a0a0a", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
               <iframe
                 className="absolute inset-0 h-full w-full"
                 src={`https://www.youtube.com/embed/${product.id % 2 === 0 ? "dQw4w9WgXcQ" : "M7lc1UVf-VE"}?rel=0&modestbranding=1`}
@@ -2433,15 +2433,15 @@ export function ProductPage() {
                       className="relative overflow-hidden aspect-[5/6] mb-4 transition-all duration-300"
                       style={{
                         borderRadius: "20px",
-                        background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
-                        border: "1px solid rgba(255,255,255,0.08)",
-                        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                        background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
+                        border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                        boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                       }}
                     >
                       <div
                         className="pointer-events-none absolute inset-0"
                         style={{
-                          background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)",
+                          background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
                           borderRadius: "20px",
                         }}
                       />
@@ -2492,14 +2492,14 @@ export function ProductPage() {
                       </h3>
                       <div className="mt-3">
                         {rProduct.oldPrice && (
-                          <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(255,255,255,0.38)" }}>
+                          <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.38)" }}>
                             {rProduct.oldPrice}
                           </p>
                         )}
                         <p className="text-white leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.015em" }}>
                           {rProduct.price}
                         </p>
-                        <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
+                        <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                           No PIX ou 10x de {rInstallment}
                         </p>
                       </div>
@@ -2519,7 +2519,7 @@ export function ProductPage() {
       }`}>
         <div
           className="px-4 py-3 flex items-center gap-3 border-t border-foreground/10"
-          style={{ background: isDark ? "rgba(16,16,17,0.95)" : "rgba(255,255,255,0.95)", backdropFilter: "blur(20px)" }}
+          style={{ background: isDark ? "rgba(16,16,17,0.95)" : "rgba(var(--foreground-rgb), 0.95)", backdropFilter: "blur(20px)" }}
         >
           <div className="flex-1 min-w-0">
             <p className="text-foreground/45 text-xs truncate" style={{ fontFamily: "var(--font-family-inter)" }}>

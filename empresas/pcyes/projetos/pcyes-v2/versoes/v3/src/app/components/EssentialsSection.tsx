@@ -46,18 +46,18 @@ function EssentialCard({ product }: EssentialCardProps) {
     <article
       className="essential-card group relative grid grid-cols-1 md:grid-cols-[2fr_3fr] overflow-hidden transition-all duration-300"
       style={{
-        background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
-        border: "1px solid rgba(255, 255, 255, 0.08)",
+        background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
+        border: "1px solid rgba(var(--foreground-rgb), 0.08)",
         borderRadius: "22px",
         minHeight: "460px",
-        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 30px 60px -24px rgba(0,0,0,0.7)",
+        boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 30px 60px -24px rgba(0,0,0,0.7)",
       }}
     >
       {/* Inner shine */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: "radial-gradient(circle at 25% 15%, rgba(255,255,255,0.06) 0%, transparent 55%)",
+          background: "radial-gradient(circle at 25% 15%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
           borderRadius: "22px",
         }}
       />
@@ -99,7 +99,7 @@ function EssentialCard({ product }: EssentialCardProps) {
               fontFamily: "var(--font-family-inter)",
               fontSize: "13px",
               lineHeight: 1.55,
-              color: "rgba(255, 255, 255, 0.55)",
+              color: "rgba(var(--foreground-rgb), 0.55)",
             }}
           >
             {shortDescription}
@@ -113,7 +113,7 @@ function EssentialCard({ product }: EssentialCardProps) {
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12px",
                 fontWeight: 500,
-                color: "rgba(255, 255, 255, 0.6)",
+                color: "rgba(var(--foreground-rgb), 0.6)",
               }}
             >
               Cores:
@@ -129,7 +129,7 @@ function EssentialCard({ product }: EssentialCardProps) {
                   background: s.color,
                   border: selectedSwatchId === s.productId
                     ? "2px solid rgba(225, 6, 0, 0.9)"
-                    : "1px solid rgba(255, 255, 255, 0.22)",
+                    : "1px solid rgba(var(--foreground-rgb), 0.22)",
                   boxShadow: selectedSwatchId === s.productId
                     ? "0 0 10px rgba(225, 6, 0, 0.5)"
                     : "none",
@@ -148,7 +148,7 @@ function EssentialCard({ product }: EssentialCardProps) {
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12px",
                 fontWeight: 500,
-                color: "rgba(255, 255, 255, 0.6)",
+                color: "rgba(var(--foreground-rgb), 0.6)",
               }}
             >
               Destaques:
@@ -177,7 +177,7 @@ function EssentialCard({ product }: EssentialCardProps) {
           className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-xl px-5 py-3.5"
           style={{
             background: "rgba(0, 0, 0, 0.45)",
-            border: "1px solid rgba(255, 255, 255, 0.06)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.06)",
           }}
         >
           <span

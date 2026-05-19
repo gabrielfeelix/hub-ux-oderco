@@ -31,7 +31,7 @@ export function CardBrandLogo({ brand, className, style }: { brand: string; clas
     : "—";
   return (
     <div className={className} style={{ ...style, display: "flex", alignItems: "center", justifyContent: "center", background: bg }}>
-      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.04em", textTransform: "uppercase", color: "rgba(255,255,255,0.95)", textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}>
+      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.04em", textTransform: "uppercase", color: "rgba(var(--foreground-rgb), 0.95)", textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}>
         {label}
       </span>
     </div>

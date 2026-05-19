@@ -747,7 +747,7 @@ export function ProductsPage() {
                 className={`relative flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-200 hover:scale-110 cursor-pointer ${active ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""}`}
                 style={{
                   backgroundColor: color,
-                  borderColor: active ? "var(--primary)" : (isLight ? "rgba(0,0,0,0.14)" : "rgba(255,255,255,0.16)"),
+                  borderColor: active ? "var(--primary)" : (isLight ? "rgba(0,0,0,0.14)" : "rgba(var(--foreground-rgb), 0.16)"),
                   boxShadow: active ? "0 8px 20px rgba(255,43,46,0.26)" : "0 1px 2px rgba(0,0,0,0.08)",
                 }}
                 title={`${label} (${count})`}
@@ -1051,9 +1051,9 @@ export function ProductsPage() {
                           transition={{ duration: 0.3, delay: Math.min(i * 0.025, 0.35) }}
                           className="group relative"
                         >
-                          <div className={`relative overflow-hidden mb-4 aspect-[5/6] transition-all neon-hover-red ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "20px", background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)" }}>
+                          <div className={`relative overflow-hidden mb-4 aspect-[5/6] transition-all neon-hover-red ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "20px", background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)", border: "1px solid rgba(var(--foreground-rgb), 0.08)", boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)" }}>
                             {/* Inner shine */}
-                            <div className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)", borderRadius: "20px" }} />
+                            <div className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "20px" }} />
                             <Link to={`/produto/${displayProduct.id}`} className="block h-full">
                               <div className="flex h-full w-full items-center justify-center p-4 sm:p-5 lg:p-6">
                                 <ImageWithFallback
@@ -1089,9 +1089,9 @@ export function ProductsPage() {
                               </span>
                             ) : (
                               <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full px-2.5 py-1 backdrop-blur-md"
-                                style={{ background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                                style={{ background: "rgba(0,0,0,0.55)", border: "1px solid rgba(var(--foreground-rgb), 0.1)" }}>
                                 <Star size={11} className="fill-yellow-400 text-yellow-400" />
-                                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 700, color: "rgba(255,255,255,0.95)" }}>
+                                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 700, color: "rgba(var(--foreground-rgb), 0.95)" }}>
                                   {displayProduct.rating.toFixed(1)}
                                 </span>
                               </div>
@@ -1170,7 +1170,7 @@ export function ProductsPage() {
                                       className="h-3 w-3 rounded-full cursor-pointer transition-all hover:scale-110"
                                       style={{
                                         backgroundColor: sw.color,
-                                        border: sw.productId === displayProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(255,255,255,0.18)",
+                                        border: sw.productId === displayProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
                                         boxShadow: sw.productId === displayProduct.id ? "0 0 8px rgba(225,6,0,0.5)" : "none",
                                       }}
                                       title={sw.label}
@@ -1185,14 +1185,14 @@ export function ProductsPage() {
                                 </div>
                               )}
                               {displayProduct.oldPrice && (
-                                <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "rgba(255,255,255,0.38)" }}>
+                                <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "rgba(var(--foreground-rgb), 0.38)" }}>
                                   {displayProduct.oldPrice}
                                 </p>
                               )}
                               <p className="text-white leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.015em" }}>
                                 {displayProduct.price}
                               </p>
-                              <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
+                              <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.6)" }}>
                                 No PIX ou 10x de {(() => {
                                   const inst = (displayProduct.priceNum / 10);
                                   return `R$ ${inst.toFixed(2).replace(".", ",")}`;
@@ -1353,7 +1353,7 @@ export function ProductsPage() {
             />
             <motion.div initial={{ x: "-100%" }} animate={{ x: 0 }} exit={{ x: "-100%" }} transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="fixed left-0 top-0 bottom-0 w-[320px] max-w-[85vw] z-50 overflow-y-auto p-6"
-              style={{ background: isDark ? "#161617" : "#fff", borderRight: `1px solid ${isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)"}` }}
+              style={{ background: isDark ? "#161617" : "#fff", borderRight: `1px solid ${isDark ? "rgba(var(--foreground-rgb), 0.06)" : "rgba(0,0,0,0.06)"}` }}
             >
               <div className="flex items-center justify-between mb-8">
                 <span className="text-foreground/70 tracking-[0.15em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-bold)" }}>FILTROS</span>
@@ -1391,7 +1391,7 @@ export function ProductsPage() {
             <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 16 }}
               transition={{ type: "spring", damping: 26, stiffness: 320 }}
               className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[1040px] md:max-w-[95vw] md:max-h-[90vh] z-50 overflow-y-auto p-6 md:p-8 shadow-2xl"
-              style={{ background: "#0f0f10", borderRadius: "22px", border: "1px solid rgba(255,255,255,0.06)" }}
+              style={{ background: "#0f0f10", borderRadius: "22px", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
             >
               <button onClick={() => setQuickViewProduct(null)}
                 className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-white/55 hover:text-white hover:bg-white/8 transition-colors z-20 cursor-pointer"
@@ -1410,10 +1410,10 @@ export function ProductsPage() {
                           className="aspect-square overflow-hidden transition-all cursor-pointer"
                           style={{
                             borderRadius: "12px",
-                            background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+                            background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                             border: idx === quickViewImageIndex
                               ? "2px solid rgba(225,6,0,0.85)"
-                              : "1px solid rgba(255,255,255,0.06)",
+                              : "1px solid rgba(var(--foreground-rgb), 0.06)",
                           }}
                           aria-label={`Imagem ${idx + 1}`}
                         >
@@ -1427,14 +1427,14 @@ export function ProductsPage() {
                     className="relative flex-1 aspect-square overflow-hidden"
                     style={{
                       borderRadius: "18px",
-                      background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                      background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
+                      border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                      boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                     }}
                   >
                     <div
                       className="pointer-events-none absolute inset-0"
-                      style={{ background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)", borderRadius: "18px" }}
+                      style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "18px" }}
                     />
                     <ImageWithFallback
                       src={quickViewImages[quickViewImageIndex]}
@@ -1482,7 +1482,7 @@ export function ProductsPage() {
                       {quickViewProduct.price}
                     </p>
                     {quickViewProduct.oldPrice && (
-                      <p className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", color: "rgba(255,255,255,0.35)" }}>
+                      <p className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", color: "rgba(var(--foreground-rgb), 0.35)" }}>
                         {quickViewProduct.oldPrice}
                       </p>
                     )}
@@ -1497,7 +1497,7 @@ export function ProductsPage() {
                           <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${urgent ? "bg-[#ff2419]" : "bg-emerald-500"}`} />
                           <span className={`relative inline-flex h-2 w-2 rounded-full ${urgent ? "bg-[#ff2419]" : "bg-emerald-500"}`} />
                         </span>
-                        <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600, color: urgent ? "#ff5a52" : "rgba(255,255,255,0.85)" }}>
+                        <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600, color: urgent ? "#ff5a52" : "rgba(var(--foreground-rgb), 0.85)" }}>
                           {urgent ? `Últimas ${stockLeft} unidades em estoque` : `${stockLeft} em estoque · envio em 24h`}
                         </span>
                       </div>
@@ -1506,7 +1506,7 @@ export function ProductsPage() {
 
                   {quickViewSwatches.length > 1 && (
                     <div className="mb-6">
-                      <p className="mb-2.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>
+                      <p className="mb-2.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500, color: "rgba(var(--foreground-rgb), 0.6)" }}>
                         Cores:
                       </p>
                       <div className="flex items-center gap-2">
@@ -1522,7 +1522,7 @@ export function ProductsPage() {
                             className="h-4 w-4 rounded-full cursor-pointer transition-all hover:scale-110"
                             style={{
                               backgroundColor: sw.color,
-                              border: sw.productId === quickViewProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(255,255,255,0.22)",
+                              border: sw.productId === quickViewProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.22)",
                               boxShadow: sw.productId === quickViewProduct.id ? "0 0 10px rgba(225,6,0,0.5)" : "none",
                             }}
                             title={sw.label}
@@ -1534,7 +1534,7 @@ export function ProductsPage() {
 
                   {quickViewBullets.length > 0 && (
                     <div className="mb-6">
-                      <h4 className="font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.18em", color: "rgba(255,255,255,0.55)" }}>
+                      <h4 className="font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                         <span className="w-1 h-1 rounded-full bg-primary" />
                         SOBRE O PRODUTO
                       </h4>
@@ -1550,7 +1550,7 @@ export function ProductsPage() {
                             <span className="flex-shrink-0 w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center mt-0.5">
                               <Check size={9} className="text-primary" strokeWidth={2.5} />
                             </span>
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.7)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.6", color: "rgba(var(--foreground-rgb), 0.7)" }}>
                               {bullet}
                             </span>
                           </motion.li>

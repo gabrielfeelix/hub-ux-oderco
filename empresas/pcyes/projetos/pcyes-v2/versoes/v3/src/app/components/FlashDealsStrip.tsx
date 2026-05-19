@@ -80,14 +80,14 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "10px",
                 fontWeight: 600,
-                color: "rgba(255, 255, 255, 0.45)",
+                color: "rgba(var(--foreground-rgb), 0.45)",
                 letterSpacing: "0.06em",
               }}
             >
               {u.label}
             </span>
             {i < units.length - 1 && (
-              <span style={{ color: "rgba(255, 255, 255, 0.25)" }}>:</span>
+              <span style={{ color: "rgba(var(--foreground-rgb), 0.25)" }}>:</span>
             )}
           </span>
         ))}
@@ -127,16 +127,16 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
           className="deal-card-img relative aspect-[5/6] overflow-hidden transition-all duration-300"
           style={{
             background:
-              "linear-gradient(140deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%)",
+              "linear-gradient(140deg, rgba(var(--foreground-rgb), 0.07) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
             borderRadius: "22px",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.05)",
           }}
         >
           <div
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.06) 0%, transparent 55%)",
+                "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
               borderRadius: "22px",
             }}
           />
@@ -185,8 +185,8 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
               className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
               style={{
                 background: isFavorited ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
-                border: isFavorited ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(255, 255, 255, 0.15)",
-                color: isFavorited ? "#ff2419" : "rgba(255, 255, 255, 0.85)",
+                border: isFavorited ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
+                color: isFavorited ? "#ff2419" : "rgba(var(--foreground-rgb), 0.85)",
                 backdropFilter: "blur(8px)",
               }}
               aria-label="Favoritar"
@@ -237,7 +237,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13px",
-                  color: "rgba(255, 255, 255, 0.38)",
+                  color: "rgba(var(--foreground-rgb), 0.38)",
                 }}
               >
                 {product.oldPrice ?? `R$ ${oldPriceNum.toFixed(2).replace(".", ",")}`}
@@ -254,7 +254,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
             >
               {product.price}
             </p>
-            <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
+            <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}>
               No PIX ou 10x de R$ {(product.priceNum / 10).toFixed(2).replace(".", ",")}
             </p>
           </div>
@@ -277,7 +277,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
                 className="inline-block h-3 w-3 rounded-full cursor-pointer transition-all hover:scale-110"
                 style={{
                   background: s.color,
-                  border: active ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(255, 255, 255, 0.18)",
+                  border: active ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
                   boxShadow: active ? "0 0 8px rgba(225,6,0,0.5)" : "none",
                 }}
                 aria-label={s.label}

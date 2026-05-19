@@ -220,12 +220,12 @@ export function CategoryRail() {
                           ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, rgba(225, 6, 0, 0) 100%)"
                           : isHovered
                           ? "rgba(225, 6, 0, 0.08)"
-                          : "rgba(255, 255, 255, 0.04)",
+                          : "rgba(var(--foreground-rgb), 0.04)",
                         border: isActive
                           ? "1.5px solid rgba(225, 6, 0, 0.85)"
                           : isHovered
                           ? "1px solid rgba(225, 6, 0, 0.5)"
-                          : "1px solid rgba(255, 255, 255, 0.10)",
+                          : "1px solid rgba(var(--foreground-rgb), 0.10)",
                         boxShadow: isActive
                           ? "0 0 0 6px rgba(225, 6, 0, 0.08), 0 0 28px -2px rgba(225, 6, 0, 0.55)"
                           : isHovered
@@ -244,7 +244,7 @@ export function CategoryRail() {
                               ? "#ff2419"
                               : isHovered
                               ? "rgba(255, 90, 80, 0.95)"
-                              : "rgba(255, 255, 255, 0.78)",
+                              : "rgba(var(--foreground-rgb), 0.78)",
                             transition: "color 260ms ease",
                             flexShrink: 0,
                             filter: isActive

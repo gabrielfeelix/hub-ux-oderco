@@ -54,10 +54,10 @@ function formatBRL(n: number): string {
   return `R$ ${n.toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
 }
 
-const cardBg = "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)";
-const cardBorder = "1px solid rgba(255,255,255,0.08)";
-const inputBg = "rgba(255,255,255,0.03)";
-const inputBorder = "1px solid rgba(255,255,255,0.1)";
+const cardBg = "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)";
+const cardBorder = "1px solid rgba(var(--foreground-rgb), 0.08)";
+const inputBg = "rgba(var(--foreground-rgb), 0.03)";
+const inputBorder = "1px solid rgba(var(--foreground-rgb), 0.1)";
 
 interface Address {
   zip: string;
@@ -147,18 +147,18 @@ function PaymentOption({
       className="relative flex flex-col items-start gap-2 px-4 py-4 transition-all cursor-pointer text-left"
       style={{
         borderRadius: "14px",
-        background: active ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.02)",
-        border: active ? `1.5px solid ${accent}` : "1px solid rgba(255,255,255,0.08)",
-        boxShadow: active ? `0 18px 40px -20px ${color ?? "rgba(225,6,0,0.5)"}, inset 0 1px 0 rgba(255,255,255,0.04)` : "none",
-        color: active ? "#fff" : "rgba(255,255,255,0.65)",
+        background: active ? "rgba(var(--foreground-rgb), 0.06)" : "rgba(var(--foreground-rgb), 0.02)",
+        border: active ? `1.5px solid ${accent}` : "1px solid rgba(var(--foreground-rgb), 0.08)",
+        boxShadow: active ? `0 18px 40px -20px ${color ?? "rgba(225,6,0,0.5)"}, inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)` : "none",
+        color: active ? "#fff" : "rgba(var(--foreground-rgb), 0.65)",
         minHeight: 84,
       }}
     >
       <div className="flex w-full items-center gap-2.5">
-        <span className="flex items-center justify-center" style={{ width: 32, height: 32, borderRadius: 9, background: active ? activeBadgeBg : "rgba(255,255,255,0.05)", color: active ? accent : "rgba(255,255,255,0.6)" }}>
+        <span className="flex items-center justify-center" style={{ width: 32, height: 32, borderRadius: 9, background: active ? activeBadgeBg : "rgba(var(--foreground-rgb), 0.05)", color: active ? accent : "rgba(var(--foreground-rgb), 0.6)" }}>
           {icon}
         </span>
-        <span className="flex-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 700, letterSpacing: "0.01em", color: active ? "#fff" : "rgba(255,255,255,0.85)" }}>{label}</span>
+        <span className="flex-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 700, letterSpacing: "0.01em", color: active ? "#fff" : "rgba(var(--foreground-rgb), 0.85)" }}>{label}</span>
         {badge && (
           <span
             className="inline-flex items-center"
@@ -178,7 +178,7 @@ function PaymentOption({
         )}
       </div>
       {description && (
-        <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500, color: active ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.45)", lineHeight: 1.4 }}>
+        <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500, color: active ? "rgba(var(--foreground-rgb), 0.7)" : "rgba(var(--foreground-rgb), 0.45)", lineHeight: 1.4 }}>
           {description}
         </p>
       )}
@@ -191,8 +191,8 @@ function ReviewCard({ icon, label, onEdit, children }: { icon: React.ReactNode; 
     <div
       className="rounded-[14px] p-4"
       style={{
-        background: "rgba(255,255,255,0.02)",
-        border: "1px solid rgba(255,255,255,0.06)",
+        background: "rgba(var(--foreground-rgb), 0.02)",
+        border: "1px solid rgba(var(--foreground-rgb), 0.06)",
       }}
     >
       <div className="mb-2 flex items-center justify-between gap-3">
@@ -305,7 +305,7 @@ function Line({ label, value, positive }: { label: string; value: string; positi
           fontFamily: "var(--font-family-inter)",
           fontSize: "13px",
           fontWeight: 700,
-          color: positive ? "#22c55e" : "rgba(255,255,255,0.85)",
+          color: positive ? "#22c55e" : "rgba(var(--foreground-rgb), 0.85)",
         }}
       >
         {value}
@@ -642,7 +642,7 @@ export function CheckoutPage() {
                 borderRadius: "20px",
                 background: cardBg,
                 border: cardBorder,
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
               }}
             >
               {/* Status pill */}
@@ -689,7 +689,7 @@ export function CheckoutPage() {
                   style={{
                     borderRadius: "16px",
                     background: "#fff",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                     padding: "12px",
                   }}
                 >
@@ -711,8 +711,8 @@ export function CheckoutPage() {
                   <div
                     className="mb-3 break-all rounded-[10px] p-3 text-white/55"
                     style={{
-                      background: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.08)",
+                      background: "rgba(var(--foreground-rgb), 0.03)",
+                      border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                       fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
                       fontSize: "11px",
                       lineHeight: 1.5,
@@ -744,7 +744,7 @@ export function CheckoutPage() {
 
               <div
                 className="mt-6 flex items-start gap-3 rounded-[12px] p-3.5"
-                style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+                style={{ background: "rgba(var(--foreground-rgb), 0.02)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
               >
                 <ShieldCheck size={14} strokeWidth={2} className="mt-0.5 flex-shrink-0 text-green-500" />
                 <p className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.55 }}>
@@ -814,7 +814,7 @@ export function CheckoutPage() {
                   borderRadius: "20px",
                   background: cardBg,
                   border: cardBorder,
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
                 }}
               >
                 <div className="mb-5 flex items-center justify-between">
@@ -851,8 +851,8 @@ export function CheckoutPage() {
                       transition={{ duration: 0.3, delay: 0.3 + i * 0.06 }}
                       className="flex items-center gap-3 rounded-[14px] p-3"
                       style={{
-                        background: "rgba(255,255,255,0.02)",
-                        border: "1px solid rgba(255,255,255,0.06)",
+                        background: "rgba(var(--foreground-rgb), 0.02)",
+                        border: "1px solid rgba(var(--foreground-rgb), 0.06)",
                       }}
                     >
                       <div className="relative h-16 w-16 flex-shrink-0">
@@ -860,8 +860,8 @@ export function CheckoutPage() {
                           className="h-full w-full overflow-hidden"
                           style={{
                             borderRadius: "10px",
-                            background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
-                            border: "1px solid rgba(255,255,255,0.08)",
+                            background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                            border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                           }}
                         >
                           <ImageWithFallback src={item.image} alt={item.name} className="h-full w-full object-contain p-1.5" />
@@ -890,7 +890,7 @@ export function CheckoutPage() {
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "11.5px",
                             fontWeight: 700,
-                            color: item.isGift ? "#22c55e" : "rgba(255,255,255,0.55)",
+                            color: item.isGift ? "#22c55e" : "rgba(var(--foreground-rgb), 0.55)",
                             marginTop: "3px",
                           }}
                         >
@@ -992,9 +992,9 @@ export function CheckoutPage() {
                           ? "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)"
                           : done
                           ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"
-                          : "rgba(255,255,255,0.06)",
-                        border: active || done ? "none" : "1px solid rgba(255,255,255,0.1)",
-                        color: active || done ? "#fff" : "rgba(255,255,255,0.4)",
+                          : "rgba(var(--foreground-rgb), 0.06)",
+                        border: active || done ? "none" : "1px solid rgba(var(--foreground-rgb), 0.1)",
+                        color: active || done ? "#fff" : "rgba(var(--foreground-rgb), 0.4)",
                         boxShadow: active
                           ? "0 8px 22px -6px rgba(225,6,0,0.5)"
                           : done
@@ -1011,7 +1011,7 @@ export function CheckoutPage() {
                       {s.label}
                     </span>
                     {i < STEPS.length - 1 && (
-                      <div className="hidden h-px flex-1 md:block" style={{ background: done ? "rgba(34,197,94,0.4)" : "rgba(255,255,255,0.08)" }} />
+                      <div className="hidden h-px flex-1 md:block" style={{ background: done ? "rgba(34,197,94,0.4)" : "rgba(var(--foreground-rgb), 0.08)" }} />
                     )}
                   </button>
                 );
@@ -1033,7 +1033,7 @@ export function CheckoutPage() {
                     borderRadius: "20px",
                     background: cardBg,
                     border: cardBorder,
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                    boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                   }}
                 >
                   {step === 0 && (
@@ -1052,7 +1052,7 @@ export function CheckoutPage() {
                       {isLoggedIn && user && user.addresses.length > 0 && (
                         <div className="mb-6">
                           <div className="flex items-center justify-between mb-2.5">
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                               Endereços salvos
                             </span>
                           </div>
@@ -1066,12 +1066,12 @@ export function CheckoutPage() {
                                   onClick={() => setSelectedAddressId(a.id)}
                                   style={{
                                     borderRadius: 12,
-                                    background: sel ? "rgba(255,43,46,0.08)" : "rgba(255,255,255,0.02)",
-                                    border: sel ? "1.5px solid rgba(255,43,46,0.45)" : "1px solid rgba(255,255,255,0.08)",
+                                    background: sel ? "rgba(255,43,46,0.08)" : "rgba(var(--foreground-rgb), 0.02)",
+                                    border: sel ? "1.5px solid rgba(255,43,46,0.45)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                                   }}
                                 >
                                   <div className="flex items-start gap-2.5">
-                                    <span className="mt-0.5 flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(255,255,255,0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
+                                    <span className="mt-0.5 flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(var(--foreground-rgb), 0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
                                     <div className="min-w-0 flex-1">
                                       <div className="flex items-center gap-2">
                                         <span className="text-white truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>{a.label}</span>
@@ -1086,7 +1086,7 @@ export function CheckoutPage() {
                                         type="button"
                                         onClick={(e) => { e.stopPropagation(); setSelectedAddressId(null); }}
                                         className="flex-shrink-0 px-2 py-1 text-white/70 hover:text-white transition-all cursor-pointer"
-                                        style={{ borderRadius: 6, background: "rgba(255,255,255,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
+                                        style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
                                       >
                                         Editar
                                       </button>
@@ -1231,8 +1231,8 @@ export function CheckoutPage() {
                               className="flex items-center gap-4 p-4 text-left transition-all"
                               style={{
                                 borderRadius: "14px",
-                                background: active ? "rgba(34,197,94,0.06)" : "rgba(255,255,255,0.02)",
-                                border: active ? "1.5px solid rgba(34,197,94,0.5)" : "1px solid rgba(255,255,255,0.08)",
+                                background: active ? "rgba(34,197,94,0.06)" : "rgba(var(--foreground-rgb), 0.02)",
+                                border: active ? "1.5px solid rgba(34,197,94,0.5)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                                 boxShadow: active ? "0 16px 36px -16px rgba(34,197,94,0.35)" : "none",
                               }}
                             >
@@ -1240,7 +1240,7 @@ export function CheckoutPage() {
                                 className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full"
                                 style={{
                                   background: active ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)" : "transparent",
-                                  border: active ? "none" : "1.5px solid rgba(255,255,255,0.25)",
+                                  border: active ? "none" : "1.5px solid rgba(var(--foreground-rgb), 0.25)",
                                 }}
                               >
                                 {active && <Check size={11} strokeWidth={3} className="text-white" />}
@@ -1312,7 +1312,7 @@ export function CheckoutPage() {
                           style={{
                             background: "#000",
                             color: "#fff",
-                            border: "1px solid rgba(255,255,255,0.14)",
+                            border: "1px solid rgba(var(--foreground-rgb), 0.14)",
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "13.5px",
                             fontWeight: 700,
@@ -1398,7 +1398,7 @@ export function CheckoutPage() {
                             {isLoggedIn && user && user.cards.length > 0 && (
                               <div className="mt-3 mb-5">
                                 <div className="flex items-center justify-between mb-2.5">
-                                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+                                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                                     Cartões salvos
                                   </span>
                                 </div>
@@ -1412,11 +1412,11 @@ export function CheckoutPage() {
                                         className="text-left p-3 transition-all cursor-pointer flex items-center gap-2.5 relative"
                                         style={{
                                           borderRadius: 12,
-                                          background: sel ? "rgba(255,43,46,0.08)" : "rgba(255,255,255,0.02)",
-                                          border: sel ? "1.5px solid rgba(255,43,46,0.45)" : "1px solid rgba(255,255,255,0.08)",
+                                          background: sel ? "rgba(255,43,46,0.08)" : "rgba(var(--foreground-rgb), 0.02)",
+                                          border: sel ? "1.5px solid rgba(255,43,46,0.45)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                                         }}
                                       >
-                                        <span className="flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(255,255,255,0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
+                                        <span className="flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(var(--foreground-rgb), 0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
                                         <div className="min-w-0 flex-1">
                                           <div className="flex items-center gap-2">
                                             <span className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{c.brand}</span>
@@ -1430,7 +1430,7 @@ export function CheckoutPage() {
                                             type="button"
                                             onClick={(e) => { e.stopPropagation(); setSelectedCardId(null); }}
                                             className="flex-shrink-0 px-2 py-1 text-white/70 hover:text-white transition-all cursor-pointer"
-                                            style={{ borderRadius: 6, background: "rgba(255,255,255,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
+                                            style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
                                           >
                                             Editar
                                           </button>
@@ -1622,7 +1622,7 @@ export function CheckoutPage() {
 
                         <div
                           className="rounded-[14px] p-4"
-                          style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+                          style={{ background: "rgba(var(--foreground-rgb), 0.02)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
                         >
                           <p
                             className="mb-3 text-white/55"
@@ -1637,8 +1637,8 @@ export function CheckoutPage() {
                                   className="h-12 w-12 flex-shrink-0 overflow-hidden"
                                   style={{
                                     borderRadius: "10px",
-                                    background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
-                                    border: "1px solid rgba(255,255,255,0.06)",
+                                    background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                                    border: "1px solid rgba(var(--foreground-rgb), 0.06)",
                                   }}
                                 >
                                   <ImageWithFallback src={item.image} alt={item.name} className="h-full w-full object-contain p-1.5" />
@@ -1717,7 +1717,7 @@ export function CheckoutPage() {
                   borderRadius: "20px",
                   background: cardBg,
                   border: cardBorder,
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
                 }}
               >
                 <p
@@ -1735,9 +1735,9 @@ export function CheckoutPage() {
                           className="h-full w-full overflow-hidden"
                           style={{
                             borderRadius: "10px",
-                            background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
-                            border: "1px solid rgba(255,255,255,0.08)",
-                            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
+                            background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                            border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                            boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                           }}
                         >
                           <ImageWithFallback src={item.image} alt={item.name} className="h-full w-full object-contain p-1.5" />
@@ -1767,7 +1767,7 @@ export function CheckoutPage() {
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "11.5px",
                             fontWeight: 700,
-                            color: item.isGift ? "#22c55e" : "rgba(255,255,255,0.85)",
+                            color: item.isGift ? "#22c55e" : "rgba(var(--foreground-rgb), 0.85)",
                             marginTop: "2px",
                           }}
                         >
@@ -1803,7 +1803,7 @@ export function CheckoutPage() {
                         </span>
                       )}
                     </span>
-                    <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, color: appliedCoupon ? "rgba(34,197,94,0.75)" : "rgba(255,255,255,0.4)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                    <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, color: appliedCoupon ? "rgba(34,197,94,0.75)" : "rgba(var(--foreground-rgb), 0.4)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
                       {appliedCoupon ? "Alterar" : "Adicionar"}
                     </span>
                   </button>
@@ -1826,8 +1826,8 @@ export function CheckoutPage() {
                             aria-label="Código do cupom"
                             className="flex-1 rounded-[10px] px-3 py-2 text-white placeholder:text-white/25 focus:outline-none"
                             style={{
-                              background: "rgba(255,255,255,0.03)",
-                              border: "1px solid rgba(255,255,255,0.1)",
+                              background: "rgba(var(--foreground-rgb), 0.03)",
+                              border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                               fontFamily: "var(--font-family-inter)",
                               fontSize: "12.5px",
                               fontWeight: 600,
@@ -1875,14 +1875,14 @@ export function CheckoutPage() {
                   >
                     <span className="flex items-center gap-2">
                       <PcyesCoinSmall />
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700, color: pointsApplied ? "#facc15" : "rgba(255,255,255,0.78)" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700, color: pointsApplied ? "#facc15" : "rgba(var(--foreground-rgb), 0.78)" }}>
                         PCYES Points
                       </span>
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600, color: "rgba(var(--foreground-rgb), 0.4)" }}>
                         {userPoints} pts
                       </span>
                     </span>
-                    <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 800, letterSpacing: "0.1em", color: pointsApplied ? "#facc15" : "rgba(255,255,255,0.45)", textTransform: "uppercase" }}>
+                    <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 800, letterSpacing: "0.1em", color: pointsApplied ? "#facc15" : "rgba(var(--foreground-rgb), 0.45)", textTransform: "uppercase" }}>
                       {pointsApplied ? "Aplicado" : "Usar"}
                     </span>
                   </button>
@@ -1903,7 +1903,7 @@ export function CheckoutPage() {
                               max={maxPointsRedeem}
                               step={10}
                             />
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: "rgba(255,255,255,0.5)", fontWeight: 600 }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: "rgba(var(--foreground-rgb), 0.5)", fontWeight: 600 }}>
                               de {maxPointsRedeem}
                             </span>
                           </div>
@@ -1946,7 +1946,7 @@ export function CheckoutPage() {
 
                 <div
                   className="rounded-[14px] p-4"
-                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
+                  style={{ background: "rgba(var(--foreground-rgb), 0.03)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
                 >
                   <div className="flex items-baseline justify-between">
                     <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -2037,7 +2037,7 @@ export function CheckoutPage() {
                   <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.02em" }}>{formatBRL(total)}</span>
                 </div>
 
-                <div className="mb-3 rounded-[12px] p-3.5" style={{ background: "rgba(255,255,255,0.06)" }}>
+                <div className="mb-3 rounded-[12px] p-3.5" style={{ background: "rgba(var(--foreground-rgb), 0.06)" }}>
                   <div className="mb-1 flex items-center justify-between">
                     <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>Pagar com</span>
                   </div>
@@ -2068,7 +2068,7 @@ export function CheckoutPage() {
                     animate={walletConfirming ? { scale: [1, 1.18, 1] } : { scale: 1 }}
                     transition={{ duration: 1.2, repeat: walletConfirming ? Infinity : 0 }}
                     className="flex h-14 w-14 items-center justify-center rounded-full"
-                    style={{ background: walletConfirming ? "rgba(34,197,94,0.18)" : "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}
+                    style={{ background: walletConfirming ? "rgba(34,197,94,0.18)" : "rgba(var(--foreground-rgb), 0.06)", border: "1px solid rgba(var(--foreground-rgb), 0.12)" }}
                   >
                     {walletConfirming ? (
                       <Loader2 size={22} className="animate-spin text-green-400" strokeWidth={2.4} />
@@ -2321,7 +2321,7 @@ function CardBrand({ digits }: { digits: string }) {
   const wrap = (children: React.ReactNode, bg: string) => (
     <span
       className="absolute right-2.5 top-1/2 -translate-y-1/2 inline-flex h-7 w-11 items-center justify-center overflow-hidden"
-      style={{ background: bg, borderRadius: "5px", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 12px -4px rgba(0,0,0,0.5)" }}
+      style={{ background: bg, borderRadius: "5px", boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.18), 0 4px 12px -4px rgba(0,0,0,0.5)" }}
       aria-label={`Bandeira ${brand}`}
     >
       {children}
@@ -2428,7 +2428,7 @@ function NumberStepperRed({
           letterSpacing: "-0.01em",
         }}
       />
-      <div className="flex flex-col border-l" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+      <div className="flex flex-col border-l" style={{ borderColor: "rgba(var(--foreground-rgb), 0.08)" }}>
         <button
           type="button"
           onClick={() => onChange(clamp(value + step))}
@@ -2440,7 +2440,7 @@ function NumberStepperRed({
             <path d="M1 5L5 1L9 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
-        <div className="h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
+        <div className="h-px" style={{ background: "rgba(var(--foreground-rgb), 0.08)" }} />
         <button
           type="button"
           onClick={() => onChange(clamp(value - step))}

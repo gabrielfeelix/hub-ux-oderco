@@ -119,7 +119,7 @@ export function ProductsByTags() {
                     borderRadius: "var(--radius-card)",
                     background: isDark
                       ? "#1e1e20"
-                      : "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%)",
+                      : "linear-gradient(180deg, rgba(var(--foreground-rgb), 1) 0%, rgba(242,242,242,1) 100%)",
                   }}
                   onMouseEnter={() => setHoveredProductId(displayProduct.id)}
                   onMouseLeave={() => setHoveredProductId((current) => (current === displayProduct.id ? null : current))}
@@ -199,7 +199,7 @@ export function ProductsByTags() {
                       {swatches.map((swatch) => (
                         <button
                           key={`${product.id}-${swatch.label}`}
-                          className={`h-3.5 w-3.5 rounded-full border border-foreground/10 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] transition-transform hover:scale-125 ${
+                          className={`h-3.5 w-3.5 rounded-full border border-foreground/10 shadow-[0_0_0_1px_rgba(var(--foreground-rgb), 0.04)_inset] transition-transform hover:scale-125 ${
                             swatch.productId === displayProduct.id ? "ring-2 ring-primary/70 ring-offset-2 ring-offset-background" : ""
                           }`}
                           style={{ backgroundColor: swatch.color }}

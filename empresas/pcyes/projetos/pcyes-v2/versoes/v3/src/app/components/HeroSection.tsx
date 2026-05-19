@@ -173,7 +173,7 @@ export function HeroSection() {
             left: "9%",
             transform: "translate(-50%, -50%)",
             background: "rgba(48, 48, 52, 0.92)",
-            border: "1px solid rgba(255,255,255,0.18)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.18)",
             color: "white",
             backdropFilter: "blur(12px)",
             boxShadow: "0 10px 28px -8px rgba(0,0,0,0.6)",
@@ -189,7 +189,7 @@ export function HeroSection() {
             right: "9%",
             transform: "translate(50%, -50%)",
             background: "rgba(48, 48, 52, 0.92)",
-            border: "1px solid rgba(255,255,255,0.18)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.18)",
             color: "white",
             backdropFilter: "blur(12px)",
             boxShadow: "0 10px 28px -8px rgba(0,0,0,0.6)",
@@ -210,7 +210,7 @@ export function HeroSection() {
               className="relative h-2 cursor-pointer overflow-hidden rounded-full transition-all duration-500"
               style={{
                 width: isActive ? "44px" : "10px",
-                background: isActive ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.25)",
+                background: isActive ? "rgba(var(--foreground-rgb), 0.18)" : "rgba(var(--foreground-rgb), 0.25)",
               }}
               aria-label={`Banner ${i + 1}`}
             >

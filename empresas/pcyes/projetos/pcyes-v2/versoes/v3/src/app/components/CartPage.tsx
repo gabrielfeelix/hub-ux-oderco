@@ -174,8 +174,8 @@ export function CartPage() {
     return digits.length > 5 ? `${digits.slice(0, 5)}-${digits.slice(5)}` : digits;
   };
 
-  const cardBg = "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)";
-  const cardBorder = "1px solid rgba(255,255,255,0.08)";
+  const cardBg = "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)";
+  const cardBorder = "1px solid rgba(var(--foreground-rgb), 0.08)";
 
   if (items.length === 0) {
     return (
@@ -185,9 +185,9 @@ export function CartPage() {
             <div
               className="mb-8 flex h-24 w-24 items-center justify-center rounded-full"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
+                background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
               }}
             >
               <ShoppingBag size={36} strokeWidth={1.5} className="text-white/40" />
@@ -386,12 +386,12 @@ export function CartPage() {
                   >
                     <Gift size={15} strokeWidth={2.2} />
                   </div>
-                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(255,255,255,0.78)" }}>
+                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.78)" }}>
                     Falta <span className="text-white font-bold">{formatBRL(GIFT_THRESHOLD - subtotal)}</span> pra desbloquear um brinde
                   </p>
                 </div>
               </div>
-              <div className="relative h-1.5 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.06)" }}>
+              <div className="relative h-1.5 overflow-hidden rounded-full" style={{ background: "rgba(var(--foreground-rgb), 0.06)" }}>
                 <motion.div
                   className="h-full rounded-full"
                   initial={{ width: 0 }}
@@ -425,7 +425,7 @@ export function CartPage() {
                         borderRadius: "18px",
                         background: cardBg,
                         border: cardBorder,
-                        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
+                        boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                       }}
                     >
                       {/* Image */}
@@ -433,8 +433,8 @@ export function CartPage() {
                         className="relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden md:h-[120px] md:w-[120px]"
                         style={{
                           borderRadius: "14px",
-                          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
-                          border: "1px solid rgba(255,255,255,0.06)",
+                          background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                          border: "1px solid rgba(var(--foreground-rgb), 0.06)",
                         }}
                       >
                         <ImageWithFallback
@@ -495,8 +495,8 @@ export function CartPage() {
                               className="inline-flex items-center overflow-hidden"
                               style={{
                                 borderRadius: "10px",
-                                border: "1px solid rgba(255,255,255,0.1)",
-                                background: "rgba(255,255,255,0.03)",
+                                border: "1px solid rgba(var(--foreground-rgb), 0.1)",
+                                background: "rgba(var(--foreground-rgb), 0.03)",
                               }}
                             >
                               <button
@@ -539,7 +539,7 @@ export function CartPage() {
                                     style={{
                                       fontFamily: "var(--font-family-inter)",
                                       fontSize: "12px",
-                                      color: "rgba(255,255,255,0.3)",
+                                      color: "rgba(var(--foreground-rgb), 0.3)",
                                     }}
                                   >
                                     {item.originalPrice}
@@ -597,7 +597,7 @@ export function CartPage() {
                   borderRadius: "20px",
                   background: cardBg,
                   border: cardBorder,
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
                 }}
               >
                 <p
@@ -650,8 +650,8 @@ export function CartPage() {
                         aria-label="CEP para cálculo de frete"
                         style={{
                           borderRadius: "10px",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          background: "rgba(255,255,255,0.03)",
+                          border: "1px solid rgba(var(--foreground-rgb), 0.1)",
+                          background: "rgba(var(--foreground-rgb), 0.03)",
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "13px",
                           fontWeight: 600,
@@ -677,15 +677,15 @@ export function CartPage() {
                                 onClick={() => setSelectedShipping(opt.id)}
                                 className="flex w-full items-center gap-2.5 rounded-[10px] px-3 py-2 text-left transition-colors"
                                 style={{
-                                  background: active ? "rgba(34,197,94,0.06)" : "rgba(255,255,255,0.02)",
-                                  border: active ? "1.5px solid rgba(34,197,94,0.5)" : "1px solid rgba(255,255,255,0.06)",
+                                  background: active ? "rgba(34,197,94,0.06)" : "rgba(var(--foreground-rgb), 0.02)",
+                                  border: active ? "1.5px solid rgba(34,197,94,0.5)" : "1px solid rgba(var(--foreground-rgb), 0.06)",
                                 }}
                               >
                                 <span
                                   className="flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full"
                                   style={{
                                     background: active ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)" : "transparent",
-                                    border: active ? "none" : "1.5px solid rgba(255,255,255,0.2)",
+                                    border: active ? "none" : "1.5px solid rgba(var(--foreground-rgb), 0.2)",
                                   }}
                                 >
                                   {active && <Check size={9} strokeWidth={3} className="text-white" />}
@@ -736,7 +736,7 @@ export function CartPage() {
                     )}
                   </span>
                   <span
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, color: appliedCoupon ? "rgba(34,197,94,0.75)" : "rgba(255,255,255,0.4)" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, color: appliedCoupon ? "rgba(34,197,94,0.75)" : "rgba(var(--foreground-rgb), 0.4)" }}
                   >
                     {appliedCoupon ? "Alterar" : couponOpen ? "Fechar" : "Adicionar"}
                   </span>
@@ -764,8 +764,8 @@ export function CartPage() {
                           className="flex-1 px-3.5 py-2.5 text-white placeholder:text-white/25 focus:outline-none transition-all"
                           style={{
                             borderRadius: "10px",
-                            border: "1px solid rgba(255,255,255,0.1)",
-                            background: "rgba(255,255,255,0.03)",
+                            border: "1px solid rgba(var(--foreground-rgb), 0.1)",
+                            background: "rgba(var(--foreground-rgb), 0.03)",
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "13px",
                             fontWeight: 600,
@@ -816,10 +816,10 @@ export function CartPage() {
                   >
                     <span className="flex items-center gap-2">
                       <PcyesCoin size={20} />
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, color: pointsApplied ? "#facc15" : "rgba(255,255,255,0.78)" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, color: pointsApplied ? "#facc15" : "rgba(var(--foreground-rgb), 0.78)" }}>
                         PCYES Points
                       </span>
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, color: "rgba(var(--foreground-rgb), 0.4)" }}>
                         {userPoints} pts
                       </span>
                     </span>
@@ -829,7 +829,7 @@ export function CartPage() {
                         fontSize: "10.5px",
                         fontWeight: 800,
                         letterSpacing: "0.1em",
-                        color: pointsApplied ? "#facc15" : "rgba(255,255,255,0.45)",
+                        color: pointsApplied ? "#facc15" : "rgba(var(--foreground-rgb), 0.45)",
                         textTransform: "uppercase",
                       }}
                     >
@@ -856,7 +856,7 @@ export function CartPage() {
                               accent="#facc15"
                               ariaLabel="Quantidade de pontos a usar"
                             />
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(255,255,255,0.5)", fontWeight: 600 }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(var(--foreground-rgb), 0.5)", fontWeight: 600 }}>
                               de {maxPointsRedeem} disponíveis
                             </span>
                           </div>
@@ -913,7 +913,7 @@ export function CartPage() {
                         fontFamily: "var(--font-family-inter)",
                         fontSize: "13px",
                         fontWeight: 700,
-                        color: freeShipping || (selectedShipping && shippingPrice === 0) ? "#22c55e" : "rgba(255,255,255,0.85)",
+                        color: freeShipping || (selectedShipping && shippingPrice === 0) ? "#22c55e" : "rgba(var(--foreground-rgb), 0.85)",
                       }}
                     >
                       {freeShipping ? "GRÁTIS" : selectedShipping ? formatBRL(shippingPrice) : "—"}
@@ -932,7 +932,7 @@ export function CartPage() {
                 </div>
 
                 {/* Total */}
-                <div className="mb-5 rounded-[14px] p-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                <div className="mb-5 rounded-[14px] p-4" style={{ background: "rgba(var(--foreground-rgb), 0.03)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
                   <div className="mb-1 flex items-baseline justify-between">
                     <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
                       Total
@@ -998,8 +998,8 @@ export function CartPage() {
               className="flex h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:h-auto md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
               style={{
                 background: "#1f1c1c",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                boxShadow: "0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -1041,11 +1041,11 @@ export function CartPage() {
                         className="group relative cursor-pointer overflow-hidden text-left transition-all duration-300"
                         style={{
                           borderRadius: "20px",
-                          background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-                          border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(255,255,255,0.08)",
+                          background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                          border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                           boxShadow: isSelected
-                            ? "0 24px 60px -20px rgba(225,6,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)"
-                            : "inset 0 1px 0 rgba(255,255,255,0.05)",
+                            ? "0 24px 60px -20px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)"
+                            : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                         }}
                       >
                         <div
@@ -1086,7 +1086,7 @@ export function CartPage() {
                             {product.name}
                           </p>
                           <div className="mt-3 flex items-baseline gap-2 md:mt-4">
-                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(255,255,255,0.32)" }}>
+                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.32)" }}>
                               {product.price}
                             </span>
                             <span
@@ -1096,10 +1096,10 @@ export function CartPage() {
                             </span>
                           </div>
                           <div className="mt-3 flex items-center justify-between md:mt-4">
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.4)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
                               PRESENTE PCYES
                             </span>
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(255,255,255,0.45)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(var(--foreground-rgb), 0.45)" }}>
                               {isSelected ? "SELECIONADO" : "SELECIONAR"}
                             </span>
                           </div>
@@ -1201,7 +1201,7 @@ function NumberStepper({
       style={{
         borderRadius: "10px",
         background: "rgba(0,0,0,0.3)",
-        border: `1px solid ${accent === "#facc15" ? "rgba(250,204,21,0.35)" : accent === "var(--primary)" ? "rgba(255,36,25,0.35)" : "rgba(255,255,255,0.12)"}`,
+        border: `1px solid ${accent === "#facc15" ? "rgba(250,204,21,0.35)" : accent === "var(--primary)" ? "rgba(255,36,25,0.35)" : "rgba(var(--foreground-rgb), 0.12)"}`,
       }}
     >
       <input
@@ -1218,7 +1218,7 @@ function NumberStepper({
           letterSpacing: "-0.01em",
         }}
       />
-      <div className="flex flex-col border-l" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+      <div className="flex flex-col border-l" style={{ borderColor: "rgba(var(--foreground-rgb), 0.08)" }}>
         <button
           type="button"
           onClick={() => onChange(clamp(value + step))}
@@ -1230,7 +1230,7 @@ function NumberStepper({
             <path d="M1 5L5 1L9 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
-        <div className="h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
+        <div className="h-px" style={{ background: "rgba(var(--foreground-rgb), 0.08)" }} />
         <button
           type="button"
           onClick={() => onChange(clamp(value - step))}

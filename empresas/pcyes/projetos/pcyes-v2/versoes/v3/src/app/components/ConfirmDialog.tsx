@@ -49,7 +49,7 @@ export function ConfirmDialog({
               {title}
             </DialogTitle>
             {description && (
-              <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.5, marginTop: 6, color: isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.6)" }}>
+              <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.5, marginTop: 6, color: isDark ? "rgba(var(--foreground-rgb), 0.6)" : "rgba(0,0,0,0.6)" }}>
                 {description}
               </DialogDescription>
             )}
@@ -63,11 +63,11 @@ export function ConfirmDialog({
             className="px-4 py-2 cursor-pointer hover:brightness-110 transition-all"
             style={{
               borderRadius: 10,
-              background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)",
+              background: isDark ? "rgba(var(--foreground-rgb), 0.05)" : "rgba(0,0,0,0.04)",
               fontFamily: "var(--font-family-inter)",
               fontSize: "13px",
               fontWeight: 600,
-              color: isDark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.85)",
+              color: isDark ? "rgba(var(--foreground-rgb), 0.85)" : "rgba(0,0,0,0.85)",
             }}
           >
             {cancelLabel}

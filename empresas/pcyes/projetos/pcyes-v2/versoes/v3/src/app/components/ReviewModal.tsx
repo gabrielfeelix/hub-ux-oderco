@@ -102,7 +102,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
       >
         {!submitted ? (
           <>
-            <div className="px-6 pt-6 pb-4 flex items-start gap-3" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+            <div className="px-6 pt-6 pb-4 flex items-start gap-3" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
               <div className="flex items-center justify-center flex-shrink-0" style={{ width: 40, height: 40, borderRadius: 12, background: "rgba(250,204,21,0.14)" }}>
                 <Star size={18} className="fill-yellow-400 text-yellow-400" />
               </div>
@@ -110,7 +110,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                 <DialogTitle style={{ fontFamily: "var(--font-family-figtree)", fontSize: "17px", fontWeight: 600, color: isDark ? "#fafafa" : "#0a0a0a" }}>
                   Avaliar pedido {orderId}
                 </DialogTitle>
-                <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", marginTop: 4, color: isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.6)" }}>
+                <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", marginTop: 4, color: isDark ? "rgba(var(--foreground-rgb), 0.6)" : "rgba(0,0,0,0.6)" }}>
                   Sua nota ajuda outros gamers · Ganhe até <span style={{ color: "#facc15", fontWeight: 700 }}>+{baseEarn + 15} pts</span> com foto + comentário
                 </DialogDescription>
               </div>
@@ -125,12 +125,12 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                   const hover = hoverRatings[key] ?? 0;
                   const display = hover || rating;
                   return (
-                    <div key={key} className="flex items-center gap-3 p-3" style={{ borderRadius: "12px", background: isDark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div key={key} className="flex items-center gap-3 p-3" style={{ borderRadius: "12px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <div className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                         <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)", color: isDark ? "rgba(255,255,255,0.92)" : "rgba(0,0,0,0.92)" }}>{item.name}</p>
+                        <p className="truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)", color: isDark ? "rgba(var(--foreground-rgb), 0.92)" : "rgba(0,0,0,0.92)" }}>{item.name}</p>
                         <div className="mt-1.5 flex items-center gap-2">
                           <div className="flex items-center gap-0.5">
                             {[1, 2, 3, 4, 5].map((star) => {
@@ -144,7 +144,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                                   onClick={() => setRatings((r) => ({ ...r, [key]: star }))}
                                   className="cursor-pointer p-0.5 transition-transform hover:scale-110"
                                 >
-                                  <Star size={20} className={filled ? "fill-yellow-400 text-yellow-400" : ""} style={!filled ? { color: isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)" } : undefined} strokeWidth={1.5} />
+                                  <Star size={20} className={filled ? "fill-yellow-400 text-yellow-400" : ""} style={!filled ? { color: isDark ? "rgba(var(--foreground-rgb), 0.2)" : "rgba(0,0,0,0.2)" } : undefined} strokeWidth={1.5} />
                                 </button>
                               );
                             })}
@@ -162,16 +162,16 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
               {/* Mídia: fotos e vídeos */}
               <div className="mt-5">
                 <div className="flex items-center justify-between mb-2">
-                  <label style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+                  <label style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)" }}>
                     Fotos e vídeos <span style={{ fontWeight: 500, letterSpacing: "0.04em", color: "#facc15" }}>+10 pts</span>
                   </label>
-                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)" }}>
+                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(var(--foreground-rgb), 0.45)" : "rgba(0,0,0,0.45)" }}>
                     {media.length}/{MAX_MEDIA}
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {media.map((m, i) => (
-                    <div key={i} className="relative group" style={{ width: 70, height: 70, borderRadius: 10, overflow: "hidden", border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                    <div key={i} className="relative group" style={{ width: 70, height: 70, borderRadius: 10, overflow: "hidden", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                       {m.type === "image" ? (
                         <img src={m.url} alt="" className="w-full h-full object-cover" />
                       ) : (
@@ -220,14 +220,14 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                   className="hidden"
                   onChange={(e) => { handleFiles(e.target.files); e.target.value = ""; }}
                 />
-                <p className="mt-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)" }}>
+                <p className="mt-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(var(--foreground-rgb), 0.4)" : "rgba(0,0,0,0.4)" }}>
                   Mostra o produto na sua setup · Vídeos até 30s
                 </p>
               </div>
 
               {/* Comentário */}
               <div className="mt-5">
-                <label className="block mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+                <label className="block mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)" }}>
                   Conta detalhes <span style={{ fontWeight: 500, letterSpacing: "0.04em", color: "#facc15" }}>+5 pts se 20+ chars</span>
                 </label>
                 <textarea
@@ -239,22 +239,22 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                   style={{
                     padding: "11px 13px",
                     borderRadius: "10px",
-                    border: isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.08)",
-                    background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
+                    border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)",
+                    background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13px",
-                    color: isDark ? "rgba(255,255,255,0.92)" : "rgba(0,0,0,0.92)",
+                    color: isDark ? "rgba(var(--foreground-rgb), 0.92)" : "rgba(0,0,0,0.92)",
                     lineHeight: 1.5,
                   }}
                 />
-                <p className="mt-1 text-right" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)" }}>{comment.length}/500</p>
+                <p className="mt-1 text-right" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", color: isDark ? "rgba(var(--foreground-rgb), 0.35)" : "rgba(0,0,0,0.35)" }}>{comment.length}/500</p>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="px-6 pb-5 pt-3 flex items-center justify-between gap-2.5" style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+            <div className="px-6 pb-5 pt-3 flex items-center justify-between gap-2.5" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
               <div className="flex items-center gap-2 min-w-0">
-                <p className="truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", color: isDark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.55)" }}>
+                <p className="truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)" }}>
                   {allRated ? (
                     <><Check size={11} className="inline" /> Pronto · Ganhará <span style={{ color: "#facc15", fontWeight: 700 }}>+{projectedPts} pts</span></>
                   ) : `${rated}/${total} ${rated === 1 ? "item avaliado" : "itens avaliados"}`}
@@ -262,7 +262,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
               </div>
               <div className="flex items-center gap-2">
                 <button type="button" onClick={onClose} className="px-4 py-2 cursor-pointer hover:brightness-110 transition-all"
-                  style={{ borderRadius: 10, background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, color: isDark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.85)" }}>
+                  style={{ borderRadius: 10, background: isDark ? "rgba(var(--foreground-rgb), 0.05)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, color: isDark ? "rgba(var(--foreground-rgb), 0.85)" : "rgba(0,0,0,0.85)" }}>
                   Cancelar
                 </button>
                 <button type="button" onClick={handleSubmit} disabled={!allRated}
@@ -281,7 +281,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
             <h3 style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600, color: isDark ? "#fafafa" : "#0a0a0a" }}>
               Valeu pela avaliação!
             </h3>
-            <p className="mt-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.6)" }}>
+            <p className="mt-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(var(--foreground-rgb), 0.6)" : "rgba(0,0,0,0.6)" }}>
               Nota média {avgRating.toFixed(1)} ⭐ · Sua opinião vai ajudar a galera
             </p>
             <div className="mt-5 inline-flex items-center gap-2 px-4 py-2.5" style={{ borderRadius: "12px", background: "rgba(250,204,21,0.10)", border: "1px solid rgba(250,204,21,0.28)" }}>

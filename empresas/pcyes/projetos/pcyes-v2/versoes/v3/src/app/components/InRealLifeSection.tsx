@@ -160,7 +160,7 @@ export function InRealLifeSection() {
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "14px",
-              color: "rgba(255,255,255,0.55)",
+              color: "rgba(var(--foreground-rgb), 0.55)",
               lineHeight: 1.5,
             }}
           >
@@ -198,8 +198,8 @@ export function InRealLifeSection() {
               className="flex-shrink-0 w-[260px] md:w-[300px] aspect-[3/4] relative group/card cursor-pointer overflow-hidden"
               style={{
                 borderRadius: "20px",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
               }}
               onClick={() => { setSelectedPost(post); setHighlightedProduct(null); }}
             >

@@ -1178,7 +1178,7 @@ export function Navbar() {
         <nav className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{
             backgroundColor: "#000000",
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            borderBottom: "1px solid rgba(var(--foreground-rgb), 0.06)",
           }}
 	        >
 	          {/* Mobile header */}
@@ -1345,7 +1345,7 @@ export function Navbar() {
                   className="flex h-[40px] items-center overflow-hidden rounded-full border transition-all"
                   style={{
                     background: "#1f1c1c",
-                    borderColor: searchPanelOpen ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.08)",
+                    borderColor: searchPanelOpen ? "rgba(var(--foreground-rgb), 0.35)" : "rgba(var(--foreground-rgb), 0.08)",
                     boxShadow: searchPanelOpen
                       ? "0 10px 32px rgba(0, 0, 0, 0.55)"
                       : "0 4px 16px rgba(0, 0, 0, 0.4)",
@@ -1469,7 +1469,7 @@ export function Navbar() {
                       className="absolute left-1/2 top-[58px] z-[60] w-[min(1320px,calc(100vw-64px))] -translate-x-1/2 overflow-hidden rounded-[22px] shadow-[0_28px_80px_rgba(0,0,0,0.55)]"
                       style={{
                         background: "#1f1c1c",
-                        border: "1px solid rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                       }}
                     >
                       {searchQuery.trim().length === 0 ? (
@@ -1505,10 +1505,10 @@ export function Navbar() {
                                     <div
                                       className="relative aspect-square overflow-hidden transition-all"
                                       style={{
-                                        background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
+                                        background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
                                         borderRadius: "16px",
-                                        border: "1px solid rgba(255,255,255,0.08)",
-                                        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                                        border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                                        boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                                       }}
                                     >
                                       {discount > 0 && (
@@ -1576,7 +1576,7 @@ export function Navbar() {
                                             className="inline-block h-3 w-3 rounded-full"
                                             style={{
                                               background: s.color,
-                                              border: "1px solid rgba(255,255,255,0.18)",
+                                              border: "1px solid rgba(var(--foreground-rgb), 0.18)",
                                             }}
                                             aria-label={s.label}
                                           />
@@ -1671,10 +1671,10 @@ export function Navbar() {
                                   <div
                                     className="relative aspect-square overflow-hidden transition-all"
                                     style={{
-                                      background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
+                                      background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
                                       borderRadius: "16px",
-                                      border: "1px solid rgba(255,255,255,0.08)",
-                                      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                                      border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                                      boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                                     }}
                                   >
                                     {discount > 0 && (
@@ -1741,7 +1741,7 @@ export function Navbar() {
                                           className="inline-block h-3 w-3 rounded-full"
                                           style={{
                                             background: s.color,
-                                            border: "1px solid rgba(255,255,255,0.18)",
+                                            border: "1px solid rgba(var(--foreground-rgb), 0.18)",
                                           }}
                                           aria-label={s.label}
                                         />

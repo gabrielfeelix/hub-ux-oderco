@@ -247,7 +247,7 @@ export function ProductCarousel({
                     borderRadius: "var(--radius-card)",
                     background: isDark
                       ? "linear-gradient(180deg, rgba(33,33,36,0.1) 0%, rgba(82,82,83,0.1) 100%)"
-                      : "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%)",
+                      : "linear-gradient(180deg, rgba(var(--foreground-rgb), 1) 0%, rgba(242,242,242,1) 100%)",
                   }}
                   onMouseEnter={() => setHoveredProductId(displayProduct.id)}
                   onMouseLeave={() => setHoveredProductId((current) => (current === displayProduct.id ? null : current))}
@@ -347,7 +347,7 @@ export function ProductCarousel({
                       {swatches.map((swatch) => (
                         <button
                           key={`${product.id}-${swatch.label}`}
-                          className={`h-3.5 w-3.5 rounded-full border border-foreground/10 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] transition-transform hover:scale-125 ${
+                          className={`h-3.5 w-3.5 rounded-full border border-foreground/10 shadow-[0_0_0_1px_rgba(var(--foreground-rgb), 0.04)_inset] transition-transform hover:scale-125 ${
                             swatch.productId === displayProduct.id ? "ring-2 ring-primary/70 ring-offset-2 ring-offset-background" : ""
                           }`}
                           style={{ backgroundColor: swatch.color }}
@@ -377,14 +377,14 @@ export function ProductCarousel({
                   return (
                     <>
                       {dp.oldPrice && (
-                        <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(255,255,255,0.38)" }}>
+                        <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.38)" }}>
                           {dp.oldPrice}
                         </p>
                       )}
                       <p className="text-foreground leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.015em" }}>
                         {dp.price}
                       </p>
-                      <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
+                      <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                         No PIX ou 10x de {installment}
                       </p>
                     </>

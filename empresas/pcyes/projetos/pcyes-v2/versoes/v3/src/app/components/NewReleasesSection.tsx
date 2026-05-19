@@ -201,7 +201,7 @@ export function NewReleasesSection() {
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
                 onClick={() => setSelectedIdx(releases.findIndex((r) => r.id === item.id))}
                 className="group relative overflow-hidden text-left cursor-pointer transition-all duration-500 border border-border/5 hover:border-border/15 flex"
-                style={{ borderRadius: "var(--radius-card)", background: "rgba(255,255,255,0.02)" }}
+                style={{ borderRadius: "var(--radius-card)", background: "rgba(var(--foreground-rgb), 0.02)" }}
               >
                 {/* Thumbnail */}
                 <Link to={`/produto/${item.id}`} className="w-[120px] h-[80px] flex-shrink-0 overflow-hidden relative" style={{ borderRadius: "var(--radius-card) 0 0 var(--radius-card)" }}

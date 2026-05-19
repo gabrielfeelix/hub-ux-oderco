@@ -158,7 +158,7 @@ export function CartDrawer() {
               background: isDark ? "#161617" : "white",
               borderTopLeftRadius: "22px",
               borderBottomLeftRadius: "22px",
-              borderLeft: "1px solid rgba(255,255,255,0.06)",
+              borderLeft: "1px solid rgba(var(--foreground-rgb), 0.06)",
               boxShadow: "-24px 0 60px -12px rgba(0,0,0,0.55)",
             }}
           >
@@ -567,8 +567,8 @@ export function CartDrawer() {
                   className="flex h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:h-auto md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
                   style={{
                     background: "#1f1c1c",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    boxShadow: "0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                    boxShadow: "0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                   }}
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -606,17 +606,17 @@ export function CartDrawer() {
                         className="group relative overflow-hidden text-left transition-all duration-300 cursor-pointer"
                         style={{
                           borderRadius: "20px",
-                          background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-                          border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(255,255,255,0.08)",
+                          background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                          border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                           boxShadow: isSelected
-                            ? "0 24px 60px -20px rgba(225,6,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)"
-                            : "inset 0 1px 0 rgba(255,255,255,0.05)",
+                            ? "0 24px 60px -20px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)"
+                            : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                         }}
                       >
                         <div
                           className="pointer-events-none absolute inset-0"
                           style={{
-                            background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.05) 0%, transparent 55%)",
+                            background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.05) 0%, transparent 55%)",
                             borderRadius: "20px",
                           }}
                         />
@@ -648,7 +648,7 @@ export function CartDrawer() {
                             {product.name}
                           </p>
                           <div className="mt-3 flex items-baseline gap-2 md:mt-4">
-                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(255,255,255,0.32)" }}>
+                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.32)" }}>
                               {product.price}
                             </span>
                             <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(18px, 5vw, 22px)", fontWeight: 700, color: "#22c55e", letterSpacing: "-0.015em" }}>
@@ -656,10 +656,10 @@ export function CartDrawer() {
                             </span>
                           </div>
                           <div className="mt-3 flex items-center justify-between md:mt-4">
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.4)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
                               PRESENTE PCYES
                             </span>
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(255,255,255,0.45)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(var(--foreground-rgb), 0.45)" }}>
                               {isSelected ? "SELECIONADO" : "SELECIONAR"}
                             </span>
                           </div>

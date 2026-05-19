@@ -145,10 +145,10 @@ export function IntelligentDevices() {
                   style={{
                     background: isActive
                       ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, transparent 100%)"
-                      : "rgba(255, 255, 255, 0.04)",
+                      : "rgba(var(--foreground-rgb), 0.04)",
                     border: isActive
                       ? "1.5px solid rgba(225, 6, 0, 0.7)"
-                      : "1px solid rgba(255, 255, 255, 0.10)",
+                      : "1px solid rgba(var(--foreground-rgb), 0.10)",
                     boxShadow: isActive
                       ? "0 0 0 5px rgba(225, 6, 0, 0.06), 0 0 28px -2px rgba(225, 6, 0, 0.55)"
                       : "none",
@@ -159,7 +159,7 @@ export function IntelligentDevices() {
                     size={isActive ? 34 : 30}
                     strokeWidth={1.5}
                     style={{
-                      color: isActive ? "#ff2419" : "rgba(255, 255, 255, 0.6)",
+                      color: isActive ? "#ff2419" : "rgba(var(--foreground-rgb), 0.6)",
                       filter: isActive
                         ? "drop-shadow(0 0 8px rgba(225, 6, 0, 0.5))"
                         : "none",
@@ -172,7 +172,7 @@ export function IntelligentDevices() {
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13px",
                     fontWeight: isActive ? 700 : 500,
-                    color: isActive ? "#ffffff" : "rgba(255, 255, 255, 0.55)",
+                    color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.55)",
                     letterSpacing: "0.02em",
                     transition: "color 280ms ease, font-weight 280ms ease",
                   }}
@@ -196,16 +196,16 @@ export function IntelligentDevices() {
                     className="relative aspect-square overflow-hidden transition-all duration-300"
                     style={{
                       background:
-                        "linear-gradient(140deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)",
+                        "linear-gradient(140deg, rgba(var(--foreground-rgb), 0.07) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                       borderRadius: "20px",
-                      border: "1px solid rgba(255, 255, 255, 0.05)",
+                      border: "1px solid rgba(var(--foreground-rgb), 0.05)",
                     }}
                   >
                     <div
                       className="pointer-events-none absolute inset-0"
                       style={{
                         background:
-                          "radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.06) 0%, transparent 55%)",
+                          "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
                         borderRadius: "20px",
                       }}
                     />
@@ -230,8 +230,8 @@ export function IntelligentDevices() {
                       className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
                       style={{
                         background: isFav ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
-                        border: isFav ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(255, 255, 255, 0.15)",
-                        color: isFav ? "#ff2419" : "rgba(255, 255, 255, 0.85)",
+                        border: isFav ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
+                        color: isFav ? "#ff2419" : "rgba(var(--foreground-rgb), 0.85)",
                         backdropFilter: "blur(8px)",
                       }}
                       aria-label="Favoritar"

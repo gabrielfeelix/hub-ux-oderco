@@ -42,16 +42,16 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
         <div
           className="relative aspect-square overflow-hidden transition-all duration-300 neon-hover-red"
           style={{
-            background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
+            background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
             borderRadius: "20px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+            border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+            boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
           }}
         >
           <div
             className="pointer-events-none absolute inset-0 z-[1]"
             style={{
-              background: "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%)",
+              background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
               borderRadius: "20px",
             }}
           />
@@ -91,8 +91,8 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
             className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
             style={{
               background: isFavorited ? "rgba(225,6,0,0.2)" : "rgba(0,0,0,0.55)",
-              border: isFavorited ? "1px solid rgba(225,6,0,0.8)" : "1px solid rgba(255,255,255,0.15)",
-              color: isFavorited ? "#ff2419" : "rgba(255,255,255,0.85)",
+              border: isFavorited ? "1px solid rgba(225,6,0,0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
+              color: isFavorited ? "#ff2419" : "rgba(var(--foreground-rgb), 0.85)",
               backdropFilter: "blur(8px)",
             }}
             aria-label="Favoritar"
@@ -141,7 +141,7 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
             {oldPriceNum > product.priceNum && (
               <p
                 className="line-through leading-none mb-0.5"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(255,255,255,0.32)" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(var(--foreground-rgb), 0.32)" }}
               >
                 R$ {oldPriceNum.toFixed(2).replace(".", ",")}
               </p>
@@ -154,7 +154,7 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
             </p>
             <p
               className="mt-1 leading-tight"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(255,255,255,0.5)" }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(var(--foreground-rgb), 0.5)" }}
             >
               10x de R$ {installment}
             </p>
@@ -276,7 +276,7 @@ export function DealsHighlight({
               borderRadius: "24px",
               border: "1.5px solid rgba(255, 90, 80, 0.45)",
               boxShadow:
-                "0 30px 80px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(225,6,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
+                "0 30px 80px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",
               minHeight: "460px",
             }}
           >
@@ -285,7 +285,7 @@ export function DealsHighlight({
               className="pointer-events-none absolute inset-0 opacity-[0.06]"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.9) 1px, transparent 1px)",
+                  "linear-gradient(rgba(var(--foreground-rgb), 0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--foreground-rgb), 0.9) 1px, transparent 1px)",
                 backgroundSize: "44px 44px",
               }}
             />
@@ -301,7 +301,7 @@ export function DealsHighlight({
                 fontSize: "360px",
                 fontWeight: 900,
                 lineHeight: 1,
-                color: "rgba(255,255,255,0.06)",
+                color: "rgba(var(--foreground-rgb), 0.06)",
                 letterSpacing: "-0.05em",
               }}
             >
@@ -312,8 +312,8 @@ export function DealsHighlight({
               <div
                 className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 mb-5"
                 style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.25)",
+                  background: "rgba(var(--foreground-rgb), 0.12)",
+                  border: "1px solid rgba(var(--foreground-rgb), 0.25)",
                   backdropFilter: "blur(8px)",
                 }}
               >
@@ -350,7 +350,7 @@ export function DealsHighlight({
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "14px",
-                  color: "rgba(255,255,255,0.78)",
+                  color: "rgba(var(--foreground-rgb), 0.78)",
                   lineHeight: 1.55,
                   maxWidth: "280px",
                 }}
@@ -367,8 +367,8 @@ export function DealsHighlight({
                     key={p.id}
                     className="relative h-14 w-14 rounded-full overflow-hidden flex items-center justify-center"
                     style={{
-                      background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,240,240,0.95) 100%)",
-                      border: "2px solid rgba(255,255,255,0.9)",
+                      background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.95) 0%, rgba(240,240,240,0.95) 100%)",
+                      border: "2px solid rgba(var(--foreground-rgb), 0.9)",
                       boxShadow: "0 10px 24px -8px rgba(0,0,0,0.6)",
                       zIndex: 10 - i,
                     }}
@@ -384,7 +384,7 @@ export function DealsHighlight({
                   className="relative flex h-14 w-14 items-center justify-center rounded-full"
                   style={{
                     background: "rgba(0,0,0,0.45)",
-                    border: "2px solid rgba(255,255,255,0.9)",
+                    border: "2px solid rgba(var(--foreground-rgb), 0.9)",
                     backdropFilter: "blur(8px)",
                     zIndex: 4,
                     fontFamily: "var(--font-family-figtree)",
@@ -414,7 +414,7 @@ export function DealsHighlight({
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "10.5px",
-                    color: "rgba(255,255,255,0.7)",
+                    color: "rgba(var(--foreground-rgb), 0.7)",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     marginTop: "5px",
@@ -439,7 +439,7 @@ export function DealsHighlight({
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
                   boxShadow:
-                    "0 14px 32px -8px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.4)",
+                    "0 14px 32px -8px rgba(0,0,0,0.55), 0 0 0 1px rgba(var(--foreground-rgb), 0.4)",
                 }}
               >
                 Ver catálogo de ofertas

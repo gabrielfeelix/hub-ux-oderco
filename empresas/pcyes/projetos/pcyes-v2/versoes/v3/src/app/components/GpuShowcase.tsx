@@ -166,7 +166,7 @@ export function GpuShowcase() {
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "15px",
-              color: "rgba(255, 255, 255, 0.55)",
+              color: "rgba(var(--foreground-rgb), 0.55)",
               maxWidth: "560px",
               lineHeight: 1.5,
             }}
@@ -190,14 +190,14 @@ export function GpuShowcase() {
                 style={{
                   background: isActive
                     ? "linear-gradient(135deg, rgba(225,6,0,0.18) 0%, rgba(225,6,0,0.06) 100%)"
-                    : "rgba(255,255,255,0.04)",
+                    : "rgba(var(--foreground-rgb), 0.04)",
                   border: isActive
                     ? "1px solid rgba(225,6,0,0.65)"
-                    : "1px solid rgba(255,255,255,0.10)",
+                    : "1px solid rgba(var(--foreground-rgb), 0.10)",
                   boxShadow: isActive
                     ? "0 0 0 4px rgba(225,6,0,0.06), 0 8px 24px -8px rgba(225,6,0,0.5)"
                     : "none",
-                  color: isActive ? "#ffffff" : "rgba(255,255,255,0.65)",
+                  color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.65)",
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13px",
                   fontWeight: isActive ? 700 : 500,
@@ -217,8 +217,8 @@ export function GpuShowcase() {
           className="relative w-full select-none overflow-hidden cursor-ew-resize"
           style={{
             aspectRatio: "21 / 9",
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-            borderBottom: "1px solid rgba(255,255,255,0.08)",
+            borderTop: "1px solid rgba(var(--foreground-rgb), 0.08)",
+            borderBottom: "1px solid rgba(var(--foreground-rgb), 0.08)",
           }}
         >
           <AnimatePresence mode="wait">
@@ -283,7 +283,7 @@ export function GpuShowcase() {
               className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 backdrop-blur-md"
               style={{
                 background: "rgba(20, 20, 22, 0.65)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.1)",
               }}
             >
               <span
@@ -292,7 +292,7 @@ export function GpuShowcase() {
                   fontSize: "10.5px",
                   fontWeight: 500,
                   letterSpacing: "0.08em",
-                  color: "rgba(255,255,255,0.5)",
+                  color: "rgba(var(--foreground-rgb), 0.5)",
                   textTransform: "uppercase",
                 }}
               >
@@ -326,7 +326,7 @@ export function GpuShowcase() {
                   fontSize: "10.5px",
                   fontWeight: 500,
                   letterSpacing: "0.08em",
-                  color: "rgba(255,255,255,0.5)",
+                  color: "rgba(var(--foreground-rgb), 0.5)",
                   textTransform: "uppercase",
                 }}
               >
@@ -351,7 +351,7 @@ export function GpuShowcase() {
               className="rounded-full px-3.5 py-1.5 backdrop-blur-md"
               style={{
                 background: "rgba(0, 0, 0, 0.55)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.1)",
               }}
             >
               <span
@@ -417,9 +417,9 @@ export function GpuShowcase() {
                 className="flex items-center gap-4 md:gap-5 rounded-2xl p-3 md:p-4"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                    "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                  border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                 }}
               >
                 <div
@@ -427,7 +427,7 @@ export function GpuShowcase() {
                   style={{
                     background: "rgba(0,0,0,0.4)",
                     borderRadius: "14px",
-                    border: "1px solid rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(var(--foreground-rgb), 0.05)",
                   }}
                 >
                   <ImageWithFallback
@@ -444,7 +444,7 @@ export function GpuShowcase() {
                       fontSize: "11px",
                       fontWeight: 600,
                       letterSpacing: "0.14em",
-                      color: "rgba(255,255,255,0.45)",
+                      color: "rgba(var(--foreground-rgb), 0.45)",
                       textTransform: "uppercase",
                       marginBottom: "4px",
                     }}

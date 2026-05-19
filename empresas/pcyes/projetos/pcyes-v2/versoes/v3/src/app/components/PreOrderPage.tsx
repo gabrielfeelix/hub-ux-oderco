@@ -101,7 +101,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
         {/* image */}
         <div
           className="relative h-[260px] md:h-full overflow-hidden"
-          style={{ background: "rgba(255,255,255,0.04)" }}
+          style={{ background: "rgba(var(--foreground-rgb), 0.04)" }}
         >
           <ImageWithFallback
             src={image}
@@ -198,7 +198,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 className="flex items-baseline justify-center gap-1 py-2"
                 style={{
                   background: "rgba(0,0,0,0.45)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                   borderRadius: "10px",
                 }}
               >
@@ -254,7 +254,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
             </div>
             <div
               className="relative h-1.5 w-full overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.06)", borderRadius: "999px" }}
+              style={{ background: "rgba(var(--foreground-rgb), 0.06)", borderRadius: "999px" }}
             >
               <motion.div
                 initial={{ width: 0 }}
@@ -610,8 +610,8 @@ function HeroSection({
               key={f.label}
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-white/75 transition-all hover:text-white hover:bg-white/[0.04]"
               style={{
-                background: "rgba(255,255,255,0.02)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(var(--foreground-rgb), 0.02)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.07)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12px",
                 fontWeight: 500,
@@ -681,7 +681,7 @@ function FiltersBar({
         top: "64px",
         background: "rgba(7,7,8,0.78)",
         backdropFilter: "blur(24px) saturate(140%)",
-        borderBottom: "1px solid rgba(255,255,255,0.05)",
+        borderBottom: "1px solid rgba(var(--foreground-rgb), 0.05)",
       }}
     >
       <div className="max-w-[1600px] mx-auto px-6 md:px-10 py-5">
@@ -690,8 +690,8 @@ function FiltersBar({
           <div
             className="flex items-center gap-2.5 px-4 h-10 flex-1 min-w-[200px] max-w-[320px] transition-colors focus-within:border-white/20"
             style={{
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              background: "rgba(var(--foreground-rgb), 0.025)",
+              border: "1px solid rgba(var(--foreground-rgb), 0.06)",
               borderRadius: "10px",
             }}
           >
@@ -726,11 +726,11 @@ function FiltersBar({
                   onClick={() => setActiveCategory(cat)}
                   className="px-3.5 h-10 rounded-full transition-all cursor-pointer"
                   style={{
-                    background: isActive ? "rgba(255,255,255,0.08)" : "transparent",
+                    background: isActive ? "rgba(var(--foreground-rgb), 0.08)" : "transparent",
                     border: isActive
-                      ? "1px solid rgba(255,255,255,0.18)"
-                      : "1px solid rgba(255,255,255,0.07)",
-                    color: isActive ? "#fff" : "rgba(255,255,255,0.6)",
+                      ? "1px solid rgba(var(--foreground-rgb), 0.18)"
+                      : "1px solid rgba(var(--foreground-rgb), 0.07)",
+                    color: isActive ? "#fff" : "rgba(var(--foreground-rgb), 0.6)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "12.5px",
                     fontWeight: 500,
@@ -747,8 +747,8 @@ function FiltersBar({
             onClick={() => setMobileOpen((v) => !v)}
             className="md:hidden inline-flex items-center gap-2 h-10 px-3.5 rounded-full text-white/75 cursor-pointer"
             style={{
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "rgba(var(--foreground-rgb), 0.025)",
+              border: "1px solid rgba(var(--foreground-rgb), 0.07)",
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
               fontWeight: 500,
@@ -780,8 +780,8 @@ function FiltersBar({
               onChange={(e) => setSort(e.target.value as SortKey)}
               className="appearance-none h-10 pl-9 pr-9 rounded-full text-white/75 cursor-pointer hover:text-white transition-colors"
               style={{
-                background: "rgba(255,255,255,0.025)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(var(--foreground-rgb), 0.025)",
+                border: "1px solid rgba(var(--foreground-rgb), 0.07)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12.5px",
                 fontWeight: 500,
@@ -823,11 +823,11 @@ function FiltersBar({
                 onClick={() => setDelivery(d)}
                 className="px-3 h-7 rounded-full transition-all cursor-pointer"
                 style={{
-                  background: isActive ? "rgba(255,255,255,0.06)" : "transparent",
+                  background: isActive ? "rgba(var(--foreground-rgb), 0.06)" : "transparent",
                   border: isActive
-                    ? "1px solid rgba(255,255,255,0.14)"
-                    : "1px solid rgba(255,255,255,0.05)",
-                  color: isActive ? "#fff" : "rgba(255,255,255,0.5)",
+                    ? "1px solid rgba(var(--foreground-rgb), 0.14)"
+                    : "1px solid rgba(var(--foreground-rgb), 0.05)",
+                  color: isActive ? "#fff" : "rgba(var(--foreground-rgb), 0.5)",
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "11.5px",
                   fontWeight: 500,
@@ -856,11 +856,11 @@ function FiltersBar({
                         onClick={() => setActiveCategory(cat)}
                         className="px-3 h-7 rounded-full transition-all cursor-pointer"
                         style={{
-                          background: isActive ? "rgba(255,255,255,0.08)" : "transparent",
+                          background: isActive ? "rgba(var(--foreground-rgb), 0.08)" : "transparent",
                           border: isActive
-                            ? "1px solid rgba(255,255,255,0.18)"
-                            : "1px solid rgba(255,255,255,0.06)",
-                          color: isActive ? "#fff" : "rgba(255,255,255,0.55)",
+                            ? "1px solid rgba(var(--foreground-rgb), 0.18)"
+                            : "1px solid rgba(var(--foreground-rgb), 0.06)",
+                          color: isActive ? "#fff" : "rgba(var(--foreground-rgb), 0.55)",
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "11.5px",
                           fontWeight: 500,
@@ -1035,8 +1035,8 @@ export function PreOrderPage() {
           <div
             className="flex flex-col items-center justify-center py-24 text-center"
             style={{
-              background: "rgba(255,255,255,0.015)",
-              border: "1px dashed rgba(255,255,255,0.08)",
+              background: "rgba(var(--foreground-rgb), 0.015)",
+              border: "1px dashed rgba(var(--foreground-rgb), 0.08)",
               borderRadius: "20px",
             }}
           >

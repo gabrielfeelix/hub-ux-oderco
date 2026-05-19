@@ -43,7 +43,7 @@ export function Newsletter() {
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            "linear-gradient(rgba(var(--foreground-rgb), 0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--foreground-rgb), 0.6) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -81,7 +81,7 @@ export function Newsletter() {
             }}
           >
             Drops, ofertas e novidades{" "}
-            <span style={{ color: "rgba(255,255,255,0.45)" }}>direto no seu inbox.</span>
+            <span style={{ color: "rgba(var(--foreground-rgb), 0.45)" }}>direto no seu inbox.</span>
           </h2>
 
           {/* Subtitle */}
@@ -91,7 +91,7 @@ export function Newsletter() {
               fontFamily: "var(--font-family-inter)",
               fontSize: "15px",
               lineHeight: 1.55,
-              color: "rgba(255,255,255,0.55)",
+              color: "rgba(var(--foreground-rgb), 0.55)",
               maxWidth: "440px",
             }}
           >
@@ -148,9 +148,9 @@ export function Newsletter() {
                 <div
                   className="group flex items-center overflow-hidden rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 focus-within:scale-[1.01]"
                   style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.10)",
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
+                    background: "rgba(var(--foreground-rgb), 0.04)",
+                    border: "1px solid rgba(var(--foreground-rgb), 0.10)",
+                    boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                   }}
                 >
                   <input
@@ -190,7 +190,7 @@ export function Newsletter() {
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "11.5px",
-                    color: "rgba(255,255,255,0.35)",
+                    color: "rgba(var(--foreground-rgb), 0.35)",
                     letterSpacing: "0.01em",
                   }}
                 >
