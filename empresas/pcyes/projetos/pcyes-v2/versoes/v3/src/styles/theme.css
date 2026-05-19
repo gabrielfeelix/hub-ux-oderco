@@ -523,29 +523,48 @@ html.light [data-page-light-scope] {
 /* Inline-style dark backgrounds → light surfaces.
    Many v3 sections set `style={{ background: "#0a0a0a" }}` etc. directly.
    Inline styles beat class selectors on specificity, but a CSS rule with
-   !important still wins over an inline style without !important. */
-html.light [data-page-light-scope] [style*="#0a0a0a"],
-html.light [data-page-light-scope] [style*="#0a0a0c"],
-html.light [data-page-light-scope] [style*="#0e0e0e"],
-html.light [data-page-light-scope] [style*="#0f0f0f"],
-html.light [data-page-light-scope] [style*="#070708"],
-html.light [data-page-light-scope] [style*="#040404"] {
+   !important still wins over an inline style without !important.
+   Browsers normalize hex to rgb() when serializing the style attribute,
+   so we match on the rgb() form (both spaced and non-spaced variants). */
+
+/* Near-black inline backgrounds → page bg */
+html.light [data-page-light-scope] [style*="rgb(10, 10, 10)"],
+html.light [data-page-light-scope] [style*="rgb(10,10,10)"],
+html.light [data-page-light-scope] [style*="rgb(10, 10, 12)"],
+html.light [data-page-light-scope] [style*="rgb(10,10,12)"],
+html.light [data-page-light-scope] [style*="rgb(14, 14, 14)"],
+html.light [data-page-light-scope] [style*="rgb(14,14,14)"],
+html.light [data-page-light-scope] [style*="rgb(15, 15, 15)"],
+html.light [data-page-light-scope] [style*="rgb(15,15,15)"],
+html.light [data-page-light-scope] [style*="rgb(7, 7, 8)"],
+html.light [data-page-light-scope] [style*="rgb(7,7,8)"],
+html.light [data-page-light-scope] [style*="rgb(4, 4, 4)"],
+html.light [data-page-light-scope] [style*="rgb(4,4,4)"] {
   background: #fafafa !important;
   background-color: #fafafa !important;
 }
 
-html.light [data-page-light-scope] [style*="#161617"],
-html.light [data-page-light-scope] [style*="#1a1a1c"],
-html.light [data-page-light-scope] [style*="#1a1a1a"],
-html.light [data-page-light-scope] [style*="#1e1e20"],
-html.light [data-page-light-scope] [style*="#1f1c1c"],
-html.light [data-page-light-scope] [style*="#1d1d1d"],
-html.light [data-page-light-scope] [style*="#121214"] {
+/* Dark-gray inline backgrounds → white cards */
+html.light [data-page-light-scope] [style*="rgb(22, 22, 23)"],
+html.light [data-page-light-scope] [style*="rgb(22,22,23)"],
+html.light [data-page-light-scope] [style*="rgb(26, 26, 28)"],
+html.light [data-page-light-scope] [style*="rgb(26,26,28)"],
+html.light [data-page-light-scope] [style*="rgb(26, 26, 26)"],
+html.light [data-page-light-scope] [style*="rgb(26,26,26)"],
+html.light [data-page-light-scope] [style*="rgb(30, 30, 32)"],
+html.light [data-page-light-scope] [style*="rgb(30,30,32)"],
+html.light [data-page-light-scope] [style*="rgb(31, 28, 28)"],
+html.light [data-page-light-scope] [style*="rgb(31,28,28)"],
+html.light [data-page-light-scope] [style*="rgb(29, 29, 29)"],
+html.light [data-page-light-scope] [style*="rgb(29,29,29)"],
+html.light [data-page-light-scope] [style*="rgb(18, 18, 20)"],
+html.light [data-page-light-scope] [style*="rgb(18,18,20)"] {
   background: #ffffff !important;
   background-color: #ffffff !important;
 }
 
-html.light [data-page-light-scope] [style*="#323232"] {
+html.light [data-page-light-scope] [style*="rgb(50, 50, 50)"],
+html.light [data-page-light-scope] [style*="rgb(50,50,50)"] {
   background: #f0f0f0 !important;
   background-color: #f0f0f0 !important;
 }
