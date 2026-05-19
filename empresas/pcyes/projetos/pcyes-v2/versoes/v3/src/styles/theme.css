@@ -519,3 +519,33 @@ html.light [data-page-light-scope] .placeholder\:text-white\/60::placeholder {
 html.light [data-page-light-scope] {
   background-color: var(--background);
 }
+
+/* Inline-style dark backgrounds → light surfaces.
+   Many v3 sections set `style={{ background: "#0a0a0a" }}` etc. directly.
+   Inline styles beat class selectors on specificity, but a CSS rule with
+   !important still wins over an inline style without !important. */
+html.light [data-page-light-scope] [style*="#0a0a0a"],
+html.light [data-page-light-scope] [style*="#0a0a0c"],
+html.light [data-page-light-scope] [style*="#0e0e0e"],
+html.light [data-page-light-scope] [style*="#0f0f0f"],
+html.light [data-page-light-scope] [style*="#070708"],
+html.light [data-page-light-scope] [style*="#040404"] {
+  background: #fafafa !important;
+  background-color: #fafafa !important;
+}
+
+html.light [data-page-light-scope] [style*="#161617"],
+html.light [data-page-light-scope] [style*="#1a1a1c"],
+html.light [data-page-light-scope] [style*="#1a1a1a"],
+html.light [data-page-light-scope] [style*="#1e1e20"],
+html.light [data-page-light-scope] [style*="#1f1c1c"],
+html.light [data-page-light-scope] [style*="#1d1d1d"],
+html.light [data-page-light-scope] [style*="#121214"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+html.light [data-page-light-scope] [style*="#323232"] {
+  background: #f0f0f0 !important;
+  background-color: #f0f0f0 !important;
+}
