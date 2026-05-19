@@ -30,11 +30,8 @@ export function ThemeToggle({ showExpanded = false, navbarIsDark = true }: Theme
 
   const themeIsDark = resolvedTheme === "dark" || resolvedTheme === undefined;
 
-  // When navbar is expanded on homepage: always white icons
-  // When navbar is collapsed: use theme-aware colors
-  const iconColor = showExpanded
-    ? "text-white hover:text-white/80"
-    : "text-foreground hover:text-foreground/70";
+  // Navbar bar is always dark (hardcoded #000000) — keep toggle icon white in both states/themes
+  const iconColor = "text-white hover:text-white/80";
 
   return (
     <button

@@ -402,3 +402,120 @@ html {
     radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
     linear-gradient(140deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
 }
+
+/* ============================================================
+   LIGHT THEME OVERRIDES — non-default, opt-in via header toggle
+   Scope: only descendants of [data-page-light-scope] (set in
+   RootLayout). AnnouncementBar + Navbar live outside this scope
+   on purpose, so the header keeps its dark surface and white
+   typography regardless of theme.
+   ============================================================ */
+
+html.light [data-page-light-scope] {
+  color-scheme: light;
+}
+
+/* Opaque dark backgrounds → light surfaces */
+html.light [data-page-light-scope] .bg-black,
+html.light [data-page-light-scope] .bg-neutral-950,
+html.light [data-page-light-scope] .bg-zinc-950,
+html.light [data-page-light-scope] .bg-stone-950,
+html.light [data-page-light-scope] .bg-gray-950,
+html.light [data-page-light-scope] .bg-\[\#040404\],
+html.light [data-page-light-scope] .bg-\[\#070708\],
+html.light [data-page-light-scope] .bg-\[\#0a0a0a\],
+html.light [data-page-light-scope] .bg-\[\#0f0f10\],
+html.light [data-page-light-scope] .bg-\[\#0f1011\],
+html.light [data-page-light-scope] .bg-\[\#111\],
+html.light [data-page-light-scope] .bg-\[\#121214\] {
+  background-color: #fafafa !important;
+}
+
+html.light [data-page-light-scope] .bg-neutral-900,
+html.light [data-page-light-scope] .bg-zinc-900,
+html.light [data-page-light-scope] .bg-gray-900,
+html.light [data-page-light-scope] .bg-\[\#1a1a1a\],
+html.light [data-page-light-scope] .bg-\[\#1d1d1d\],
+html.light [data-page-light-scope] .bg-\[\#1f1c1c\] {
+  background-color: #ffffff !important;
+}
+
+html.light [data-page-light-scope] .bg-neutral-800,
+html.light [data-page-light-scope] .bg-zinc-800,
+html.light [data-page-light-scope] .bg-gray-800,
+html.light [data-page-light-scope] .bg-\[\#323232\] {
+  background-color: #f0f0f0 !important;
+}
+
+html.light [data-page-light-scope] .bg-neutral-700,
+html.light [data-page-light-scope] .bg-zinc-700,
+html.light [data-page-light-scope] .bg-gray-700 {
+  background-color: #e5e5e5 !important;
+}
+
+/* Translucent white panels (glassy on dark) → dark panels (glassy on light) */
+html.light [data-page-light-scope] .bg-white\/5  { background-color: rgba(0,0,0,0.04) !important; }
+html.light [data-page-light-scope] .bg-white\/8  { background-color: rgba(0,0,0,0.05) !important; }
+html.light [data-page-light-scope] .bg-white\/10 { background-color: rgba(0,0,0,0.06) !important; }
+html.light [data-page-light-scope] .bg-white\/15 { background-color: rgba(0,0,0,0.08) !important; }
+html.light [data-page-light-scope] .bg-white\/20 { background-color: rgba(0,0,0,0.10) !important; }
+
+/* Pure white text → dark text (inverted) */
+html.light [data-page-light-scope] .text-white     { color: rgb(22, 22, 22) !important; }
+html.light [data-page-light-scope] .text-white\/95 { color: rgba(22, 22, 22, 0.95) !important; }
+html.light [data-page-light-scope] .text-white\/90 { color: rgba(22, 22, 22, 0.90) !important; }
+html.light [data-page-light-scope] .text-white\/85 { color: rgba(22, 22, 22, 0.88) !important; }
+html.light [data-page-light-scope] .text-white\/80 { color: rgba(22, 22, 22, 0.82) !important; }
+html.light [data-page-light-scope] .text-white\/75 { color: rgba(22, 22, 22, 0.78) !important; }
+html.light [data-page-light-scope] .text-white\/70 { color: rgba(22, 22, 22, 0.72) !important; }
+html.light [data-page-light-scope] .text-white\/65 { color: rgba(22, 22, 22, 0.68) !important; }
+html.light [data-page-light-scope] .text-white\/60 { color: rgba(22, 22, 22, 0.65) !important; }
+html.light [data-page-light-scope] .text-white\/55 { color: rgba(22, 22, 22, 0.60) !important; }
+html.light [data-page-light-scope] .text-white\/50 { color: rgba(22, 22, 22, 0.55) !important; }
+html.light [data-page-light-scope] .text-white\/45 { color: rgba(22, 22, 22, 0.50) !important; }
+html.light [data-page-light-scope] .text-white\/40 { color: rgba(22, 22, 22, 0.48) !important; }
+html.light [data-page-light-scope] .text-white\/35 { color: rgba(22, 22, 22, 0.45) !important; }
+html.light [data-page-light-scope] .text-white\/30 { color: rgba(22, 22, 22, 0.42) !important; }
+html.light [data-page-light-scope] .text-white\/25 { color: rgba(22, 22, 22, 0.38) !important; }
+html.light [data-page-light-scope] .text-white\/20 { color: rgba(22, 22, 22, 0.32) !important; }
+
+/* Light-gray neutrals (used for muted/body text on dark) → darker grays on light */
+html.light [data-page-light-scope] .text-neutral-100,
+html.light [data-page-light-scope] .text-neutral-200,
+html.light [data-page-light-scope] .text-neutral-300 { color: rgb(38, 38, 38) !important; }
+html.light [data-page-light-scope] .text-neutral-400 { color: rgb(82, 82, 82) !important; }
+html.light [data-page-light-scope] .text-neutral-500 { color: rgb(115, 115, 115) !important; }
+html.light [data-page-light-scope] .text-zinc-300,
+html.light [data-page-light-scope] .text-zinc-400 { color: rgb(82, 82, 82) !important; }
+
+/* White-tinted borders → black-tinted borders */
+html.light [data-page-light-scope] .border-white\/5  { border-color: rgba(0,0,0,0.06) !important; }
+html.light [data-page-light-scope] .border-white\/8  { border-color: rgba(0,0,0,0.08) !important; }
+html.light [data-page-light-scope] .border-white\/10 { border-color: rgba(0,0,0,0.10) !important; }
+html.light [data-page-light-scope] .border-white\/15 { border-color: rgba(0,0,0,0.12) !important; }
+html.light [data-page-light-scope] .border-white\/20 { border-color: rgba(0,0,0,0.14) !important; }
+html.light [data-page-light-scope] .border-white\/25 { border-color: rgba(0,0,0,0.16) !important; }
+html.light [data-page-light-scope] .border-white\/30 { border-color: rgba(0,0,0,0.18) !important; }
+html.light [data-page-light-scope] .border-neutral-900,
+html.light [data-page-light-scope] .border-neutral-800 { border-color: rgb(229, 229, 229) !important; }
+html.light [data-page-light-scope] .border-neutral-700 { border-color: rgb(212, 212, 212) !important; }
+html.light [data-page-light-scope] .border-zinc-800,
+html.light [data-page-light-scope] .border-zinc-900 { border-color: rgb(229, 229, 229) !important; }
+
+/* Ring/divide colors */
+html.light [data-page-light-scope] .ring-white\/10 { --tw-ring-color: rgba(0,0,0,0.10) !important; }
+html.light [data-page-light-scope] .ring-white\/20 { --tw-ring-color: rgba(0,0,0,0.14) !important; }
+html.light [data-page-light-scope] .divide-white\/10 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(0,0,0,0.10) !important; }
+
+/* Placeholders */
+html.light [data-page-light-scope] .placeholder\:text-white\/48::placeholder,
+html.light [data-page-light-scope] .placeholder\:text-white\/50::placeholder,
+html.light [data-page-light-scope] .placeholder\:text-white\/60::placeholder {
+  color: rgba(22, 22, 22, 0.55) !important;
+}
+
+/* Body background under page scope follows :root token already; ensure
+   transparent gradients above pure black inherit a light base. */
+html.light [data-page-light-scope] {
+  background-color: var(--background);
+}

@@ -593,15 +593,16 @@ export function Navbar() {
     navigate(`/produtos?search=${encodeURIComponent(value)}`);
   };
 
+  // Nav bar background is hardcoded #000000 — keep text/icons white in both themes
   const iconColor = showExpanded
-    ? (promoHovered ? (isDark ? "text-white/80 hover:text-white" : "text-black/80 hover:text-black") : (isDark ? "text-white/70 hover:text-white" : "text-black/70 hover:text-black"))
-    : (isDark ? "text-white/62 hover:text-white" : "text-foreground/60 hover:text-foreground");
+    ? (promoHovered ? "text-white/80 hover:text-white" : "text-white/70 hover:text-white")
+    : "text-white/62 hover:text-white";
   const navTextColor = showExpanded
-    ? (promoHovered ? (isDark ? "text-white/90 hover:text-white" : "text-black/90 hover:text-black") : (isDark ? "text-white/75 hover:text-white" : "text-black/75 hover:text-black"))
-    : (isDark ? "text-foreground/40 hover:text-foreground" : "text-foreground/50 hover:text-foreground");
+    ? (promoHovered ? "text-white/90 hover:text-white" : "text-white/75 hover:text-white")
+    : "text-white/45 hover:text-white";
   const categoryLinkColor = showExpanded
-    ? (isDark ? "text-white/75 hover:text-white" : "text-foreground/80 hover:text-foreground")
-    : (isDark ? "text-foreground/45 hover:text-foreground" : "text-foreground/50 hover:text-foreground");
+    ? "text-white/75 hover:text-white"
+    : "text-white/45 hover:text-white";
 
   const tooltipContentClass =
     "!bg-[#1f1c1c] !rounded-md border border-white/8 px-2.5 py-1.5 text-[11px] font-medium tracking-normal text-white/90 shadow-md [&>span]:hidden";
