@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.22.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.23.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -33,7 +33,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | DS infra C.1-C.9 ✅ · Features: auth, checkout, orc, ped, mk, clientes, calc, ajuda, dash, pv, novidades ✅. Próximo: dé, notif, admin, loja, chrome | 🟡 Em progresso (C.1-C.19 ✅) |
+| **C · Componentes contextuais** | DS infra C.1-C.9 ✅ · Features: auth, checkout, orc, ped, mk, clientes, calc, ajuda, dash, pv, novidades, de-chat ✅. Próximo: notif, admin, loja, chrome | 🟡 Em progresso (C.1-C.20 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -140,6 +140,7 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 - [dashboard](../features/dashboard/README.md) — Home · Hero + KPIs + Main grid + Carrosséis + Brand bar
 - [premio-venda-direta](../features/premio-venda-direta/README.md) — Lista + Detalhe c/ status banner + upload NF + timeline
 - [novidades](../features/novidades/README.md) — Drawer V5 + filtros + items + reactions + toast global
+- [de-chat](../features/de-chat/README.md) — Mascote Dé + chat drawer assistente IA
 
 ### Accessibility
 - [a11y.md](./a11y.md) — WCAG 2.1 AA audit completo · contrast, focus, motion, ARIA
@@ -480,7 +481,8 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.17 · Dashboard feature** — `.dash-*` v1+v3 (KPIs + hero gradient + main grid + carrosséis + alerts + brand bar) + `.home-kpi-*` + `.kpi-{tone}` + `.quick-act-*` extraídos pra `features/dashboard/dashboard.css` · -336 linhas · UPGRADES audit: .ds-kpi 2x→4x · .ds-hero-gradient 3x→4x · .ds-icon-btn 4x→5x · .ds-icon-box 3x→5x · 3 sugeridos (.ds-btn-on-brand, .ds-card-link, .ds-section-head)
 - [x] **C.18 · Prêmio Venda Direta feature** — `.pv-*` (detalhe + upload NF + status banner) + `.premio-*` (lista + pills + status) extraídos pra `features/premio-venda-direta/premio-venda-direta.css` · -188 linhas · UPGRADES: .ds-table-grid 5x · .ds-link-back 5x · .ds-kpi 5x · .ds-icon-box 6x · .ds-icon-btn 6x · .ds-alert 4x (com 5 tones) · `.ds-section-head` sobe pra CONFIRMED 3x · 3 sugeridos (.ds-dropzone, .ds-meta-strip, .ds-timeline)
 - [x] **C.19 · Novidades feature** — `.novas-*` (drawer V5 · panel + cats nested + items + reactions + feedback + end-state) + `.odex-toast` global extraídos pra `features/novidades/novidades.css` · -290 linhas · UPGRADES: .ds-icon-btn 7x · 4 novos sugeridos (.ds-drawer 2x, .ds-toast, .ds-empty-state 4x, .ds-list-item-selectable)
-- [ ] **C.20+ · Demais features** — dé chat, notificações (notif), admin, loja/produto, chrome (topbar/sidebar)
+- [x] **C.20 · Dé chat feature** — `.de-*` (mascote face pseudo-elements + chat drawer + mensagens + suggestions + cart inline) + `.help-modal-de*` (CTA bridge) extraídos pra `features/de-chat/de-chat.css` · -140 linhas · UPGRADES: .ds-icon-btn 8x · .ds-hero-gradient 5x · 3 sugeridos (.ds-chip 2x, .ds-chat-bubble, .ds-status-dot)
+- [ ] **C.21+ · Demais features** — notificações (notif), admin, loja/produto, chrome (topbar/sidebar)
 - [ ] **Phase H · Consolidação DS adoption** — automated audit script + cluster review + markup migration · gather divergence audits dos READMEs features
 
 ### Phase D · Figma DS espelho
@@ -525,5 +527,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.20.0 | C.17 | 2026-05-20 | Dashboard feature extraída pra `features/dashboard/dashboard.css` · 4 blocos (v1 KPIs + v3 hero + main grid + brand bar) · -336 linhas · UPGRADES: .ds-kpi 4x · .ds-hero-gradient 4x · .ds-icon-btn 5x · .ds-icon-box 5x + 3 sugeridos (.ds-btn-on-brand, .ds-card-link, .ds-section-head) |
 | 0.21.0 | C.18 | 2026-05-20 | PV feature extraída pra `features/premio-venda-direta/premio-venda-direta.css` · lista + detalhe + upload NF + 5 status banner tones · -188 linhas · UPGRADES: ds-table-grid 5x · ds-link-back 5x · ds-kpi 5x · ds-icon-box 6x · ds-icon-btn 6x · ds-alert 4x · ds-section-head sobe CONFIRMED · 3 sugeridos (.ds-dropzone, .ds-meta-strip, .ds-timeline) |
 | 0.22.0 | C.19 | 2026-05-20 | Novidades feature extraída pra `features/novidades/novidades.css` · drawer V5 560w + cats nested + items + reactions + feedback + odex-toast global · -290 linhas · UPGRADES: ds-icon-btn 7x · 4 sugeridos (.ds-drawer 2x, .ds-toast, .ds-empty-state 4x, .ds-list-item-selectable) |
+| 0.23.0 | C.20 | 2026-05-20 | Dé chat feature extraída pra `features/de-chat/de-chat.css` · mascote face SVG-like + chat drawer + mensagens + suggestions + cart inline + help-modal-de CTA bridge · -140 linhas · UPGRADES: ds-icon-btn 8x · ds-hero-gradient 5x · ds-overlay 5x · 3 sugeridos (.ds-chip 2x, .ds-chat-bubble, .ds-status-dot) |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

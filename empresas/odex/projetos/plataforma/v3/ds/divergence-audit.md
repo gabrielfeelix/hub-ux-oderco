@@ -12,10 +12,10 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.19) | 11 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda, dashboard, pv, novidades) |
-| Features restantes (C.20+) | ~5 (dé, notif, admin, loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17 · ds-icon-btn 7x · ds-modal/overlay 5x** |
-| Possíveis novos (sugeridos · ≥1 feature) | 13 |
+| Features extraídas (C.10-C.20) | 12 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda, dashboard, pv, novidades, de-chat) |
+| Features restantes (C.21+) | ~4 (notif, admin, loja, chrome) |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17 · ds-icon-btn 8x · ds-hero-gradient 5x · ds-overlay 5x** |
+| Possíveis novos (sugeridos · ≥1 feature) | 16 |
 
 ---
 
@@ -427,6 +427,15 @@ Hero section com gradient navy→blue + decoração + título grande.
 ### `.ds-list-item-selectable` (linha selecionável)
 - `.novas-cat-item` (novidades)
 
+### `.ds-chip` (chip outline pill clickable)
+- `.de-suggestion` + `.de-quick-chip` (de-chat) **→ 2x · subir CONFIRMED**
+
+### `.ds-chat-bubble` (chat message bubble)
+- `.de-msg-bubble` (de-chat)
+
+### `.ds-status-dot` (pulse indicator)
+- `.de-chat-status-dot` (de-chat)
+
 ---
 
 ## DUPES → DS atoms existentes (migration markup)
@@ -481,3 +490,4 @@ Update history:
 - v0.4 · 2026-05-20 · Atualizado após C.17 (dashboard) · 9 features mapeadas · upgrades: .ds-kpi 2x→4x (+dash-kpi+home-kpi) · .ds-hero-gradient 3x→4x (+dash-hero) · .ds-icon-btn 4x→5x (+dash-hero-brand-edit) · .ds-icon-box 3x→5x (+brand-logo+quick-ico) · 3 novos sugeridos (.ds-btn-on-brand, .ds-card-link, .ds-section-head)
 - v0.5 · 2026-05-20 · Atualizado após C.18 (premio venda direta) · 10 features mapeadas · upgrades múltiplos: .ds-table-grid 4x→5x · .ds-link-back 4x→5x · .ds-kpi 4x→5x · .ds-icon-box 5x→6x · .ds-icon-btn 5x→6x · .ds-alert 3x→4x (com 5 tones) · .ds-section-head sobe pra confirmed 3x · 3 novos sugeridos (.ds-dropzone, .ds-meta-strip, .ds-timeline)
 - v0.6 · 2026-05-20 · Atualizado após C.19 (novidades) · 11 features mapeadas · .ds-icon-btn 6x→7x · 4 novos sugeridos (.ds-drawer 2x, .ds-toast, .ds-empty-state 4x, .ds-list-item-selectable)
+- v0.7 · 2026-05-20 · Atualizado após C.20 (dé chat) · 12 features mapeadas · .ds-icon-btn 7x→8x · .ds-hero-gradient 4x→5x · .ds-overlay sobe 5x · 3 novos sugeridos (.ds-chip 2x, .ds-chat-bubble, .ds-status-dot)
