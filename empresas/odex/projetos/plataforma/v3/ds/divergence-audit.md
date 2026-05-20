@@ -12,10 +12,10 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.16) | 8 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda) |
-| Features restantes (C.17+) | ~8 (dash, pv, novas, dé, notif, admin, loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17** |
-| Possíveis novos (sugeridos · ≥1 feature) | 5 |
+| Features extraídas (C.10-C.17) | 9 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda, dashboard) |
+| Features restantes (C.18+) | ~7 (pv, novas, dé, notif, admin, loja, chrome) |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17 · com upgrades** (ds-kpi 4x, ds-hero-gradient 4x, ds-icon-btn 5x, ds-icon-box 5x) |
+| Possíveis novos (sugeridos · ≥1 feature) | 8 |
 
 ---
 
@@ -397,6 +397,15 @@ Hero section com gradient navy→blue + decoração + título grande.
 ### `.ds-video-embed` (16/9 cover + play)
 - `.help-modal-video` (ajuda)
 
+### `.ds-btn-on-brand` (CTA sobre brand bg)
+- `.dash-hero-cta` / `.dash-promo-cta` / `.dash-carousel-cta` (dashboard)
+
+### `.ds-card-link` (card como link interativo)
+- `.quick-act-btn` (dashboard)
+
+### `.ds-section-head` (header com title + sub + action)
+- `.section-header` (dashboard) + `.ajuda-section-head` (ajuda)
+
 ---
 
 ## DUPES → DS atoms existentes (migration markup)
@@ -448,3 +457,4 @@ Update history:
 - v0.1 · 2026-05-20 · Criado após C.14 (clientes) · 6 features mapeadas · 11 atoms/molecules confirmados
 - v0.2 · 2026-05-20 · Atualizado após C.15 (calculadora) · 7 features mapeadas · 14 atoms/molecules confirmados (.ds-kpi +1, .ds-progress +1, .ds-icon-btn upgrade 2x→3x) + 2 sugeridos viraram confirmados
 - v0.3 · 2026-05-20 · Atualizado após C.16 (ajuda) · 8 features mapeadas · 17 confirmados (.ds-link-back 4x, .ds-icon-box 3x, .ds-hero-gradient 3x) + .ds-modal sobe pra 3x · .ds-icon-btn upgrade 3x→4x · 3 novos sugeridos (.ds-accordion, .ds-fab, .ds-video-embed)
+- v0.4 · 2026-05-20 · Atualizado após C.17 (dashboard) · 9 features mapeadas · upgrades: .ds-kpi 2x→4x (+dash-kpi+home-kpi) · .ds-hero-gradient 3x→4x (+dash-hero) · .ds-icon-btn 4x→5x (+dash-hero-brand-edit) · .ds-icon-box 3x→5x (+brand-logo+quick-ico) · 3 novos sugeridos (.ds-btn-on-brand, .ds-card-link, .ds-section-head)

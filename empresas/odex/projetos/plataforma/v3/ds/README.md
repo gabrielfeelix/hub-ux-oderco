@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.19.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.20.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -33,7 +33,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | DS infra C.1-C.9 ✅ · Features extraídas: auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda ✅. Próximo: dash, pv, novas, dé, notif, admin, loja, chrome | 🟡 Em progresso (C.1-C.16 ✅) |
+| **C · Componentes contextuais** | DS infra C.1-C.9 ✅ · Features extraídas: auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda, dashboard ✅. Próximo: pv, novas, dé, notif, admin, loja, chrome | 🟡 Em progresso (C.1-C.17 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -137,6 +137,7 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 - [clientes](../features/clientes/README.md) — Lista + Detail + Modal busca + Modal novo cliente (3 steps)
 - [calculadora](../features/calculadora/README.md) — Simulação payback solar + métricas + share PDF/WhatsApp
 - [ajuda](../features/ajuda/README.md) — Central de ajuda + Artigos + Help FAB/Modal
+- [dashboard](../features/dashboard/README.md) — Home · Hero + KPIs + Main grid + Carrosséis + Brand bar
 
 ### Accessibility
 - [a11y.md](./a11y.md) — WCAG 2.1 AA audit completo · contrast, focus, motion, ARIA
@@ -474,7 +475,8 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.14 · Clientes feature** — `.clients-*` (lista) + `.client-*` (detail) + `.cliente-search-*` (modal busca) + `.nc-*` (modal novo cliente 3 steps) extraídos pra `features/clientes/clientes.css` · -150 linhas + orphan cleanup · README CONFIRMA cross-feature DUPES (toolbar 4x, table-grid 4x, stepper 3x, card-selectable 3x, form-grid 4x)
 - [x] **C.15 · Calculadora feature** — `.calc-*` (form + métricas + share + loading + disclaimer) extraída pra `features/calculadora/calculadora.css` · -140 linhas · CONFIRMA 3 novos DS atoms (`.ds-kpi`, `.ds-progress`, `.ds-icon-btn` upgrade 2x→3x) · 2 sugeridos viraram confirmados (.ds-stepper-input, .ds-tips)
 - [x] **C.16 · Ajuda feature** — `.help-modal-*` v1+v2 + `.ajuda-*` (hero + categorias + populares + FAQ + artigo) + `.artigo-*` + `.help-fab` extraídos pra `features/ajuda/ajuda.css` · -247 linhas · CONFIRMA 3 novos atoms (.ds-link-back 4x, .ds-icon-box 3x, .ds-hero-gradient 3x) · 3 novos sugeridos (.ds-accordion, .ds-fab, .ds-video-embed)
-- [ ] **C.17+ · Demais features** — dashboard, premio venda direta, novas, dé, notif, admin, loja/produto, chrome (topbar/sidebar)
+- [x] **C.17 · Dashboard feature** — `.dash-*` v1+v3 (KPIs + hero gradient + main grid + carrosséis + alerts + brand bar) + `.home-kpi-*` + `.kpi-{tone}` + `.quick-act-*` extraídos pra `features/dashboard/dashboard.css` · -336 linhas · UPGRADES audit: .ds-kpi 2x→4x · .ds-hero-gradient 3x→4x · .ds-icon-btn 4x→5x · .ds-icon-box 3x→5x · 3 sugeridos (.ds-btn-on-brand, .ds-card-link, .ds-section-head)
+- [ ] **C.18+ · Demais features** — premio venda direta (pv), novas, dé, notif, admin, loja/produto, chrome (topbar/sidebar)
 - [ ] **Phase H · Consolidação DS adoption** — automated audit script + cluster review + markup migration · gather divergence audits dos READMEs features
 
 ### Phase D · Figma DS espelho
@@ -516,5 +518,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.17.0 | C.14 | 2026-05-20 | Clientes feature extraído pra `features/clientes/clientes.css` · lista + detail + busca + novo cliente 3 steps · -150 linhas + orphan brace/comment cleanup · audit CONFIRMA cross-feature DUPES (toolbar 4x · table-grid 4x · stepper 3x · card-selectable 3x · form-grid 4x) |
 | 0.18.0 | C.15 | 2026-05-20 | Calculadora feature extraída pra `features/calculadora/calculadora.css` · form + KPIs + share + loading · -140 linhas · divergence audit confirma `.ds-kpi`/`.ds-progress` 2x + `.ds-icon-btn` upgrade 3x + sobe `.ds-stepper-input`/`.ds-tips` pra confirmado |
 | 0.19.0 | C.16 | 2026-05-20 | Ajuda feature extraída pra `features/ajuda/ajuda.css` · central + artigos + help FAB/modal v1+v2 · -247 linhas · 3 novos atoms confirmados (.ds-link-back 4x, .ds-icon-box 3x, .ds-hero-gradient 3x) + 3 sugeridos (.ds-accordion, .ds-fab, .ds-video-embed) |
+| 0.20.0 | C.17 | 2026-05-20 | Dashboard feature extraída pra `features/dashboard/dashboard.css` · 4 blocos (v1 KPIs + v3 hero + main grid + brand bar) · -336 linhas · UPGRADES: .ds-kpi 4x · .ds-hero-gradient 4x · .ds-icon-btn 5x · .ds-icon-box 5x + 3 sugeridos (.ds-btn-on-brand, .ds-card-link, .ds-section-head) |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.
