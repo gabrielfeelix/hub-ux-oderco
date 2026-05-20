@@ -724,8 +724,9 @@ type QuizProgram = {
   logo?: string;
 };
 
-const wikiLogo = (path: string, file: string) =>
-  `https://upload.wikimedia.org/wikipedia/commons/thumb/${path}/${file}/512px-${file}.png`;
+const iconifyLogo = (slug: string) => `https://api.iconify.design/logos:${slug}.svg`;
+const iconifyMono = (slug: string, hex: string) =>
+  `https://api.iconify.design/simple-icons:${slug}.svg?color=%23${hex.replace("#", "")}`;
 
 const quizPrograms: QuizProgram[] = [
   {
@@ -736,7 +737,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#001E36",
     fg: "#31A8FF",
     weight: "light",
-    logo: wikiLogo("a/af", "Adobe_Photoshop_CC_icon.svg"),
+    logo: iconifyLogo("adobe-photoshop"),
   },
   {
     id: "lightroom",
@@ -746,7 +747,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#001E36",
     fg: "#31A8FF",
     weight: "light",
-    logo: wikiLogo("b/b6", "Adobe_Photoshop_Lightroom_CC_logo.svg"),
+    logo: iconifyLogo("adobe-lightroom"),
   },
   {
     id: "illustrator",
@@ -756,7 +757,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#330000",
     fg: "#FF9A00",
     weight: "light",
-    logo: wikiLogo("f/fb", "Adobe_Illustrator_CC_icon.svg"),
+    logo: iconifyLogo("adobe-illustrator"),
   },
   {
     id: "indesign",
@@ -766,7 +767,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#49021F",
     fg: "#FF3366",
     weight: "light",
-    logo: wikiLogo("d/d5", "Adobe_InDesign_CC_icon.svg"),
+    logo: iconifyLogo("adobe-indesign"),
   },
   {
     id: "figma",
@@ -776,7 +777,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1E1E1E",
     fg: "#F24E1E",
     weight: "light",
-    logo: wikiLogo("3/33", "Figma-logo.svg"),
+    logo: iconifyLogo("figma"),
   },
   {
     id: "canva",
@@ -786,7 +787,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#0D1E40",
     fg: "#00C4CC",
     weight: "light",
-    logo: wikiLogo("0/08", "Canva_icon_2021.svg"),
+    logo: iconifyMono("canva", "#00C4CC"),
   },
   {
     id: "affinity",
@@ -796,6 +797,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#0E1F3D",
     fg: "#7CC4F4",
     weight: "light",
+    logo: iconifyMono("affinitydesigner", "#7CC4F4"),
   },
   {
     id: "premiere",
@@ -805,7 +807,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#00005B",
     fg: "#9999FF",
     weight: "heavy",
-    logo: wikiLogo("4/40", "Adobe_Premiere_Pro_CC_icon.svg"),
+    logo: iconifyLogo("adobe-premiere"),
   },
   {
     id: "davinci",
@@ -815,7 +817,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#232F3E",
     fg: "#FF8D11",
     weight: "heavy",
-    logo: wikiLogo("c/c0", "DaVinci_Resolve_17_logo.svg"),
+    logo: iconifyMono("davinciresolve", "#FF8D11"),
   },
   {
     id: "capcut",
@@ -843,7 +845,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#00005B",
     fg: "#D291FF",
     weight: "heavy",
-    logo: wikiLogo("4/4d", "Adobe_After_Effects_CC_icon.svg"),
+    logo: iconifyLogo("adobe-after-effects"),
   },
   {
     id: "obs",
@@ -853,7 +855,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1F1F2E",
     fg: "#9B4DCA",
     weight: "heavy",
-    logo: wikiLogo("d/d3", "OBS_Studio_Logo.svg"),
+    logo: iconifyMono("obsstudio", "#9B4DCA"),
   },
   {
     id: "streamlabs",
@@ -863,6 +865,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#0E1A2B",
     fg: "#80F5D2",
     weight: "heavy",
+    logo: iconifyMono("streamlabs", "#80F5D2"),
   },
   {
     id: "blender",
@@ -872,7 +875,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1A1A1A",
     fg: "#EA7600",
     weight: "heavy",
-    logo: wikiLogo("0/0c", "Blender_logo_no_text.svg"),
+    logo: iconifyLogo("blender"),
   },
   {
     id: "cinema4d",
@@ -882,6 +885,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#0F1730",
     fg: "#1E88E5",
     weight: "heavy",
+    logo: iconifyMono("cinema4d", "#1E88E5"),
   },
   {
     id: "zbrush",
@@ -900,7 +904,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#0E0E0E",
     fg: "#5B9FE0",
     weight: "heavy",
-    logo: wikiLogo("9/9b", "Unreal_Engine_Logo.svg"),
+    logo: iconifyMono("unrealengine", "#5B9FE0"),
   },
   {
     id: "unity",
@@ -910,7 +914,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1A1A1A",
     fg: "#E0E0E0",
     weight: "heavy",
-    logo: wikiLogo("1/19", "Unity_Technologies_logo.svg"),
+    logo: iconifyLogo("unity"),
   },
   {
     id: "audition",
@@ -920,7 +924,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#00203A",
     fg: "#00C8B4",
     weight: "heavy",
-    logo: wikiLogo("e/e0", "Adobe_Audition_CC_icon.svg"),
+    logo: iconifyMono("adobeaudition", "#00C8B4"),
   },
   {
     id: "flstudio",
@@ -939,7 +943,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#11243A",
     fg: "#3FA9F5",
     weight: "light",
-    logo: wikiLogo("9/9a", "Visual_Studio_Code_1.35_icon.svg"),
+    logo: iconifyLogo("visual-studio-code"),
   },
 ];
 
