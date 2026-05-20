@@ -3824,20 +3824,6 @@
       font:400 14px/1.4 var(--font);
       color:rgba(255,255,255,.85);
     }
-    /* === Feature cards (novo painel rico) === */
-    .auth-brand-features { display:flex; flex-direction:column; gap:14px; max-width:440px; }
-    .auth-brand-feature { display:flex; align-items:flex-start; gap:13px; padding:14px 16px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.10); border-radius:var(--r-card); backdrop-filter:blur(2px); transition:background .18s, border-color .18s, transform .18s; }
-    .auth-brand-feature:hover { background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.20); transform:translateY(-2px); }
-    .auth-brand-feature-icon { width:36px; height:36px; border-radius:var(--r-form); background:linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.08)); border:1px solid rgba(255,255,255,.18); display:grid; place-items:center; flex-shrink:0; color:white; box-shadow:0 2px 6px rgba(0,0,0,.10); }
-    .auth-brand-feature-text { min-width:0; }
-    .auth-brand-feature-text strong { display:block; font:700 13.5px/1.3 var(--font); color:white; margin-bottom:3px; letter-spacing:-.005em; }
-    .auth-brand-feature-text span { display:block; font:400 12px/1.45 var(--font); color:rgba(255,255,255,.72); }
-    /* === Stats row === */
-    .auth-brand-stats { display:flex; align-items:center; gap:16px; margin-top:24px; padding:14px 4px 0; border-top:1px solid rgba(255,255,255,.10); max-width:440px; }
-    .auth-brand-stat { display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
-    .auth-brand-stat strong { font:700 18px/1 var(--font); color:white; letter-spacing:-.02em; }
-    .auth-brand-stat span { font:400 11px/1.3 var(--font); color:rgba(255,255,255,.6); }
-    .auth-brand-stat-sep { width:1px; height:26px; background:rgba(255,255,255,.14); flex-shrink:0; }
     .auth-brand-foot {
       position:relative; z-index:2;
       display:flex; align-items:center; gap:14px;
@@ -3846,6 +3832,25 @@
       margin-top:48px;
     }
     .auth-brand-foot-sep { width:1px; height:14px; background:rgba(255,255,255,.20); }
+    /* === Signature (microcopy contextual no rodapé do painel) === */
+    .auth-brand-signature {
+      position:relative; z-index:2;
+      list-style:none; padding:0; margin:0;
+      display:flex; flex-direction:column; gap:10px;
+      max-width:440px;
+    }
+    .auth-brand-signature li {
+      display:flex; align-items:center; gap:10px;
+      font:500 13px/1.3 var(--font);
+      color:rgba(255,255,255,.78);
+    }
+    .auth-brand-signature-dot {
+      width:22px; height:22px; border-radius:50%;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      display:grid; place-items:center; flex-shrink:0;
+      color:rgba(255,255,255,.92);
+    }
 
     /* === Form panel (direita) === */
     .auth-form {
@@ -3965,8 +3970,7 @@
       .auth-brand-title { font-size:24px; }
       .auth-brand-foot { margin-top:28px; }
       .auth-form { padding:36px 24px; }
-      .auth-brand-features { display:none; }
-      .auth-brand-stats { margin-top:18px; }
+      .auth-brand-signature { margin-top:18px; gap:8px; }
     }
     @media(max-width:600px) {
       .auth-shell { padding:0; }
@@ -3974,7 +3978,7 @@
       .auth-grid-2 { grid-template-columns:1fr; }
       .auth-actions { flex-direction:column-reverse; }
       .auth-actions .ds-btn { width:100%; justify-content:center; }
-      .auth-brand-stats { display:none; }
+      .auth-brand-signature { display:none; }
     }
 
     /* ====== MODAL RESUMO DO PEDIDO (DS-fiel) ====== */
@@ -13225,17 +13229,26 @@ Fone: (44) 2101-1400`;
       // Painel esquerdo compartilhado (login / cadastro / redefinir)
       function _authBrand(variant) {
         const variants = {
-          login:     { spark:'sun-medium', title:'A plataforma que vende solar com você.', sub:'Catálogo, montagem de kit, calculadora de payback e gestão de orçamentos · tudo num lugar só.' },
-          cadastro:  { spark:'zap',        title:'Torne-se um parceiro de energia.',         sub:'Junte-se à rede de integradores Odex. Acesso completo à plataforma em minutos.' },
-          redefinir: { spark:'key-round',  title:'Recuperar acesso é simples.',              sub:'Informe seu e-mail ou CNPJ e enviamos as instruções pra você voltar à plataforma em segundos.' }
+          login: {
+            spark: 'sun-medium',
+            title: 'A plataforma que vende solar com você.',
+            sub: 'Catálogo, kit, payback e orçamentos · tudo num lugar só.',
+            signature: ['Catálogo Tier 1', 'Kit em 6 etapas', 'Proposta no WhatsApp']
+          },
+          cadastro: {
+            spark: 'zap',
+            title: 'Torne-se um parceiro Odex.',
+            sub: 'Cadastro rápido. Sem mensalidade. Acesso completo à plataforma.',
+            signature: ['Aprovação ágil', 'Sem taxa de adesão', 'Suporte humano']
+          },
+          redefinir: {
+            spark: 'key-round',
+            title: 'Recuperar acesso é simples.',
+            sub: 'Informe seu e-mail ou CNPJ e enviamos um link seguro pra você voltar.',
+            signature: ['Link expira em 30 min', 'Só você recebe', 'Sem ligar pro suporte']
+          }
         };
         const v = variants[variant] || variants.login;
-        const features = [
-          { icon:'shopping-bag',    title:'Catálogo completo',       sub:'Painéis Tier 1, inversores e acessórios das melhores marcas.' },
-          { icon:'layers',          title:'Monte Seu Kit',           sub:'Assistente em 6 etapas com produtos compatíveis automaticamente.' },
-          { icon:'calculator',      title:'Calculadora Solar',       sub:'Payback estimado + proposta pronta pro WhatsApp do cliente.' },
-          { icon:'trophy',          title:'Prêmio Venda Direta',     sub:'Comissão paga em cada venda direta · controle tudo na plataforma.' }
-        ];
         return `
           <section class="auth-brand">
             <div class="auth-brand-bg"></div>
@@ -13243,25 +13256,10 @@ Fone: (44) 2101-1400`;
               <div class="auth-spark"><i data-lucide="${v.spark}" style="width:26px;height:26px;color:white;"></i></div>
               <h1 class="auth-brand-title">${v.title}</h1>
               <p class="auth-brand-sub">${v.sub}</p>
-              <div class="auth-brand-features">
-                ${features.map(f => `
-                  <div class="auth-brand-feature">
-                    <div class="auth-brand-feature-icon"><i data-lucide="${f.icon}" style="width:16px;height:16px;"></i></div>
-                    <div class="auth-brand-feature-text">
-                      <strong>${f.title}</strong>
-                      <span>${f.sub}</span>
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
-              <div class="auth-brand-stats">
-                <div class="auth-brand-stat"><strong>+2.500</strong><span>integradores ativos</span></div>
-                <div class="auth-brand-stat-sep"></div>
-                <div class="auth-brand-stat"><strong>26</strong><span>estados atendidos</span></div>
-                <div class="auth-brand-stat-sep"></div>
-                <div class="auth-brand-stat"><strong>~2h</strong><span>resposta do suporte</span></div>
-              </div>
             </div>
+            <ul class="auth-brand-signature">
+              ${v.signature.map(s => `<li><span class="auth-brand-signature-dot"><i data-lucide="check" style="width:13px;height:13px;"></i></span><span>${s}</span></li>`).join('')}
+            </ul>
           </section>
         `;
       }
