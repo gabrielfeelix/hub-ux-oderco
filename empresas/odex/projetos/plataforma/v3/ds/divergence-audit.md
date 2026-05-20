@@ -12,10 +12,10 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.14) | 6 (auth, checkout, orcamentos, pedidos, monte-kit, clientes) |
-| Features restantes (C.15+) | ~10 (calc, ajuda, dash, pv, novas, dé, notif, admin, loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **11** |
-| Possíveis novos (sugeridos · ≥1 feature) | 5 |
+| Features extraídas (C.10-C.15) | 7 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora) |
+| Features restantes (C.16+) | ~9 (ajuda, dash, pv, novas, dé, notif, admin, loja, chrome) |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **14** |
+| Possíveis novos (sugeridos · ≥1 feature) | 4 |
 
 ---
 
@@ -267,22 +267,81 @@ Banner inline com ícone + mensagem (warning/error/info).
 
 ---
 
+### 12. `.ds-kpi` (atom) — 🟡 **2x confirmado**
+
+KPI card com label uppercase + valor grande destacado.
+
+| Feature | Class duplicado |
+|---|---|
+| Clientes | `.client-kpi` / `-kpi-lbl` / `-kpi-val` |
+| Calculadora | `.calc-metric` / `-metric-lbl` / `-metric-val` |
+
+**Estrutura proposta:**
+```html
+<div class="ds-kpi">
+  <span class="ds-kpi-label">Potência total</span>
+  <strong class="ds-kpi-value">7,2 kWp</strong>
+  <span class="ds-kpi-sub">12 painéis</span>
+</div>
+```
+
+---
+
+### 13. `.ds-progress` (atom) — 🟡 **2x confirmado**
+
+Barra de progresso linear com gradient navy→blue fill.
+
+| Feature | Class duplicado |
+|---|---|
+| Auth (cadastro) | `.auth-progress` / `.auth-progress-fill` |
+| Calculadora (loading) | `.calc-prog-track` / `.calc-prog-fill` |
+
+**Estrutura proposta:**
+```html
+<div class="ds-progress">
+  <div class="ds-progress-fill" style="width: 50%"></div>
+</div>
+```
+
+---
+
+### 14. `.ds-icon-btn` (atom) — 🔴 **3x confirmado** (atualizado de 2x)
+
+Atualizado: Calculadora também usa em `.calc-form-share` (38 circle).
+
+| Feature | Class duplicado |
+|---|---|
+| Pedidos | `.ped-resumo-close` |
+| Checkout | `.cart-close` |
+| Clientes | `.clients-clr-btn` (X clear) |
+| Calculadora | `.calc-form-share` (38 circle) |
+
+Variants: square (line clr-btn) · circle (close / share).
+
+---
+
 ## 🟡 Sugeridos · 1 feature (precisa confirmação)
 
 ### `.ds-stepper-input` (qty +/-)
-- `.cart-qty` (checkout) + `.mk-qty-stepper` (monte-kit)
+- `.cart-qty` (checkout) + `.mk-qty-stepper` (monte-kit) **→ CONFIRMADO 2x · subir**
 
 ### `.ds-tabs` (mode toggles)
 - `.mk-mode-tabs` (monte-kit · potência vs consumo)
 
 ### `.ds-tips` (help tips list)
-- `.mk-help-tips` (monte-kit)
+- `.mk-help-tips` (monte-kit) + `.calc-help-tip` (calculadora · sugestão similar) **→ CONFIRMADO 2x · subir**
 
 ### `.ds-search-list` (autocomplete results)
 - `.cliente-search-list` / `-item` (clientes)
 
 ### `.ds-page-btn` (paginação)
 - `.pg-btn` (orçamentos)
+
+### `.ds-spinner` (loading animation)
+- `.calc-spin-svg` / `.calc-spin-arc` (calculadora)
+
+### `.ds-alert-neutral` (disclaimer)
+- `.calc-disclaimer` (calculadora)
 
 ---
 
@@ -333,3 +392,4 @@ Atualizado a cada feature extraction (C.10+). Quando uma DUPE confirma 2+ featur
 
 Update history:
 - v0.1 · 2026-05-20 · Criado após C.14 (clientes) · 6 features mapeadas · 11 atoms/molecules confirmados
+- v0.2 · 2026-05-20 · Atualizado após C.15 (calculadora) · 7 features mapeadas · 14 atoms/molecules confirmados (.ds-kpi +1, .ds-progress +1, .ds-icon-btn upgrade 2x→3x) + 2 sugeridos viraram confirmados
