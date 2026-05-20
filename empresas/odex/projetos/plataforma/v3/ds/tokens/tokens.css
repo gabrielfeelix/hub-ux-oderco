@@ -162,6 +162,46 @@
   --icon-xl: 24px;
 
   /* ============================================================
+     MOTION · duration
+     ============================================================ */
+  --motion-instant: 0ms;                                      /* Sem animação · toggle states */
+  --motion-fast:    120ms;                                    /* Hover, micro-interaction (option hover, reveal) */
+  --motion-default: 150ms;                                    /* Padrão · botões, links, focus rings */
+  --motion-medium:  200ms;                                    /* Transição maior · inputs, dropdowns */
+  --motion-slow:    300ms;                                    /* Animação grande · progress bars, fades */
+
+  /* ============================================================
+     MOTION · easing curves
+     ============================================================ */
+  --easing-default:    ease;                                  /* Browser default · uso geral */
+  --easing-standard:   cubic-bezier(0.4, 0, 0.2, 1);          /* Material standard · enter+exit balanced */
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);            /* Enter (in) · slows at end */
+  --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);            /* Exit (out) · accelerates */
+  --easing-linear:     linear;                                /* Linear · progress, loading */
+
+  /* ============================================================
+     Z-INDEX scale (use intent · não números mágicos)
+     ============================================================ */
+  --z-base:     0;                                            /* Default · sem stacking */
+  --z-rise:     1;                                            /* Pequeno lift · cards on hover */
+  --z-dropdown: 100;                                          /* Dropdowns, menus contextuais */
+  --z-sticky:   200;                                          /* Sticky elements, sidebar fixa */
+  --z-overlay:  300;                                          /* Modal overlay (backdrop) */
+  --z-modal:    310;                                          /* Modal content (acima do overlay) */
+  --z-popover:  400;                                          /* Popovers, tooltips · acima de modal */
+  --z-toast:    500;                                          /* Toasts, notifications · top of stack */
+  --z-loader:   9999;                                         /* Full-screen loader */
+
+  /* ============================================================
+     BREAKPOINT · escala canônica (literais em @media)
+     ============================================================ */
+  --bp-sm:  600px;                                            /* Mobile · phones · @media (max-width: 600px) */
+  --bp-md:  768px;                                            /* Tablet · @media (max-width: 768px) */
+  --bp-lg:  960px;                                            /* Small desktop · @media (max-width: 960px) */
+  --bp-xl:  1100px;                                           /* Desktop · @media (max-width: 1100px) */
+  --bp-xxl: 1280px;                                           /* Wide desktop · @media (max-width: 1280px) */
+
+  /* ============================================================
      ========================= SEMANTIC =========================
      ============================================================
      Aliases por INTENÇÃO. Components usam essas variáveis em vez

@@ -24,7 +24,7 @@
   background: var(--color-surface-card);
   border-radius: 4px;
   cursor: pointer;
-  transition: .12s;
+  transition: var(--motion-fast);
   position: relative;
 }
 

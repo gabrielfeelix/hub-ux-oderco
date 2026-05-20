@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Odex DS · Catálogo · v0.5.0</title>
+  <title>Odex DS · Catálogo · v0.7.0</title>
 
   <!-- Fonts + icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -263,7 +263,7 @@
     <aside class="cat-sidebar">
       <div class="cat-brand">
         <strong>Odex DS</strong>
-        <span>Catálogo · v0.5.0</span>
+        <span>Catálogo · v0.7.0</span>
       </div>
       <nav class="cat-nav">
         <div class="cat-nav-group">Foundations · primitives</div>
@@ -273,6 +273,9 @@
         <a href="#spacing">Spacing</a>
         <a href="#font-sizes">Font sizes</a>
         <a href="#font-weights">Font weights</a>
+        <a href="#motion">Motion</a>
+        <a href="#z-index">Z-index</a>
+        <a href="#breakpoints">Breakpoints</a>
 
         <div class="cat-nav-group">Semantic</div>
         <a href="#semantic-intro">Intro · primitive ↔ semantic</a>
@@ -315,7 +318,7 @@
         <p>Referência visual de todos os tokens, atoms e molecules do DS. Source of truth · este catálogo usa o mesmo <code>ds/index.css</code> que a plataforma. Se quebrar aqui, quebrou lá.</p>
         <div class="cat-hero-meta">
           <span><strong>Versão:</strong> 0.4.0</span>
-          <span><strong>Phase:</strong> C.3 (semantic tokens)</span>
+          <span><strong>Phase:</strong> C.5 (motion + z-index + breakpoints + base)</span>
           <span><strong>Updated:</strong> 2026-05-20</span>
         </div>
       </header>
@@ -498,6 +501,119 @@
           <div class="cat-font-row"><span class="cat-font-sample" style="font-weight:500;font-size:18px">A plataforma que vende solar</span><span class="cat-font-meta">--fw-medium · 500</span></div>
           <div class="cat-font-row"><span class="cat-font-sample" style="font-weight:600;font-size:18px">A plataforma que vende solar</span><span class="cat-font-meta">--fw-semibold · 600</span></div>
           <div class="cat-font-row"><span class="cat-font-sample" style="font-weight:700;font-size:18px">A plataforma que vende solar</span><span class="cat-font-meta">--fw-bold · 700</span></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- MOTION -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="motion">Motion</h2>
+        <p class="cat-section-desc">Durations + easing curves. Use <code>var(--motion-*)</code> em transitions/animations · evite hardcode de milliseconds.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Duration</h3><span class="cat-component-class">--motion-{instant,fast,default,medium,slow}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <style>
+                .cat-motion-demo { width: 24px; height: 24px; border-radius: 50%; background: var(--blue); transition: transform var(--motion-default) var(--easing-default); }
+                .cat-motion-row:hover .cat-motion-demo { transform: translateX(120px); }
+                .cat-motion-instant .cat-motion-demo { transition-duration: var(--motion-instant); }
+                .cat-motion-fast .cat-motion-demo    { transition-duration: var(--motion-fast); }
+                .cat-motion-default .cat-motion-demo { transition-duration: var(--motion-default); }
+                .cat-motion-medium .cat-motion-demo  { transition-duration: var(--motion-medium); }
+                .cat-motion-slow .cat-motion-demo    { transition-duration: var(--motion-slow); }
+              </style>
+              <div class="cat-motion-row cat-motion-instant" style="display:flex;align-items:center;gap:12px;cursor:pointer;"><div class="cat-motion-demo"></div><span style="font:500 12px/1 'JetBrains Mono',monospace;">--motion-instant · 0ms</span></div>
+              <div class="cat-motion-row cat-motion-fast" style="display:flex;align-items:center;gap:12px;cursor:pointer;"><div class="cat-motion-demo"></div><span style="font:500 12px/1 'JetBrains Mono',monospace;">--motion-fast · 120ms</span></div>
+              <div class="cat-motion-row cat-motion-default" style="display:flex;align-items:center;gap:12px;cursor:pointer;"><div class="cat-motion-demo"></div><span style="font:500 12px/1 'JetBrains Mono',monospace;">--motion-default · 150ms</span></div>
+              <div class="cat-motion-row cat-motion-medium" style="display:flex;align-items:center;gap:12px;cursor:pointer;"><div class="cat-motion-demo"></div><span style="font:500 12px/1 'JetBrains Mono',monospace;">--motion-medium · 200ms</span></div>
+              <div class="cat-motion-row cat-motion-slow" style="display:flex;align-items:center;gap:12px;cursor:pointer;"><div class="cat-motion-demo"></div><span style="font:500 12px/1 'JetBrains Mono',monospace;">--motion-slow · 300ms</span></div>
+              <div class="cat-note">Hover em cada linha pra ver a duration em ação.</div>
+            </div>
+            <pre class="cat-code">/* uso típico */
+.ds-btn {
+  transition: var(--motion-default);
+}
+.ds-menu-item {
+  transition: background var(--motion-fast);
+}</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Easing</h3><span class="cat-component-class">--easing-{default,standard,decelerate,accelerate,linear}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <span style="font:500 12px/1 'JetBrains Mono',monospace;">--easing-default · ease (browser)</span>
+              <span style="font:500 12px/1 'JetBrains Mono',monospace;">--easing-standard · cubic-bezier(.4, 0, .2, 1)</span>
+              <span style="font:500 12px/1 'JetBrains Mono',monospace;">--easing-decelerate · enter (in)</span>
+              <span style="font:500 12px/1 'JetBrains Mono',monospace;">--easing-accelerate · exit (out)</span>
+              <span style="font:500 12px/1 'JetBrains Mono',monospace;">--easing-linear · progress</span>
+            </div>
+            <pre class="cat-code">/* enter animation · decelerate */
+.modal-enter {
+  transition: opacity var(--motion-medium)
+              var(--easing-decelerate);
+}</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- Z-INDEX -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="z-index">Z-index scale</h2>
+        <p class="cat-section-desc">Use intent (<code>--z-dropdown</code>, <code>--z-modal</code>) em vez de números mágicos. Camadas pensadas pra evitar guerra de z-index.</p>
+
+        <div class="cat-grid">
+          <div class="cat-preview">
+            <div style="display:grid;grid-template-columns:120px 80px 1fr;gap:8px 16px;align-items:center;font:500 12px/1.4 'JetBrains Mono',monospace;">
+              <span>--z-base</span>     <span style="color:var(--muted);">0</span>    <span style="color:var(--muted);font-family:var(--font);">Default · sem stacking</span>
+              <span>--z-rise</span>     <span style="color:var(--muted);">1</span>    <span style="color:var(--muted);font-family:var(--font);">Pequeno lift · cards hover</span>
+              <span>--z-dropdown</span> <span style="color:var(--muted);">100</span>  <span style="color:var(--muted);font-family:var(--font);">Dropdowns, menus</span>
+              <span>--z-sticky</span>   <span style="color:var(--muted);">200</span>  <span style="color:var(--muted);font-family:var(--font);">Sticky elements, sidebar fixa</span>
+              <span>--z-overlay</span>  <span style="color:var(--muted);">300</span>  <span style="color:var(--muted);font-family:var(--font);">Modal overlay (backdrop)</span>
+              <span>--z-modal</span>    <span style="color:var(--muted);">310</span>  <span style="color:var(--muted);font-family:var(--font);">Modal content (acima overlay)</span>
+              <span>--z-popover</span>  <span style="color:var(--muted);">400</span>  <span style="color:var(--muted);font-family:var(--font);">Popovers, tooltips · acima modal</span>
+              <span>--z-toast</span>    <span style="color:var(--muted);">500</span>  <span style="color:var(--muted);font-family:var(--font);">Toasts · top of stack</span>
+              <span>--z-loader</span>   <span style="color:var(--muted);">9999</span> <span style="color:var(--muted);font-family:var(--font);">Full-screen loader</span>
+            </div>
+          </div>
+          <pre class="cat-code">/* uso típico */
+.modal-overlay {
+  z-index: var(--z-overlay);
+}
+.dropdown-menu {
+  z-index: var(--z-dropdown);
+}</pre>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- BREAKPOINTS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="breakpoints">Breakpoints</h2>
+        <p class="cat-section-desc">Escala canônica. <strong>CSS vars não funcionam em @media queries</strong> · use os valores literais correspondentes.</p>
+
+        <div class="cat-grid">
+          <div class="cat-preview">
+            <div style="display:grid;grid-template-columns:80px 80px 1fr;gap:8px 16px;align-items:center;font:500 12px/1.4 'JetBrains Mono',monospace;">
+              <span>--bp-sm</span>  <span style="color:var(--muted);">600px</span>  <span style="color:var(--muted);font-family:var(--font);">Mobile · phones</span>
+              <span>--bp-md</span>  <span style="color:var(--muted);">768px</span>  <span style="color:var(--muted);font-family:var(--font);">Tablet</span>
+              <span>--bp-lg</span>  <span style="color:var(--muted);">960px</span>  <span style="color:var(--muted);font-family:var(--font);">Small desktop</span>
+              <span>--bp-xl</span>  <span style="color:var(--muted);">1100px</span> <span style="color:var(--muted);font-family:var(--font);">Desktop</span>
+              <span>--bp-xxl</span> <span style="color:var(--muted);">1280px</span> <span style="color:var(--muted);font-family:var(--font);">Wide desktop</span>
+            </div>
+            <div class="cat-note"><strong>Limitação CSS:</strong> media queries não aceitam <code>var()</code>. Use literais matching a escala.</div>
+          </div>
+          <pre class="cat-code">/* uso correto · literais matching --bp-* */
+@media (max-width: 600px) { ... }   /* --bp-sm */
+@media (max-width: 768px) { ... }   /* --bp-md */
+@media (max-width: 960px) { ... }   /* --bp-lg */
+@media (max-width: 1100px) { ... }  /* --bp-xl */</pre>
         </div>
       </section>
 
@@ -1149,7 +1265,7 @@
       <!-- Footer -->
       <!-- ============================================================ -->
       <footer style="margin-top:96px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:400 12px/1.4 var(--font);color:var(--muted);">
-        <span>Odex DS · v0.5.0 · 2026-05-20</span>
+        <span>Odex DS · v0.7.0 · 2026-05-20</span>
         <span><a class="ds-link" href="./README.md">README</a> · <a class="ds-link" href="./tokens/tokens.json">tokens.json</a> · <a class="ds-link" href="../index.html">app</a></span>
       </footer>
 

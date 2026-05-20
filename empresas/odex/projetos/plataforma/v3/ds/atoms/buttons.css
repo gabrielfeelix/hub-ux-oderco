@@ -11,7 +11,7 @@
   border: 1px solid transparent;
   border-radius: var(--r-form);
   font: 400 14px/1 var(--font); letter-spacing: 0;
-  background: transparent; cursor: pointer; transition: .15s;
+  background: transparent; cursor: pointer; transition: var(--motion-default);
   white-space: nowrap; user-select: none;
 }
 .ds-btn:disabled { opacity: .55; cursor: not-allowed; }

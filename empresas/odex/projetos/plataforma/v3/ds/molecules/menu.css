@@ -21,11 +21,11 @@
   border-radius: var(--r-form);
   box-shadow: 0 8px 24px rgba(13,29,82,.14), 0 2px 6px rgba(0,0,0,.04);
   padding: 6px;
-  z-index: 100;
+  z-index: var(--z-dropdown);
   opacity: 0;
   transform: translateY(-6px) scale(.98);
   pointer-events: none;
-  transition: opacity .15s, transform .15s;
+  transition: opacity var(--motion-default), transform var(--motion-default);
 }
 .ds-menu.open .ds-menu-popover {
   opacity: 1;
@@ -57,7 +57,7 @@
   font-family: var(--font);
   color: var(--color-text-strong);
   text-align: left;
-  transition: background .12s;
+  transition: background var(--motion-fast);
 }
 .ds-menu-item:hover { background: var(--color-action-secondary-bg-hover); }
 .ds-menu-item small {

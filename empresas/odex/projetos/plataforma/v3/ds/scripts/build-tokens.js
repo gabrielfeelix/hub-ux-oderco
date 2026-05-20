@@ -46,6 +46,10 @@ const RULES = [
   { test: (p) => p.startsWith('spacing.'),         build: (p) => '--space-' + p.slice('spacing.'.length) },
   { test: (p) => p.startsWith('size.control.'),    build: (p) => '--control-' + p.slice('size.control.'.length) },
   { test: (p) => p.startsWith('size.icon.'),       build: (p) => '--icon-' + p.slice('size.icon.'.length) },
+  { test: (p) => p.startsWith('motion.duration.'), build: (p) => '--motion-' + p.slice('motion.duration.'.length) },
+  { test: (p) => p.startsWith('motion.easing.'),   build: (p) => '--easing-' + p.slice('motion.easing.'.length) },
+  { test: (p) => p.startsWith('z.'),               build: (p) => '--z-' + p.slice('z.'.length) },
+  { test: (p) => p.startsWith('breakpoint.'),      build: (p) => '--bp-' + p.slice('breakpoint.'.length) },
 ];
 
 function pathToVarName(p) {
@@ -72,6 +76,10 @@ const SECTION_ORDER = [
   { prefix: 'spacing.',        header: 'SPACING (escala 4px base)' },
   { prefix: 'size.control.',   header: 'SIZE · control (botões/inputs altura)' },
   { prefix: 'size.icon.',      header: 'SIZE · icon' },
+  { prefix: 'motion.duration.',header: 'MOTION · duration' },
+  { prefix: 'motion.easing.',  header: 'MOTION · easing curves' },
+  { prefix: 'z.',              header: 'Z-INDEX scale (use intent · não números mágicos)' },
+  { prefix: 'breakpoint.',     header: 'BREAKPOINT · escala canônica (literais em @media)' },
   // Semantic
   { prefix: 'semantic.color.action.',    header: 'SEMANTIC · ACTION · botões e elementos interativos', sectionHeader: 'SEMANTIC' },
   { prefix: 'semantic.color.surface.',   header: 'SEMANTIC · SURFACE · backgrounds' },

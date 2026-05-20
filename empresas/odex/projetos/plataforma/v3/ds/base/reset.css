@@ -1,0 +1,42 @@
+/* ==========================================================================
+   DS · BASE / RESET
+   Estilos foundational aplicados a elementos HTML nativos.
+   Usa semantic tokens (text-default, surface-page, etc).
+   Importado por ds/index.css logo após tokens.css.
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--fs-14);
+  line-height: var(--lh-loose);
+  background: var(--color-surface-page);
+  color: var(--color-text-default);
+  -webkit-font-smoothing: antialiased;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  outline: none;
+  font-family: var(--font);
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}

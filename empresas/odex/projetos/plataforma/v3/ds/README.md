@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.6.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.7.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens (primitivos e semânticos) em todos estados.
 
@@ -27,7 +27,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅. Próximo: reset/motion/z-index/breakpoint tokens, @layer | 🟡 Em progresso (C.1-C.4 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion + z-index + bp + base ✅. Próximo: @layer, component README, a11y, demais features | 🟡 Em progresso (C.1-C.5 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -358,7 +358,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.2 · Catálogo visual** — `ds/catalog.html` · todos atoms/molecules/tokens em todos estados
 - [x] **C.3 · Semantic tokens** — primitive ↔ semantic split · atoms + molecules migrados pra `--color-*` semantic
 - [x] **C.4 · Build pipeline** — `tokens.json → tokens.css` generator + `--check` mode · zero dependências · `npm run build-tokens` / `npm run check-tokens`
-- [ ] **C.5 · Tokens faltantes** — reset, motion, z-index, breakpoint
+- [x] **C.5 · Tokens faltantes** — motion (duration + easing), z-index scale, breakpoint scale, base/reset.css (extraído de index.html)
 - [ ] **C.6 · CSS @layer architecture** — cascade determinístico
 - [ ] **C.7 · Component README** — doc por atom (when use/when not/a11y/examples)
 - [ ] **C.8 · A11y audit** — contrast WCAG AA, focus visible, ARIA, keyboard nav
@@ -391,5 +391,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.4.0 | C.2 | 2026-05-20 | Catálogo visual `ds/catalog.html` · todos atoms/molecules/tokens em todos estados |
 | 0.5.0 | C.3 | 2026-05-20 | Semantic tokens (primitive ↔ semantic) · atoms + molecules migrados pra `--color-*` aliases por intenção |
 | 0.6.0 | C.4 | 2026-05-20 | Build pipeline `tokens.json → tokens.css` (Node, zero deps) + `--check` mode CI · package.json com `npm run build-tokens` |
+| 0.7.0 | C.5 | 2026-05-20 | Motion tokens (5 durations + 5 easings) · Z-index scale (9 layers) · Breakpoint scale (5 sizes) · `ds/base/reset.css` extraído de index.html |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

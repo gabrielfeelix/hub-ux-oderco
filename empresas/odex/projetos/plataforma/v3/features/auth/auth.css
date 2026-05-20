@@ -168,7 +168,7 @@ main.auth-shell {
   font: 400 13px/1 var(--font);
   color: var(--muted);
   text-decoration: none;
-  transition: .15s;
+  transition: var(--motion-default);
 }
 .auth-back:hover { background: var(--soft); color: var(--navy); }
 
@@ -203,7 +203,7 @@ main.auth-shell {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--r-form);
-  transition: border-color .2s, box-shadow .2s, background .2s;
+  transition: border-color var(--motion-medium), box-shadow var(--motion-medium), background var(--motion-medium);
 }
 .auth-input-wrap:focus-within {
   border-color: var(--blue);
@@ -213,7 +213,7 @@ main.auth-shell {
   position: absolute; left: 14px;
   color: var(--muted);
   pointer-events: none;
-  transition: color .2s;
+  transition: color var(--motion-medium);
 }
 .auth-input-wrap:focus-within .auth-input-icon { color: var(--blue); }
 .auth-input-icon-right {
@@ -250,7 +250,7 @@ main.auth-shell {
   border-radius: 50%;
   display: grid; place-items: center;
   cursor: pointer;
-  transition: .12s;
+  transition: var(--motion-fast);
 }
 .auth-input-reveal:hover { background: var(--soft); color: var(--navy); }
 
@@ -280,7 +280,7 @@ main.auth-shell {
   font-family: var(--font);
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   cursor: pointer;
-  transition: .15s;
+  transition: var(--motion-default);
   box-shadow: 0 4px 12px rgba(0,90,255,.20);
 }
 .auth-submit:hover {
@@ -315,7 +315,7 @@ main.auth-shell {
   border-radius: var(--r-form);
   font: 400 14px/1 var(--font);
   text-decoration: none;
-  transition: .15s;
+  transition: var(--motion-default);
   cursor: pointer;
 }
 .auth-secondary:hover {
@@ -355,7 +355,7 @@ main.auth-shell {
   height: 100%;
   background: linear-gradient(90deg, var(--navy), var(--blue));
   border-radius: 99px;
-  transition: width .3s;
+  transition: width var(--motion-slow);
 }
 
 /* === Grid 2-col para campos lado-a-lado === */
