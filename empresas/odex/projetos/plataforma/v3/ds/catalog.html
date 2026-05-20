@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odex DS · Catálogo · v0.3.0</title>
+
+  <!-- Fonts + icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- DS canon · ESTE arquivo é o catálogo, mas usa o DS de verdade -->
+  <link rel="stylesheet" href="./index.css" />
+
+  <style>
+    /* ============================================================
+       CATALOG CHROME · estilos só do catálogo (.cat-*)
+       Nada aqui pertence ao DS. Catálogo é doc, não componente.
+       ============================================================ */
+    body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--ink); }
+
+    .cat-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+
+    /* === Sidebar === */
+    .cat-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--white);
+      border-right: 1px solid var(--line);
+      padding: 24px 18px;
+    }
+    .cat-brand {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 0 6px 18px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 14px;
+    }
+    .cat-brand strong { font: 700 16px/1.2 var(--font); color: var(--navy); letter-spacing: -.01em; }
+    .cat-brand span   { font: 400 12px/1.3 var(--font); color: var(--muted); }
+    .cat-nav { display: flex; flex-direction: column; gap: 1px; }
+    .cat-nav-group {
+      font: 700 10px/1 var(--font);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 14px 6px 6px;
+    }
+    .cat-nav a {
+      display: block;
+      padding: 7px 10px;
+      font: 400 13px/1 var(--font);
+      color: var(--ink);
+      border-radius: var(--r-form);
+      text-decoration: none;
+      transition: background .12s, color .12s;
+    }
+    .cat-nav a:hover { background: #f0f5ff; color: var(--blue); }
+
+    /* === Main === */
+    .cat-main { padding: 32px 48px 96px; min-width: 0; }
+    .cat-hero {
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .cat-hero h1 { margin: 0 0 6px; font: 700 32px/1.1 var(--font); color: var(--navy); letter-spacing: -.02em; }
+    .cat-hero p  { margin: 0; font: 400 15px/1.5 var(--font); color: var(--muted); max-width: 640px; }
+    .cat-hero-meta { display: flex; gap: 14px; margin-top: 16px; font: 400 12px/1 var(--font); color: var(--muted); }
+    .cat-hero-meta span strong { color: var(--ink); font-weight: 600; }
+
+    .cat-section {
+      margin: 64px 0 0;
+      scroll-margin-top: 24px;
+    }
+    .cat-section > h2 {
+      margin: 0 0 6px;
+      font: 700 24px/1.1 var(--font);
+      color: var(--navy);
+      letter-spacing: -.015em;
+    }
+    .cat-section > .cat-section-desc {
+      margin: 0 0 24px;
+      font: 400 14px/1.5 var(--font);
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .cat-component {
+      margin: 32px 0 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    .cat-component:first-of-type { border-top: 0; padding-top: 0; }
+    .cat-component-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+      margin-bottom: 14px;
+    }
+    .cat-component-title { margin: 0; font: 700 16px/1.2 var(--font); color: var(--ink); letter-spacing: -.005em; }
+    .cat-component-class { font: 500 12px/1 'JetBrains Mono', monospace; color: var(--blue); background: #eff4ff; padding: 4px 8px; border-radius: var(--r-form); }
+    .cat-component-desc  { margin: 0 0 14px; font: 400 13px/1.5 var(--font); color: var(--muted); max-width: 640px; }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .cat-preview {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-card);
+      padding: 24px;
+      min-height: 64px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .cat-preview-row {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    }
+    .cat-preview-block { display: flex; flex-direction: column; gap: 8px; }
+    .cat-preview-block + .cat-preview-block { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+    .cat-preview-label {
+      font: 500 11px/1 var(--font); color: var(--muted);
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .cat-preview-bg-dark { background: #0d1d52; color: white; }
+    .cat-preview-bg-dark .cat-preview-label { color: rgba(255,255,255,.6); }
+
+    .cat-code {
+      background: #0d1d52;
+      color: #d1deff;
+      border-radius: var(--r-card);
+      padding: 18px 20px;
+      font: 400 12px/1.5 'JetBrains Mono', monospace;
+      overflow-x: auto;
+      white-space: pre;
+      min-height: 64px;
+    }
+    .cat-code .tag { color: #ffb86c; }
+    .cat-code .attr { color: #67d8f5; }
+    .cat-code .val  { color: #c0f0a6; }
+
+    /* === Token displays === */
+    .cat-token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .cat-swatch {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-form);
+      overflow: hidden;
+    }
+    .cat-swatch-color {
+      height: 64px;
+      border-bottom: 1px solid var(--line);
+    }
+    .cat-swatch-body {
+      padding: 10px 12px;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .cat-swatch-name {
+      font: 600 12px/1 'JetBrains Mono', monospace;
+      color: var(--ink);
+    }
+    .cat-swatch-hex {
+      font: 400 11px/1 'JetBrains Mono', monospace;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .cat-swatch-desc {
+      font: 400 11px/1.4 var(--font);
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .cat-radius-grid,
+    .cat-shadow-grid,
+    .cat-spacing-grid,
+    .cat-font-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .cat-radius-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 16px;
+      display: flex; flex-direction: column; gap: 10px; align-items: center;
+    }
+    .cat-radius-sample { width: 64px; height: 64px; background: var(--blue); }
+    .cat-radius-sample.is-pill { width: 96px; height: 28px; }
+    .cat-radius-label { font: 500 12px/1 'JetBrains Mono', monospace; color: var(--ink); text-align: center; }
+    .cat-radius-val { font: 400 11px/1 var(--font); color: var(--muted); text-align: center; }
+
+    .cat-shadow-box {
+      background: var(--white);
+      border-radius: var(--r-card);
+      padding: 20px;
+      display: flex; flex-direction: column; gap: 10px; align-items: center;
+      height: 90px; justify-content: center;
+    }
+    .cat-shadow-label { font: 500 12px/1 'JetBrains Mono', monospace; color: var(--ink); }
+
+    .cat-spacing-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 12px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-form);
+    }
+    .cat-spacing-bar { background: var(--blue); height: 12px; flex-shrink: 0; }
+    .cat-spacing-label { font: 500 12px/1 'JetBrains Mono', monospace; color: var(--ink); min-width: 80px; }
+    .cat-spacing-val { font: 400 11px/1 var(--font); color: var(--muted); }
+
+    .cat-font-row {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+      padding: 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-form);
+    }
+    .cat-font-row .cat-font-sample { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 1; }
+    .cat-font-row .cat-font-meta { font: 500 12px/1 'JetBrains Mono', monospace; color: var(--muted); flex-shrink: 0; }
+
+    /* === Note callout === */
+    .cat-note {
+      background: var(--info-bg);
+      border: 1px solid var(--info-border);
+      border-radius: var(--r-form);
+      padding: 12px 16px;
+      font: 400 13px/1.5 var(--font);
+      color: var(--info-text);
+      margin: 14px 0;
+    }
+    .cat-note strong { color: var(--navy); font-weight: 600; }
+
+    /* === Anchor offset for sidebar nav === */
+    [id] { scroll-margin-top: 24px; }
+
+    /* Mobile fallback */
+    @media (max-width: 920px) {
+      .cat-layout { grid-template-columns: 1fr; }
+      .cat-sidebar { position: static; height: auto; }
+      .cat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cat-layout">
+
+    <!-- ============================================================ -->
+    <!-- SIDEBAR -->
+    <!-- ============================================================ -->
+    <aside class="cat-sidebar">
+      <div class="cat-brand">
+        <strong>Odex DS</strong>
+        <span>Catálogo · v0.3.0</span>
+      </div>
+      <nav class="cat-nav">
+        <div class="cat-nav-group">Foundations</div>
+        <a href="#colors">Cores</a>
+        <a href="#radius">Radius</a>
+        <a href="#shadows">Sombras</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#font-sizes">Font sizes</a>
+        <a href="#font-weights">Font weights</a>
+
+        <div class="cat-nav-group">Atoms</div>
+        <a href="#typography">Typography</a>
+        <a href="#buttons">Buttons</a>
+        <a href="#links">Links</a>
+        <a href="#inputs">Inputs</a>
+        <a href="#fields">Fields</a>
+        <a href="#checkbox">Checkbox / Radio</a>
+        <a href="#pills">Status pills</a>
+        <a href="#cards">Cards</a>
+
+        <div class="cat-nav-group">Molecules</div>
+        <a href="#select">Odex-Select</a>
+        <a href="#menu">DS-Menu</a>
+
+        <div class="cat-nav-group">Recursos</div>
+        <a href="./README.md">README ↗</a>
+        <a href="./tokens/tokens.json">tokens.json ↗</a>
+      </nav>
+    </aside>
+
+    <!-- ============================================================ -->
+    <!-- MAIN -->
+    <!-- ============================================================ -->
+    <main class="cat-main">
+
+      <!-- ============ Hero ============ -->
+      <header class="cat-hero">
+        <h1>Design System · Catálogo</h1>
+        <p>Referência visual de todos os tokens, atoms e molecules do DS. Source of truth · este catálogo usa o mesmo <code>ds/index.css</code> que a plataforma. Se quebrar aqui, quebrou lá.</p>
+        <div class="cat-hero-meta">
+          <span><strong>Versão:</strong> 0.3.0</span>
+          <span><strong>Phase:</strong> C.2 (catálogo)</span>
+          <span><strong>Updated:</strong> 2026-05-20</span>
+        </div>
+      </header>
+
+      <!-- ============================================================ -->
+      <!-- TOKENS · COLORS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="colors">Cores</h2>
+        <p class="cat-section-desc">Paleta primitiva. Brand, text, surface, feedback, info. Source: <code>ds/tokens/tokens.json → color.*</code></p>
+
+        <div class="cat-component">
+          <div class="cat-component-head">
+            <h3 class="cat-component-title">Brand</h3>
+            <span class="cat-component-class">color.brand.*</span>
+          </div>
+          <div class="cat-token-grid">
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#0D1D52"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--navy</span><span class="cat-swatch-hex">#0D1D52</span><span class="cat-swatch-desc">Primário corporativo · sidebar, headings</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#005AFF"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--blue</span><span class="cat-swatch-hex">#005AFF</span><span class="cat-swatch-desc">CTAs primários, links</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#22437D"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--blue-button</span><span class="cat-swatch-hex">#22437D</span><span class="cat-swatch-desc">Botão navy variant</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#0046CC"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--blue-hover</span><span class="cat-swatch-hex">#0046CC</span><span class="cat-swatch-desc">Hover do .ds-btn-primary</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#162460"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--navy-hover</span><span class="cat-swatch-hex">#162460</span><span class="cat-swatch-desc">Hover do .ds-btn-primary-navy</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#5A616F"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--slate</span><span class="cat-swatch-hex">#5A616F</span><span class="cat-swatch-desc">Cinza-azulado complementar</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#3B537D"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--slate-2</span><span class="cat-swatch-hex">#3B537D</span><span class="cat-swatch-desc">Texto sobre info-bg</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#ABB7CD"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--slate-soft</span><span class="cat-swatch-hex">#ABB7CD</span><span class="cat-swatch-desc">Slate suave</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#BDC7D8"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--slate-soft-2</span><span class="cat-swatch-hex">#BDC7D8</span><span class="cat-swatch-desc">Slate ainda mais suave</span></div></div>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head">
+            <h3 class="cat-component-title">Text</h3>
+            <span class="cat-component-class">color.text.*</span>
+          </div>
+          <div class="cat-token-grid">
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#000000"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--ink</span><span class="cat-swatch-hex">#000000</span><span class="cat-swatch-desc">Text padrão</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#6E6E6E"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--muted</span><span class="cat-swatch-hex">#6E6E6E</span><span class="cat-swatch-desc">Text complementar, hints</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#EDEDED"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--soft</span><span class="cat-swatch-hex">#EDEDED</span><span class="cat-swatch-desc">BG hover · NÃO usar pra texto</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#B9B9B9"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--placeholder</span><span class="cat-swatch-hex">#B9B9B9</span><span class="cat-swatch-desc">Input placeholder</span></div></div>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head">
+            <h3 class="cat-component-title">Surface</h3>
+            <span class="cat-component-class">color.surface.*</span>
+          </div>
+          <div class="cat-token-grid">
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#F9F9F9;border-bottom:1px solid var(--line)"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--bg</span><span class="cat-swatch-hex">#F9F9F9</span><span class="cat-swatch-desc">BG padrão da página</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#FFFFFF;border-bottom:1px solid var(--line)"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--white</span><span class="cat-swatch-hex">#FFFFFF</span><span class="cat-swatch-desc">BG cards, inputs</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#E6E6E6"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--line</span><span class="cat-swatch-hex">#E6E6E6</span><span class="cat-swatch-desc">Border padrão</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#0D1D52"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--sidebar-bg</span><span class="cat-swatch-hex">#0D1D52</span><span class="cat-swatch-desc">Alias semântico de --navy</span></div></div>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head">
+            <h3 class="cat-component-title">Feedback</h3>
+            <span class="cat-component-class">color.feedback.*</span>
+          </div>
+          <div class="cat-token-grid">
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#53C667"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--green</span><span class="cat-swatch-hex">#53C667</span><span class="cat-swatch-desc">Success</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#98DDA4"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--green-soft</span><span class="cat-swatch-hex">#98DDA4</span><span class="cat-swatch-desc">Success suave</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#CCEED2"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--green-softer</span><span class="cat-swatch-hex">#CCEED2</span><span class="cat-swatch-desc">Success BG pílulas</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#F39200"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--yellow</span><span class="cat-swatch-hex">#F39200</span><span class="cat-swatch-desc">Warning</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#F8BE66"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--yellow-soft</span><span class="cat-swatch-hex">#F8BE66</span><span class="cat-swatch-desc">Warning suave</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#FCDFB3"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--yellow-softer</span><span class="cat-swatch-hex">#FCDFB3</span><span class="cat-swatch-desc">Warning BG pílulas</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#E94647"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--red</span><span class="cat-swatch-hex">#E94647</span><span class="cat-swatch-desc">Error / destructive</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#F29091"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--red-soft</span><span class="cat-swatch-hex">#F29091</span><span class="cat-swatch-desc">Error suave · disabled danger</span></div></div>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head">
+            <h3 class="cat-component-title">Info</h3>
+            <span class="cat-component-class">color.info.*</span>
+          </div>
+          <div class="cat-token-grid">
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#EFF4FF"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--info-bg</span><span class="cat-swatch-hex">#EFF4FF</span><span class="cat-swatch-desc">BG banners azuis</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#DDE9FF"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--info-border</span><span class="cat-swatch-hex">#DDE9FF</span><span class="cat-swatch-desc">Border banners</span></div></div>
+            <div class="cat-swatch"><div class="cat-swatch-color" style="background:#3B537D"></div><div class="cat-swatch-body"><span class="cat-swatch-name">--info-text</span><span class="cat-swatch-hex">#3B537D</span><span class="cat-swatch-desc">Texto sobre info-bg</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- TOKENS · RADIUS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="radius">Radius</h2>
+        <p class="cat-section-desc">6 valores · 4px é padrão DS (form/button/tag). Source: <code>tokens.json → radius.*</code></p>
+
+        <div class="cat-radius-grid">
+          <div class="cat-radius-box"><div class="cat-radius-sample" style="border-radius:var(--r-form)"></div><div class="cat-radius-label">--r-form</div><div class="cat-radius-val">4px · inputs, btns</div></div>
+          <div class="cat-radius-box"><div class="cat-radius-sample" style="border-radius:var(--r-tag)"></div><div class="cat-radius-label">--r-tag</div><div class="cat-radius-val">4px · tags, status</div></div>
+          <div class="cat-radius-box"><div class="cat-radius-sample is-pill" style="border-radius:var(--r-pill)"></div><div class="cat-radius-label">--r-pill</div><div class="cat-radius-val">2px · pílulas especiais</div></div>
+          <div class="cat-radius-box"><div class="cat-radius-sample" style="border-radius:var(--r-card)"></div><div class="cat-radius-label">--r-card</div><div class="cat-radius-val">12px · cards</div></div>
+          <div class="cat-radius-box"><div class="cat-radius-sample" style="border-radius:var(--r-card-lg)"></div><div class="cat-radius-label">--r-card-lg</div><div class="cat-radius-val">16px · modais</div></div>
+          <div class="cat-radius-box"><div class="cat-radius-sample" style="border-radius:var(--r-circle)"></div><div class="cat-radius-label">--r-circle</div><div class="cat-radius-val">9999px · circular</div></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- TOKENS · SHADOWS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="shadows">Sombras</h2>
+        <p class="cat-section-desc">4 níveis · subtle → modal. Source: <code>tokens.json → shadow.*</code></p>
+
+        <div class="cat-shadow-grid">
+          <div class="cat-shadow-box" style="box-shadow:var(--shadow-sm)"><div class="cat-shadow-label">--shadow-sm</div></div>
+          <div class="cat-shadow-box" style="box-shadow:var(--shadow)"><div class="cat-shadow-label">--shadow</div></div>
+          <div class="cat-shadow-box" style="box-shadow:var(--shadow-lg)"><div class="cat-shadow-label">--shadow-lg</div></div>
+          <div class="cat-shadow-box" style="box-shadow:var(--shadow-card)"><div class="cat-shadow-label">--shadow-card</div></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- TOKENS · SPACING -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="spacing">Spacing</h2>
+        <p class="cat-section-desc">Escala base 4px · de 0 a 64px. Source: <code>tokens.json → spacing.*</code></p>
+
+        <div class="cat-spacing-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-2</div><div class="cat-spacing-bar" style="width:2px"></div><div class="cat-spacing-val">2px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-4</div><div class="cat-spacing-bar" style="width:4px"></div><div class="cat-spacing-val">4px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-6</div><div class="cat-spacing-bar" style="width:6px"></div><div class="cat-spacing-val">6px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-8</div><div class="cat-spacing-bar" style="width:8px"></div><div class="cat-spacing-val">8px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-10</div><div class="cat-spacing-bar" style="width:10px"></div><div class="cat-spacing-val">10px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-12</div><div class="cat-spacing-bar" style="width:12px"></div><div class="cat-spacing-val">12px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-14</div><div class="cat-spacing-bar" style="width:14px"></div><div class="cat-spacing-val">14px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-16</div><div class="cat-spacing-bar" style="width:16px"></div><div class="cat-spacing-val">16px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-18</div><div class="cat-spacing-bar" style="width:18px"></div><div class="cat-spacing-val">18px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-20</div><div class="cat-spacing-bar" style="width:20px"></div><div class="cat-spacing-val">20px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-22</div><div class="cat-spacing-bar" style="width:22px"></div><div class="cat-spacing-val">22px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-24</div><div class="cat-spacing-bar" style="width:24px"></div><div class="cat-spacing-val">24px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-28</div><div class="cat-spacing-bar" style="width:28px"></div><div class="cat-spacing-val">28px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-32</div><div class="cat-spacing-bar" style="width:32px"></div><div class="cat-spacing-val">32px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-36</div><div class="cat-spacing-bar" style="width:36px"></div><div class="cat-spacing-val">36px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-40</div><div class="cat-spacing-bar" style="width:40px"></div><div class="cat-spacing-val">40px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-44</div><div class="cat-spacing-bar" style="width:44px"></div><div class="cat-spacing-val">44px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-48</div><div class="cat-spacing-bar" style="width:48px"></div><div class="cat-spacing-val">48px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-56</div><div class="cat-spacing-bar" style="width:56px"></div><div class="cat-spacing-val">56px</div></div>
+          <div class="cat-spacing-row"><div class="cat-spacing-label">--space-64</div><div class="cat-spacing-bar" style="width:64px"></div><div class="cat-spacing-val">64px</div></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- TOKENS · FONT SIZES -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="font-sizes">Font sizes</h2>
+        <p class="cat-section-desc">Escala oficial · de 12px (captions) a 64px (H1). Source: <code>tokens.json → font.size.*</code></p>
+
+        <div class="cat-font-grid" style="grid-template-columns:1fr;">
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:64px;font-weight:700;line-height:1">A plataforma que vende solar</span><span class="cat-font-meta">--fs-64 · H1</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:44px;font-weight:700;line-height:1.05">A plataforma que vende solar</span><span class="cat-font-meta">--fs-44 · Auth title</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:38px;font-weight:700;line-height:1.05">A plataforma que vende solar</span><span class="cat-font-meta">--fs-38 · H2</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:28px;font-weight:700;line-height:1.2">A plataforma que vende solar</span><span class="cat-font-meta">--fs-28 · Auth form title</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:24px;font-weight:700;line-height:1.2">A plataforma que vende solar</span><span class="cat-font-meta">--fs-24 · H3</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:18px;font-weight:600">A plataforma que vende solar</span><span class="cat-font-meta">--fs-18</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:16px">A plataforma que vende solar</span><span class="cat-font-meta">--fs-16 · P2 / P-bold</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:15px">A plataforma que vende solar</span><span class="cat-font-meta">--fs-15 · inputs auth</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:14px">A plataforma que vende solar</span><span class="cat-font-meta">--fs-14 · P body</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:13px">A plataforma que vende solar</span><span class="cat-font-meta">--fs-13 · links, microcopy</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-size:12px">A plataforma que vende solar</span><span class="cat-font-meta">--fs-12 · P3, captions</span></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- TOKENS · FONT WEIGHTS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="font-weights">Font weights</h2>
+        <p class="cat-section-desc">Inter · 4 pesos. Source: <code>tokens.json → font.weight.*</code></p>
+
+        <div class="cat-font-grid" style="grid-template-columns:1fr;">
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-weight:400;font-size:18px">A plataforma que vende solar</span><span class="cat-font-meta">--fw-regular · 400</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-weight:500;font-size:18px">A plataforma que vende solar</span><span class="cat-font-meta">--fw-medium · 500</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-weight:600;font-size:18px">A plataforma que vende solar</span><span class="cat-font-meta">--fw-semibold · 600</span></div>
+          <div class="cat-font-row"><span class="cat-font-sample" style="font-weight:700;font-size:18px">A plataforma que vende solar</span><span class="cat-font-meta">--fw-bold · 700</span></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · TYPOGRAPHY -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="typography">Typography</h2>
+        <p class="cat-section-desc">Classes <code>.ds-h1</code> a <code>.ds-h3</code>, <code>.ds-p</code> variants, label e placeholder.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Headings</h3><span class="cat-component-class">.ds-h1 / .ds-h2 / .ds-h3</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <p class="ds-h1">Headline 1</p>
+              <p class="ds-h2">Headline 2</p>
+              <p class="ds-h3">Headline 3</p>
+            </div>
+            <pre class="cat-code">&lt;h1 class="ds-h1"&gt;Headline 1&lt;/h1&gt;
+&lt;h2 class="ds-h2"&gt;Headline 2&lt;/h2&gt;
+&lt;h3 class="ds-h3"&gt;Headline 3&lt;/h3&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Body</h3><span class="cat-component-class">.ds-p / .ds-p2 / .ds-p3 / .ds-p-bold</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <p class="ds-p-bold">P bold · 16px / 700 · destaque dentro de body</p>
+              <p class="ds-p2">P2 · 16px / 400 · body grande</p>
+              <p class="ds-p">P · 14px / 400 · body padrão</p>
+              <p class="ds-p3">P3 · 12px / 400 · caption, meta</p>
+            </div>
+            <pre class="cat-code">&lt;p class="ds-p-bold"&gt;P bold&lt;/p&gt;
+&lt;p class="ds-p2"&gt;P2 · body grande&lt;/p&gt;
+&lt;p class="ds-p"&gt;P · body padrão&lt;/p&gt;
+&lt;p class="ds-p3"&gt;P3 · caption&lt;/p&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Label / Placeholder</h3><span class="cat-component-class">.ds-label / .ds-placeholder</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <p class="ds-label">Label de campo · 14px / 400 / navy</p>
+              <p class="ds-placeholder">Placeholder · color muted</p>
+            </div>
+            <pre class="cat-code">&lt;p class="ds-label"&gt;Label de campo&lt;/p&gt;
+&lt;p class="ds-placeholder"&gt;Placeholder&lt;/p&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · BUTTONS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="buttons">Buttons</h2>
+        <p class="cat-section-desc">Default 42h / 14px / 4px radius. 7 variants + 2 sizes. Hover/focus/disabled aplicam por pseudo-classes.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Variants</h3><span class="cat-component-class">.ds-btn + .ds-btn-{variant}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row">
+                <button class="ds-btn ds-btn-primary">Primary</button>
+                <button class="ds-btn ds-btn-primary-navy">Primary navy</button>
+              </div>
+              <div class="cat-preview-row">
+                <button class="ds-btn ds-btn-secondary">Secondary</button>
+                <button class="ds-btn ds-btn-secondary-navy">Secondary navy</button>
+              </div>
+              <div class="cat-preview-row">
+                <button class="ds-btn ds-btn-ghost">Ghost</button>
+                <button class="ds-btn ds-btn-danger">Danger</button>
+                <button class="ds-btn ds-btn-danger-soft">Danger soft</button>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-btn ds-btn-primary"&gt;Salvar&lt;/button&gt;
+&lt;button class="ds-btn ds-btn-secondary"&gt;Limpar&lt;/button&gt;
+&lt;button class="ds-btn ds-btn-ghost"&gt;Cancelar&lt;/button&gt;
+&lt;button class="ds-btn ds-btn-danger"&gt;Excluir&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Sizes</h3><span class="cat-component-class">.ds-btn-sm / default / .ds-btn-lg</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row">
+                <button class="ds-btn ds-btn-primary ds-btn-sm">Small · 32h</button>
+                <button class="ds-btn ds-btn-primary">Default · 42h</button>
+                <button class="ds-btn ds-btn-primary ds-btn-lg">Large · 48h</button>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-btn ds-btn-primary ds-btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="ds-btn ds-btn-primary"&gt;Default&lt;/button&gt;
+&lt;button class="ds-btn ds-btn-primary ds-btn-lg"&gt;Large&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">States</h3><span class="cat-component-class">:hover · :disabled</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row">
+                <button class="ds-btn ds-btn-primary">Default</button>
+                <button class="ds-btn ds-btn-primary" disabled>Disabled</button>
+              </div>
+              <div class="cat-note"><strong>Hover</strong> só fica visível com cursor real. Use a página da app pra testar.</div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-btn ds-btn-primary"&gt;Default&lt;/button&gt;
+&lt;button class="ds-btn ds-btn-primary" disabled&gt;Disabled&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Pílulas especiais</h3><span class="cat-component-class">.ds-pill-warm / .ds-pill-cool</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row">
+                <button class="ds-btn ds-pill-warm">Tornar Pedido</button>
+                <button class="ds-btn ds-pill-cool">Ir para produtos</button>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-btn ds-pill-warm"&gt;Tornar Pedido&lt;/button&gt;
+&lt;button class="ds-btn ds-pill-cool"&gt;Ir para produtos&lt;/button&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · LINKS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="links">Links</h2>
+        <p class="cat-section-desc">Link button textual · default 12px, com size variants e cor navy.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Variants</h3><span class="cat-component-class">.ds-link / .ds-link-14 / .ds-link-16 / .ds-link-navy</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <a href="#" class="ds-link">Link padrão · 12px</a>
+              <a href="#" class="ds-link ds-link-14">Link 14px</a>
+              <a href="#" class="ds-link ds-link-16">Link 16px</a>
+              <a href="#" class="ds-link ds-link-navy">Link navy</a>
+            </div>
+            <pre class="cat-code">&lt;a href="#" class="ds-link"&gt;Saiba mais&lt;/a&gt;
+&lt;a href="#" class="ds-link ds-link-14"&gt;Ver detalhes&lt;/a&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · INPUTS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="inputs">Inputs</h2>
+        <p class="cat-section-desc">Default 42h / 4px radius / focus ring blue. Inclui input, select e textarea.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Input · text</h3><span class="cat-component-class">.ds-input</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <input class="ds-input" placeholder="Placeholder padrão">
+              <input class="ds-input" value="Com valor preenchido">
+              <input class="ds-input ds-input-sm" placeholder="Small · 38h / 14px">
+              <input class="ds-input" placeholder="Disabled" disabled>
+            </div>
+            <pre class="cat-code">&lt;input class="ds-input" placeholder="..."&gt;
+&lt;input class="ds-input ds-input-sm" placeholder="Small"&gt;
+&lt;input class="ds-input" disabled&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Select · nativo</h3><span class="cat-component-class">.ds-select</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <select class="ds-select">
+                <option>Opção 1</option>
+                <option>Opção 2</option>
+                <option>Opção 3</option>
+              </select>
+              <div class="cat-note">Pra dropdown custom (filtros, formulários grandes), use <code>.ds-replace</code> + <code>applyOdexSelects()</code> · ver seção <a href="#select" class="ds-link ds-link-navy">Odex-Select</a>.</div>
+            </div>
+            <pre class="cat-code">&lt;select class="ds-select"&gt;
+  &lt;option&gt;Opção 1&lt;/option&gt;
+  &lt;option&gt;Opção 2&lt;/option&gt;
+&lt;/select&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Textarea</h3><span class="cat-component-class">.ds-textarea</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <textarea class="ds-textarea" placeholder="Digite uma observação..."></textarea>
+            </div>
+            <pre class="cat-code">&lt;textarea class="ds-textarea" placeholder="..."&gt;&lt;/textarea&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · FIELDS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="fields">Fields</h2>
+        <p class="cat-section-desc">Label + input wrapper. Suporta required marker <code>&lt;span class="req"&gt;*&lt;/span&gt;</code> e layout inline.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Stacked</h3><span class="cat-component-class">.ds-field + .ds-field-label</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-field">
+                <label class="ds-field-label">E-mail <span class="req">*</span></label>
+                <input class="ds-input" placeholder="seu@email.com">
+              </div>
+              <div class="ds-field">
+                <label class="ds-field-label">Observação</label>
+                <textarea class="ds-textarea" placeholder="..."></textarea>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-field"&gt;
+  &lt;label class="ds-field-label"&gt;
+    E-mail &lt;span class="req"&gt;*&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input class="ds-input" placeholder="..."&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Inline</h3><span class="cat-component-class">.ds-field-inline</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-field-inline">
+                <label class="ds-field-label">Status</label>
+                <select class="ds-select" style="max-width:240px;">
+                  <option>Aprovado</option>
+                  <option>Pendente</option>
+                </select>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-field-inline"&gt;
+  &lt;label class="ds-field-label"&gt;Status&lt;/label&gt;
+  &lt;select class="ds-select"&gt;...&lt;/select&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · CHECKBOX -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="checkbox">Checkbox / Radio</h2>
+        <p class="cat-section-desc">Quadrado custom · checked com bg navy. 18×18 default · radio com border-radius 50%.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Checkbox</h3><span class="cat-component-class">.ds-check + input[type=checkbox]</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <label class="ds-check"><input type="checkbox"> Unchecked</label>
+              <label class="ds-check"><input type="checkbox" checked> Checked</label>
+              <label class="ds-check"><input type="checkbox" disabled> Disabled</label>
+            </div>
+            <pre class="cat-code">&lt;label class="ds-check"&gt;
+  &lt;input type="checkbox"&gt; Aceito termos
+&lt;/label&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Radio</h3><span class="cat-component-class">.ds-check + input[type=radio]</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <label class="ds-check"><input type="radio" name="cat-radio"> Opção A</label>
+              <label class="ds-check"><input type="radio" name="cat-radio" checked> Opção B (selected)</label>
+              <label class="ds-check"><input type="radio" name="cat-radio" disabled> Opção C (disabled)</label>
+            </div>
+            <pre class="cat-code">&lt;label class="ds-check"&gt;
+  &lt;input type="radio" name="grp"&gt; Opção A
+&lt;/label&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · PILLS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="pills">Status pills</h2>
+        <p class="cat-section-desc">22h · 4px radius · 12px font · 6 variants semânticas.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Variants</h3><span class="cat-component-class">.ds-pill + .ds-pill-{status}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row">
+                <span class="ds-pill ds-pill-finalizado">Finalizado</span>
+                <span class="ds-pill ds-pill-andamento">Em andamento</span>
+                <span class="ds-pill ds-pill-pendente">Pendente</span>
+                <span class="ds-pill ds-pill-cancelado">Cancelado</span>
+                <span class="ds-pill ds-pill-aprovado">Aprovado</span>
+                <span class="ds-pill ds-pill-semcliente">Sem cliente</span>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;span class="ds-pill ds-pill-finalizado"&gt;Finalizado&lt;/span&gt;
+&lt;span class="ds-pill ds-pill-andamento"&gt;Em andamento&lt;/span&gt;
+&lt;span class="ds-pill ds-pill-pendente"&gt;Pendente&lt;/span&gt;
+&lt;span class="ds-pill ds-pill-cancelado"&gt;Cancelado&lt;/span&gt;
+&lt;span class="ds-pill ds-pill-aprovado"&gt;Aprovado&lt;/span&gt;
+&lt;span class="ds-pill ds-pill-semcliente"&gt;Sem cliente&lt;/span&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · CARDS -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="cards">Cards</h2>
+        <p class="cat-section-desc">Container reutilizável · 12px radius default, 16px lg, shadow opcional.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Variants</h3><span class="cat-component-class">.ds-card / -lg / -shadow</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-card" style="padding:16px;">
+                <p class="ds-p-bold" style="margin:0 0 4px;">Card base</p>
+                <p class="ds-p" style="margin:0;color:var(--muted);">12px radius · shadow-sm</p>
+              </div>
+              <div class="ds-card ds-card-lg" style="padding:18px;">
+                <p class="ds-p-bold" style="margin:0 0 4px;">Card grande</p>
+                <p class="ds-p" style="margin:0;color:var(--muted);">16px radius · shadow-sm</p>
+              </div>
+              <div class="ds-card ds-card-shadow" style="padding:18px;">
+                <p class="ds-p-bold" style="margin:0 0 4px;">Card com sombra grande</p>
+                <p class="ds-p" style="margin:0;color:var(--muted);">12px radius · shadow-card</p>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-card"&gt;...&lt;/div&gt;
+&lt;div class="ds-card ds-card-lg"&gt;...&lt;/div&gt;
+&lt;div class="ds-card ds-card-shadow"&gt;...&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- MOLECULES · ODEX-SELECT -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="select">Odex-Select</h2>
+        <p class="cat-section-desc">Dropdown custom · substitui <code>&lt;select&gt;</code> nativo. Construído via JS a partir de <code>&lt;select class="ds-replace"&gt;</code> e <code>applyOdexSelects()</code>.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Live</h3><span class="cat-component-class">.ds-replace → .odex-select</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div style="max-width:280px;">
+                <select class="ds-replace" id="cat-demo-select">
+                  <option value="" disabled selected>Selecione uma opção</option>
+                  <option>Catálogo completo</option>
+                  <option>Monte Seu Kit</option>
+                  <option>Calculadora Solar</option>
+                  <option>Prêmio Venda Direta</option>
+                </select>
+              </div>
+              <div class="cat-note">Click no trigger pra abrir · click fora pra fechar.</div>
+            </div>
+            <pre class="cat-code">&lt;select class="ds-replace"&gt;
+  &lt;option value="" disabled selected&gt;Selecione&lt;/option&gt;
+  &lt;option&gt;Opção 1&lt;/option&gt;
+  &lt;option&gt;Opção 2&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  applyOdexSelects();
+&lt;/script&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- MOLECULES · DS-MENU -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="menu">DS-Menu</h2>
+        <p class="cat-section-desc">Dropdown contextual usado em toolbars · sections, items, separator, checkmark. Construído imperativamente no código (não há helper genérico).</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Static demo</h3><span class="cat-component-class">.ds-menu + .ds-menu-popover</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-menu open" style="display:block;">
+                <button class="ds-btn ds-btn-ghost ds-menu-trigger">Filtrar por &nbsp;▾</button>
+                <div class="ds-menu-popover" style="position:relative;top:6px;opacity:1;transform:none;pointer-events:auto;">
+                  <div class="ds-menu-section">Status</div>
+                  <button class="ds-menu-item is-selected">
+                    <span></span><span>Aprovado</span>
+                    <span class="ds-menu-check"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+                  </button>
+                  <button class="ds-menu-item">
+                    <span></span><span>Pendente</span>
+                    <span class="ds-menu-check"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+                  </button>
+                  <button class="ds-menu-item">
+                    <span></span><span>Cancelado <small>arquivado há 30d+</small></span>
+                    <span class="ds-menu-check"><i data-lucide="check" style="width:14px;height:14px;"></i></span>
+                  </button>
+                  <div class="ds-menu-sep"></div>
+                  <div class="ds-menu-section">Período</div>
+                  <button class="ds-menu-item"><span></span><span>Últimos 7 dias</span><span class="ds-menu-check"></span></button>
+                  <button class="ds-menu-item"><span></span><span>Últimos 30 dias</span><span class="ds-menu-check"></span></button>
+                </div>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-menu open"&gt;
+  &lt;button class="ds-btn ds-btn-ghost ds-menu-trigger"&gt;
+    Filtrar por ▾
+  &lt;/button&gt;
+  &lt;div class="ds-menu-popover"&gt;
+    &lt;div class="ds-menu-section"&gt;Status&lt;/div&gt;
+    &lt;button class="ds-menu-item is-selected"&gt;
+      ...&lt;span&gt;Aprovado&lt;/span&gt;
+      &lt;span class="ds-menu-check"&gt;✓&lt;/span&gt;
+    &lt;/button&gt;
+    ...
+    &lt;div class="ds-menu-sep"&gt;&lt;/div&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- Footer -->
+      <!-- ============================================================ -->
+      <footer style="margin-top:96px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:400 12px/1.4 var(--font);color:var(--muted);">
+        <span>Odex DS · v0.3.0 · 2026-05-20</span>
+        <span><a class="ds-link" href="./README.md">README</a> · <a class="ds-link" href="./tokens/tokens.json">tokens.json</a> · <a class="ds-link" href="../index.html">app</a></span>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- JS · applyOdexSelects + lucide.createIcons -->
+  <!-- ============================================================ -->
+  <script>
+    // Mini implementation pra demo · em produção vem do index.html
+    function applyOdexSelects(scope) {
+      const root = scope || document;
+      root.querySelectorAll('select.ds-replace:not([data-odex-applied])').forEach(sel => {
+        sel.setAttribute('data-odex-applied', '1');
+        const opts = [...sel.options];
+        const selected = sel.selectedIndex >= 0 ? sel.options[sel.selectedIndex] : opts[0];
+        const wrap = document.createElement('div');
+        wrap.className = 'odex-select';
+        const triggerLabel = selected?.textContent || '';
+        const isPlaceholder = selected?.value === '' && !sel.dataset.allowEmpty;
+        wrap.innerHTML = `
+          <button type="button" class="odex-select-trigger${isPlaceholder?' is-placeholder':''}" aria-haspopup="listbox" aria-expanded="false">
+            <span class="odex-select-label">${triggerLabel}</span>
+          </button>
+          <div class="odex-select-menu" role="listbox">
+            ${opts.map((o, i) => `
+              <button type="button" class="odex-select-option${i === sel.selectedIndex ? ' is-active' : ''}" data-value="${o.value}" role="option">
+                <span>${o.textContent}</span>
+                <span class="odex-select-option-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              </button>
+            `).join('')}
+          </div>
+        `;
+        sel.style.display = 'none';
+        sel.parentNode.insertBefore(wrap, sel.nextSibling);
+        const trigger = wrap.querySelector('.odex-select-trigger');
+        const labelEl = wrap.querySelector('.odex-select-label');
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('.odex-select.is-open').forEach(o => { if (o !== wrap) o.classList.remove('is-open'); });
+          wrap.classList.toggle('is-open');
+          trigger.setAttribute('aria-expanded', wrap.classList.contains('is-open') ? 'true' : 'false');
+        });
+        wrap.querySelectorAll('.odex-select-option').forEach(opt => {
+          opt.addEventListener('click', () => {
+            const val = opt.dataset.value;
+            const txt = opt.querySelector('span').textContent;
+            sel.value = val;
+            labelEl.textContent = txt;
+            trigger.classList.toggle('is-placeholder', val === '' && !sel.dataset.allowEmpty);
+            wrap.querySelectorAll('.odex-select-option').forEach(o => o.classList.toggle('is-active', o === opt));
+            wrap.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            sel.dispatchEvent(new Event('change', { bubbles: true }));
+          });
+        });
+      });
+    }
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.odex-select')) {
+        document.querySelectorAll('.odex-select.is-open').forEach(o => {
+          o.classList.remove('is-open');
+          o.querySelector('.odex-select-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+    applyOdexSelects();
+    lucide.createIcons();
+  </script>
+</body>
+</html>

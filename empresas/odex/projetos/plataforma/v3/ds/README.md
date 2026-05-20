@@ -1,6 +1,8 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.3.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.4.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+
+📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
 Design System da Plataforma Solar Odex. Source of truth para tokens, componentes e padrões visuais que devem ser idênticos entre código (browser) e design (Figma).
 
@@ -25,7 +27,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | `features/auth/` extraído + dead code removido. Próximo: mk, ov, ped, ck | 🟡 Em progresso (auth ✅) |
+| **C · Componentes contextuais** | Auth extraído. Catálogo visual entregue. Próximo: semantic tokens, build pipeline, demais features | 🟡 Em progresso (C.1 ✅, C.2 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -271,14 +273,17 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] Root barrel `ds/index.css` linkado pelo `index.html`
 - [ ] Auditar duplicações `.auth-input-wrap` vs `.ds-input` (Phase C)
 
-### Phase C · Componentes contextuais (em progresso)
-- [x] **C.1 · Auth** — extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead code
-- [ ] **C.2 · Promote input-group** — `.auth-input-wrap` paradigm → `.ds-input-group` DS molecule (input + icon left + reveal right)
-- [ ] **C.3 · Monte Kit** — extrair `.mk-*` pra `features/monte-kit/mk.css`
-- [ ] **C.4 · Orçamentos** — extrair `.ov-*` / `.orc-*` pra `features/orcamentos/`
-- [ ] **C.5 · Pedidos** — extrair `.ped-*` / `.ped-v2-*` pra `features/pedidos/`
-- [ ] **C.6 · Checkout** — extrair `.ck-*` / `.ckform-*` pra `features/checkout/`
-- [ ] **C.7 · Demais features** — clientes, calculadora, ajuda, dashboard, topbar/sidebar
+### Phase C · Consolidação (em progresso)
+- [x] **C.1 · Auth feature** — extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead code
+- [x] **C.2 · Catálogo visual** — `ds/catalog.html` · todos atoms/molecules/tokens em todos estados
+- [ ] **C.3 · Semantic tokens** — primitive ↔ semantic split · destrava theming/dark-mode (`--color-action-primary` etc)
+- [ ] **C.4 · Build pipeline** — `tokens.json → tokens.css` generator · elimina sync manual
+- [ ] **C.5 · Tokens faltantes** — reset, motion, z-index, breakpoint
+- [ ] **C.6 · CSS @layer architecture** — cascade determinístico
+- [ ] **C.7 · Component README** — doc por atom (when use/when not/a11y/examples)
+- [ ] **C.8 · A11y audit** — contrast WCAG AA, focus visible, ARIA, keyboard nav
+- [ ] **C.9 · Input-group molecule** — promove `.auth-input-wrap` → `.ds-input-group`
+- [ ] **C.10+ · Demais features** — mk, ov, ped, ck, clientes, calculadora, ajuda, dashboard, topbar/sidebar
 
 ### Phase D · Figma DS espelho
 - [ ] Importar tokens via Tokens Studio
@@ -303,5 +308,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.1.0 | A | 2026-05-20 | Tokens extraídos pra `ds/tokens/` |
 | 0.2.0 | B | 2026-05-20 | Atoms + molecules extraídos pra `ds/atoms/` e `ds/molecules/` |
 | 0.3.0 | C.1 | 2026-05-20 | Auth feature extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead |
+| 0.4.0 | C.2 | 2026-05-20 | Catálogo visual `ds/catalog.html` · todos atoms/molecules/tokens em todos estados |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.
