@@ -1,0 +1,76 @@
+/* ==========================================================================
+   DS · KEY-VALUE LIST
+   Grid 2-col com label muted + value navy/ink. Pra spec sheets, meta sections.
+   Phase H.13 · consolida 3 DUPES (pdp-meta-grid, pdp-price-breakdown,
+   ped-resumo-kv).
+   ========================================================================== */
+
+.ds-kv-list {
+  display: grid;
+  grid-template-columns: repeat(var(--ds-kv-cols, 2), 1fr);
+  gap: 6px 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-border-default);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.ds-kv-list > div,
+.ds-kv-list-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.ds-kv-list span,
+.ds-kv-list-key {
+  font: 400 12px/1.2 var(--font);
+  color: var(--color-text-muted);
+}
+
+.ds-kv-list strong,
+.ds-kv-list-val {
+  font: 700 12.5px/1.2 var(--font);
+  color: var(--navy);
+  font-family: var(--font);
+  text-align: right;
+}
+
+/* === Variants ==================================================== */
+
+/* No border (drop-in dentro de cards) */
+.ds-kv-list-flush {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0;
+}
+
+/* Dashed separator (price-breakdown pattern) */
+.ds-kv-list-dashed {
+  border-top: 1px dashed var(--color-border-default);
+  border-bottom: 0;
+  margin-top: 14px;
+  padding-top: 12px;
+}
+
+/* Stacked (label em cima · value embaixo) */
+.ds-kv-list-stacked > div {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.ds-kv-list-stacked .ds-kv-list-val {
+  text-align: left;
+}
+
+/* === Sizes ====================================================== */
+.ds-kv-list-sm span,
+.ds-kv-list-sm .ds-kv-list-key { font-size: 11px; }
+.ds-kv-list-sm strong,
+.ds-kv-list-sm .ds-kv-list-val { font-size: 11.5px; }
+
+.ds-kv-list-lg span,
+.ds-kv-list-lg .ds-kv-list-key { font-size: 13px; }
+.ds-kv-list-lg strong,
+.ds-kv-list-lg .ds-kv-list-val { font-size: 14px; }

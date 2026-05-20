@@ -1,0 +1,115 @@
+/* ==========================================================================
+   DS · ALERT (banner inline informativo)
+   Icon + text · 5 tones semantic · dismissable opcional.
+   Phase H.17 · consolida 4 DUPES (orc-alert, mk-tax-alert, ckform-alert,
+   admin-banner-alert).
+   ========================================================================== */
+
+.ds-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 16px;
+  border-radius: var(--r-form);
+  border: 1px solid var(--color-border-default);
+  background: var(--color-surface-card);
+  color: var(--color-text-default);
+  font: 400 13px/1.5 var(--font);
+}
+
+.ds-alert-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--color-text-muted);
+}
+.ds-alert-icon i,
+.ds-alert-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ds-alert-content {
+  flex: 1;
+  min-width: 0;
+}
+.ds-alert-content strong {
+  display: inline;
+  font-weight: 700;
+}
+.ds-alert-content p {
+  margin: 0;
+}
+
+.ds-alert-dismiss {
+  flex-shrink: 0;
+  margin-left: 8px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+  border-radius: var(--r-form);
+  display: grid;
+  place-items: center;
+  opacity: .6;
+  transition: opacity var(--motion-default);
+}
+.ds-alert-dismiss:hover {
+  opacity: 1;
+}
+
+/* === Tones ====================================================== */
+.ds-alert-info {
+  background: var(--info-bg);
+  border-color: var(--info-border);
+  color: var(--info-text);
+}
+.ds-alert-info .ds-alert-icon { color: var(--color-action-primary-bg); }
+
+.ds-alert-success {
+  background: var(--color-feedback-success-bg);
+  border-color: var(--color-feedback-success-border);
+  color: var(--color-feedback-success-fg);
+}
+.ds-alert-success .ds-alert-icon { color: var(--green); }
+
+.ds-alert-warning {
+  background: var(--color-feedback-warning-bg);
+  border-color: var(--yellow-soft);
+  color: var(--color-feedback-warning-fg);
+}
+.ds-alert-warning .ds-alert-icon { color: var(--yellow); }
+
+.ds-alert-danger,
+.ds-alert-error {
+  background: var(--color-feedback-error-bg);
+  border-color: var(--color-feedback-error-border);
+  color: var(--color-feedback-error-fg);
+}
+.ds-alert-danger .ds-alert-icon,
+.ds-alert-error .ds-alert-icon { color: var(--color-feedback-error-strong); }
+
+.ds-alert-neutral {
+  background: var(--color-surface-sunken);
+  border-color: var(--color-border-default);
+  color: var(--color-text-default);
+}
+
+/* === Sizes ====================================================== */
+.ds-alert-sm {
+  padding: 9px 12px;
+  font-size: 12px;
+  gap: 8px;
+}
+.ds-alert-sm .ds-alert-icon i,
+.ds-alert-sm .ds-alert-icon svg { width: 14px; height: 14px; }
+
+.ds-alert-lg {
+  padding: 18px 22px;
+  font-size: 14px;
+  gap: 14px;
+}
+.ds-alert-lg .ds-alert-icon i,
+.ds-alert-lg .ds-alert-icon svg { width: 20px; height: 20px; }

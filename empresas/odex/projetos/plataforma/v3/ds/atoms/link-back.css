@@ -1,0 +1,64 @@
+/* ==========================================================================
+   DS · LINK BACK
+   "← Voltar" pattern · text link com arrow-left, muted color, hover blue.
+   Phase H.15 · consolida 5 DUPES (orc-back, ped-detail-back, pv-back,
+   client-back-btn, auth-back).
+   ========================================================================== */
+
+.ds-link-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 13px/1 var(--font);
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin-bottom: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  transition: color var(--motion-default);
+}
+.ds-link-back:hover {
+  color: var(--color-action-primary-bg);
+}
+.ds-link-back:focus-visible {
+  outline: none;
+  color: var(--color-action-primary-bg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ds-link-back i,
+.ds-link-back svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--motion-default);
+}
+.ds-link-back:hover i,
+.ds-link-back:hover svg {
+  transform: translateX(-2px);
+}
+
+/* === Sizes ====================================================== */
+.ds-link-back-sm { font-size: 12px; }
+.ds-link-back-sm i,
+.ds-link-back-sm svg { width: 12px; height: 12px; }
+
+.ds-link-back-lg { font-size: 14px; }
+.ds-link-back-lg i,
+.ds-link-back-lg svg { width: 16px; height: 16px; }
+
+/* === Outlined variant (client-back-btn pattern · button-like) === */
+.ds-link-back-outlined {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--r-form);
+  background: var(--color-surface-card);
+  color: var(--color-text-default);
+}
+.ds-link-back-outlined:hover {
+  border-color: var(--color-action-primary-bg);
+  color: var(--color-action-primary-bg);
+}

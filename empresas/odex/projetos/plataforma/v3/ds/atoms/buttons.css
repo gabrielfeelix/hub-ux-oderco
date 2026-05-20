@@ -77,6 +77,30 @@
 .ds-btn-sm { height: 32px; padding: 0 14px; font-size: 12px; }
 .ds-btn-lg { height: 48px; padding: 0 24px; font-size: 16px; }
 
+/* === On-brand variants (CTA sobre hero/brand gradient bg) ========== */
+/* Solid white sobre brand · use em hero-cta */
+.ds-btn-on-brand {
+  background: var(--white);
+  color: var(--ink);
+}
+.ds-btn-on-brand:hover:not(:disabled) {
+  background: var(--blue-50);
+  color: var(--color-action-primary-bg);
+  transform: translateY(-1px);
+}
+
+/* Glass sobre brand · variant com bg semi-transparent + border */
+.ds-btn-on-brand-ghost {
+  background: var(--color-glass-white-light);
+  color: var(--color-text-on-brand);
+  border-color: var(--color-glass-border-strong);
+}
+.ds-btn-on-brand-ghost:hover:not(:disabled) {
+  background: var(--color-glass-white-strong);
+  color: var(--color-text-on-brand);
+  transform: translateY(-1px);
+}
+
 /* === Special pills (Tornar Pedido / Ir para produtos) ============== */
 .ds-pill-warm {
   background: var(--color-feedback-warning-bg);

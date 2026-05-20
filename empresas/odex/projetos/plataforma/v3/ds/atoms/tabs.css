@@ -1,0 +1,95 @@
+/* ==========================================================================
+   DS · TABS
+   Tab bar horizontal · underline indicator (border-bottom no item ativo).
+   Phase H.12 · consolida 4 DUPES (pdp-tabs, admin-tabs, dash-products-tabs,
+   notif-drawer-tabs).
+   ========================================================================== */
+
+.ds-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--color-border-default);
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ds-tabs::-webkit-scrollbar { display: none; }
+
+.ds-tab {
+  flex-shrink: 0;
+  height: 46px;
+  padding: 0 18px;
+  background: transparent;
+  border: 0;
+  color: var(--color-text-muted);
+  font: 400 14px/1 var(--font);
+  cursor: pointer;
+  transition: color var(--motion-default);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+}
+.ds-tab:hover {
+  color: var(--navy);
+}
+.ds-tab.is-active,
+.ds-tab[aria-selected="true"] {
+  color: var(--color-action-primary-bg);
+  border-bottom-color: var(--color-action-primary-bg);
+  font-weight: 600;
+}
+.ds-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-blue);
+  border-radius: var(--r-form);
+}
+
+/* Tab count badge */
+.ds-tab-count {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 7px;
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+  border-radius: var(--r-form);
+  font: 700 10px/1 var(--font);
+}
+.ds-tab.is-active .ds-tab-count {
+  background: var(--blue-100);
+  color: var(--color-action-primary-bg);
+}
+
+/* === Sizes ====================================================== */
+.ds-tabs-sm .ds-tab { height: 36px; padding: 0 12px; font-size: 13px; }
+.ds-tabs-lg .ds-tab { height: 54px; padding: 0 22px; font-size: 16px; }
+
+/* === Pill variant (rounded · sem border-bottom) ================== */
+.ds-tabs-pill {
+  border-bottom: 0;
+  gap: 6px;
+  padding: 0;
+}
+.ds-tabs-pill .ds-tab {
+  border-radius: var(--r-form);
+  border-bottom: 0;
+  margin: 0;
+  height: 36px;
+}
+.ds-tabs-pill .ds-tab.is-active {
+  background: var(--color-action-primary-bg);
+  color: var(--color-text-on-brand);
+  border-bottom: 0;
+}
+
+/* === Pane content ================================================ */
+.ds-tab-pane {
+  display: none;
+}
+.ds-tab-pane.is-active {
+  display: block;
+}

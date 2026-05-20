@@ -1,0 +1,75 @@
+/* ==========================================================================
+   DS · CARD SELECTABLE
+   Card que age como radio · clicável · estado .is-selected com border-blue.
+   Phase H.16 · consolida 3 DUPES (mk-kit-card, ckform-card-radio,
+   nc-tipo-opt, ov-radio).
+   ========================================================================== */
+
+.ds-card-selectable {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--r-card);
+  cursor: pointer;
+  transition: border-color var(--motion-default), box-shadow var(--motion-default), transform var(--motion-default);
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  width: 100%;
+}
+.ds-card-selectable:hover {
+  border-color: var(--color-border-hover);
+}
+.ds-card-selectable:focus-visible {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus-blue);
+}
+.ds-card-selectable.is-selected,
+.ds-card-selectable[aria-checked="true"] {
+  border-color: var(--color-action-primary-bg);
+  background: var(--blue-50);
+  box-shadow: 0 0 0 1px var(--color-action-primary-bg);
+}
+
+/* === Radio indicator (built-in dot top-right) ==================== */
+.ds-card-selectable-radio {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-default);
+  background: var(--color-surface-card);
+  transition: border-color var(--motion-default);
+  flex-shrink: 0;
+}
+.ds-card-selectable.is-selected .ds-card-selectable-radio,
+.ds-card-selectable[aria-checked="true"] .ds-card-selectable-radio {
+  border-color: var(--color-action-primary-bg);
+  border-width: 5px;
+}
+
+/* === Sizes ====================================================== */
+.ds-card-selectable-sm {
+  padding: 12px 14px;
+  gap: 10px;
+}
+.ds-card-selectable-lg {
+  padding: 20px 24px;
+  gap: 18px;
+}
+
+/* === Layouts ===================================================== */
+
+/* Vertical stack (icon top + label below · mk-kit-card pattern) */
+.ds-card-selectable-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
