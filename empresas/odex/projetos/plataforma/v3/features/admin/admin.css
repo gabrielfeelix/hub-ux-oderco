@@ -308,6 +308,7 @@
       }
       @media (max-width:680px) {
         .admin-quick-row { grid-template-columns:1fr; }
+      }
 
     /* Admin · Banners (v3) */
     .admin-banner-grid {

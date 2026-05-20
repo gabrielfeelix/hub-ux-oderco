@@ -171,6 +171,7 @@
     .ov-grid-3-1 { display:grid; grid-template-columns:1fr 100px; gap:14px; }
     @media(max-width:560px) {
       .ov-grid-2, .ov-grid-3-1 { grid-template-columns:1fr; }
+    }
 
     .orc-detail-wrap { max-width:1080px; margin:0 auto; }
     .orc-back { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:16px; cursor:pointer; background:transparent; border:0; font-family:inherit; transition:.12s; padding:0; }

@@ -201,6 +201,7 @@
         .pdp-hero { grid-template-columns:1fr; }
         .pdp-purchase { position:static; }
         .pdp-spec-grid { grid-template-columns:1fr; }
+      }
 
       /* Hero carousel container */
       .hero-carousel {

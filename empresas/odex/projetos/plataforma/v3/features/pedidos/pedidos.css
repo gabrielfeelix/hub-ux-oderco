@@ -141,6 +141,7 @@
       .resumo-prod-head, .resumo-prod { grid-template-columns:42px minmax(0,1fr) 80px; }
       .resumo-prod-head span:nth-child(3),
       .resumo-prod .resumo-prod-qty { display:none; }
+    }
 
     /* ====== PEDIDOS ====== */
     .ped-toolbar { background:white; border:1px solid var(--line); border-radius:var(--r-card); padding:14px 18px; margin-bottom:16px; display:flex; gap:10px; align-items:center; box-shadow:var(--shadow-sm); }
