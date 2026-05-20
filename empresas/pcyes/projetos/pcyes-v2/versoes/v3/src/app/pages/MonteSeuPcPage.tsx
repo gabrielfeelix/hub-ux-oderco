@@ -1343,7 +1343,7 @@ function ProgramTile({
       onClick={onClick}
       aria-pressed={selected}
       className={cn(
-        "group relative flex aspect-[5/6] flex-col overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
+        "group relative overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
         selected
           ? "border-primary/60"
           : "border-white/[0.08] hover:border-white/[0.22]",
@@ -1354,26 +1354,40 @@ function ProgramTile({
           : { boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }
       }
     >
-      <div
-        className="relative flex flex-1 items-center justify-center transition-transform duration-500"
-        style={{ background: program.bg }}
-      >
+      <div className="relative aspect-[460/215] w-full overflow-hidden">
+        <div className="absolute inset-0" style={{ background: program.bg }} />
         <div
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0"
           style={{
-            background: `radial-gradient(circle at 30% 25%, ${program.fg}25 0%, transparent 55%)`,
+            background: `radial-gradient(circle at 22% 50%, ${program.fg}35 0%, transparent 55%)`,
           }}
         />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.85) 100%)",
+          }}
+        />
+        {selected && (
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(255,43,46,0.18) 0%, transparent 60%)",
+            }}
+          />
+        )}
         <span
-          className="relative tabular-nums"
+          className="absolute left-4 top-1/2 -translate-y-[60%]"
           style={{
             fontFamily: "var(--font-family-figtree)",
             color: program.fg,
-            fontSize: "clamp(38px, 4.5vw, 56px)",
-            fontWeight: 800,
-            letterSpacing: "-0.04em",
+            fontSize: "clamp(46px, 7vw, 64px)",
+            fontWeight: 900,
+            letterSpacing: "-0.05em",
             lineHeight: 1,
-            textShadow: `0 0 24px ${program.fg}55`,
+            textShadow: `0 0 28px ${program.fg}66`,
           }}
         >
           {program.short}
@@ -1390,30 +1404,31 @@ function ProgramTile({
             <Check size={14} strokeWidth={3} />
           </div>
         </div>
-      </div>
-      <div className="border-t border-white/[0.06] bg-[#0d0d0d] px-3 py-2.5">
-        <p
-          className="truncate text-white"
-          style={{
-            fontFamily: "var(--font-family-figtree)",
-            fontSize: "13px",
-            fontWeight: 700,
-            letterSpacing: "-0.005em",
-          }}
-        >
-          {program.name}
-        </p>
-        <p
-          className="uppercase text-zinc-500"
-          style={{
-            fontFamily: "var(--font-family-inter)",
-            fontSize: "9px",
-            letterSpacing: "0.16em",
-            fontWeight: 700,
-          }}
-        >
-          {program.category}
-        </p>
+        <div className="absolute inset-x-3 bottom-2.5">
+          <p
+            className="mb-0.5 uppercase text-white/70"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "9px",
+              letterSpacing: "0.2em",
+              fontWeight: 700,
+            }}
+          >
+            {program.category}
+          </p>
+          <h4
+            className="truncate text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "14px",
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
+              textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+            }}
+          >
+            {program.name}
+          </h4>
+        </div>
       </div>
     </button>
   );
@@ -1678,11 +1693,12 @@ function QuizFlow({
                 </p>
               </div>
             ) : (
-              <div
-                className="overflow-y-auto rounded-[8px] pr-2"
-                style={{ maxHeight: "min(420px, 55vh)" }}
+              <ScrollArea
+                type="always"
+                className="rounded-[8px]"
+                style={{ height: "min(420px, 55vh)" }}
               >
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                <div className="grid grid-cols-2 gap-3 pr-3 sm:grid-cols-3 lg:grid-cols-4">
                   {filteredGames.map((g) => (
                     <GameTile
                       key={g.id}
@@ -1692,7 +1708,7 @@ function QuizFlow({
                     />
                   ))}
                 </div>
-              </div>
+              </ScrollArea>
             )}
 
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
@@ -1790,16 +1806,22 @@ function QuizFlow({
                 )}
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {quizPrograms.map((p) => (
-                <ProgramTile
-                  key={p.id}
-                  program={p}
-                  selected={(answers.programs ?? []).includes(p.id)}
-                  onClick={() => toggleProgram(p.id)}
-                />
-              ))}
-            </div>
+            <ScrollArea
+              type="always"
+              className="rounded-[8px]"
+              style={{ height: "min(420px, 55vh)" }}
+            >
+              <div className="grid grid-cols-2 gap-3 pr-3 sm:grid-cols-3 lg:grid-cols-4">
+                {quizPrograms.map((p) => (
+                  <ProgramTile
+                    key={p.id}
+                    program={p}
+                    selected={(answers.programs ?? []).includes(p.id)}
+                    onClick={() => toggleProgram(p.id)}
+                  />
+                ))}
+              </div>
+            </ScrollArea>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
               <p
                 className="text-zinc-500"
