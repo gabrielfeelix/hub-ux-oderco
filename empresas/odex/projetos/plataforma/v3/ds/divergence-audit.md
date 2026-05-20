@@ -12,10 +12,10 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.17) | 9 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda, dashboard) |
-| Features restantes (C.18+) | ~7 (pv, novas, dé, notif, admin, loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17 · com upgrades** (ds-kpi 4x, ds-hero-gradient 4x, ds-icon-btn 5x, ds-icon-box 5x) |
-| Possíveis novos (sugeridos · ≥1 feature) | 8 |
+| Features extraídas (C.10-C.18) | 10 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda, dashboard, pv) |
+| Features restantes (C.19+) | ~6 (novas, dé, notif, admin, loja, chrome) |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17 · upgrades fortes** (ds-kpi 5x · ds-table-grid 5x · ds-link-back 5x · ds-icon-box 6x · ds-icon-btn 6x · ds-alert 4x) |
+| Possíveis novos (sugeridos · ≥1 feature) | 10 |
 
 ---
 
@@ -404,7 +404,16 @@ Hero section com gradient navy→blue + decoração + título grande.
 - `.quick-act-btn` (dashboard)
 
 ### `.ds-section-head` (header com title + sub + action)
-- `.section-header` (dashboard) + `.ajuda-section-head` (ajuda)
+- `.section-header` (dashboard) + `.ajuda-section-head` (ajuda) + `.premio-page-head` (pv) **→ 3x · subir CONFIRMED**
+
+### `.ds-dropzone` (upload area dashed)
+- `.pv-upload-drop` (pv)
+
+### `.ds-meta-strip` (horizontal divided info strip)
+- `.pv-meta` (pv)
+
+### `.ds-timeline` (eventos verticais)
+- `.pv-timeline-*` (pv)
 
 ---
 
@@ -458,3 +467,4 @@ Update history:
 - v0.2 · 2026-05-20 · Atualizado após C.15 (calculadora) · 7 features mapeadas · 14 atoms/molecules confirmados (.ds-kpi +1, .ds-progress +1, .ds-icon-btn upgrade 2x→3x) + 2 sugeridos viraram confirmados
 - v0.3 · 2026-05-20 · Atualizado após C.16 (ajuda) · 8 features mapeadas · 17 confirmados (.ds-link-back 4x, .ds-icon-box 3x, .ds-hero-gradient 3x) + .ds-modal sobe pra 3x · .ds-icon-btn upgrade 3x→4x · 3 novos sugeridos (.ds-accordion, .ds-fab, .ds-video-embed)
 - v0.4 · 2026-05-20 · Atualizado após C.17 (dashboard) · 9 features mapeadas · upgrades: .ds-kpi 2x→4x (+dash-kpi+home-kpi) · .ds-hero-gradient 3x→4x (+dash-hero) · .ds-icon-btn 4x→5x (+dash-hero-brand-edit) · .ds-icon-box 3x→5x (+brand-logo+quick-ico) · 3 novos sugeridos (.ds-btn-on-brand, .ds-card-link, .ds-section-head)
+- v0.5 · 2026-05-20 · Atualizado após C.18 (premio venda direta) · 10 features mapeadas · upgrades múltiplos: .ds-table-grid 4x→5x · .ds-link-back 4x→5x · .ds-kpi 4x→5x · .ds-icon-box 5x→6x · .ds-icon-btn 5x→6x · .ds-alert 3x→4x (com 5 tones) · .ds-section-head sobe pra confirmed 3x · 3 novos sugeridos (.ds-dropzone, .ds-meta-strip, .ds-timeline)
