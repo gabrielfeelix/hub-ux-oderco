@@ -1,11 +1,25 @@
 /* ==========================================================================
    ODEX · PLATAFORMA SOLAR · DESIGN SYSTEM
-   Root barrel · importa tokens + base + atoms + molecules.
-   Ordem importa: tokens (vars) → base (reset HTML) → atoms → molecules.
+   Root barrel · cascade @layer architecture.
+
+   ORDEM DE LAYERS (lowest → highest priority):
+     reset       · base HTML element resets
+     tokens      · :root CSS variables (declarations, não cascadas)
+     atoms       · .ds-* atomic classes
+     molecules   · .odex-select, .ds-menu
+     features    · .auth-*, .mk-*, etc (feature-scoped composition)
+     legacy      · compat overrides pra classes pré-DS (em index.html)
+     utilities   · .text-center, .mt-4 etc (futuro · top priority)
+
+   Estilos UNLAYERED (sem @layer) sempre vencem layered.
+   Inline styles e !important continuam acima de tudo.
+
    Source of truth: ds/tokens/tokens.json + ds/README.md
    ========================================================================== */
 
-@import url('./tokens/tokens.css');
-@import url('./base/reset.css');
-@import url('./atoms/index.css');
-@import url('./molecules/index.css');
+@layer reset, tokens, atoms, molecules, features, legacy, utilities;
+
+@import url('./tokens/tokens.css')      layer(tokens);
+@import url('./base/reset.css')         layer(reset);
+@import url('./atoms/index.css')        layer(atoms);
+@import url('./molecules/index.css')    layer(molecules);

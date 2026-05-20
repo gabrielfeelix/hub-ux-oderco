@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Odex DS · Catálogo · v0.7.0</title>
+  <title>Odex DS · Catálogo · v0.8.0</title>
 
   <!-- Fonts + icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -263,7 +263,7 @@
     <aside class="cat-sidebar">
       <div class="cat-brand">
         <strong>Odex DS</strong>
-        <span>Catálogo · v0.7.0</span>
+        <span>Catálogo · v0.8.0</span>
       </div>
       <nav class="cat-nav">
         <div class="cat-nav-group">Foundations · primitives</div>
@@ -276,6 +276,9 @@
         <a href="#motion">Motion</a>
         <a href="#z-index">Z-index</a>
         <a href="#breakpoints">Breakpoints</a>
+
+        <div class="cat-nav-group">Architecture</div>
+        <a href="#layers">@layer cascade</a>
 
         <div class="cat-nav-group">Semantic</div>
         <a href="#semantic-intro">Intro · primitive ↔ semantic</a>
@@ -318,7 +321,7 @@
         <p>Referência visual de todos os tokens, atoms e molecules do DS. Source of truth · este catálogo usa o mesmo <code>ds/index.css</code> que a plataforma. Se quebrar aqui, quebrou lá.</p>
         <div class="cat-hero-meta">
           <span><strong>Versão:</strong> 0.4.0</span>
-          <span><strong>Phase:</strong> C.5 (motion + z-index + breakpoints + base)</span>
+          <span><strong>Phase:</strong> C.6 (@layer cascade architecture)</span>
           <span><strong>Updated:</strong> 2026-05-20</span>
         </div>
       </header>
@@ -614,6 +617,45 @@
 @media (max-width: 768px) { ... }   /* --bp-md */
 @media (max-width: 960px) { ... }   /* --bp-lg */
 @media (max-width: 1100px) { ... }  /* --bp-xl */</pre>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ARCHITECTURE · @LAYER -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="layers">Architecture · CSS @layer</h2>
+        <p class="cat-section-desc">DS usa <strong>cascade layers explícitas</strong> via <code>@layer</code>. Elimina guerra de specificity e torna ordem de override determinística.</p>
+
+        <div class="cat-grid">
+          <div class="cat-preview">
+            <div style="display:grid;grid-template-columns:24px 120px 1fr;gap:8px 14px;align-items:center;font:500 12px/1.4 'JetBrains Mono',monospace;">
+              <span style="color:var(--muted);">1</span><span>reset</span>     <span style="color:var(--muted);font-family:var(--font);">base HTML resets</span>
+              <span style="color:var(--muted);">2</span><span>tokens</span>    <span style="color:var(--muted);font-family:var(--font);">:root CSS variables</span>
+              <span style="color:var(--muted);">3</span><span>atoms</span>     <span style="color:var(--muted);font-family:var(--font);">.ds-* primitives</span>
+              <span style="color:var(--muted);">4</span><span>molecules</span> <span style="color:var(--muted);font-family:var(--font);">.odex-select, .ds-menu</span>
+              <span style="color:var(--muted);">5</span><span>features</span>  <span style="color:var(--muted);font-family:var(--font);">.auth-*, .mk-* (composition)</span>
+              <span style="color:var(--muted);">6</span><span>legacy</span>    <span style="color:var(--muted);font-family:var(--font);">compat overrides pré-DS</span>
+              <span style="color:var(--muted);">7</span><span>utilities</span> <span style="color:var(--muted);font-family:var(--font);">.text-center, .mt-4 (futuro)</span>
+            </div>
+            <div class="cat-note">
+              <strong>Regra:</strong> layer mais alta vence layer mais baixa, independente de specificity. Estilos sem @layer (unlayered) sempre vencem os layered.
+            </div>
+          </div>
+          <pre class="cat-code">/* ds/index.css */
+@layer reset, tokens, atoms, molecules,
+       features, legacy, utilities;
+
+@import url('./tokens/tokens.css')
+  layer(tokens);
+@import url('./atoms/index.css')
+  layer(atoms);
+...
+
+/* features/auth/auth.css */
+@layer features {
+  .auth-shell { ... }
+}</pre>
         </div>
       </section>
 
@@ -1265,7 +1307,7 @@
       <!-- Footer -->
       <!-- ============================================================ -->
       <footer style="margin-top:96px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:400 12px/1.4 var(--font);color:var(--muted);">
-        <span>Odex DS · v0.7.0 · 2026-05-20</span>
+        <span>Odex DS · v0.8.0 · 2026-05-20</span>
         <span><a class="ds-link" href="./README.md">README</a> · <a class="ds-link" href="./tokens/tokens.json">tokens.json</a> · <a class="ds-link" href="../index.html">app</a></span>
       </footer>
 

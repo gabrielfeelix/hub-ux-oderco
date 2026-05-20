@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.7.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.8.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens (primitivos e semânticos) em todos estados.
 
@@ -27,7 +27,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion + z-index + bp + base ✅. Próximo: @layer, component README, a11y, demais features | 🟡 Em progresso (C.1-C.5 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅. Próximo: component README, a11y, demais features | 🟡 Em progresso (C.1-C.6 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -97,6 +97,68 @@ ds/
 ├── icons/                   # SVG paths lucide subset (Phase F)
 └── figma/                   # exports pra Tokens Studio / Variables Import
 ```
+
+---
+
+## Cascade architecture (`@layer`)
+
+CSS hoje usa **camadas explícitas de cascade** via `@layer`. Elimina specificity wars e torna ordem de override determinística.
+
+### Ordem das layers (lowest → highest priority)
+
+```
+1. reset       · base HTML element resets (ds/base/reset.css)
+2. tokens      · :root CSS variables (ds/tokens/tokens.css)
+3. atoms       · .ds-* atomic classes (ds/atoms/*)
+4. molecules   · .odex-select, .ds-menu (ds/molecules/*)
+5. features    · .auth-*, .mk-* etc (features/<name>/*)
+6. legacy      · compat overrides pra classes pré-DS
+7. utilities   · .text-center, .mt-4 etc (futuro · top priority)
+```
+
+Declarado em `ds/index.css`:
+
+```css
+@layer reset, tokens, atoms, molecules, features, legacy, utilities;
+```
+
+### Regras da cascade
+
+- **Layered styles** obedecem ordem acima (utilities ganha de legacy ganha de features ganha de molecules etc)
+- **Unlayered styles** (sem `@layer`) **sempre vencem** layered · forma um "implicit topmost layer"
+- **Inline styles** (`style="..."`) e **`!important`** continuam acima de tudo
+- Specificity vira tie-breaker DENTRO da mesma layer
+
+### Como declarar layer no CSS
+
+**Via @import (preferido em barrels):**
+
+```css
+@import url('./atoms/index.css') layer(atoms);
+```
+A folha importada (e seus nested @imports) ficam todas em `atoms` layer.
+
+**Via @layer block (preferido em feature CSS):**
+
+```css
+@layer features {
+  .auth-shell { ... }
+  @media (max-width: 600px) { .auth-shell { ... } }
+}
+```
+
+### Por que isso importa
+
+| Antes (sem layers) | Depois (com layers) |
+|---|---|
+| Override de feature precisa de specificity maior | Layer order ganha · sem `!important` |
+| Conflito atomic ↔ feature imprevisível | Determinístico · feature sempre vence atomic |
+| `!important` em legacy compat | Layer `legacy` controla precedência |
+| Ordem de `<link>` importa | Ordem **declarada** importa |
+
+### Compat com unlayered CSS
+
+`index.html` ainda tem ~14k linhas de feature CSS unlayered (extraída fase C.10+). Esses estilos atualmente VENCEM as layers do DS · que é OK porque feature CSS tem o direito de override. Quando feature for extraído pra `features/<name>/`, ganha `@layer features` e participa da cascade ordenada.
 
 ---
 
@@ -359,7 +421,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.3 · Semantic tokens** — primitive ↔ semantic split · atoms + molecules migrados pra `--color-*` semantic
 - [x] **C.4 · Build pipeline** — `tokens.json → tokens.css` generator + `--check` mode · zero dependências · `npm run build-tokens` / `npm run check-tokens`
 - [x] **C.5 · Tokens faltantes** — motion (duration + easing), z-index scale, breakpoint scale, base/reset.css (extraído de index.html)
-- [ ] **C.6 · CSS @layer architecture** — cascade determinístico
+- [x] **C.6 · CSS @layer architecture** — cascade determinístico · 7 layers (reset/tokens/atoms/molecules/features/legacy/utilities) · DS + auth wrapped
 - [ ] **C.7 · Component README** — doc por atom (when use/when not/a11y/examples)
 - [ ] **C.8 · A11y audit** — contrast WCAG AA, focus visible, ARIA, keyboard nav
 - [ ] **C.9 · Input-group molecule** — promove `.auth-input-wrap` → `.ds-input-group`
@@ -392,5 +454,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.5.0 | C.3 | 2026-05-20 | Semantic tokens (primitive ↔ semantic) · atoms + molecules migrados pra `--color-*` aliases por intenção |
 | 0.6.0 | C.4 | 2026-05-20 | Build pipeline `tokens.json → tokens.css` (Node, zero deps) + `--check` mode CI · package.json com `npm run build-tokens` |
 | 0.7.0 | C.5 | 2026-05-20 | Motion tokens (5 durations + 5 easings) · Z-index scale (9 layers) · Breakpoint scale (5 sizes) · `ds/base/reset.css` extraído de index.html |
+| 0.8.0 | C.6 | 2026-05-20 | CSS `@layer` architecture · 7 camadas (reset/tokens/atoms/molecules/features/legacy/utilities) · cascade determinístico |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

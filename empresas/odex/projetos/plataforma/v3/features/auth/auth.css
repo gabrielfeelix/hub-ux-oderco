@@ -18,6 +18,9 @@
    TODO Phase C.2: promover .auth-input-wrap pra .ds-input-group (DS molecule)
    ========================================================================== */
 
+/* Layer: features · cascade abaixo de unlayered styles, acima de molecules */
+@layer features {
+
 /* === Full-screen auth pages · esconde sidebar/topbar ====================== */
 body.is-auth #view-login,
 body.is-auth #view-cadastro,
@@ -426,3 +429,5 @@ main.auth-shell {
   .auth-actions .ds-btn { width: 100%; justify-content: center; }
   .auth-brand-signature { display: none; }
 }
+
+} /* @layer features */
