@@ -174,6 +174,7 @@ function EssentialCard({ product }: EssentialCardProps) {
 
         {/* Price + qty + CTA */}
         <div
+          data-keep-dark
           className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-xl px-5 py-3.5"
           style={{
             background: "rgba(0, 0, 0, 0.45)",

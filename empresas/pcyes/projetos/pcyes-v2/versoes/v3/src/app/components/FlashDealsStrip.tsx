@@ -53,6 +53,7 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
   ];
   return (
     <div
+      data-keep-dark
       className="inline-flex items-center gap-3 rounded-full px-4 py-2.5"
       style={{
         background: "rgba(0, 0, 0, 0.6)",

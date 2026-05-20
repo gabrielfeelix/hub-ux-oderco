@@ -269,6 +269,7 @@ export function DealsHighlight({
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.15 }}
+            data-keep-dark
             className="relative overflow-hidden flex flex-col justify-between p-7 md:p-9"
             style={{
               background:
