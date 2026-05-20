@@ -293,6 +293,7 @@
         <div class="cat-nav-group">Atoms</div>
         <a href="#typography">Typography</a>
         <a href="#buttons">Buttons</a>
+        <a href="#icon-btn">Icon button ⭐ H.1</a>
         <a href="#links">Links</a>
         <a href="#inputs">Inputs</a>
         <a href="#fields">Fields</a>
@@ -999,6 +1000,89 @@
             </div>
             <pre class="cat-code">&lt;button class="ds-btn ds-pill-warm"&gt;Tornar Pedido&lt;/button&gt;
 &lt;button class="ds-btn ds-pill-cool"&gt;Ir para produtos&lt;/button&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · ICON BUTTON (Phase H.1 · 10x DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="icon-btn">Icon button</h2>
+        <p class="cat-section-desc"><strong>Phase H.1 atom</strong> · consolida 10 DUPES cross-feature (icon-btn topbar v1+v2, modal/cart/help close, sidebar-toggle, profile-copy, dash-hero-brand-edit, profile-cover-edit, notif-close). Icon-only · 2 shapes × 4 sizes × 5 tones · com slots `.ds-icon-btn-dot` e `.ds-icon-btn-badge`. Sempre exige <code>aria-label</code>.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Shapes</h3><span class="cat-component-class">.ds-icon-btn + .ds-icon-btn-square / .ds-icon-btn-circle</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px;">
+                <button class="ds-icon-btn" aria-label="Demo square"><span style="font-size:14px;">⚙</span></button>
+                <button class="ds-icon-btn ds-icon-btn-circle" aria-label="Demo circle"><span style="font-size:14px;">×</span></button>
+              </div>
+              <div class="cat-note"><strong>Square</strong> default (radius 4px) · <strong>Circle</strong> pra close/profile (radius 50%).</div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-icon-btn" aria-label="Configurações"&gt;⚙&lt;/button&gt;
+&lt;button class="ds-icon-btn ds-icon-btn-circle" aria-label="Fechar"&gt;×&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Sizes</h3><span class="cat-component-class">sm 28 · md 34 · lg 40 · xl 48</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px;">
+                <button class="ds-icon-btn ds-icon-btn-sm" aria-label="SM">·</button>
+                <button class="ds-icon-btn ds-icon-btn-md" aria-label="MD">·</button>
+                <button class="ds-icon-btn ds-icon-btn-lg" aria-label="LG">·</button>
+                <button class="ds-icon-btn ds-icon-btn-xl" aria-label="XL">·</button>
+              </div>
+              <div class="cat-note"><strong>sm</strong> inline copy · <strong>md</strong> topbar v2 default · <strong>lg</strong> topbar v1 · <strong>xl</strong> PDP CTA.</div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-icon-btn ds-icon-btn-md ds-icon-btn-ghost" aria-label="Notificações"&gt;&lt;i data-lucide="bell"&gt;&lt;/i&gt;&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Tones</h3><span class="cat-component-class">default · -ghost · -soft · -glass · -danger</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px;">
+                <button class="ds-icon-btn" aria-label="Default">·</button>
+                <button class="ds-icon-btn ds-icon-btn-ghost" aria-label="Ghost">·</button>
+                <button class="ds-icon-btn ds-icon-btn-soft ds-icon-btn-circle" aria-label="Soft">·</button>
+                <div style="background:linear-gradient(135deg,#0D1D52 0%,#005AFF 100%); padding:10px; border-radius:8px; display:inline-flex; gap:8px;">
+                  <button class="ds-icon-btn ds-icon-btn-glass" aria-label="Glass">·</button>
+                  <button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-circle ds-icon-btn-sm" aria-label="Glass close">×</button>
+                </div>
+                <button class="ds-icon-btn ds-icon-btn-danger" aria-label="Excluir">×</button>
+              </div>
+              <div class="cat-note"><strong>default</strong> white · <strong>ghost</strong> transparent · <strong>soft</strong> bg cinza claro · <strong>glass</strong> rgba sobre brand · <strong>danger</strong> red ghost.</div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" aria-label="Editar"&gt;✎&lt;/button&gt;
+&lt;button class="ds-icon-btn ds-icon-btn-soft ds-icon-btn-circle" aria-label="Fechar"&gt;×&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Slots · dot &amp; badge</h3><span class="cat-component-class">.ds-icon-btn-dot · .ds-icon-btn-badge</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px;">
+                <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-md" aria-label="Notificações · novas">
+                  <span style="font-size:14px;">🔔</span>
+                  <span class="ds-icon-btn-dot"></span>
+                </button>
+                <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-md" aria-label="Carrinho · 3 itens">
+                  <span style="font-size:14px;">🛒</span>
+                  <span class="ds-icon-btn-badge">3</span>
+                </button>
+              </div>
+              <div class="cat-note">Dot = indicador binário (red 8×8 anchored) · Badge = counter (16h pill com número).</div>
+            </div>
+            <pre class="cat-code">&lt;button class="ds-icon-btn ds-icon-btn-ghost" aria-label="Notificações"&gt;
+  &lt;i data-lucide="bell"&gt;&lt;/i&gt;
+  &lt;span class="ds-icon-btn-dot"&gt;&lt;/span&gt;
+&lt;/button&gt;</pre>
           </div>
         </div>
       </section>

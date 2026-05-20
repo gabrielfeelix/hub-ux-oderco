@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.28.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.29.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -116,6 +116,7 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 ### Atoms
 - [typography](./atoms/typography.md) — `.ds-h1..h3`, `.ds-p..`, `.ds-label`
 - [buttons](./atoms/buttons.md) — `.ds-btn` + 7 variants + 2 sizes + pílulas especiais
+- [icon-btn](./atoms/icon-btn.md) — `.ds-icon-btn` ⭐ Phase H.1 · 10x DUPES · 2 shapes × 4 sizes × 5 tones + dot/badge slots
 - [links](./atoms/links.md) — `.ds-link` + size/color variants
 - [inputs](./atoms/inputs.md) — `.ds-input`, `.ds-select`, `.ds-textarea`
 - [fields](./atoms/fields.md) — `.ds-field`, `.ds-field-label`, `.ds-field-inline`
@@ -491,7 +492,24 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.23 · Loja/Produto feature** — `.pdp-*` (PDP V2 rich) + `.hero-*` (carousel) extraídos pra `features/loja/loja.css` · -298 linhas · UPGRADES: .ds-status-dot 4x · .ds-stepper-input CONFIRMED 3x · .ds-tabs 4x · .ds-kv-list 3x · .ds-btn-on-brand 3x · 2 novos (.ds-carousel, .ds-rating) · Loja CSS scattered, restantes (product/store/toolbar/search/filter-chip/qty-stepper/etc) ficam pra C.25 cleanup
 - [x] **C.24 · Chrome (app shell) feature** — `.sidebar*` + `.topbar*` + `.shell*` + `.user-menu*` + body modifiers (`.is-auth`, `.sb-collapsed`) extraídos pra `features/chrome/chrome.css` · -157 linhas · UPGRADE forte: **.ds-icon-btn 9x → 10x** (pico do DS · justifica icon-btn como atom #1 prioritário) · 3 novos sugeridos: .ds-notif-dot, .ds-nav-link, .ds-divider --vertical · layout primitives candidatos: .ds-app-sidebar + .ds-app-topbar (não atom, layout)
 - [x] **C.25 · Misc/cleanup** — 3 sub-phases concluídas: **C.25a** legacy compat block (155 linhas force-radius/font-family) extraído pra `ds/legacy-compat.css` (`@layer legacy` self-declared, importado via `ds/index.css`) · **C.25b** loja residue (280+ linhas: store v1/v2, product-card, filter-chip, qty-stepper, price-slider, cart-overlay, list-view, empty-state, search) anexado em `features/loja/loja.css` · **C.25c** home content blocks (365 linhas: home-kpis, home-perks, home-showcase, home-categories grid/pills, home-products-grid, home-recent rails) anexado em `features/dashboard/dashboard.css` · NO new atoms confirmed (cleanup-only) · DUPES adicionais: `.home-prod-card` ↔ `.product-card` 3+ variantes, `.home-section-head` 5x · total -921 linhas index.html (10589 → 9668)
-- [x] **Phase C COMPLETO** — DS infra (C.1-C.9) + 16 features (C.10-C.24) + cleanup (C.25). Próximo: **Phase H** consolidação (criar 23 atoms confirmados em `ds/`, migrar markup, deletar dupes em features).
+- [x] **Phase C COMPLETO** — DS infra (C.1-C.9) + 16 features (C.10-C.24) + cleanup (C.25). 
+
+### Phase H · Consolidação DS adoption (em progresso)
+
+Criar atoms confirmados (≥2x DUPES) em `ds/`, com docs + catalog + opcional migration. Sequência por DUPE-count desc:
+
+- [x] **H.1 · `.ds-icon-btn`** (10x DUPES · TOP) — Atom criado em `ds/atoms/icon-btn.{css,md}` · 2 shapes (square/circle) × 4 sizes (sm 28/md 34/lg 40/xl 48) × 5 tones (default/ghost/soft/glass/danger) + slots `.ds-icon-btn-dot` (red 8×8 anchored) e `.ds-icon-btn-badge` (counter) · barrel index.css atualizado · catalog section adicionada com 4 sub-componentes (shapes, sizes, tones, slots) · migration map em icon-btn.md mapeando 10 origins → ds replacements
+- [ ] **H.2 · `.ds-table-grid`** (8x) — clientes/orc/ped/admin/mk · CSS grid table (head + rows)
+- [ ] **H.3 · `.ds-icon-box`** (7x) — color-coded square c/ icon
+- [ ] **H.4 · `.ds-overlay`** (6x) — backdrop modal/drawer blur
+- [ ] **H.5 · `.ds-hero-gradient`** (6x) — hero navy→blue banner
+- [ ] **H.6 · `.ds-kpi`** (6x) — KPI card (label + valor + trend)
+- [ ] **H.7 · `.ds-empty-state`** (6x) — icon + h4 + p placeholder
+- [ ] **H.8 · `.ds-toolbar`** (5x) — header listing
+- [ ] **H.9 · `.ds-section-head`** (5x) — title + sub + action link
+- [ ] **H.10 · `.ds-status-dot`** (4x) — pulse status indicator
+- [ ] H.11-H.20 — resto dos 23 atoms confirmados (audit completo em divergence-audit.md)
+- [ ] **H.21+ · Markup migration** — substituir uses por DS classes em features, deletar dupes
 - [ ] **Phase H · Consolidação DS adoption** — automated audit script + cluster review + markup migration · gather divergence audits dos READMEs features
 
 ### Phase D · Figma DS espelho
@@ -542,5 +560,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.26.0 | C.23 | 2026-05-20 | Loja/Produto feature extraída (PDP V2 + Hero Carousel) pra `features/loja/loja.css` · -298 linhas · UPGRADES: ds-status-dot 4x · ds-stepper-input CONFIRMED 3x · ds-tabs 4x · ds-kv-list 3x · ds-btn-on-brand 3x · 2 novos (.ds-carousel, .ds-rating) · resto da loja (product/store/filter/qty-stepper) fica pra C.25 cleanup |
 | 0.27.0 | C.24 | 2026-05-20 | **Chrome (app shell) feature extraída** pra `features/chrome/chrome.css` (sidebar + topbar + shell + user-menu + body modifiers) · -157 linhas · **MAIOR upgrade do DS: .ds-icon-btn 9x→10x** (pico absoluto · justifica icon-btn como atom #1 prioritário pra Phase H) · 3 novos sugeridos: `.ds-notif-dot` (red 8×8 anchored), `.ds-nav-link` (vertical sidebar nav atom), `.ds-divider --vertical` (extender existing) · layout primitives candidatos: `.ds-app-sidebar` + `.ds-app-topbar` (não atom · shell layout) · index.html: 10589 → 10432 linhas |
 | 0.28.0 | C.25 | 2026-05-20 | **Phase C COMPLETO · cleanup sweep final em 3 sub-phases**: C.25a legacy compat (155 linhas force-radius/font-family) → `ds/legacy-compat.css` (`@layer legacy` self-declared, importado via `ds/index.css`) · C.25b loja residue (280+ linhas: store v1/v2, product-card, filter-chip, qty-stepper, price-slider, cart-overlay, list-view, empty-state, search) anexado em `features/loja/loja.css` · C.25c home content (365 linhas: home-kpis, home-perks, home-showcase, home-categories grid/pills, home-products-grid, home-recent rails) anexado em `features/dashboard/dashboard.css` · NO new atoms confirmed (cleanup-only) · DUPES adicionais pra Phase H: `.home-prod-card` ↔ `.product-card` 3+ variantes, `.home-section-head` 5x · index.html: 10432 → 9668 linhas (-764 nesta phase · -35% acumulado desde C.10 inicial 14901) |
+| 0.29.0 | H.1 | 2026-05-20 | **Phase H BEGAN · 1º atom criado** · `.ds-icon-btn` (10x DUPES · maior do audit) em `ds/atoms/icon-btn.{css,md}` · 2 shapes (square/circle) × 4 sizes (sm 28/md 34/lg 40/xl 48) × 5 tones (default/ghost/soft/glass/danger) + slots `.ds-icon-btn-dot` (red 8×8) e `.ds-icon-btn-badge` (counter) · semantic tokens (`--color-surface-*`, `--color-text-*`, `--color-feedback-error-strong`, `--shadow-focus-blue`) · barrel `ds/atoms/index.css` atualizado · catalog section com 4 sub-componentes (shapes/sizes/tones/slots) + nav anchor · doc tem migration map de 10 origins (icon-btn v1+v2, modal-close, cart-close, help-modal-close, sidebar-toggle, profile-copy, profile-cover-edit, dash-hero-brand-edit, notif-close) → DS replacements · markup migration pendente (Phase H.21+) |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

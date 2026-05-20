@@ -1,0 +1,133 @@
+/* ==========================================================================
+   DS · ICON BUTTON
+   Botão icon-only · square ou circle · 4 tamanhos · 3 tones.
+   Phase H.1 · consolida 10 DUPES across features (icon-btn topbar v1+v2,
+   modal-close, cart-close, help-modal-close, sidebar-toggle, profile-copy-btn,
+   profile-cover-edit-btn, dash-hero-brand-edit, notif-close).
+   Usa semantic tokens.
+   ========================================================================== */
+
+.ds-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: var(--ds-icon-btn-size, 34px);
+  height: var(--ds-icon-btn-size, 34px);
+  border: 0;
+  border-radius: var(--r-form);
+  background: var(--color-surface-card);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--motion-default);
+  position: relative;
+  flex-shrink: 0;
+  padding: 0;
+  font-family: inherit;
+}
+.ds-icon-btn:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-default);
+}
+.ds-icon-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+.ds-icon-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-blue);
+}
+
+/* Inner icon · auto-sized */
+.ds-icon-btn svg,
+.ds-icon-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+/* === Shapes ======================================================= */
+.ds-icon-btn-square { border-radius: var(--r-form); }
+.ds-icon-btn-circle { border-radius: 50%; }
+
+/* === Sizes ======================================================== */
+.ds-icon-btn-sm { --ds-icon-btn-size: 28px; }
+.ds-icon-btn-md { --ds-icon-btn-size: 34px; }  /* default */
+.ds-icon-btn-lg { --ds-icon-btn-size: 40px; }
+.ds-icon-btn-xl { --ds-icon-btn-size: 48px; }
+
+.ds-icon-btn-sm svg, .ds-icon-btn-sm i { width: 14px; height: 14px; }
+.ds-icon-btn-lg svg, .ds-icon-btn-lg i { width: 18px; height: 18px; }
+.ds-icon-btn-xl svg, .ds-icon-btn-xl i { width: 20px; height: 20px; }
+
+/* === Tones ======================================================== */
+
+/* Default · subtle white surface (topbar, sidebar-toggle) */
+/* (já incluso em .ds-icon-btn base) */
+
+/* Ghost · transparent (chrome v2, profile copy) */
+.ds-icon-btn-ghost {
+  background: transparent;
+}
+.ds-icon-btn-ghost:hover {
+  background: var(--color-surface-sunken);
+}
+
+/* Brand · for modal/drawer close on light bg (cart-close, modal-close) */
+.ds-icon-btn-soft {
+  background: var(--color-surface-page);
+}
+.ds-icon-btn-soft:hover {
+  background: var(--color-border-default);
+  color: var(--color-text-default);
+}
+
+/* Glass · sobre brand bg (dash-hero-brand-edit, profile-cover-edit-btn,
+   help-modal-close) — rgba whites */
+.ds-icon-btn-glass {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--color-text-on-brand);
+}
+.ds-icon-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.28);
+  color: var(--color-text-on-brand);
+}
+
+/* Danger · for delete/destructive icon actions */
+.ds-icon-btn-danger {
+  background: transparent;
+  color: var(--color-action-danger-fg);
+}
+.ds-icon-btn-danger:hover {
+  background: var(--color-action-danger-bg-hover);
+  color: var(--color-action-danger-fg);
+}
+
+/* === Slot: notif dot (red 8×8 anchored top-right) ================== */
+.ds-icon-btn .ds-icon-btn-dot {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-feedback-error-strong, #E94647);
+  border: 2px solid var(--color-surface-card);
+  pointer-events: none;
+}
+.ds-icon-btn-glass .ds-icon-btn-dot {
+  border-color: var(--color-text-on-brand);
+}
+
+/* === Slot: badge counter (number pill anchored) ==================== */
+.ds-icon-btn .ds-icon-btn-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: var(--r-form);
+  background: var(--color-action-primary-bg);
+  color: var(--color-action-primary-fg);
+  font: 700 9px/16px var(--font);
+  border: 2px solid var(--color-surface-card);
+  pointer-events: none;
+}
