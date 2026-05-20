@@ -12,10 +12,10 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.15) | 7 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora) |
-| Features restantes (C.16+) | ~9 (ajuda, dash, pv, novas, dé, notif, admin, loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **14** |
-| Possíveis novos (sugeridos · ≥1 feature) | 4 |
+| Features extraídas (C.10-C.16) | 8 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda) |
+| Features restantes (C.17+) | ~8 (dash, pv, novas, dé, notif, admin, loja, chrome) |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17** |
+| Possíveis novos (sugeridos · ≥1 feature) | 5 |
 
 ---
 
@@ -320,6 +320,51 @@ Variants: square (line clr-btn) · circle (close / share).
 
 ---
 
+### 15. `.ds-link-back` (atom) — 🔴 **4x confirmado**
+
+Link "← Voltar" com seta + texto, color muted hover blue/strong.
+
+| Feature | Class duplicado |
+|---|---|
+| Auth | `.auth-back` |
+| Orçamentos | `.orc-back` |
+| Clientes | `.client-back-btn` |
+| Ajuda | `.artigo-back` |
+
+**Estrutura proposta:**
+```html
+<a href="#prev" class="ds-link-back">
+  <svg.../> Voltar
+</a>
+```
+
+---
+
+### 16. `.ds-icon-box` (atom) — 🟡 **3x confirmado**
+
+Container quadrado/redondo color-coded com ícone centralizado (não-interativo, indicativo).
+
+| Feature | Class duplicado |
+|---|---|
+| Pedidos (resumo) | `.resumo-card-icon` (28×28) |
+| Ajuda | `.ajuda-cat-icon` (46×46) / `.help-link-icon` (38×38) |
+
+Variants: sm 28 · md 38 · lg 46.
+
+---
+
+### 17. `.ds-hero-gradient` (molecule) — 🟡 **3x confirmado**
+
+Hero section com gradient navy→blue + decoração + título grande.
+
+| Feature | Class duplicado |
+|---|---|
+| Ajuda | `.ajuda-hero` (radius card-lg, padding 56 48 60) |
+| Auth | `.auth-brand` (panel gradient com decoração radial) |
+| Ajuda (modal head) | `.help-modal-head` (gradient navy→blue) |
+
+---
+
 ## 🟡 Sugeridos · 1 feature (precisa confirmação)
 
 ### `.ds-stepper-input` (qty +/-)
@@ -342,6 +387,15 @@ Variants: square (line clr-btn) · circle (close / share).
 
 ### `.ds-alert-neutral` (disclaimer)
 - `.calc-disclaimer` (calculadora)
+
+### `.ds-accordion` (FAQ items)
+- `.ajuda-faq-item` (ajuda)
+
+### `.ds-fab` (floating action button)
+- `.help-fab` (ajuda)
+
+### `.ds-video-embed` (16/9 cover + play)
+- `.help-modal-video` (ajuda)
 
 ---
 
@@ -393,3 +447,4 @@ Atualizado a cada feature extraction (C.10+). Quando uma DUPE confirma 2+ featur
 Update history:
 - v0.1 · 2026-05-20 · Criado após C.14 (clientes) · 6 features mapeadas · 11 atoms/molecules confirmados
 - v0.2 · 2026-05-20 · Atualizado após C.15 (calculadora) · 7 features mapeadas · 14 atoms/molecules confirmados (.ds-kpi +1, .ds-progress +1, .ds-icon-btn upgrade 2x→3x) + 2 sugeridos viraram confirmados
+- v0.3 · 2026-05-20 · Atualizado após C.16 (ajuda) · 8 features mapeadas · 17 confirmados (.ds-link-back 4x, .ds-icon-box 3x, .ds-hero-gradient 3x) + .ds-modal sobe pra 3x · .ds-icon-btn upgrade 3x→4x · 3 novos sugeridos (.ds-accordion, .ds-fab, .ds-video-embed)
