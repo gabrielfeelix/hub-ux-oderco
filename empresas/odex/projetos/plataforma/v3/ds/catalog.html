@@ -301,6 +301,7 @@
         <a href="#pills">Status pills</a>
         <a href="#cards">Cards</a>
         <a href="#table-grid">Table grid ⭐ H.2</a>
+        <a href="#icon-box">Icon box ⭐ H.3</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -1413,6 +1414,76 @@
             </div>
             <pre class="cat-code">&lt;div class="ds-table-grid ds-table-grid-dense"&gt;...&lt;/div&gt;
 &lt;div class="ds-table-grid-empty"&gt;Nenhum item.&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · ICON BOX (Phase H.3 · 7+ DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="icon-box">Icon box</h2>
+        <p class="cat-section-desc"><strong>Phase H.3 atom</strong> · consolida 14+ DUPES (notif-icon, ajuda-cat-icon, dash-kpi-icon, dash-hero-quick-ico, dash-hero-brand-logo, home-perk-icon, home-cat-icon, dash-activity-icon, client-av, etc). Container <strong>decorativo</strong> (não-clicável) para ícone · 6 sizes × 3 shapes × 8 tones. Sibling de <code>.ds-icon-btn</code> (interativo).</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Sizes</h3><span class="cat-component-class">.ds-icon-box-{xs,sm,md,lg,xl,xxl}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px;">
+                <div class="ds-icon-box ds-icon-box-xs"><span style="font-size:12px;">★</span></div>
+                <div class="ds-icon-box ds-icon-box-sm"><span style="font-size:14px;">★</span></div>
+                <div class="ds-icon-box ds-icon-box-md"><span style="font-size:16px;">★</span></div>
+                <div class="ds-icon-box ds-icon-box-lg"><span style="font-size:18px;">★</span></div>
+                <div class="ds-icon-box ds-icon-box-xl"><span style="font-size:20px;">★</span></div>
+                <div class="ds-icon-box ds-icon-box-xxl"><span style="font-size:24px;">★</span></div>
+              </div>
+              <div class="cat-note">xs 28 · sm 32 · <strong>md 36 (default)</strong> · lg 40 · xl 48 · xxl 54.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-icon-box ds-icon-box-lg"&gt;
+  &lt;i data-lucide="zap" aria-hidden="true"&gt;&lt;/i&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Shapes</h3><span class="cat-component-class">.ds-icon-box-{square,rounded,circle}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px;">
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-square"><span style="font-size:16px;">▢</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-rounded"><span style="font-size:16px;">▢</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-circle"><span style="font-size:16px;">▢</span></div>
+              </div>
+              <div class="cat-note">square 4px (default) · rounded 10px · circle 50%.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-icon-box ds-icon-box-lg ds-icon-box-rounded"&gt;...&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Tones (color-coded)</h3><span class="cat-component-class">8 variants</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px; flex-wrap:wrap;">
+                <div class="ds-icon-box ds-icon-box-lg"><span style="font-size:16px;">·</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-brand"><span style="font-size:16px;">·</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-success"><span style="font-size:16px;">·</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-warning"><span style="font-size:16px;">·</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-danger"><span style="font-size:16px;">·</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-navy"><span style="font-size:16px;">·</span></div>
+                <div style="background:linear-gradient(135deg,#0D1D52 0%,#005AFF 100%); padding:10px; border-radius:8px; display:inline-flex; gap:10px;">
+                  <div class="ds-icon-box ds-icon-box-lg ds-icon-box-glass"><span style="font-size:16px;">·</span></div>
+                  <div class="ds-icon-box ds-icon-box-lg ds-icon-box-white"><span style="font-size:16px;">·</span></div>
+                </div>
+              </div>
+              <div class="cat-note">default · brand (blue) · success · warning · danger · navy (white fg) · glass · white (over brand).</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-icon-box ds-icon-box-lg ds-icon-box-success"&gt;
+  &lt;i data-lucide="check"&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;div class="ds-icon-box ds-icon-box-sm ds-icon-box-glass"&gt;
+  &lt;i data-lucide="folder"&gt;&lt;/i&gt;
+&lt;/div&gt;</pre>
           </div>
         </div>
       </section>

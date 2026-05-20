@@ -1,0 +1,90 @@
+/* ==========================================================================
+   DS · ICON BOX
+   Container quadrado/circular para ícone decorativo (NÃO clicável).
+   Diferente de `.ds-icon-btn` que é interativo · este é display-only.
+   Phase H.3 · consolida 7+ DUPES (notif-icon, ajuda-cat-icon,
+   dash-hero-quick-ico, dash-hero-brand-logo, dash-kpi-icon, home-cat-icon,
+   home-perk-icon, notif-drawer-icon, quick-act-icon, etc).
+   ========================================================================== */
+
+.ds-icon-box {
+  display: grid;
+  place-items: center;
+  width: var(--ds-icon-box-size, 36px);
+  height: var(--ds-icon-box-size, 36px);
+  border-radius: var(--r-form);
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Inner icon · sized via custom prop, with sane default */
+.ds-icon-box svg,
+.ds-icon-box i,
+.ds-icon-box > img {
+  width: var(--ds-icon-box-inner, 18px);
+  height: var(--ds-icon-box-inner, 18px);
+}
+.ds-icon-box > img {
+  object-fit: contain;
+}
+
+/* === Sizes ======================================================== */
+.ds-icon-box-xs  { --ds-icon-box-size: 28px; --ds-icon-box-inner: 14px; }
+.ds-icon-box-sm  { --ds-icon-box-size: 32px; --ds-icon-box-inner: 16px; }
+.ds-icon-box-md  { --ds-icon-box-size: 36px; --ds-icon-box-inner: 18px; } /* default */
+.ds-icon-box-lg  { --ds-icon-box-size: 40px; --ds-icon-box-inner: 20px; }
+.ds-icon-box-xl  { --ds-icon-box-size: 48px; --ds-icon-box-inner: 22px; }
+.ds-icon-box-xxl { --ds-icon-box-size: 54px; --ds-icon-box-inner: 26px; }
+
+/* === Shapes ======================================================= */
+.ds-icon-box-square  { border-radius: var(--r-form); }     /* 4px · default */
+.ds-icon-box-rounded { border-radius: 10px; }              /* notif categorias */
+.ds-icon-box-circle  { border-radius: 50%; }               /* avatars, modal icons */
+
+/* === Tones (color-coded) ========================================== */
+
+/* Default · soft bg + muted fg (já incluso em .ds-icon-box base) */
+
+/* Brand · azul (info, dashboard quick actions) */
+.ds-icon-box-brand {
+  background: var(--info-bg, #DBEAFE);
+  color: var(--color-action-primary-bg);
+}
+
+/* Success · verde (whatsapp icon, success states) */
+.ds-icon-box-success {
+  background: var(--color-feedback-success-bg, #DCFCE7);
+  color: var(--color-feedback-success-strong, #166534);
+}
+
+/* Warning · amarelo (warnings, em-andamento) */
+.ds-icon-box-warning {
+  background: var(--color-feedback-warning-bg, #FEF3C7);
+  color: var(--color-feedback-warning-strong, #92400E);
+}
+
+/* Danger · vermelho (alerts, error states) */
+.ds-icon-box-danger {
+  background: var(--color-feedback-error-bg);
+  color: var(--color-feedback-error-fg);
+}
+
+/* Navy · marca (brand emphasis · texto white) */
+.ds-icon-box-navy {
+  background: var(--navy);
+  color: var(--color-text-on-brand);
+}
+
+/* Glass · rgba sobre brand bg (dash-hero-quick-ico, hero brand-logo) */
+.ds-icon-box-glass {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-on-brand);
+}
+
+/* White · contrasta sobre dark bg (brand-logo container) */
+.ds-icon-box-white {
+  background: var(--color-surface-card);
+  color: var(--navy);
+}
