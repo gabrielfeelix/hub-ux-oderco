@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.12.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.13.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -31,7 +31,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅ · A11y keyboard ✅ · Input-group promoted ✅. Próximo: demais features (mk, ov, ped, ck) | 🟡 Em progresso (C.1-C.9 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅ · A11y keyboard ✅ · Input-group ✅ · Checkout ✅. Próximo: ov, ped, mk, etc | 🟡 Em progresso (C.1-C.10 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -128,6 +128,7 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 
 ### Features
 - [auth](../features/auth/README.md) — Login + Cadastro + Redefinir senha
+- [checkout](../features/checkout/README.md) — Cart drawer + Checkout page
 
 ### Accessibility
 - [a11y.md](./a11y.md) — WCAG 2.1 AA audit completo · contrast, focus, motion, ARIA
@@ -458,8 +459,8 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.8 · A11y baseline** — `:focus-visible` em todos atoms+molecules+auth · `prefers-reduced-motion` · WCAG AA contrast (fix de 3 violations: danger-fg, success-fg, andamento-fg) · audit doc em [a11y.md](./a11y.md)
 - [x] **C.8.1 · A11y keyboard nav** — `ds/molecules/select.js` (Listbox pattern: ↑↓/Home/End/Enter/Space/Esc/Tab/type-ahead + aria-selected + aria-activedescendant) · `ds/molecules/menu.js` (Menu pattern: ↑↓/Home/End/Enter/Space/Esc/Tab + aria roles auto)
 - [x] **C.9 · Input-group molecule** — `.auth-input-wrap` paradigm promovido pra `.ds-input-group` (DS molecule reutilizável) · variant `-lg` 44h pra auth · todo markup auth migrado · auth.css limpo
-- [ ] **C.9 · Input-group molecule** — promove `.auth-input-wrap` → `.ds-input-group`
-- [ ] **C.10+ · Demais features** — mk, ov, ped, ck, clientes, calculadora, ajuda, dashboard, topbar/sidebar
+- [x] **C.10 · Checkout feature** — `.cart-*` (drawer) + `.ckform-*`/`.cksummary-*`/`.ckitem-*`/`.ckprice-*`/CTAs/`.radio-opt`/`.premia-row` extraídos pra `features/checkout/checkout.css` · `@layer features` · -105 linhas em index.html
+- [ ] **C.11+ · Demais features** — orçamentos (ov), pedidos (ped), monte-kit (mk), clientes, calculadora, ajuda, dashboard, topbar/sidebar
 
 ### Phase D · Figma DS espelho
 - [ ] Importar tokens via Tokens Studio
@@ -493,5 +494,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.10.0 | C.8 | 2026-05-20 | A11y baseline · `:focus-visible` em todos elementos · `prefers-reduced-motion` · WCAG AA contrast audit + 3 fixes (danger-fg/success-fg/andamento-fg) · `ds/a11y.md` |
 | 0.11.0 | C.8.1 | 2026-05-20 | A11y keyboard nav · `ds/molecules/select.js` (Listbox WAI-ARIA: ↑↓/Home/End/Enter/Space/Esc/Tab/type-ahead) · `ds/molecules/menu.js` (Menu WAI-ARIA) · inline JS extraído de index.html + catalog.html |
 | 0.12.0 | C.9 | 2026-05-20 | Input-group molecule · `.auth-input-wrap` promovido pra `.ds-input-group` (DS reutilizável) · variant `-lg` pra auth · `:has()` selector pra padding-left auto · markup migrado |
+| 0.13.0 | C.10 | 2026-05-20 | Checkout feature extraído pra `features/checkout/checkout.css` · cart drawer + checkout page · -105 linhas em index.html · `@layer features` |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

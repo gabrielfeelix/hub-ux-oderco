@@ -19,6 +19,7 @@
 
     <!-- Feature modules (compõem DS pra contextos específicos) -->
     <link rel="stylesheet" href="features/auth/auth.css" />
+    <link rel="stylesheet" href="features/checkout/checkout.css" />
 
     <!-- DS molecules · JS helpers (keyboard nav + ARIA · Phase C.8.1) -->
     <script src="ds/molecules/select.js" defer></script>
@@ -855,66 +856,6 @@
       .user-profile .name { font-size: 13px; }
       .user-profile .role { font-size: 11px; }
 
-      /* ====== CART DRAWER (DS Figma 1850:9412 · Carrinho1) ======
-         bg-white • shadow esquerda • CTA azul #005AFF • radius 4px
-      */
-      .cart {
-        width: 400px;
-        background: var(--white);
-        border-radius: 0;
-        box-shadow: -3px 0 17px 0 rgba(0,0,0,.08);
-        overflow: hidden;
-        font-family: var(--font);
-      }
-      .cart-head { padding: 20px 22px; background: var(--white); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
-      .cart-head strong { font: 700 16px/1 var(--font); color: var(--navy); letter-spacing: 0; }
-      .cart-close {
-        background: transparent; width: 28px; height: 28px; border-radius: 50%;
-        display: grid; place-items: center; color: var(--muted); border: 0; cursor: pointer; transition: .12s;
-      }
-      .cart-close:hover { background: var(--soft); color: var(--ink); }
-      .cart-count-tag { font: 400 12px/1 var(--font); color: var(--muted); background: var(--soft); padding: 4px 10px; border-radius: var(--r-tag); }
-      .cart-body { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; background: var(--white); }
-      .cart-item {
-        background: var(--white); border: 1px solid var(--line); border-radius: var(--r-form);
-        padding: 12px 14px; display: flex; gap: 12px;
-      }
-      .cart-item-img { width: 64px; height: 64px; border-radius: var(--r-form); background: var(--soft); flex-shrink: 0; overflow: hidden; border: 1px solid var(--line); }
-      .cart-item-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .cart-item-content { flex: 1; min-width: 0; }
-      .cart-item-name { font: 400 12px/1.4 var(--font); color: var(--navy); margin: 0 0 4px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-      .cart-item-price { font: 700 14px/1 var(--font); color: var(--navy); margin: 0 0 10px; letter-spacing: 0; }
-      .cart-item-controls { display: flex; align-items: center; justify-content: space-between; }
-      .cart-qty { display: flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r-form); overflow: hidden; height: 28px; background: var(--white); }
-      .cart-qty button { width: 26px; height: 28px; background: transparent; color: var(--ink); font: 400 14px/1 var(--font); display: grid; place-items: center; transition: .12s; border: 0; cursor: pointer; }
-      .cart-qty button:hover { background: var(--soft); }
-      .cart-qty span { width: 26px; text-align: center; font: 400 12px/1 var(--font); color: var(--ink); }
-      .cart-remove-btn { font: 400 12px/1 var(--font); color: var(--red); background: transparent; padding: 0; border: 0; cursor: pointer; }
-      .cart-remove-btn:hover { opacity: .7; }
-
-      .cart-foot { padding: 18px 22px 22px; background: var(--white); border-top: 1px solid var(--line); }
-      .cart-total-row { display: flex; justify-content: space-between; align-items: center; font: 400 12px/1 var(--font); color: var(--muted); padding: 5px 0; }
-      .cart-grand-total {
-        padding-top: 12px; margin-top: 6px; border-top: 1px solid var(--line);
-      }
-      .cart-grand-total span:first-child { font: 700 14px/1 var(--font); color: var(--navy); }
-      .cart-grand-total span:last-child  { font: 700 16px/1 var(--font); color: var(--navy); letter-spacing: 0; }
-      .cart-checkout-btn {
-        width: 100%; height: 44px; margin-top: 14px;
-        background: var(--blue); color: var(--white);
-        border-radius: var(--r-form);
-        font: 400 14px/1 var(--font); letter-spacing: 0;
-        display: flex; align-items: center; justify-content: center; gap: 8px;
-        transition: .15s; border: 0; cursor: pointer; font-family: var(--font);
-      }
-      .cart-checkout-btn:hover { background: #0046cc; }
-      .cart-empty { text-align: center; padding: 60px 20px; color: var(--muted); background: var(--white); }
-      .cart-empty-icon {
-        width: 56px; height: 56px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-form);
-        display: grid; place-items: center; margin: 0 auto 16px;
-      }
-      .cart-empty h3 { font: 700 14px/1 var(--font); color: var(--navy); margin: 0 0 6px; letter-spacing: 0; }
-      .cart-empty p { font: 400 12px/1.5 var(--font); color: var(--muted); margin: 0; }
     </style>
     <style>
       /* Store search icon fix */
@@ -1534,51 +1475,6 @@
       .notif-icon { width: 34px; height: 34px; border-radius: var(--r-form); background: var(--soft); display: grid; place-items: center; flex-shrink: 0; color: var(--muted); }
       .notif-item.unread .notif-icon { background: #e8eeff; color: var(--blue); }
 
-      /* Checkout page */
-      .checkout-page { display: grid; grid-template-columns: minmax(0,1fr) 380px; gap: 28px; align-items: start; max-width: 1100px; margin: 0 auto; }
-      .ckform-stack { display: flex; flex-direction: column; gap: 20px; }
-      .ckform-card { padding: 28px; }
-      .ckform-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 20px; display: flex; align-items: center; gap: 8px; }
-      .ckform-section-title::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-      .radio-group { display: flex; gap: 10px; }
-      .radio-opt { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--line); border-radius: var(--r-form); cursor: pointer; transition: 0.15s; flex: 1; font-size: 14px; font-weight: 500; color: var(--ink); }
-      .radio-opt:hover { border-color: #a5b4fc; }
-      .radio-opt input[type=radio] { accent-color: var(--blue); width: 16px; height: 16px; flex-shrink: 0; }
-      .radio-opt.checked { border-color: var(--blue); background: #f0f5ff; color: var(--blue); font-weight: 600; }
-      .ck-grid { display: grid; gap: 14px; }
-      .ck-grid-2 { grid-template-columns: 1fr 1fr; }
-      .ck-grid-3 { grid-template-columns: 2fr 1fr 80px; }
-      .ck-grid-city { grid-template-columns: 1fr 100px; }
-      .ckform-group { display: flex; flex-direction: column; gap: 6px; }
-      .ckform-label { font: 400 14px/1 var(--font); color: var(--navy); }
-      .ckform-label .req { color: #E94647; margin-left: 2px; }
-      .ckform-input { height: 42px; border: 1px solid var(--line); border-radius: var(--r-form); padding: 0 14px; font-size: 14px; color: var(--ink); background: white; transition: 0.15s; width: 100%; }
-      .ckform-input:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,90,255,0.08); }
-      .ckform-textarea { border: 1px solid var(--line); border-radius: var(--r-form); padding: 12px 14px; font-size: 14px; color: var(--ink); background: white; transition: 0.15s; width: 100%; resize: vertical; min-height: 90px; font-family: inherit; }
-      .ckform-textarea:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,90,255,0.08); }
-      /* Checkout summary */
-      .cksummary-card { padding: 24px; position: sticky; top: 80px; }
-      .cksummary-title { font-size: 15px; font-weight: 700; margin: 0 0 18px; color: var(--ink); }
-      .cksummary-items { border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; margin-bottom: 20px; }
-      .ckitem { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-bottom: 1px solid var(--line); }
-      .ckitem:last-child { border-bottom: 0; }
-      .ckitem-img { width: 52px; height: 52px; border-radius: var(--r-form); background: var(--soft); padding: 6px; object-fit: contain; flex-shrink: 0; }
-      .ckitem-info { flex: 1; min-width: 0; }
-      .ckitem-name { font-size: 12px; font-weight: 600; color: var(--ink); line-height: 1.4; margin: 0 0 2px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-      .ckitem-sku { font-size: 11px; color: var(--muted); margin: 0; }
-      .ckitem-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
-      .ckitem-price { font-size: 13px; font-weight: 700; color: var(--ink); }
-      .ckitem-qty { font-size: 11px; color: var(--muted); background: var(--soft); padding: 1px 7px; border-radius: var(--r-card-lg); }
-      .ckprice-rows { margin-bottom: 14px; }
-      .ckprice-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); padding: 4px 0; }
-      .ckprice-total { display: flex; justify-content: space-between; font-size: 17px; font-weight: 700; color: var(--ink); padding-top: 12px; border-top: 1px solid var(--line); }
-      .ck-submit-btn { width: 100%; height: 48px; background: var(--blue); color: white; border-radius: var(--r-card); font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.15s; margin-top: 16px; letter-spacing: -.01em; }
-      .ck-submit-btn:hover { background: #0046cc; }
-      .ck-back-btn { width: 100%; height: 40px; background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: var(--r-form); font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.15s; margin-top: 8px; }
-      .ck-back-btn:hover { border-color: var(--ink); color: var(--ink); }
-      .premia-row { display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: #FCDFB3; border: 1px solid #F8BE66; border-radius: var(--r-form); margin-bottom: 14px; }
-      .premia-row label { font-size: 13px; font-weight: 600; color: #8a5400; flex: 1; }
-      .premia-row span { font-size: 12px; color: #a16207; }
     </style>
     <style>
       /* ====== DASHBOARD V3 ====== */
