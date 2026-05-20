@@ -12,10 +12,10 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.22) | 14 (auth, checkout, orc, ped, mk, clientes, calc, ajuda, dash, pv, novidades, de-chat, notif, admin) |
-| Features restantes (C.23+) | ~2 (loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **23 · ds-icon-btn 9x · ds-table-grid 8x · ds-icon-box 7x · ds-overlay 6x · ds-hero-gradient 6x · ds-kpi 6x · ds-empty-state 6x · ds-toolbar 5x · ds-section-head 4x · ds-tabs 3x · ds-card-link 2x · ds-btn-on-brand 2x** |
-| Possíveis novos (sugeridos · ≥1 feature) | 17 |
+| Features extraídas (C.10-C.23) | 15 (auth, checkout, orc, ped, mk, clientes, calc, ajuda, dash, pv, novidades, de-chat, notif, admin, loja) |
+| Features restantes (C.24+) | ~1 (chrome) + C.25 cleanup |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **23 · upgrades fortes**: ds-icon-btn 9x · ds-table-grid 8x · ds-icon-box 7x · ds-overlay 6x · ds-hero-gradient 6x · ds-kpi 6x · ds-empty-state 6x · ds-toolbar 5x · ds-section-head 4x · ds-status-dot 4x · ds-tabs 4x · ds-stepper-input 3x · ds-kv-list 3x · ds-btn-on-brand 3x |
+| Possíveis novos (sugeridos · ≥1 feature) | 19 |
 
 ---
 
@@ -493,3 +493,4 @@ Update history:
 - v0.7 · 2026-05-20 · Atualizado após C.20 (dé chat) · 12 features mapeadas · .ds-icon-btn 7x→8x · .ds-hero-gradient 4x→5x · .ds-overlay sobe 5x · 3 novos sugeridos (.ds-chip 2x, .ds-chat-bubble, .ds-status-dot)
 - v0.8 · 2026-05-20 · Atualizado após C.21 (notif) · 13 features · .ds-overlay 5x→6x · .ds-icon-box 6x→7x · .ds-empty-state 4x→5x · .ds-drawer 2x→3x (CONFIRMED) · .ds-tab-pill sobe pra CONFIRMED 2x · .ds-status-dot sobe pra CONFIRMED 3x · 2 novos sugeridos (.ds-popover, .ds-badge-counter)
 - v0.9 · 2026-05-20 · Atualizado após C.22 (admin) · 14 features · MAIORES upgrades até agora: .ds-icon-btn 8x→9x · .ds-table-grid 5x→8x · .ds-hero-gradient 5x→6x · .ds-kpi 5x→6x · .ds-toolbar 4x→5x · .ds-empty-state 5x→6x · .ds-section-head 3x→4x · 3 sugeridos viram CONFIRMED (.ds-tabs 3x, .ds-card-link 2x, .ds-btn-on-brand 2x) · 2 novos (.ds-toggle, .ds-btn-ghost-sm)
+- v0.10 · 2026-05-20 · Atualizado após C.23 (loja) · 15 features · upgrades: .ds-status-dot 3x→4x · .ds-stepper-input 2x→3x · .ds-tabs 3x→4x · .ds-kv-list 2x→3x · .ds-btn-on-brand 2x→3x · 2 novos sugeridos (.ds-carousel, .ds-rating)
