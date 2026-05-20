@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.13.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.14.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -31,7 +31,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅ · A11y keyboard ✅ · Input-group ✅ · Checkout ✅. Próximo: ov, ped, mk, etc | 🟡 Em progresso (C.1-C.10 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅ · A11y keyboard ✅ · Input-group ✅ · Checkout ✅ · Orçamentos ✅. Próximo: ped, mk, etc | 🟡 Em progresso (C.1-C.11 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -129,6 +129,7 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 ### Features
 - [auth](../features/auth/README.md) — Login + Cadastro + Redefinir senha
 - [checkout](../features/checkout/README.md) — Cart drawer + Checkout page
+- [orcamentos](../features/orcamentos/README.md) — Lista + Detail v1/v2 + Form novo + WhatsApp modal
 
 ### Accessibility
 - [a11y.md](./a11y.md) — WCAG 2.1 AA audit completo · contrast, focus, motion, ARIA
@@ -460,7 +461,9 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.8.1 · A11y keyboard nav** — `ds/molecules/select.js` (Listbox pattern: ↑↓/Home/End/Enter/Space/Esc/Tab/type-ahead + aria-selected + aria-activedescendant) · `ds/molecules/menu.js` (Menu pattern: ↑↓/Home/End/Enter/Space/Esc/Tab + aria roles auto)
 - [x] **C.9 · Input-group molecule** — `.auth-input-wrap` paradigm promovido pra `.ds-input-group` (DS molecule reutilizável) · variant `-lg` 44h pra auth · todo markup auth migrado · auth.css limpo
 - [x] **C.10 · Checkout feature** — `.cart-*` (drawer) + `.ckform-*`/`.cksummary-*`/`.ckitem-*`/`.ckprice-*`/CTAs/`.radio-opt`/`.premia-row` extraídos pra `features/checkout/checkout.css` · `@layer features` · -105 linhas em index.html
-- [ ] **C.11+ · Demais features** — orçamentos (ov), pedidos (ped), monte-kit (mk), clientes, calculadora, ajuda, dashboard, topbar/sidebar
+- [x] **C.11 · Orçamentos feature** — `.orc-*` (lista + detail v1) + `.ov-*` (form v2 + WhatsApp modal) + `.orc-doc-brandbar` extraídos pra `features/orcamentos/orcamentos.css` · `@layer features` · -201 linhas em index.html · README c/ **divergence audit** (Phase H prep)
+- [ ] **C.12+ · Demais features** — pedidos (ped), monte-kit (mk), clientes, calculadora, ajuda, dashboard, topbar/sidebar
+- [ ] **Phase H · Consolidação DS adoption** — automated audit script + cluster review + markup migration · gather divergence audits dos READMEs features
 
 ### Phase D · Figma DS espelho
 - [ ] Importar tokens via Tokens Studio
@@ -495,5 +498,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.11.0 | C.8.1 | 2026-05-20 | A11y keyboard nav · `ds/molecules/select.js` (Listbox WAI-ARIA: ↑↓/Home/End/Enter/Space/Esc/Tab/type-ahead) · `ds/molecules/menu.js` (Menu WAI-ARIA) · inline JS extraído de index.html + catalog.html |
 | 0.12.0 | C.9 | 2026-05-20 | Input-group molecule · `.auth-input-wrap` promovido pra `.ds-input-group` (DS reutilizável) · variant `-lg` pra auth · `:has()` selector pra padding-left auto · markup migrado |
 | 0.13.0 | C.10 | 2026-05-20 | Checkout feature extraído pra `features/checkout/checkout.css` · cart drawer + checkout page · -105 linhas em index.html · `@layer features` |
+| 0.14.0 | C.11 | 2026-05-20 | Orçamentos feature extraído pra `features/orcamentos/orcamentos.css` · lista + detail v1/v2 + WhatsApp modal · -201 linhas em index.html · README inclui divergence audit (Phase H prep) |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.
