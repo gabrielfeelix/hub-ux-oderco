@@ -1,0 +1,111 @@
+/* ==========================================================================
+   DS · INPUT-GROUP (input com ícone à esquerda/direita + reveal button)
+   Promove paradigma .auth-input-wrap pra DS molecule reutilizável (Phase C.9).
+   Default 42h matching .ds-input · variant -lg 44h pra auth.
+   Usa semantic tokens.
+   ========================================================================== */
+
+.ds-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--r-form);
+  transition: border-color var(--motion-medium), box-shadow var(--motion-medium);
+}
+.ds-input-group:focus-within {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus-blue);
+}
+
+/* === Input/select dentro do grupo (default 42h matching .ds-input) === */
+.ds-input-group > input,
+.ds-input-group > select {
+  width: 100%;
+  height: 42px;
+  background: transparent;
+  border: 0;
+  padding: 0 14px;
+  font: 400 var(--fs-16)/1 var(--font);
+  font-family: var(--font);
+  color: var(--color-text-default);
+}
+.ds-input-group > input:focus,
+.ds-input-group > select:focus {
+  outline: none;
+  /* :focus-within no group handles ring · evita dupla */
+}
+.ds-input-group > input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.ds-input-group > select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+/* === Ícone à esquerda (decorativo, non-interactive) === */
+.ds-input-group-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color var(--motion-medium);
+  display: flex;
+  align-items: center;
+}
+.ds-input-group:focus-within .ds-input-group-icon {
+  color: var(--color-border-focus);
+}
+
+/* Quando há ícone left, input/select empurra padding · usa :has() (Chrome 105+/FF 121+/Safari 15.4+) */
+.ds-input-group:has(.ds-input-group-icon) > input,
+.ds-input-group:has(.ds-input-group-icon) > select {
+  padding-left: 42px;
+}
+
+/* === Ícone à direita (decorativo) === */
+.ds-input-group-icon-right {
+  position: absolute;
+  right: 14px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+/* === Botão à direita interativo (reveal/clear/etc) === */
+.ds-input-group-reveal {
+  position: absolute;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--color-text-muted);
+  border-radius: var(--r-circle);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background var(--motion-fast), color var(--motion-fast);
+}
+.ds-input-group-reveal:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-strong);
+}
+.ds-input-group-reveal:focus-visible {
+  outline: none;
+  background: var(--color-surface-sunken);
+  box-shadow: 0 0 0 2px var(--color-border-focus);
+}
+
+/* === Size variant · large (44h / 15px · pattern auth) === */
+.ds-input-group-lg > input,
+.ds-input-group-lg > select {
+  height: 44px;
+  font-size: var(--fs-15);
+}

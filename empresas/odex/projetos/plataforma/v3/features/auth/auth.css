@@ -7,7 +7,7 @@
    - .auth-shell           container grid 1180x680 centralizado
    - .auth-brand           painel esquerdo · gradient navy + spark + título + signature
    - .auth-form            painel direito · form centrado max-w 420
-   - .auth-input-wrap      input-group com ícone opcional (paradigma próprio · ver TODO)
+   - .ds-input-group       (molecule · DS) usado com modifier .ds-input-group-lg pra altura 44h auth
    - .auth-submit          CTA azul 48h (variante grande do botão primário)
    - .auth-secondary       botão outline 46h
    - .auth-step-indicator  indicador de passo do cadastro
@@ -15,7 +15,6 @@
    - .auth-section         bloco navy claro com header (dados representante)
    - .auth-check           checkbox de termos · top-align multi-line
 
-   TODO Phase C.2: promover .auth-input-wrap pra .ds-input-group (DS molecule)
    ========================================================================== */
 
 /* Layer: features · cascade abaixo de unlayered styles, acima de molecules */
@@ -205,63 +204,9 @@ main.auth-shell {
   padding: 0 38px 0 14px;
 }
 
-/* === Input wrap (input-group · TODO promote pra DS molecule) === */
-.auth-input-wrap {
-  position: relative;
-  display: flex; align-items: center;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--r-form);
-  transition: border-color var(--motion-medium), box-shadow var(--motion-medium), background var(--motion-medium);
-}
-.auth-input-wrap:focus-within {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(0,90,255,.10);
-}
-.auth-input-icon {
-  position: absolute; left: 14px;
-  color: var(--muted);
-  pointer-events: none;
-  transition: color var(--motion-medium);
-}
-.auth-input-wrap:focus-within .auth-input-icon { color: var(--blue); }
-.auth-input-icon-right {
-  position: absolute; right: 14px;
-  color: var(--muted);
-  pointer-events: none;
-}
-.auth-input-wrap input,
-.auth-input-wrap select {
-  width: 100%; height: 44px;
-  background: transparent; border: 0;
-  padding: 0 14px;
-  font: 400 15px/1 var(--font);
-  font-family: var(--font);
-  color: var(--ink);
-}
-.auth-input-wrap > input:not(:only-child),
-.auth-input-wrap > select:not(:only-child) { padding-left: 42px; }
-.auth-input-wrap select {
-  appearance: none;
-  -webkit-appearance: none;
-  padding-right: 38px;
-  cursor: pointer;
-}
-.auth-input-wrap input::placeholder { color: var(--placeholder); }
-
-.auth-input-reveal {
-  position: absolute; right: 6px;
-  width: 32px; height: 32px;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  color: var(--muted);
-  border-radius: 50%;
-  display: grid; place-items: center;
-  cursor: pointer;
-  transition: var(--motion-fast);
-}
-.auth-input-reveal:hover { background: var(--soft); color: var(--navy); }
+/* === Input wrap === */
+/* Promovido pra DS molecule em Phase C.9 · ver ds/molecules/input-group.css */
+/* Markup auth agora usa .ds-input-group.ds-input-group-lg */
 
 /* === Form row · helper === */
 .auth-form-row {

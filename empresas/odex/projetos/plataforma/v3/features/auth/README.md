@@ -48,9 +48,9 @@ Layout full-screen das telas de autenticação. Painel brand à esquerda (gradie
 | `.auth-form-title` | h2 do form (28px Bold navy) |
 | `.auth-form-sub` | Descrição (14px muted) |
 | `.auth-field` | Wrapper de campo · margin-bottom 18 |
-| `.auth-input-wrap` | **Input-group** com ícone left + reveal right · 44h / 15px / focus ring |
-| `.auth-input-icon` | Ícone à esquerda (absoluto · 14px from left) |
-| `.auth-input-reveal` | Botão olho (mostrar/ocultar senha) à direita |
+| ~~`.auth-input-wrap`~~ | Promovido pra [`.ds-input-group .ds-input-group-lg`](../../ds/molecules/input-group.md) (Phase C.9) |
+| ~~`.auth-input-icon`~~ | Promovido pra `.ds-input-group-icon` |
+| ~~`.auth-input-reveal`~~ | Promovido pra `.ds-input-group-reveal` |
 | `.auth-link` | Link microcopy 13px sem underline · "Esqueci minha senha" |
 | `.auth-submit` | CTA 48h blue + box-shadow + hover translateY |
 | `.auth-divider` | "── Ainda não possui cadastro? ──" |
@@ -93,7 +93,7 @@ Quase tudo via `--color-*` semantic + `--motion-*`. Cores brand (navy/blue) e rg
 
 ## TODOs
 
-- **Phase C.9** — Promover `.auth-input-wrap` paradigm pra `.ds-input-group` (DS molecule reutilizável)
+- ✅ Phase C.9 done — `.auth-input-wrap` promovido pra `.ds-input-group .ds-input-group-lg` (DS molecule)
 - ✅ Phase C.8 done — focus visible em todas variants (.auth-back, .auth-submit, .auth-secondary, .auth-link)
 - Consolidar `.auth-check` vs `.ds-check` (mantido auth-check pelo top-align multi-line)
 

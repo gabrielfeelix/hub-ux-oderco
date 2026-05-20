@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Odex DS · Catálogo · v0.11.0</title>
+  <title>Odex DS · Catálogo · v0.12.0</title>
 
   <!-- Fonts + icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -263,7 +263,7 @@
     <aside class="cat-sidebar">
       <div class="cat-brand">
         <strong>Odex DS</strong>
-        <span>Catálogo · v0.11.0</span>
+        <span>Catálogo · v0.12.0</span>
       </div>
       <nav class="cat-nav">
         <div class="cat-nav-group">Foundations · primitives</div>
@@ -301,6 +301,7 @@
         <a href="#cards">Cards</a>
 
         <div class="cat-nav-group">Molecules</div>
+        <a href="#input-group">Input Group</a>
         <a href="#select">Odex-Select</a>
         <a href="#menu">DS-Menu</a>
 
@@ -323,7 +324,7 @@
         <p>Referência visual de todos os tokens, atoms e molecules do DS. Source of truth · este catálogo usa o mesmo <code>ds/index.css</code> que a plataforma. Se quebrar aqui, quebrou lá. <br>📑 Cada atom/molecule tem doc em markdown · veja <a href="./README.md#component-docs" class="ds-link ds-link-navy">Component docs</a>.</p>
         <div class="cat-hero-meta">
           <span><strong>Versão:</strong> 0.4.0</span>
-          <span><strong>Phase:</strong> C.8.1 (keyboard nav)</span>
+          <span><strong>Phase:</strong> C.9 (input-group molecule)</span>
           <span><strong>Updated:</strong> 2026-05-20</span>
         </div>
       </header>
@@ -1218,6 +1219,63 @@
       </section>
 
       <!-- ============================================================ -->
+      <!-- MOLECULES · INPUT GROUP -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="input-group">Input Group</h2>
+        <p class="cat-section-desc">Input/select com ícone esquerdo opcional + reveal/icon direito opcional. Container faz focus ring no `:focus-within` · ícone esquerdo empurra padding automaticamente via `:has()`.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Default · 42h (matching .ds-input)</h3><span class="cat-component-class">.ds-input-group</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-input-group">
+                <i data-lucide="search" class="ds-input-group-icon" aria-hidden="true" style="width:16px;height:16px;"></i>
+                <input type="search" placeholder="Buscar..." />
+              </div>
+              <div class="ds-input-group">
+                <input type="text" placeholder="Sem ícone..." />
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-input-group"&gt;
+  &lt;i data-lucide="search" class="ds-input-group-icon"
+     aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;input type="search" placeholder="Buscar..."&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Large · 44h / 15px (auth pattern)</h3><span class="cat-component-class">.ds-input-group .ds-input-group-lg</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-input-group ds-input-group-lg">
+                <i data-lucide="user" class="ds-input-group-icon" aria-hidden="true" style="width:16px;height:16px;"></i>
+                <input type="email" placeholder="seu@email.com.br" />
+              </div>
+              <div class="ds-input-group ds-input-group-lg">
+                <i data-lucide="lock" class="ds-input-group-icon" aria-hidden="true" style="width:16px;height:16px;"></i>
+                <input type="password" id="cat-pwd-demo" placeholder="Sua senha" />
+                <button type="button" class="ds-input-group-reveal" aria-label="Mostrar senha"
+                        onclick="(function(b){var i=document.getElementById('cat-pwd-demo');var t=i.type==='password'?'text':'password';i.type=t;b.querySelector('i').setAttribute('data-lucide',t==='password'?'eye':'eye-off');lucide.createIcons();})(this)">
+                  <i data-lucide="eye" style="width:16px;height:16px;"></i>
+                </button>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-input-group ds-input-group-lg"&gt;
+  &lt;i data-lucide="lock" class="ds-input-group-icon"
+     aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;input type="password" id="senha"&gt;
+  &lt;button type="button" class="ds-input-group-reveal"
+          aria-label="Mostrar senha"&gt;
+    &lt;i data-lucide="eye"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
       <!-- MOLECULES · ODEX-SELECT -->
       <!-- ============================================================ -->
       <section class="cat-section">
@@ -1309,7 +1367,7 @@
       <!-- Footer -->
       <!-- ============================================================ -->
       <footer style="margin-top:96px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:400 12px/1.4 var(--font);color:var(--muted);">
-        <span>Odex DS · v0.11.0 · 2026-05-20</span>
+        <span>Odex DS · v0.12.0 · 2026-05-20</span>
         <span><a class="ds-link" href="./README.md">README</a> · <a class="ds-link" href="./tokens/tokens.json">tokens.json</a> · <a class="ds-link" href="../index.html">app</a></span>
       </footer>
 
