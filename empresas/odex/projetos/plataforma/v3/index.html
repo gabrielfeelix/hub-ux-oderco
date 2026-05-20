@@ -2843,7 +2843,7 @@
         $("view-produto").innerHTML = `
           <div class="pdp-page">
             <!-- Breadcrumb + Voltar -->
-            <button class="orc-back" onclick="location.hash='loja'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar à loja</button>
+            <button class="orc-back ds-link-back" onclick="location.hash='loja'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar à loja</button>
 
             <!-- Hero do produto -->
             <div class="pdp-hero">
@@ -3646,7 +3646,7 @@
 
         $("view-orcamento").innerHTML = `
           <div class="ov-page">
-            <button class="orc-back" onclick="history.back()"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar</button>
+            <button class="orc-back ds-link-back" onclick="history.back()"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar</button>
             <div class="ov-header ov-header-with-actions">
               <div class="ov-header-left">
                 <h1 class="ov-title">Novo Orçamento</h1>
@@ -4239,7 +4239,7 @@
 
         $("view-orcamento-ver").innerHTML = `
           <div class="ov-page">
-            <button class="orc-back" onclick="location.hash='orcamentos'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar</button>
+            <button class="orc-back ds-link-back" onclick="location.hash='orcamentos'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar</button>
             <div class="ov-header ov-header-with-actions">
               <div class="ov-header-left">
                 <h1 class="ov-title">Orçamento Nº ${o.id}</h1>
@@ -4707,7 +4707,7 @@
 
         $("view-pedido-ver").innerHTML = `
           <div class="ped-v2-wrap">
-            <button class="ped-detail-back" onclick="location.hash='pedidos'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar</button>
+            <button class="ped-detail-back ds-link-back" onclick="location.hash='pedidos'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar</button>
 
             <!-- Banner header -->
             <div class="ped-v2-banner">
@@ -6519,7 +6519,7 @@
                 </div>
                 <div id="clientTabBody">${orderRows(c.orcamentos)}</div>
                 <div class="client-tabs-actions">
-                  <button class="client-back-btn" onclick="location.hash='clientes'"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button>
+                  <button class="client-back-btn ds-link-back ds-link-back-outlined" onclick="location.hash='clientes'"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button>
                   <button class="client-new-orc"><i data-lucide="plus" style="width:15px;height:15px;"></i> Novo Orçamento</button>
                 </div>
               </div>
@@ -6773,7 +6773,7 @@
 
         $("view-premio-ver").innerHTML = `
           <div style="max-width:1080px;margin:0 auto;">
-            <button class="pv-back" onclick="location.hash='premio'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar ao Prêmio Venda Direta</button>
+            <button class="pv-back ds-link-back" onclick="location.hash='premio'"><i data-lucide="chevron-left" style="width:15px;height:15px;"></i> Voltar ao Prêmio Venda Direta</button>
 
             <div class="pv-header">
               <div class="pv-header-l">
@@ -7983,7 +7983,7 @@ Fone: (44) 2101-1400`;
             <section class="auth-form">
               <div class="auth-form-card">
                 <div class="auth-topline">
-                  <a class="auth-back" href="#dashboard"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar à plataforma</a>
+                  <a class="auth-back ds-link-back" href="#dashboard"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar à plataforma</a>
                 </div>
                 <h2 class="auth-form-title">Bem-vindo de volta</h2>
                 <p class="auth-form-sub">Entre com seu e-mail ou CNPJ para acessar.</p>
@@ -8151,7 +8151,7 @@ Fone: (44) 2101-1400`;
             <section class="auth-form">
               <div class="auth-form-card">
                 <div class="auth-topline">
-                  <a class="auth-back" href="#login"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar ao login</a>
+                  <a class="auth-back ds-link-back" href="#login"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar ao login</a>
                 </div>
                 <h2 class="auth-form-title">Criar conta</h2>
                 <p class="auth-form-sub">Preencha os dados abaixo para começar.</p>
@@ -9550,7 +9550,7 @@ Fone: (44) 2101-1400`;
             <section class="auth-form">
               <div class="auth-form-card">
                 <div class="auth-topline">
-                  <a class="auth-back" href="#login"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar ao login</a>
+                  <a class="auth-back ds-link-back" href="#login"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar ao login</a>
                 </div>
                 <h2 class="auth-form-title">Redefinir senha</h2>
                 <p class="auth-form-sub">Informe seu e-mail ou CNPJ cadastrado e enviaremos as instruções pra recuperar o acesso.</p>
