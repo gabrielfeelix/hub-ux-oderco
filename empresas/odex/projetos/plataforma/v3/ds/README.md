@@ -8,6 +8,8 @@
 
 ♿ **[Accessibility (a11y.md)](./a11y.md)** · WCAG 2.1 AA audit · contrast ratios, focus visible, reduced motion, ARIA.
 
+🔬 **[Divergence audit (Phase H prep)](./divergence-audit.md)** · master tracker de DUPES cross-feature + novos DS atoms/molecules a criar.
+
 Design System da Plataforma Solar Odex. Source of truth para tokens, componentes e padrões visuais que devem ser idênticos entre código (browser) e design (Figma).
 
 ---
