@@ -995,9 +995,9 @@
       <span id="helpFabLabel">Precisa de ajuda?</span>
       <span class="help-fab-pulse"></span>
     </button>
-    <div class="help-modal-mask" id="helpModalMask" onclick="closeHelpModal()"></div>
+    <div class="help-modal-mask ds-overlay ds-overlay-tint-chat ds-overlay-blur-sm ds-overlay-z-dropdown" id="helpModalMask" onclick="closeHelpModal()"></div>
     <div class="help-modal-box" id="helpModalBox" role="dialog" aria-modal="true">
-      <div class="help-modal-head">
+      <div class="help-modal-head ds-hero-gradient ds-hero-gradient-2stop ds-hero-gradient-pad-sm">
         <h3 id="helpModalTitle">Precisa de ajuda?</h3>
         <p id="helpModalSub">Veja um tutorial rápido e artigos relacionados.</p>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-glass ds-icon-btn-sm" onclick="closeHelpModal()" aria-label="Fechar"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1027,13 +1027,13 @@
     </div>
 
     <!-- DÉ · Chat com IA -->
-    <div class="de-chat-mask" id="deChatMask" onclick="closeDeChat()"></div>
+    <div class="de-chat-mask ds-overlay ds-overlay-tint-chat ds-overlay-blur-sm" id="deChatMask" onclick="closeDeChat()"></div>
     <div class="de-chat-box" id="deChatBox" role="dialog" aria-modal="true" aria-labelledby="deChatTitle">
-      <div class="de-chat-head">
+      <div class="de-chat-head ds-hero-gradient ds-hero-gradient-2stop ds-hero-gradient-pad-sm">
         <span class="de-chat-avatar"><span class="de-eye de-eye-l"></span><span class="de-eye de-eye-r"></span><span class="de-mouth"></span><span class="de-antenna"></span></span>
         <div class="de-chat-head-text">
           <h3 id="deChatTitle">Dé · IA da Odex</h3>
-          <p><span class="de-chat-status-dot"></span> Online agora · responde em segundos</p>
+          <p><span class="de-chat-status-dot ds-status-dot ds-status-dot-sm ds-status-dot-online ds-status-dot-glow"></span> Online agora · responde em segundos</p>
         </div>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-glass ds-icon-btn-sm" onclick="closeDeChat()" aria-label="Fechar"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
@@ -1066,8 +1066,8 @@
     </div>
 
     <!-- New user modal -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
-    <div class="modal" id="userModal">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="modalOverlay" onclick="closeModal()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="userModal">
       <div class="modal-head">
         <h3>Novo Usuário</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeModal()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1109,8 +1109,8 @@
     </div>
 
     <!-- Novo Cliente modal (2 steps) -->
-    <div class="modal-overlay" id="ncOverlay" onclick="closeNovoCliente()"></div>
-    <div class="modal modal-wide" id="ncModal" style="max-height:92vh;overflow:hidden;display:flex;flex-direction:column;">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="ncOverlay" onclick="closeNovoCliente()"></div>
+    <div class="modal ds-modal ds-modal-md modal-wide" id="ncModal" style="max-height:92vh;overflow:hidden;display:flex;flex-direction:column;">
       <div class="modal-head" style="flex-shrink:0;">
         <h3 id="ncModalTitle">Novo Cliente</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovoCliente()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1123,22 +1123,22 @@
       <!-- Step 1 -->
       <div class="nc-body" id="ncStep1">
         <div class="nc-tipo" id="ncTipoSel">
-          <div class="nc-tipo-opt sel" onclick="selectNcTipo(this,'pj')"><b>Pessoa Jurídica</b><small>CNPJ, Razão Social</small></div>
-          <div class="nc-tipo-opt" onclick="selectNcTipo(this,'pf')"><b>Pessoa Física</b><small>CPF, Nome</small></div>
+          <div class="nc-tipo-opt ds-card-selectable sel" onclick="selectNcTipo(this,'pj')"><b>Pessoa Jurídica</b><small>CNPJ, Razão Social</small></div>
+          <div class="nc-tipo-opt ds-card-selectable ds-card-selectable" onclick="selectNcTipo(this,'pf')"><b>Pessoa Física</b><small>CPF, Nome</small></div>
         </div>
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">CNPJ <span class="req">*</span></label><input type="text" class="nc-input" id="ncCnpj" placeholder="00.000.000/0001-00"></div>
           <div class="nc-field"><label class="nc-label">Razão Social <span class="req">*</span></label><input type="text" class="nc-input" id="ncRazao" placeholder="Nome da empresa"></div>
         </div>
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">Inscrição Estadual <span class="req">*</span></label><input type="text" class="nc-input" id="ncIE" placeholder="Insento / Número"></div>
           <div class="nc-field"><label class="nc-label">Principal Atividade <span class="req">*</span></label><select class="nc-input" id="ncAtiv"><option value="">Selecionar...</option><option>Instalador / Integrador</option><option>Distribuidor</option><option>Construtora</option><option>Outros</option></select></div>
         </div>
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">Ramo de Atividade <span class="req">*</span></label><select class="nc-input" id="ncRamo"><option value="">Selecionar...</option><option>Energia Solar</option><option>Construção Civil</option><option>Comércio</option><option>Outros</option></select></div>
           <div class="nc-field"><label class="nc-label">Nome Completo (contato) <span class="req">*</span></label><input type="text" class="nc-input" id="ncNome" placeholder="João da Silva"></div>
         </div>
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">Telefone <span class="req">*</span></label><input type="text" class="nc-input" id="ncTel" placeholder="(00) 9 0000-0000"></div>
           <div class="nc-field"><label class="nc-label">Email <span class="req">*</span></label><input type="email" class="nc-input" id="ncEmail" placeholder="email@empresa.com"></div>
         </div>
@@ -1146,22 +1146,22 @@
       </div>
       <!-- Step 2 -->
       <div class="nc-body" id="ncStep2" style="display:none;">
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">CEP <span class="req">*</span></label><input type="text" class="nc-input" id="ncCep" placeholder="00000-000"></div>
           <div class="nc-field" style="flex-direction:row;gap:10px;align-items:flex-end;">
             <div style="flex:1;"><label class="nc-label">Endereço <span class="req">*</span></label><input type="text" class="nc-input" id="ncEnd" placeholder="Rua, Av..."></div>
             <div style="width:80px;"><label class="nc-label">Nº <span class="req">*</span></label><input type="text" class="nc-input" id="ncNum" placeholder="Nº"></div>
           </div>
         </div>
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">Complemento</label><input type="text" class="nc-input" id="ncComp" placeholder="Apto, Bloco..."></div>
           <div class="nc-field"><label class="nc-label">Bairro <span class="req">*</span></label><input type="text" class="nc-input" id="ncBairro" placeholder="Bairro"></div>
         </div>
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">Cidade <span class="req">*</span></label><input type="text" class="nc-input" id="ncCidade" placeholder="Cidade"></div>
           <div class="nc-field"><label class="nc-label">Estado (sigla) <span class="req">*</span></label><input type="text" class="nc-input" id="ncEstado" placeholder="UF" maxlength="2"></div>
         </div>
-        <div class="nc-grid-2" style="margin-bottom:14px;">
+        <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">Local da Entrega <span class="req">*</span></label><div class="nc-radio-row"><label class="nc-radio-opt"><input type="radio" name="ncLocal" value="urbano" checked onchange="toggleNcRuralKm(false)"> Área Urbana</label><label class="nc-radio-opt"><input type="radio" name="ncLocal" value="rural" onchange="toggleNcRuralKm(true)"> Área Rural</label></div></div>
           <div class="nc-field"><label class="nc-label">Possível Carreta <span class="req">*</span></label><div class="nc-radio-row"><label class="nc-radio-opt"><input type="radio" name="ncCarreta" value="sim"> Sim</label><label class="nc-radio-opt"><input type="radio" name="ncCarreta" value="nao" checked> Não</label></div></div>
         </div>
@@ -1180,8 +1180,8 @@
     </div>
 
     <!-- Modal Buscar Cliente -->
-    <div class="modal-overlay" id="clienteSearchOverlay" onclick="closeClienteSearch()"></div>
-    <div class="modal" id="clienteSearchModal" style="width:560px;" role="dialog" aria-labelledby="clienteSearchTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="clienteSearchOverlay" onclick="closeClienteSearch()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="clienteSearchModal" style="width:560px;" role="dialog" aria-labelledby="clienteSearchTitle">
       <div class="modal-head">
         <h3 id="clienteSearchTitle">Cliente Cadastrado</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeClienteSearch()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1200,8 +1200,8 @@
     </div>
 
     <!-- Modal Publicar / Editar Novidade -->
-    <div class="modal-overlay" id="novidadeFormOverlay" onclick="closeNovidadeForm()"></div>
-    <div class="modal" id="novidadeFormModal" style="width:640px;" role="dialog" aria-labelledby="novidadeFormTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="novidadeFormOverlay" onclick="closeNovidadeForm()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="novidadeFormModal" style="width:640px;" role="dialog" aria-labelledby="novidadeFormTitle">
       <div class="modal-head">
         <h3 id="novidadeFormTitle"><i data-lucide="megaphone" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Publicar nova novidade</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovidadeForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1257,8 +1257,8 @@
     </div>
 
     <!-- Modal Compartilhar Calculadora -->
-    <div class="modal-overlay" id="calcShareOverlay" onclick="closeCalcShare()"></div>
-    <div class="modal" id="calcShareModal" style="width:480px;" role="dialog" aria-labelledby="calcShareTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="calcShareOverlay" onclick="closeCalcShare()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="calcShareModal" style="width:480px;" role="dialog" aria-labelledby="calcShareTitle">
       <div class="modal-head">
         <h3 id="calcShareTitle"><i data-lucide="send" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Enviar simulação ao cliente</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeCalcShare()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1290,8 +1290,8 @@
     </div>
 
     <!-- Modal Publicar / Editar Artigo -->
-    <div class="modal-overlay" id="artigoFormOverlay" onclick="closeArtigoForm()"></div>
-    <div class="modal" id="artigoFormModal" style="width:880px;max-width:calc(100vw - 32px);height:88vh;max-height:88vh;display:flex;flex-direction:column;" role="dialog" aria-labelledby="artigoFormTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="artigoFormOverlay" onclick="closeArtigoForm()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="artigoFormModal" style="width:880px;max-width:calc(100vw - 32px);height:88vh;max-height:88vh;display:flex;flex-direction:column;" role="dialog" aria-labelledby="artigoFormTitle">
       <div class="modal-head">
         <h3 id="artigoFormTitle"><i data-lucide="book-open" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Novo artigo</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeArtigoForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1333,8 +1333,8 @@
 
     <!-- Modal Despublicar Novidade -->
     <!-- Modal Feedbacks da Novidade -->
-    <div class="modal-overlay" id="novidadeFeedbacksOverlay" onclick="closeNovidadeFeedbacks()"></div>
-    <div class="modal" id="novidadeFeedbacksModal" style="width:620px;" role="dialog" aria-labelledby="novidadeFeedbacksTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="novidadeFeedbacksOverlay" onclick="closeNovidadeFeedbacks()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="novidadeFeedbacksModal" style="width:620px;" role="dialog" aria-labelledby="novidadeFeedbacksTitle">
       <div class="modal-head">
         <h3 id="novidadeFeedbacksTitle"><i data-lucide="message-square-text" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Feedbacks recebidos</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovidadeFeedbacks()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1348,8 +1348,8 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="novidadeDeleteOverlay" onclick="closeNovidadeDelete()"></div>
-    <div class="modal" id="novidadeDeleteModal" style="width:480px;" role="dialog" aria-labelledby="novidadeDeleteHead">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="novidadeDeleteOverlay" onclick="closeNovidadeDelete()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="novidadeDeleteModal" style="width:480px;" role="dialog" aria-labelledby="novidadeDeleteHead">
       <div class="modal-head">
         <h3 id="novidadeDeleteHead"><i data-lucide="alert-triangle" style="width:18px;height:18px;color:#d04848;vertical-align:-3px;"></i> Despublicar novidade</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovidadeDelete()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1370,8 +1370,8 @@
     </div>
 
     <!-- Modal Upload Logo da Empresa -->
-    <div class="modal-overlay" id="logoUploadOverlay" onclick="closeLogoUpload()"></div>
-    <div class="modal" id="logoUploadModal" style="width:560px;" role="dialog" aria-labelledby="logoUploadTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="logoUploadOverlay" onclick="closeLogoUpload()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="logoUploadModal" style="width:560px;" role="dialog" aria-labelledby="logoUploadTitle">
       <div class="modal-head">
         <h3 id="logoUploadTitle"><i data-lucide="image-plus" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Logo da empresa</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeLogoUpload()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1421,8 +1421,8 @@
     </div>
 
     <!-- Modal Editar Dados (Perfil) -->
-    <div class="modal-overlay" id="clienteEditOverlay" onclick="closeClienteEdit()"></div>
-    <div class="modal" id="clienteEditModal" role="dialog" aria-labelledby="clienteEditTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="clienteEditOverlay" onclick="closeClienteEdit()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="clienteEditModal" role="dialog" aria-labelledby="clienteEditTitle">
       <div class="modal-head">
         <h3 id="clienteEditTitle">Editar Cliente</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeClienteEdit()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1463,8 +1463,8 @@
     </div>
 
     <!-- Modal: Adicionar endereço do cliente (v3) -->
-    <div class="modal-overlay" id="endOverlay" onclick="closeClienteEndereco()"></div>
-    <div class="modal" id="endModal" role="dialog" aria-labelledby="endTitle" style="width:560px;">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="endOverlay" onclick="closeClienteEndereco()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="endModal" role="dialog" aria-labelledby="endTitle" style="width:560px;">
       <div class="modal-head">
         <h3 id="endTitle">Adicionar Endereço</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeClienteEndereco()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1532,8 +1532,8 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="profileEditOverlay" onclick="closeProfileEdit()"></div>
-    <div class="modal" id="profileEditModal" role="dialog" aria-labelledby="profileEditTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="profileEditOverlay" onclick="closeProfileEdit()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="profileEditModal" role="dialog" aria-labelledby="profileEditTitle">
       <div class="modal-head">
         <h3 id="profileEditTitle">Alterar Dados</h3>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeProfileEdit()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1559,8 +1559,8 @@
     </div>
 
     <!-- Modal WhatsApp (orçamento) -->
-    <div class="modal-overlay" id="ovWhatsOverlay" onclick="closeOrcamentoWhats()"></div>
-    <div class="modal" id="ovWhatsModal" style="width:560px;" role="dialog" aria-labelledby="ovWhatsTitle">
+    <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="ovWhatsOverlay" onclick="closeOrcamentoWhats()"></div>
+    <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="ovWhatsModal" style="width:560px;" role="dialog" aria-labelledby="ovWhatsTitle">
       <div class="modal-head">
         <div style="display:flex;align-items:center;gap:10px;">
           <span class="ov-whats-modal-icon ds-icon-box ds-icon-box-md ds-icon-box-circle"><i data-lucide="message-circle" style="width:18px;height:18px;color:#25D366;"></i></span>
@@ -1600,7 +1600,7 @@
     </div>
 
     <!-- Modal Resumo do Pedido -->
-    <div class="ped-resumo-overlay" id="pedResumoOverlay" onclick="closePedidoResumo()"></div>
+    <div class="ped-resumo-overlay ds-overlay ds-overlay-tint-strong" id="pedResumoOverlay" onclick="closePedidoResumo()"></div>
     <div class="ped-resumo-modal" id="pedResumoModal" role="dialog" aria-labelledby="pedResumoTitle">
       <div class="ped-resumo-head">
         <div>
@@ -1615,7 +1615,7 @@
     </div>
 
     <!-- Novidades panel -->
-    <div class="novas-overlay" id="novasOverlay" onclick="closeNovidades()"></div>
+    <div class="novas-overlay ds-overlay ds-overlay-tint-medium ds-overlay-blur-sm" id="novasOverlay" onclick="closeNovidades()"></div>
     <aside class="novas-panel" id="novasPanel">
       <header class="novas-head">
         <div class="novas-head-left">
@@ -1647,7 +1647,7 @@
     </aside>
 
     <!-- Notificações drawer -->
-    <div class="notif-drawer-overlay" id="notifDrawerOverlay" onclick="closeNotifDrawer()"></div>
+    <div class="notif-drawer-overlay ds-overlay ds-overlay-tint-medium" id="notifDrawerOverlay" onclick="closeNotifDrawer()"></div>
     <aside class="notif-drawer" id="notifDrawer">
       <div class="notif-drawer-head">
         <div>
@@ -1671,7 +1671,7 @@
       </div>
     </aside>
 
-    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-overlay ds-overlay ds-overlay-tint-medium" id="cartOverlay"></div>
     <aside class="cart" id="cart">
       <div class="cart-head">
         <div style="display:flex; align-items:center; gap:8px;">
@@ -2016,7 +2016,7 @@
                        <span class="tax">c/ IPI e ST</span>
                      </div>
                      <div class="product-actions">
-                       <div class="qty-stepper">
+                       <div class="qty-stepper ds-stepper-input ds-stepper-input-md">
                          <button onclick="updateTempQty('${p.sku}',-1)" aria-label="Diminuir">−</button>
                          <span>${qty}</span>
                          <button onclick="updateTempQty('${p.sku}',1)" aria-label="Aumentar">+</button>
@@ -2259,7 +2259,7 @@
               <p class="resumo-client-name">${o.nome}</p>
               <p class="resumo-client-meta">Criado em ${o.data} · ${o.potencia}</p>
             </div>
-            <div class="resumo-status"><span class="ped-v2-pill ${statusMap[o.status]||'ped-v2-pill-and'}">${o.status}</span></div>
+            <div class="resumo-status"><span class="ped-v2-pill ds-tab-pill ${statusMap[o.status]||'ped-v2-pill-and'}">${o.status}</span></div>
           </div>
 
           <div class="resumo-grid-2col">
@@ -2346,45 +2346,45 @@
 
         $("view-dashboard").innerHTML = `
           <!-- Hero (banner azul mantido) com KPIs sutis na direita -->
-          <section class="dash-hero">
+          <section class="dash-hero ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-decorated ds-hero-gradient-radius-xl ds-hero-gradient-pad-md">
             <div class="dash-hero-left">
               <p class="dash-hero-greet"><i data-lucide="sun" style="width:13px;height:13px;"></i> ${greet} · maio de 2026</p>
               <h2>${greet}, Gabriel 👋</h2>
               <p>Você está <strong style="color:#86efac;">R$ 16,5k acima</strong> do mês anterior. Mantenha o ritmo e crie um novo orçamento para ampliar suas vendas.</p>
               <div class="dash-hero-ctas">
-                <a href="#monte-kit" class="dash-hero-cta"><i data-lucide="layers" style="width:15px;height:15px;"></i> Monte Seu Kit</a>
-                <a href="#loja" class="dash-hero-cta dash-hero-cta-ghost"><i data-lucide="plus" style="width:15px;height:15px;"></i> Novo Orçamento</a>
+                <a href="#monte-kit" class="dash-hero-cta ds-btn ds-btn-on-brand ds-btn ds-btn-on-brand"><i data-lucide="layers" style="width:15px;height:15px;"></i> Monte Seu Kit</a>
+                <a href="#loja" class="dash-hero-cta ds-btn ds-btn-on-brand dash-hero-cta-ghost"><i data-lucide="plus" style="width:15px;height:15px;"></i> Novo Orçamento</a>
               </div>
             </div>
             <div class="dash-hero-right home-kpis">
               <p class="dash-hero-quick-label">Resumo do mês</p>
-              <div class="home-kpi-grid">
-                <div class="home-kpi">
-                  <span class="home-kpi-lbl">Vendas</span>
+              <div class="home-kpi-grid ds-kpi-grid">
+                <div class="home-kpi ds-kpi ds-kpi-glass">
+                  <span class="home-kpi-lbl ds-kpi-lbl">Vendas</span>
                   <div class="home-kpi-row">
-                    <strong class="home-kpi-val">R$ 142,5k</strong>
-                    <span class="home-kpi-trend is-up" title="+12,5% vs mês anterior"><i data-lucide="trending-up"></i>12,5%</span>
+                    <strong class="home-kpi-val ds-kpi-val">R$ 142,5k</strong>
+                    <span class="home-kpi-trend ds-kpi-trend is-up" title="+12,5% vs mês anterior"><i data-lucide="trending-up"></i>12,5%</span>
                   </div>
                 </div>
-                <div class="home-kpi">
-                  <span class="home-kpi-lbl">Pedidos fechados</span>
+                <div class="home-kpi ds-kpi ds-kpi-glass">
+                  <span class="home-kpi-lbl ds-kpi-lbl">Pedidos fechados</span>
                   <div class="home-kpi-row">
-                    <strong class="home-kpi-val">34</strong>
-                    <span class="home-kpi-trend is-up" title="+4 pedidos vs mês anterior"><i data-lucide="trending-up"></i>13,3%</span>
+                    <strong class="home-kpi-val ds-kpi-val">34</strong>
+                    <span class="home-kpi-trend ds-kpi-trend is-up" title="+4 pedidos vs mês anterior"><i data-lucide="trending-up"></i>13,3%</span>
                   </div>
                 </div>
-                <div class="home-kpi">
-                  <span class="home-kpi-lbl">Orç. pendentes</span>
+                <div class="home-kpi ds-kpi ds-kpi-glass">
+                  <span class="home-kpi-lbl ds-kpi-lbl">Orç. pendentes</span>
                   <div class="home-kpi-row">
-                    <strong class="home-kpi-val">12</strong>
-                    <span class="home-kpi-trend is-down" title="−3 vs mês anterior"><i data-lucide="trending-down"></i>20%</span>
+                    <strong class="home-kpi-val ds-kpi-val">12</strong>
+                    <span class="home-kpi-trend ds-kpi-trend is-down" title="−3 vs mês anterior"><i data-lucide="trending-down"></i>20%</span>
                   </div>
                 </div>
-                <div class="home-kpi">
-                  <span class="home-kpi-lbl">Potência vendida</span>
+                <div class="home-kpi ds-kpi ds-kpi-glass">
+                  <span class="home-kpi-lbl ds-kpi-lbl">Potência vendida</span>
                   <div class="home-kpi-row">
-                    <strong class="home-kpi-val">280 kWp</strong>
-                    <span class="home-kpi-trend is-up" title="+8,2% vs mês anterior"><i data-lucide="trending-up"></i>8,2%</span>
+                    <strong class="home-kpi-val ds-kpi-val">280 kWp</strong>
+                    <span class="home-kpi-trend ds-kpi-trend is-up" title="+8,2% vs mês anterior"><i data-lucide="trending-up"></i>8,2%</span>
                   </div>
                 </div>
               </div>
@@ -2393,9 +2393,9 @@
 
           <!-- Categorias rápidas -->
           <section class="home-section">
-            <div class="home-section-head">
+            <div class="home-section-head ds-section-head">
               <div>
-                <h3 class="home-section-title"><i data-lucide="layers"></i> Navegue por categoria</h3>
+                <h3 class="home-section-title ds-section-head-title"><i data-lucide="layers"></i> Navegue por categoria</h3>
               </div>
             </div>
             <div class="home-categories-pills">
@@ -2450,12 +2450,12 @@
           <!-- Grid de Mais ofertas (depois do showcase) -->
           ${promoProducts.length ? `
             <section class="home-section">
-              <div class="home-section-head">
+              <div class="home-section-head ds-section-head">
                 <div>
-                  <h3 class="home-section-title"><i data-lucide="badge-percent" style="color:#c97a00;"></i> Ofertas da semana</h3>
-                  <p class="home-section-sub">Selecionados pelo comercial</p>
+                  <h3 class="home-section-title ds-section-head-title"><i data-lucide="badge-percent" style="color:#c97a00;"></i> Ofertas da semana</h3>
+                  <p class="home-section-sub ds-section-head-sub">Selecionados pelo comercial</p>
                 </div>
-                <a href="#loja" class="home-section-link">Ver catálogo <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
+                <a href="#loja" class="home-section-link ds-section-head-action">Ver catálogo <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
               </div>
               <div class="home-products-grid">
                 ${promoProducts.map(p => productCardHTML(p)).join('')}
@@ -2474,7 +2474,7 @@
                     <p>Acompanhe os últimos ${recentOrcamentos.length} orçamentos criados</p>
                   </div>
                 </div>
-                <a href="#orcamentos" class="home-section-link">Ver todos <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
+                <a href="#orcamentos" class="home-section-link ds-section-head-action">Ver todos <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
               </div>
               <div class="home-recent-list">
                 ${recentOrcamentos.map(o => `
@@ -2483,9 +2483,9 @@
                       <p class="home-recent-name" title="${o.nome}">${o.nome}</p>
                       <p class="home-recent-meta">
                         <span class="home-recent-code">#${o.id}</span>
-                        <span class="home-recent-dot"></span>
+                        <span class="home-recent-dot ds-dot-sep"></span>
                         <span>${o.data}</span>
-                        <span class="home-recent-dot"></span>
+                        <span class="home-recent-dot ds-dot-sep"></span>
                         <span>${o.potencia}</span>
                       </p>
                     </div>
@@ -2506,7 +2506,7 @@
                     <p>Status dos ${recentPedidos.length} últimos pedidos faturados</p>
                   </div>
                 </div>
-                <a href="#pedidos" class="home-section-link">Ver todos <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
+                <a href="#pedidos" class="home-section-link ds-section-head-action">Ver todos <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
               </div>
               <div class="home-recent-list">
                 ${recentPedidos.map(p => `
@@ -2515,9 +2515,9 @@
                       <p class="home-recent-name" title="${p.nome}">${p.nome}</p>
                       <p class="home-recent-meta">
                         <span class="home-recent-code">#${p.id}</span>
-                        <span class="home-recent-dot"></span>
+                        <span class="home-recent-dot ds-dot-sep"></span>
                         <span>${p.data}</span>
-                        <span class="home-recent-dot"></span>
+                        <span class="home-recent-dot ds-dot-sep"></span>
                         <span>${p.potencia}</span>
                       </p>
                     </div>
@@ -2615,7 +2615,7 @@
               </div>
             </aside>
             <section class="catalog">
-              <div class="catalog-header">
+              <div class="catalog-header ds-section-head">
                 <p>Exibindo <strong id="count">0</strong> de <span>${products.length}</span> produtos</p>
                 <div class="catalog-controls">
                   <select id="sort" class="catalog-sort">
@@ -2631,7 +2631,7 @@
               </div>
               <div class="active-filters" id="activeFilters"></div>
               <div class="grid" id="grid"></div>
-              <div class="empty-state" id="empty">
+              <div class="empty-state ds-empty-state ds-empty-state-lg" id="empty">
                 <div style="color:var(--line); margin-bottom:20px"><i data-lucide="search-x" style="width:48px;height:48px"></i></div>
                 <h3>Nenhum produto encontrado</h3>
                 <p>Tente ajustar os filtros ou limpar sua busca.</p>
@@ -2861,7 +2861,7 @@
                 <div class="pdp-brand-row">
                   <span class="pdp-brand-pill">${p.brand}</span>
                   <span class="pdp-stock-tag ${p.available ? 'in' : 'out'}">
-                    <span class="pdp-stock-dot"></span>
+                    <span class="pdp-stock-dot ds-status-dot ds-status-dot-sm ds-status-dot-success ds-status-dot-ring"></span>
                     ${p.available ? 'Em estoque' : 'Sob consulta'}
                   </span>
                 </div>
@@ -2877,7 +2877,7 @@
                   <span class="pdp-price-label">À vista a partir de</span>
                   <strong class="pdp-price">${p.available ? fmt(p.price) : 'Sob consulta'}</strong>
                   ${p.available ? `
-                    <div class="pdp-price-breakdown">
+                    <div class="pdp-price-breakdown ds-kv-list ds-kv-list-dashed">
                       <div><span>IPI</span><strong>R$ 0,00</strong></div>
                       <div><span>ST</span><strong>R$ 0,00</strong></div>
                     </div>
@@ -2885,7 +2885,7 @@
                 </div>
 
                 <div class="pdp-actions">
-                  <div class="pdp-qty">
+                  <div class="pdp-qty ds-stepper-input ds-stepper-input-lg ds-stepper-input-filled">
                     <button onclick="pdpQty(-1)" aria-label="Diminuir">−</button>
                     <span id="pdpQtyVal">1</span>
                     <button onclick="pdpQty(1)" aria-label="Aumentar">+</button>
@@ -2895,7 +2895,7 @@
                   </button>
                 </div>
 
-                <div class="pdp-meta-grid">
+                <div class="pdp-meta-grid ds-kv-list">
                   <div><span>Múltiplo</span><strong>1</strong></div>
                   <div><span>Filial</span><strong>PR</strong></div>
                   <div><span>SKU</span><strong>${p.sku}</strong></div>
@@ -2911,14 +2911,14 @@
             </div>
 
             <!-- Tabs com conteúdo -->
-            <div class="pdp-tabs">
-              <button class="pdp-tab active" data-tab="overview" onclick="pdpTab('overview')">Visão geral</button>
-              <button class="pdp-tab" data-tab="specs" onclick="pdpTab('specs')">Especificações</button>
-              <button class="pdp-tab" data-tab="docs" onclick="pdpTab('docs')">Manuais & Datasheets</button>
+            <div class="pdp-tabs ds-tabs">
+              <button class="pdp-tab ds-tab active" data-tab="overview" onclick="pdpTab('overview')">Visão geral</button>
+              <button class="pdp-tab ds-tab ds-tab" data-tab="specs" onclick="pdpTab('specs')">Especificações</button>
+              <button class="pdp-tab ds-tab ds-tab" data-tab="docs" onclick="pdpTab('docs')">Manuais & Datasheets</button>
             </div>
 
             <!-- Tab: Overview -->
-            <section class="pdp-tab-pane active" id="pdpTabOverview">
+            <section class="pdp-tab-pane ds-tab-pane active" id="pdpTabOverview">
               <div class="card pdp-content-card">
                 <h3 class="pdp-section-title">Sobre o produto</h3>
                 <p class="pdp-content-p">O ${p.name} é um painel solar fotovoltaico de alta performance ${p.tech.includes('Bifacial')?'<strong>bifacial</strong>':'monofacial'} ${p.tech.includes('N-Type')?'com células <strong>N-Type</strong>':''} ideal para projetos residenciais, comerciais e industriais. Com potência de <strong>${p.power}W</strong> e eficiência de <strong>${p.eff}</strong>, garante alta produção de energia mesmo em condições adversas.</p>
@@ -2937,7 +2937,7 @@
             </section>
 
             <!-- Tab: Especificações -->
-            <section class="pdp-tab-pane" id="pdpTabSpecs" style="display:none;">
+            <section class="pdp-tab-pane ds-tab-pane ds-tab-pane" id="pdpTabSpecs" style="display:none;">
               <div class="card pdp-content-card">
                 ${(() => {
                   const eff = parseFloat((p.eff || '0').replace(',','.')) || 22.5;
@@ -3024,7 +3024,7 @@
             </section>
 
             <!-- Tab: Manuais & Datasheets -->
-            <section class="pdp-tab-pane" id="pdpTabDocs" style="display:none;">
+            <section class="pdp-tab-pane ds-tab-pane ds-tab-pane" id="pdpTabDocs" style="display:none;">
               <!-- Datasheet em destaque -->
               <div class="card pdp-content-card pdp-datasheet-feature">
                 <div class="pdp-datasheet-feature-icon"><i data-lucide="file-text" style="width:28px;height:28px;"></i></div>
@@ -3100,7 +3100,7 @@
                         </div>
                         ${r.available ? `
                           <div class="product-actions">
-                            <div class="qty-stepper">
+                            <div class="qty-stepper ds-stepper-input ds-stepper-input-md">
                               <button onclick="updateTempQty('${r.sku}',-1);renderProduct('${p.sku}');" aria-label="Diminuir">−</button>
                               <span>${rqty}</span>
                               <button onclick="updateTempQty('${r.sku}',1);renderProduct('${p.sku}');" aria-label="Aumentar">+</button>
@@ -3209,7 +3209,7 @@
 
         if (!list.length) {
           body.innerHTML = `
-            <div class="notif-drawer-empty">
+            <div class="notif-drawer-empty ds-empty-state ds-empty-state-md">
               <div class="notif-drawer-empty-icon ds-icon-box ds-icon-box-xxl ds-icon-box-circle"><i data-lucide="bell-off" style="width:24px;height:24px;color:var(--muted);"></i></div>
               <h4>Sem notificações</h4>
               <p>Tudo em dia por aqui.</p>
@@ -3223,7 +3223,7 @@
                 <p class="notif-drawer-desc">${n.desc}</p>
                 <span class="notif-drawer-time">${n.time} atrás</span>
               </div>
-              ${n.unread?'<span class="notif-drawer-dot"></span>':''}
+              ${n.unread?'<span class="notif-drawer-dot ds-status-dot ds-status-dot-md ds-status-dot-info"></span>':''}
             </div>`).join('');
         }
         const unread = notifData.filter(n=>n.unread).length;
@@ -3636,7 +3636,7 @@
               <div class="ov-item-qty">×${qty}</div>
             </div>`;
         }).join('') : `
-          <div class="ov-items-empty">
+          <div class="ov-items-empty ds-empty-state ds-empty-state-sm">
             <i data-lucide="shopping-cart" style="width:28px;height:28px;opacity:.4;"></i>
             <p>Nenhum produto no carrinho.</p>
             <a href="#loja" class="ov-items-empty-cta">Ir para a loja</a>
@@ -3663,7 +3663,7 @@
               <div class="ov-left">
                 <!-- Cliente -->
                 <div class="card ov-section">
-                  <div class="ov-section-head">
+                  <div class="ov-section-head ds-section-head ds-section-head-bordered">
                     <h3>Cliente</h3>
                     <button class="ov-buscar-btn" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
                   </div>
@@ -3684,7 +3684,7 @@
 
                 <!-- Endereço -->
                 <div class="card ov-section">
-                  <div class="ov-section-head">
+                  <div class="ov-section-head ds-section-head ds-section-head-bordered">
                     <h3>Endereço de Entrega</h3>
                   </div>
                   <div class="ov-field">
@@ -3699,7 +3699,7 @@
                     <input type="number" class="ov-input" placeholder="Ex: 12" min="0" step="0.1" id="ckRuralKm">
                     <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">Em km. Necessário para o cálculo correto do frete.</small>
                   </div>
-                  <div class="ov-grid-2">
+                  <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
                     <div class="ov-field">
                       <label class="ov-label">CEP <span class="req">*</span></label>
                       <input id="ckCep" type="text" class="ov-input" placeholder="00000-000">
@@ -3709,7 +3709,7 @@
                       <input id="ckEstado" type="text" class="ov-input" maxlength="2" placeholder="UF">
                     </div>
                   </div>
-                  <div class="ov-grid-3-1">
+                  <div class="ov-grid-3-1 ds-form-grid ds-form-grid-31">
                     <div class="ov-field">
                       <label class="ov-label">Endereço <span class="req">*</span></label>
                       <input id="ckRua" type="text" class="ov-input" placeholder="Rua, Av...">
@@ -3719,7 +3719,7 @@
                       <input id="ckNumero" type="text" class="ov-input" placeholder="Nº">
                     </div>
                   </div>
-                  <div class="ov-grid-2">
+                  <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
                     <div class="ov-field">
                       <label class="ov-label">Bairro <span class="req">*</span></label>
                       <input id="ckBairro" type="text" class="ov-input" placeholder="Bairro">
@@ -3749,10 +3749,10 @@
 
                 <!-- Adicionais -->
                 <div class="card ov-section">
-                  <div class="ov-section-head">
+                  <div class="ov-section-head ds-section-head ds-section-head-bordered">
                     <h3>Informações adicionais</h3>
                   </div>
-                  <div class="ov-grid-2">
+                  <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
                     <div class="ov-field">
                       <label class="ov-label">Validade do orçamento</label>
                       <input type="date" class="ov-input">
@@ -3839,7 +3839,7 @@
           (c.integrador||'').toLowerCase().includes(term)
         ).slice(0, 12);
         if (!filtered.length) {
-          list.innerHTML = `<div class="cliente-search-empty">Nenhum cliente encontrado para "${q||''}".</div>`;
+          list.innerHTML = `<div class="cliente-search-empty ds-empty-state ds-empty-state-sm">Nenhum cliente encontrado para "${q||''}".</div>`;
           return;
         }
         list.innerHTML = filtered.map(c => `
@@ -4003,7 +4003,7 @@
                     <p class="cart-item-name">${p.name}</p>
                     <p class="cart-item-price">${fmt(p.price)}</p>
                     <div class="cart-item-controls">
-                      <div class="cart-qty">
+                      <div class="cart-qty ds-stepper-input ds-stepper-input-sm">
                         <button onclick="adjustCart('${sku}',-1)">−</button>
                         <span>${qty}</span>
                         <button onclick="adjustCart('${sku}',1)">+</button>
@@ -4014,7 +4014,7 @@
                 </div>
               `;
             }).join("")
-          : `<div class="cart-empty">
+          : `<div class="cart-empty ds-empty-state">
                <div class="cart-empty-icon ds-icon-box ds-icon-box-xxl"><i data-lucide="shopping-cart" style="width:26px;height:26px;opacity:0.4;"></i></div>
                <h3>Carrinho vazio</h3>
                <p>Adicione produtos para montar seu orçamento.</p>
@@ -4064,7 +4064,7 @@
         const expirados = orcamentosData.filter(o => o.status === 'Expirado').length;
 
         const rows = orcamentosData.map(o=>`
-          <div class="orc-tbl-row" onclick="location.hash='orcamento-ver-${o.id}'">
+          <div class="orc-tbl-row ds-table-grid-row ds-table-grid-row-clickable" onclick="location.hash='orcamento-ver-${o.id}'">
             <div class="orc-code">${o.id}</div>
             <div class="orc-nome">${o.nome}</div>
             <div class="orc-date">${o.data}</div>
@@ -4165,7 +4165,7 @@
             </div>
 
             <div class="card orc-list-card">
-              <div class="orc-tbl-head"><span>Código</span><span>Nome do Orçamento</span><span>Data/Hora</span><span>Status</span><span>Potência</span><span>Total</span><span></span></div>
+              <div class="orc-tbl-head ds-table-grid-head"><span>Código</span><span>Nome do Orçamento</span><span>Data/Hora</span><span>Status</span><span>Potência</span><span>Total</span><span></span></div>
               <div id="orcList">${rows}</div>
               <div class="orc-list-foot">
                 <button class="pg-btn pg-active">1</button>
@@ -4231,7 +4231,7 @@
                 <div class="ov-item-qty">×${it.qty}</div>
               </div>`;
             }).join("")
-          : `<div class="ov-items-empty">
+          : `<div class="ov-items-empty ds-empty-state ds-empty-state-sm">
                <i data-lucide="inbox" style="width:28px;height:28px;opacity:.4;"></i>
                <p>Nenhum item adicionado.</p>
                <a href="#loja" class="ov-items-empty-cta">Adicionar produtos</a>
@@ -4263,7 +4263,7 @@
               <!-- LEFT -->
               <div class="ov-left">
                 <div class="card ov-section">
-                  <div class="ov-section-head">
+                  <div class="ov-section-head ds-section-head ds-section-head-bordered">
                     <h3>Dados Cadastrais</h3>
                     <button class="ov-buscar-btn" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
                   </div>
@@ -4324,7 +4324,7 @@
       // === Renderiza dinamicamente os campos do orçamento (PJ / PF / NI) ===
       function _ovEndFullHTML() {
         return `
-          <div class="ov-section-head">
+          <div class="ov-section-head ds-section-head ds-section-head-bordered">
             <h3>Endereço de Entrega</h3>
           </div>
           <div class="ov-field">
@@ -4343,7 +4343,7 @@
             <label class="ov-label">CEP <span class="req">*</span></label>
             <input type="text" class="ov-input" placeholder="00000-000" style="max-width:200px;">
           </div>
-          <div class="ov-grid-3-1">
+          <div class="ov-grid-3-1 ds-form-grid ds-form-grid-31">
             <div class="ov-field">
               <label class="ov-label">Endereço <span class="req">*</span></label>
               <input type="text" class="ov-input" placeholder="Rua, Av...">
@@ -4357,7 +4357,7 @@
             <label class="ov-label">Complemento</label>
             <input type="text" class="ov-input" placeholder="Apto, bloco, ponto de referência...">
           </div>
-          <div class="ov-grid-2">
+          <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
             <div class="ov-field">
               <label class="ov-label">Bairro <span class="req">*</span></label>
               <input type="text" class="ov-input" placeholder="Bairro">
@@ -4367,7 +4367,7 @@
               <input type="text" class="ov-input" placeholder="Cidade">
             </div>
           </div>
-          <div class="ov-grid-2">
+          <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
             <div class="ov-field">
               <label class="ov-label">Estado <span class="req">*</span></label>
               <input type="text" class="ov-input" maxlength="2" placeholder="UF" style="max-width:120px;">
@@ -4389,7 +4389,7 @@
       }
       function _ovEndConsultaHTML() {
         return `
-          <div class="ov-section-head">
+          <div class="ov-section-head ds-section-head ds-section-head-bordered">
             <h3>Endereço <span class="ov-section-aside">(apenas para consulta)</span></h3>
           </div>
           <div class="ov-field">
@@ -4429,7 +4429,7 @@
 
         if (tipo === 'pj') {
           cad.innerHTML = `
-            <div class="ov-grid-2">
+            <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Nome Completo <span class="req">*</span></label>
                 <input type="text" class="ov-input" placeholder="Nome do contato">
@@ -4439,7 +4439,7 @@
                 <input type="text" class="ov-input" placeholder="00.000.000/0000-00">
               </div>
             </div>
-            <div class="ov-grid-2">
+            <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Razão Social <span class="req">*</span></label>
                 <input type="text" class="ov-input" placeholder="Nome da empresa">
@@ -4450,7 +4450,7 @@
                 <label class="ov-check" style="margin-top:6px;"><input type="checkbox"> <span>Isento</span></label>
               </div>
             </div>
-            <div class="ov-grid-2">
+            <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Telefone <span class="req">*</span></label>
                 <input type="tel" class="ov-input" placeholder="(00) 00000-0000">
@@ -4464,7 +4464,7 @@
           end.innerHTML = _ovEndFullHTML();
         } else if (tipo === 'pf') {
           cad.innerHTML = `
-            <div class="ov-grid-2">
+            <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Nome Completo <span class="req">*</span></label>
                 <input type="text" class="ov-input" placeholder="Nome do cliente">
@@ -4474,7 +4474,7 @@
                 <input type="text" class="ov-input" placeholder="000.000.000-00">
               </div>
             </div>
-            <div class="ov-grid-2">
+            <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Telefone <span class="req">*</span></label>
                 <input type="tel" class="ov-input" placeholder="(00) 00000-0000">
@@ -4517,7 +4517,7 @@
         updatePageTitle("Pedidos");
         const totalVal = pedidosData.reduce((s,p)=>s+p.total,0);
         const rows = pedidosData.map(p=>`
-          <div class="ped-tbl-row" onclick="location.hash='pedido-ver-${p.id}'">
+          <div class="ped-tbl-row ds-table-grid-row ds-table-grid-row-clickable" onclick="location.hash='pedido-ver-${p.id}'">
             <div class="ped-code">${p.id}</div>
             <div class="ped-nome">${p.nome}</div>
             <div class="ped-date">${p.data}</div>
@@ -4653,7 +4653,7 @@
             </div>
 
             <div class="card ped-list-card">
-              <div class="ped-tbl-head">
+              <div class="ped-tbl-head ds-table-grid-head">
                 <span>Código</span>
                 <span>Nome</span>
                 <span>Data/Hora</span>
@@ -4714,8 +4714,8 @@
               <div class="ped-v2-banner-left">
                 <h2>Pedido #${p.id}</h2>
                 <div class="ped-v2-meta">
-                  <span class="ped-v2-pill ${statusPillClass}">${p.status}</span>
-                  ${p.faturado?`<span class="ped-v2-pill ped-v2-pill-fat">Faturado</span>`:''}
+                  <span class="ped-v2-pill ds-tab-pill ${statusPillClass}">${p.status}</span>
+                  ${p.faturado?`<span class="ped-v2-pill ds-tab-pill ped-v2-pill-fat">Faturado</span>`:''}
                   <span class="ped-v2-date">${p.data}</span>
                 </div>
               </div>
@@ -4916,11 +4916,11 @@
                 <p class="artigo-summary">${a.summary}</p>
                 <div class="artigo-meta">
                   <span><i data-lucide="user" style="width:13px;height:13px;"></i> ${a.author}</span>
-                  <span class="artigo-meta-dot"></span>
+                  <span class="artigo-meta-dot ds-dot-sep"></span>
                   <span><i data-lucide="calendar" style="width:13px;height:13px;"></i> Atualizado em ${a.updated}</span>
-                  <span class="artigo-meta-dot"></span>
+                  <span class="artigo-meta-dot ds-dot-sep"></span>
                   <span><i data-lucide="clock" style="width:13px;height:13px;"></i> ${a.readTime} min de leitura</span>
-                  <span class="artigo-meta-dot"></span>
+                  <span class="artigo-meta-dot ds-dot-sep"></span>
                   <span><i data-lucide="eye" style="width:13px;height:13px;"></i> ${a.views.toLocaleString('pt-BR')} visualizações</span>
                 </div>
               </header>
@@ -4991,15 +4991,15 @@
                     <p>${a.summary}</p>
                     <div class="ajuda-cat-article-meta">
                       <span><i data-lucide="clock" style="width:12px;height:12px;"></i> ${a.readTime} min</span>
-                      <span class="artigo-meta-dot"></span>
+                      <span class="artigo-meta-dot ds-dot-sep"></span>
                       <span><i data-lucide="eye" style="width:12px;height:12px;"></i> ${a.views.toLocaleString('pt-BR')} visualizações</span>
-                      <span class="artigo-meta-dot"></span>
+                      <span class="artigo-meta-dot ds-dot-sep"></span>
                       <span>Atualizado em ${a.updated}</span>
                     </div>
                   </div>
                   <i data-lucide="arrow-up-right" style="width:18px;height:18px;color:var(--muted);"></i>
                 </a>
-              `).join('') : `<div class="ajuda-cat-empty">
+              `).join('') : `<div class="ajuda-cat-empty ds-empty-state ds-empty-state-md">
                 <i data-lucide="inbox" style="width:32px;height:32px;color:var(--placeholder);"></i>
                 <p>Ainda não há artigos publicados nessa categoria.</p>
               </div>`}
@@ -5042,7 +5042,7 @@
         $("view-ajuda").innerHTML = `
           <div class="ajuda-page">
             <!-- HERO (mantido) -->
-            <div class="ajuda-hero">
+            <div class="ajuda-hero ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-radius-lg ds-hero-gradient-pad-xl">
               <div class="ajuda-hero-inner">
                 <h2>Central de Ajuda</h2>
                 <p>Encontre respostas, tutoriais e tudo que você precisa para aproveitar ao máximo nossa plataforma.</p>
@@ -5055,7 +5055,7 @@
 
             <!-- TÓPICOS POPULARES (lista ranqueada · sem ícones) -->
             <section class="ajuda-section">
-              <div class="ajuda-section-head">
+              <div class="ajuda-section-head ds-section-head">
                 <div>
                   <h3 class="ajuda-section-title">Mais procurados pelos integradores</h3>
                   <p class="ajuda-section-sub">Top 4 artigos mais acessados pela comunidade nos últimos 7 dias.</p>
@@ -5082,7 +5082,7 @@
 
             <!-- CATEGORIAS -->
             <section class="ajuda-section">
-              <div class="ajuda-section-head">
+              <div class="ajuda-section-head ds-section-head">
                 <div>
                   <h3 class="ajuda-section-title">Navegue por categoria</h3>
                   <p class="ajuda-section-sub">${categories.reduce((s,c)=>s+c.count,0)} artigos organizados em ${categories.length} áreas da plataforma.</p>
@@ -5105,7 +5105,7 @@
 
             <!-- FAQ -->
             <section class="ajuda-section ajuda-faq-wrap">
-              <div class="ajuda-section-head" style="margin-bottom:20px;">
+              <div class="ajuda-section-head ds-section-head" style="margin-bottom:20px;">
                 <div>
                   <h3 class="ajuda-section-title">Perguntas frequentes</h3>
                   <p class="ajuda-section-sub">As dúvidas mais recorrentes que recebemos do suporte.</p>
@@ -5636,7 +5636,7 @@
       /* ====== MODAL RESUMO DO PEDIDO ====== */
       function _resumoStatusPill(s) {
         const m = { 'Finalizado':'ped-v2-pill-fin', 'Em andamento':'ped-v2-pill-and', 'Cancelado':'ped-v2-pill-can' };
-        return `<span class="ped-v2-pill ${m[s]||'ped-v2-pill-and'}">${s}</span>`;
+        return `<span class="ped-v2-pill ds-tab-pill ${m[s]||'ped-v2-pill-and'}">${s}</span>`;
       }
       window.downloadPedido = function(id, format) {
         const p = pedidosData.find(x => x.id === id);
@@ -5926,7 +5926,7 @@
 
         if (!filtered.length) {
           body.innerHTML = `
-            <div class="novas-empty">
+            <div class="novas-empty ds-empty-state">
               <div class="novas-empty-icon"><i data-lucide="filter-x" style="width:22px;height:22px;color:var(--muted);"></i></div>
               <h4>Sem novidades nessa categoria</h4>
               <p>Selecione "Todas as categorias" para ver tudo.</p>
@@ -6104,7 +6104,7 @@
             </div>
 
             <div class="calc-results" id="calcResults">
-              <div class="calc-metrics" id="calcMetrics"></div>
+              <div class="calc-metrics ds-kpi-grid" id="calcMetrics"></div>
 
               <div class="calc-share-bar">
                 <div class="calc-share-info">
@@ -6146,8 +6146,8 @@
             </div>
 
             <!-- Modal WhatsApp -->
-            <div class="modal-overlay" id="calcWaOverlay" onclick="calcCloseWa()"></div>
-            <div class="modal" id="calcWaModal" role="dialog" aria-labelledby="calcWaTitle">
+            <div class="modal-overlay ds-overlay ds-overlay-tint-strong" id="calcWaOverlay" onclick="calcCloseWa()"></div>
+            <div class="modal ds-modal ds-modal-md ds-modal ds-modal-md" id="calcWaModal" role="dialog" aria-labelledby="calcWaTitle">
               <div class="modal-head">
                 <h3 id="calcWaTitle"><i data-lucide="message-circle"></i> Enviar simulação via WhatsApp</h3>
                 <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="calcCloseWa()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -6207,10 +6207,10 @@
           const payback = Math.round(custo/eAno*10)/10;
           const co2 = Math.round(kwh*12*0.09);
           $("calcMetrics").innerHTML = `
-            <div class="card calc-metric"><div class="calc-metric-lbl">Potência Estimada</div><div class="calc-metric-val mv-blue">${kwp}<span style="font-size:14px;font-weight:600;color:var(--muted);margin-left:3px;">kWp</span></div><div class="calc-metric-sub">Sistema fotovoltaico ideal</div></div>
-            <div class="card calc-metric"><div class="calc-metric-lbl">Economia Mensal</div><div class="calc-metric-val mv-green">${fmt(eMes)}</div><div class="calc-metric-sub">Redução na conta de luz</div></div>
-            <div class="card calc-metric"><div class="calc-metric-lbl">Economia Anual</div><div class="calc-metric-val mv-green">${fmt(eAno)}</div><div class="calc-metric-sub">Projeção para 12 meses</div></div>
-            <div class="card calc-metric"><div class="calc-metric-lbl">Payback Estimado</div><div class="calc-metric-val mv-amber">${payback}<span style="font-size:14px;font-weight:600;color:var(--muted);margin-left:3px;">anos</span></div><div class="calc-metric-sub">${co2} kg CO₂ evitados/ano</div></div>
+            <div class="card calc-metric"><div class="calc-metric-lbl ds-kpi-lbl">Potência Estimada</div><div class="calc-metric-val ds-kpi-val mv-blue">${kwp}<span style="font-size:14px;font-weight:600;color:var(--muted);margin-left:3px;">kWp</span></div><div class="calc-metric-sub ds-kpi-sub">Sistema fotovoltaico ideal</div></div>
+            <div class="card calc-metric"><div class="calc-metric-lbl ds-kpi-lbl">Economia Mensal</div><div class="calc-metric-val ds-kpi-val mv-green">${fmt(eMes)}</div><div class="calc-metric-sub ds-kpi-sub">Redução na conta de luz</div></div>
+            <div class="card calc-metric"><div class="calc-metric-lbl ds-kpi-lbl">Economia Anual</div><div class="calc-metric-val ds-kpi-val mv-green">${fmt(eAno)}</div><div class="calc-metric-sub ds-kpi-sub">Projeção para 12 meses</div></div>
+            <div class="card calc-metric"><div class="calc-metric-lbl ds-kpi-lbl">Payback Estimado</div><div class="calc-metric-val ds-kpi-val mv-amber">${payback}<span style="font-size:14px;font-weight:600;color:var(--muted);margin-left:3px;">anos</span></div><div class="calc-metric-sub ds-kpi-sub">${co2} kg CO₂ evitados/ano</div></div>
           `;
           $("calcCarousel").innerHTML = products.slice(0,4).map(p=>{
             const qty = state.tempQty[p.sku] || 1;
@@ -6397,13 +6397,13 @@
       }
       function _clientRowHTML(c) {
         const col=_clientColor(c.nome), ini=_clientInitials(c.nome);
-        return `<div class="clients-tbl-row" onclick="location.hash='cliente-${c.id}'">
+        return `<div class="clients-tbl-row ds-table-grid-row ds-table-grid-row-clickable" onclick="location.hash='cliente-${c.id}'">
           <div><div class="client-av ds-icon-box ds-icon-box-lg" style="background:${col};">${ini}</div></div>
           <div><div class="client-row-name">${c.nome}</div><div class="client-row-sub">#${c.id} · ${c.integrador}</div></div>
           <div class="client-row-email">${c.email}</div>
           <div class="client-row-tel">${c.tel}</div>
           <div class="client-row-date">${c.ultimaCompra||'<span style="font-style:italic;font-size:11px;">Sem compra</span>'}</div>
-          <div><div class="client-row-arrow"><i data-lucide="arrow-right" style="width:14px;height:14px;"></i></div></div>
+          <div><div class="client-row-arrow ds-table-grid-row-arrow"><i data-lucide="arrow-right" style="width:14px;height:14px;"></i></div></div>
         </div>`;
       }
 
@@ -6411,12 +6411,12 @@
         updatePageTitle("Clientes");
         $("view-clientes").innerHTML = `
           <div style="max-width:1380px;margin:0 auto;">
-            <div class="clients-toolbar">
-              <div class="clients-srch-wrap">
-                <i data-lucide="search" class="clients-srch-icon"></i>
+            <div class="clients-toolbar ds-toolbar">
+              <div class="clients-srch-wrap ds-toolbar-search">
+                <i data-lucide="search" class="clients-srch-icon ds-toolbar-search-icon"></i>
                 <input type="text" class="clients-srch" id="clientSrch" placeholder="Buscar por código, nome, documento..." oninput="filterClients()">
               </div>
-              <div class="clients-date-range">
+              <div class="clients-date-range ds-toolbar-filters">
                 <span class="clients-date-lbl">Última compra</span>
                 <input type="date" class="clients-date-inp" id="clientDateFrom" onchange="filterClients()">
                 <span class="clients-date-sep">→</span>
@@ -6426,7 +6426,7 @@
               <button class="clients-add-btn" onclick="openNovoCliente()"><i data-lucide="plus" style="width:15px;height:15px;"></i> Adicionar Cliente</button>
             </div>
             <div class="card clients-list-card">
-              <div class="clients-tbl-head">
+              <div class="clients-tbl-head ds-table-grid-head">
                 <span></span><span>Nome / Integrador</span><span>Email</span><span>Telefone</span><span>Última Compra</span><span></span>
               </div>
               <div id="clientsList">${clientsData.map(_clientRowHTML).join("")}</div>
@@ -6458,7 +6458,7 @@
         window._curClientId=id;
 
         function orderRows(list) {
-          if(!list.length) return '<div class="client-tabs-empty">Nenhum registro encontrado.</div>';
+          if(!list.length) return '<div class="client-tabs-empty ds-empty-state ds-empty-state-sm">Nenhum registro encontrado.</div>';
           return `<div class="client-orders-head"><span>Código</span><span>Data/Hora</span><span>Status</span><span>Potência</span><span>Total</span></div>`
             +list.map(o=>`<div class="client-order-row">
               <span class="order-code">${o.codigo}</span>
@@ -6483,9 +6483,9 @@
                   </div>
                   <button class="client-edit-btn2" onclick="openClienteEdit(${c.id})"><i data-lucide="edit-2" style="width:13px;height:13px;"></i> Editar</button>
                 </div>
-                <div class="client-kpis">
-                  <div class="client-kpi"><div class="client-kpi-lbl">Valor em Orçamentos</div><div class="client-kpi-val">${fmt(c.orcamentos.reduce((s,o)=>s+o.total,0))}</div></div>
-                  <div class="client-kpi"><div class="client-kpi-lbl">Valor em Pedidos</div><div class="client-kpi-val">${fmt(c.pedidos.reduce((s,p)=>s+p.total,0))}</div></div>
+                <div class="client-kpis ds-kpi-grid">
+                  <div class="client-kpi ds-kpi ds-kpi-sm"><div class="client-kpi-lbl ds-kpi-lbl">Valor em Orçamentos</div><div class="client-kpi-val ds-kpi-val">${fmt(c.orcamentos.reduce((s,o)=>s+o.total,0))}</div></div>
+                  <div class="client-kpi ds-kpi ds-kpi-sm"><div class="client-kpi-lbl ds-kpi-lbl">Valor em Pedidos</div><div class="client-kpi-val ds-kpi-val">${fmt(c.pedidos.reduce((s,p)=>s+p.total,0))}</div></div>
                 </div>
                 <div class="client-fields">
                   <div><div class="client-field-lbl">CPF</div><div class="client-field-val"><i data-lucide="file-text"></i>${c.cpf}</div></div>
@@ -6537,7 +6537,7 @@
         const list=tab==="orc"?c.orcamentos:c.pedidos;
         const body=$("clientTabBody");
         if(!body) return;
-        if(!list.length){ body.innerHTML='<div class="client-tabs-empty">Nenhum registro encontrado.</div>'; return; }
+        if(!list.length){ body.innerHTML='<div class="client-tabs-empty ds-empty-state ds-empty-state-sm">Nenhum registro encontrado.</div>'; return; }
         body.innerHTML=`<div class="client-orders-head"><span>Código</span><span>Data/Hora</span><span>Status</span><span>Potência</span><span>Total</span></div>`
           +list.map(o=>`<div class="client-order-row">
             <span class="order-code">${o.codigo}</span>
@@ -6696,7 +6696,7 @@
                 <span>Status</span>
                 <span></span>
               </div>
-              ${rows || '<div class="premio-empty">Você ainda não possui notas de prêmio venda direta.</div>'}
+              ${rows || '<div class="premio-empty ds-empty-state">Você ainda não possui notas de prêmio venda direta.</div>'}
             </div>
           </div>
         `;
@@ -6830,7 +6830,7 @@
             </div>`}
 
             <section class="pv-guide">
-              <header class="pv-section-head">
+              <header class="pv-section-head ds-section-head ds-section-head-baseline">
                 <div>
                   <h3>Como emitir sua Nota Fiscal de Serviço</h3>
                   <p>Siga os 4 pontos abaixo pra que a nota seja aprovada de primeira.</p>
@@ -6879,7 +6879,7 @@
             </section>
 
             <section class="pv-timeline-section">
-              <header class="pv-section-head">
+              <header class="pv-section-head ds-section-head ds-section-head-baseline">
                 <div>
                   <h3>Histórico</h3>
                   <p>${hist.length} ${hist.length===1?'atualização':'atualizações'} dessa nota.</p>
@@ -6989,7 +6989,7 @@ Fone: (44) 2101-1400`;
               <button class="ped-row-btn" title="Baixar PDF deste mês" onclick="alert('Mock: PDF do relatório de ${m}')"><i data-lucide="file-text" style="width:14px;height:14px;"></i></button>
               <button class="ped-row-btn" title="Baixar CSV deste mês" onclick="alert('Mock: CSV do relatório de ${m}')"><i data-lucide="file-spreadsheet" style="width:14px;height:14px;"></i></button>
             </span>
-          </div>`).join('') || '<div class="premio-empty">Sem dados para exibir.</div>';
+          </div>`).join('') || '<div class="premio-empty ds-empty-state">Sem dados para exibir.</div>';
 
         $("view-relatorios").innerHTML = `
           <div style="max-width:1380px;margin:0 auto;">
@@ -7345,7 +7345,7 @@ Fone: (44) 2101-1400`;
                   <div class="admin-banner-card">
                     <div class="admin-banner-thumb">
                       ${b.imageUrl ? `<img src="${b.imageUrl}" alt="${b.title}" onerror="this.parentElement.classList.add('is-empty');this.style.display='none';">` : ''}
-                      ${!b.imageUrl ? `<div class="admin-banner-empty"><i data-lucide="image" style="width:26px;height:26px;"></i><span>Sem imagem</span></div>` : ''}
+                      ${!b.imageUrl ? `<div class="admin-banner-empty ds-empty-state"><i data-lucide="image" style="width:26px;height:26px;"></i><span>Sem imagem</span></div>` : ''}
                       <div class="admin-banner-thumb-overlay">${_bannerStatusBadge(b)}</div>
                     </div>
                     <div class="admin-banner-body">
@@ -7369,7 +7369,7 @@ Fone: (44) 2101-1400`;
                       <button class="row-action danger" title="Remover" onclick="deleteBanner(${b.id})"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
                     </div>
                   </div>`;
-              }).join('') : `<div class="premio-empty" style="grid-column:1/-1;">Nenhum banner encontrado com este filtro.</div>`}
+              }).join('') : `<div class="premio-empty ds-empty-state" style="grid-column:1/-1;">Nenhum banner encontrado com este filtro.</div>`}
             </div>
           </div>`;
       }
@@ -7695,7 +7695,7 @@ Fone: (44) 2101-1400`;
           <div style="max-width:1380px;margin:0 auto;">
 
             <!-- Header -->
-            <div class="admin-hero">
+            <div class="admin-hero ds-hero-gradient ds-hero-gradient-2stop ds-hero-gradient-pad-md ds-hero-gradient-radius">
               <div class="admin-hero-info">
                 <span class="admin-hero-tag"><i data-lucide="shield-check" style="width:13px;height:13px;"></i> Modo administrativo</span>
                 <h2 class="admin-hero-title">Painel Super Admin</h2>
@@ -7759,7 +7759,7 @@ Fone: (44) 2101-1400`;
             </div>
 
             <!-- TABS -->
-            <div class="admin-tabs">
+            <div class="admin-tabs ds-tabs">
               <button class="admin-tab active" data-tab="usuarios" onclick="adminSwitchTab('usuarios')"><i data-lucide="users-round"></i> Usuários</button>
               <button class="admin-tab" data-tab="banners" onclick="adminSwitchTab('banners')"><i data-lucide="image"></i> Banners</button>
               <button class="admin-tab" data-tab="novidades" onclick="adminSwitchTab('novidades')"><i data-lucide="sparkles"></i> Novidades</button>
@@ -7829,7 +7829,7 @@ Fone: (44) 2101-1400`;
                   </div>
                 `;
               }).join('') : `
-                <div class="admin-artigo-empty">
+                <div class="admin-artigo-empty ds-empty-state ds-empty-state-sm">
                   <i data-lucide="inbox" style="width:30px;height:30px;color:var(--placeholder);"></i>
                   <p>Nenhum artigo encontrado com esses filtros.</p>
                 </div>
@@ -7962,7 +7962,7 @@ Fone: (44) 2101-1400`;
         };
         const v = variants[variant] || variants.login;
         return `
-          <section class="auth-brand">
+          <section class="auth-brand ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-pad-lg">
             <div class="auth-brand-bg"></div>
             <div class="auth-brand-content">
               <div class="auth-spark"><i data-lucide="${v.spark}" style="width:26px;height:26px;color:white;"></i></div>
@@ -8382,7 +8382,7 @@ Fone: (44) 2101-1400`;
       /* === Step 0 · Form === */
       function mkFormHTML() {
         const typeCards = MK_KIT_TYPES.map(t => `
-          <button type="button" class="mk-kit-card ${mkState.kitType===t.id?'is-selected':''}" onclick="mkSetKitType('${t.id}')" data-id="${t.id}">
+          <button type="button" class="mk-kit-card ds-card-selectable ${mkState.kitType===t.id?'is-selected':''}" onclick="mkSetKitType('${t.id}')" data-id="${t.id}">
             <span class="mk-kit-card-icon" style="background:${t.accent};color:${t.color};"><i data-lucide="${t.icon}"></i></span>
             <span class="mk-kit-card-body">
               <strong>${t.label}</strong>
@@ -8392,7 +8392,7 @@ Fone: (44) 2101-1400`;
             <span class="mk-kit-card-radio"></span>
           </button>`).join('');
         const taxAlert = (mkState.kitType==='bess' || mkState.kitType==='eletroposto') ? `
-          <div class="mk-tax-alert">
+          <div class="mk-tax-alert ds-alert ds-alert-info">
             <i data-lucide="info" style="width:16px;height:16px;flex-shrink:0;color:var(--blue);"></i>
             <div>
               <strong>Dica tributária:</strong>
@@ -8835,7 +8835,7 @@ Fone: (44) 2101-1400`;
         const asc = mkState.sort[stepId]?.asc !== false;
         const view = mkState.viewMode || 'grid';
         return `
-          <div class="mk-toolbar">
+          <div class="mk-toolbar ds-toolbar">
             <div class="mk-toolbar-search">
               <i data-lucide="search"></i>
               <input type="text" id="mkSearch_${stepId}" placeholder="Código, nome..." value="${mkEsc(mkState.search[stepId] || "")}" oninput="mkOnSearch('${stepId}', this.value)">
