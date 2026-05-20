@@ -72,7 +72,7 @@
   justify-self: end;
 }
 .ds-table-grid-row-clickable:hover .ds-table-grid-row-arrow {
-  background: rgba(0, 90, 255, .08);
+  background: var(--color-tint-blue-soft);
   color: var(--color-action-primary-bg);
 }
 .ds-table-grid-row-arrow svg,

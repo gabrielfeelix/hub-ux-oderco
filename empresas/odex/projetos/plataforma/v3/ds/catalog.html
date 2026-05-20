@@ -302,6 +302,7 @@
         <a href="#cards">Cards</a>
         <a href="#table-grid">Table grid ⭐ H.2</a>
         <a href="#icon-box">Icon box ⭐ H.3</a>
+        <a href="#overlay">Overlay ⭐ H.4</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -1484,6 +1485,62 @@
 &lt;div class="ds-icon-box ds-icon-box-sm ds-icon-box-glass"&gt;
   &lt;i data-lucide="folder"&gt;&lt;/i&gt;
 &lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · OVERLAY (Phase H.4 · 7 DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="overlay">Overlay</h2>
+        <p class="cat-section-desc"><strong>Phase H.4 atom</strong> · consolida 7 DUPES (modal-overlay, cart-overlay, notif-drawer-overlay, novas-overlay, ped-resumo-overlay, de-chat-mask, help-modal-mask). Backdrop fixed-position pra modais/drawers · navy-tinted + blur · clicável pra dismiss. Toggle via <code>.is-open</code> / <code>.open</code> · opacity-only transition · pointer-events flip evita intercept de clicks quando fechado.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Tint intensity</h3><span class="cat-component-class">.ds-overlay-tint-{soft,medium,strong,chat}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px; flex-wrap:wrap;">
+                <div style="position:relative; width:120px; height:80px; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;">
+                  <div class="ds-overlay is-open ds-overlay-tint-soft" style="position:absolute; z-index:1;"></div>
+                  <div style="position:absolute; inset:0; display:grid; place-items:center; font:600 11px/1 var(--font); color:var(--muted); z-index:2;">soft .20</div>
+                </div>
+                <div style="position:relative; width:120px; height:80px; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;">
+                  <div class="ds-overlay is-open ds-overlay-tint-medium" style="position:absolute; z-index:1;"></div>
+                  <div style="position:absolute; inset:0; display:grid; place-items:center; font:600 11px/1 var(--font); color:white; z-index:2;">medium .32</div>
+                </div>
+                <div style="position:relative; width:120px; height:80px; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;">
+                  <div class="ds-overlay is-open ds-overlay-tint-strong" style="position:absolute; z-index:1;"></div>
+                  <div style="position:absolute; inset:0; display:grid; place-items:center; font:600 11px/1 var(--font); color:white; z-index:2;">strong .45</div>
+                </div>
+                <div style="position:relative; width:120px; height:80px; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;">
+                  <div class="ds-overlay is-open ds-overlay-tint-chat" style="position:absolute; z-index:1;"></div>
+                  <div style="position:absolute; inset:0; display:grid; place-items:center; font:600 11px/1 var(--font); color:white; z-index:2;">chat dark</div>
+                </div>
+              </div>
+              <div class="cat-note">soft (sub-menus) · medium (drawers · default consistente) · strong (modal critical) · chat (de-chat/help dark).</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-overlay ds-overlay-tint-strong is-open" onclick="closeModal()"&gt;&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Blur intensity</h3><span class="cat-component-class">.ds-overlay-blur-{sm,md,lg,none}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-note">sm 2px (drawers) · md 4px (default · modal) · lg 8px (forte) · none (perf-sensitive). Compose c/ tint: <code>.ds-overlay .ds-overlay-tint-medium .ds-overlay-blur-sm</code>.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-overlay ds-overlay-tint-chat ds-overlay-blur-sm is-open"&gt;&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Z-index intent</h3><span class="cat-component-class">.ds-overlay-z-{dropdown,sticky,overlay,popover}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-note">Tokens z-index: <code>--z-dropdown 100</code> · <code>--z-sticky 200</code> · <code>--z-overlay 300</code> (default) · <code>--z-popover 400</code>. Use intent class pra documentar layer · evita números mágicos.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-overlay ds-overlay-z-dropdown"&gt;&lt;/div&gt; &lt;!-- help-modal-mask --&gt;</pre>
           </div>
         </div>
       </section>

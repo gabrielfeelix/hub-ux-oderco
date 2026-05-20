@@ -1,0 +1,45 @@
+/* ==========================================================================
+   DS · OVERLAY
+   Backdrop fixed-position pra modais, drawers, masks. Click → close (consumer
+   liga listener no element). Opacity-only transition · pointer-events flip
+   evita interceptar clicks quando fechado.
+   Phase H.4 · consolida 7 DUPES (modal-overlay, cart-overlay,
+   notif-drawer-overlay, novas-overlay, ped-resumo-overlay, de-chat-mask,
+   help-modal-mask).
+   ========================================================================== */
+
+.ds-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--ds-overlay-bg, var(--color-overlay-navy-strong));
+  backdrop-filter: blur(var(--ds-overlay-blur, 4px));
+  -webkit-backdrop-filter: blur(var(--ds-overlay-blur, 4px));
+  z-index: var(--z-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+.ds-overlay.is-open,
+.ds-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* === Blur intensity ============================================== */
+.ds-overlay-blur-sm  { --ds-overlay-blur: 2px; }
+.ds-overlay-blur-md  { --ds-overlay-blur: 4px; }  /* default */
+.ds-overlay-blur-lg  { --ds-overlay-blur: 8px; }
+.ds-overlay-blur-none { --ds-overlay-blur: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+/* === Tint intensity (navy-based · brand consistente) ============= */
+.ds-overlay-tint-soft   { --ds-overlay-bg: var(--color-overlay-navy-soft); }
+.ds-overlay-tint-medium { --ds-overlay-bg: var(--color-overlay-navy-medium); } /* drawers · menus secundários */
+.ds-overlay-tint-strong { --ds-overlay-bg: var(--color-overlay-navy-deep); }   /* modal critical */
+.ds-overlay-tint-chat   { --ds-overlay-bg: var(--color-overlay-dark); }        /* chat/help · escuro */
+.ds-overlay-tint-gray   { --ds-overlay-bg: var(--color-overlay-gray); }        /* cart drawer */
+
+/* === Z-index intent (compose c/ tokens) ========================== */
+.ds-overlay-z-dropdown { z-index: var(--z-dropdown); }
+.ds-overlay-z-sticky   { z-index: var(--z-sticky); }
+.ds-overlay-z-overlay  { z-index: var(--z-overlay); } /* default */
+.ds-overlay-z-popover  { z-index: var(--z-popover); }

@@ -82,11 +82,11 @@
 /* Glass · sobre brand bg (dash-hero-brand-edit, profile-cover-edit-btn,
    help-modal-close) — rgba whites */
 .ds-icon-btn-glass {
-  background: rgba(255, 255, 255, 0.16);
+  background: var(--color-glass-white-strong);
   color: var(--color-text-on-brand);
 }
 .ds-icon-btn-glass:hover {
-  background: rgba(255, 255, 255, 0.28);
+  background: var(--color-glass-white-hover);
   color: var(--color-text-on-brand);
 }
 

@@ -79,7 +79,7 @@
 
 /* Glass · rgba sobre brand bg (dash-hero-quick-ico, hero brand-logo) */
 .ds-icon-box-glass {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--color-glass-white-medium);
   color: var(--color-text-on-brand);
 }
 

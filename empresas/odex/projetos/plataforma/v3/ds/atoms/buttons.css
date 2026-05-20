@@ -82,11 +82,11 @@
   background: var(--color-feedback-warning-bg);
   color: var(--color-feedback-warning-strong);
   border-radius: var(--r-pill);
-  box-shadow: 0 0 8px rgba(243,146,0,.24);
+  box-shadow: 0 0 8px var(--color-tint-warning-glow);
 }
 .ds-pill-cool {
   background: var(--color-border-strong);
   color: var(--color-action-primary-bg);
   border-radius: var(--r-pill);
-  box-shadow: 0 0 8px rgba(34,67,125,.20);
+  box-shadow: 0 0 8px var(--color-tint-navy-glow);
 }

@@ -79,10 +79,42 @@
   /* ============================================================
      SHADOW
      ============================================================ */
-  --shadow-sm:   0 1px 2px 0 rgba(0,0,0,0.05);                /* Sutil · botões, badges */
-  --shadow-md:   0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);/* Padrão · dropdowns, popovers */
-  --shadow-lg:   0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);/* Grande · modais, overlays principais */
-  --shadow-card: 0 0 16px 0 rgba(0,0,0,0.08);                 /* Card hover · listings interativos */
+  --shadow-sm:       0 1px 2px 0 rgba(0,0,0,0.05);            /* Sutil · botões, badges */
+  --shadow-md:       0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);/* Padrão · dropdowns, popovers */
+  --shadow-lg:       0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);/* Grande · modais, overlays principais */
+  --shadow-card:     0 0 16px 0 rgba(0,0,0,0.08);             /* Card hover · listings interativos */
+  --shadow-dropdown: 0 8px 24px rgba(13,29,82,.14), 0 2px 6px rgba(0,0,0,.04);/* Dropdown menu · navy-tinted lift */
+  --shadow-popover:  0 12px 32px rgba(13,29,82,.14), 0 4px 12px rgba(0,0,0,.04);/* Popover · select menu open */
+
+  /* ============================================================
+     OVERLAY · backdrop tints (navy-based · brand consistente)
+     ============================================================ */
+  --color-overlay-navy-soft:   rgba(13, 29, 82, 0.20);        /* Sub-menus, light backdrop */
+  --color-overlay-navy-medium: rgba(13, 29, 82, 0.32);        /* Drawers default · notif/novidades */
+  --color-overlay-navy-strong: rgba(13, 29, 82, 0.42);        /* Modal default */
+  --color-overlay-navy-deep:   rgba(13, 29, 82, 0.45);        /* Modal critical · ped-resumo */
+  --color-overlay-dark:        rgba(8, 15, 49, 0.42);         /* Dark chat/help overlay */
+  --color-overlay-gray:        rgba(17, 24, 39, 0.40);        /* Cart drawer overlay (gray-900) */
+
+  /* ============================================================
+     GLASS · rgba whites sobre brand bg
+     ============================================================ */
+  --color-glass-white-light:   rgba(255, 255, 255, 0.08);     /* dash-hero-stat backdrop */
+  --color-glass-white-medium:  rgba(255, 255, 255, 0.12);     /* dash-hero-quick-ico bg */
+  --color-glass-white-strong:  rgba(255, 255, 255, 0.16);     /* icon-btn-glass default */
+  --color-glass-white-hover:   rgba(255, 255, 255, 0.28);     /* Glass hover state */
+  --color-glass-border:        rgba(255, 255, 255, 0.14);     /* Glass card border */
+  --color-glass-border-strong: rgba(255, 255, 255, 0.22);     /* Glass border emphasized */
+
+  /* ============================================================
+     TINT · brand colors com alpha (hover/focus subtle bg)
+     ============================================================ */
+  --color-tint-blue-soft:    rgba(0, 90, 255, 0.08);          /* Subtle blue tint · row hover, icon hover */
+  --color-tint-blue-medium:  rgba(0, 90, 255, 0.10);          /* Focus ring background */
+  --color-tint-blue-strong:  rgba(0, 90, 255, 0.18);          /* Active state subtle */
+  --color-tint-blue-shadow:  rgba(0, 90, 255, 0.30);          /* Shadow blue · CTA emphasis */
+  --color-tint-warning-glow: rgba(243, 146, 0, 0.24);         /* Warm pill shadow */
+  --color-tint-navy-glow:    rgba(34, 67, 125, 0.20);         /* Cool pill shadow */
 
   /* ============================================================
      FONT · family

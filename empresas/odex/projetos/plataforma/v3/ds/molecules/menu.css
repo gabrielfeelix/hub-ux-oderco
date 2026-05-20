@@ -19,7 +19,7 @@
   background: var(--color-surface-card);
   border: 1px solid var(--color-border-default);
   border-radius: var(--r-form);
-  box-shadow: 0 8px 24px rgba(13,29,82,.14), 0 2px 6px rgba(0,0,0,.04);
+  box-shadow: var(--shadow-dropdown);
   padding: 6px;
   z-index: var(--z-dropdown);
   opacity: 0;
