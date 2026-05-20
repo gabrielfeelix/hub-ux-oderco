@@ -21,8 +21,8 @@
    - .dash-alerts                       — grid pattern (cards de avisos)
    ========================================================================== */
 
-@layer features {
-      /* Dashboard Specific */
+/* @layer features wrapper removed · was @layer features { */
+/* Dashboard Specific */
       .dash-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
       .dash-kpi { padding: 24px; position: relative; overflow: hidden; }
       .dash-kpi-icon { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; border-radius: var(--r-card); display: grid; place-items: center; opacity: 0.8; }
@@ -733,4 +733,4 @@
       .home-showcase-price { font-size:28px; }
     }
 
-} /* @layer features */
+/* end @layer features wrapper */

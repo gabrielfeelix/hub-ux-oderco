@@ -18,9 +18,8 @@
    - .ov-input              ~= .ds-input
    ========================================================================== */
 
-@layer features {
-
-    /* ====== ORÇAMENTOS LIST ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== ORÇAMENTOS LIST ====== */
     .orc-toolbar { background:white; border:1px solid var(--line); border-radius:var(--r-card); padding:14px 18px; margin-bottom:16px; display:flex; align-items:center; gap:12px; box-shadow:var(--shadow-sm); }
     .orc-srch-wrap { position:relative; flex:1; max-width:420px; }
     .orc-srch-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--muted); pointer-events:none; }
@@ -224,4 +223,4 @@
     }
     .orc-doc-brandbar-cta:hover { background:#e8edf6; }
 
-} /* @layer features */
+/* end @layer features wrapper */

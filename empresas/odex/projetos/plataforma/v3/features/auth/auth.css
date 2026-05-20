@@ -18,8 +18,7 @@
    ========================================================================== */
 
 /* Layer: features · cascade abaixo de unlayered styles, acima de molecules */
-@layer features {
-
+/* @layer features wrapper removed · was @layer features { */
 /* === Full-screen auth pages · esconde sidebar/topbar ====================== */
 body.is-auth #view-login,
 body.is-auth #view-cadastro,
@@ -396,4 +395,4 @@ main.auth-shell {
   .auth-brand-signature { display: none; }
 }
 
-} /* @layer features */
+/* end @layer features wrapper */

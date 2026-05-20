@@ -6,9 +6,8 @@
  * Source: extracted from index.html (DS Phase C.24).
  * ====================================================================== */
 
-@layer features {
-
-  /* ============ Sidebar ============ */
+/* @layer features wrapper removed · was @layer features { */
+/* ============ Sidebar ============ */
   .sidebar {
     width: 252px;
     background: var(--sidebar-bg);

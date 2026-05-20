@@ -21,8 +21,8 @@
    - .notif-foot                   — DUPE pattern footer com link
    ========================================================================== */
 
-@layer features {
-      /* Notification panel */
+/* @layer features wrapper removed · was @layer features { */
+/* Notification panel */
       .notif-bell-wrap { position: relative; }
       .notif-panel {
         position: absolute; top: calc(100% + 10px); right: 0; width: 360px; max-height: 520px;
@@ -105,4 +105,4 @@
     .notif-drawer-foot-link { display:inline-flex; align-items:center; gap:6px; font:400 13px/1 var(--font); color:var(--blue); text-decoration:none; }
     .notif-drawer-foot-link:hover { text-decoration:underline; }
 
-} /* @layer features */
+/* end @layer features wrapper */

@@ -27,8 +27,8 @@
    - .help-modal-foot                               — pattern footer com link
    ========================================================================== */
 
-@layer features {
-    /* ====== HELP MODAL ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== HELP MODAL ====== */
     .help-modal { text-align:center; padding:28px 32px; }
     .help-modal-icon { width:56px; height:56px; background:#eff6ff; border-radius:16px; display:grid; place-items:center; margin:0 auto 16px; color:var(--blue); }
     .help-modal-title { font-size:18px; font-weight:700; color:var(--ink); margin:0 0 8px; }
@@ -278,4 +278,4 @@
     }
 
 
-} /* @layer features */
+/* end @layer features wrapper */

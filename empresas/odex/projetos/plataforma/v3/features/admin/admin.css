@@ -28,8 +28,8 @@
    - .admin-banner-pos                       — meta info pattern
    ========================================================================== */
 
-@layer features {
-      /* === Super Admin === */
+/* @layer features wrapper removed · was @layer features { */
+/* === Super Admin === */
       .admin-hero {
         display:flex; align-items:center; justify-content:space-between; gap:24px;
         padding:24px 28px; margin-bottom:20px;
@@ -366,4 +366,4 @@
     }
     .admin-banner-actions .admin-user-toggle { margin-right:auto; }
 
-} /* @layer features */
+/* end @layer features wrapper */

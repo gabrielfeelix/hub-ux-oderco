@@ -21,8 +21,8 @@
    - .odex-toast                                                                — toast pattern · candidato .ds-toast
    ========================================================================== */
 
-@layer features {
-    /* ====== NOVIDADES PANEL (V5 · 100% DS) ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== NOVIDADES PANEL (V5 · 100% DS) ====== */
     .novas-overlay { position:fixed; inset:0; background:rgba(13,29,82,.32); backdrop-filter:blur(2px); z-index:300; opacity:0; pointer-events:none; transition:.25s; }
     .novas-overlay.open { opacity:1; pointer-events:auto; }
     .novas-panel {
@@ -314,4 +314,4 @@
     .novas-fb-send { height:34px; padding:0 16px; background:var(--blue); color:white; border-radius:var(--r-form); font-size:13px; font-weight:700; display:inline-flex; align-items:center; gap:5px; font-family:inherit; cursor:pointer; border:0; transition:.15s; }
     .novas-fb-send:hover { background:#0046cc; }
 
-} /* @layer features */
+/* end @layer features wrapper */

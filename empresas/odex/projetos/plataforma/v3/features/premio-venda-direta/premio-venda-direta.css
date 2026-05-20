@@ -17,8 +17,8 @@
    - .premio-page-head            — DUPE de .ds-section-head (sugerido)
    ========================================================================== */
 
-@layer features {
-    /* ====== PRÊMIO VENDA DIRETA ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== PRÊMIO VENDA DIRETA ====== */
     .premio-page-head {
       display:flex; align-items:center; justify-content:space-between; gap:24px;
       margin:0 0 18px; padding:0 4px;
@@ -207,4 +207,4 @@
       .pv-timeline-card { padding:18px; }
     }
 
-} /* @layer features */
+/* end @layer features wrapper */

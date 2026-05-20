@@ -35,9 +35,8 @@
    Estimativa migration: ~70% migrável pra DS atoms/molecules (alguns custom devem ficar)
    ========================================================================== */
 
-@layer features {
-
-    /* ==========================================================================
+/* @layer features wrapper removed · was @layer features { */
+/* ==========================================================================
        MONTE SEU KIT · Kits Personalizados (multi-step)
        ========================================================================== */
     .mk-page { max-width:1240px; margin:0 auto; padding:8px 0 40px; }
@@ -973,4 +972,4 @@
       .mk-right-col { position:static; }
     }
 
-} /* @layer features */
+/* end @layer features wrapper */

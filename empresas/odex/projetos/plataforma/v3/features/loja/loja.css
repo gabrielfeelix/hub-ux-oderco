@@ -23,8 +23,8 @@
    - .hero-cta                                          — DUPE de .ds-btn-on-brand (UPGRADE 2x → 3x)
    ========================================================================== */
 
-@layer features {
-      /* ====== PDP V2 (rich product detail page) ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== PDP V2 (rich product detail page) ====== */
       .pdp-page { max-width:1200px; margin:0 auto; }
       .pdp-hero { display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:32px; margin:14px 0 32px; align-items:start; }
       .pdp-gallery { display:flex; flex-direction:column; gap:14px; }
@@ -597,4 +597,4 @@
       .grid { gap: 24px; }
       .filter-title { font-size: 10px; font-weight: 700; letter-spacing: .1em; }
 
-} /* @layer features */
+/* end @layer features wrapper */

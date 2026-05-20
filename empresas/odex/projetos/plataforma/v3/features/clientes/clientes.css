@@ -21,8 +21,8 @@
    - .cliente-search-list / -item                                  — search-results list molecule candidato
    ========================================================================== */
 
-@layer features {
-    /* ====== CLIENTES ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== CLIENTES ====== */
     .clients-toolbar { background:white; border:1px solid var(--line); border-radius:var(--r-card); padding:14px 18px; margin-bottom:16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; box-shadow:var(--shadow-sm); }
     .clients-srch-wrap { flex:1; min-width:200px; max-width:380px; position:relative; }
     .clients-srch-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--muted); pointer-events:none; }
@@ -172,4 +172,4 @@
     .nc-next { height:42px; padding:0 22px; background:var(--blue); color:white; border-radius:var(--r-form); font-size:14px; font-weight:700; display:flex; align-items:center; gap:6px; transition:.15s; }
     .nc-next:hover { background:#0046cc; }
 
-} /* @layer features */
+/* end @layer features wrapper */

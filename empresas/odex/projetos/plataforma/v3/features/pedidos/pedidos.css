@@ -26,8 +26,8 @@
    - .ped-client-strip                 — DUPE estrutural de .ped-v2-cliente
    ========================================================================== */
 
-@layer features {
-    /* ====== MODAL RESUMO DO PEDIDO (DS-fiel) ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== MODAL RESUMO DO PEDIDO (DS-fiel) ====== */
     .ped-resumo-overlay { position:fixed; inset:0; background:rgba(13,29,82,.45); backdrop-filter:blur(4px); z-index:300; opacity:0; pointer-events:none; transition:.22s; }
     .ped-resumo-overlay.open { opacity:1; pointer-events:auto; }
     .ped-resumo-modal {
@@ -319,4 +319,4 @@
     .ped-v2-premia-table td:not(:first-child) { text-align:right; color:var(--muted); }
     .ped-v2-premia-table tr:last-child td { border-bottom:0; font-weight:700; color:var(--navy); }
 
-} /* @layer features */
+/* end @layer features wrapper */

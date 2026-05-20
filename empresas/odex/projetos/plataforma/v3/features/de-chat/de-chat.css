@@ -18,8 +18,8 @@
    - Animations: deBlink, deAntPulse              — face animations custom
    ========================================================================== */
 
-@layer features {
-    /* ====== HELP FLOATING BUTTON ====== */
+/* @layer features wrapper removed · was @layer features { */
+/* ====== HELP FLOATING BUTTON ====== */
     /* === DÉ · MASCOTE (face SVG-like com pseudo elements) === */
     .help-modal-de-avatar, .de-chat-avatar, .de-msg-avatar, .de-fab-avatar { position:relative; width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%); flex-shrink:0; display:inline-block; box-shadow:inset 0 -3px 6px rgba(0,0,0,.15); }
     .de-chat-avatar { width:42px; height:42px; }
@@ -160,4 +160,4 @@
     }
     .de-cart-footer-btn:hover { background:var(--navy); }
 
-} /* @layer features */
+/* end @layer features wrapper */
