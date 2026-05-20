@@ -1,23 +1,37 @@
 /* ==========================================================================
    ODEX · PLATAFORMA SOLAR · DESIGN SYSTEM
-   Root barrel · cascade @layer architecture.
+   Root barrel · cascade architecture (current · post Phase H.0 fix).
 
-   ORDEM DE LAYERS (lowest → highest priority):
-     reset       · base HTML element resets
-     tokens      · :root CSS variables (declarations, não cascadas)
-     atoms       · .ds-* atomic classes
-     molecules   · .odex-select, .ds-menu
-     features    · .auth-*, .mk-*, etc (feature-scoped composition)
-     legacy      · compat overrides pra classes pré-DS (em index.html)
-     utilities   · .text-center, .mt-4 etc (futuro · top priority)
+   ORDEM DE PRIORIDADE (high → low):
+     1. Inline styles e !important sempre vencem (browser default).
+     2. UNLAYERED rules · features/*.css + inline <style> em index.html.
+        Estes rodam por specificity + source order, COMO ERA PRÉ-EXTRAÇÃO.
+     3. @layer legacy · ds/legacy-compat.css (force-radius/font-family band-aid
+        com !important). Vence layered porque tem !important explícito.
+     4. @layer molecules · ds/molecules/{select,menu,input-group}.css
+     5. @layer atoms · ds/atoms/* (.ds-btn, .ds-pill, .ds-icon-btn, etc)
+     6. @layer tokens · ds/tokens/tokens.css (:root vars)
+     7. @layer reset · ds/base/reset.css (HTML element resets)
 
-   Estilos UNLAYERED (sem @layer) sempre vencem layered.
-   Inline styles e !important continuam acima de tudo.
+   NOTA · Phase H.0 (2026-05-20):
+   Features foram extraídas com `@layer features { }` wrapper em C.10-C.24,
+   mas isso rebaixou prioridade vs unlayered <style> em index.html, causando
+   regressões visuais. Wrapper REMOVIDO de todos os features/*.css.
+   Restored cascade parity com baseline pre-extração (commit b4f18c80).
+
+   Trade-off:
+   - Features agora UNLAYERED · ordem entre features dada por <link> tag order.
+   - DS atoms/molecules permanecem em layers (mais baixo · features customizam).
+   - legacy-compat mantém @layer legacy + !important pra overrides intencionais
+     de radius/font-family que precisam vencer features.
+
+   Phase H markup migration vai reintroduzir DS layer priority onde fizer
+   sentido (ao migrar markup pra usar .ds-* atoms diretamente, sem feature CSS).
 
    Source of truth: ds/tokens/tokens.json + ds/README.md
    ========================================================================== */
 
-@layer reset, tokens, atoms, molecules, features, legacy, utilities;
+@layer reset, tokens, atoms, molecules, legacy, utilities;
 
 @import url('./tokens/tokens.css')      layer(tokens);
 @import url('./base/reset.css')         layer(reset);

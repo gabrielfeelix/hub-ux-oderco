@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.31.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.32.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -152,65 +152,87 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 ### Accessibility
 - [a11y.md](./a11y.md) — WCAG 2.1 AA audit completo · contrast, focus, motion, ARIA
 
-## Cascade architecture (`@layer`)
+## Cascade architecture (post Phase H.0)
 
-CSS hoje usa **camadas explícitas de cascade** via `@layer`. Elimina specificity wars e torna ordem de override determinística.
+> **2026-05-20 update:** features `@layer` wrapper REMOVIDO após visual regressions (commit `284df72d`). Arquitetura atual descrita abaixo é a **versão correta canônica**.
 
-### Ordem das layers (lowest → highest priority)
+CSS usa camadas explícitas pra DS (atoms/molecules/legacy) · features ficam **unlayered** (mesmo comportamento pré-extração).
+
+### Ordem de prioridade (high → low)
 
 ```
-1. reset       · base HTML element resets (ds/base/reset.css)
-2. tokens      · :root CSS variables (ds/tokens/tokens.css)
-3. atoms       · .ds-* atomic classes (ds/atoms/*)
-4. molecules   · .odex-select, .ds-menu (ds/molecules/*)
-5. features    · .auth-*, .mk-* etc (features/<name>/*)
-6. legacy      · compat overrides pra classes pré-DS
-7. utilities   · .text-center, .mt-4 etc (futuro · top priority)
+1. !important + inline styles            (browser default)
+2. UNLAYERED rules                       (features/*.css + inline <style> em index.html)
+                                          → roda por specificity + source order
+3. @layer legacy                         (ds/legacy-compat.css · força r-form/r-card via !important)
+4. @layer molecules                      (ds/molecules/select.css, menu.css, input-group.css)
+5. @layer atoms                          (ds/atoms/* · .ds-btn, .ds-pill, .ds-icon-btn, etc)
+6. @layer tokens                         (ds/tokens/tokens.css · :root vars)
+7. @layer reset                          (ds/base/reset.css)
 ```
 
 Declarado em `ds/index.css`:
 
 ```css
-@layer reset, tokens, atoms, molecules, features, legacy, utilities;
+@layer reset, tokens, atoms, molecules, legacy, utilities;
 ```
+
+(Note: `features` NÃO está mais nessa lista · features são unlayered.)
 
 ### Regras da cascade
 
-- **Layered styles** obedecem ordem acima (utilities ganha de legacy ganha de features ganha de molecules etc)
-- **Unlayered styles** (sem `@layer`) **sempre vencem** layered · forma um "implicit topmost layer"
-- **Inline styles** (`style="..."`) e **`!important`** continuam acima de tudo
-- Specificity vira tie-breaker DENTRO da mesma layer
+- **UNLAYERED styles SEMPRE vencem layered** · feature CSS roda em "implicit topmost layer"
+- **Layered styles** entre si seguem ordem declarada (legacy vence molecules vence atoms vence tokens vence reset)
+- `!important` em layered pode bater unlayered (precedência reversa entre layers)
+- Specificity é tie-breaker dentro da mesma layer/grupo
+
+### Histórico · por que features não está mais em layer
+
+**Fase C.10-C.24 (2026-05-20 manhã):** Cada feature extraído pra `features/<name>/<name>.css` foi wrapped em `@layer features { ... }`. Intenção: cascade determinístico (atoms < molecules < features < legacy).
+
+**Problema descoberto:** `index.html` ainda tem ~9.7k linhas de CSS inline UNLAYERED (`.card`, `.input-group`, `.profile-*`, responsive @media de `.dash-kpis`, etc). Esses unlayered vencem ANY layered rule. Resultado: rules genéricas em index.html sobreescrevendo feature rules específicas, causando regressões visuais (loja, monte-kit, dashboard).
+
+**Fix (commit `284df72d`):** Removido `@layer features { }` wrapper de todos os 16 feature CSS files. Features voltaram a ser unlayered (mesmo comportamento de cascade pre-extração).
+
+**Trade-off aceito:**
+- ✅ Visual parity com baseline pre-extração
+- ✅ DS atoms/molecules permanecem em layers (features customizam normalmente)
+- ✅ legacy-compat mantém override de radius/font-family via `!important`
+- ❌ Ordem entre features dada por `<link>` tag order (não declarada via @layer)
+- ❌ Adicionar feature nova: usuário precisa entender ordem de import no `<link>`
 
 ### Como declarar layer no CSS
 
-**Via @import (preferido em barrels):**
+**Via @import (DS barrels):**
 
 ```css
-@import url('./atoms/index.css') layer(atoms);
+@import url('./atoms/index.css')   layer(atoms);
+@import url('./legacy-compat.css'); /* self-declares @layer legacy */
 ```
-A folha importada (e seus nested @imports) ficam todas em `atoms` layer.
 
-**Via @layer block (preferido em feature CSS):**
+**Via @layer block (DS-internal, ex: legacy-compat):**
 
 ```css
-@layer features {
-  .auth-shell { ... }
-  @media (max-width: 600px) { .auth-shell { ... } }
+@layer legacy {
+  .legacy-class { border-radius: var(--r-form) !important; }
 }
 ```
 
-### Por que isso importa
+**Features:** **NÃO** envolva em `@layer features { ... }`. Escreva CSS direto:
 
-| Antes (sem layers) | Depois (com layers) |
-|---|---|
-| Override de feature precisa de specificity maior | Layer order ganha · sem `!important` |
-| Conflito atomic ↔ feature imprevisível | Determinístico · feature sempre vence atomic |
-| `!important` em legacy compat | Layer `legacy` controla precedência |
-| Ordem de `<link>` importa | Ordem **declarada** importa |
+```css
+/* features/auth/auth.css */
+.auth-shell { ... }
+@media (max-width: 600px) { .auth-shell { ... } }
+```
+
+### Phase H markup migration
+
+Quando markup for migrado pra usar `.ds-*` atoms diretamente (sem feature CSS custom), DS layer priority volta a fazer sentido. Atoms ficam em `@layer atoms` · features que ainda existirem podem voltar pra `@layer features` quando NÃO houver mais unlayered CSS em index.html.
 
 ### Compat com unlayered CSS
 
-`index.html` ainda tem ~14k linhas de feature CSS unlayered (extraída fase C.10+). Esses estilos atualmente VENCEM as layers do DS · que é OK porque feature CSS tem o direito de override. Quando feature for extraído pra `features/<name>/`, ganha `@layer features` e participa da cascade ordenada.
+`index.html` ainda tem ~140 linhas de CSS inline unlayered (`.card`, `.input-group`, `.profile-*`, responsive overrides). Conviver com features unlayered: cascade resolve por source order. Eventualmente extrair pra `features/<name>/`.
 
 ---
 
@@ -565,5 +587,6 @@ Criar atoms confirmados (≥2x DUPES) em `ds/`, com docs + catalog + opcional mi
 | 0.29.0 | H.1 | 2026-05-20 | **Phase H BEGAN · 1º atom criado** · `.ds-icon-btn` (10x DUPES · maior do audit) em `ds/atoms/icon-btn.{css,md}` · 2 shapes (square/circle) × 4 sizes (sm 28/md 34/lg 40/xl 48) × 5 tones (default/ghost/soft/glass/danger) + slots `.ds-icon-btn-dot` (red 8×8) e `.ds-icon-btn-badge` (counter) · semantic tokens (`--color-surface-*`, `--color-text-*`, `--color-feedback-error-strong`, `--shadow-focus-blue`) · barrel `ds/atoms/index.css` atualizado · catalog section com 4 sub-componentes (shapes/sizes/tones/slots) + nav anchor · doc tem migration map de 10 origins (icon-btn v1+v2, modal-close, cart-close, help-modal-close, sidebar-toggle, profile-copy, profile-cover-edit, dash-hero-brand-edit, notif-close) → DS replacements · markup migration pendente (Phase H.21+) |
 | 0.30.0 | H.2 | 2026-05-20 | **`.ds-table-grid` atom criado** (8x DUPES · 2º maior) em `ds/atoms/table-grid.{css,md}` · CSS-grid table (head + clickable rows) com colunas via custom prop `--ds-table-cols` (não usa @media · adaptável por consumer) · slot `.ds-table-grid-row-arrow` (chevron 26 circle · DUPE com client-row-arrow) · 4 cell utilities (mono SKU/strong primary/num tabular/meta secondary) · variants `.ds-table-grid-dense` + placeholder `.ds-table-grid-empty` · semantic tokens (--color-surface-card/sunken/page, --color-border-default, --color-border-focus, --color-text-muted/default, --color-action-primary-bg) · catalog 3 sub-componentes (default/with-arrow/dense+empty) · migration map cobre 9 origins (clients/orc/ped tbl-head/row + admin-novidade-row + admin-artigo-row + client-row-arrow slot) |
 | 0.31.0 | H.3 | 2026-05-20 | **`.ds-icon-box` atom criado** (audit dizia 7x · inspection revelou **14+ DUPES** · maior cluster do DS) em `ds/atoms/icon-box.{css,md}` · container **decorativo** (não-clicável · sibling de `.ds-icon-btn` interativo) · 6 sizes via custom prop `--ds-icon-box-size` (xs 28/sm 32/md 36 default/lg 40/xl 48/xxl 54) com `--ds-icon-box-inner` auto pra svg/i · 3 shapes (square 4r/rounded 10r/circle 50%) · 8 tones (default/brand/success/warning/danger/navy/glass/white) · catalog 3 sub-componentes (sizes/shapes/tones) · migration map cobre 14 origins (notif-icon, notif-drawer-icon, notif-drawer-empty-icon, ajuda-cat-icon, dash-kpi-icon, dash-hero-quick-ico, dash-hero-brand-logo, dash-activity-icon, dash-info-pill-icon, quick-act-icon, home-perk-icon, home-cat-icon, home-recent-head-icon, client-av) |
+| 0.32.0 | H.0 fixes | 2026-05-20 | **ARCHITECTURE PIVOT (fix de regressões visuais)** · após user reportar telas quebradas (loja/monte-kit/dashboard), análise programática vs commit ref `b4f18c80` (12/05) identificou 4 categorias de bug: **(1)** 4 feature CSS files com `@media` blocks abertos sem fechar (loja/admin/orc/ped · regras seguintes silenciosamente nested). **(2)** Cart drawer perdeu position:fixed + slide-in transform + overlay. **(3)** Hero responsive movido de 720px → 640px wrongly em C.25b. **(4)** ROOT CAUSE estrutural: `@layer features` wrapper nas extrações C.10-C.24 rebaixava feature rules vs unlayered `<style>` em index.html · cascade quebrada. **Fixes aplicados:** brace closure (commit `bcc77112`) · cart restore + hero breakpoint (`44e2f75c`) · **REMOVED `@layer features` wrapper de TODOS os 16 feature CSS files** (`284df72d` · features voltam unlayered = parity pre-extração) · svg.{class} qualifier + !important em 5 search-icon rules pra forçar size sobre lucide SVG attribute (`8e07d6da`). Documentação `ds/index.css` + `ds/README.md` cascade section atualizadas pra refletir arquitetura corrente (features unlayered · atoms/molecules/legacy em @layer). Esta é a **versão canônica** · Phase H atoms criados (H.1-H.3) seguem essa arquitetura. |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.
