@@ -724,14 +724,28 @@ type QuizProgram = {
 };
 
 const quizPrograms: QuizProgram[] = [
-  { id: "photoshop", name: "Photoshop", short: "Ps", category: "Imagem", bg: "#001E36", fg: "#31A8FF", weight: "light" },
-  { id: "lightroom", name: "Lightroom", short: "Lr", category: "Foto", bg: "#001E36", fg: "#31A8FF", weight: "light" },
-  { id: "illustrator", name: "Illustrator", short: "Ai", category: "Vetor", bg: "#330000", fg: "#FF9A00", weight: "light" },
+  { id: "photoshop", name: "Photoshop", short: "Ps", category: "Foto / Imagem", bg: "#001E36", fg: "#31A8FF", weight: "light" },
+  { id: "lightroom", name: "Lightroom", short: "Lr", category: "Foto / Tratamento", bg: "#001E36", fg: "#31A8FF", weight: "light" },
+  { id: "illustrator", name: "Illustrator", short: "Ai", category: "Vetor / Ilustração", bg: "#330000", fg: "#FF9A00", weight: "light" },
+  { id: "indesign", name: "InDesign", short: "Id", category: "Editorial", bg: "#49021F", fg: "#FF3366", weight: "light" },
   { id: "figma", name: "Figma", short: "Fi", category: "UI / Design", bg: "#1E1E1E", fg: "#F24E1E", weight: "light" },
-  { id: "premiere", name: "Premiere Pro", short: "Pr", category: "Vídeo", bg: "#00005B", fg: "#9999FF", weight: "heavy" },
-  { id: "aftereffects", name: "After Effects", short: "Ae", category: "Motion", bg: "#00005B", fg: "#D291FF", weight: "heavy" },
-  { id: "davinci", name: "DaVinci Resolve", short: "Dv", category: "Vídeo / Color", bg: "#232F3E", fg: "#FF8D11", weight: "heavy" },
+  { id: "canva", name: "Canva", short: "Cv", category: "Design fácil", bg: "#0D1E40", fg: "#00C4CC", weight: "light" },
+  { id: "affinity", name: "Affinity Suite", short: "Af", category: "Foto / Design", bg: "#0E1F3D", fg: "#7CC4F4", weight: "light" },
+  { id: "premiere", name: "Premiere Pro", short: "Pr", category: "Edição de Vídeo", bg: "#00005B", fg: "#9999FF", weight: "heavy" },
+  { id: "davinci", name: "DaVinci Resolve", short: "Dv", category: "Vídeo / Color Grading", bg: "#232F3E", fg: "#FF8D11", weight: "heavy" },
+  { id: "capcut", name: "CapCut / Pro", short: "Cc", category: "Vídeo Social", bg: "#1A1A1F", fg: "#5B8AF5", weight: "light" },
+  { id: "vegas", name: "Vegas Pro", short: "Vg", category: "Edição de Vídeo", bg: "#1B1B1B", fg: "#FFB400", weight: "heavy" },
+  { id: "aftereffects", name: "After Effects", short: "Ae", category: "Motion Graphics", bg: "#00005B", fg: "#D291FF", weight: "heavy" },
+  { id: "obs", name: "OBS Studio", short: "Ob", category: "Stream / Live", bg: "#1F1F2E", fg: "#9B4DCA", weight: "heavy" },
+  { id: "streamlabs", name: "Streamlabs", short: "Sl", category: "Stream / Live", bg: "#0E1A2B", fg: "#80F5D2", weight: "heavy" },
   { id: "blender", name: "Blender", short: "Bl", category: "3D / Render", bg: "#1A1A1A", fg: "#EA7600", weight: "heavy" },
+  { id: "cinema4d", name: "Cinema 4D", short: "C4", category: "3D / Motion", bg: "#0F1730", fg: "#1E88E5", weight: "heavy" },
+  { id: "zbrush", name: "ZBrush", short: "Zb", category: "3D / Escultura", bg: "#1F1F1F", fg: "#C5A572", weight: "heavy" },
+  { id: "unreal", name: "Unreal Engine", short: "Ue", category: "Game Dev / Render", bg: "#0E0E0E", fg: "#5B9FE0", weight: "heavy" },
+  { id: "unity", name: "Unity", short: "Un", category: "Game Dev", bg: "#1A1A1A", fg: "#E0E0E0", weight: "heavy" },
+  { id: "audition", name: "Audition", short: "Au", category: "Áudio / Pós", bg: "#00203A", fg: "#00C8B4", weight: "heavy" },
+  { id: "flstudio", name: "FL Studio", short: "Fl", category: "Música / DAW", bg: "#1A1A1A", fg: "#FF6B00", weight: "heavy" },
+  { id: "vscode", name: "VS Code", short: "Vs", category: "Dev / Código", bg: "#11243A", fg: "#3FA9F5", weight: "light" },
 ];
 
 type UseTypeCardData = {
@@ -4558,7 +4572,7 @@ function ConfiguracaoSelecionadaCard({
 
 export function MonteSeuPcPage() {
   const navigate = useNavigate();
-  const { addItem } = useCart();
+  const { addItem, setIsOpen: setCartOpen } = useCart();
   const previewRef = useRef<HTMLDivElement>(null);
   const feedbackTimerRef = useRef<number | null>(null);
 
@@ -4617,7 +4631,7 @@ export function MonteSeuPcPage() {
       const opt = cat?.options.find((o) => o.id === optId);
       if (!opt) return;
       addItem({
-        cartKey: `mspc-${catId}-${optId}`,
+        cartKey: `mspc-${preset.id}-${catId}-${optId}`,
         id: baseId++,
         name: opt.name,
         price: formatCurrency(opt.price),
@@ -4627,7 +4641,7 @@ export function MonteSeuPcPage() {
     });
     if (added > 0) {
       pushFeedback(`Setup ${preset.name} adicionado (${added} peças)`);
-      setTimeout(() => navigate("/carrinho"), 600);
+      setCartOpen(true);
     }
   };
 

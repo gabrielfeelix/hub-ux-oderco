@@ -29,7 +29,7 @@ export function RootLayout() {
                 {pathname !== "/checkout" && pathname !== "/carrinho" && pathname !== "/monte-seu-pc" && <AnnouncementBar />}
                 {pathname !== "/checkout" && pathname !== "/monte-seu-pc" && <Navbar />}
                 <div data-page-light-scope className="contents">
-                  {pathname !== "/checkout" && pathname !== "/monte-seu-pc" && <CartDrawer />}
+                  {pathname !== "/checkout" && <CartDrawer />}
                   <AuthModal />
                   <WelcomePopup />
                   <CookieConsent />
