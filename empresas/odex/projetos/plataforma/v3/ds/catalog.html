@@ -307,6 +307,7 @@
         <a href="#kpi">KPI card ⭐ H.6</a>
         <a href="#empty-state">Empty state ⭐ H.7</a>
         <a href="#toolbar">Toolbar ⭐ H.8</a>
+        <a href="#section-head">Section head ⭐ H.9</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -314,13 +315,13 @@
         <a href="#menu">DS-Menu</a>
 
         <div class="cat-nav-group">Phase H · A criar</div>
-        <a href="#phase-h">📋 Roadmap atoms</a>
+        <a href="#phase-h"><i data-lucide="clipboard-list" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> Roadmap atoms</a>
 
         <div class="cat-nav-group">Recursos</div>
         <a href="./README.md">README ↗</a>
         <a href="./README.md#component-docs">Component docs ↗</a>
-        <a href="./a11y.md">♿ A11y audit ↗</a>
-        <a href="./divergence-audit.md">🔬 Divergence audit ↗</a>
+        <a href="./a11y.md"><i data-lucide="accessibility" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> A11y audit <i data-lucide="external-link" style="width:11px;height:11px;display:inline-block;vertical-align:-1px;"></i></a>
+        <a href="./divergence-audit.md"><i data-lucide="search-code" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> Divergence audit <i data-lucide="external-link" style="width:11px;height:11px;display:inline-block;vertical-align:-1px;"></i></a>
         <a href="./tokens/tokens.json">tokens.json ↗</a>
       </nav>
     </aside>
@@ -333,7 +334,7 @@
       <!-- ============ Hero ============ -->
       <header class="cat-hero">
         <h1>Design System · Catálogo</h1>
-        <p>Referência visual de todos os tokens, atoms e molecules do DS. Source of truth · este catálogo usa o mesmo <code>ds/index.css</code> que a plataforma. Se quebrar aqui, quebrou lá. <br>📑 Cada atom/molecule tem doc em markdown · veja <a href="./README.md#component-docs" class="ds-link ds-link-navy">Component docs</a>.</p>
+        <p>Referência visual de todos os tokens, atoms e molecules do DS. Source of truth · este catálogo usa o mesmo <code>ds/index.css</code> que a plataforma. Se quebrar aqui, quebrou lá. <br><i data-lucide="file-text" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> Cada atom/molecule tem doc em markdown · veja <a href="./README.md#component-docs" class="ds-link ds-link-navy">Component docs</a>.</p>
         <div class="cat-hero-meta">
           <span><strong>Versão:</strong> 0.4.0</span>
           <span><strong>Phase:</strong> C.9 (input-group molecule)</span>
@@ -1023,12 +1024,12 @@
           <div class="cat-grid">
             <div class="cat-preview">
               <div class="cat-preview-row" style="align-items:center; gap:14px;">
-                <button class="ds-icon-btn" aria-label="Demo square"><span style="font-size:14px;">⚙</span></button>
-                <button class="ds-icon-btn ds-icon-btn-circle" aria-label="Demo circle"><span style="font-size:14px;">×</span></button>
+                <button class="ds-icon-btn" aria-label="Demo square"><i data-lucide="settings"></i></button>
+                <button class="ds-icon-btn ds-icon-btn-circle" aria-label="Demo circle"><i data-lucide="x"></i></button>
               </div>
               <div class="cat-note"><strong>Square</strong> default (radius 4px) · <strong>Circle</strong> pra close/profile (radius 50%).</div>
             </div>
-            <pre class="cat-code">&lt;button class="ds-icon-btn" aria-label="Configurações"&gt;⚙&lt;/button&gt;
+            <pre class="cat-code">&lt;button class="ds-icon-btn" aria-label="Configurações"&gt;&lt;i data-lucide="settings"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;button class="ds-icon-btn ds-icon-btn-circle" aria-label="Fechar"&gt;×&lt;/button&gt;</pre>
           </div>
         </div>
@@ -1059,13 +1060,13 @@
                 <button class="ds-icon-btn ds-icon-btn-soft ds-icon-btn-circle" aria-label="Soft">·</button>
                 <div style="background:linear-gradient(135deg,#0D1D52 0%,#005AFF 100%); padding:10px; border-radius:8px; display:inline-flex; gap:8px;">
                   <button class="ds-icon-btn ds-icon-btn-glass" aria-label="Glass">·</button>
-                  <button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-circle ds-icon-btn-sm" aria-label="Glass close">×</button>
+                  <button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-circle ds-icon-btn-sm" aria-label="Glass close"><i data-lucide="x"></i></button>
                 </div>
-                <button class="ds-icon-btn ds-icon-btn-danger" aria-label="Excluir">×</button>
+                <button class="ds-icon-btn ds-icon-btn-danger" aria-label="Excluir"><i data-lucide="x"></i></button>
               </div>
               <div class="cat-note"><strong>default</strong> white · <strong>ghost</strong> transparent · <strong>soft</strong> bg cinza claro · <strong>glass</strong> rgba sobre brand · <strong>danger</strong> red ghost.</div>
             </div>
-            <pre class="cat-code">&lt;button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" aria-label="Editar"&gt;✎&lt;/button&gt;
+            <pre class="cat-code">&lt;button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" aria-label="Editar"&gt;&lt;i data-lucide="pencil"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;button class="ds-icon-btn ds-icon-btn-soft ds-icon-btn-circle" aria-label="Fechar"&gt;×&lt;/button&gt;</pre>
           </div>
         </div>
@@ -1076,11 +1077,11 @@
             <div class="cat-preview">
               <div class="cat-preview-row" style="align-items:center; gap:14px;">
                 <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-md" aria-label="Notificações · novas">
-                  <span style="font-size:14px;">🔔</span>
+                  <i data-lucide="bell"></i>
                   <span class="ds-icon-btn-dot"></span>
                 </button>
                 <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-md" aria-label="Carrinho · 3 itens">
-                  <span style="font-size:14px;">🛒</span>
+                  <i data-lucide="shopping-cart"></i>
                   <span class="ds-icon-btn-badge">3</span>
                 </button>
               </div>
@@ -1374,12 +1375,12 @@
                 <div class="ds-table-grid-row ds-table-grid-row-clickable">
                   <span class="ds-table-grid-cell-strong">Distribuidora ACME</span>
                   <span class="ds-table-grid-cell-num">R$ 4.890</span>
-                  <span class="ds-table-grid-row-arrow"><span style="font-size:14px;">›</span></span>
+                  <span class="ds-table-grid-row-arrow"><i data-lucide="chevron-right"></i></span>
                 </div>
                 <div class="ds-table-grid-row ds-table-grid-row-clickable">
                   <span class="ds-table-grid-cell-strong">João Silva Engenharia</span>
                   <span class="ds-table-grid-cell-num">R$ 12.300</span>
-                  <span class="ds-table-grid-row-arrow"><span style="font-size:14px;">›</span></span>
+                  <span class="ds-table-grid-row-arrow"><i data-lucide="chevron-right"></i></span>
                 </div>
               </div>
             </div>
@@ -1435,12 +1436,12 @@
           <div class="cat-grid">
             <div class="cat-preview">
               <div class="cat-preview-row" style="align-items:center; gap:14px;">
-                <div class="ds-icon-box ds-icon-box-xs"><span style="font-size:12px;">★</span></div>
-                <div class="ds-icon-box ds-icon-box-sm"><span style="font-size:14px;">★</span></div>
-                <div class="ds-icon-box ds-icon-box-md"><span style="font-size:16px;">★</span></div>
-                <div class="ds-icon-box ds-icon-box-lg"><span style="font-size:18px;">★</span></div>
-                <div class="ds-icon-box ds-icon-box-xl"><span style="font-size:20px;">★</span></div>
-                <div class="ds-icon-box ds-icon-box-xxl"><span style="font-size:24px;">★</span></div>
+                <div class="ds-icon-box ds-icon-box-xs"><i data-lucide="star"></i></div>
+                <div class="ds-icon-box ds-icon-box-sm"><i data-lucide="star"></i></div>
+                <div class="ds-icon-box ds-icon-box-md"><i data-lucide="star"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg"><i data-lucide="star"></i></div>
+                <div class="ds-icon-box ds-icon-box-xl"><i data-lucide="star"></i></div>
+                <div class="ds-icon-box ds-icon-box-xxl"><i data-lucide="star"></i></div>
               </div>
               <div class="cat-note">xs 28 · sm 32 · <strong>md 36 (default)</strong> · lg 40 · xl 48 · xxl 54.</div>
             </div>
@@ -1455,9 +1456,9 @@
           <div class="cat-grid">
             <div class="cat-preview">
               <div class="cat-preview-row" style="align-items:center; gap:14px;">
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-square"><span style="font-size:16px;">▢</span></div>
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-rounded"><span style="font-size:16px;">▢</span></div>
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-circle"><span style="font-size:16px;">▢</span></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-square"><i data-lucide="square"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-rounded"><i data-lucide="square"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-circle"><i data-lucide="square"></i></div>
               </div>
               <div class="cat-note">square 4px (default) · rounded 10px · circle 50%.</div>
             </div>
@@ -1470,15 +1471,15 @@
           <div class="cat-grid">
             <div class="cat-preview">
               <div class="cat-preview-row" style="align-items:center; gap:14px; flex-wrap:wrap;">
-                <div class="ds-icon-box ds-icon-box-lg"><span style="font-size:16px;">·</span></div>
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-brand"><span style="font-size:16px;">·</span></div>
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-success"><span style="font-size:16px;">·</span></div>
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-warning"><span style="font-size:16px;">·</span></div>
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-danger"><span style="font-size:16px;">·</span></div>
-                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-navy"><span style="font-size:16px;">·</span></div>
+                <div class="ds-icon-box ds-icon-box-lg"><i data-lucide="circle"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-brand"><i data-lucide="circle"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-success"><i data-lucide="circle"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-warning"><i data-lucide="circle"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-danger"><i data-lucide="circle"></i></div>
+                <div class="ds-icon-box ds-icon-box-lg ds-icon-box-navy"><i data-lucide="circle"></i></div>
                 <div style="background:linear-gradient(135deg,#0D1D52 0%,#005AFF 100%); padding:10px; border-radius:8px; display:inline-flex; gap:10px;">
-                  <div class="ds-icon-box ds-icon-box-lg ds-icon-box-glass"><span style="font-size:16px;">·</span></div>
-                  <div class="ds-icon-box ds-icon-box-lg ds-icon-box-white"><span style="font-size:16px;">·</span></div>
+                  <div class="ds-icon-box ds-icon-box-lg ds-icon-box-glass"><i data-lucide="circle"></i></div>
+                  <div class="ds-icon-box ds-icon-box-lg ds-icon-box-white"><i data-lucide="circle"></i></div>
                 </div>
               </div>
               <div class="cat-note">default · brand (blue) · success · warning · danger · navy (white fg) · glass · white (over brand).</div>
@@ -1640,22 +1641,22 @@
                 <div class="ds-kpi">
                   <span class="ds-kpi-lbl">Vendas do mês</span>
                   <strong class="ds-kpi-val">R$ 142,5k</strong>
-                  <span class="ds-kpi-trend is-up">▲ 12,5%</span>
+                  <span class="ds-kpi-trend is-up"><i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 12,5%</span>
                 </div>
                 <div class="ds-kpi">
                   <span class="ds-kpi-lbl">Pedidos fechados</span>
                   <strong class="ds-kpi-val">34</strong>
-                  <span class="ds-kpi-trend is-up">▲ 13,3%</span>
+                  <span class="ds-kpi-trend is-up"><i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 13,3%</span>
                 </div>
                 <div class="ds-kpi">
                   <span class="ds-kpi-lbl">Orç. pendentes</span>
                   <strong class="ds-kpi-val">12</strong>
-                  <span class="ds-kpi-trend is-down">▼ 20%</span>
+                  <span class="ds-kpi-trend is-down"><i data-lucide="arrow-down" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 20%</span>
                 </div>
                 <div class="ds-kpi">
                   <span class="ds-kpi-lbl">Potência vendida</span>
                   <strong class="ds-kpi-val">280 <small>kWp</small></strong>
-                  <span class="ds-kpi-trend is-neutral">= 0%</span>
+                  <span class="ds-kpi-trend is-neutral"><i data-lucide="minus" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 0%</span>
                 </div>
               </div>
             </div>
@@ -1663,7 +1664,7 @@
   &lt;div class="ds-kpi"&gt;
     &lt;span class="ds-kpi-lbl"&gt;Vendas&lt;/span&gt;
     &lt;strong class="ds-kpi-val"&gt;R$ 142,5k&lt;/strong&gt;
-    &lt;span class="ds-kpi-trend is-up"&gt;▲ 12,5%&lt;/span&gt;
+    &lt;span class="ds-kpi-trend is-up"&gt;<i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 12,5%&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
           </div>
@@ -1701,10 +1702,10 @@
                 <span class="ds-kpi-lbl">Geração mensal</span>
                 <strong class="ds-kpi-val">128 <small>kWp</small></strong>
                 <p class="ds-kpi-sub">vs 116 kWp no mês anterior</p>
-                <span class="ds-kpi-trend is-up">▲ 10,3%</span>
+                <span class="ds-kpi-trend is-up"><i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 10,3%</span>
                 <div class="ds-kpi-icon-slot">
                   <div class="ds-icon-box ds-icon-box-xl ds-icon-box-rounded ds-icon-box-brand">
-                    <span style="font-size:22px;">⚡</span>
+                    <i data-lucide="zap"></i>
                   </div>
                 </div>
               </div>
@@ -1731,22 +1732,22 @@
                   <div class="ds-kpi ds-kpi-glass">
                     <span class="ds-kpi-lbl">Vendas</span>
                     <strong class="ds-kpi-val">R$ 142,5k</strong>
-                    <span class="ds-kpi-trend is-up">▲ 12,5%</span>
+                    <span class="ds-kpi-trend is-up"><i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 12,5%</span>
                   </div>
                   <div class="ds-kpi ds-kpi-glass">
                     <span class="ds-kpi-lbl">Pedidos</span>
                     <strong class="ds-kpi-val">34</strong>
-                    <span class="ds-kpi-trend is-up">▲ 13,3%</span>
+                    <span class="ds-kpi-trend is-up"><i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 13,3%</span>
                   </div>
                   <div class="ds-kpi ds-kpi-glass">
                     <span class="ds-kpi-lbl">Pendentes</span>
                     <strong class="ds-kpi-val">12</strong>
-                    <span class="ds-kpi-trend is-down">▼ 20%</span>
+                    <span class="ds-kpi-trend is-down"><i data-lucide="arrow-down" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 20%</span>
                   </div>
                   <div class="ds-kpi ds-kpi-glass">
                     <span class="ds-kpi-lbl">Potência</span>
                     <strong class="ds-kpi-val">280 kWp</strong>
-                    <span class="ds-kpi-trend is-up">▲ 8,2%</span>
+                    <span class="ds-kpi-trend is-up"><i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 8,2%</span>
                   </div>
                 </div>
               </div>
@@ -1755,7 +1756,7 @@
             <pre class="cat-code">&lt;div class="ds-kpi ds-kpi-glass"&gt;
   &lt;span class="ds-kpi-lbl"&gt;Vendas&lt;/span&gt;
   &lt;strong class="ds-kpi-val"&gt;R$ 142,5k&lt;/strong&gt;
-  &lt;span class="ds-kpi-trend is-up"&gt;▲ 12,5%&lt;/span&gt;
+  &lt;span class="ds-kpi-trend is-up"&gt;<i data-lucide="arrow-up" style="width:10px;height:10px;display:inline-block;vertical-align:-1px;"></i> 12,5%&lt;/span&gt;
 &lt;/div&gt;</pre>
           </div>
         </div>
@@ -1775,7 +1776,7 @@
               <div class="ds-empty-state ds-empty-state-md" style="background:var(--white); border:1px solid var(--line); border-radius:var(--r-card);">
                 <div class="ds-empty-state-icon">
                   <div class="ds-icon-box ds-icon-box-xxl ds-icon-box-circle">
-                    <span style="font-size:22px;">📭</span>
+                    <i data-lucide="inbox"></i>
                   </div>
                 </div>
                 <h3 class="ds-empty-state-title">Nenhum pedido aqui</h3>
@@ -1805,7 +1806,7 @@
           <div class="cat-grid">
             <div class="cat-preview">
               <div class="ds-empty-state ds-empty-state-inline" style="background:var(--white); border:1px solid var(--line); border-radius:var(--r-card);">
-                <div class="ds-icon-box ds-icon-box-md"><span>🔍</span></div>
+                <div class="ds-icon-box ds-icon-box-md"><i data-lucide="search"></i></div>
                 <div>
                   <p class="ds-empty-state-title">Nenhum resultado</p>
                   <p class="ds-empty-state-desc">Tente refinar a busca · use menos filtros.</p>
@@ -1837,7 +1838,7 @@
             <div class="cat-preview">
               <div class="ds-toolbar">
                 <div class="ds-toolbar-search">
-                  <span class="ds-toolbar-search-icon" aria-hidden="true">🔍</span>
+                  <i data-lucide="search" class="ds-toolbar-search-icon" aria-hidden="true"></i>
                   <input type="text" placeholder="Buscar por código, nome, documento..." />
                 </div>
                 <div class="ds-toolbar-actions">
@@ -1864,13 +1865,13 @@
           <div class="cat-grid">
             <div class="cat-preview">
               <div class="ds-toolbar ds-toolbar-sm" style="margin-bottom:8px;">
-                <div class="ds-toolbar-search"><span class="ds-toolbar-search-icon">🔍</span><input placeholder="SM 36h..." /></div>
+                <div class="ds-toolbar-search"><i data-lucide="search" class="ds-toolbar-search-icon" aria-hidden="true"></i><input placeholder="SM 36h..." /></div>
               </div>
               <div class="ds-toolbar ds-toolbar-md" style="margin-bottom:8px;">
-                <div class="ds-toolbar-search"><span class="ds-toolbar-search-icon">🔍</span><input placeholder="MD 42h (default)..." /></div>
+                <div class="ds-toolbar-search"><i data-lucide="search" class="ds-toolbar-search-icon" aria-hidden="true"></i><input placeholder="MD 42h (default)..." /></div>
               </div>
               <div class="ds-toolbar ds-toolbar-lg">
-                <div class="ds-toolbar-search"><span class="ds-toolbar-search-icon">🔍</span><input placeholder="LG 46h..." /></div>
+                <div class="ds-toolbar-search"><i data-lucide="search" class="ds-toolbar-search-icon" aria-hidden="true"></i><input placeholder="LG 46h..." /></div>
               </div>
               <div class="cat-note">sm 36h (drawers) · md 42h default · lg 46h (hero-level prominent).</div>
             </div>
@@ -1886,6 +1887,91 @@
             </div>
             <pre class="cat-code">&lt;div class="ds-toolbar ds-toolbar-flush"&gt;...&lt;/div&gt;
 &lt;div class="ds-toolbar ds-toolbar-sticky"&gt;...&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · SECTION HEAD (Phase H.9 · 7+ DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="section-head">Section head</h2>
+        <p class="cat-section-desc"><strong>Phase H.9 atom</strong> · consolida 7+ DUPES (home-section-head, section-header, admin/ajuda/ov/pv-section-head, catalog-header). Title + sub opcional + action à direita · spacing-only (sem bg/border) · drop-in pra qualquer container.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Default + action link</h3><span class="cat-component-class">.ds-section-head · -info · -title · -sub · -action</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <header class="ds-section-head">
+                <div class="ds-section-head-info">
+                  <h3 class="ds-section-head-title"><i data-lucide="trending-up"></i> Mais vendidos</h3>
+                  <p class="ds-section-head-sub">Os produtos mais procurados em 2026.</p>
+                </div>
+                <a href="#" class="ds-section-head-action">Ver catálogo <i data-lucide="arrow-right" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;"></i></a>
+              </header>
+            </div>
+            <pre class="cat-code">&lt;header class="ds-section-head"&gt;
+  &lt;div class="ds-section-head-info"&gt;
+    &lt;h3 class="ds-section-head-title"&gt;Mais vendidos&lt;/h3&gt;
+    &lt;p class="ds-section-head-sub"&gt;Os mais procurados.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a href="#" class="ds-section-head-action"&gt;Ver todos&lt;/a&gt;
+&lt;/header&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Sizes</h3><span class="cat-component-class">.ds-section-head-{sm,lg}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <header class="ds-section-head ds-section-head-sm">
+                <div class="ds-section-head-info">
+                  <h4 class="ds-section-head-title">SM · compact section</h4>
+                </div>
+              </header>
+              <header class="ds-section-head">
+                <div class="ds-section-head-info">
+                  <h3 class="ds-section-head-title">Default · page section</h3>
+                  <p class="ds-section-head-sub">Descrição secundária.</p>
+                </div>
+              </header>
+              <header class="ds-section-head ds-section-head-lg">
+                <div class="ds-section-head-info">
+                  <h2 class="ds-section-head-title">LG · page-level header</h2>
+                  <p class="ds-section-head-sub">Hero-like padding e tamanho.</p>
+                </div>
+              </header>
+            </div>
+            <pre class="cat-code">&lt;header class="ds-section-head ds-section-head-lg"&gt;...&lt;/header&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Style variants</h3><span class="cat-component-class">.ds-section-head-{eyebrow,bordered,baseline}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <header class="ds-section-head ds-section-head-eyebrow" style="margin-bottom:14px;">
+                <div class="ds-section-head-info">
+                  <h4 class="ds-section-head-title">EYEBROW · UPPERCASE LABEL</h4>
+                </div>
+                <button class="ds-btn ds-btn-ghost ds-btn-sm">+ Adicionar</button>
+              </header>
+              <header class="ds-section-head ds-section-head-bordered" style="margin-bottom:14px;">
+                <div class="ds-section-head-info">
+                  <h3 class="ds-section-head-title">Bordered · com line-bottom</h3>
+                </div>
+                <strong>R$ 48.900</strong>
+              </header>
+              <header class="ds-section-head ds-section-head-baseline">
+                <div class="ds-section-head-info">
+                  <h3 class="ds-section-head-title">Baseline align</h3>
+                  <p class="ds-section-head-sub">Útil quando action tem texto grande.</p>
+                </div>
+                <strong style="font-size:24px;">R$ 1,28M</strong>
+              </header>
+            </div>
+            <pre class="cat-code">&lt;header class="ds-section-head ds-section-head-eyebrow"&gt;...&lt;/header&gt;
+&lt;header class="ds-section-head ds-section-head-bordered"&gt;...&lt;/header&gt;</pre>
           </div>
         </div>
       </section>
@@ -2024,7 +2110,7 @@
     &lt;div class="ds-menu-section"&gt;Status&lt;/div&gt;
     &lt;button class="ds-menu-item is-selected"&gt;
       ...&lt;span&gt;Aprovado&lt;/span&gt;
-      &lt;span class="ds-menu-check"&gt;✓&lt;/span&gt;
+      &lt;span class="ds-menu-check"&gt;&lt;i data-lucide="check"&gt;&lt;/i&gt;&lt;/span&gt;
     &lt;/button&gt;
     ...
     &lt;div class="ds-menu-sep"&gt;&lt;/div&gt;

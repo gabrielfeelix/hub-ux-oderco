@@ -1,0 +1,109 @@
+/* ==========================================================================
+   DS · SECTION HEAD
+   Header de seção · título + descrição opcional + action link/button à direita.
+   Spacing-only · NÃO tem bg/border (pra ser drop-in dentro de qualquer card).
+   Phase H.9 · consolida 7+ DUPES (home-section-head, dash section-header,
+   admin-section-head, ajuda-section-head, ov-section-head, pv-section-head,
+   catalog-header).
+   ========================================================================== */
+
+.ds-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* Esquerda · title + sub stacked */
+.ds-section-head-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.ds-section-head-title {
+  margin: 0;
+  font: 700 18px/1.2 var(--font);
+  color: var(--navy);
+  letter-spacing: -.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.ds-section-head-title i,
+.ds-section-head-title svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.ds-section-head-sub {
+  margin: 3px 0 0;
+  font: 400 13px/1.4 var(--font);
+  color: var(--color-text-muted);
+}
+
+/* Direita · ação link ou button */
+.ds-section-head-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: 600 13px/1 var(--font);
+  color: var(--color-action-primary-bg);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--motion-default);
+}
+.ds-section-head-action:hover {
+  color: var(--blue-hover);
+}
+.ds-section-head-action i,
+.ds-section-head-action svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* === Sizes ======================================================= */
+.ds-section-head-sm .ds-section-head-title {
+  font-size: 14px;
+}
+.ds-section-head-sm .ds-section-head-sub {
+  font-size: 12px;
+}
+.ds-section-head-sm {
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.ds-section-head-lg .ds-section-head-title {
+  font-size: 22px;
+}
+.ds-section-head-lg .ds-section-head-sub {
+  font-size: 14px;
+}
+.ds-section-head-lg {
+  margin-bottom: 24px;
+}
+
+/* === Variants ==================================================== */
+
+/* Eyebrow · title uppercase tiny (orcamentos pattern) */
+.ds-section-head-eyebrow .ds-section-head-title {
+  font: 700 11px/1 var(--font);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-text-muted);
+}
+
+/* Bordered · com line-bottom (ov-section-head pattern) */
+.ds-section-head-bordered {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-default);
+  align-items: center;
+}
+
+/* Baseline · align baseline (pv pattern) */
+.ds-section-head-baseline {
+  align-items: baseline;
+}

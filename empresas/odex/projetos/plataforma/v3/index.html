@@ -1042,16 +1042,16 @@
         <div class="de-msg de-msg-bot">
           <span class="de-msg-avatar"><span class="de-eye de-eye-l"></span><span class="de-eye de-eye-r"></span><span class="de-mouth"></span></span>
           <div class="de-msg-bubble">
-            <p>Oi! Sou a <strong>Dé</strong>, a assistente de IA da Odex. ✨</p>
+            <p>Oi! Sou a <strong>Dé</strong>, a assistente de IA da Odex.</p>
             <p>Posso te ajudar a montar orçamentos, calcular paybacks, encontrar produtos, entender prêmios… No que posso te ajudar agora?</p>
           </div>
         </div>
         <div class="de-suggestions" id="deSuggestions">
-          <button class="de-suggestion" onclick="deAskQuestion('Mostra os melhores painéis')">🔆 Mostra os melhores painéis</button>
+          <button class="de-suggestion" onclick="deAskQuestion('Mostra os melhores painéis')"><i data-lucide="sun" style="width:14px;height:14px;"></i> Mostra os melhores painéis</button>
           <button class="de-suggestion" onclick="deAskQuestion('Preciso de um inversor 5kW')">⚡ Preciso de um inversor 5 kW</button>
-          <button class="de-suggestion" onclick="deAskQuestion('Monta um kit 5 kWp pra mim')">🧰 Monta um kit 5 kWp pra mim</button>
-          <button class="de-suggestion" onclick="deAskQuestion('Quero ver BESS para indústria')">🔋 Quero ver BESS para indústria</button>
-          <button class="de-suggestion" onclick="deAskQuestion('Como criar meu primeiro orçamento?')">📝 Como criar meu primeiro orçamento?</button>
+          <button class="de-suggestion" onclick="deAskQuestion('Monta um kit 5 kWp pra mim')"><i data-lucide="wrench" style="width:14px;height:14px;"></i> Monta um kit 5 kWp pra mim</button>
+          <button class="de-suggestion" onclick="deAskQuestion('Quero ver BESS para indústria')"><i data-lucide="battery-charging" style="width:14px;height:14px;"></i> Quero ver BESS para indústria</button>
+          <button class="de-suggestion" onclick="deAskQuestion('Como criar meu primeiro orçamento?')"><i data-lucide="file-text" style="width:14px;height:14px;"></i> Como criar meu primeiro orçamento?</button>
         </div>
       </div>
       <div class="de-cart-footer" id="deCartFooter">
@@ -5216,7 +5216,7 @@
           foot.innerHTML=`<button class="nc-cancel" onclick="closeNovoCliente()">Cancelar</button><button class="nc-next" onclick="ncNextStep()"><span>Próximo</span> <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>`;
         } else {
           d1.className="nc-step-dot done"; l1.className="nc-step-lbl";
-          d1.innerHTML="✓";
+          d1.innerHTML='<i data-lucide="check" style="width:12px;height:12px;"></i>';lucide.createIcons({nodes:[d1]});
           d2.className="nc-step-dot s-active"; l2.className="nc-step-lbl s-active";
           sep.className="nc-step-sep done";
           const foot=$("ncFoot");
@@ -5478,7 +5478,7 @@
                 <button class="de-quick-chip" onclick="deAskQuestion('Mostra ${nextCat.toLowerCase()} compatíveis')">Ver ${nextCat.toLowerCase()} →</button>
                 <button class="de-quick-chip" onclick="closeDeChat();openCart();">Ver carrinho</button>
               </div>` : '';
-          return `<p>Separei <strong>${recs.length} ${intent.cat.toLowerCase()}</strong> em destaque pra você. Clique em ➕ pra adicionar ao carrinho:</p>
+          return `<p>Separei <strong>${recs.length} ${intent.cat.toLowerCase()}</strong> em destaque pra você. Clique em <strong>+</strong> pra adicionar ao carrinho:</p>
             <div class="de-product-cards">${recs.map(_deProductCard).join('')}</div>
             ${nextHint}`;
         }
@@ -5843,9 +5843,9 @@
       ];
 
       const _novasReactionMap = [
-        { key:'clap', emoji:'👏', label:'aplaudir' },
-        { key:'love', emoji:'❤️', label:'amei' },
-        { key:'cry',  emoji:'😢', label:'que pena' }
+        { key:'clap', icon:'thumbs-up',  label:'aplaudir' },
+        { key:'love', icon:'heart',      label:'amei' },
+        { key:'cry',  icon:'frown',      label:'que pena' }
       ];
 
       function _novaHeroHTML(n) {
@@ -5866,7 +5866,7 @@
         const reactsHTML = _novasReactionMap.map(r => {
           const count = n.reactions[r.key] || 0;
           const active = (n.userReactions||[]).includes(r.key);
-          return `<button class="novas-react${active?' on':''}" onclick="novaReact(${i},'${r.key}')" aria-label="${r.label}"><span class="novas-react-emoji">${r.emoji}</span><span class="novas-react-count">${count}</span></button>`;
+          return `<button class="novas-react${active?' on':''}" onclick="novaReact(${i},'${r.key}')" aria-label="${r.label}"><span class="novas-react-emoji"><i data-lucide="${r.icon}" style="width:14px;height:14px;"></i></span><span class="novas-react-count">${count}</span></button>`;
         }).join('');
         return `
           <article class="novas-item${n.isRead?' is-read':''}">
@@ -7627,7 +7627,7 @@ Fone: (44) 2101-1400`;
                     <p class="admin-novidade-meta">${n.time}${n.isRead === false ? ' · <span style="color:var(--blue);font-weight:700;">não lida</span>' : ''}</p>
                   </div>
                   <span class="admin-novidade-stats" title="Reações">
-                    👏 ${n.reactions?.clap || 0} · ❤ ${n.reactions?.love || 0} · 😢 ${n.reactions?.cry || 0}
+                    <i data-lucide="thumbs-up" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;"></i> ${n.reactions?.clap || 0} · <i data-lucide="heart" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;"></i> ${n.reactions?.love || 0} · <i data-lucide="frown" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;"></i> ${n.reactions?.cry || 0}
                   </span>
                   <button class="row-action row-action-feedback" title="Ver feedbacks (${(n.feedbacks||[]).length})" onclick="openNovidadeFeedbacks(${i})">
                     <i data-lucide="message-square-text" style="width:14px;height:14px;"></i>
