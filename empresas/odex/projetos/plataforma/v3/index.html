@@ -3879,6 +3879,9 @@
     /* Field DS-fiel */
     .auth-field { margin-bottom:18px; }
     .auth-field-full { grid-column:1/-1; }
+    /* Odex-select dentro de formulário auth: matchar visual dos inputs (44px / 15px) */
+    .auth-field > .odex-select-trigger,
+    .auth-field .odex-select-trigger { height:44px; font:400 15px/1 var(--font); padding:0 38px 0 14px; }
     .auth-input-wrap {
       position:relative; display:flex; align-items:center;
       background:var(--white); border:1px solid var(--line);
@@ -13343,16 +13346,13 @@ Fone: (44) 2101-1400`;
               </div>
               <div class="auth-field">
                 <label class="ds-field-label">Como conheceu a Odex? <span class="req">*</span></label>
-                <div class="auth-input-wrap">
-                  <select>
-                    <option value="" disabled selected>Selecione</option>
-                    <option>Busca no Google</option>
-                    <option>Redes sociais</option>
-                    <option>Indicação</option>
-                    <option>Outros</option>
-                  </select>
-                  <i data-lucide="chevron-down" class="auth-input-icon-right" style="width:16px;height:16px;"></i>
-                </div>
+                <select class="ds-replace">
+                  <option value="" disabled selected>Selecione</option>
+                  <option>Busca no Google</option>
+                  <option>Redes sociais</option>
+                  <option>Indicação</option>
+                  <option>Outros</option>
+                </select>
               </div>
               <div class="auth-field auth-field-full">
                 <label class="ds-field-label">E-mail <span class="req">*</span></label>
@@ -13368,14 +13368,11 @@ Fone: (44) 2101-1400`;
               </div>
               <div class="auth-field">
                 <label class="ds-field-label">Vendedor <span class="req">*</span></label>
-                <div class="auth-input-wrap">
-                  <select>
-                    <option selected>Sem vendedor</option>
-                    <option>João Silva</option>
-                    <option>Maria Souza</option>
-                  </select>
-                  <i data-lucide="chevron-down" class="auth-input-icon-right" style="width:16px;height:16px;"></i>
-                </div>
+                <select class="ds-replace">
+                  <option selected>Sem vendedor</option>
+                  <option>João Silva</option>
+                  <option>Maria Souza</option>
+                </select>
               </div>
             </div>
             <label class="auth-check">
@@ -13455,6 +13452,7 @@ Fone: (44) 2101-1400`;
           </main>
         `;
         lucide.createIcons();
+        if (typeof applyOdexSelects === 'function') applyOdexSelects($("view-cadastro"));
       }
       window.cadastroStep = function(step) {
         window._cadastroStep = step;
