@@ -27,7 +27,7 @@ Dropdown **contextual** em toolbars · filtros multi-grupo, ordenação, ações
     └── .ds-menu-sep            ← divider 1px
 ```
 
-Abrir: adicione `.open` no container `.ds-menu` (toggle via JS).
+Abrir: opção (a) chamar `applyDsMenus()` após inserir o markup · trigger click toggle vira automático + keyboard. Opção (b) toggle manual via JS (legacy).
 
 ## States
 
@@ -55,8 +55,10 @@ Abrir: adicione `.open` no container `.ds-menu` (toggle via JS).
 - Items devem ter `role="menuitem"`
 - Items `.is-selected` adicionam `aria-current="true"`
 - ✅ Focus visible via `:focus-visible` nos items
-- **Falta:** keyboard nav (arrow keys, Enter, Esc, Tab close) · TODO C.8.1
-- **Falta:** Focus trap quando aberto · TODO C.8.1 · ver [a11y.md](../a11y.md)
+- ✅ Keyboard nav (WAI-ARIA Menu pattern) via `applyDsMenus()`:
+  - **Trigger:** Enter/Space/↓ abre + foca primeiro · ↑ abre + foca último
+  - **Menu:** ↑/↓ navega · Home/End salta · Enter/Space ativa · Esc fecha · Tab fecha+segue
+- ✅ ARIA aplicado automaticamente (`aria-haspopup`, `aria-expanded`, `aria-controls`, `role="menu"/"menuitem"`, `tabindex=-1`)
 
 ## Examples
 

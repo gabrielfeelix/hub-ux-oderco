@@ -19,6 +19,10 @@
 
     <!-- Feature modules (compõem DS pra contextos específicos) -->
     <link rel="stylesheet" href="features/auth/auth.css" />
+
+    <!-- DS molecules · JS helpers (keyboard nav + ARIA · Phase C.8.1) -->
+    <script src="ds/molecules/select.js" defer></script>
+    <script src="ds/molecules/menu.js" defer></script>
     <style>
       /* base/reset extraído pra ds/base/reset.css (carregado via ds/index.css) */
 
@@ -8827,68 +8831,10 @@
       };
 
       /* ====== Custom Select (.odex-select) ======
-         Constrói automaticamente a partir de <select> nativo.
-         Uso: <select class="ds-replace"> ... </select>
-         Após renderização, chamar applyOdexSelects(scope?) pra substituir os selects.
+         Implementação extraída pra ds/molecules/select.js (Phase C.8.1).
+         Linkado via <script src="ds/molecules/select.js"> no <head>.
+         Função global window.applyOdexSelects(scope?) continua disponível.
       */
-      function applyOdexSelects(scope) {
-        const root = scope || document;
-        root.querySelectorAll('select.ds-replace:not([data-odex-applied])').forEach(sel => {
-          sel.setAttribute('data-odex-applied', '1');
-          const opts = [...sel.options];
-          const selected = sel.selectedIndex >= 0 ? sel.options[sel.selectedIndex] : opts[0];
-          const wrap = document.createElement('div');
-          wrap.className = 'odex-select';
-          const triggerLabel = selected?.textContent || '';
-          const isPlaceholder = selected?.value === '' && !sel.dataset.allowEmpty;
-          wrap.innerHTML = `
-            <button type="button" class="odex-select-trigger${isPlaceholder?' is-placeholder':''}" aria-haspopup="listbox" aria-expanded="false">
-              <span class="odex-select-label">${triggerLabel}</span>
-            </button>
-            <div class="odex-select-menu" role="listbox">
-              ${opts.map((o, i) => `
-                <button type="button" class="odex-select-option${i === sel.selectedIndex ? ' is-active' : ''}" data-value="${o.value}" role="option">
-                  <span>${o.textContent}</span>
-                  <span class="odex-select-option-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                </button>
-              `).join('')}
-            </div>
-          `;
-          sel.style.display = 'none';
-          sel.parentNode.insertBefore(wrap, sel.nextSibling);
-          const trigger = wrap.querySelector('.odex-select-trigger');
-          const labelEl = wrap.querySelector('.odex-select-label');
-          trigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            document.querySelectorAll('.odex-select.is-open').forEach(o => { if (o !== wrap) o.classList.remove('is-open'); });
-            wrap.classList.toggle('is-open');
-            trigger.setAttribute('aria-expanded', wrap.classList.contains('is-open') ? 'true' : 'false');
-          });
-          wrap.querySelectorAll('.odex-select-option').forEach(opt => {
-            opt.addEventListener('click', () => {
-              const val = opt.dataset.value;
-              const txt = opt.querySelector('span').textContent;
-              sel.value = val;
-              labelEl.textContent = txt;
-              trigger.classList.toggle('is-placeholder', val === '' && !sel.dataset.allowEmpty);
-              wrap.querySelectorAll('.odex-select-option').forEach(o => o.classList.toggle('is-active', o === opt));
-              wrap.classList.remove('is-open');
-              trigger.setAttribute('aria-expanded', 'false');
-              sel.dispatchEvent(new Event('change', { bubbles: true }));
-            });
-          });
-        });
-      }
-      // Fecha dropdowns abertos quando clicar fora
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.odex-select')) {
-          document.querySelectorAll('.odex-select.is-open').forEach(o => {
-            o.classList.remove('is-open');
-            o.querySelector('.odex-select-trigger')?.setAttribute('aria-expanded', 'false');
-          });
-        }
-      });
-      window.applyOdexSelects = applyOdexSelects;
 
       /* ====== ORÇAMENTO DETAIL ====== */
       function renderOrcamentoVer(id) {

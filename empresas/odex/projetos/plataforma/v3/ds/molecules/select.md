@@ -69,8 +69,11 @@ Pattern progressivo:
 - Menu é `<div role="listbox">`
 - Options são `<button role="option">`
 - ✅ Focus visible via `:focus-visible` no trigger e nas options
-- **Falta:** `aria-selected` no option ativo · TODO C.8.1
-- **Falta:** keyboard nav (arrow keys, Enter, Esc) · TODO C.8.1 · ver [a11y.md](../a11y.md)
+- ✅ `aria-selected` dinâmico no option ativo
+- ✅ `aria-activedescendant` no trigger aponta pra option em foco
+- ✅ Keyboard nav completo (WAI-ARIA Listbox pattern):
+  - **Trigger:** Enter/Space/↓/↑ abre · Home/End salta · letras = type-ahead
+  - **Menu:** ↑/↓ navega · Home/End salta · Enter/Space seleciona · Esc fecha · Tab fecha+segue · type-ahead
 
 ## Examples
 
@@ -90,7 +93,15 @@ Pattern progressivo:
 
 ## Helper JS
 
-`applyOdexSelects(scope?)` é definido inline em `index.html` (e replicado em `ds/catalog.html` pra demo standalone). Marca `data-odex-applied="1"` no select original pra evitar dupla aplicação.
+`applyOdexSelects(scope?)` mora em `ds/molecules/select.js` (Phase C.8.1). Inclui:
+- Construção do markup ARIA-completo (`role="listbox"`, `role="option"`, ids únicos)
+- Sync com `<select>` original (dispatcheia `change`)
+- Keyboard nav completo (↑↓/Home/End/Enter/Space/Esc/Tab/type-ahead)
+- ARIA dinâmico (`aria-expanded`, `aria-activedescendant`, `aria-selected`)
+- Click-outside fecha · Esc global fallback
+- Idempotente via `data-odex-applied="1"`
+
+Linkado nos consumidores via `<script src="ds/molecules/select.js" defer>`. Função global `window.applyOdexSelects` disponível pra chamadas pós-render.
 
 ## Related
 

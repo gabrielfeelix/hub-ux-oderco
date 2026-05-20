@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.10.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.11.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -31,7 +31,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅. Próximo: keyboard nav (C.8.1), demais features | 🟡 Em progresso (C.1-C.8 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅ · A11y keyboard ✅. Próximo: demais features (mk, ov, ped, ck) | 🟡 Em progresso (C.1-C.8.1 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -455,7 +455,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.6 · CSS @layer architecture** — cascade determinístico · 7 layers (reset/tokens/atoms/molecules/features/legacy/utilities) · DS + auth wrapped
 - [x] **C.7 · Component README** — `.md` doc irmão pra cada atom/molecule + base/reset + features/auth/README.md
 - [x] **C.8 · A11y baseline** — `:focus-visible` em todos atoms+molecules+auth · `prefers-reduced-motion` · WCAG AA contrast (fix de 3 violations: danger-fg, success-fg, andamento-fg) · audit doc em [a11y.md](./a11y.md)
-- [ ] **C.8.1 · A11y keyboard nav** — arrow/Enter/Esc/Tab em `.odex-select` + `.ds-menu` · focus trap + ARIA roles dinâmicos
+- [x] **C.8.1 · A11y keyboard nav** — `ds/molecules/select.js` (Listbox pattern: ↑↓/Home/End/Enter/Space/Esc/Tab/type-ahead + aria-selected + aria-activedescendant) · `ds/molecules/menu.js` (Menu pattern: ↑↓/Home/End/Enter/Space/Esc/Tab + aria roles auto)
 - [ ] **C.9 · Input-group molecule** — promove `.auth-input-wrap` → `.ds-input-group`
 - [ ] **C.10+ · Demais features** — mk, ov, ped, ck, clientes, calculadora, ajuda, dashboard, topbar/sidebar
 
@@ -489,5 +489,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.8.0 | C.6 | 2026-05-20 | CSS `@layer` architecture · 7 camadas (reset/tokens/atoms/molecules/features/legacy/utilities) · cascade determinístico |
 | 0.9.0 | C.7 | 2026-05-20 | Component docs · `.md` irmão pra cada atom/molecule (12 arquivos) + features/auth/README.md |
 | 0.10.0 | C.8 | 2026-05-20 | A11y baseline · `:focus-visible` em todos elementos · `prefers-reduced-motion` · WCAG AA contrast audit + 3 fixes (danger-fg/success-fg/andamento-fg) · `ds/a11y.md` |
+| 0.11.0 | C.8.1 | 2026-05-20 | A11y keyboard nav · `ds/molecules/select.js` (Listbox WAI-ARIA: ↑↓/Home/End/Enter/Space/Esc/Tab/type-ahead) · `ds/molecules/menu.js` (Menu WAI-ARIA) · inline JS extraído de index.html + catalog.html |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

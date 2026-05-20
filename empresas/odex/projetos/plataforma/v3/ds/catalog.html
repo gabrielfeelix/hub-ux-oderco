@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Odex DS · Catálogo · v0.10.0</title>
+  <title>Odex DS · Catálogo · v0.11.0</title>
 
   <!-- Fonts + icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -263,7 +263,7 @@
     <aside class="cat-sidebar">
       <div class="cat-brand">
         <strong>Odex DS</strong>
-        <span>Catálogo · v0.10.0</span>
+        <span>Catálogo · v0.11.0</span>
       </div>
       <nav class="cat-nav">
         <div class="cat-nav-group">Foundations · primitives</div>
@@ -323,7 +323,7 @@
         <p>Referência visual de todos os tokens, atoms e molecules do DS. Source of truth · este catálogo usa o mesmo <code>ds/index.css</code> que a plataforma. Se quebrar aqui, quebrou lá. <br>📑 Cada atom/molecule tem doc em markdown · veja <a href="./README.md#component-docs" class="ds-link ds-link-navy">Component docs</a>.</p>
         <div class="cat-hero-meta">
           <span><strong>Versão:</strong> 0.4.0</span>
-          <span><strong>Phase:</strong> C.8 (a11y baseline)</span>
+          <span><strong>Phase:</strong> C.8.1 (keyboard nav)</span>
           <span><strong>Updated:</strong> 2026-05-20</span>
         </div>
       </header>
@@ -1309,7 +1309,7 @@
       <!-- Footer -->
       <!-- ============================================================ -->
       <footer style="margin-top:96px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:400 12px/1.4 var(--font);color:var(--muted);">
-        <span>Odex DS · v0.10.0 · 2026-05-20</span>
+        <span>Odex DS · v0.11.0 · 2026-05-20</span>
         <span><a class="ds-link" href="./README.md">README</a> · <a class="ds-link" href="./tokens/tokens.json">tokens.json</a> · <a class="ds-link" href="../index.html">app</a></span>
       </footer>
 
@@ -1317,67 +1317,13 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- JS · applyOdexSelects + lucide.createIcons -->
+  <!-- DS molecules · keyboard + ARIA (Phase C.8.1) -->
   <!-- ============================================================ -->
+  <script src="./molecules/select.js"></script>
+  <script src="./molecules/menu.js"></script>
   <script>
-    // Mini implementation pra demo · em produção vem do index.html
-    function applyOdexSelects(scope) {
-      const root = scope || document;
-      root.querySelectorAll('select.ds-replace:not([data-odex-applied])').forEach(sel => {
-        sel.setAttribute('data-odex-applied', '1');
-        const opts = [...sel.options];
-        const selected = sel.selectedIndex >= 0 ? sel.options[sel.selectedIndex] : opts[0];
-        const wrap = document.createElement('div');
-        wrap.className = 'odex-select';
-        const triggerLabel = selected?.textContent || '';
-        const isPlaceholder = selected?.value === '' && !sel.dataset.allowEmpty;
-        wrap.innerHTML = `
-          <button type="button" class="odex-select-trigger${isPlaceholder?' is-placeholder':''}" aria-haspopup="listbox" aria-expanded="false">
-            <span class="odex-select-label">${triggerLabel}</span>
-          </button>
-          <div class="odex-select-menu" role="listbox">
-            ${opts.map((o, i) => `
-              <button type="button" class="odex-select-option${i === sel.selectedIndex ? ' is-active' : ''}" data-value="${o.value}" role="option">
-                <span>${o.textContent}</span>
-                <span class="odex-select-option-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-              </button>
-            `).join('')}
-          </div>
-        `;
-        sel.style.display = 'none';
-        sel.parentNode.insertBefore(wrap, sel.nextSibling);
-        const trigger = wrap.querySelector('.odex-select-trigger');
-        const labelEl = wrap.querySelector('.odex-select-label');
-        trigger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          document.querySelectorAll('.odex-select.is-open').forEach(o => { if (o !== wrap) o.classList.remove('is-open'); });
-          wrap.classList.toggle('is-open');
-          trigger.setAttribute('aria-expanded', wrap.classList.contains('is-open') ? 'true' : 'false');
-        });
-        wrap.querySelectorAll('.odex-select-option').forEach(opt => {
-          opt.addEventListener('click', () => {
-            const val = opt.dataset.value;
-            const txt = opt.querySelector('span').textContent;
-            sel.value = val;
-            labelEl.textContent = txt;
-            trigger.classList.toggle('is-placeholder', val === '' && !sel.dataset.allowEmpty);
-            wrap.querySelectorAll('.odex-select-option').forEach(o => o.classList.toggle('is-active', o === opt));
-            wrap.classList.remove('is-open');
-            trigger.setAttribute('aria-expanded', 'false');
-            sel.dispatchEvent(new Event('change', { bubbles: true }));
-          });
-        });
-      });
-    }
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.odex-select')) {
-        document.querySelectorAll('.odex-select.is-open').forEach(o => {
-          o.classList.remove('is-open');
-          o.querySelector('.odex-select-trigger')?.setAttribute('aria-expanded', 'false');
-        });
-      }
-    });
     applyOdexSelects();
+    if (typeof applyDsMenus === 'function') applyDsMenus();
     lucide.createIcons();
   </script>
 </body>
