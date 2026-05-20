@@ -1,0 +1,28 @@
+/* ==========================================================================
+   DS · FIELDS (label + input/select container)
+   ========================================================================== */
+
+.ds-field-label {
+  display: block;
+  font: 400 14px/1 var(--font);
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.ds-field-label .req { color: var(--red); margin-left: 2px; }
+
+.ds-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ds-field-inline {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.ds-field-inline > .ds-field-label {
+  margin: 0;
+  flex: 0 0 auto;
+  min-width: 96px;
+}

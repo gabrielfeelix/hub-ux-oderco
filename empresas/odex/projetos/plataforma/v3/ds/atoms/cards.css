@@ -1,0 +1,13 @@
+/* ==========================================================================
+   DS · CARDS
+   ========================================================================== */
+
+.ds-card {
+  background: var(--white);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.ds-card-lg     { border-radius: var(--r-card-lg); }
+.ds-card-shadow { box-shadow: var(--shadow-card); }

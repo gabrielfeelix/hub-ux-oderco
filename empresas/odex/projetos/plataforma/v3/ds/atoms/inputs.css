@@ -1,0 +1,53 @@
+/* ==========================================================================
+   DS · INPUTS
+   Default · height 42 / radius 4 / border #E6E6E6 / focus #005AFF / font 16
+   Figma source: 1850:9115
+   ========================================================================== */
+
+.ds-input,
+.ds-select,
+.ds-textarea {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-form);
+  background: var(--white);
+  color: var(--ink);
+  font: 400 16px/1 var(--font);
+  font-family: var(--font);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.ds-input:focus,
+.ds-select:focus,
+.ds-textarea:focus {
+  border-color: var(--blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,90,255,.10);
+}
+
+.ds-input::placeholder,
+.ds-textarea::placeholder { color: var(--placeholder); font-weight: 400; }
+
+.ds-input:disabled { background: var(--soft); color: var(--muted); }
+
+.ds-input-sm { height: 38px; font-size: 14px; }
+
+.ds-textarea {
+  height: auto;
+  min-height: 96px;
+  padding: 12px 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Select com chevron SVG inline (4px radius, alinhado ao DS) */
+.ds-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' fill='none'><path d='M6 8l4 4 4-4' stroke='%236E6E6E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}

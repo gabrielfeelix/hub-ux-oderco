@@ -1,0 +1,14 @@
+/* ==========================================================================
+   DS · ATOMS · barrel
+   Importa todas atomic classes (.ds-*).
+   Ordem importa: typography → controls → containers.
+   ========================================================================== */
+
+@import url('./typography.css');
+@import url('./buttons.css');
+@import url('./links.css');
+@import url('./inputs.css');
+@import url('./fields.css');
+@import url('./checkbox.css');
+@import url('./pills.css');
+@import url('./cards.css');

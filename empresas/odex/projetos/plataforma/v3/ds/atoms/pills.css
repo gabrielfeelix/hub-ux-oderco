@@ -1,0 +1,22 @@
+/* ==========================================================================
+   DS · STATUS PILLS / TAGS
+   4px radius · 22h · font 12 · semantic oficial
+   ========================================================================== */
+
+.ds-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: var(--r-tag);
+  font: 400 12px/1 var(--font);
+  white-space: nowrap;
+}
+
+/* Status semantics */
+.ds-pill-finalizado { background: var(--green-softer); color: #1c7a36; }
+.ds-pill-andamento  { background: #dde8ff;             color: var(--blue); }
+.ds-pill-pendente   { background: var(--yellow-softer); color: #8a5400; }
+.ds-pill-cancelado  { background: #fde0e0;             color: #b8191c; }
+.ds-pill-aprovado   { background: var(--green-softer); color: #1c7a36; }
+.ds-pill-semcliente { background: #e4ecff;             color: var(--navy); }

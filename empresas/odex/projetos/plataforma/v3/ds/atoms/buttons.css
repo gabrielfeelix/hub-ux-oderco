@@ -1,0 +1,53 @@
+/* ==========================================================================
+   DS · BUTTONS
+   Default · height 42px / radius 4px / font 14 / padding 0 18px
+   Figma source: 1850:9308
+   ========================================================================== */
+
+.ds-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; height: 42px; padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: var(--r-form);
+  font: 400 14px/1 var(--font); letter-spacing: 0;
+  background: transparent; cursor: pointer; transition: .15s;
+  white-space: nowrap; user-select: none;
+}
+.ds-btn:disabled { opacity: .55; cursor: not-allowed; }
+
+/* === Variants ===================================================== */
+
+/* Primary · blue solid (CTA principal) */
+.ds-btn-primary { background: var(--blue); color: var(--white); }
+.ds-btn-primary:hover:not(:disabled) { background: var(--blue-hover); }
+
+/* Primary navy (variante dark) */
+.ds-btn-primary-navy { background: var(--navy); color: var(--white); }
+.ds-btn-primary-navy:hover:not(:disabled) { background: var(--navy-hover); }
+
+/* Secondary · outline blue */
+.ds-btn-secondary { border-color: var(--blue); color: var(--blue); background: var(--white); }
+.ds-btn-secondary:hover:not(:disabled) { background: #f0f5ff; }
+
+/* Secondary navy · outline navy */
+.ds-btn-secondary-navy { border-color: var(--navy); color: var(--navy); background: var(--white); }
+.ds-btn-secondary-navy:hover:not(:disabled) { background: #f0f3fa; }
+
+/* Ghost · outline neutro */
+.ds-btn-ghost { border-color: var(--line); color: var(--ink); background: var(--white); }
+.ds-btn-ghost:hover:not(:disabled) { border-color: var(--ink); }
+
+/* Danger · outline red (destructive) */
+.ds-btn-danger { border-color: var(--red); color: var(--red); background: var(--white); }
+.ds-btn-danger:hover:not(:disabled) { background: #fde0e0; }
+
+/* Danger soft · disabled-look (rosa pálido) */
+.ds-btn-danger-soft { border-color: var(--red-soft); color: var(--red-soft); background: var(--white); pointer-events: none; }
+
+/* === Sizes ========================================================= */
+.ds-btn-sm { height: 32px; padding: 0 14px; font-size: 12px; }
+.ds-btn-lg { height: 48px; padding: 0 24px; font-size: 16px; }
+
+/* === Special pills (Tornar Pedido / Ir para produtos) ============== */
+.ds-pill-warm { background: var(--yellow-softer); color: var(--yellow); border-radius: var(--r-pill); box-shadow: 0 0 8px rgba(243,146,0,.24); }
+.ds-pill-cool { background: var(--slate-soft-2); color: var(--blue);   border-radius: var(--r-pill); box-shadow: 0 0 8px rgba(34,67,125,.20); }

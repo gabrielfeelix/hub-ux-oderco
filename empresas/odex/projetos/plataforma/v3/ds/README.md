@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.1.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.2.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 Design System da Plataforma Solar Odex. Source of truth para tokens, componentes e padrões visuais que devem ser idênticos entre código (browser) e design (Figma).
 
@@ -24,8 +24,8 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 | Fase | Escopo | Status |
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
-| **B · CSS atomic** | Mover `.ds-*` (botões, inputs, typography, fields) pra arquivos próprios | 🔜 Próximo |
-| **C · Componentes contextuais** | Auth panel atoms, Monte Kit fields, listings | ⏳ |
+| **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
+| **C · Componentes contextuais** | Auth panel atoms, Monte Kit fields, listings | 🔜 Próximo |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -37,20 +37,33 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 ```
 ds/
 ├── README.md                # este arquivo
-└── tokens/
-    ├── tokens.json          # ⭐ source of truth (style-dictionary)
-    └── tokens.css           # export CSS · consumido por index.html
+├── index.css                # ⭐ root barrel · single link from HTML
+├── tokens/
+│   ├── tokens.json          # ⭐ source of truth (style-dictionary)
+│   └── tokens.css           # export CSS
+├── atoms/
+│   ├── index.css            # barrel atoms
+│   ├── typography.css       # .ds-h1, h2, h3, p, p2, p3, p-bold, label, placeholder
+│   ├── buttons.css          # .ds-btn + variants + .ds-pill-warm/-cool
+│   ├── links.css            # .ds-link, -14, -16, -navy
+│   ├── inputs.css           # .ds-input, .ds-select, .ds-textarea, .ds-input-sm
+│   ├── fields.css           # .ds-field-label, .ds-field, .ds-field-inline
+│   ├── checkbox.css         # .ds-check (checkbox + radio)
+│   ├── pills.css            # .ds-pill + status variants
+│   └── cards.css            # .ds-card, -lg, -shadow
+└── molecules/
+    ├── index.css            # barrel molecules
+    ├── select.css           # .odex-select (custom dropdown)
+    └── menu.css             # .ds-menu (toolbar dropdown)
 ```
 
-A medida que avançar pras fases B+, a estrutura cresce:
+A medida que avançar pras próximas fases, a estrutura cresce:
 
 ```
 ds/
-├── README.md
-├── tokens/
-├── atoms/                   # .ds-btn, .ds-input, .ds-select, .ds-textarea
-├── molecules/               # .ds-field, .odex-select, .auth-input-wrap
-├── icons/                   # SVG paths lucide subset
+├── ... (acima)
+├── organisms/               # .auth-shell, .mk-step-shell · agregados grandes
+├── icons/                   # SVG paths lucide subset (Phase F)
 └── figma/                   # exports pra Tokens Studio / Variables Import
 ```
 
@@ -107,10 +120,20 @@ ds/
 ### CSS
 
 ```html
-<link rel="stylesheet" href="ds/tokens/tokens.css">
+<link rel="stylesheet" href="ds/index.css">
 ```
 
-Depois usa as variáveis CSS normalmente:
+Esse único link carrega: tokens → atoms (`.ds-*`) → molecules (`.odex-select`, `.ds-menu`).
+
+Depois usa classes DS direto no HTML:
+
+```html
+<button class="ds-btn ds-btn-primary">Salvar</button>
+<input class="ds-input" placeholder="Digite...">
+<select class="ds-replace"><option>...</option></select>  <!-- vira .odex-select -->
+```
+
+Ou usa as variáveis CSS quando precisar de estilo custom:
 
 ```css
 .my-button {
@@ -206,7 +229,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 
 ## Roadmap
 
-### Phase A · Tokens (atual)
+### Phase A · Tokens
 - [x] Extrair CSS vars de `index.html` pra `ds/tokens/tokens.css`
 - [x] Espelhar em `ds/tokens/tokens.json` (style-dictionary)
 - [x] Documentar fluxo em `ds/README.md`
@@ -214,9 +237,10 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [ ] Importar `tokens.json` no Figma como Variables (Phase D pré-requisito)
 
 ### Phase B · CSS Atomic
-- [ ] Mover `.ds-*` (buttons, inputs, typography) pra `ds/atoms/*.css`
-- [ ] Mover `.odex-select` pra `ds/molecules/`
-- [ ] Auditar duplicações (`.auth-input-wrap` vs `.ds-input`)
+- [x] Mover `.ds-*` (buttons, inputs, typography, fields, checkbox, pills, cards, links) pra `ds/atoms/*.css`
+- [x] Mover `.odex-select` e `.ds-menu` pra `ds/molecules/`
+- [x] Root barrel `ds/index.css` linkado pelo `index.html`
+- [ ] Auditar duplicações `.auth-input-wrap` vs `.ds-input` (Phase C)
 
 ### Phase C · Componentes contextuais
 - [ ] Promover `.auth-spark`, `.auth-brand-signature` ao DS canônico se reutilizáveis
@@ -240,6 +264,9 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 
 ## Versionamento
 
-`v0.1.0` = Phase A. Próxima minor (`v0.2.0`) ao concluir Phase B.
+| Versão | Phase | Data | Resumo |
+|---|---|---|---|
+| 0.1.0 | A | 2026-05-20 | Tokens extraídos pra `ds/tokens/` |
+| 0.2.0 | B | 2026-05-20 | Atoms + molecules extraídos pra `ds/atoms/` e `ds/molecules/` |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

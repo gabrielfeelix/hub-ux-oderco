@@ -1,0 +1,56 @@
+/* ==========================================================================
+   DS · CHECKBOX / RADIO
+   Quadrado checked com bg navy · 18x18 / radius 4 (checkbox) ou 50% (radio)
+   ========================================================================== */
+
+.ds-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font: 400 14px/1 var(--font);
+  color: var(--ink);
+  user-select: none;
+}
+
+.ds-check input[type=checkbox],
+.ds-check input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .12s;
+  position: relative;
+}
+
+.ds-check input[type=radio] { border-radius: 50%; }
+
+.ds-check input:checked {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.ds-check input[type=checkbox]:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px; top: 1px;
+  width: 6px; height: 10px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.ds-check input[type=radio]:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 6px; height: 6px;
+  background: var(--white);
+  border-radius: 50%;
+}

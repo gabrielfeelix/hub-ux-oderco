@@ -1,0 +1,18 @@
+/* ==========================================================================
+   DS · LINKS
+   ========================================================================== */
+
+.ds-link {
+  color: var(--blue);
+  font: 400 12px/1 var(--font);
+  text-decoration: underline;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.ds-link:hover { opacity: .8; }
+
+.ds-link-14   { font-size: 14px; }
+.ds-link-16   { font-size: 16px; }
+.ds-link-navy { color: var(--navy); }

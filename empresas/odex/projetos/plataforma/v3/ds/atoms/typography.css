@@ -1,0 +1,17 @@
+/* ==========================================================================
+   DS · TYPOGRAPHY
+   Escala oficial: H1 64 / H2 38 / H3 24 / P-bold 16 / P2 16 / P 14 / P3 12
+   Inter · line-height 100% (heading), letter-spacing 0
+   ========================================================================== */
+
+.ds-h1       { font: 700 64px/1   var(--font); letter-spacing: 0; color: var(--ink); }
+.ds-h2       { font: 700 38px/1.05 var(--font); letter-spacing: 0; color: var(--ink); }
+.ds-h3       { font: 700 24px/1.2 var(--font); letter-spacing: 0; color: var(--ink); }
+
+.ds-p-bold   { font: 700 16px/1.4 var(--font); color: var(--ink); }
+.ds-p2       { font: 400 16px/1.5 var(--font); color: var(--ink); }
+.ds-p        { font: 400 14px/1.5 var(--font); color: var(--ink); }
+.ds-p3       { font: 400 12px/1.5 var(--font); color: var(--ink); }
+
+.ds-label       { font: 400 14px/1 var(--font); color: var(--navy); }
+.ds-placeholder { color: var(--placeholder); }
