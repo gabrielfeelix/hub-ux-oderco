@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.2.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.3.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 Design System da Plataforma Solar Odex. Source of truth para tokens, componentes e padrões visuais que devem ser idênticos entre código (browser) e design (Figma).
 
@@ -25,7 +25,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth panel atoms, Monte Kit fields, listings | 🔜 Próximo |
+| **C · Componentes contextuais** | `features/auth/` extraído + dead code removido. Próximo: mk, ov, ped, ck | 🟡 Em progresso (auth ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -57,12 +57,41 @@ ds/
     └── menu.css             # .ds-menu (toolbar dropdown)
 ```
 
-A medida que avançar pras próximas fases, a estrutura cresce:
+### Feature modules (outside `ds/`)
+
+Convenção: composição específica de DS pra uma feature vive em `features/<name>/`:
+
+```
+features/
+├── auth/
+│   └── auth.css             # ✅ Login + Cadastro + Redefinir senha
+├── monte-kit/               # 🔜 .mk-* (kit builder multi-step)
+│   └── mk.css
+├── orcamentos/              # 🔜 .ov-* / .orc-* (orçamentos)
+│   └── ov.css
+├── pedidos/                 # 🔜 .ped-* / .ped-v2-* (pedidos)
+│   └── ped.css
+├── checkout/                # 🔜 .ck-* / .ckform-* / .ckitem-* / .cksummary-*
+│   └── ck.css
+├── clientes/                # 🔜 .clients-* / .nc-* (novo cliente)
+├── calculadora/             # 🔜 .calc-* (payback solar)
+├── orçamentos-listing/      # 🔜 .orc-* / .list-* (listings)
+├── ajuda/                   # 🔜 .ajuda-*
+├── dashboard/               # 🔜 .dash-*
+└── topbar-sidebar/          # 🔜 .topbar, .sidebar-* (app chrome)
+```
+
+**Regra geral:**
+- Classe começa com `.ds-` ou `.odex-` → vive em `ds/atoms/` ou `ds/molecules/`
+- Classe começa com prefixo de feature (`.auth-`, `.mk-`, `.ov-`, etc) → vive em `features/<name>/`
+- Classe `.body.is-auth #view-*` ou seletor de página → vai junto com sua feature module
+
+### Próximas adições
 
 ```
 ds/
 ├── ... (acima)
-├── organisms/               # .auth-shell, .mk-step-shell · agregados grandes
+├── organisms/               # .auth-shell, .mk-step-shell · agregados grandes do DS
 ├── icons/                   # SVG paths lucide subset (Phase F)
 └── figma/                   # exports pra Tokens Studio / Variables Import
 ```
@@ -242,9 +271,14 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] Root barrel `ds/index.css` linkado pelo `index.html`
 - [ ] Auditar duplicações `.auth-input-wrap` vs `.ds-input` (Phase C)
 
-### Phase C · Componentes contextuais
-- [ ] Promover `.auth-spark`, `.auth-brand-signature` ao DS canônico se reutilizáveis
-- [ ] Documentar `.mk-v3-*`, `.ov-*`, etc — manter feature-scoped vs promover
+### Phase C · Componentes contextuais (em progresso)
+- [x] **C.1 · Auth** — extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead code
+- [ ] **C.2 · Promote input-group** — `.auth-input-wrap` paradigm → `.ds-input-group` DS molecule (input + icon left + reveal right)
+- [ ] **C.3 · Monte Kit** — extrair `.mk-*` pra `features/monte-kit/mk.css`
+- [ ] **C.4 · Orçamentos** — extrair `.ov-*` / `.orc-*` pra `features/orcamentos/`
+- [ ] **C.5 · Pedidos** — extrair `.ped-*` / `.ped-v2-*` pra `features/pedidos/`
+- [ ] **C.6 · Checkout** — extrair `.ck-*` / `.ckform-*` pra `features/checkout/`
+- [ ] **C.7 · Demais features** — clientes, calculadora, ajuda, dashboard, topbar/sidebar
 
 ### Phase D · Figma DS espelho
 - [ ] Importar tokens via Tokens Studio
@@ -268,5 +302,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 |---|---|---|---|
 | 0.1.0 | A | 2026-05-20 | Tokens extraídos pra `ds/tokens/` |
 | 0.2.0 | B | 2026-05-20 | Atoms + molecules extraídos pra `ds/atoms/` e `ds/molecules/` |
+| 0.3.0 | C.1 | 2026-05-20 | Auth feature extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

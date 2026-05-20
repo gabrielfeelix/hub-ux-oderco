@@ -2142,316 +2142,410 @@ function PresetCard({
   onApply: () => void;
   onBuy: () => void;
 }) {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const discount = preset.oldPrice
     ? Math.round(((preset.oldPrice - preset.price) / preset.oldPrice) * 100)
     : 0;
   const pixPrice = preset.pixDiscount ? preset.price * (1 - preset.pixDiscount / 100) : preset.price;
+  const componentsCount = Object.keys(preset.selections).length;
+
+  const topSpecs = [
+    { icon: <Cpu size={14} />, label: "Processador", value: preset.specs.cpu },
+    { icon: <Monitor size={14} />, label: "Placa de Vídeo", value: preset.specs.gpu },
+    { icon: <Sparkles size={14} />, label: "Memória", value: preset.specs.ram },
+    { icon: <HardDrive size={14} />, label: "Armazenamento", value: preset.specs.storage },
+  ];
+
   return (
-    <article
-      className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-0.5 md:flex-row md:items-stretch",
-        isRecommended ? "border-primary/55" : "border-white/[0.08] hover:border-white/[0.22]",
-      )}
-      style={
-        isRecommended
-          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 30px 70px -28px rgba(255,43,46,0.4)" }
-          : { boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)" }
-      }
-    >
-      <div className="relative aspect-[16/10] w-full overflow-hidden deal-image-bg md:aspect-auto md:w-[42%] md:flex-shrink-0">
-        <img
-          src={preset.heroImage}
-          alt={`Setup ${preset.name}`}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.05]"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = "none";
-          }}
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
-          style={{
-            background: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 100%)",
-          }}
-        />
-        <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3.5">
-          <div className="flex flex-col gap-1.5">
-            {isRecommended && (
+    <>
+      <article
+        className={cn(
+          "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1",
+          isRecommended ? "border-primary/55" : "border-white/[0.08] hover:border-white/[0.22]",
+        )}
+        style={
+          isRecommended
+            ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 30px 70px -28px rgba(255,43,46,0.4)" }
+            : { boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)" }
+        }
+      >
+        <div className="relative aspect-[4/5] w-full overflow-hidden deal-image-bg">
+          <img
+            src={preset.heroImage}
+            alt={`Setup ${preset.name}`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = "none";
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse at 70% 0%, ${preset.glow} 0%, transparent 60%)`,
+              mixBlendMode: "screen",
+              opacity: 0.45,
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent 0%, rgba(13,13,13,0.55) 55%, rgba(13,13,13,0.96) 100%)",
+            }}
+          />
+
+          <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3.5">
+            <div className="flex flex-col gap-1.5">
+              {isRecommended && (
+                <span
+                  className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "9.5px",
+                    letterSpacing: "0.16em",
+                    fontWeight: 700,
+                    boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                  }}
+                >
+                  <Sparkles size={9} /> SUGERIDA PRA VOCÊ
+                </span>
+              )}
+              {preset.badge && !isRecommended && (
+                <span
+                  className="inline-flex w-fit items-center rounded-full border border-white/15 bg-black/70 px-2.5 py-1 text-white backdrop-blur"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "9.5px",
+                    letterSpacing: "0.16em",
+                    fontWeight: 700,
+                  }}
+                >
+                  {preset.badge}
+                </span>
+              )}
+            </div>
+            {discount > 0 && (
               <span
-                className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+                className="inline-flex shrink-0 items-center rounded-full bg-emerald-500 px-2.5 py-1 text-white tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "9.5px",
-                  letterSpacing: "0.16em",
-                  fontWeight: 700,
-                  boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                  fontSize: "10.5px",
+                  fontWeight: 800,
+                  letterSpacing: "0.02em",
+                  boxShadow: "0 6px 18px -4px rgba(16,185,129,0.55)",
                 }}
               >
-                <Sparkles size={9} /> SUGERIDA PRA VOCÊ
-              </span>
-            )}
-            {preset.badge && !isRecommended && (
-              <span
-                className="inline-flex w-fit items-center rounded-full border border-white/15 bg-black/65 px-2.5 py-1 text-white backdrop-blur"
-                style={{
-                  fontFamily: "var(--font-family-inter)",
-                  fontSize: "9.5px",
-                  letterSpacing: "0.16em",
-                  fontWeight: 700,
-                }}
-              >
-                {preset.badge}
+                -{discount}%
               </span>
             )}
           </div>
-          {discount > 0 && (
-            <span
-              className="inline-flex shrink-0 items-center rounded-full bg-emerald-500 px-2.5 py-1 text-white tabular-nums"
+
+          <div className="absolute inset-x-0 bottom-0 p-4">
+            <p
+              className="mb-1 uppercase"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10.5px",
-                fontWeight: 800,
-                letterSpacing: "0.02em",
-                boxShadow: "0 6px 18px -4px rgba(16,185,129,0.55)",
+                fontSize: "9.5px",
+                letterSpacing: "0.24em",
+                fontWeight: 700,
+                color: preset.accent,
+                textShadow: "0 1px 8px rgba(0,0,0,0.6)",
               }}
             >
-              -{discount}%
-            </span>
-          )}
-        </div>
-        <div className="absolute inset-x-0 bottom-0 p-4">
-          <div className="flex items-end justify-between gap-3">
-            <div className="min-w-0">
-              <p
-                className="mb-0.5 uppercase"
-                style={{
-                  fontFamily: "var(--font-family-inter)",
-                  fontSize: "9.5px",
-                  letterSpacing: "0.22em",
-                  fontWeight: 700,
-                  color: preset.accent,
-                }}
-              >
-                {preset.tagline}
-              </p>
-              <h3
-                className="truncate text-white"
-                style={{
-                  fontFamily: "var(--font-family-figtree)",
-                  fontSize: "clamp(20px, 2.4vw, 26px)",
-                  fontWeight: 800,
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.05,
-                  textShadow: "0 2px 12px rgba(0,0,0,0.55)",
-                }}
-              >
-                {preset.name}
-              </h3>
-            </div>
+              {preset.tagline}
+            </p>
+            <h3
+              className="mb-2 text-white"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "clamp(22px, 2vw, 28px)",
+                fontWeight: 800,
+                letterSpacing: "-0.025em",
+                lineHeight: 1.02,
+                textShadow: "0 2px 14px rgba(0,0,0,0.6)",
+              }}
+            >
+              {preset.name}
+            </h3>
             <StarRating rating={preset.rating} reviews={preset.reviews} />
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-1 flex-col p-4">
-        <div className="mb-4 grid grid-cols-5 gap-1.5">
-          {[
-            { icon: <Cpu size={13} />, label: "CPU", value: preset.specs.cpu.split(" ").slice(-1)[0] },
-            { icon: <Monitor size={13} />, label: "GPU", value: preset.specs.gpu.replace(/GeForce |Radeon /i, "") },
-            { icon: <Sparkles size={13} />, label: "RAM", value: preset.specs.ram.split(" ")[0] },
-            { icon: <HardDrive size={13} />, label: "SSD", value: preset.specs.storage.split(" ").slice(-1)[0] },
-            { icon: <Zap size={13} />, label: "PSU", value: preset.specs.psu.split(" ")[0] },
-          ].map((s) => (
-            <div
-              key={s.label}
-              className="flex flex-col items-center gap-1 rounded-[10px] border border-white/[0.06] bg-white/[0.02] p-2"
-              title={preset.specs[s.label.toLowerCase() as keyof typeof preset.specs]}
-            >
-              <span className="text-zinc-400">{s.icon}</span>
-              <span
-                className="truncate text-white"
-                style={{
-                  fontFamily: "var(--font-family-figtree)",
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  letterSpacing: "-0.005em",
-                  maxWidth: "100%",
-                }}
+        <div className="flex flex-1 flex-col p-4">
+          <ul className="space-y-1.5">
+            {topSpecs.map((s) => (
+              <li
+                key={s.label}
+                className="flex items-center gap-2.5 rounded-[10px] border border-white/[0.05] bg-white/[0.015] px-2.5 py-2"
               >
-                {s.value}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <div
-          className="mb-4 rounded-[12px] border border-white/[0.06] bg-white/[0.02] p-3"
-          style={{
-            background: `linear-gradient(135deg, ${preset.accent}10 0%, rgba(255,255,255,0.02) 100%)`,
-          }}
-        >
-          <p
-            className="mb-2 uppercase text-zinc-400"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "9.5px",
-              letterSpacing: "0.2em",
-              fontWeight: 700,
-            }}
-          >
-            Performance estimada
-          </p>
-          <div className="space-y-1.5">
-            {preset.benchmarks.slice(0, 3).map((b) => (
-              <div key={b.game} className="flex items-center justify-between gap-2">
                 <span
-                  className="flex items-center gap-1.5 truncate text-zinc-200"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500 }}
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white/[0.04] text-primary"
+                  aria-hidden="true"
                 >
-                  <Gamepad2 size={12} className="shrink-0 text-zinc-500" />
-                  {b.game}
+                  {s.icon}
                 </span>
-                <div className="flex items-baseline gap-1.5 shrink-0">
-                  <span
-                    className="tabular-nums text-white"
-                    style={{
-                      fontFamily: "var(--font-family-figtree)",
-                      fontSize: "14px",
-                      fontWeight: 800,
-                      letterSpacing: "-0.005em",
-                    }}
-                  >
-                    {b.fps}
-                    <span
-                      className="ml-0.5 text-zinc-500"
-                      style={{ fontSize: "10px", fontWeight: 600 }}
-                    >
-                      fps
-                    </span>
-                  </span>
-                  <span
-                    className="rounded-sm bg-white/[0.06] px-1 py-0.5 text-zinc-400"
+                <div className="min-w-0 flex-1">
+                  <p
+                    className="uppercase text-zinc-500"
                     style={{
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "8.5px",
+                      letterSpacing: "0.2em",
                       fontWeight: 700,
-                      letterSpacing: "0.04em",
                     }}
                   >
-                    {b.resolution}
-                  </span>
+                    {s.label}
+                  </p>
+                  <p
+                    className="truncate text-white"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "12px",
+                      fontWeight: 700,
+                      letterSpacing: "-0.005em",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {s.value}
+                  </p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
 
-        <PresetComponentsAccordion preset={preset} />
-
-        <div className="mt-3 border-t border-white/[0.06] pt-3.5">
-          <div className="mb-1 flex items-center gap-2">
-            {preset.oldPrice && (
-              <span
-                className="text-zinc-500 line-through tabular-nums"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
-              >
-                {formatBRL(preset.oldPrice)}
-              </span>
-            )}
-            {preset.pixDiscount && (
-              <span
-                className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300"
+          <div
+            className="mt-3 rounded-[12px] border border-white/[0.06] p-3"
+            style={{
+              background: `linear-gradient(135deg, ${preset.accent}14 0%, rgba(255,255,255,0.015) 100%)`,
+            }}
+          >
+            <div className="mb-2 flex items-center justify-between">
+              <p
+                className="uppercase text-zinc-400"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "9.5px",
+                  fontSize: "9px",
+                  letterSpacing: "0.22em",
                   fontWeight: 700,
-                  letterSpacing: "0.04em",
                 }}
               >
-                -{preset.pixDiscount}% no PIX
-              </span>
-            )}
+                FPS estimado
+              </p>
+              <Gamepad2 size={11} className="text-zinc-500" />
+            </div>
+            <div className="space-y-1.5">
+              {preset.benchmarks.slice(0, 3).map((b) => (
+                <div key={b.game} className="flex items-center justify-between gap-2">
+                  <span
+                    className="truncate text-zinc-200"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500 }}
+                  >
+                    {b.game}
+                  </span>
+                  <div className="flex items-baseline gap-1.5 shrink-0">
+                    <span
+                      className="tabular-nums text-white"
+                      style={{
+                        fontFamily: "var(--font-family-figtree)",
+                        fontSize: "13.5px",
+                        fontWeight: 800,
+                        letterSpacing: "-0.005em",
+                      }}
+                    >
+                      {b.fps}
+                      <span
+                        className="ml-0.5 text-zinc-500"
+                        style={{ fontSize: "9.5px", fontWeight: 600 }}
+                      >
+                        fps
+                      </span>
+                    </span>
+                    <span
+                      className="rounded-sm bg-white/[0.06] px-1 py-0.5 text-zinc-400"
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "8.5px",
+                        fontWeight: 700,
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {b.resolution}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex items-baseline gap-2">
-            <p
-              className="text-white tabular-nums"
+
+          <button
+            type="button"
+            onClick={() => setDrawerOpen(true)}
+            className="mt-3 flex w-full cursor-pointer items-center justify-between gap-2 rounded-[10px] border border-white/[0.08] bg-white/[0.015] px-3 py-2.5 text-left transition-all hover:border-primary/40 hover:bg-primary/[0.04]"
+          >
+            <span
+              className="flex items-center gap-2 text-white"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+            >
+              <Layers size={13} className="text-primary" />
+              Ver {componentsCount} componentes
+            </span>
+            <ArrowRight size={13} className="text-zinc-500" />
+          </button>
+
+          <div className="mt-4 border-t border-white/[0.06] pt-4">
+            <div className="mb-1 flex items-center gap-2">
+              {preset.oldPrice && (
+                <span
+                  className="text-zinc-500 line-through tabular-nums"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                >
+                  {formatBRL(preset.oldPrice)}
+                </span>
+              )}
+              {preset.pixDiscount && (
+                <span
+                  className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "9.5px",
+                    fontWeight: 700,
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  -{preset.pixDiscount}% no PIX
+                </span>
+              )}
+            </div>
+            {preset.pixDiscount ? (
+              <>
+                <div className="flex items-baseline gap-2">
+                  <p
+                    className="text-emerald-300 tabular-nums"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "28px",
+                      fontWeight: 800,
+                      letterSpacing: "-0.025em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {formatBRL(pixPrice)}
+                  </p>
+                  <span
+                    className="text-zinc-500"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                  >
+                    no PIX
+                  </span>
+                </div>
+                <p
+                  className="mt-1 text-zinc-400"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                >
+                  <span className="tabular-nums text-white" style={{ fontWeight: 600 }}>
+                    {formatBRL(preset.price)}
+                  </span>{" "}
+                  em {preset.installments.count}x de{" "}
+                  <span className="tabular-nums text-white" style={{ fontWeight: 600 }}>
+                    {formatBRL(preset.installments.value)}
+                  </span>{" "}
+                  sem juros
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="flex items-baseline gap-2">
+                  <p
+                    className="text-white tabular-nums"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "28px",
+                      fontWeight: 800,
+                      letterSpacing: "-0.025em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {formatBRL(preset.price)}
+                  </p>
+                  <span
+                    className="text-zinc-500"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                  >
+                    à vista
+                  </span>
+                </div>
+                <p
+                  className="mt-1 text-zinc-400"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                >
+                  ou {preset.installments.count}x de{" "}
+                  <span className="tabular-nums text-white" style={{ fontWeight: 600 }}>
+                    {formatBRL(preset.installments.value)}
+                  </span>{" "}
+                  sem juros
+                </p>
+              </>
+            )}
+
+            <div className="mt-3 flex items-center gap-1.5">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
+              <span
+                className="text-zinc-300"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 500 }}
+              >
+                {preset.inStock ? "Em estoque" : "Sob encomenda"} · entrega {preset.deliveryDays}
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={onBuy}
+              className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] bg-emerald-500 text-white transition-all duration-300 hover:bg-emerald-400"
               style={{
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "26px",
-                fontWeight: 800,
-                letterSpacing: "-0.02em",
-                lineHeight: 1,
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "13.5px",
+                fontWeight: 700,
+                letterSpacing: "0.01em",
+                boxShadow: "0 12px 32px -8px rgba(16,185,129,0.55)",
               }}
             >
-              {formatBRL(preset.price)}
-            </p>
-            <span
-              className="text-zinc-500"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+              <ShoppingCart size={14} /> Quero esse setup
+            </button>
+            <button
+              type="button"
+              onClick={onApply}
+              className="mt-2 h-9 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "11.5px",
+                fontWeight: 600,
+              }}
             >
-              à vista
-            </span>
+              Personalizar antes
+            </button>
           </div>
-          <p
-            className="mt-1 text-zinc-400"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
-          >
-            ou {preset.installments.count}x de{" "}
-            <span className="text-white tabular-nums" style={{ fontWeight: 600 }}>
-              {formatBRL(preset.installments.value)}
-            </span>{" "}
-            sem juros
-          </p>
-          {preset.pixDiscount && (
-            <p
-              className="mt-1 tabular-nums text-emerald-300"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
-            >
-              {formatBRL(pixPrice)} no PIX
-            </p>
-          )}
-
-          <div className="mt-3 flex items-center gap-1.5">
-            <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
-            <span
-              className="text-zinc-300"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 500 }}
-            >
-              {preset.inStock ? "Em estoque" : "Sob encomenda"} · entrega {preset.deliveryDays}
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={onBuy}
-            className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] bg-emerald-500 text-white transition-all duration-300 hover:bg-emerald-400"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "13.5px",
-              fontWeight: 700,
-              letterSpacing: "0.01em",
-              boxShadow: "0 12px 32px -8px rgba(16,185,129,0.55)",
-            }}
-          >
-            <ShoppingCart size={14} /> Quero esse setup
-          </button>
-          <button
-            type="button"
-            onClick={onApply}
-            className="mt-2 h-9 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "11.5px",
-              fontWeight: 600,
-            }}
-          >
-            Personalizar antes
-          </button>
         </div>
-      </div>
-    </article>
+      </article>
+
+      <PresetComponentsDrawer
+        preset={preset}
+        open={drawerOpen}
+        onOpenChange={setDrawerOpen}
+      />
+    </>
   );
 }
+
+type PresetFilter = "all" | "Entrada" | "Performance" | "Extremo";
+type PresetSort = "recommended" | "price-asc" | "price-desc";
+
+const filterChips: Array<{ id: PresetFilter; label: string; sub: string }> = [
+  { id: "all", label: "Todos", sub: "" },
+  { id: "Entrada", label: "Entrada", sub: "1080p" },
+  { id: "Performance", label: "Performance", sub: "2K" },
+  { id: "Extremo", label: "Extremo", sub: "4K" },
+];
 
 function PresetGallery({
   recommended,
@@ -2464,6 +2558,24 @@ function PresetGallery({
   onBuy: (preset: Preset) => void;
   onBack: () => void;
 }) {
+  const [filter, setFilter] = useState<PresetFilter>("all");
+  const [sort, setSort] = useState<PresetSort>("recommended");
+
+  const visiblePresets = useMemo(() => {
+    let list = filter === "all" ? presets : presets.filter((p) => p.performance === filter);
+    if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
+    else if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
+    else if (recommended) {
+      const recIdx = list.findIndex((p) => p.id === recommended);
+      if (recIdx > 0) {
+        list = [...list];
+        const [rec] = list.splice(recIdx, 1);
+        list.unshift(rec);
+      }
+    }
+    return list;
+  }, [filter, sort, recommended]);
+
   return (
     <div className="mx-auto max-w-[1320px] px-6 py-12 md:py-14">
       <button
@@ -2504,17 +2616,120 @@ function PresetGallery({
           Builds montadas e testadas. Aplique e customize qualquer peça antes de finalizar.
         </p>
       </div>
-      <div className="mx-auto flex max-w-[1080px] flex-col gap-4">
-        {presets.map((p) => (
-          <PresetCard
-            key={p.id}
-            preset={p}
-            isRecommended={recommended === p.id}
-            onApply={() => onApply(p)}
-            onBuy={() => onBuy(p)}
-          />
-        ))}
+
+      <div className="mb-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          role="tablist"
+          aria-label="Filtrar por categoria"
+          className="flex flex-wrap items-center gap-2"
+        >
+          {filterChips.map((c) => {
+            const active = filter === c.id;
+            return (
+              <button
+                key={c.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => setFilter(c.id)}
+                className={cn(
+                  "group inline-flex cursor-pointer items-baseline gap-1.5 rounded-full border px-3.5 py-2 transition-all",
+                  active
+                    ? "border-primary/60 bg-primary/[0.1] text-white"
+                    : "border-white/[0.08] bg-white/[0.015] text-zinc-300 hover:border-white/25 hover:bg-white/[0.05] hover:text-white",
+                )}
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  boxShadow: active ? "0 0 0 1px rgba(255,43,46,0.15), 0 10px 28px -10px rgba(255,43,46,0.4)" : undefined,
+                }}
+              >
+                {c.label}
+                {c.sub && (
+                  <span
+                    className={cn(
+                      "uppercase",
+                      active ? "text-primary" : "text-zinc-500",
+                    )}
+                    style={{
+                      fontSize: "9px",
+                      letterSpacing: "0.18em",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {c.sub}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex items-center gap-2">
+          <ArrowUpDown size={13} className="text-zinc-500" />
+          <Select value={sort} onValueChange={(v) => setSort(v as PresetSort)}>
+            <SelectTrigger
+              className="h-9 w-[180px] rounded-full border-white/[0.1] bg-white/[0.015] text-zinc-200 hover:border-white/25"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+            >
+              <SelectValue placeholder="Ordenar" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="recommended">Recomendado</SelectItem>
+              <SelectItem value="price-asc">Menor preço</SelectItem>
+              <SelectItem value="price-desc">Maior preço</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
+
+      {visiblePresets.length === 0 ? (
+        <div
+          className="mx-auto max-w-[420px] rounded-[16px] border border-white/[0.08] bg-[#0f0f12] p-8 text-center"
+        >
+          <p
+            className="text-zinc-300"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "15px",
+              fontWeight: 600,
+            }}
+          >
+            Nada nesse filtro ainda.
+          </p>
+          <p
+            className="mt-1 text-zinc-500"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+          >
+            Tente outra categoria ou veja todos os setups.
+          </p>
+          <button
+            type="button"
+            onClick={() => setFilter("all")}
+            className="mt-4 inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-primary px-4 text-white transition-all hover:brightness-110"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "12.5px",
+              fontWeight: 700,
+            }}
+          >
+            Ver todos
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {visiblePresets.map((p) => (
+            <PresetCard
+              key={p.id}
+              preset={p}
+              isRecommended={recommended === p.id}
+              onApply={() => onApply(p)}
+              onBuy={() => onBuy(p)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -3317,11 +3532,31 @@ function ReviewScreen({
   );
 }
 
-function HeroBuilderBanner({ totalSelected, totalCount }: { totalSelected: number; totalCount: number }) {
+function HeroBuilderBanner({
+  totalSelected,
+  totalCount,
+  onBack,
+}: {
+  totalSelected: number;
+  totalCount: number;
+  onBack: () => void;
+}) {
   return (
     <div className="border-b border-white/[0.05]">
       <div className="mx-auto flex max-w-[1520px] items-end justify-between gap-6 px-6 py-7 md:px-8 md:py-9">
         <div className="min-w-0">
+          <button
+            type="button"
+            onClick={onBack}
+            className="mb-3 inline-flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "12.5px",
+              fontWeight: 600,
+            }}
+          >
+            <ArrowLeft size={13} /> Trocar caminho
+          </button>
           <p
             className="mb-2 uppercase text-primary"
             style={{
