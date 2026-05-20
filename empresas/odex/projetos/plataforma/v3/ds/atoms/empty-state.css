@@ -1,0 +1,74 @@
+/* ==========================================================================
+   DS · EMPTY STATE
+   Placeholder pra listas/seções sem conteúdo · icon + título + descrição + ação opcional.
+   Phase H.7 · consolida 10 DUPES (cart-empty, notif-drawer-empty, ov-items-empty,
+   premio-empty, admin-artigo-empty, admin-banner-empty, client-tabs-empty,
+   cliente-search-empty, ajuda-cat-empty, novas-empty, .empty-state geral).
+   ========================================================================== */
+
+.ds-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* Icon slot · use .ds-icon-box dentro */
+.ds-empty-state-icon {
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+/* Title · 16-18 bold ink */
+.ds-empty-state-title {
+  margin: 0;
+  font: 700 16px/1.3 var(--font);
+  color: var(--color-text-default);
+  letter-spacing: -.01em;
+}
+
+/* Description · 13-14 muted */
+.ds-empty-state-desc {
+  margin: 0;
+  max-width: 360px;
+  font: 400 13px/1.5 var(--font);
+  color: var(--color-text-muted);
+}
+
+/* Action button area · espaço extra acima */
+.ds-empty-state-action {
+  margin-top: 8px;
+}
+
+/* === Sizes ======================================================= */
+.ds-empty-state-sm {
+  padding: 32px 18px;
+  gap: 8px;
+}
+.ds-empty-state-sm .ds-empty-state-title { font-size: 14px; }
+.ds-empty-state-sm .ds-empty-state-desc { font-size: 12px; }
+
+.ds-empty-state-md {
+  padding: 48px 24px;
+}
+
+.ds-empty-state-lg {
+  padding: 72px 32px;
+  gap: 16px;
+}
+.ds-empty-state-lg .ds-empty-state-title { font-size: 18px; }
+.ds-empty-state-lg .ds-empty-state-desc { font-size: 14px; max-width: 420px; }
+
+/* === Inline mode (single line · no padding · for table empty) ==== */
+.ds-empty-state-inline {
+  padding: 24px 20px;
+  flex-direction: row;
+  gap: 10px;
+  text-align: left;
+}
+.ds-empty-state-inline .ds-empty-state-title { font-size: 14px; }
+.ds-empty-state-inline .ds-empty-state-desc { font-size: 12px; }
