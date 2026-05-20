@@ -189,8 +189,7 @@
       .modal.open { transform: translate(-50%,-50%) scale(1); opacity: 1; pointer-events: auto; }
       .modal-head { padding: 22px 26px 18px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
       .modal-head h3 { margin: 0; font: 700 16px/1 var(--font); color: var(--navy); letter-spacing: 0; }
-      .modal-close { width: 32px; height: 32px; border-radius: 50%; background: var(--soft); color: var(--muted); display: grid; place-items: center; transition: .15s; border: 0; cursor: pointer; }
-      .modal-close:hover { background: var(--line); color: var(--ink); }
+      /* .modal-close migrated to .ds-icon-btn .ds-icon-btn-circle .ds-icon-btn-soft (H.21) */
       .modal-body { padding: 22px 26px 18px; }
 
       .form-group { margin-bottom: 16px; }
@@ -926,17 +925,17 @@
     <main class="main">
       <header class="topbar" id="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
+          <button class="sidebar-toggle ds-icon-btn ds-icon-btn-ghost" onclick="toggleSidebar()" aria-label="Toggle menu">
             <i data-lucide="menu" style="width:18px;height:18px;"></i>
           </button>
           <h1 class="topbar-title" id="pageTitle">Home</h1>
         </div>
         <div class="topbar-actions">
-          <button class="icon-btn" onclick="openCart()" style="position:relative;" title="Carrinho">
+          <button class="icon-btn ds-icon-btn ds-icon-btn-ghost" onclick="openCart()" style="position:relative;" title="Carrinho">
             <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i>
             <span class="badge" id="cartBadge">0</span>
           </button>
-          <button class="icon-btn" id="bellBtn" onclick="openNotifDrawer()" title="Notificações" style="position:relative;">
+          <button class="icon-btn ds-icon-btn ds-icon-btn-ghost" id="bellBtn" onclick="openNotifDrawer()" title="Notificações" style="position:relative;">
             <i data-lucide="bell" style="width:18px;height:18px;"></i>
             <div class="dot" id="notifDot"></div>
           </button>
@@ -1001,7 +1000,7 @@
       <div class="help-modal-head">
         <h3 id="helpModalTitle">Precisa de ajuda?</h3>
         <p id="helpModalSub">Veja um tutorial rápido e artigos relacionados.</p>
-        <button class="help-modal-close" onclick="closeHelpModal()" aria-label="Fechar"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-glass ds-icon-btn-sm" onclick="closeHelpModal()" aria-label="Fechar"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="help-modal-video" id="helpModalVideo">
         <div class="help-modal-play"><i data-lucide="play"></i></div>
@@ -1036,7 +1035,7 @@
           <h3 id="deChatTitle">Dé · IA da Odex</h3>
           <p><span class="de-chat-status-dot"></span> Online agora · responde em segundos</p>
         </div>
-        <button class="help-modal-close" onclick="closeDeChat()" aria-label="Fechar"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-glass ds-icon-btn-sm" onclick="closeDeChat()" aria-label="Fechar"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="de-chat-body" id="deChatBody">
         <div class="de-msg de-msg-bot">
@@ -1071,7 +1070,7 @@
     <div class="modal" id="userModal">
       <div class="modal-head">
         <h3>Novo Usuário</h3>
-        <button class="modal-close" onclick="closeModal()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeModal()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -1114,7 +1113,7 @@
     <div class="modal modal-wide" id="ncModal" style="max-height:92vh;overflow:hidden;display:flex;flex-direction:column;">
       <div class="modal-head" style="flex-shrink:0;">
         <h3 id="ncModalTitle">Novo Cliente</h3>
-        <button class="modal-close" onclick="closeNovoCliente()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovoCliente()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="nc-steps" id="ncSteps">
         <div class="nc-step"><div class="nc-step-dot s-active" id="nc-dot-1">1</div><div class="nc-step-lbl s-active" id="nc-lbl-1">Dados Cadastrais</div></div>
@@ -1185,7 +1184,7 @@
     <div class="modal" id="clienteSearchModal" style="width:560px;" role="dialog" aria-labelledby="clienteSearchTitle">
       <div class="modal-head">
         <h3 id="clienteSearchTitle">Cliente Cadastrado</h3>
-        <button class="modal-close" onclick="closeClienteSearch()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeClienteSearch()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -1205,7 +1204,7 @@
     <div class="modal" id="novidadeFormModal" style="width:640px;" role="dialog" aria-labelledby="novidadeFormTitle">
       <div class="modal-head">
         <h3 id="novidadeFormTitle"><i data-lucide="megaphone" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Publicar nova novidade</h3>
-        <button class="modal-close" onclick="closeNovidadeForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovidadeForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <input type="hidden" id="novidadeFormIdx">
@@ -1262,7 +1261,7 @@
     <div class="modal" id="calcShareModal" style="width:480px;" role="dialog" aria-labelledby="calcShareTitle">
       <div class="modal-head">
         <h3 id="calcShareTitle"><i data-lucide="send" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Enviar simulação ao cliente</h3>
-        <button class="modal-close" onclick="closeCalcShare()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeCalcShare()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <p style="font:400 13px/1.55 var(--font);color:var(--muted);margin:0 0 18px;">Envie o link da calculadora pra o cliente preencher os dados dele e ver a economia estimada. Quando ele finalizar, você recebe um aviso.</p>
@@ -1295,7 +1294,7 @@
     <div class="modal" id="artigoFormModal" style="width:880px;max-width:calc(100vw - 32px);height:88vh;max-height:88vh;display:flex;flex-direction:column;" role="dialog" aria-labelledby="artigoFormTitle">
       <div class="modal-head">
         <h3 id="artigoFormTitle"><i data-lucide="book-open" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Novo artigo</h3>
-        <button class="modal-close" onclick="closeArtigoForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeArtigoForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body" style="overflow-y:auto;flex:1;display:flex;flex-direction:column;">
         <input type="hidden" id="artigoFormId">
@@ -1338,7 +1337,7 @@
     <div class="modal" id="novidadeFeedbacksModal" style="width:620px;" role="dialog" aria-labelledby="novidadeFeedbacksTitle">
       <div class="modal-head">
         <h3 id="novidadeFeedbacksTitle"><i data-lucide="message-square-text" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Feedbacks recebidos</h3>
-        <button class="modal-close" onclick="closeNovidadeFeedbacks()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovidadeFeedbacks()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body" style="max-height:60vh;overflow-y:auto;">
         <div id="novidadeFeedbacksSubtitle" class="feedback-modal-sub"></div>
@@ -1353,7 +1352,7 @@
     <div class="modal" id="novidadeDeleteModal" style="width:480px;" role="dialog" aria-labelledby="novidadeDeleteHead">
       <div class="modal-head">
         <h3 id="novidadeDeleteHead"><i data-lucide="alert-triangle" style="width:18px;height:18px;color:#d04848;vertical-align:-3px;"></i> Despublicar novidade</h3>
-        <button class="modal-close" onclick="closeNovidadeDelete()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeNovidadeDelete()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <input type="hidden" id="novidadeDeleteIdx">
@@ -1375,7 +1374,7 @@
     <div class="modal" id="logoUploadModal" style="width:560px;" role="dialog" aria-labelledby="logoUploadTitle">
       <div class="modal-head">
         <h3 id="logoUploadTitle"><i data-lucide="image-plus" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Logo da empresa</h3>
-        <button class="modal-close" onclick="closeLogoUpload()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeLogoUpload()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <div class="logo-upload-preview" id="logoPreview">
@@ -1426,7 +1425,7 @@
     <div class="modal" id="clienteEditModal" role="dialog" aria-labelledby="clienteEditTitle">
       <div class="modal-head">
         <h3 id="clienteEditTitle">Editar Cliente</h3>
-        <button class="modal-close" onclick="closeClienteEdit()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeClienteEdit()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -1468,7 +1467,7 @@
     <div class="modal" id="endModal" role="dialog" aria-labelledby="endTitle" style="width:560px;">
       <div class="modal-head">
         <h3 id="endTitle">Adicionar Endereço</h3>
-        <button class="modal-close" onclick="closeClienteEndereco()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeClienteEndereco()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <div class="form-row form-group" style="grid-template-columns:1fr 100px;display:grid;gap:12px;">
@@ -1537,7 +1536,7 @@
     <div class="modal" id="profileEditModal" role="dialog" aria-labelledby="profileEditTitle">
       <div class="modal-head">
         <h3 id="profileEditTitle">Alterar Dados</h3>
-        <button class="modal-close" onclick="closeProfileEdit()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeProfileEdit()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -1567,7 +1566,7 @@
           <span class="ov-whats-modal-icon"><i data-lucide="message-circle" style="width:18px;height:18px;color:#25D366;"></i></span>
           <h3 id="ovWhatsTitle">Enviar por WhatsApp</h3>
         </div>
-        <button class="modal-close" onclick="closeOrcamentoWhats()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeOrcamentoWhats()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -1679,7 +1678,7 @@
           <strong>Carrinho</strong>
           <span class="cart-count-tag" id="cartCountTag">0 itens</span>
         </div>
-        <button class="cart-close" id="closeCart"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+        <button class="cart-close ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft ds-icon-btn-sm" id="closeCart"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
       </div>
       <div class="cart-body" id="cartBody"></div>
       <div class="cart-foot">
@@ -1846,7 +1845,7 @@
                 <strong>${nome}</strong>
                 <small>Logo aparece nos orçamentos enviados</small>
               </div>
-              <button class="dash-hero-brand-edit" onclick="openIntegradorLogoModal()"><i data-lucide="pencil"></i> Editar</button>
+              <button class="dash-hero-brand-edit ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="pencil"></i> Editar</button>
             </div>`;
         }
         return `
@@ -1856,7 +1855,7 @@
               <strong>Adicione a logo da sua empresa</strong>
               <small>Aparece nos orçamentos enviados ao cliente final</small>
             </div>
-            <button class="dash-hero-brand-edit" onclick="openIntegradorLogoModal()"><i data-lucide="upload"></i> Adicionar</button>
+            <button class="dash-hero-brand-edit ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="upload"></i> Adicionar</button>
           </div>`;
       }
       function renderOrcamentoBrandBar() {
@@ -1901,7 +1900,7 @@
         modal.innerHTML = `
           <div class="modal-head">
             <h3><i data-lucide="image"></i> Sua marca no orçamento</h3>
-            <button class="modal-close" onclick="closeIntegradorLogoModal()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+            <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeIntegradorLogoModal()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
           </div>
           <div class="modal-body">
             <div class="form-group">
@@ -3409,7 +3408,7 @@
                   <p class="profile-meta-row">
                     <i data-lucide="mail" style="width:14px;height:14px;color:var(--muted);"></i>
                     gabriel.barbosa@oderco.com.br
-                    <button class="profile-copy-btn" onclick="navigator.clipboard?.writeText('gabriel.barbosa@oderco.com.br')" title="Copiar"><i data-lucide="copy" style="width:13px;height:13px;"></i></button>
+                    <button class="profile-copy-btn ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" onclick="navigator.clipboard?.writeText('gabriel.barbosa@oderco.com.br')" title="Copiar"><i data-lucide="copy" style="width:13px;height:13px;"></i></button>
                   </p>
                 </div>
 
@@ -6151,7 +6150,7 @@
             <div class="modal" id="calcWaModal" role="dialog" aria-labelledby="calcWaTitle">
               <div class="modal-head">
                 <h3 id="calcWaTitle"><i data-lucide="message-circle"></i> Enviar simulação via WhatsApp</h3>
-                <button class="modal-close" onclick="calcCloseWa()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+                <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="calcCloseWa()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
               </div>
               <div class="modal-body">
                 <div class="form-group">
@@ -7421,7 +7420,7 @@ Fone: (44) 2101-1400`;
         modal.innerHTML = `
           <div class="modal-head">
             <h3><i data-lucide="image"></i> ${editing ? 'Editar banner' : 'Novo banner'}</h3>
-            <button class="modal-close" onclick="closeBannerForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+            <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeBannerForm()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
           </div>
           <div class="modal-body">
             <div class="form-group">
@@ -8663,7 +8662,7 @@ Fone: (44) 2101-1400`;
         modal.innerHTML = `
           <div class="modal-head">
             <h3>Reiniciar montagem do kit?</h3>
-            <button class="modal-close" onclick="mkCloseResetModal()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
+            <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="mkCloseResetModal()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
           </div>
           <div class="modal-body">
             <p style="margin:0 0 14px;font:400 14px/1.5 var(--font);color:var(--ink);">

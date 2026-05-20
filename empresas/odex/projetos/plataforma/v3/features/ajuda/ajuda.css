@@ -249,8 +249,8 @@
     .help-modal-head { padding:18px 22px; background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); color:white; position:relative; }
     .help-modal-head h3 { font:700 16px/1.3 var(--font); color:white; margin:0 0 4px; letter-spacing:-.01em; }
     .help-modal-head p { font:400 12.5px/1.4 var(--font); color:rgba(255,255,255,.75); margin:0; }
-    .help-modal-close { position:absolute; top:14px; right:14px; width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,.14); border:0; color:white; display:grid; place-items:center; cursor:pointer; transition:.12s; }
-    .help-modal-close:hover { background:rgba(255,255,255,.28); }
+    /* .help-modal-close migrated to .ds-icon-btn .ds-icon-btn-glass + position helper (H.21) */
+    .help-modal-close { position:absolute; top:14px; right:14px; }
     .help-modal-video { aspect-ratio:16/9; background:#0a1230; position:relative; cursor:pointer; overflow:hidden; }
     .help-modal-video::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(0,90,255,.3), rgba(83,198,103,.15)); }
     .help-modal-video::after { content:''; position:absolute; inset:0; background-image:radial-gradient(circle at 30% 40%, rgba(255,255,255,.08), transparent 50%); }
