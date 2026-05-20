@@ -242,8 +242,7 @@
     .help-fab-pulse::after { content:''; position:absolute; inset:-3px; border-radius:50%; background:var(--yellow); opacity:.5; animation:helpFabPulse 2s ease-out infinite; }
     @keyframes helpFabPulse { 0% { transform:scale(.7); opacity:.6; } 100% { transform:scale(2.2); opacity:0; } }
 
-    .help-modal-mask { position:fixed; inset:0; background:rgba(8,15,49,.42); z-index:100; opacity:0; pointer-events:none; transition:.18s; backdrop-filter:blur(2px); }
-    .help-modal-mask.open { opacity:1; pointer-events:all; }
+    /* .help-modal-mask migrated to .ds-overlay .ds-overlay-tint-chat .ds-overlay-blur-sm .ds-overlay-z-dropdown (H.33) */
     .help-modal-box { position:fixed; right:28px; bottom:28px; width:420px; max-width:calc(100vw - 32px); max-height:calc(100vh - 56px); z-index:101; background:var(--white); border-radius:var(--r-card-lg); box-shadow:0 30px 80px rgba(8,15,49,.34), 0 10px 24px rgba(8,15,49,.18); overflow:hidden; transform:translateY(20px) scale(.96); opacity:0; pointer-events:none; transition:.22s cubic-bezier(.22,1,.36,1); display:flex; flex-direction:column; }
     .help-modal-box.open { transform:translateY(0) scale(1); opacity:1; pointer-events:all; }
     .help-modal-head { padding:18px 22px; background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); color:white; position:relative; }

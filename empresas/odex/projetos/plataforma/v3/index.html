@@ -174,8 +174,7 @@
 
       /* Modal */
       /* ====== MODAL (DS Figma · radius 4-12px, tipografia P bold) ====== */
-      .modal-overlay { position: fixed; inset: 0; background: rgba(13,29,82,.45); backdrop-filter: blur(4px); z-index: 200; opacity: 0; pointer-events: none; transition: .2s; }
-      .modal-overlay.open { opacity: 1; pointer-events: auto; }
+      /* .modal-overlay migrated to .ds-overlay .ds-overlay-tint-strong (H.33) */
       .modal {
         position: fixed; top: 50%; left: 50%;
         transform: translate(-50%,-56%) scale(.96);
@@ -2573,7 +2572,7 @@
           <div class="store">
             <div class="toolbar">
               <div class="search">
-                <span class="search-icon"><i data-lucide="search" style="width:16px"></i></span>
+                <span class="search-icon ds-toolbar-search-icon"><i data-lucide="search" style="width:16px"></i></span>
                 <input id="search" placeholder="Buscar por código, nome ou marca..." value="${state.search}">
                 <button class="search-clear" id="searchClear" aria-label="Limpar busca"><i data-lucide="x" style="width:11px"></i></button>
               </div>
@@ -3027,7 +3026,7 @@
             <section class="pdp-tab-pane ds-tab-pane ds-tab-pane" id="pdpTabDocs" style="display:none;">
               <!-- Datasheet em destaque -->
               <div class="card pdp-content-card pdp-datasheet-feature">
-                <div class="pdp-datasheet-feature-icon"><i data-lucide="file-text" style="width:28px;height:28px;"></i></div>
+                <div class="pdp-datasheet-feature-icon ds-icon-box ds-icon-box-xl"><i data-lucide="file-text" style="width:28px;height:28px;"></i></div>
                 <div class="pdp-datasheet-feature-body">
                   <span class="pdp-datasheet-feature-eyebrow">Documento principal</span>
                   <h3 class="pdp-datasheet-feature-title">Datasheet técnico — ${p.brand} ${p.model || ''}</h3>
@@ -4080,35 +4079,35 @@
             <!-- Stats com ícone -->
             <div class="list-stats">
               <div class="list-stat">
-                <span class="list-stat-icon is-navy"><i data-lucide="file-text"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-navy"><i data-lucide="file-text"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Qtd. orçamentos</span>
                   <strong class="list-stat-val">${orcamentosData.length}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-blue"><i data-lucide="circle-dollar-sign"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-blue"><i data-lucide="circle-dollar-sign"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Valor total</span>
                   <strong class="list-stat-val">${fmt(totalVal)}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-green"><i data-lucide="badge-check"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-green"><i data-lucide="badge-check"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Aprovados</span>
                   <strong class="list-stat-val" style="color:#0aa253;">${aprovados}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-yellow"><i data-lucide="clock"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-yellow"><i data-lucide="clock"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Pendentes</span>
                   <strong class="list-stat-val" style="color:#c97a00;">${pendentes}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-red"><i data-lucide="calendar-x"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-red"><i data-lucide="calendar-x"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Expirados</span>
                   <strong class="list-stat-val" style="color:#d04848;">${expirados}</strong>
@@ -4118,8 +4117,8 @@
 
             <!-- Card único: Buscar + Filtros expansível -->
             <div class="list-filters is-collapsed" id="orcFilters">
-              <div class="list-toolbar">
-                <div class="list-toolbar-srch">
+              <div class="list-toolbar ds-toolbar">
+                <div class="list-toolbar-srch ds-toolbar-search">
                   <label>Buscar</label>
                   <input type="text" placeholder="Código, nome...">
                 </div>
@@ -4550,42 +4549,42 @@
             <!-- Stats com ícone -->
             <div class="list-stats">
               <div class="list-stat">
-                <span class="list-stat-icon is-navy"><i data-lucide="package"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-navy"><i data-lucide="package"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Qtd. pedidos</span>
                   <strong class="list-stat-val">${pedidosData.length}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-blue"><i data-lucide="circle-dollar-sign"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-blue"><i data-lucide="circle-dollar-sign"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Valor total</span>
                   <strong class="list-stat-val">${fmt(totalVal)}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-green"><i data-lucide="badge-check"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-green"><i data-lucide="badge-check"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Finalizados</span>
                   <strong class="list-stat-val" style="color:#0aa253;">${finalizados}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-yellow"><i data-lucide="clock"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-yellow"><i data-lucide="clock"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Aguardando pagamento</span>
                   <strong class="list-stat-val" style="color:#c97a00;">${aguardando}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-navy"><i data-lucide="receipt"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-navy"><i data-lucide="receipt"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Faturados</span>
                   <strong class="list-stat-val" style="color:var(--navy);">${faturados}/${pedidosData.length}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-red"><i data-lucide="lock"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-red"><i data-lucide="lock"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Bloqueados</span>
                   <strong class="list-stat-val" style="color:#8b3fce;">${bloqueados}</strong>
@@ -4595,8 +4594,8 @@
 
             <!-- Card único: Buscar + Filtros expansível -->
             <div class="list-filters is-collapsed" id="pedFilters">
-              <div class="list-toolbar">
-                <div class="list-toolbar-srch">
+              <div class="list-toolbar ds-toolbar">
+                <div class="list-toolbar-srch ds-toolbar-search">
                   <label>Buscar</label>
                   <input type="text" placeholder="Código, nome, pedido...">
                 </div>
@@ -6596,7 +6595,7 @@
             <!-- 4 cards de resumo (padrão DS list-stat) -->
             <div class="list-stats">
               <div class="list-stat">
-                <span class="list-stat-icon is-yellow"><i data-lucide="clock"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-yellow"><i data-lucide="clock"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Notas a Vencer</span>
                   <strong class="list-stat-val">${aVencer.length}</strong>
@@ -6605,7 +6604,7 @@
               </div>
 
               <div class="list-stat">
-                <span class="list-stat-icon is-blue"><i data-lucide="circle-dollar-sign"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-blue"><i data-lucide="circle-dollar-sign"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Notas a Receber</span>
                   <strong class="list-stat-val">${fmt(valorAReceber)}</strong>
@@ -6614,7 +6613,7 @@
               </div>
 
               <div class="list-stat">
-                <span class="list-stat-icon is-green"><i data-lucide="badge-check"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-green"><i data-lucide="badge-check"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Recebidas nesse mês</span>
                   <strong class="list-stat-val" style="color:#0aa253;">${fmt(valorRecebidoMes)}</strong>
@@ -6623,7 +6622,7 @@
               </div>
 
               <div class="list-stat">
-                <span class="list-stat-icon is-navy"><i data-lucide="trophy"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-navy"><i data-lucide="trophy"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Prêmio Venda Direta · Mês</span>
                   <strong class="list-stat-val">${fmt(totalMes)}</strong>
@@ -6637,8 +6636,8 @@
 
             <!-- Card único: Buscar + Filtros expansível -->
             <div class="list-filters is-collapsed" id="premioFilters">
-              <div class="list-toolbar">
-                <div class="list-toolbar-srch">
+              <div class="list-toolbar ds-toolbar">
+                <div class="list-toolbar-srch ds-toolbar-search">
                   <label>Buscar</label>
                   <input type="text" placeholder="Código, nome, email, telefone...">
                 </div>
@@ -7008,42 +7007,42 @@ Fone: (44) 2101-1400`;
             <!-- KPIs do período -->
             <div class="list-stats">
               <div class="list-stat">
-                <span class="list-stat-icon is-navy"><i data-lucide="package"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-navy"><i data-lucide="package"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Pedidos no período</span>
                   <strong class="list-stat-val">${totPed}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-blue"><i data-lucide="circle-dollar-sign"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-blue"><i data-lucide="circle-dollar-sign"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Faturamento</span>
                   <strong class="list-stat-val">${fmt(totRev)}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-green"><i data-lucide="badge-check"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-green"><i data-lucide="badge-check"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Finalizados</span>
                   <strong class="list-stat-val" style="color:#0aa253;">${totFin}/${totPed}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-navy"><i data-lucide="receipt"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-navy"><i data-lucide="receipt"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">NF emitidas</span>
                   <strong class="list-stat-val">${totFat}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-yellow"><i data-lucide="trending-up"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-yellow"><i data-lucide="trending-up"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Conversão</span>
                   <strong class="list-stat-val" style="color:#c97a00;">${taxaConv}%</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-red"><i data-lucide="calendar-x"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-red"><i data-lucide="calendar-x"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Orçamentos expirados</span>
                   <strong class="list-stat-val" style="color:#d04848;">${orcExp}</strong>
@@ -7052,8 +7051,8 @@ Fone: (44) 2101-1400`;
             </div>
 
             <!-- Filtro de período -->
-            <div class="list-toolbar">
-              <div class="list-toolbar-srch">
+            <div class="list-toolbar ds-toolbar">
+              <div class="list-toolbar-srch ds-toolbar-search">
                 <label>Período</label>
                 <select class="list-toolbar-period ds-replace" data-allow-empty="1">
                   <option>Últimos 30 dias</option>
@@ -7729,28 +7728,28 @@ Fone: (44) 2101-1400`;
             <!-- KPIs administrativos -->
             <div class="list-stats" style="margin-bottom:20px;">
               <div class="list-stat">
-                <span class="list-stat-icon is-navy"><i data-lucide="users"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-navy"><i data-lucide="users"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Usuários totais</span>
                   <strong class="list-stat-val">${totalUsuarios}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-green"><i data-lucide="user-check"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-green"><i data-lucide="user-check"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Ativos</span>
                   <strong class="list-stat-val" style="color:#0aa253;">${ativos}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-blue"><i data-lucide="briefcase"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-blue"><i data-lucide="briefcase"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Integradores</span>
                   <strong class="list-stat-val" style="color:var(--blue);">${integradores}</strong>
                 </div>
               </div>
               <div class="list-stat">
-                <span class="list-stat-icon is-red"><i data-lucide="activity"></i></span>
+                <span class="list-stat-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded is-red"><i data-lucide="activity"></i></span>
                 <div class="list-stat-body">
                   <span class="list-stat-lbl">Eventos hoje</span>
                   <strong class="list-stat-val" style="color:#d04848;">${adminAuditLog.length}</strong>
@@ -8383,7 +8382,7 @@ Fone: (44) 2101-1400`;
       function mkFormHTML() {
         const typeCards = MK_KIT_TYPES.map(t => `
           <button type="button" class="mk-kit-card ds-card-selectable ${mkState.kitType===t.id?'is-selected':''}" onclick="mkSetKitType('${t.id}')" data-id="${t.id}">
-            <span class="mk-kit-card-icon" style="background:${t.accent};color:${t.color};"><i data-lucide="${t.icon}"></i></span>
+            <span class="mk-kit-card-icon ds-icon-box ds-icon-box-xl ds-icon-box-rounded" style="background:${t.accent};color:${t.color};"><i data-lucide="${t.icon}"></i></span>
             <span class="mk-kit-card-body">
               <strong>${t.label}</strong>
               <small>${t.sub}</small>
@@ -8754,7 +8753,7 @@ Fone: (44) 2101-1400`;
               <span class="mk-step-cell-circle-wrap">
                 ${i > 0 ? `<span class="mk-step-cell-line is-prev ${prevDone?'is-done':''}"></span>` : ''}
                 ${i < steps.length-1 ? `<span class="mk-step-cell-line is-next ${nextDone?'is-done':''}"></span>` : ''}
-                <span class="mk-step-cell-circle">${isPast ? '<i data-lucide="check" style="width:14px;height:14px;"></i>' : (i+1)}</span>
+                <span class="mk-step-cell-circle ds-status-dot ds-status-dot-lg">${isPast ? '<i data-lucide="check" style="width:14px;height:14px;"></i>' : (i+1)}</span>
               </span>
               <span class="mk-step-cell-label">${s.label}</span>
             </button>`;

@@ -33,16 +33,7 @@
 /* ====== CART DRAWER (DS Figma 1850:9412 · Carrinho1) ======
      bg-white • shadow esquerda • CTA azul #005AFF • radius 4px
   */
-  .cart-overlay {
-    position: fixed; inset: 0;
-    background: rgba(17, 24, 39, 0.4);
-    backdrop-filter: blur(4px);
-    z-index: 40;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.3s;
-  }
-  .cart-overlay.open { opacity: 1; pointer-events: auto; }
+  /* .cart-overlay migrated to .ds-overlay .ds-overlay-tint-medium (H.33) */
 
   .cart {
     position: fixed; top: 0; right: 0; bottom: 0;

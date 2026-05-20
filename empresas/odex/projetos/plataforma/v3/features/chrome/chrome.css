@@ -174,5 +174,3 @@
   .sidebar-link svg { width: 20px; height: 20px; }
   .sidebar-link i { width: 20px; height: 20px; }
   .badge { padding: 0 4px; min-width: 16px; height: 16px; font-size: 9px; top: -3px; right: -3px; border-radius: var(--r-form); line-height: 16px; }
-
-}

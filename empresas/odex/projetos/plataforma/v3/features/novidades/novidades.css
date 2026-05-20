@@ -23,8 +23,7 @@
 
 /* @layer features wrapper removed · was @layer features { */
 /* ====== NOVIDADES PANEL (V5 · 100% DS) ====== */
-    .novas-overlay { position:fixed; inset:0; background:rgba(13,29,82,.32); backdrop-filter:blur(2px); z-index:300; opacity:0; pointer-events:none; transition:.25s; }
-    .novas-overlay.open { opacity:1; pointer-events:auto; }
+    /* .novas-overlay migrated to .ds-overlay .ds-overlay-tint-medium .ds-overlay-blur-sm (H.33) */
     .novas-panel {
       position:fixed; top:0; right:0; bottom:0;
       width:560px; max-width:100%;

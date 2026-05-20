@@ -28,8 +28,7 @@
 
 /* @layer features wrapper removed · was @layer features { */
 /* ====== MODAL RESUMO DO PEDIDO (DS-fiel) ====== */
-    .ped-resumo-overlay { position:fixed; inset:0; background:rgba(13,29,82,.45); backdrop-filter:blur(4px); z-index:300; opacity:0; pointer-events:none; transition:.22s; }
-    .ped-resumo-overlay.open { opacity:1; pointer-events:auto; }
+    /* .ped-resumo-overlay migrated to .ds-overlay .ds-overlay-tint-strong (H.33) */
     .ped-resumo-modal {
       position:fixed; top:50%; left:50%;
       transform:translate(-50%,-54%) scale(.96);
