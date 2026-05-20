@@ -1,10 +1,12 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.9.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.10.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
 📑 **Component docs** · ver "Component docs" abaixo · cada atom/molecule tem `.md` irmão.
+
+♿ **[Accessibility (a11y.md)](./a11y.md)** · WCAG 2.1 AA audit · contrast ratios, focus visible, reduced motion, ARIA.
 
 Design System da Plataforma Solar Odex. Source of truth para tokens, componentes e padrões visuais que devem ser idênticos entre código (browser) e design (Figma).
 
@@ -29,7 +31,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅. Próximo: a11y audit, demais features | 🟡 Em progresso (C.1-C.7 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅. Próximo: keyboard nav (C.8.1), demais features | 🟡 Em progresso (C.1-C.8 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -125,6 +127,9 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 
 ### Features
 - [auth](../features/auth/README.md) — Login + Cadastro + Redefinir senha
+
+### Accessibility
+- [a11y.md](./a11y.md) — WCAG 2.1 AA audit completo · contrast, focus, motion, ARIA
 
 ## Cascade architecture (`@layer`)
 
@@ -449,7 +454,8 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.5 · Tokens faltantes** — motion (duration + easing), z-index scale, breakpoint scale, base/reset.css (extraído de index.html)
 - [x] **C.6 · CSS @layer architecture** — cascade determinístico · 7 layers (reset/tokens/atoms/molecules/features/legacy/utilities) · DS + auth wrapped
 - [x] **C.7 · Component README** — `.md` doc irmão pra cada atom/molecule + base/reset + features/auth/README.md
-- [ ] **C.8 · A11y audit** — contrast WCAG AA, focus visible, ARIA, keyboard nav
+- [x] **C.8 · A11y baseline** — `:focus-visible` em todos atoms+molecules+auth · `prefers-reduced-motion` · WCAG AA contrast (fix de 3 violations: danger-fg, success-fg, andamento-fg) · audit doc em [a11y.md](./a11y.md)
+- [ ] **C.8.1 · A11y keyboard nav** — arrow/Enter/Esc/Tab em `.odex-select` + `.ds-menu` · focus trap + ARIA roles dinâmicos
 - [ ] **C.9 · Input-group molecule** — promove `.auth-input-wrap` → `.ds-input-group`
 - [ ] **C.10+ · Demais features** — mk, ov, ped, ck, clientes, calculadora, ajuda, dashboard, topbar/sidebar
 
@@ -482,5 +488,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.7.0 | C.5 | 2026-05-20 | Motion tokens (5 durations + 5 easings) · Z-index scale (9 layers) · Breakpoint scale (5 sizes) · `ds/base/reset.css` extraído de index.html |
 | 0.8.0 | C.6 | 2026-05-20 | CSS `@layer` architecture · 7 camadas (reset/tokens/atoms/molecules/features/legacy/utilities) · cascade determinístico |
 | 0.9.0 | C.7 | 2026-05-20 | Component docs · `.md` irmão pra cada atom/molecule (12 arquivos) + features/auth/README.md |
+| 0.10.0 | C.8 | 2026-05-20 | A11y baseline · `:focus-visible` em todos elementos · `prefers-reduced-motion` · WCAG AA contrast audit + 3 fixes (danger-fg/success-fg/andamento-fg) · `ds/a11y.md` |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

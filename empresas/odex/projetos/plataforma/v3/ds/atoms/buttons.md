@@ -41,7 +41,7 @@ Auth tem variant própria `.auth-submit` (48h com box-shadow) — não use `.ds-
 | `:hover` | Background ou border muda · transition `--motion-default` (150ms) |
 | `:disabled` | `opacity: .55` + `cursor: not-allowed` |
 | `:active` | Sem animação custom · browser default |
-| `:focus` | Sem ring custom no .ds-btn · **TODO**: adicionar focus visible pra a11y (Phase C.8) |
+| `:focus-visible` | `--shadow-focus-blue` (3px blue glow) · `--shadow-focus-error` em danger |
 
 ## Pílulas especiais (CTA destacado)
 
@@ -62,7 +62,8 @@ Auth tem variant própria `.auth-submit` (48h com box-shadow) — não use `.ds-
 - Sempre prefira `<button>` para ações, `<a>` para navegação
 - Disabled buttons recebem `disabled` attr · screen reader anuncia "disabled"
 - Ícones decorativos: `aria-hidden="true"` no `<i>`. Ícones funcionais (sem label): `aria-label="..."`
-- **Falta:** focus ring visível · TODO Phase C.8 a11y
+- ✅ Focus ring via `:focus-visible` · keyboard nav OK
+- Contrast: danger fg agora usa `--red-700` (6.58:1 AA) · veja [a11y.md](../a11y.md)
 
 ## Examples
 

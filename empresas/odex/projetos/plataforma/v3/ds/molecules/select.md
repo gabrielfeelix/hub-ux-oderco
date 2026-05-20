@@ -68,8 +68,9 @@ Pattern progressivo:
 - Trigger é `<button>` com `aria-haspopup="listbox"` e `aria-expanded="true|false"`
 - Menu é `<div role="listbox">`
 - Options são `<button role="option">`
-- **Falta:** `aria-selected` no option ativo · TODO
-- **Falta:** keyboard nav (arrow keys, Enter, Esc) · TODO Phase C.8
+- ✅ Focus visible via `:focus-visible` no trigger e nas options
+- **Falta:** `aria-selected` no option ativo · TODO C.8.1
+- **Falta:** keyboard nav (arrow keys, Enter, Esc) · TODO C.8.1 · ver [a11y.md](../a11y.md)
 
 ## Examples
 

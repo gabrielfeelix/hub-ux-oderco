@@ -94,7 +94,7 @@ Quase tudo via `--color-*` semantic + `--motion-*`. Cores brand (navy/blue) e rg
 ## TODOs
 
 - **Phase C.9** — Promover `.auth-input-wrap` paradigm pra `.ds-input-group` (DS molecule reutilizável)
-- **Phase C.8** — A11y audit no focus state + keyboard nav
+- ✅ Phase C.8 done — focus visible em todas variants (.auth-back, .auth-submit, .auth-secondary, .auth-link)
 - Consolidar `.auth-check` vs `.ds-check` (mantido auth-check pelo top-align multi-line)
 
 ## Related

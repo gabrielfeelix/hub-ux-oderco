@@ -26,7 +26,7 @@ O wrap `<label>` permite click no texto pra toggle. 18×18 hit target — atende
 | Default | Border `--color-border-default`, bg `--color-surface-card` |
 | `:checked` | bg `--color-text-strong` (navy), border same, check icon em white |
 | `:disabled` | Inherit + opacity (browser default) |
-| `:focus` | Outline browser default · **TODO Phase C.8**: custom focus ring |
+| `:focus-visible` | `--color-border-focus` border + `--shadow-focus-blue` ring |
 
 ## Radio specific
 
@@ -47,7 +47,7 @@ Radios usam `border-radius: 50%`. Quando `:checked`, mostra dot centralizado em 
 - Para radios, todos do mesmo grupo compartilham `name="..."`
 - Para grupos relacionados, use `<fieldset>` + `<legend>` em vez de label individual genérico
 - Required: adicione `required` attr · `aria-required="true"` redundante mas explícito
-- **Focus state custom ausente** · keyboard nav usa outline browser (visível mas inconsistente) · TODO C.8
+- ✅ Focus visible via `:focus-visible` no input
 
 ## Examples
 

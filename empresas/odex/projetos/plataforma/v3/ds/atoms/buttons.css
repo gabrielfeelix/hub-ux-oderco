@@ -15,6 +15,13 @@
   white-space: nowrap; user-select: none;
 }
 .ds-btn:disabled { opacity: .55; cursor: not-allowed; }
+.ds-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-blue);
+}
+.ds-btn-danger:focus-visible {
+  box-shadow: var(--shadow-focus-error);
+}
 
 /* === Variants ===================================================== */
 

@@ -18,6 +18,7 @@
   --blue-hover:   #0046CC;                                    /* Hover blue variant */
   --blue-50:      #F0F5FF;                                    /* Tint claríssimo blue · hover bg secondary */
   --blue-100:     #DDE8FF;                                    /* Tint claro blue · pill andamento bg */
+  --blue-700:     #003BB3;                                    /* Blue escuro · texto sobre blue-100 (contraste AA) */
   --blue-button:  #22437D;                                    /* Azul botão (variante navy mid) */
   --slate:        #5A616F;                                    /* Cinza-azulado complementar */
   --slate-2:      #3B537D;                                    /* Azul complementar 2 · texto sobre info-bg */
@@ -47,7 +48,8 @@
   --green:         #53C667;                                   /* Success · confirmações, status aprovado */
   --green-soft:    #98DDA4;                                   /* Success suave · borders/strokes */
   --green-softer:  #CCEED2;                                   /* Success BG · pílulas, banners */
-  --green-700:     #1C7A36;                                   /* Texto sobre green-softer (contraste WCAG) */
+  --green-700:     #1C7A36;                                   /* Texto sobre green-softer (4.30:1 · marginal, ainda usado em legacy) */
+  --green-800:     #155A28;                                   /* Texto sobre green-softer (6.62:1 · AA) · default em semantic */
   --yellow:        #F39200;                                   /* Warning · pendentes, atenção */
   --yellow-soft:   #F8BE66;                                   /* Warning suave */
   --yellow-softer: #FCDFB3;                                   /* Warning BG · pill backgrounds */
@@ -231,8 +233,8 @@
   --color-action-ghost-border-hover:      var(--ink);
   --color-action-danger-bg:               var(--white);
   --color-action-danger-bg-hover:         var(--red-50);
-  --color-action-danger-fg:               var(--red);
-  --color-action-danger-border:           var(--red);
+  --color-action-danger-fg:               var(--red-700);     /* Red escuro · AA contraste sobre white (6.58:1) */
+  --color-action-danger-border:           var(--red);         /* Red claro · UI border passa 3:1 sobre white */
   --color-action-danger-disabled-fg:      var(--red-soft);
   --color-action-danger-disabled-border:  var(--red-soft);
 
@@ -269,7 +271,7 @@
      SEMANTIC · FEEDBACK · success/warning/error/info
      ============================================================ */
   --color-feedback-success-bg:     var(--green-softer);
-  --color-feedback-success-fg:     var(--green-700);
+  --color-feedback-success-fg:     var(--green-800);          /* AA contraste sobre green-softer (6.62:1) */
   --color-feedback-success-strong: var(--green);
   --color-feedback-success-border: var(--green-soft);
   --color-feedback-warning-bg:     var(--yellow-softer);
@@ -289,7 +291,7 @@
      SEMANTIC · STATUS · domain-specific pills
      ============================================================ */
   --color-status-andamento-bg:  var(--blue-100);              /* Pill 'Em andamento' bg */
-  --color-status-andamento-fg:  var(--blue);
+  --color-status-andamento-fg:  var(--blue-700);              /* AA contraste sobre blue-100 (7.49:1) */
   --color-status-semcliente-bg: var(--navy-100);              /* Pill 'Sem cliente' bg */
   --color-status-semcliente-fg: var(--navy);
 

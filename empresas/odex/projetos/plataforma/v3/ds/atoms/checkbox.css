@@ -30,6 +30,12 @@
 
 .ds-check input[type=radio] { border-radius: 50%; }
 
+.ds-check input:focus-visible {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus-blue);
+}
+
 .ds-check input:checked {
   background: var(--color-text-strong);
   border-color: var(--color-text-strong);

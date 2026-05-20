@@ -54,8 +54,9 @@ Abrir: adicione `.open` no container `.ds-menu` (toggle via JS).
 - Popover deve ter `role="menu"`
 - Items devem ter `role="menuitem"`
 - Items `.is-selected` adicionam `aria-current="true"`
-- **Falta:** keyboard nav (arrow keys, Enter, Esc, Tab close) · TODO Phase C.8
-- **Falta:** Focus trap quando aberto · TODO
+- ✅ Focus visible via `:focus-visible` nos items
+- **Falta:** keyboard nav (arrow keys, Enter, Esc, Tab close) · TODO C.8.1
+- **Falta:** Focus trap quando aberto · TODO C.8.1 · ver [a11y.md](../a11y.md)
 
 ## Examples
 

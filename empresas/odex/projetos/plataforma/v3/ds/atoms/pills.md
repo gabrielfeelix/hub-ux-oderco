@@ -45,7 +45,12 @@ Indicador de status passivo · informa estado atual sem ser interativo. Listings
 - Use `<span>` semântico
 - Se o status é crítico (erro/cancelado), adicione `aria-label` mais descritivo se o texto visual for ambíguo:
   `<span class="ds-pill ds-pill-cancelado" aria-label="Pedido cancelado">Cancelado</span>`
-- **Contraste cuidado**: textos com cores escuras sobre bg claro (`#1c7a36` sobre `#cceed2` etc) foram escolhidos pra atender WCAG AA — auditado em Phase C.8
+- **Contraste WCAG AA atendido** em todas variants (audit em [a11y.md](../a11y.md)):
+  - Success/Aprovado: 6.62:1 (green-800 on green-softer)
+  - Pendente: 4.88:1
+  - Cancelado: 5.30:1
+  - Andamento: 7.49:1 (blue-700 on blue-100)
+  - Sem cliente: 13.49:1
 
 ## Examples
 

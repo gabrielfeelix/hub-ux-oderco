@@ -40,3 +40,28 @@ button {
   border: 0;
   cursor: pointer;
 }
+
+/* ============================================================
+   A11Y · Focus visible baseline
+   Caso atom/molecule não defina focus próprio, browser default fica.
+   ============================================================ */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   A11Y · prefers-reduced-motion
+   Respeita preferência do usuário · zera transitions/animations.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
