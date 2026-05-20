@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.29.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.30.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -123,6 +123,7 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 - [checkbox](./atoms/checkbox.md) — `.ds-check` (checkbox + radio)
 - [pills](./atoms/pills.md) — `.ds-pill` + 6 status variants
 - [cards](./atoms/cards.md) — `.ds-card` + variants
+- [table-grid](./atoms/table-grid.md) — `.ds-table-grid` ⭐ Phase H.2 · 8x DUPES · CSS-grid table com custom cols + slots + cell utilities
 
 ### Molecules
 - [select](./molecules/select.md) — `.odex-select` (via `.ds-replace`)
@@ -499,7 +500,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 Criar atoms confirmados (≥2x DUPES) em `ds/`, com docs + catalog + opcional migration. Sequência por DUPE-count desc:
 
 - [x] **H.1 · `.ds-icon-btn`** (10x DUPES · TOP) — Atom criado em `ds/atoms/icon-btn.{css,md}` · 2 shapes (square/circle) × 4 sizes (sm 28/md 34/lg 40/xl 48) × 5 tones (default/ghost/soft/glass/danger) + slots `.ds-icon-btn-dot` (red 8×8 anchored) e `.ds-icon-btn-badge` (counter) · barrel index.css atualizado · catalog section adicionada com 4 sub-componentes (shapes, sizes, tones, slots) · migration map em icon-btn.md mapeando 10 origins → ds replacements
-- [ ] **H.2 · `.ds-table-grid`** (8x) — clientes/orc/ped/admin/mk · CSS grid table (head + rows)
+- [x] **H.2 · `.ds-table-grid`** (8x DUPES) — Atom criado em `ds/atoms/table-grid.{css,md}` · CSS grid table (head + clickable rows) com colunas customizáveis via `--ds-table-cols` · slot `.ds-table-grid-row-arrow` (chevron) · 4 cell utilities (mono/strong/num/meta) · `.ds-table-grid-dense` variant + `.ds-table-grid-empty` placeholder · catalog com 3 sub-componentes (default/with-arrow/dense+empty) · migration map mapeando 9 origins (clients-tbl-head/row, orc-tbl-head/row, ped-tbl-head/row, admin-novidade-row, admin-artigo-row, client-row-arrow → ds-table-grid-row-arrow slot)
 - [ ] **H.3 · `.ds-icon-box`** (7x) — color-coded square c/ icon
 - [ ] **H.4 · `.ds-overlay`** (6x) — backdrop modal/drawer blur
 - [ ] **H.5 · `.ds-hero-gradient`** (6x) — hero navy→blue banner
@@ -561,5 +562,6 @@ Criar atoms confirmados (≥2x DUPES) em `ds/`, com docs + catalog + opcional mi
 | 0.27.0 | C.24 | 2026-05-20 | **Chrome (app shell) feature extraída** pra `features/chrome/chrome.css` (sidebar + topbar + shell + user-menu + body modifiers) · -157 linhas · **MAIOR upgrade do DS: .ds-icon-btn 9x→10x** (pico absoluto · justifica icon-btn como atom #1 prioritário pra Phase H) · 3 novos sugeridos: `.ds-notif-dot` (red 8×8 anchored), `.ds-nav-link` (vertical sidebar nav atom), `.ds-divider --vertical` (extender existing) · layout primitives candidatos: `.ds-app-sidebar` + `.ds-app-topbar` (não atom · shell layout) · index.html: 10589 → 10432 linhas |
 | 0.28.0 | C.25 | 2026-05-20 | **Phase C COMPLETO · cleanup sweep final em 3 sub-phases**: C.25a legacy compat (155 linhas force-radius/font-family) → `ds/legacy-compat.css` (`@layer legacy` self-declared, importado via `ds/index.css`) · C.25b loja residue (280+ linhas: store v1/v2, product-card, filter-chip, qty-stepper, price-slider, cart-overlay, list-view, empty-state, search) anexado em `features/loja/loja.css` · C.25c home content (365 linhas: home-kpis, home-perks, home-showcase, home-categories grid/pills, home-products-grid, home-recent rails) anexado em `features/dashboard/dashboard.css` · NO new atoms confirmed (cleanup-only) · DUPES adicionais pra Phase H: `.home-prod-card` ↔ `.product-card` 3+ variantes, `.home-section-head` 5x · index.html: 10432 → 9668 linhas (-764 nesta phase · -35% acumulado desde C.10 inicial 14901) |
 | 0.29.0 | H.1 | 2026-05-20 | **Phase H BEGAN · 1º atom criado** · `.ds-icon-btn` (10x DUPES · maior do audit) em `ds/atoms/icon-btn.{css,md}` · 2 shapes (square/circle) × 4 sizes (sm 28/md 34/lg 40/xl 48) × 5 tones (default/ghost/soft/glass/danger) + slots `.ds-icon-btn-dot` (red 8×8) e `.ds-icon-btn-badge` (counter) · semantic tokens (`--color-surface-*`, `--color-text-*`, `--color-feedback-error-strong`, `--shadow-focus-blue`) · barrel `ds/atoms/index.css` atualizado · catalog section com 4 sub-componentes (shapes/sizes/tones/slots) + nav anchor · doc tem migration map de 10 origins (icon-btn v1+v2, modal-close, cart-close, help-modal-close, sidebar-toggle, profile-copy, profile-cover-edit, dash-hero-brand-edit, notif-close) → DS replacements · markup migration pendente (Phase H.21+) |
+| 0.30.0 | H.2 | 2026-05-20 | **`.ds-table-grid` atom criado** (8x DUPES · 2º maior) em `ds/atoms/table-grid.{css,md}` · CSS-grid table (head + clickable rows) com colunas via custom prop `--ds-table-cols` (não usa @media · adaptável por consumer) · slot `.ds-table-grid-row-arrow` (chevron 26 circle · DUPE com client-row-arrow) · 4 cell utilities (mono SKU/strong primary/num tabular/meta secondary) · variants `.ds-table-grid-dense` + placeholder `.ds-table-grid-empty` · semantic tokens (--color-surface-card/sunken/page, --color-border-default, --color-border-focus, --color-text-muted/default, --color-action-primary-bg) · catalog 3 sub-componentes (default/with-arrow/dense+empty) · migration map cobre 9 origins (clients/orc/ped tbl-head/row + admin-novidade-row + admin-artigo-row + client-row-arrow slot) |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

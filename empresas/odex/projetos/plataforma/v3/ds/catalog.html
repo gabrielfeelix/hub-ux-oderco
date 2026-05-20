@@ -300,6 +300,7 @@
         <a href="#checkbox">Checkbox / Radio</a>
         <a href="#pills">Status pills</a>
         <a href="#cards">Cards</a>
+        <a href="#table-grid">Table grid ⭐ H.2</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -1302,6 +1303,116 @@
             <pre class="cat-code">&lt;div class="ds-card"&gt;...&lt;/div&gt;
 &lt;div class="ds-card ds-card-lg"&gt;...&lt;/div&gt;
 &lt;div class="ds-card ds-card-shadow"&gt;...&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · TABLE GRID (Phase H.2 · 8x DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="table-grid">Table grid</h2>
+        <p class="cat-section-desc"><strong>Phase H.2 atom</strong> · consolida 8 DUPES (clients/orc/ped tbl + premia + admin variants). CSS grid table (head + rows) com colunas customizáveis via <code>--ds-table-cols</code>. NÃO é <code>&lt;table&gt;</code> HTML semântico · é list-of-rows com alinhamento ortogonal. Inclui slot <code>.ds-table-grid-row-arrow</code> (chevron) e cell utilities (mono/strong/num/meta).</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Default · clickable rows</h3><span class="cat-component-class">.ds-table-grid + -head + -row + -row-clickable</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-table-grid" style="--ds-table-cols: 80px 1fr 110px 100px;">
+                <div class="ds-table-grid-head">
+                  <span>Code</span><span>Cliente</span><span>Data</span><span>Total</span>
+                </div>
+                <div class="ds-table-grid-row ds-table-grid-row-clickable">
+                  <span class="ds-table-grid-cell-mono">#1234</span>
+                  <span class="ds-table-grid-cell-strong">Distribuidora ACME Ltda</span>
+                  <span class="ds-table-grid-cell-meta">20/05</span>
+                  <span class="ds-table-grid-cell-num">R$ 4.890</span>
+                </div>
+                <div class="ds-table-grid-row ds-table-grid-row-clickable">
+                  <span class="ds-table-grid-cell-mono">#1235</span>
+                  <span class="ds-table-grid-cell-strong">João Silva Engenharia</span>
+                  <span class="ds-table-grid-cell-meta">19/05</span>
+                  <span class="ds-table-grid-cell-num">R$ 12.300</span>
+                </div>
+                <div class="ds-table-grid-row ds-table-grid-row-clickable">
+                  <span class="ds-table-grid-cell-mono">#1236</span>
+                  <span class="ds-table-grid-cell-strong">Empresa Sol Brilhante</span>
+                  <span class="ds-table-grid-cell-meta">18/05</span>
+                  <span class="ds-table-grid-cell-num">R$ 28.450</span>
+                </div>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-table-grid" style="--ds-table-cols: 80px 1fr 110px 100px;"&gt;
+  &lt;div class="ds-table-grid-head"&gt;
+    &lt;span&gt;Code&lt;/span&gt;&lt;span&gt;Cliente&lt;/span&gt;
+    &lt;span&gt;Data&lt;/span&gt;&lt;span&gt;Total&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="ds-table-grid-row ds-table-grid-row-clickable"&gt;
+    &lt;span class="ds-table-grid-cell-mono"&gt;#1234&lt;/span&gt;
+    &lt;span class="ds-table-grid-cell-strong"&gt;Distribuidora ACME&lt;/span&gt;
+    &lt;span class="ds-table-grid-cell-meta"&gt;20/05&lt;/span&gt;
+    &lt;span class="ds-table-grid-cell-num"&gt;R$ 4.890&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">With row arrow slot</h3><span class="cat-component-class">.ds-table-grid-row-arrow</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-table-grid" style="--ds-table-cols: 1fr 100px 40px;">
+                <div class="ds-table-grid-head">
+                  <span>Cliente</span><span>Total</span><span></span>
+                </div>
+                <div class="ds-table-grid-row ds-table-grid-row-clickable">
+                  <span class="ds-table-grid-cell-strong">Distribuidora ACME</span>
+                  <span class="ds-table-grid-cell-num">R$ 4.890</span>
+                  <span class="ds-table-grid-row-arrow"><span style="font-size:14px;">›</span></span>
+                </div>
+                <div class="ds-table-grid-row ds-table-grid-row-clickable">
+                  <span class="ds-table-grid-cell-strong">João Silva Engenharia</span>
+                  <span class="ds-table-grid-cell-num">R$ 12.300</span>
+                  <span class="ds-table-grid-row-arrow"><span style="font-size:14px;">›</span></span>
+                </div>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-table-grid-row ds-table-grid-row-clickable"&gt;
+  ...
+  &lt;span class="ds-table-grid-row-arrow"&gt;
+    &lt;i data-lucide="chevron-right"&gt;&lt;/i&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Dense + empty state</h3><span class="cat-component-class">.ds-table-grid-dense · .ds-table-grid-empty</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-table-grid ds-table-grid-dense" style="--ds-table-cols: 1fr 80px;">
+                <div class="ds-table-grid-head">
+                  <span>Item</span><span>Qtd</span>
+                </div>
+                <div class="ds-table-grid-row">
+                  <span class="ds-table-grid-cell-strong">Painel Solar 580W</span>
+                  <span class="ds-table-grid-cell-num">12</span>
+                </div>
+                <div class="ds-table-grid-row">
+                  <span class="ds-table-grid-cell-strong">Inversor 6kW</span>
+                  <span class="ds-table-grid-cell-num">1</span>
+                </div>
+              </div>
+              <div style="height:12px;"></div>
+              <div class="ds-table-grid" style="--ds-table-cols: 1fr 80px;">
+                <div class="ds-table-grid-head">
+                  <span>Item</span><span>Qtd</span>
+                </div>
+                <div class="ds-table-grid-empty">Nenhum item adicionado ainda.</div>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-table-grid ds-table-grid-dense"&gt;...&lt;/div&gt;
+&lt;div class="ds-table-grid-empty"&gt;Nenhum item.&lt;/div&gt;</pre>
           </div>
         </div>
       </section>
