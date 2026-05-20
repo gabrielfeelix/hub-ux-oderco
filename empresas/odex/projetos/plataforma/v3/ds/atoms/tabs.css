@@ -93,3 +93,52 @@
 .ds-tab-pane.is-active {
   display: block;
 }
+
+/* === Tab-pill standalone (.ds-tab-pill · ped-v2-pill pattern) ====
+   Para filter chips style · pill independente (não dentro de .ds-tabs).
+   2 DUPES consolidated (Phase H.20): ped-v2-pill, novas-tab-pill.
+================================================================== */
+.ds-tab-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--r-pill, 99px);
+  color: var(--color-text-muted);
+  font: 600 12px/1 var(--font);
+  cursor: pointer;
+  transition: var(--motion-default);
+  white-space: nowrap;
+  font-family: inherit;
+}
+.ds-tab-pill:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text-default);
+}
+.ds-tab-pill.is-active,
+.ds-tab-pill[aria-selected="true"] {
+  background: var(--color-action-primary-bg);
+  border-color: var(--color-action-primary-bg);
+  color: var(--color-text-on-brand);
+}
+.ds-tab-pill:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-blue);
+}
+.ds-tab-pill-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  height: 16px;
+  border-radius: var(--r-form);
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+  font: 700 10px/1 var(--font);
+}
+.ds-tab-pill.is-active .ds-tab-pill-count {
+  background: var(--color-glass-white-strong);
+  color: var(--color-text-on-brand);
+}

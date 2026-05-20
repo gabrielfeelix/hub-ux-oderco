@@ -1,0 +1,49 @@
+/* ==========================================================================
+   DS · FORM GRID
+   Grid responsive pra agrupar form fields · 1/2/3 cols · responsive collapse.
+   Phase H.19 · consolida 4 DUPES (.ck-grid, .nc-grid, .ov-grid-2, .mk-grid).
+   ========================================================================== */
+
+.ds-form-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ds-form-grid-cols, 2), 1fr);
+  gap: var(--ds-form-grid-gap, 14px);
+}
+
+/* === Col helpers · explicit count overrides ====================== */
+.ds-form-grid-1 { --ds-form-grid-cols: 1; }
+.ds-form-grid-2 { --ds-form-grid-cols: 2; }
+.ds-form-grid-3 { --ds-form-grid-cols: 3; }
+.ds-form-grid-4 { --ds-form-grid-cols: 4; }
+
+/* === Asymmetric (2fr 1fr · ck-grid-city pattern) ================ */
+.ds-form-grid-21 {
+  grid-template-columns: 2fr 1fr;
+}
+.ds-form-grid-31 {
+  grid-template-columns: 3fr 1fr;
+}
+.ds-form-grid-city {
+  grid-template-columns: 1fr 100px;
+}
+
+/* === Field span helpers ========================================== */
+.ds-form-grid-field-full {
+  grid-column: 1 / -1;
+}
+.ds-form-grid-field-half {
+  grid-column: span 1;
+}
+
+/* === Responsive · collapse to 1 col em mobile ==================== */
+@media (max-width: 600px) {
+  .ds-form-grid,
+  .ds-form-grid-2,
+  .ds-form-grid-3,
+  .ds-form-grid-4,
+  .ds-form-grid-21,
+  .ds-form-grid-31,
+  .ds-form-grid-city {
+    grid-template-columns: 1fr;
+  }
+}
