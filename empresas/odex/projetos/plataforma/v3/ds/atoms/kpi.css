@@ -1,0 +1,167 @@
+/* ==========================================================================
+   DS · KPI CARD
+   Stat display · label uppercase + valor grande + trend opcional + icon opcional.
+   Phase H.6 · consolida 6 DUPES (dash-kpi v1+v3, home-kpi, client-kpi,
+   calc-metric, admin-stat).
+   ========================================================================== */
+
+.ds-kpi {
+  display: block;
+  position: relative;
+  padding: 20px 22px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  transition: transform var(--motion-default), box-shadow var(--motion-default);
+}
+
+.ds-kpi-lbl {
+  display: block;
+  margin: 0 0 10px;
+  font: 700 10px/1 var(--font);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--color-text-muted);
+}
+
+.ds-kpi-val {
+  display: block;
+  margin: 0 0 4px;
+  font: 700 28px/1 var(--font);
+  color: var(--color-text-default);
+  letter-spacing: -.03em;
+}
+.ds-kpi-val small {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-left: 2px;
+}
+
+.ds-kpi-sub {
+  margin: 0;
+  font: 400 12px/1.4 var(--font);
+  color: var(--color-text-muted);
+}
+
+/* === Trend pill (up/down with arrow + %) ========================= */
+.ds-kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: var(--r-pill);
+  font: 700 10px/1.2 var(--font);
+  letter-spacing: .01em;
+  margin-top: 6px;
+}
+.ds-kpi-trend i,
+.ds-kpi-trend svg {
+  width: 11px;
+  height: 11px;
+}
+.ds-kpi-trend.is-up {
+  background: var(--green-softer);
+  color: var(--green-800);
+}
+.ds-kpi-trend.is-down {
+  background: var(--red-50);
+  color: var(--red-700);
+}
+.ds-kpi-trend.is-neutral {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+}
+
+/* === Sizes ======================================================= */
+.ds-kpi-sm { padding: 14px 16px; }
+.ds-kpi-sm .ds-kpi-val { font-size: 20px; }
+.ds-kpi-sm .ds-kpi-lbl { font-size: 10px; margin-bottom: 6px; }
+
+.ds-kpi-md { padding: 20px 22px; }  /* default */
+
+.ds-kpi-lg { padding: 24px 26px; }
+.ds-kpi-lg .ds-kpi-val { font-size: 32px; }
+.ds-kpi-lg .ds-kpi-lbl { font-size: 12px; margin-bottom: 12px; }
+
+/* === Layouts ===================================================== */
+
+/* Icon top-right (dashboard pattern · use .ds-icon-box inside) */
+.ds-kpi-icon-right {
+  padding-right: 88px;
+}
+.ds-kpi-icon-right .ds-kpi-icon-slot {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+/* Top row (icon + label inline · admin pattern) */
+.ds-kpi-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Bottom row (value + trend inline) */
+.ds-kpi-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* === Tones ======================================================= */
+
+/* Default · white surface (já incluso em base) */
+
+/* Glass · dark bg sobre hero (home-kpi pattern) */
+.ds-kpi-glass {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.ds-kpi-glass .ds-kpi-lbl {
+  color: var(--color-glass-text-muted);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: .02em;
+}
+.ds-kpi-glass .ds-kpi-val {
+  color: var(--color-text-on-brand);
+  font-size: 18px;
+  letter-spacing: -.015em;
+  line-height: 1.1;
+}
+.ds-kpi-glass .ds-kpi-trend.is-up {
+  background: var(--color-glass-success-bg);
+  color: var(--color-glass-success-fg);
+}
+.ds-kpi-glass .ds-kpi-trend.is-down {
+  background: var(--color-glass-error-bg);
+  color: var(--color-glass-error-fg);
+}
+
+/* Hover lift (opt-in · cards interativos) */
+.ds-kpi-clickable {
+  cursor: pointer;
+}
+.ds-kpi-clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+/* === Grid container helper ======================================= */
+.ds-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ds-kpi-cols, 4), 1fr);
+  gap: 14px;
+}
+@media (max-width: 1024px) {
+  .ds-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .ds-kpi-grid { grid-template-columns: 1fr; }
+}

@@ -304,6 +304,7 @@
         <a href="#icon-box">Icon box ⭐ H.3</a>
         <a href="#overlay">Overlay ⭐ H.4</a>
         <a href="#hero-gradient">Hero gradient ⭐ H.5</a>
+        <a href="#kpi">KPI card ⭐ H.6</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -1618,6 +1619,142 @@
 
 &lt;!-- Ajuda hero (lg radius · xl pad) --&gt;
 &lt;section class="ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-radius-lg ds-hero-gradient-pad-xl"&gt;...&lt;/section&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · KPI CARD (Phase H.6 · 6 DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="kpi">KPI card</h2>
+        <p class="cat-section-desc"><strong>Phase H.6 atom</strong> · consolida 6 DUPES (dash-kpi v1+v3, home-kpi glass, client-kpi compact, calc-metric). Label uppercase + valor grande + trend opcional + icon slot opcional. 3 sizes × 2 tones × icon-right layout × .ds-kpi-grid container responsive.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Default + grid container</h3><span class="cat-component-class">.ds-kpi · .ds-kpi-grid</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-kpi-grid" style="--ds-kpi-cols: 2; gap:14px;">
+                <div class="ds-kpi">
+                  <span class="ds-kpi-lbl">Vendas do mês</span>
+                  <strong class="ds-kpi-val">R$ 142,5k</strong>
+                  <span class="ds-kpi-trend is-up">▲ 12,5%</span>
+                </div>
+                <div class="ds-kpi">
+                  <span class="ds-kpi-lbl">Pedidos fechados</span>
+                  <strong class="ds-kpi-val">34</strong>
+                  <span class="ds-kpi-trend is-up">▲ 13,3%</span>
+                </div>
+                <div class="ds-kpi">
+                  <span class="ds-kpi-lbl">Orç. pendentes</span>
+                  <strong class="ds-kpi-val">12</strong>
+                  <span class="ds-kpi-trend is-down">▼ 20%</span>
+                </div>
+                <div class="ds-kpi">
+                  <span class="ds-kpi-lbl">Potência vendida</span>
+                  <strong class="ds-kpi-val">280 <small>kWp</small></strong>
+                  <span class="ds-kpi-trend is-neutral">= 0%</span>
+                </div>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-kpi-grid" style="--ds-kpi-cols: 4;"&gt;
+  &lt;div class="ds-kpi"&gt;
+    &lt;span class="ds-kpi-lbl"&gt;Vendas&lt;/span&gt;
+    &lt;strong class="ds-kpi-val"&gt;R$ 142,5k&lt;/strong&gt;
+    &lt;span class="ds-kpi-trend is-up"&gt;▲ 12,5%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Sizes</h3><span class="cat-component-class">.ds-kpi-{sm,md,lg}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="gap:12px; align-items:flex-start;">
+                <div class="ds-kpi ds-kpi-sm" style="flex:1;">
+                  <span class="ds-kpi-lbl">SM · compact</span>
+                  <strong class="ds-kpi-val">R$ 4,5k</strong>
+                </div>
+                <div class="ds-kpi ds-kpi-md" style="flex:1;">
+                  <span class="ds-kpi-lbl">MD · default</span>
+                  <strong class="ds-kpi-val">R$ 142,5k</strong>
+                </div>
+                <div class="ds-kpi ds-kpi-lg" style="flex:1;">
+                  <span class="ds-kpi-lbl">LG · emphasized</span>
+                  <strong class="ds-kpi-val">R$ 1,28M</strong>
+                </div>
+              </div>
+              <div class="cat-note">sm 14/16 val 20 · md 20/22 val 28 (default) · lg 24/26 val 32.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-kpi ds-kpi-lg ds-kpi-clickable"&gt;...&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Icon-right layout</h3><span class="cat-component-class">.ds-kpi-icon-right + .ds-kpi-icon-slot</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-kpi ds-kpi-lg ds-kpi-icon-right">
+                <span class="ds-kpi-lbl">Geração mensal</span>
+                <strong class="ds-kpi-val">128 <small>kWp</small></strong>
+                <p class="ds-kpi-sub">vs 116 kWp no mês anterior</p>
+                <span class="ds-kpi-trend is-up">▲ 10,3%</span>
+                <div class="ds-kpi-icon-slot">
+                  <div class="ds-icon-box ds-icon-box-xl ds-icon-box-rounded ds-icon-box-brand">
+                    <span style="font-size:22px;">⚡</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cat-note">Icon absolute top-right · compose com <code>.ds-icon-box</code> de qualquer tom.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-kpi ds-kpi-icon-right"&gt;
+  &lt;span class="ds-kpi-lbl"&gt;Geração&lt;/span&gt;
+  &lt;strong class="ds-kpi-val"&gt;128 kWp&lt;/strong&gt;
+  &lt;div class="ds-kpi-icon-slot"&gt;
+    &lt;div class="ds-icon-box ds-icon-box-xl ds-icon-box-brand"&gt;
+      &lt;i data-lucide="zap"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Glass tone (sobre brand bg)</h3><span class="cat-component-class">.ds-kpi-glass</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-pad-md ds-hero-gradient-radius-xl">
+                <div class="ds-kpi-grid" style="--ds-kpi-cols: 2; gap:14px 22px;">
+                  <div class="ds-kpi ds-kpi-glass">
+                    <span class="ds-kpi-lbl">Vendas</span>
+                    <strong class="ds-kpi-val">R$ 142,5k</strong>
+                    <span class="ds-kpi-trend is-up">▲ 12,5%</span>
+                  </div>
+                  <div class="ds-kpi ds-kpi-glass">
+                    <span class="ds-kpi-lbl">Pedidos</span>
+                    <strong class="ds-kpi-val">34</strong>
+                    <span class="ds-kpi-trend is-up">▲ 13,3%</span>
+                  </div>
+                  <div class="ds-kpi ds-kpi-glass">
+                    <span class="ds-kpi-lbl">Pendentes</span>
+                    <strong class="ds-kpi-val">12</strong>
+                    <span class="ds-kpi-trend is-down">▼ 20%</span>
+                  </div>
+                  <div class="ds-kpi ds-kpi-glass">
+                    <span class="ds-kpi-lbl">Potência</span>
+                    <strong class="ds-kpi-val">280 kWp</strong>
+                    <span class="ds-kpi-trend is-up">▲ 8,2%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cat-note">Glass tone usa <code>--color-glass-text-muted</code> + <code>--color-glass-success-bg/fg</code> · destinado a sobreposição em hero/brand bg.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-kpi ds-kpi-glass"&gt;
+  &lt;span class="ds-kpi-lbl"&gt;Vendas&lt;/span&gt;
+  &lt;strong class="ds-kpi-val"&gt;R$ 142,5k&lt;/strong&gt;
+  &lt;span class="ds-kpi-trend is-up"&gt;▲ 12,5%&lt;/span&gt;
+&lt;/div&gt;</pre>
           </div>
         </div>
       </section>

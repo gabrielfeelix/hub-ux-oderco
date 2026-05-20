@@ -105,6 +105,13 @@
   --color-glass-white-hover:   rgba(255, 255, 255, 0.28);     /* Glass hover state */
   --color-glass-border:        rgba(255, 255, 255, 0.14);     /* Glass card border */
   --color-glass-border-strong: rgba(255, 255, 255, 0.22);     /* Glass border emphasized */
+  --color-glass-text-muted:    rgba(255, 255, 255, 0.55);     /* Muted label sobre brand bg (kpi-glass label) */
+  --color-glass-text-soft:     rgba(255, 255, 255, 0.65);     /* Secondary text sobre brand bg */
+  --color-glass-text-strong:   rgba(255, 255, 255, 0.70);     /* Eyebrow text sobre brand bg */
+  --color-glass-success-bg:    rgba(34, 197, 94, 0.18);       /* Success pill bg sobre brand (kpi-glass trend up) */
+  --color-glass-success-fg:    #86EFAC;                       /* Success pill fg sobre brand (green-300) */
+  --color-glass-error-bg:      rgba(248, 113, 113, 0.18);     /* Error pill bg sobre brand (kpi-glass trend down) */
+  --color-glass-error-fg:      #FCA5A5;                       /* Error pill fg sobre brand (red-300) */
 
   /* ============================================================
      TINT · brand colors com alpha (hover/focus subtle bg)
