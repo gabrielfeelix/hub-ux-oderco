@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowLeft,
   ArrowRight,
+  Briefcase,
   Check,
   ChevronDown,
   Cpu,
@@ -13,12 +14,14 @@ import {
   Layers,
   LayoutGrid,
   Monitor,
+  Palette,
   Rows3,
   Save,
   Settings,
   Share2,
   ShoppingCart,
   Sparkles,
+  Trophy,
   Wand2,
   X,
   Zap,
@@ -613,8 +616,152 @@ type View = "welcome" | "quiz" | "presets" | "builder" | "review";
 type SortMode = "suggested" | "price-asc" | "price-desc" | "name";
 type ViewMode = "grid" | "list";
 
-type QuizAnswers = { use?: string; budget?: string; priority?: string };
+type UseType = "gaming" | "creating" | "general";
+type GamingLevel = "casual" | "competitive" | "pro";
+type CreatingLevel = "hobby" | "professional";
+type GeneralLevel = "basic" | "performance";
+
+type QuizAnswers = {
+  useType?: UseType;
+  games?: string[];
+  gamingLevel?: GamingLevel;
+  programs?: string[];
+  creatingLevel?: CreatingLevel;
+  generalLevel?: GeneralLevel;
+};
 type PresetTier = "start" | "pro" | "ultra";
+
+type QuizGame = {
+  id: string;
+  name: string;
+  cover: string;
+  weight: "light" | "medium" | "heavy";
+  tag: string;
+};
+
+const quizGames: QuizGame[] = [
+  {
+    id: "cs2",
+    name: "Counter-Strike 2",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg",
+    weight: "light",
+    tag: "FPS / Esports",
+  },
+  {
+    id: "dota2",
+    name: "Dota 2",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg",
+    weight: "light",
+    tag: "MOBA / Esports",
+  },
+  {
+    id: "apex",
+    name: "Apex Legends",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg",
+    weight: "medium",
+    tag: "Battle Royale",
+  },
+  {
+    id: "fc24",
+    name: "EA Sports FC 24",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2195250/header.jpg",
+    weight: "medium",
+    tag: "Esportes",
+  },
+  {
+    id: "gta5",
+    name: "GTA V",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+    weight: "medium",
+    tag: "Open World",
+  },
+  {
+    id: "cyberpunk",
+    name: "Cyberpunk 2077",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+    weight: "heavy",
+    tag: "AAA pesado",
+  },
+  {
+    id: "elden",
+    name: "Elden Ring",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+    weight: "heavy",
+    tag: "AAA RPG",
+  },
+  {
+    id: "bg3",
+    name: "Baldur's Gate 3",
+    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
+    weight: "heavy",
+    tag: "AAA RPG",
+  },
+];
+
+type QuizProgram = {
+  id: string;
+  name: string;
+  short: string;
+  category: string;
+  bg: string;
+  fg: string;
+  weight: "light" | "heavy";
+};
+
+const quizPrograms: QuizProgram[] = [
+  { id: "photoshop", name: "Photoshop", short: "Ps", category: "Imagem", bg: "#001E36", fg: "#31A8FF", weight: "light" },
+  { id: "lightroom", name: "Lightroom", short: "Lr", category: "Foto", bg: "#001E36", fg: "#31A8FF", weight: "light" },
+  { id: "illustrator", name: "Illustrator", short: "Ai", category: "Vetor", bg: "#330000", fg: "#FF9A00", weight: "light" },
+  { id: "figma", name: "Figma", short: "Fi", category: "UI / Design", bg: "#1E1E1E", fg: "#F24E1E", weight: "light" },
+  { id: "premiere", name: "Premiere Pro", short: "Pr", category: "Vídeo", bg: "#00005B", fg: "#9999FF", weight: "heavy" },
+  { id: "aftereffects", name: "After Effects", short: "Ae", category: "Motion", bg: "#00005B", fg: "#D291FF", weight: "heavy" },
+  { id: "davinci", name: "DaVinci Resolve", short: "Dv", category: "Vídeo / Color", bg: "#232F3E", fg: "#FF8D11", weight: "heavy" },
+  { id: "blender", name: "Blender", short: "Bl", category: "3D / Render", bg: "#1A1A1A", fg: "#EA7600", weight: "heavy" },
+];
+
+type UseTypeCardData = {
+  id: UseType;
+  title: string;
+  subtitle: string;
+  desc: string;
+  image: string;
+  icon: React.ReactNode;
+  accent: string;
+  glow: string;
+};
+
+const useTypeCards: UseTypeCardData[] = [
+  {
+    id: "gaming",
+    title: "Pra jogar",
+    subtitle: "Gaming",
+    desc: "Esports, AAA ou casual — vamos ver quais jogos você curte e te entregar FPS de verdade.",
+    image: "/home/category-pc-gamer.png",
+    icon: <Gamepad2 className="h-5 w-5" />,
+    accent: "#ff2b2e",
+    glow: "rgba(255,43,46,0.4)",
+  },
+  {
+    id: "creating",
+    title: "Pra criar",
+    subtitle: "Edição & Design",
+    desc: "Foto, vídeo, motion, 3D ou UI — sugerimos a build alinhada com seus programas favoritos.",
+    image: "/home/category-computers.png",
+    icon: <Palette className="h-5 w-5" />,
+    accent: "#a78bfa",
+    glow: "rgba(167,139,250,0.4)",
+  },
+  {
+    id: "general",
+    title: "Pra dia-a-dia",
+    subtitle: "Uso geral",
+    desc: "Estudo, home office, navegação, streaming. Do básico ao desempenho — você escolhe.",
+    image: "/home/category-chair.png",
+    icon: <Briefcase className="h-5 w-5" />,
+    accent: "#22d3ee",
+    glow: "rgba(34,211,238,0.4)",
+  },
+];
 
 type Preset = {
   id: PresetTier;
@@ -753,47 +900,557 @@ const presets: Preset[] = [
 ];
 
 const recommendPreset = (a: QuizAnswers): PresetTier => {
-  if (a.budget === "12+" || a.priority === "fps-max") return "ultra";
-  if (a.budget === "8-12" || a.budget === "5-8" || a.priority === "render") return "pro";
+  if (a.useType === "gaming") {
+    if (a.gamingLevel === "pro") return "ultra";
+    const heavy = (a.games ?? []).some(
+      (id) => quizGames.find((g) => g.id === id)?.weight === "heavy",
+    );
+    if (heavy || a.gamingLevel === "competitive") return "pro";
+    return "start";
+  }
+  if (a.useType === "creating") {
+    if (a.creatingLevel === "professional") return "ultra";
+    const heavy = (a.programs ?? []).some(
+      (id) => quizPrograms.find((p) => p.id === id)?.weight === "heavy",
+    );
+    if (heavy) return "pro";
+    return "start";
+  }
+  if (a.generalLevel === "performance") return "pro";
   return "start";
 };
 
-const quizSteps = [
+type GamingLevelCard = {
+  id: GamingLevel;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  accent: string;
+};
+
+const gamingLevelCards: GamingLevelCard[] = [
   {
-    id: "use" as const,
-    title: "Pra que vai usar?",
-    subtitle: "Vamos entender seu uso principal",
-    options: [
-      { id: "gaming-pro", label: "Gaming competitivo", desc: "FPS, esports, low-latency" },
-      { id: "gaming-casual", label: "Gaming casual", desc: "AAA, RPG, single-player" },
-      { id: "edit", label: "Trabalho / Edição", desc: "Vídeo, design, 3D, dev" },
-      { id: "stream", label: "Streaming / Live", desc: "Captura + encode + chat" },
-      { id: "general", label: "Uso geral", desc: "Estudos, leve, multimídia" },
-    ],
+    id: "casual",
+    title: "Casual",
+    desc: "Quero jogar bem, sem stress. 60-120 FPS está ótimo.",
+    icon: <Gamepad2 className="h-4 w-4" />,
+    accent: "#22c55e",
   },
   {
-    id: "budget" as const,
-    title: "Qual seu orçamento?",
-    subtitle: "Otimizamos a build dentro do seu range",
-    options: [
-      { id: "3-5", label: "R$ 3.000 – 5.000", desc: "Setup entrada digno" },
-      { id: "5-8", label: "R$ 5.000 – 8.000", desc: "Sweet spot custo-benefício" },
-      { id: "8-12", label: "R$ 8.000 – 12.000", desc: "Performance alta sustentada" },
-      { id: "12+", label: "R$ 12.000+", desc: "Top de linha sem freio" },
-    ],
+    id: "competitive",
+    title: "Competitivo",
+    desc: "FPS alto importa. 144Hz+, monitor rápido, ranked sério.",
+    icon: <Zap className="h-4 w-4" />,
+    accent: "#ff2b2e",
   },
   {
-    id: "priority" as const,
-    title: "O que mais importa?",
-    subtitle: "Onde concentrar o investimento",
-    options: [
-      { id: "fps-max", label: "FPS máximo", desc: "GPU > tudo" },
-      { id: "render", label: "Render / Multitarefa", desc: "CPU forte, mais RAM" },
-      { id: "aesthetic", label: "Estética / RGB", desc: "Bonito também conta" },
-      { id: "balance", label: "Equilíbrio total", desc: "Tudo médio-alto" },
-    ],
+    id: "pro",
+    title: "Pro / Streamer",
+    desc: "Esports, live, dual-PC. Sem espaço pra travada.",
+    icon: <Trophy className="h-4 w-4" />,
+    accent: "#a78bfa",
   },
 ];
+
+type CreatingLevelCard = {
+  id: CreatingLevel;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  accent: string;
+};
+
+const creatingLevelCards: CreatingLevelCard[] = [
+  {
+    id: "hobby",
+    title: "Hobby / Esporádico",
+    desc: "Edições leves no fim de semana, projetos pessoais, aprendizado.",
+    icon: <Palette className="h-4 w-4" />,
+    accent: "#22c55e",
+  },
+  {
+    id: "professional",
+    title: "Profissional",
+    desc: "Trabalho diário, prazos apertados, projetos pesados, render demorado pesa no bolso.",
+    icon: <Sparkles className="h-4 w-4" />,
+    accent: "#a78bfa",
+  },
+];
+
+type GeneralLevelCard = {
+  id: GeneralLevel;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  accent: string;
+};
+
+const generalLevelCards: GeneralLevelCard[] = [
+  {
+    id: "basic",
+    title: "Básico",
+    desc: "Navegar, planilhas, vídeo, vídeochamada. Roda tudo isso sem suar.",
+    icon: <Briefcase className="h-4 w-4" />,
+    accent: "#22c55e",
+  },
+  {
+    id: "performance",
+    title: "Com desempenho",
+    desc: "Multitarefa pesada, monitor 144Hz, jogos leves de vez em quando, home office sério.",
+    icon: <Zap className="h-4 w-4" />,
+    accent: "#22d3ee",
+  },
+];
+
+type QuizStepId =
+  | "use"
+  | "games"
+  | "gaming-level"
+  | "programs"
+  | "creating-level"
+  | "general-level";
+
+function QuizProgressBar({ current, total }: { current: number; total: number }) {
+  const progress = (current / total) * 100;
+  return (
+    <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.06]">
+      <motion.div
+        className="h-full"
+        initial={false}
+        animate={{ width: `${progress}%` }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
+          boxShadow: "0 0 12px rgba(255,43,46,0.55)",
+        }}
+      />
+    </div>
+  );
+}
+
+function QuizHeader({
+  current,
+  total,
+  onBack,
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  current: number;
+  total: number;
+  onBack: () => void;
+  eyebrow?: string;
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <div className="mb-10">
+      <div className="mb-3 flex items-center justify-between">
+        <button
+          type="button"
+          onClick={onBack}
+          className="flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+        >
+          <ArrowLeft size={13} /> Voltar
+        </button>
+        <span
+          className="uppercase text-zinc-500"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "10.5px",
+            letterSpacing: "0.22em",
+            fontWeight: 700,
+          }}
+        >
+          {current} / {total}
+        </span>
+      </div>
+      <QuizProgressBar current={current} total={total} />
+      {eyebrow && (
+        <p
+          className="mt-8 mb-2 uppercase text-primary"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "10.5px",
+            letterSpacing: "0.28em",
+            fontWeight: 700,
+          }}
+        >
+          {eyebrow}
+        </p>
+      )}
+      <h2
+        className={cn("text-white", eyebrow ? "mb-1" : "mt-8 mb-1")}
+        style={{
+          fontFamily: "var(--font-family-figtree)",
+          fontSize: "clamp(26px, 3.4vw, 34px)",
+          fontWeight: 700,
+          letterSpacing: "-0.025em",
+          lineHeight: 1.1,
+        }}
+      >
+        {title}
+      </h2>
+      <p
+        className="text-zinc-400"
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.5 }}
+      >
+        {subtitle}
+      </p>
+    </div>
+  );
+}
+
+function UseTypeCard({
+  card,
+  onClick,
+}: {
+  card: UseTypeCardData;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#0d0d0d] text-left transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.22]"
+      style={{
+        boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)",
+      }}
+      aria-label={card.title}
+    >
+      <div className="relative aspect-[5/4] w-full overflow-hidden deal-image-bg">
+        <img
+          src={card.image}
+          alt=""
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-[1.08]"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = "none";
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.92) 100%)`,
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background: `radial-gradient(circle at 50% 50%, ${card.glow}, transparent 60%)`,
+          }}
+        />
+        <div className="absolute inset-x-4 top-4 flex items-center justify-between">
+          <span
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/55 px-2.5 py-1 text-white backdrop-blur"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "9.5px",
+              letterSpacing: "0.18em",
+              fontWeight: 700,
+            }}
+          >
+            <span style={{ color: card.accent }}>{card.icon}</span>
+            {card.subtitle}
+          </span>
+        </div>
+        <div className="absolute inset-x-5 bottom-5">
+          <h3
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "clamp(22px, 2.4vw, 28px)",
+              fontWeight: 800,
+              letterSpacing: "-0.025em",
+              textShadow: "0 2px 12px rgba(0,0,0,0.55)",
+            }}
+          >
+            {card.title}
+          </h3>
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col justify-between gap-3 p-5">
+        <p
+          className="text-zinc-400"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "13px",
+            lineHeight: 1.55,
+          }}
+        >
+          {card.desc}
+        </p>
+        <div
+          className="flex items-center gap-1.5 text-white/80 transition-colors group-hover:text-white"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "12px",
+            fontWeight: 700,
+            letterSpacing: "0.02em",
+          }}
+        >
+          <span>Escolher</span>
+          <ArrowRight
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+            style={{ color: card.accent }}
+          />
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function GameTile({
+  game,
+  selected,
+  onClick,
+}: {
+  game: QuizGame;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className={cn(
+        "group relative overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
+        selected
+          ? "border-primary/60"
+          : "border-white/[0.08] hover:border-white/[0.22]",
+      )}
+      style={
+        selected
+          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 18px 40px -18px rgba(255,43,46,0.4)" }
+          : { boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }
+      }
+    >
+      <div className="relative aspect-[460/215] w-full overflow-hidden deal-image-bg">
+        <img
+          src={game.cover}
+          alt={game.name}
+          loading="lazy"
+          className={cn(
+            "absolute inset-0 h-full w-full object-cover transition-all duration-500",
+            selected ? "scale-[1.04]" : "group-hover:scale-[1.04]",
+          )}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.opacity = "0";
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.9) 100%)",
+          }}
+        />
+        {selected && (
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(255,43,46,0.18) 0%, transparent 60%)",
+            }}
+          />
+        )}
+        <div className="absolute right-2 top-2">
+          <div
+            className={cn(
+              "flex h-7 w-7 items-center justify-center rounded-full border-2 transition-all",
+              selected
+                ? "border-primary bg-primary text-white"
+                : "border-white/30 bg-black/50 backdrop-blur text-transparent",
+            )}
+          >
+            <Check size={14} strokeWidth={3} />
+          </div>
+        </div>
+        <div className="absolute inset-x-3 bottom-2.5">
+          <p
+            className="mb-0.5 uppercase text-white/65"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "9px",
+              letterSpacing: "0.2em",
+              fontWeight: 700,
+            }}
+          >
+            {game.tag}
+          </p>
+          <h4
+            className="truncate text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "14px",
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
+              textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+            }}
+          >
+            {game.name}
+          </h4>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function ProgramTile({
+  program,
+  selected,
+  onClick,
+}: {
+  program: QuizProgram;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className={cn(
+        "group relative flex aspect-[5/6] flex-col overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
+        selected
+          ? "border-primary/60"
+          : "border-white/[0.08] hover:border-white/[0.22]",
+      )}
+      style={
+        selected
+          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 18px 40px -18px rgba(255,43,46,0.4)" }
+          : { boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }
+      }
+    >
+      <div
+        className="relative flex flex-1 items-center justify-center transition-transform duration-500"
+        style={{ background: program.bg }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            background: `radial-gradient(circle at 30% 25%, ${program.fg}25 0%, transparent 55%)`,
+          }}
+        />
+        <span
+          className="relative tabular-nums"
+          style={{
+            fontFamily: "var(--font-family-figtree)",
+            color: program.fg,
+            fontSize: "clamp(38px, 4.5vw, 56px)",
+            fontWeight: 800,
+            letterSpacing: "-0.04em",
+            lineHeight: 1,
+            textShadow: `0 0 24px ${program.fg}55`,
+          }}
+        >
+          {program.short}
+        </span>
+        <div className="absolute right-2 top-2">
+          <div
+            className={cn(
+              "flex h-7 w-7 items-center justify-center rounded-full border-2 transition-all",
+              selected
+                ? "border-primary bg-primary text-white"
+                : "border-white/30 bg-black/40 backdrop-blur text-transparent",
+            )}
+          >
+            <Check size={14} strokeWidth={3} />
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/[0.06] bg-[#0d0d0d] px-3 py-2.5">
+        <p
+          className="truncate text-white"
+          style={{
+            fontFamily: "var(--font-family-figtree)",
+            fontSize: "13px",
+            fontWeight: 700,
+            letterSpacing: "-0.005em",
+          }}
+        >
+          {program.name}
+        </p>
+        <p
+          className="uppercase text-zinc-500"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "9px",
+            letterSpacing: "0.16em",
+            fontWeight: 700,
+          }}
+        >
+          {program.category}
+        </p>
+      </div>
+    </button>
+  );
+}
+
+function LevelCard({
+  title,
+  desc,
+  icon,
+  accent,
+  onClick,
+}: {
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  accent: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="group flex w-full cursor-pointer items-center gap-4 rounded-[18px] border border-white/[0.08] bg-[#0f0f12] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-white/[0.22]"
+      style={{ boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }}
+    >
+      <div
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] transition-all"
+        style={{
+          background: `linear-gradient(135deg, ${accent}25 0%, ${accent}08 100%)`,
+          color: accent,
+          boxShadow: `inset 0 0 0 1px ${accent}30`,
+        }}
+      >
+        {icon}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p
+          className="text-white"
+          style={{
+            fontFamily: "var(--font-family-figtree)",
+            fontSize: "16px",
+            fontWeight: 700,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {title}
+        </p>
+        <p
+          className="mt-0.5 text-zinc-400"
+          style={{
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "12.5px",
+            lineHeight: 1.5,
+          }}
+        >
+          {desc}
+        </p>
+      </div>
+      <ArrowRight
+        size={16}
+        className="shrink-0 text-zinc-600 transition-all group-hover:translate-x-1"
+        style={{ color: accent }}
+      />
+    </button>
+  );
+}
 
 function QuizFlow({
   onComplete,
@@ -802,138 +1459,293 @@ function QuizFlow({
   onComplete: (rec: PresetTier) => void;
   onBack: () => void;
 }) {
-  const [stepIdx, setStepIdx] = useState(0);
+  const [history, setHistory] = useState<QuizStepId[]>(["use"]);
   const [answers, setAnswers] = useState<QuizAnswers>({});
-  const step = quizSteps[stepIdx];
-  const progress = ((stepIdx + 1) / quizSteps.length) * 100;
+  const stepId = history[history.length - 1];
+  const totalSteps = answers.useType === "general" ? 2 : 3;
+  const currentStepNumber = history.length;
 
-  const handlePick = (val: string) => {
-    const next = { ...answers, [step.id]: val };
-    setAnswers(next);
-    if (stepIdx < quizSteps.length - 1) setStepIdx(stepIdx + 1);
-    else onComplete(recommendPreset(next));
+  const goBack = () => {
+    if (history.length > 1) setHistory(history.slice(0, -1));
+    else onBack();
   };
 
+  const pickUseType = (t: UseType) => {
+    setAnswers((prev) => ({ ...prev, useType: t, games: [], programs: [] }));
+    const next: QuizStepId =
+      t === "gaming" ? "games" : t === "creating" ? "programs" : "general-level";
+    setHistory((h) => [...h, next]);
+  };
+
+  const toggleGame = (id: string) => {
+    setAnswers((prev) => {
+      const cur = prev.games ?? [];
+      return { ...prev, games: cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id] };
+    });
+  };
+
+  const toggleProgram = (id: string) => {
+    setAnswers((prev) => {
+      const cur = prev.programs ?? [];
+      return { ...prev, programs: cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id] };
+    });
+  };
+
+  const continueFromGames = () => setHistory((h) => [...h, "gaming-level"]);
+  const continueFromPrograms = () => setHistory((h) => [...h, "creating-level"]);
+
+  const finishGaming = (level: GamingLevel) => {
+    const final = { ...answers, gamingLevel: level };
+    setAnswers(final);
+    onComplete(recommendPreset(final));
+  };
+  const finishCreating = (level: CreatingLevel) => {
+    const final = { ...answers, creatingLevel: level };
+    setAnswers(final);
+    onComplete(recommendPreset(final));
+  };
+  const finishGeneral = (level: GeneralLevel) => {
+    const final = { ...answers, generalLevel: level };
+    setAnswers(final);
+    onComplete(recommendPreset(final));
+  };
+
+  const maxWidth =
+    stepId === "use"
+      ? "max-w-[1180px]"
+      : stepId === "games" || stepId === "programs"
+        ? "max-w-[1080px]"
+        : "max-w-[720px]";
+
   return (
-    <div className="mx-auto max-w-[680px] px-6 py-12 md:py-16">
-      <div className="mb-10">
-        <div className="mb-3 flex items-center justify-between">
-          <button
-            type="button"
-            onClick={() => (stepIdx === 0 ? onBack() : setStepIdx(stepIdx - 1))}
-            className="flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-white cursor-pointer"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
-          >
-            <ArrowLeft size={13} /> Voltar
-          </button>
-          <span
-            className="uppercase text-zinc-500"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
-              letterSpacing: "0.22em",
-              fontWeight: 700,
-            }}
-          >
-            {stepIdx + 1} / {quizSteps.length}
-          </span>
-        </div>
-        <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.06]">
-          <motion.div
-            className="h-full"
-            initial={false}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
-              boxShadow: "0 0 12px rgba(255,43,46,0.55)",
-            }}
-          />
-        </div>
-      </div>
+    <div className={cn("mx-auto px-6 py-12 md:py-14", maxWidth)}>
       <AnimatePresence mode="wait">
-        <motion.div
-          key={step.id}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h2
-            className="mb-1 text-white"
-            style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "30px",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-            }}
+        {stepId === "use" && (
+          <motion.div
+            key="use"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            {step.title}
-          </h2>
-          <p className="mb-8 text-zinc-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>
-            {step.subtitle}
-          </p>
-          <div role="radiogroup" aria-label={step.title} className="space-y-2.5">
-            {step.options.map((opt) => {
-              const selected = answers[step.id] === opt.id;
-              return (
-                <button
-                  key={opt.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={selected}
-                  onClick={() => handlePick(opt.id)}
-                  className={cn(
-                    "group flex w-full cursor-pointer items-center gap-4 rounded-[18px] border p-5 text-left transition-all",
-                    selected
-                      ? "border-primary/55 bg-primary/[0.06]"
-                      : "border-white/[0.08] bg-[#0f0f12] hover:border-primary/40 hover:bg-[#15151a]",
-                  )}
-                  style={
-                    selected
-                      ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.15), 0 18px 50px -20px rgba(255,43,46,0.3)" }
-                      : undefined
-                  }
-                >
-                  <div
-                    className={cn(
-                      "relative flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all",
-                      selected ? "border-primary" : "border-white/25 group-hover:border-primary/60",
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        "h-2 w-2 rounded-full transition-all",
-                        selected ? "scale-100 bg-primary" : "scale-0 bg-primary/0 group-hover:scale-50 group-hover:bg-primary/40",
-                      )}
-                    />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p
-                      className="text-white"
-                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: 600 }}
-                    >
-                      {opt.label}
-                    </p>
-                    <p
-                      className={cn("mt-0.5 transition-colors", selected ? "text-zinc-300" : "text-zinc-400")}
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
-                    >
-                      {opt.desc}
-                    </p>
-                  </div>
-                  <ArrowRight
-                    size={16}
-                    className={cn(
-                      "transition-all",
-                      selected ? "text-primary" : "text-zinc-600 group-hover:translate-x-1 group-hover:text-primary",
-                    )}
-                  />
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
+            <QuizHeader
+              current={currentStepNumber}
+              total={totalSteps}
+              onBack={goBack}
+              eyebrow="// Pra que você quer um PC"
+              title="O que vai fazer com seu setup?"
+              subtitle="Vamos partir do uso real — não do orçamento. Cada caminho leva a uma sugestão diferente."
+            />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {useTypeCards.map((c) => (
+                <UseTypeCard key={c.id} card={c} onClick={() => pickUseType(c.id)} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {stepId === "games" && (
+          <motion.div
+            key="games"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <QuizHeader
+              current={currentStepNumber}
+              total={totalSteps}
+              onBack={goBack}
+              eyebrow="// Gaming"
+              title="Quais jogos você joga?"
+              subtitle="Selecione um ou mais. A gente usa isso pra calibrar GPU e CPU — esports é diferente de AAA pesado."
+            />
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {quizGames.map((g) => (
+                <GameTile
+                  key={g.id}
+                  game={g}
+                  selected={(answers.games ?? []).includes(g.id)}
+                  onClick={() => toggleGame(g.id)}
+                />
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+              <p
+                className="text-zinc-500"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+              >
+                {(answers.games ?? []).length === 0
+                  ? "Nenhum jogo selecionado — pode pular se preferir"
+                  : `${(answers.games ?? []).length} ${
+                      (answers.games ?? []).length === 1 ? "jogo" : "jogos"
+                    } selecionado${(answers.games ?? []).length === 1 ? "" : "s"}`}
+              </p>
+              <button
+                type="button"
+                onClick={continueFromGames}
+                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-[12px] bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "13.5px",
+                  fontWeight: 700,
+                  letterSpacing: "0.01em",
+                  boxShadow: "0 12px 32px -8px rgba(255,43,46,0.55)",
+                }}
+              >
+                Continuar <ArrowRight size={14} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+
+        {stepId === "gaming-level" && (
+          <motion.div
+            key="gaming-level"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <QuizHeader
+              current={currentStepNumber}
+              total={totalSteps}
+              onBack={goBack}
+              eyebrow="// Gaming"
+              title="Como você joga?"
+              subtitle="Define se vamos priorizar FPS bruto, refresh-rate alto ou estabilidade de live."
+            />
+            <div className="space-y-2.5">
+              {gamingLevelCards.map((c) => (
+                <LevelCard
+                  key={c.id}
+                  title={c.title}
+                  desc={c.desc}
+                  icon={c.icon}
+                  accent={c.accent}
+                  onClick={() => finishGaming(c.id)}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {stepId === "programs" && (
+          <motion.div
+            key="programs"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <QuizHeader
+              current={currentStepNumber}
+              total={totalSteps}
+              onBack={goBack}
+              eyebrow="// Edição & Criação"
+              title="Quais programas você usa?"
+              subtitle="Foto, vídeo, motion ou 3D pedem hardware diferente. Selecione todos os que entram na sua rotina."
+            />
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {quizPrograms.map((p) => (
+                <ProgramTile
+                  key={p.id}
+                  program={p}
+                  selected={(answers.programs ?? []).includes(p.id)}
+                  onClick={() => toggleProgram(p.id)}
+                />
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+              <p
+                className="text-zinc-500"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+              >
+                {(answers.programs ?? []).length === 0
+                  ? "Nenhum programa selecionado — pode pular se preferir"
+                  : `${(answers.programs ?? []).length} ${
+                      (answers.programs ?? []).length === 1 ? "programa" : "programas"
+                    } selecionado${(answers.programs ?? []).length === 1 ? "" : "s"}`}
+              </p>
+              <button
+                type="button"
+                onClick={continueFromPrograms}
+                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-[12px] bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "13.5px",
+                  fontWeight: 700,
+                  letterSpacing: "0.01em",
+                  boxShadow: "0 12px 32px -8px rgba(255,43,46,0.55)",
+                }}
+              >
+                Continuar <ArrowRight size={14} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+
+        {stepId === "creating-level" && (
+          <motion.div
+            key="creating-level"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <QuizHeader
+              current={currentStepNumber}
+              total={totalSteps}
+              onBack={goBack}
+              eyebrow="// Edição & Criação"
+              title="Qual seu nível de uso?"
+              subtitle="Hobby pede uma máquina ágil. Profissional pede CPU forte, RAM sobrando e render que respeita prazo."
+            />
+            <div className="space-y-2.5">
+              {creatingLevelCards.map((c) => (
+                <LevelCard
+                  key={c.id}
+                  title={c.title}
+                  desc={c.desc}
+                  icon={c.icon}
+                  accent={c.accent}
+                  onClick={() => finishCreating(c.id)}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {stepId === "general-level" && (
+          <motion.div
+            key="general-level"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <QuizHeader
+              current={currentStepNumber}
+              total={totalSteps}
+              onBack={goBack}
+              eyebrow="// Uso geral"
+              title="Quanto desempenho você quer?"
+              subtitle="Pra rodar planilha, navegador e vídeo o básico já entrega. Multitarefa pesada pede outro patamar."
+            />
+            <div className="space-y-2.5">
+              {generalLevelCards.map((c) => (
+                <LevelCard
+                  key={c.id}
+                  title={c.title}
+                  desc={c.desc}
+                  icon={c.icon}
+                  accent={c.accent}
+                  onClick={() => finishGeneral(c.id)}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );
@@ -1669,8 +2481,8 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
           <PathCard
             icon={<Wand2 className="h-5 w-5" />}
             label="Me ajuda a escolher"
-            desc="3 perguntas rápidas sobre seu uso, orçamento e prioridades. Recomendamos a build ideal pra você."
-            cta="Iniciar quiz"
+            desc="Diz pra gente o que você joga, edita ou faz no dia-a-dia. A gente devolve a build certa pro seu uso."
+            cta="Começar"
             badge="POPULAR"
             onClick={() => onPath("quiz")}
           />
