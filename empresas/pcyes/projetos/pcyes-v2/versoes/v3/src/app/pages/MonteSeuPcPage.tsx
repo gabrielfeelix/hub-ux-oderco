@@ -721,31 +721,226 @@ type QuizProgram = {
   bg: string;
   fg: string;
   weight: "light" | "heavy";
+  logo?: string;
 };
 
+const wikiLogo = (path: string, file: string) =>
+  `https://upload.wikimedia.org/wikipedia/commons/thumb/${path}/${file}/512px-${file}.png`;
+
 const quizPrograms: QuizProgram[] = [
-  { id: "photoshop", name: "Photoshop", short: "Ps", category: "Foto / Imagem", bg: "#001E36", fg: "#31A8FF", weight: "light" },
-  { id: "lightroom", name: "Lightroom", short: "Lr", category: "Foto / Tratamento", bg: "#001E36", fg: "#31A8FF", weight: "light" },
-  { id: "illustrator", name: "Illustrator", short: "Ai", category: "Vetor / Ilustração", bg: "#330000", fg: "#FF9A00", weight: "light" },
-  { id: "indesign", name: "InDesign", short: "Id", category: "Editorial", bg: "#49021F", fg: "#FF3366", weight: "light" },
-  { id: "figma", name: "Figma", short: "Fi", category: "UI / Design", bg: "#1E1E1E", fg: "#F24E1E", weight: "light" },
-  { id: "canva", name: "Canva", short: "Cv", category: "Design fácil", bg: "#0D1E40", fg: "#00C4CC", weight: "light" },
-  { id: "affinity", name: "Affinity Suite", short: "Af", category: "Foto / Design", bg: "#0E1F3D", fg: "#7CC4F4", weight: "light" },
-  { id: "premiere", name: "Premiere Pro", short: "Pr", category: "Edição de Vídeo", bg: "#00005B", fg: "#9999FF", weight: "heavy" },
-  { id: "davinci", name: "DaVinci Resolve", short: "Dv", category: "Vídeo / Color Grading", bg: "#232F3E", fg: "#FF8D11", weight: "heavy" },
-  { id: "capcut", name: "CapCut / Pro", short: "Cc", category: "Vídeo Social", bg: "#1A1A1F", fg: "#5B8AF5", weight: "light" },
-  { id: "vegas", name: "Vegas Pro", short: "Vg", category: "Edição de Vídeo", bg: "#1B1B1B", fg: "#FFB400", weight: "heavy" },
-  { id: "aftereffects", name: "After Effects", short: "Ae", category: "Motion Graphics", bg: "#00005B", fg: "#D291FF", weight: "heavy" },
-  { id: "obs", name: "OBS Studio", short: "Ob", category: "Stream / Live", bg: "#1F1F2E", fg: "#9B4DCA", weight: "heavy" },
-  { id: "streamlabs", name: "Streamlabs", short: "Sl", category: "Stream / Live", bg: "#0E1A2B", fg: "#80F5D2", weight: "heavy" },
-  { id: "blender", name: "Blender", short: "Bl", category: "3D / Render", bg: "#1A1A1A", fg: "#EA7600", weight: "heavy" },
-  { id: "cinema4d", name: "Cinema 4D", short: "C4", category: "3D / Motion", bg: "#0F1730", fg: "#1E88E5", weight: "heavy" },
-  { id: "zbrush", name: "ZBrush", short: "Zb", category: "3D / Escultura", bg: "#1F1F1F", fg: "#C5A572", weight: "heavy" },
-  { id: "unreal", name: "Unreal Engine", short: "Ue", category: "Game Dev / Render", bg: "#0E0E0E", fg: "#5B9FE0", weight: "heavy" },
-  { id: "unity", name: "Unity", short: "Un", category: "Game Dev", bg: "#1A1A1A", fg: "#E0E0E0", weight: "heavy" },
-  { id: "audition", name: "Audition", short: "Au", category: "Áudio / Pós", bg: "#00203A", fg: "#00C8B4", weight: "heavy" },
-  { id: "flstudio", name: "FL Studio", short: "Fl", category: "Música / DAW", bg: "#1A1A1A", fg: "#FF6B00", weight: "heavy" },
-  { id: "vscode", name: "VS Code", short: "Vs", category: "Dev / Código", bg: "#11243A", fg: "#3FA9F5", weight: "light" },
+  {
+    id: "photoshop",
+    name: "Photoshop",
+    short: "Ps",
+    category: "Foto / Imagem",
+    bg: "#001E36",
+    fg: "#31A8FF",
+    weight: "light",
+    logo: wikiLogo("a/af", "Adobe_Photoshop_CC_icon.svg"),
+  },
+  {
+    id: "lightroom",
+    name: "Lightroom",
+    short: "Lr",
+    category: "Foto / Tratamento",
+    bg: "#001E36",
+    fg: "#31A8FF",
+    weight: "light",
+    logo: wikiLogo("b/b6", "Adobe_Photoshop_Lightroom_CC_logo.svg"),
+  },
+  {
+    id: "illustrator",
+    name: "Illustrator",
+    short: "Ai",
+    category: "Vetor / Ilustração",
+    bg: "#330000",
+    fg: "#FF9A00",
+    weight: "light",
+    logo: wikiLogo("f/fb", "Adobe_Illustrator_CC_icon.svg"),
+  },
+  {
+    id: "indesign",
+    name: "InDesign",
+    short: "Id",
+    category: "Editorial",
+    bg: "#49021F",
+    fg: "#FF3366",
+    weight: "light",
+    logo: wikiLogo("d/d5", "Adobe_InDesign_CC_icon.svg"),
+  },
+  {
+    id: "figma",
+    name: "Figma",
+    short: "Fi",
+    category: "UI / Design",
+    bg: "#1E1E1E",
+    fg: "#F24E1E",
+    weight: "light",
+    logo: wikiLogo("3/33", "Figma-logo.svg"),
+  },
+  {
+    id: "canva",
+    name: "Canva",
+    short: "Cv",
+    category: "Design fácil",
+    bg: "#0D1E40",
+    fg: "#00C4CC",
+    weight: "light",
+    logo: wikiLogo("0/08", "Canva_icon_2021.svg"),
+  },
+  {
+    id: "affinity",
+    name: "Affinity Suite",
+    short: "Af",
+    category: "Foto / Design",
+    bg: "#0E1F3D",
+    fg: "#7CC4F4",
+    weight: "light",
+  },
+  {
+    id: "premiere",
+    name: "Premiere Pro",
+    short: "Pr",
+    category: "Edição de Vídeo",
+    bg: "#00005B",
+    fg: "#9999FF",
+    weight: "heavy",
+    logo: wikiLogo("4/40", "Adobe_Premiere_Pro_CC_icon.svg"),
+  },
+  {
+    id: "davinci",
+    name: "DaVinci Resolve",
+    short: "Dv",
+    category: "Vídeo / Color Grading",
+    bg: "#232F3E",
+    fg: "#FF8D11",
+    weight: "heavy",
+    logo: wikiLogo("c/c0", "DaVinci_Resolve_17_logo.svg"),
+  },
+  {
+    id: "capcut",
+    name: "CapCut / Pro",
+    short: "Cc",
+    category: "Vídeo Social",
+    bg: "#1A1A1F",
+    fg: "#5B8AF5",
+    weight: "light",
+  },
+  {
+    id: "vegas",
+    name: "Vegas Pro",
+    short: "Vg",
+    category: "Edição de Vídeo",
+    bg: "#1B1B1B",
+    fg: "#FFB400",
+    weight: "heavy",
+  },
+  {
+    id: "aftereffects",
+    name: "After Effects",
+    short: "Ae",
+    category: "Motion Graphics",
+    bg: "#00005B",
+    fg: "#D291FF",
+    weight: "heavy",
+    logo: wikiLogo("4/4d", "Adobe_After_Effects_CC_icon.svg"),
+  },
+  {
+    id: "obs",
+    name: "OBS Studio",
+    short: "Ob",
+    category: "Stream / Live",
+    bg: "#1F1F2E",
+    fg: "#9B4DCA",
+    weight: "heavy",
+    logo: wikiLogo("d/d3", "OBS_Studio_Logo.svg"),
+  },
+  {
+    id: "streamlabs",
+    name: "Streamlabs",
+    short: "Sl",
+    category: "Stream / Live",
+    bg: "#0E1A2B",
+    fg: "#80F5D2",
+    weight: "heavy",
+  },
+  {
+    id: "blender",
+    name: "Blender",
+    short: "Bl",
+    category: "3D / Render",
+    bg: "#1A1A1A",
+    fg: "#EA7600",
+    weight: "heavy",
+    logo: wikiLogo("0/0c", "Blender_logo_no_text.svg"),
+  },
+  {
+    id: "cinema4d",
+    name: "Cinema 4D",
+    short: "C4",
+    category: "3D / Motion",
+    bg: "#0F1730",
+    fg: "#1E88E5",
+    weight: "heavy",
+  },
+  {
+    id: "zbrush",
+    name: "ZBrush",
+    short: "Zb",
+    category: "3D / Escultura",
+    bg: "#1F1F1F",
+    fg: "#C5A572",
+    weight: "heavy",
+  },
+  {
+    id: "unreal",
+    name: "Unreal Engine",
+    short: "Ue",
+    category: "Game Dev / Render",
+    bg: "#0E0E0E",
+    fg: "#5B9FE0",
+    weight: "heavy",
+    logo: wikiLogo("9/9b", "Unreal_Engine_Logo.svg"),
+  },
+  {
+    id: "unity",
+    name: "Unity",
+    short: "Un",
+    category: "Game Dev",
+    bg: "#1A1A1A",
+    fg: "#E0E0E0",
+    weight: "heavy",
+    logo: wikiLogo("1/19", "Unity_Technologies_logo.svg"),
+  },
+  {
+    id: "audition",
+    name: "Audition",
+    short: "Au",
+    category: "Áudio / Pós",
+    bg: "#00203A",
+    fg: "#00C8B4",
+    weight: "heavy",
+    logo: wikiLogo("e/e0", "Adobe_Audition_CC_icon.svg"),
+  },
+  {
+    id: "flstudio",
+    name: "FL Studio",
+    short: "Fl",
+    category: "Música / DAW",
+    bg: "#1A1A1A",
+    fg: "#FF6B00",
+    weight: "heavy",
+  },
+  {
+    id: "vscode",
+    name: "VS Code",
+    short: "Vs",
+    category: "Dev / Código",
+    bg: "#11243A",
+    fg: "#3FA9F5",
+    weight: "light",
+    logo: wikiLogo("9/9a", "Visual_Studio_Code_1.35_icon.svg"),
+  },
 ];
 
 type UseTypeCardData = {
@@ -1337,6 +1532,9 @@ function ProgramTile({
   selected: boolean;
   onClick: () => void;
 }) {
+  const [logoError, setLogoError] = useState(false);
+  const showLogo = Boolean(program.logo) && !logoError;
+
   return (
     <button
       type="button"
@@ -1378,20 +1576,31 @@ function ProgramTile({
             }}
           />
         )}
-        <span
-          className="absolute left-4 top-1/2 -translate-y-[60%]"
-          style={{
-            fontFamily: "var(--font-family-figtree)",
-            color: program.fg,
-            fontSize: "clamp(46px, 7vw, 64px)",
-            fontWeight: 900,
-            letterSpacing: "-0.05em",
-            lineHeight: 1,
-            textShadow: `0 0 28px ${program.fg}66`,
-          }}
-        >
-          {program.short}
-        </span>
+        {showLogo ? (
+          <img
+            src={program.logo}
+            alt={program.name}
+            loading="lazy"
+            onError={() => setLogoError(true)}
+            className="absolute left-4 top-1/2 h-[58%] w-auto -translate-y-[58%] object-contain transition-transform duration-500 group-hover:scale-[1.05]"
+            style={{ filter: `drop-shadow(0 0 22px ${program.fg}66)` }}
+          />
+        ) : (
+          <span
+            className="absolute left-4 top-1/2 -translate-y-[60%]"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              color: program.fg,
+              fontSize: "clamp(46px, 7vw, 64px)",
+              fontWeight: 900,
+              letterSpacing: "-0.05em",
+              lineHeight: 1,
+              textShadow: `0 0 28px ${program.fg}66`,
+            }}
+          >
+            {program.short}
+          </span>
+        )}
         <div className="absolute right-2 top-2">
           <div
             className={cn(
