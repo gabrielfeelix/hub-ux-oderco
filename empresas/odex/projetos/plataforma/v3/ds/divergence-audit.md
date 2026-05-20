@@ -12,10 +12,10 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.21) | 13 (auth, checkout, orc, ped, mk, clientes, calc, ajuda, dash, pv, novidades, de-chat, notif) |
-| Features restantes (C.22+) | ~3 (admin, loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **20 · ds-icon-btn 8x · ds-icon-box 7x · ds-overlay 6x · ds-empty-state 5x · ds-drawer 3x · ds-status-dot 3x · ds-tab-pill 2x** |
-| Possíveis novos (sugeridos · ≥1 feature) | 16 |
+| Features extraídas (C.10-C.22) | 14 (auth, checkout, orc, ped, mk, clientes, calc, ajuda, dash, pv, novidades, de-chat, notif, admin) |
+| Features restantes (C.23+) | ~2 (loja, chrome) |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **23 · ds-icon-btn 9x · ds-table-grid 8x · ds-icon-box 7x · ds-overlay 6x · ds-hero-gradient 6x · ds-kpi 6x · ds-empty-state 6x · ds-toolbar 5x · ds-section-head 4x · ds-tabs 3x · ds-card-link 2x · ds-btn-on-brand 2x** |
+| Possíveis novos (sugeridos · ≥1 feature) | 17 |
 
 ---
 
@@ -492,3 +492,4 @@ Update history:
 - v0.6 · 2026-05-20 · Atualizado após C.19 (novidades) · 11 features mapeadas · .ds-icon-btn 6x→7x · 4 novos sugeridos (.ds-drawer 2x, .ds-toast, .ds-empty-state 4x, .ds-list-item-selectable)
 - v0.7 · 2026-05-20 · Atualizado após C.20 (dé chat) · 12 features mapeadas · .ds-icon-btn 7x→8x · .ds-hero-gradient 4x→5x · .ds-overlay sobe 5x · 3 novos sugeridos (.ds-chip 2x, .ds-chat-bubble, .ds-status-dot)
 - v0.8 · 2026-05-20 · Atualizado após C.21 (notif) · 13 features · .ds-overlay 5x→6x · .ds-icon-box 6x→7x · .ds-empty-state 4x→5x · .ds-drawer 2x→3x (CONFIRMED) · .ds-tab-pill sobe pra CONFIRMED 2x · .ds-status-dot sobe pra CONFIRMED 3x · 2 novos sugeridos (.ds-popover, .ds-badge-counter)
+- v0.9 · 2026-05-20 · Atualizado após C.22 (admin) · 14 features · MAIORES upgrades até agora: .ds-icon-btn 8x→9x · .ds-table-grid 5x→8x · .ds-hero-gradient 5x→6x · .ds-kpi 5x→6x · .ds-toolbar 4x→5x · .ds-empty-state 5x→6x · .ds-section-head 3x→4x · 3 sugeridos viram CONFIRMED (.ds-tabs 3x, .ds-card-link 2x, .ds-btn-on-brand 2x) · 2 novos (.ds-toggle, .ds-btn-ghost-sm)
