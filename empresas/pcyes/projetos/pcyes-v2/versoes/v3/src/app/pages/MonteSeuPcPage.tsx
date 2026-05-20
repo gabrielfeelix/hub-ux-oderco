@@ -2178,10 +2178,14 @@ function PresetComponentsDrawer({
   preset,
   open,
   onOpenChange,
+  onBuy,
+  onApply,
 }: {
   preset: Preset;
   open: boolean;
   onOpenChange: (o: boolean) => void;
+  onBuy?: () => void;
+  onApply?: () => void;
 }) {
   const items = Object.entries(preset.selections)
     .map(([catId, optId]) => {
@@ -2375,6 +2379,47 @@ function PresetComponentsDrawer({
               {formatBRL(preset.price)}
             </span>
           </div>
+          {(onBuy || onApply) && (
+            <div className="mt-4 flex flex-col gap-2">
+              {onBuy && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onBuy();
+                    onOpenChange(false);
+                  }}
+                  className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                  style={{
+                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "13.5px",
+                    fontWeight: 700,
+                    letterSpacing: "0.01em",
+                    boxShadow: "0 12px 32px -8px rgba(34,197,94,0.55)",
+                  }}
+                >
+                  <ShoppingCart size={14} /> Quero esse setup
+                </button>
+              )}
+              {onApply && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onApply();
+                    onOpenChange(false);
+                  }}
+                  className="h-9 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "11.5px",
+                    fontWeight: 600,
+                  }}
+                >
+                  Personalizar antes
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </SheetContent>
     </Sheet>
@@ -2419,7 +2464,7 @@ function PresetCard({
             : { boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)" }
         }
       >
-        <div className="relative aspect-[4/5] w-full overflow-hidden deal-image-bg">
+        <div className="relative aspect-[4/3] w-full overflow-hidden deal-image-bg">
           <img
             src={preset.heroImage}
             alt={`Setup ${preset.name}`}
@@ -2477,13 +2522,16 @@ function PresetCard({
             </div>
             {discount > 0 && (
               <span
-                className="inline-flex shrink-0 items-center rounded-full bg-emerald-500 px-2.5 py-1 text-white tabular-nums"
+                className="inline-flex shrink-0 items-center text-white tabular-nums"
                 style={{
-                  fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
-                  fontWeight: 800,
-                  letterSpacing: "0.02em",
-                  boxShadow: "0 6px 18px -4px rgba(16,185,129,0.55)",
+                  background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                  padding: "6px 10px",
+                  borderRadius: "10px",
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "13px",
+                  fontWeight: 900,
+                  letterSpacing: "-0.01em",
+                  boxShadow: "0 12px 28px -8px rgba(34,197,94,0.55)",
                 }}
               >
                 -{discount}%
@@ -2655,7 +2703,7 @@ function PresetCard({
               )}
               {preset.pixDiscount && (
                 <span
-                  className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300"
+                  className="rounded bg-green-500/15 px-1.5 py-0.5 text-green-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "9.5px",
@@ -2671,7 +2719,7 @@ function PresetCard({
               <>
                 <div className="flex items-baseline gap-2">
                   <p
-                    className="text-emerald-300 tabular-nums"
+                    className="text-green-300 tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "28px",
@@ -2739,7 +2787,7 @@ function PresetCard({
             )}
 
             <div className="mt-3 flex items-center gap-1.5">
-              <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]" />
+              <span className="flex h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
               <span
                 className="text-zinc-300"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 500 }}
@@ -2751,13 +2799,14 @@ function PresetCard({
             <button
               type="button"
               onClick={onBuy}
-              className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] bg-emerald-500 text-white transition-all duration-300 hover:bg-emerald-400"
+              className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
               style={{
+                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13.5px",
                 fontWeight: 700,
                 letterSpacing: "0.01em",
-                boxShadow: "0 12px 32px -8px rgba(16,185,129,0.55)",
+                boxShadow: "0 12px 32px -8px rgba(34,197,94,0.55)",
               }}
             >
               <ShoppingCart size={14} /> Quero esse setup
@@ -2782,6 +2831,233 @@ function PresetCard({
         preset={preset}
         open={drawerOpen}
         onOpenChange={setDrawerOpen}
+        onBuy={onBuy}
+        onApply={onApply}
+      />
+    </>
+  );
+}
+
+function PresetMiniCard({
+  preset,
+  isRecommended,
+  onBuy,
+  onApply,
+}: {
+  preset: Preset;
+  isRecommended?: boolean;
+  onBuy: () => void;
+  onApply: () => void;
+}) {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const discount = preset.oldPrice
+    ? Math.round(((preset.oldPrice - preset.price) / preset.oldPrice) * 100)
+    : 0;
+  const pixPrice = preset.pixDiscount ? preset.price * (1 - preset.pixDiscount / 100) : preset.price;
+  const installmentValue = preset.installments.value
+    .toFixed(2)
+    .replace(".", ",");
+
+  return (
+    <>
+      <article className="group">
+        <button
+          type="button"
+          onClick={() => setDrawerOpen(true)}
+          aria-label={`Ver detalhes do setup ${preset.name}`}
+          className="block w-full cursor-pointer text-left"
+        >
+          <div
+            className="relative aspect-square overflow-hidden transition-all duration-300 neon-hover-red"
+            style={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
+              borderRadius: "20px",
+              border: isRecommended
+                ? "1.5px solid rgba(255,43,46,0.55)"
+                : "1px solid rgba(255,255,255,0.08)",
+              boxShadow: isRecommended
+                ? "0 0 0 1px rgba(255,43,46,0.18), 0 22px 50px -22px rgba(255,43,46,0.35)"
+                : "inset 0 1px 0 rgba(255,255,255,0.05)",
+            }}
+          >
+            <div
+              className="pointer-events-none absolute inset-0 z-[1]"
+              style={{
+                background: `radial-gradient(circle at 30% 25%, ${preset.glow} 0%, transparent 55%)`,
+                borderRadius: "20px",
+                opacity: 0.4,
+                mixBlendMode: "screen",
+              }}
+            />
+
+            <img
+              src={preset.heroImage}
+              alt={`Setup ${preset.name}`}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.05]"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).style.display = "none";
+              }}
+            />
+
+            {discount > 0 && (
+              <span
+                className="absolute left-3 top-3 z-20 inline-flex items-center text-white tabular-nums"
+                style={{
+                  background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                  padding: "6px 12px",
+                  borderRadius: "10px",
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "15px",
+                  fontWeight: 900,
+                  letterSpacing: "-0.02em",
+                  boxShadow: "0 12px 28px -8px rgba(34,197,94,0.55)",
+                }}
+              >
+                -{discount}%
+              </span>
+            )}
+
+            {isRecommended && (
+              <span
+                className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "9px",
+                  letterSpacing: "0.16em",
+                  fontWeight: 700,
+                  boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                }}
+              >
+                <Sparkles size={9} /> PRA VOCÊ
+              </span>
+            )}
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onBuy();
+              }}
+              className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap px-7 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+              style={{
+                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                color: "white",
+                borderRadius: "9999px",
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.04em",
+                boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
+              }}
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <ShoppingCart size={11} strokeWidth={2} /> Adicionar setup
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-3 px-1">
+            <p
+              className="mb-0.5 uppercase"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "9px",
+                letterSpacing: "0.22em",
+                fontWeight: 700,
+                color: preset.accent,
+              }}
+            >
+              {preset.tagline}
+            </p>
+            <h3
+              className="line-clamp-1 text-white"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "15px",
+                fontWeight: 700,
+                lineHeight: 1.2,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              {preset.name}
+            </h3>
+            <div className="mt-1.5">
+              <StarRating rating={preset.rating} reviews={preset.reviews} />
+            </div>
+
+            <div className="mt-2.5">
+              {preset.oldPrice && (
+                <p
+                  className="line-through leading-none mb-0.5 tabular-nums"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "11px",
+                    color: "rgba(255,255,255,0.32)",
+                  }}
+                >
+                  {formatBRL(preset.oldPrice)}
+                </p>
+              )}
+              {preset.pixDiscount ? (
+                <>
+                  <p
+                    className="leading-none text-green-300 tabular-nums"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "18px",
+                      fontWeight: 800,
+                      letterSpacing: "-0.015em",
+                    }}
+                  >
+                    {formatBRL(pixPrice)}{" "}
+                    <span
+                      className="text-zinc-500"
+                      style={{ fontSize: "10.5px", fontWeight: 600 }}
+                    >
+                      no PIX
+                    </span>
+                  </p>
+                  <p
+                    className="mt-1 leading-tight text-zinc-400"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                  >
+                    ou {preset.installments.count}x de R$ {installmentValue}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p
+                    className="leading-none text-white tabular-nums"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "18px",
+                      fontWeight: 800,
+                      letterSpacing: "-0.015em",
+                    }}
+                  >
+                    {formatBRL(preset.price)}
+                  </p>
+                  <p
+                    className="mt-1 leading-tight text-zinc-400"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                  >
+                    {preset.installments.count}x de R$ {installmentValue}
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        </button>
+      </article>
+
+      <PresetComponentsDrawer
+        preset={preset}
+        open={drawerOpen}
+        onOpenChange={setDrawerOpen}
+        onBuy={onBuy}
+        onApply={onApply}
       />
     </>
   );
@@ -2808,6 +3084,13 @@ function PresetGallery({
   onBuy: (preset: Preset) => void;
   onBack: () => void;
 }) {
+  const recommendedPreset = recommended
+    ? presets.find((p) => p.id === recommended) ?? null
+    : null;
+  const otherPresets = recommendedPreset
+    ? presets.filter((p) => p.id !== recommendedPreset.id)
+    : [];
+
   const [filter, setFilter] = useState<PresetFilter>("all");
   const [sort, setSort] = useState<PresetSort>("recommended");
 
@@ -2815,16 +3098,107 @@ function PresetGallery({
     let list = filter === "all" ? presets : presets.filter((p) => p.performance === filter);
     if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
     else if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
-    else if (recommended) {
-      const recIdx = list.findIndex((p) => p.id === recommended);
-      if (recIdx > 0) {
-        list = [...list];
-        const [rec] = list.splice(recIdx, 1);
-        list.unshift(rec);
-      }
-    }
     return list;
-  }, [filter, sort, recommended]);
+  }, [filter, sort]);
+
+  if (recommendedPreset) {
+    return (
+      <div className="mx-auto max-w-[1320px] px-6 py-12 md:py-14">
+        <button
+          type="button"
+          onClick={onBack}
+          className="mb-8 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white cursor-pointer"
+          style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600 }}
+        >
+          <ArrowLeft size={14} /> Voltar
+        </button>
+
+        <div className="mb-8 text-center">
+          <p
+            className="mb-3 uppercase text-primary"
+            style={{
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "10.5px",
+              letterSpacing: "0.28em",
+              fontWeight: 700,
+            }}
+          >
+            // O setup escolhido pra você é
+          </p>
+          <h2
+            className="mb-3 text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "clamp(36px, 5.5vw, 64px)",
+              fontWeight: 800,
+              letterSpacing: "-0.035em",
+              lineHeight: 0.98,
+              textTransform: "uppercase",
+            }}
+          >
+            {recommendedPreset.name.replace(/^PCYES\s+/i, "")}
+          </h2>
+          <p
+            className="mx-auto max-w-[560px] text-zinc-400"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.55 }}
+          >
+            {recommendedPreset.description}
+          </p>
+        </div>
+
+        <div className="mx-auto max-w-[720px]">
+          <PresetCard
+            preset={recommendedPreset}
+            isRecommended
+            onApply={() => onApply(recommendedPreset)}
+            onBuy={() => onBuy(recommendedPreset)}
+          />
+        </div>
+
+        {otherPresets.length > 0 && (
+          <section className="mt-16">
+            <div className="mb-6 flex items-baseline justify-between gap-4">
+              <div>
+                <p
+                  className="mb-1 uppercase text-zinc-500"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "10px",
+                    letterSpacing: "0.28em",
+                    fontWeight: 700,
+                  }}
+                >
+                  // Veja também
+                </p>
+                <h3
+                  className="text-white"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "clamp(20px, 2.4vw, 26px)",
+                    fontWeight: 700,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  Outros setups que combinam com você
+                </h3>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {otherPresets.map((p) => (
+                <PresetMiniCard
+                  key={p.id}
+                  preset={p}
+                  onApply={() => onApply(p)}
+                  onBuy={() => onBuy(p)}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-[1320px] px-6 py-12 md:py-14">
@@ -2863,7 +3237,7 @@ function PresetGallery({
           className="mx-auto max-w-[520px] text-zinc-400"
           style={{ fontFamily: "var(--font-family-inter)", fontSize: "14.5px", lineHeight: 1.6 }}
         >
-          Builds montadas e testadas. Aplique e customize qualquer peça antes de finalizar.
+          Builds montadas e testadas. Clique pra ver todas as peças e comprar com 1 clique.
         </p>
       </div>
 
@@ -2968,12 +3342,11 @@ function PresetGallery({
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visiblePresets.map((p) => (
-            <PresetCard
+            <PresetMiniCard
               key={p.id}
               preset={p}
-              isRecommended={recommended === p.id}
               onApply={() => onApply(p)}
               onBuy={() => onBuy(p)}
             />
