@@ -1563,7 +1563,7 @@
     <div class="modal" id="ovWhatsModal" style="width:560px;" role="dialog" aria-labelledby="ovWhatsTitle">
       <div class="modal-head">
         <div style="display:flex;align-items:center;gap:10px;">
-          <span class="ov-whats-modal-icon"><i data-lucide="message-circle" style="width:18px;height:18px;color:#25D366;"></i></span>
+          <span class="ov-whats-modal-icon ds-icon-box ds-icon-box-md ds-icon-box-circle"><i data-lucide="message-circle" style="width:18px;height:18px;color:#25D366;"></i></span>
           <h3 id="ovWhatsTitle">Enviar por WhatsApp</h3>
         </div>
         <button class="ds-icon-btn ds-icon-btn-circle ds-icon-btn-soft" onclick="closeOrcamentoWhats()"><i data-lucide="x" style="width:14px;height:14px;"></i></button>
@@ -1840,7 +1840,7 @@
         if (logo) {
           return `
             <div class="dash-hero-brand">
-              <div class="dash-hero-brand-logo"><img src="${logo}" alt="${nome}"></div>
+              <div class="dash-hero-brand-logo ds-icon-box ds-icon-box-lg ds-icon-box-white"><img src="${logo}" alt="${nome}"></div>
               <div class="dash-hero-brand-text">
                 <strong>${nome}</strong>
                 <small>Logo aparece nos orçamentos enviados</small>
@@ -1850,7 +1850,7 @@
         }
         return `
           <div class="dash-hero-brand">
-            <div class="dash-hero-brand-logo"><i data-lucide="image"></i></div>
+            <div class="dash-hero-brand-logo ds-icon-box ds-icon-box-lg ds-icon-box-white"><i data-lucide="image"></i></div>
             <div class="dash-hero-brand-text">
               <strong>Adicione a logo da sua empresa</strong>
               <small>Aparece nos orçamentos enviados ao cliente final</small>
@@ -2265,7 +2265,7 @@
           <div class="resumo-grid-2col">
             <div class="resumo-card">
               <div class="resumo-card-head">
-                <div class="resumo-card-icon" style="background:#e7eeff;color:var(--blue);"><i data-lucide="user-cog" style="width:14px;height:14px;"></i></div>
+                <div class="resumo-card-icon ds-icon-box ds-icon-box-sm" style="background:#e7eeff;color:var(--blue);"><i data-lucide="user-cog" style="width:14px;height:14px;"></i></div>
                 <span>Tipo de venda</span>
               </div>
               <dl class="resumo-kv">
@@ -2276,7 +2276,7 @@
             </div>
             <div class="resumo-card">
               <div class="resumo-card-head">
-                <div class="resumo-card-icon" style="background:var(--green-softer);color:#1c7a36;"><i data-lucide="dollar-sign" style="width:14px;height:14px;"></i></div>
+                <div class="resumo-card-icon ds-icon-box ds-icon-box-sm" style="background:var(--green-softer);color:#1c7a36;"><i data-lucide="dollar-sign" style="width:14px;height:14px;"></i></div>
                 <span>Valores</span>
               </div>
               <dl class="resumo-kv">
@@ -2289,7 +2289,7 @@
 
           <div class="resumo-card resumo-card-full">
             <div class="resumo-card-head">
-              <div class="resumo-card-icon" style="background:var(--yellow-softer);color:var(--yellow);"><i data-lucide="package" style="width:14px;height:14px;"></i></div>
+              <div class="resumo-card-icon ds-icon-box ds-icon-box-sm" style="background:var(--yellow-softer);color:var(--yellow);"><i data-lucide="package" style="width:14px;height:14px;"></i></div>
               <span>Produtos</span>
               <span class="resumo-card-count">${(o.items||[]).length}</span>
             </div>
@@ -2401,7 +2401,7 @@
             <div class="home-categories-pills">
               ${categories.map(c => `
                 <a href="#loja" onclick="state.category='${c.name}';" class="home-cat-pill" title="${c.name}">
-                  <span class="home-cat-pill-icon" style="background:${c.accent};color:${c.iconColor};"><i data-lucide="${c.icon}"></i></span>
+                  <span class="home-cat-pill-icon ds-icon-box ds-icon-box-xl ds-icon-box-circle" style="background:${c.accent};color:${c.iconColor};"><i data-lucide="${c.icon}"></i></span>
                   <span class="home-cat-pill-label">${c.name}</span>
                 </a>
               `).join('')}
@@ -2468,7 +2468,7 @@
             <div class="card home-recent-card">
               <div class="home-recent-head">
                 <div class="home-recent-head-info">
-                  <span class="home-recent-head-icon" style="background:#eef4ff;color:var(--blue);"><i data-lucide="file-text"></i></span>
+                  <span class="home-recent-head-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded" style="background:#eef4ff;color:var(--blue);"><i data-lucide="file-text"></i></span>
                   <div>
                     <h3>Orçamentos recentes</h3>
                     <p>Acompanhe os últimos ${recentOrcamentos.length} orçamentos criados</p>
@@ -2500,7 +2500,7 @@
             <div class="card home-recent-card">
               <div class="home-recent-head">
                 <div class="home-recent-head-info">
-                  <span class="home-recent-head-icon" style="background:#e7f7ed;color:#0aa253;"><i data-lucide="package"></i></span>
+                  <span class="home-recent-head-icon ds-icon-box ds-icon-box-md ds-icon-box-rounded" style="background:#e7f7ed;color:#0aa253;"><i data-lucide="package"></i></span>
                   <div>
                     <h3>Pedidos recentes</h3>
                     <p>Status dos ${recentPedidos.length} últimos pedidos faturados</p>
@@ -3008,7 +3008,7 @@
                     return `
                     <div class="pdp-spec-group">
                       <div class="pdp-spec-group-head">
-                        <div class="pdp-spec-group-icon" style="background:${t.bg};color:${t.c};"><i data-lucide="${g.icon}" style="width:18px;height:18px;"></i></div>
+                        <div class="pdp-spec-group-icon ds-icon-box ds-icon-box-md" style="background:${t.bg};color:${t.c};"><i data-lucide="${g.icon}" style="width:18px;height:18px;"></i></div>
                         <div>
                           <h4 class="pdp-spec-group-title">${g.title}</h4>
                           ${g.desc ? `<p class="pdp-spec-group-desc">${g.desc}</p>` : ''}
@@ -3054,7 +3054,7 @@
                     {name:'Curvas IV', size:'1,2 MB', type:'pdf', icon:'activity', desc:'Curvas características de corrente e tensão.'},
                   ].map(d => `
                     <a href="#" class="pdp-doc-row" onclick="return false;">
-                      <div class="pdp-doc-icon"><i data-lucide="${d.icon}" style="width:18px;height:18px;"></i></div>
+                      <div class="pdp-doc-icon ds-icon-box ds-icon-box-md"><i data-lucide="${d.icon}" style="width:18px;height:18px;"></i></div>
                       <div style="flex:1;min-width:0;">
                         <p class="pdp-doc-name">${d.name}</p>
                         <p class="pdp-doc-meta">${d.type.toUpperCase()} · ${d.size}</p>
@@ -3196,7 +3196,7 @@
       function _notifIconHTML(n) {
         const map = { blue:{bg:'#e7eeff',c:'var(--blue)'}, green:{bg:'var(--green-softer)',c:'#1c7a36'}, amber:{bg:'var(--yellow-softer)',c:'#8a5400'}, red:{bg:'#fde0e0',c:'var(--red)'}, navy:{bg:'#e7eeff',c:'var(--navy)'} };
         const t = map[n.tone] || map.blue;
-        return `<div class="notif-drawer-icon" style="background:${t.bg};color:${t.c};"><i data-lucide="${n.icon}" style="width:16px;height:16px;"></i></div>`;
+        return `<div class="notif-drawer-icon ds-icon-box ds-icon-box-md" style="background:${t.bg};color:${t.c};"><i data-lucide="${n.icon}" style="width:16px;height:16px;"></i></div>`;
       }
 
       function renderNotifDrawer() {
@@ -3210,7 +3210,7 @@
         if (!list.length) {
           body.innerHTML = `
             <div class="notif-drawer-empty">
-              <div class="notif-drawer-empty-icon"><i data-lucide="bell-off" style="width:24px;height:24px;color:var(--muted);"></i></div>
+              <div class="notif-drawer-empty-icon ds-icon-box ds-icon-box-xxl ds-icon-box-circle"><i data-lucide="bell-off" style="width:24px;height:24px;color:var(--muted);"></i></div>
               <h4>Sem notificações</h4>
               <p>Tudo em dia por aqui.</p>
             </div>`;
@@ -4015,7 +4015,7 @@
               `;
             }).join("")
           : `<div class="cart-empty">
-               <div class="cart-empty-icon"><i data-lucide="shopping-cart" style="width:26px;height:26px;opacity:0.4;"></i></div>
+               <div class="cart-empty-icon ds-icon-box ds-icon-box-xxl"><i data-lucide="shopping-cart" style="width:26px;height:26px;opacity:0.4;"></i></div>
                <h3>Carrinho vazio</h3>
                <p>Adicione produtos para montar seu orçamento.</p>
              </div>`;
@@ -4780,7 +4780,7 @@
               <!-- Logistics -->
               <div class="card ped-v2-card">
                 <div class="ped-v2-card-hdr">
-                  <div class="ped-v2-card-icon" style="background:#eff6ff;color:var(--blue);"><i data-lucide="truck" style="width:16px;height:16px;"></i></div>
+                  <div class="ped-v2-card-icon ds-icon-box ds-icon-box-sm" style="background:#eff6ff;color:var(--blue);"><i data-lucide="truck" style="width:16px;height:16px;"></i></div>
                   <span class="ped-v2-card-hdr-title">Logística</span>
                 </div>
                 <div class="ped-v2-kv">
@@ -4799,7 +4799,7 @@
               <!-- Payment -->
               <div class="card ped-v2-card">
                 <div class="ped-v2-card-hdr">
-                  <div class="ped-v2-card-icon" style="background:#CCEED2;color:#1c7a36;"><i data-lucide="credit-card" style="width:16px;height:16px;"></i></div>
+                  <div class="ped-v2-card-icon ds-icon-box ds-icon-box-sm" style="background:#CCEED2;color:#1c7a36;"><i data-lucide="credit-card" style="width:16px;height:16px;"></i></div>
                   <span class="ped-v2-card-hdr-title">Pagamento</span>
                 </div>
                 <div class="ped-v2-kv">
@@ -4813,7 +4813,7 @@
               <!-- Delivery -->
               <div class="card ped-v2-card">
                 <div class="ped-v2-card-hdr">
-                  <div class="ped-v2-card-icon" style="background:#FCDFB3;color:#ea580c;"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
+                  <div class="ped-v2-card-icon ds-icon-box ds-icon-box-sm" style="background:#FCDFB3;color:#ea580c;"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
                   <span class="ped-v2-card-hdr-title">Endereço de Entrega</span>
                   ${p.entrega.passivel?`<span style="margin-left:auto;font-size:10px;font-weight:700;background:#FCDFB3;color:#8a5400;padding:2px 8px;border-radius:var(--r-form);border:1px solid #F8BE66;white-space:nowrap;">${p.entrega.passivel}</span>`:''}
                   <button class="ped-row-btn" style="margin-left:8px;" title="Editar endereço" onclick="openPedidoEnderecoEdit(${p.id})"><i data-lucide="pencil" style="width:13px;height:13px;"></i></button>
@@ -5092,7 +5092,7 @@
                 ${categories.map(c=>`
                   <a href="#ajuda-cat-${c.id}" class="ajuda-cat" data-cat="${c.id}">
                     <div class="ajuda-cat-head">
-                      <div class="ajuda-cat-icon" style="background:${c.iconBg};color:${c.iconColor};"><i data-lucide="${c.icon}" style="width:22px;height:22px;"></i></div>
+                      <div class="ajuda-cat-icon ds-icon-box ds-icon-box-xl" style="background:${c.iconBg};color:${c.iconColor};"><i data-lucide="${c.icon}" style="width:22px;height:22px;"></i></div>
                       <span class="ajuda-cat-count">${c.count} ${c.count === 1 ? 'artigo' : 'artigos'}</span>
                     </div>
                     <h4>${c.title}</h4>
@@ -5688,7 +5688,7 @@
           <div class="resumo-grid-2col">
             <div class="resumo-card">
               <div class="resumo-card-head">
-                <div class="resumo-card-icon" style="background:#e7eeff;color:var(--blue);"><i data-lucide="truck" style="width:14px;height:14px;"></i></div>
+                <div class="resumo-card-icon ds-icon-box ds-icon-box-sm" style="background:#e7eeff;color:var(--blue);"><i data-lucide="truck" style="width:14px;height:14px;"></i></div>
                 <span>Logística</span>
               </div>
               <dl class="resumo-kv">
@@ -5700,7 +5700,7 @@
             </div>
             <div class="resumo-card">
               <div class="resumo-card-head">
-                <div class="resumo-card-icon" style="background:var(--green-softer);color:#1c7a36;"><i data-lucide="credit-card" style="width:14px;height:14px;"></i></div>
+                <div class="resumo-card-icon ds-icon-box ds-icon-box-sm" style="background:var(--green-softer);color:#1c7a36;"><i data-lucide="credit-card" style="width:14px;height:14px;"></i></div>
                 <span>Pagamento</span>
               </div>
               <dl class="resumo-kv">
@@ -5715,7 +5715,7 @@
           <!-- Produtos -->
           <div class="resumo-card resumo-card-full">
             <div class="resumo-card-head">
-              <div class="resumo-card-icon" style="background:var(--yellow-softer);color:var(--yellow);"><i data-lucide="package" style="width:14px;height:14px;"></i></div>
+              <div class="resumo-card-icon ds-icon-box ds-icon-box-sm" style="background:var(--yellow-softer);color:var(--yellow);"><i data-lucide="package" style="width:14px;height:14px;"></i></div>
               <span>Produtos</span>
               <span class="resumo-card-count">${(p.items||[]).length}</span>
             </div>
@@ -5759,7 +5759,7 @@
           ` : `
             <div class="resumo-card resumo-card-full" style="background:var(--soft);">
               <div class="resumo-card-head">
-                <div class="resumo-card-icon" style="background:#eaecf6;color:var(--muted);"><i data-lucide="file-text" style="width:14px;height:14px;"></i></div>
+                <div class="resumo-card-icon ds-icon-box ds-icon-box-sm" style="background:#eaecf6;color:var(--muted);"><i data-lucide="file-text" style="width:14px;height:14px;"></i></div>
                 <span>Nota Fiscal</span>
               </div>
               <p style="margin:8px 0 0;font:400 13px/1.5 var(--font);color:var(--muted);">Pedido ainda não faturado. A nota fiscal estará disponível após o faturamento.</p>
@@ -6398,7 +6398,7 @@
       function _clientRowHTML(c) {
         const col=_clientColor(c.nome), ini=_clientInitials(c.nome);
         return `<div class="clients-tbl-row" onclick="location.hash='cliente-${c.id}'">
-          <div><div class="client-av" style="background:${col};">${ini}</div></div>
+          <div><div class="client-av ds-icon-box ds-icon-box-lg" style="background:${col};">${ini}</div></div>
           <div><div class="client-row-name">${c.nome}</div><div class="client-row-sub">#${c.id} · ${c.integrador}</div></div>
           <div class="client-row-email">${c.email}</div>
           <div class="client-row-tel">${c.tel}</div>
