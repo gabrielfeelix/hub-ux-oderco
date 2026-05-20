@@ -626,8 +626,8 @@ type ViewMode = "grid" | "list";
 
 type UseType = "gaming" | "creating" | "general";
 type GamingLevel = "casual" | "competitive" | "pro";
-type CreatingLevel = "hobby" | "professional";
-type GeneralLevel = "basic" | "performance";
+type CreatingLevel = "hobby" | "professional" | "studio";
+type GeneralLevel = "basic" | "performance" | "power";
 
 type QuizAnswers = {
   useType?: UseType;
@@ -637,7 +637,18 @@ type QuizAnswers = {
   creatingLevel?: CreatingLevel;
   generalLevel?: GeneralLevel;
 };
-type PresetTier = "start" | "pro" | "ultra";
+type PresetPersona = "gamer" | "creator" | "daily";
+type PresetTier =
+  | "pulse"
+  | "strike"
+  | "apex"
+  | "sketch"
+  | "render"
+  | "studio"
+  | "base"
+  | "hub"
+  | "cockpit";
+type Scenario = { label: string; value: string; sub?: string };
 
 type QuizGame = {
   id: string;
@@ -969,6 +980,7 @@ const useTypeCards: UseTypeCardData[] = [
 
 type Preset = {
   id: PresetTier;
+  persona: PresetPersona;
   name: string;
   tagline: string;
   description: string;
@@ -983,7 +995,7 @@ type Preset = {
   heroImage: string;
   performance: string;
   specs: { cpu: string; gpu: string; ram: string; storage: string; psu: string };
-  benchmarks: { game: string; fps: number; resolution: string }[];
+  scenarios: Scenario[];
   rating: number;
   reviews: number;
   inStock: boolean;
@@ -993,18 +1005,19 @@ type Preset = {
 
 const presets: Preset[] = [
   {
-    id: "start",
-    name: "PCYES Start",
-    tagline: "1080p · Dia-a-dia",
-    description: "Setup honesto para entrar no mundo gamer. Roda os esports com folga.",
+    id: "pulse",
+    persona: "gamer",
+    name: "PCYES Pulse",
+    tagline: "Gamer · 1080p · esports",
+    description: "Primeiro setup pra entrar no competitivo. 144Hz tranquilo em CS2, Valorant, Fortnite. eSports sem desculpa.",
     price: 3499,
     oldPrice: 3899,
     pixDiscount: 10,
     installments: { count: 10, value: 349.9 },
     accent: "#22c55e",
     glow: "rgba(34,197,94,0.35)",
-    icon: <Cpu className="h-5 w-5" />,
-    heroImage: "/home/category-computers.png",
+    icon: <Gamepad2 className="h-5 w-5" />,
+    heroImage: "/home/category-pc-gamer.png",
     performance: "Entrada",
     specs: {
       cpu: "Intel Core i5-12400F",
@@ -1013,10 +1026,10 @@ const presets: Preset[] = [
       storage: "SSD NVMe 1TB",
       psu: "550W 80+ Bronze",
     },
-    benchmarks: [
-      { game: "Valorant", fps: 280, resolution: "1080p" },
-      { game: "Fortnite", fps: 165, resolution: "1080p" },
-      { game: "CS2", fps: 220, resolution: "1080p" },
+    scenarios: [
+      { label: "Valorant", value: "280 fps", sub: "1080p" },
+      { label: "Fortnite", value: "165 fps", sub: "1080p" },
+      { label: "CS2", value: "220 fps", sub: "1080p" },
     ],
     rating: 4.7,
     reviews: 142,
@@ -1029,10 +1042,11 @@ const presets: Preset[] = [
     },
   },
   {
-    id: "pro",
-    name: "PCYES Pro",
-    tagline: "2K 144Hz · Render rápido",
-    description: "Sweet spot do gamer brasileiro. AAA em 2K, edição leve, stream sem travar.",
+    id: "strike",
+    persona: "gamer",
+    name: "PCYES Strike",
+    tagline: "Gamer · 2K 144Hz · AAA",
+    description: "Sweet spot do gamer BR. AAA em 2K com folga, stream sem travar, ranked sério.",
     price: 7499,
     oldPrice: 8299,
     pixDiscount: 12,
@@ -1050,10 +1064,10 @@ const presets: Preset[] = [
       storage: "SSD NVMe 2TB",
       psu: "850W 80+ Gold",
     },
-    benchmarks: [
-      { game: "Cyberpunk 2077", fps: 95, resolution: "2K Ultra" },
-      { game: "Warzone", fps: 165, resolution: "2K" },
-      { game: "Elden Ring", fps: 120, resolution: "2K" },
+    scenarios: [
+      { label: "Cyberpunk 2077", value: "95 fps", sub: "2K Ultra" },
+      { label: "Warzone", value: "165 fps", sub: "2K" },
+      { label: "Elden Ring", value: "120 fps", sub: "2K" },
     ],
     rating: 4.9,
     reviews: 387,
@@ -1066,30 +1080,31 @@ const presets: Preset[] = [
     },
   },
   {
-    id: "ultra",
-    name: "PCYES Ultra",
-    tagline: "4K alto FPS · Workstation",
-    description: "Top de linha. 4K alto FPS, render pesado, streaming dual-PC. Headroom pra anos.",
+    id: "apex",
+    persona: "gamer",
+    name: "PCYES Apex",
+    tagline: "Gamer · 4K alto FPS",
+    description: "Topo absoluto pra gaming. 4K com Path Tracing, dual-PC stream, sem comprometer nada.",
     price: 14999,
     oldPrice: 16499,
     pixDiscount: 15,
     installments: { count: 10, value: 1499.9 },
     accent: "#a78bfa",
     glow: "rgba(167,139,250,0.4)",
-    icon: <Sparkles className="h-5 w-5" />,
+    icon: <Trophy className="h-5 w-5" />,
     heroImage: "/home/hero-videogame.png",
     performance: "Extremo",
     specs: {
-      cpu: "AMD Ryzen 5 7600 AM5",
+      cpu: "AMD Ryzen 7 7800X3D",
       gpu: "GeForce RTX 4090",
       ram: "32GB DDR5 6000MHz",
-      storage: "SSD NVMe 4TB",
+      storage: "SSD NVMe 4TB Gen4",
       psu: "1000W 80+ Gold Full Modular",
     },
-    benchmarks: [
-      { game: "Cyberpunk 2077", fps: 115, resolution: "4K Path Tracing" },
-      { game: "Alan Wake 2", fps: 90, resolution: "4K Ultra" },
-      { game: "Black Myth Wukong", fps: 100, resolution: "4K" },
+    scenarios: [
+      { label: "Cyberpunk 2077", value: "115 fps", sub: "4K Path Tracing" },
+      { label: "Alan Wake 2", value: "90 fps", sub: "4K Ultra" },
+      { label: "Black Myth Wukong", value: "100 fps", sub: "4K" },
     ],
     rating: 5.0,
     reviews: 89,
@@ -1101,27 +1116,251 @@ const presets: Preset[] = [
       psu: "psu-4",
     },
   },
+  {
+    id: "sketch",
+    persona: "creator",
+    name: "PCYES Sketch",
+    tagline: "Creator · Foto + UI design",
+    description: "Primeiro passo no design e edição leve. Photoshop, Figma, Lightroom rodam sem suar.",
+    price: 4299,
+    oldPrice: 4799,
+    pixDiscount: 10,
+    installments: { count: 10, value: 429.9 },
+    accent: "#06b6d4",
+    glow: "rgba(6,182,212,0.4)",
+    icon: <Palette className="h-5 w-5" />,
+    heroImage: "/home/category-computers.png",
+    performance: "Entrada",
+    specs: {
+      cpu: "Intel Core i5-12400",
+      gpu: "GeForce RTX 4060",
+      ram: "32GB DDR4 3200MHz",
+      storage: "SSD NVMe 1TB",
+      psu: "550W 80+ Bronze",
+    },
+    scenarios: [
+      { label: "Photoshop", value: "30 layers 4K", sub: "fluido" },
+      { label: "Figma", value: "Multi-página", sub: "sem latência" },
+      { label: "Lightroom", value: "Catálogo 5K fotos", sub: "rápido" },
+    ],
+    rating: 4.8,
+    reviews: 96,
+    inStock: true,
+    deliveryDays: "3-5 dias úteis",
+    selections: {
+      cpu: "cpu-1", motherboard: "mb-1", ram: "ram-4", gpu: "gpu-1",
+      cooling: "cooling-1", storage: "storage-1", case: "case-1",
+      psu: "psu-1",
+    },
+  },
+  {
+    id: "render",
+    persona: "creator",
+    name: "PCYES Render",
+    tagline: "Creator · Vídeo 4K + Motion",
+    description: "Cavalo de batalha pra editor. Premiere/DaVinci 4K real-time, After Effects sem dor, Blender médio.",
+    price: 8999,
+    oldPrice: 9999,
+    pixDiscount: 12,
+    installments: { count: 10, value: 899.9 },
+    accent: "#ec4899",
+    glow: "rgba(236,72,153,0.4)",
+    icon: <Sparkles className="h-5 w-5" />,
+    heroImage: "/home/category-computers.png",
+    performance: "Performance",
+    specs: {
+      cpu: "AMD Ryzen 7 7700",
+      gpu: "GeForce RTX 4070 Ti",
+      ram: "64GB DDR5 6000MHz",
+      storage: "SSD NVMe 2TB Gen4",
+      psu: "850W 80+ Gold",
+    },
+    scenarios: [
+      { label: "Premiere Pro", value: "4K real-time", sub: "timeline pesada" },
+      { label: "After Effects", value: "Motion complexa", sub: "preview fluido" },
+      { label: "Blender Cycles", value: "Cenas médias", sub: "render rápido" },
+    ],
+    rating: 4.9,
+    reviews: 218,
+    inStock: true,
+    deliveryDays: "3-5 dias úteis",
+    selections: {
+      cpu: "cpu-3", motherboard: "mb-3", ram: "ram-3", gpu: "gpu-2",
+      cooling: "cooling-2", storage: "storage-2", case: "case-2",
+      psu: "psu-3",
+    },
+  },
+  {
+    id: "studio",
+    persona: "creator",
+    name: "PCYES Studio",
+    tagline: "Creator · 8K · 3D · AI",
+    description: "Workstation sem teto. 8K + Fusion sem proxy, 3D pesado, AI generativa local.",
+    price: 18499,
+    oldPrice: 20499,
+    pixDiscount: 15,
+    installments: { count: 10, value: 1849.9 },
+    accent: "#f59e0b",
+    glow: "rgba(245,158,11,0.4)",
+    icon: <Sparkles className="h-5 w-5" />,
+    badge: "WORKSTATION",
+    heroImage: "/home/category-hardware.png",
+    performance: "Extremo",
+    specs: {
+      cpu: "AMD Ryzen 9 7950X",
+      gpu: "GeForce RTX 4090",
+      ram: "128GB DDR5 6400MHz",
+      storage: "SSD NVMe 4TB Gen4 + 8TB HD",
+      psu: "1200W 80+ Platinum",
+    },
+    scenarios: [
+      { label: "DaVinci Resolve", value: "8K + Fusion", sub: "sem proxy" },
+      { label: "Cinema 4D + OptiX", value: "Real-time", sub: "viewport 4K" },
+      { label: "Stable Diffusion XL", value: "~5 seg/img", sub: "AI local" },
+    ],
+    rating: 5.0,
+    reviews: 47,
+    inStock: true,
+    deliveryDays: "7-10 dias úteis",
+    selections: {
+      cpu: "cpu-3", motherboard: "mb-4", ram: "ram-4", gpu: "gpu-3",
+      cooling: "cooling-3", storage: "storage-3", case: "case-3",
+      psu: "psu-4",
+    },
+  },
+  {
+    id: "base",
+    persona: "daily",
+    name: "PCYES Base",
+    tagline: "Dia-a-dia · Office + streaming",
+    description: "PC honesto pra estudo, trabalho remoto e streaming. Custo-benefício de verdade.",
+    price: 2299,
+    oldPrice: 2599,
+    pixDiscount: 10,
+    installments: { count: 10, value: 229.9 },
+    accent: "#64748b",
+    glow: "rgba(100,116,139,0.35)",
+    icon: <Briefcase className="h-5 w-5" />,
+    heroImage: "/home/category-computers.png",
+    performance: "Entrada",
+    specs: {
+      cpu: "Intel Core i3-12100F",
+      gpu: "Vídeo integrado UHD 730",
+      ram: "16GB DDR4 3200MHz",
+      storage: "SSD NVMe 480GB",
+      psu: "400W 80+",
+    },
+    scenarios: [
+      { label: "Office + 15 abas", value: "Sem travas", sub: "" },
+      { label: "Zoom HD + Slack", value: "Tranquilo", sub: "" },
+      { label: "Netflix 4K", value: "Fluido", sub: "" },
+    ],
+    rating: 4.6,
+    reviews: 312,
+    inStock: true,
+    deliveryDays: "3-5 dias úteis",
+    selections: {
+      cpu: "cpu-6", motherboard: "mb-1", ram: "ram-2", gpu: "gpu-1",
+      cooling: "cooling-1", storage: "storage-1", case: "case-1",
+      psu: "psu-1",
+    },
+  },
+  {
+    id: "hub",
+    persona: "daily",
+    name: "PCYES Hub",
+    tagline: "Dia-a-dia · Multitarefa séria",
+    description: "Pra quem usa pesado sem ser gamer/editor pro. 30+ abas, planilhas grandes, dual-monitor 4K.",
+    price: 4499,
+    oldPrice: 4999,
+    pixDiscount: 10,
+    installments: { count: 10, value: 449.9 },
+    accent: "#0ea5e9",
+    glow: "rgba(14,165,233,0.4)",
+    icon: <LayoutGrid className="h-5 w-5" />,
+    heroImage: "/home/category-computers.png",
+    performance: "Performance",
+    specs: {
+      cpu: "Intel Core i5-12400F",
+      gpu: "GeForce RTX 4060",
+      ram: "32GB DDR4 3200MHz",
+      storage: "SSD NVMe 1TB",
+      psu: "550W 80+ Bronze",
+    },
+    scenarios: [
+      { label: "30 abas + Excel grande", value: "Sem travas", sub: "+ Zoom HD" },
+      { label: "Edição leve casual", value: "1080p", sub: "tranquilo" },
+      { label: "Dual-monitor 4K", value: "Fluido", sub: "trabalho híbrido" },
+    ],
+    rating: 4.7,
+    reviews: 198,
+    inStock: true,
+    deliveryDays: "3-5 dias úteis",
+    selections: {
+      cpu: "cpu-1", motherboard: "mb-1", ram: "ram-4", gpu: "gpu-1",
+      cooling: "cooling-1", storage: "storage-1", case: "case-1",
+      psu: "psu-2",
+    },
+  },
+  {
+    id: "cockpit",
+    persona: "daily",
+    name: "PCYES Cockpit",
+    tagline: "Dia-a-dia · Pesado sem freio",
+    description: "Pra quem nunca fecha aba. Triple monitor, dev pesado, edição casual, tudo simultâneo.",
+    price: 9999,
+    oldPrice: 10999,
+    pixDiscount: 12,
+    installments: { count: 10, value: 999.9 },
+    accent: "#8b5cf6",
+    glow: "rgba(139,92,246,0.4)",
+    icon: <Layers className="h-5 w-5" />,
+    heroImage: "/home/category-computers.png",
+    performance: "Extremo",
+    specs: {
+      cpu: "Intel Core i7-12700K",
+      gpu: "GeForce RTX 4070",
+      ram: "64GB DDR5 5600MHz",
+      storage: "SSD NVMe 2TB + 4TB HD",
+      psu: "750W 80+ Gold",
+    },
+    scenarios: [
+      { label: "100+ abas + 5 apps Office", value: "Tudo aberto", sub: "" },
+      { label: "Triple-monitor 4K", value: "Zero lag", sub: "" },
+      { label: "Dev + edição + Slack + Zoom", value: "Simultâneo", sub: "" },
+    ],
+    rating: 4.9,
+    reviews: 64,
+    inStock: true,
+    deliveryDays: "5-7 dias úteis",
+    selections: {
+      cpu: "cpu-2", motherboard: "mb-1", ram: "ram-3", gpu: "gpu-2",
+      cooling: "cooling-2", storage: "storage-2", case: "case-2",
+      psu: "psu-3",
+    },
+  },
 ];
 
 const recommendPreset = (a: QuizAnswers): PresetTier => {
   if (a.useType === "gaming") {
-    if (a.gamingLevel === "pro") return "ultra";
-    const heavy = (a.games ?? []).some(
+    if (a.gamingLevel === "pro") return "apex";
+    const heavyGame = (a.games ?? []).some(
       (id) => quizGames.find((g) => g.id === id)?.weight === "heavy",
     );
-    if (heavy || a.gamingLevel === "competitive") return "pro";
-    return "start";
+    if (heavyGame || a.gamingLevel === "competitive") return "strike";
+    return "pulse";
   }
   if (a.useType === "creating") {
-    if (a.creatingLevel === "professional") return "ultra";
-    const heavy = (a.programs ?? []).some(
+    if (a.creatingLevel === "studio") return "studio";
+    const heavyProgram = (a.programs ?? []).some(
       (id) => quizPrograms.find((p) => p.id === id)?.weight === "heavy",
     );
-    if (heavy) return "pro";
-    return "start";
+    if (a.creatingLevel === "professional" || heavyProgram) return "render";
+    return "sketch";
   }
-  if (a.generalLevel === "performance") return "pro";
-  return "start";
+  if (a.generalLevel === "power") return "cockpit";
+  if (a.generalLevel === "performance") return "hub";
+  return "base";
 };
 
 type GamingLevelCard = {
@@ -1170,14 +1409,21 @@ const creatingLevelCards: CreatingLevelCard[] = [
     title: "Hobby / Esporádico",
     desc: "Edições leves no fim de semana, projetos pessoais, aprendizado.",
     icon: <Palette className="h-4 w-4" />,
-    accent: "#22c55e",
+    accent: "#06b6d4",
   },
   {
     id: "professional",
     title: "Profissional",
-    desc: "Trabalho diário, prazos apertados, projetos pesados, render demorado pesa no bolso.",
+    desc: "Trabalho diário, prazos apertados, render rápido importa.",
     icon: <Sparkles className="h-4 w-4" />,
-    accent: "#a78bfa",
+    accent: "#ec4899",
+  },
+  {
+    id: "studio",
+    title: "Estúdio / Workstation",
+    desc: "Render 8K, 3D pesado, AI generativa local, sem teto técnico.",
+    icon: <Trophy className="h-4 w-4" />,
+    accent: "#f59e0b",
   },
 ];
 
@@ -1193,16 +1439,23 @@ const generalLevelCards: GeneralLevelCard[] = [
   {
     id: "basic",
     title: "Básico",
-    desc: "Navegar, planilhas, vídeo, vídeochamada. Roda tudo isso sem suar.",
+    desc: "Navegar, planilhas, vídeo, videochamada. Roda tudo isso sem suar.",
     icon: <Briefcase className="h-4 w-4" />,
-    accent: "#22c55e",
+    accent: "#64748b",
   },
   {
     id: "performance",
     title: "Com desempenho",
-    desc: "Multitarefa pesada, monitor 144Hz, jogos leves de vez em quando, home office sério.",
-    icon: <Zap className="h-4 w-4" />,
-    accent: "#22d3ee",
+    desc: "Multitarefa pesada, monitor 144Hz, jogos leves, home office sério.",
+    icon: <LayoutGrid className="h-4 w-4" />,
+    accent: "#0ea5e9",
+  },
+  {
+    id: "power",
+    title: "Sem freio",
+    desc: "Triple monitor, 100+ abas, dev pesado, tudo aberto o tempo todo.",
+    icon: <Layers className="h-4 w-4" />,
+    accent: "#8b5cf6",
   },
 ];
 
@@ -2639,18 +2892,28 @@ function PresetCard({
                   fontWeight: 700,
                 }}
               >
-                FPS estimado
+                {preset.persona === "gamer"
+                  ? "FPS estimado"
+                  : preset.persona === "creator"
+                    ? "Performance criativa"
+                    : "No dia-a-dia"}
               </p>
-              <Gamepad2 size={11} className="text-zinc-500" />
+              {preset.persona === "gamer" ? (
+                <Gamepad2 size={11} className="text-zinc-500" />
+              ) : preset.persona === "creator" ? (
+                <Palette size={11} className="text-zinc-500" />
+              ) : (
+                <Briefcase size={11} className="text-zinc-500" />
+              )}
             </div>
             <div className="space-y-1.5">
-              {preset.benchmarks.slice(0, 3).map((b) => (
-                <div key={b.game} className="flex items-center justify-between gap-2">
+              {preset.scenarios.slice(0, 3).map((s) => (
+                <div key={s.label} className="flex items-center justify-between gap-2">
                   <span
                     className="truncate text-zinc-200"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500 }}
                   >
-                    {b.game}
+                    {s.label}
                   </span>
                   <div className="flex items-baseline gap-1.5 shrink-0">
                     <span
@@ -2662,25 +2925,21 @@ function PresetCard({
                         letterSpacing: "-0.005em",
                       }}
                     >
-                      {b.fps}
+                      {s.value}
+                    </span>
+                    {s.sub && (
                       <span
-                        className="ml-0.5 text-zinc-500"
-                        style={{ fontSize: "9.5px", fontWeight: 600 }}
+                        className="rounded-sm bg-white/[0.06] px-1 py-0.5 text-zinc-400"
+                        style={{
+                          fontFamily: "var(--font-family-inter)",
+                          fontSize: "8.5px",
+                          fontWeight: 700,
+                          letterSpacing: "0.04em",
+                        }}
                       >
-                        fps
+                        {s.sub}
                       </span>
-                    </span>
-                    <span
-                      className="rounded-sm bg-white/[0.06] px-1 py-0.5 text-zinc-400"
-                      style={{
-                        fontFamily: "var(--font-family-inter)",
-                        fontSize: "8.5px",
-                        fontWeight: 700,
-                        letterSpacing: "0.04em",
-                      }}
-                    >
-                      {b.resolution}
-                    </span>
+                    )}
                   </div>
                 </div>
               ))}
@@ -3074,14 +3333,14 @@ function PresetMiniCard({
   );
 }
 
-type PresetFilter = "all" | "Entrada" | "Performance" | "Extremo";
+type PresetFilter = "all" | "gamer" | "creator" | "daily";
 type PresetSort = "recommended" | "price-asc" | "price-desc";
 
 const filterChips: Array<{ id: PresetFilter; label: string; sub: string }> = [
   { id: "all", label: "Todos", sub: "" },
-  { id: "Entrada", label: "Entrada", sub: "1080p" },
-  { id: "Performance", label: "Performance", sub: "2K" },
-  { id: "Extremo", label: "Extremo", sub: "4K" },
+  { id: "gamer", label: "Gamer", sub: "FPS" },
+  { id: "creator", label: "Creator", sub: "Design / vídeo" },
+  { id: "daily", label: "Dia-a-dia", sub: "Office" },
 ];
 
 function PresetGallery({
@@ -3098,15 +3357,27 @@ function PresetGallery({
   const recommendedPreset = recommended
     ? presets.find((p) => p.id === recommended) ?? null
     : null;
-  const otherPresets = recommendedPreset
-    ? presets.filter((p) => p.id !== recommendedPreset.id)
+  const samePersonaOthers = recommendedPreset
+    ? presets.filter(
+        (p) => p.persona === recommendedPreset.persona && p.id !== recommendedPreset.id,
+      )
+    : [];
+  const otherPersonaSamples = recommendedPreset
+    ? (["gamer", "creator", "daily"] as const)
+        .filter((per) => per !== recommendedPreset.persona)
+        .map((per) =>
+          presets.find(
+            (p) => p.persona === per && p.performance === recommendedPreset.performance,
+          ) ?? presets.find((p) => p.persona === per),
+        )
+        .filter((p): p is Preset => Boolean(p))
     : [];
 
   const [filter, setFilter] = useState<PresetFilter>("all");
   const [sort, setSort] = useState<PresetSort>("recommended");
 
   const visiblePresets = useMemo(() => {
-    let list = filter === "all" ? presets : presets.filter((p) => p.performance === filter);
+    let list = filter === "all" ? presets : presets.filter((p) => p.persona === filter);
     if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
     else if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
     return list;
@@ -3166,37 +3437,75 @@ function PresetGallery({
           />
         </div>
 
-        {otherPresets.length > 0 && (
+        {samePersonaOthers.length > 0 && (
           <section className="mt-16">
-            <div className="mb-6 flex items-baseline justify-between gap-4">
-              <div>
-                <p
-                  className="mb-1 uppercase text-zinc-500"
-                  style={{
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "10px",
-                    letterSpacing: "0.28em",
-                    fontWeight: 700,
-                  }}
-                >
-                  // Veja também
-                </p>
-                <h3
-                  className="text-white"
-                  style={{
-                    fontFamily: "var(--font-family-figtree)",
-                    fontSize: "clamp(20px, 2.4vw, 26px)",
-                    fontWeight: 700,
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  Outros setups que combinam com você
-                </h3>
-              </div>
+            <div className="mb-6">
+              <p
+                className="mb-1 uppercase text-zinc-500"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10px",
+                  letterSpacing: "0.28em",
+                  fontWeight: 700,
+                }}
+              >
+                // Mais ou menos potência
+              </p>
+              <h3
+                className="text-white"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "clamp(20px, 2.4vw, 26px)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Outras opções pro seu uso
+              </h3>
             </div>
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {otherPresets.map((p) => (
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {samePersonaOthers.map((p) => (
+                <PresetMiniCard
+                  key={p.id}
+                  preset={p}
+                  onApply={() => onApply(p)}
+                  onBuy={() => onBuy(p)}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {otherPersonaSamples.length > 0 && (
+          <section className="mt-14">
+            <div className="mb-6">
+              <p
+                className="mb-1 uppercase text-zinc-500"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10px",
+                  letterSpacing: "0.28em",
+                  fontWeight: 700,
+                }}
+              >
+                // Pra outros perfis
+              </p>
+              <h3
+                className="text-white"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "clamp(20px, 2.4vw, 26px)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Talvez você também curta
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {otherPersonaSamples.map((p) => (
                 <PresetMiniCard
                   key={p.id}
                   preset={p}
