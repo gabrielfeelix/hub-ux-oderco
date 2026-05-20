@@ -308,6 +308,7 @@
         <a href="#empty-state">Empty state ⭐ H.7</a>
         <a href="#toolbar">Toolbar ⭐ H.8</a>
         <a href="#section-head">Section head ⭐ H.9</a>
+        <a href="#status-dot">Status dot ⭐ H.10</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -1972,6 +1973,72 @@
             </div>
             <pre class="cat-code">&lt;header class="ds-section-head ds-section-head-eyebrow"&gt;...&lt;/header&gt;
 &lt;header class="ds-section-head ds-section-head-bordered"&gt;...&lt;/header&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · STATUS DOT (Phase H.10 · 5 DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="status-dot">Status dot</h2>
+        <p class="cat-section-desc"><strong>Phase H.10 atom</strong> · consolida 5 DUPES (de-chat-status-dot, notif-dot, notif-drawer-dot, pdp-stock-dot + separator family). Indicador circular 6-10px · 4 sizes × 7 tones × 3 effects (glow/ring/pulse). Inclui <code>.ds-dot-sep</code> variant pra separator decorativo inline.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Sizes</h3><span class="cat-component-class">.ds-status-dot-{xs,sm,md,lg}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:14px;">
+                <span class="ds-status-dot ds-status-dot-xs"></span>
+                <span class="ds-status-dot ds-status-dot-sm"></span>
+                <span class="ds-status-dot ds-status-dot-md"></span>
+                <span class="ds-status-dot ds-status-dot-lg"></span>
+              </div>
+              <div class="cat-note">xs 6 · sm 7 (chat) · <strong>md 8 (default)</strong> · lg 10.</div>
+            </div>
+            <pre class="cat-code">&lt;span class="ds-status-dot ds-status-dot-md ds-status-dot-info"&gt;&lt;/span&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Tones (semantic)</h3><span class="cat-component-class">.ds-status-dot-{info,success,warning,danger,muted,navy}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:18px;">
+                <span><span class="ds-status-dot ds-status-dot-info"></span> info/brand</span>
+                <span><span class="ds-status-dot ds-status-dot-success"></span> success/online</span>
+                <span><span class="ds-status-dot ds-status-dot-warning"></span> warning/pending</span>
+                <span><span class="ds-status-dot ds-status-dot-danger"></span> danger/error</span>
+                <span><span class="ds-status-dot ds-status-dot-muted"></span> muted/offline</span>
+                <span><span class="ds-status-dot ds-status-dot-navy"></span> navy</span>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;span class="ds-status-dot ds-status-dot-success"&gt;&lt;/span&gt; Online</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Effects</h3><span class="cat-component-class">.ds-status-dot-{glow,ring,pulse}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-preview-row" style="align-items:center; gap:24px;">
+                <span><span class="ds-status-dot ds-status-dot-success ds-status-dot-glow"></span> glow</span>
+                <span><span class="ds-status-dot ds-status-dot-info ds-status-dot-ring"></span> ring</span>
+                <span><span class="ds-status-dot ds-status-dot-danger ds-status-dot-pulse"></span> pulse</span>
+              </div>
+              <div class="cat-note">glow · soft outer shadow tinted · ring · 3px halo · pulse · animated (respeita prefers-reduced-motion).</div>
+            </div>
+            <pre class="cat-code">&lt;span class="ds-status-dot ds-status-dot-success ds-status-dot-glow"&gt;&lt;/span&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Separator (`.ds-dot-sep`)</h3><span class="cat-component-class">3px decorative</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div>João Silva <span class="ds-dot-sep"></span> 20/05/2026 <span class="ds-dot-sep"></span> #PED-1234</div>
+            </div>
+            <pre class="cat-code">João Silva &lt;span class="ds-dot-sep"&gt;&lt;/span&gt; 20/05/2026</pre>
           </div>
         </div>
       </section>

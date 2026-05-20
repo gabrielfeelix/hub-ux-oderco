@@ -1,0 +1,87 @@
+/* ==========================================================================
+   DS · STATUS DOT
+   Indicador circular pequeno (6-10px) · semantic tones + pulse/glow opcionais.
+   Phase H.10 · consolida DUPES (.de-chat-status-dot, .notif-dot,
+   .notif-drawer-dot, .pdp-stock-dot, .home-recent-dot/.artigo-meta-dot/
+   .dash-carousel-dot · separator variant).
+   ========================================================================== */
+
+.ds-status-dot {
+  display: inline-block;
+  width: var(--ds-status-dot-size, 8px);
+  height: var(--ds-status-dot-size, 8px);
+  border-radius: 50%;
+  background: var(--ds-status-dot-color, var(--color-action-primary-bg));
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* === Sizes ======================================================= */
+.ds-status-dot-xs { --ds-status-dot-size: 6px; }
+.ds-status-dot-sm { --ds-status-dot-size: 7px; }
+.ds-status-dot-md { --ds-status-dot-size: 8px; }  /* default */
+.ds-status-dot-lg { --ds-status-dot-size: 10px; }
+
+/* === Tones (semantic colors) ===================================== */
+.ds-status-dot-info,
+.ds-status-dot-brand {
+  --ds-status-dot-color: var(--color-action-primary-bg);
+}
+.ds-status-dot-success,
+.ds-status-dot-online {
+  --ds-status-dot-color: var(--green);
+}
+.ds-status-dot-warning,
+.ds-status-dot-pending {
+  --ds-status-dot-color: var(--yellow);
+}
+.ds-status-dot-danger,
+.ds-status-dot-error {
+  --ds-status-dot-color: var(--color-feedback-error-strong);
+}
+.ds-status-dot-muted,
+.ds-status-dot-offline {
+  --ds-status-dot-color: var(--color-text-muted);
+}
+.ds-status-dot-navy {
+  --ds-status-dot-color: var(--navy);
+}
+
+/* === Glow halo · soft outer shadow ============================== */
+.ds-status-dot-glow {
+  box-shadow: 0 0 6px var(--ds-status-dot-glow-color, var(--ds-status-dot-color, var(--color-action-primary-bg)));
+}
+.ds-status-dot-glow.ds-status-dot-success,
+.ds-status-dot-glow.ds-status-dot-online {
+  --ds-status-dot-glow-color: var(--green-soft);
+}
+
+/* === Ring · concentric circle bg (currentColor based) ============ */
+.ds-status-dot-ring {
+  box-shadow: 0 0 0 3px var(--ds-status-dot-ring-color, var(--color-tint-blue-strong));
+}
+
+/* === Pulse · subtle scale animation ============================== */
+@keyframes ds-status-dot-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--ds-status-dot-color, var(--color-action-primary-bg)); }
+  70%  { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.ds-status-dot-pulse {
+  animation: ds-status-dot-pulse 1.6s infinite ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-status-dot-pulse { animation: none; }
+}
+
+/* === Separator dot (decorative inline · 3px muted) =============== */
+.ds-dot-sep {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-border-default);
+  flex-shrink: 0;
+  vertical-align: middle;
+  margin: 0 2px;
+}
