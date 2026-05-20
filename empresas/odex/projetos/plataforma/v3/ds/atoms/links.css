@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .ds-link {
-  color: var(--blue);
+  color: var(--color-text-link);
   font: 400 12px/1 var(--font);
   text-decoration: underline;
   cursor: pointer;
@@ -15,4 +15,4 @@
 
 .ds-link-14   { font-size: 14px; }
 .ds-link-16   { font-size: 16px; }
-.ds-link-navy { color: var(--navy); }
+.ds-link-navy { color: var(--color-text-strong); }

@@ -1,11 +1,12 @@
 /* ==========================================================================
    DS · CARDS
+   Usa semantic tokens · não referencia primitivas diretamente.
    ========================================================================== */
 
 .ds-card {
-  background: var(--white);
+  background: var(--color-surface-card);
   border-radius: var(--r-card);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-default);
   box-shadow: var(--shadow-sm);
 }
 

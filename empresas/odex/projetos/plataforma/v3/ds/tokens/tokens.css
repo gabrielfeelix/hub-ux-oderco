@@ -6,15 +6,22 @@
 
 :root {
   /* ============================================================
-     COLOR · BRAND
+     COLOR · BRAND (primitives)
      ============================================================ */
   --navy:           #0D1D52;  /* Azul Odex · primário corporativo */
+  --navy-hover:     #162460;  /* Hover navy variant */
+  --navy-50:        #F0F3FA;  /* Tint claríssimo · hover bg secondary-navy */
+  --navy-100:       #E4ECFF;  /* Tint claro · pill semcliente bg */
+
   --blue:           #005AFF;  /* Azul complementar 1 · CTAs */
-  --blue-button:    #22437D;  /* Button padrão (variante navy) */
-  --blue-hover:     #0046CC;  /* Hover .ds-btn-primary */
-  --navy-hover:     #162460;  /* Hover .ds-btn-primary-navy */
+  --blue-hover:     #0046CC;  /* Hover blue variant */
+  --blue-50:        #F0F5FF;  /* Tint claríssimo · hover bg secondary */
+  --blue-100:       #DDE8FF;  /* Tint claro · pill andamento bg */
+  --blue-button:    #22437D;  /* Button padrão (variante navy mid) */
+
   --slate:          #5A616F;  /* Azul complementar */
   --slate-2:        #3B537D;  /* Azul complementar 2 */
+  --slate-300:      #CBD5E1;  /* Tint slate · hover border subtle */
   --slate-soft:     #ABB7CD;  /* Slate suave */
   --slate-soft-2:   #BDC7D8;  /* Slate ainda mais suave */
 
@@ -35,17 +42,21 @@
   --sidebar-bg:     #0D1D52;  /* alias semântico de --navy */
 
   /* ============================================================
-     COLOR · FEEDBACK (success / warning / error)
+     COLOR · FEEDBACK (primitives · success / warning / error)
      ============================================================ */
   --green:          #53C667;
   --green-soft:     #98DDA4;
   --green-softer:   #CCEED2;
+  --green-700:      #1C7A36;  /* Texto sobre green-softer (contraste WCAG) */
   --yellow:         #F39200;
   --amber:          #F39200;  /* alias compat */
   --yellow-soft:    #F8BE66;
   --yellow-softer:  #FCDFB3;
+  --yellow-700:     #8A5400;  /* Texto sobre yellow-softer */
   --red:            #E94647;
   --red-soft:       #F29091;
+  --red-50:         #FDE0E0;  /* Tint claríssimo · pill cancelado bg, hover danger */
+  --red-700:        #B8191C;  /* Texto sobre red-50 */
 
   /* ============================================================
      COLOR · INFO (banners/alerts azuis)
@@ -153,4 +164,104 @@
   --icon-md: 16px;  /* default · inputs, botões */
   --icon-lg: 18px;  /* standalone */
   --icon-xl: 24px;
+
+  /* ============================================================
+     ========================= SEMANTIC =========================
+     ============================================================
+     Aliases por INTENÇÃO. Components usam essas variáveis em vez
+     de primitivas. Permite tematização (dark mode, brand variant)
+     trocando só este bloco · primitivas ficam intactas.
+
+     Padrão de naming: --color-<categoria>-<elemento>-<estado>
+       categoria : action | surface | text | border | feedback | status
+       elemento  : bg | fg | border | shadow
+       estado    : default (implícito) | hover | disabled
+     ============================================================ */
+
+  /* === ACTION · botões e elementos interativos === */
+  --color-action-primary-bg:           var(--blue);
+  --color-action-primary-bg-hover:     var(--blue-hover);
+  --color-action-primary-fg:           var(--white);
+
+  --color-action-primary-navy-bg:        var(--navy);
+  --color-action-primary-navy-bg-hover:  var(--navy-hover);
+  --color-action-primary-navy-fg:        var(--white);
+
+  --color-action-secondary-bg:           var(--white);
+  --color-action-secondary-bg-hover:     var(--blue-50);
+  --color-action-secondary-fg:           var(--blue);
+  --color-action-secondary-border:       var(--blue);
+
+  --color-action-secondary-navy-bg:        var(--white);
+  --color-action-secondary-navy-bg-hover:  var(--navy-50);
+  --color-action-secondary-navy-fg:        var(--navy);
+  --color-action-secondary-navy-border:    var(--navy);
+
+  --color-action-ghost-bg:               var(--white);
+  --color-action-ghost-fg:               var(--ink);
+  --color-action-ghost-border:           var(--line);
+  --color-action-ghost-border-hover:     var(--ink);
+
+  --color-action-danger-bg:              var(--white);
+  --color-action-danger-bg-hover:        var(--red-50);
+  --color-action-danger-fg:              var(--red);
+  --color-action-danger-border:          var(--red);
+  --color-action-danger-disabled-fg:     var(--red-soft);
+  --color-action-danger-disabled-border: var(--red-soft);
+
+  /* === SURFACE · backgrounds === */
+  --color-surface-page:    var(--bg);          /* BG da página */
+  --color-surface-card:    var(--white);       /* BG cards, inputs, modais */
+  --color-surface-sunken:  var(--soft);        /* BG hover, disabled input bg */
+  --color-surface-raised:  var(--white);       /* BG elementos elevados (alias) */
+  --color-surface-info:    var(--info-bg);     /* BG banners info */
+
+  /* === TEXT === */
+  --color-text-default:     var(--ink);         /* Text padrão (body) */
+  --color-text-strong:      var(--navy);        /* Headings importantes, ênfase */
+  --color-text-label:       var(--navy);        /* Labels de campo (alias semântico) */
+  --color-text-muted:       var(--muted);       /* Text complementar, hints */
+  --color-text-placeholder: var(--placeholder); /* Input placeholder */
+  --color-text-link:        var(--blue);        /* Links */
+  --color-text-on-brand:    var(--white);       /* Text sobre brand bg (navy/blue) */
+  --color-text-disabled:    var(--muted);       /* Text disabled */
+
+  /* === BORDER === */
+  --color-border-default: var(--line);         /* Border padrão (inputs, cards) */
+  --color-border-focus:   var(--blue);         /* Border focus (inputs) */
+  --color-border-strong:  var(--slate-soft-2); /* Border destaque (hover btn-secondary) */
+  --color-border-hover:   var(--slate-300);    /* Border sutil em hover */
+
+  /* === FEEDBACK · success/warning/error/info (uso semântico) === */
+  --color-feedback-success-bg:     var(--green-softer);
+  --color-feedback-success-fg:     var(--green-700);
+  --color-feedback-success-strong: var(--green);
+  --color-feedback-success-border: var(--green-soft);
+
+  --color-feedback-warning-bg:     var(--yellow-softer);
+  --color-feedback-warning-fg:     var(--yellow-700);
+  --color-feedback-warning-strong: var(--yellow);
+  --color-feedback-warning-border: var(--yellow-soft);
+
+  --color-feedback-error-bg:     var(--red-50);
+  --color-feedback-error-fg:     var(--red-700);
+  --color-feedback-error-strong: var(--red);
+  --color-feedback-error-border: var(--red-soft);
+
+  --color-feedback-info-bg:     var(--info-bg);
+  --color-feedback-info-fg:     var(--info-text);
+  --color-feedback-info-strong: var(--blue);
+  --color-feedback-info-border: var(--info-border);
+
+  /* === STATUS · pills específicos do domínio (orçamentos/pedidos) === */
+  --color-status-andamento-bg:   var(--blue-100);
+  --color-status-andamento-fg:   var(--blue);
+  --color-status-semcliente-bg:  var(--navy-100);
+  --color-status-semcliente-fg:  var(--navy);
+
+  /* === SHADOW · semantic === */
+  --shadow-focus-blue:    0 0 0 3px rgba(0, 90, 255, .10);  /* Focus ring inputs/buttons */
+  --shadow-focus-error:   0 0 0 3px rgba(233, 70, 71, .10); /* Focus ring error state */
+  --shadow-cta-blue:      0 4px 12px rgba(0, 90, 255, .20); /* Drop shadow CTA primary */
+  --shadow-cta-blue-hover:0 6px 16px rgba(0, 90, 255, .25); /* Drop shadow CTA primary hover */
 }

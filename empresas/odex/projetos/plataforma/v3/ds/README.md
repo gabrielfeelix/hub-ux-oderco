@@ -1,8 +1,8 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.4.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.5.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
-📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
+📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens (primitivos e semânticos) em todos estados.
 
 Design System da Plataforma Solar Odex. Source of truth para tokens, componentes e padrões visuais que devem ser idênticos entre código (browser) e design (Figma).
 
@@ -27,7 +27,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth extraído. Catálogo visual entregue. Próximo: semantic tokens, build pipeline, demais features | 🟡 Em progresso (C.1 ✅, C.2 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic tokens ✅. Próximo: build pipeline, reset/motion/z-index/breakpoint tokens, @layer | 🟡 Em progresso (C.1-C.3 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -99,6 +99,66 @@ ds/
 ```
 
 ---
+
+## Camadas de tokens (primitive ↔ semantic)
+
+Tokens vivem em **duas camadas hierárquicas**:
+
+### 1. Primitives (foundation layer)
+
+Valores literais. Hex codes, px, segundos. Não mudam baseado em contexto.
+
+```css
+--blue:       #005AFF;
+--navy:       #0D1D52;
+--red-50:     #FDE0E0;
+--space-16:   16px;
+--r-form:     4px;
+```
+
+### 2. Semantic (intent layer)
+
+Aliases por **intenção**. Resolvem pra primitivas. Componentes do DS usam SEMPRE semantic.
+
+```css
+--color-action-primary-bg:      var(--blue);
+--color-action-primary-bg-hover: var(--blue-hover);
+--color-action-primary-fg:       var(--white);
+--color-feedback-error-bg:       var(--red-50);
+--color-text-on-brand:           var(--white);
+```
+
+### Por que essa separação?
+
+- **Theming** — pra fazer dark mode, brand variant, white-label: troca só o bloco semantic, primitivas ficam intactas. Components não precisam mudar.
+- **Refactor seguro** — mudar `--blue` afeta TODOS os usos do azul. Mudar `--color-action-primary-bg` afeta só CTAs primários. Granularidade.
+- **Naming significativo** — `var(--color-feedback-error-fg)` documenta a intenção. `var(--red-700)` não.
+- **Onboarding** — devs entendem "quando usar qual token" pela intenção, não pela cor.
+
+### Padrão de naming semantic
+
+```
+--color-<categoria>-<elemento>-<estado>
+
+categorias: action | surface | text | border | feedback | status
+elementos:  bg | fg | border | shadow
+estados:    default (implícito) | hover | disabled | focus
+```
+
+Exemplos:
+- `--color-action-primary-bg` · BG do botão primary
+- `--color-action-primary-bg-hover` · BG em hover
+- `--color-text-on-brand` · Text quando sobre brand bg
+- `--color-feedback-error-strong` · Cor saturada de erro (não soft)
+
+### Quando usar primitive vs semantic
+
+| Contexto | Use | Por quê |
+|---|---|---|
+| Atom/molecule CSS (DS canon) | **semantic** | Componente reutilizável precisa ser theme-aware |
+| Feature CSS (`features/*/`) | **semantic** preferred, primitive em casos especiais | Mesma razão; primitive só pra cores brand-specific (gradient hero, etc) |
+| Inline style no HTML | semantic ou primitive · ambos OK | Caso isolado, pouco impacto |
+| Novo token de feature | adiciona em **primitive** se for cor base, **semantic** se for intent | Decide pela intenção |
 
 ## Fluxo de tokens
 
@@ -276,7 +336,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 ### Phase C · Consolidação (em progresso)
 - [x] **C.1 · Auth feature** — extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead code
 - [x] **C.2 · Catálogo visual** — `ds/catalog.html` · todos atoms/molecules/tokens em todos estados
-- [ ] **C.3 · Semantic tokens** — primitive ↔ semantic split · destrava theming/dark-mode (`--color-action-primary` etc)
+- [x] **C.3 · Semantic tokens** — primitive ↔ semantic split · atoms + molecules migrados pra `--color-*` semantic
 - [ ] **C.4 · Build pipeline** — `tokens.json → tokens.css` generator · elimina sync manual
 - [ ] **C.5 · Tokens faltantes** — reset, motion, z-index, breakpoint
 - [ ] **C.6 · CSS @layer architecture** — cascade determinístico
@@ -309,5 +369,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.2.0 | B | 2026-05-20 | Atoms + molecules extraídos pra `ds/atoms/` e `ds/molecules/` |
 | 0.3.0 | C.1 | 2026-05-20 | Auth feature extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead |
 | 0.4.0 | C.2 | 2026-05-20 | Catálogo visual `ds/catalog.html` · todos atoms/molecules/tokens em todos estados |
+| 0.5.0 | C.3 | 2026-05-20 | Semantic tokens (primitive ↔ semantic) · atoms + molecules migrados pra `--color-*` aliases por intenção |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

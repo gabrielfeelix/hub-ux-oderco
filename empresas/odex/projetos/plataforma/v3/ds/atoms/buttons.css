@@ -2,6 +2,7 @@
    DS · BUTTONS
    Default · height 42px / radius 4px / font 14 / padding 0 18px
    Figma source: 1850:9308
+   Usa semantic tokens (--color-action-*) · não referencia primitivas.
    ========================================================================== */
 
 .ds-btn {
@@ -18,36 +19,67 @@
 /* === Variants ===================================================== */
 
 /* Primary · blue solid (CTA principal) */
-.ds-btn-primary { background: var(--blue); color: var(--white); }
-.ds-btn-primary:hover:not(:disabled) { background: var(--blue-hover); }
+.ds-btn-primary { background: var(--color-action-primary-bg); color: var(--color-action-primary-fg); }
+.ds-btn-primary:hover:not(:disabled) { background: var(--color-action-primary-bg-hover); }
 
 /* Primary navy (variante dark) */
-.ds-btn-primary-navy { background: var(--navy); color: var(--white); }
-.ds-btn-primary-navy:hover:not(:disabled) { background: var(--navy-hover); }
+.ds-btn-primary-navy { background: var(--color-action-primary-navy-bg); color: var(--color-action-primary-navy-fg); }
+.ds-btn-primary-navy:hover:not(:disabled) { background: var(--color-action-primary-navy-bg-hover); }
 
 /* Secondary · outline blue */
-.ds-btn-secondary { border-color: var(--blue); color: var(--blue); background: var(--white); }
-.ds-btn-secondary:hover:not(:disabled) { background: #f0f5ff; }
+.ds-btn-secondary {
+  border-color: var(--color-action-secondary-border);
+  color: var(--color-action-secondary-fg);
+  background: var(--color-action-secondary-bg);
+}
+.ds-btn-secondary:hover:not(:disabled) { background: var(--color-action-secondary-bg-hover); }
 
 /* Secondary navy · outline navy */
-.ds-btn-secondary-navy { border-color: var(--navy); color: var(--navy); background: var(--white); }
-.ds-btn-secondary-navy:hover:not(:disabled) { background: #f0f3fa; }
+.ds-btn-secondary-navy {
+  border-color: var(--color-action-secondary-navy-border);
+  color: var(--color-action-secondary-navy-fg);
+  background: var(--color-action-secondary-navy-bg);
+}
+.ds-btn-secondary-navy:hover:not(:disabled) { background: var(--color-action-secondary-navy-bg-hover); }
 
 /* Ghost · outline neutro */
-.ds-btn-ghost { border-color: var(--line); color: var(--ink); background: var(--white); }
-.ds-btn-ghost:hover:not(:disabled) { border-color: var(--ink); }
+.ds-btn-ghost {
+  border-color: var(--color-action-ghost-border);
+  color: var(--color-action-ghost-fg);
+  background: var(--color-action-ghost-bg);
+}
+.ds-btn-ghost:hover:not(:disabled) { border-color: var(--color-action-ghost-border-hover); }
 
 /* Danger · outline red (destructive) */
-.ds-btn-danger { border-color: var(--red); color: var(--red); background: var(--white); }
-.ds-btn-danger:hover:not(:disabled) { background: #fde0e0; }
+.ds-btn-danger {
+  border-color: var(--color-action-danger-border);
+  color: var(--color-action-danger-fg);
+  background: var(--color-action-danger-bg);
+}
+.ds-btn-danger:hover:not(:disabled) { background: var(--color-action-danger-bg-hover); }
 
 /* Danger soft · disabled-look (rosa pálido) */
-.ds-btn-danger-soft { border-color: var(--red-soft); color: var(--red-soft); background: var(--white); pointer-events: none; }
+.ds-btn-danger-soft {
+  border-color: var(--color-action-danger-disabled-border);
+  color: var(--color-action-danger-disabled-fg);
+  background: var(--color-action-danger-bg);
+  pointer-events: none;
+}
 
 /* === Sizes ========================================================= */
 .ds-btn-sm { height: 32px; padding: 0 14px; font-size: 12px; }
 .ds-btn-lg { height: 48px; padding: 0 24px; font-size: 16px; }
 
 /* === Special pills (Tornar Pedido / Ir para produtos) ============== */
-.ds-pill-warm { background: var(--yellow-softer); color: var(--yellow); border-radius: var(--r-pill); box-shadow: 0 0 8px rgba(243,146,0,.24); }
-.ds-pill-cool { background: var(--slate-soft-2); color: var(--blue);   border-radius: var(--r-pill); box-shadow: 0 0 8px rgba(34,67,125,.20); }
+.ds-pill-warm {
+  background: var(--color-feedback-warning-bg);
+  color: var(--color-feedback-warning-strong);
+  border-radius: var(--r-pill);
+  box-shadow: 0 0 8px rgba(243,146,0,.24);
+}
+.ds-pill-cool {
+  background: var(--color-border-strong);
+  color: var(--color-action-primary-bg);
+  border-radius: var(--r-pill);
+  box-shadow: 0 0 8px rgba(34,67,125,.20);
+}

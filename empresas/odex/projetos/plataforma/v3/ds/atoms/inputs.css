@@ -1,7 +1,8 @@
 /* ==========================================================================
    DS · INPUTS
-   Default · height 42 / radius 4 / border #E6E6E6 / focus #005AFF / font 16
+   Default · height 42 / radius 4 / border default / focus border-focus / font 16
    Figma source: 1850:9115
+   Usa semantic tokens.
    ========================================================================== */
 
 .ds-input,
@@ -10,10 +11,10 @@
   width: 100%;
   height: 42px;
   padding: 0 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--r-form);
-  background: var(--white);
-  color: var(--ink);
+  background: var(--color-surface-card);
+  color: var(--color-text-default);
   font: 400 16px/1 var(--font);
   font-family: var(--font);
   transition: border-color .15s, box-shadow .15s;
@@ -22,15 +23,21 @@
 .ds-input:focus,
 .ds-select:focus,
 .ds-textarea:focus {
-  border-color: var(--blue);
+  border-color: var(--color-border-focus);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0,90,255,.10);
+  box-shadow: var(--shadow-focus-blue);
 }
 
 .ds-input::placeholder,
-.ds-textarea::placeholder { color: var(--placeholder); font-weight: 400; }
+.ds-textarea::placeholder {
+  color: var(--color-text-placeholder);
+  font-weight: 400;
+}
 
-.ds-input:disabled { background: var(--soft); color: var(--muted); }
+.ds-input:disabled {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-disabled);
+}
 
 .ds-input-sm { height: 38px; font-size: 14px; }
 

@@ -5,10 +5,13 @@
 .ds-field-label {
   display: block;
   font: 400 14px/1 var(--font);
-  color: var(--navy);
+  color: var(--color-text-label);
   margin-bottom: 8px;
 }
-.ds-field-label .req { color: var(--red); margin-left: 2px; }
+.ds-field-label .req {
+  color: var(--color-feedback-error-strong);
+  margin-left: 2px;
+}
 
 .ds-field {
   display: flex;
