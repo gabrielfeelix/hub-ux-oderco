@@ -1,8 +1,10 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.8.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.9.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
-📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens (primitivos e semânticos) em todos estados.
+📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
+
+📑 **Component docs** · ver "Component docs" abaixo · cada atom/molecule tem `.md` irmão.
 
 Design System da Plataforma Solar Odex. Source of truth para tokens, componentes e padrões visuais que devem ser idênticos entre código (browser) e design (Figma).
 
@@ -27,7 +29,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅. Próximo: component README, a11y, demais features | 🟡 Em progresso (C.1-C.6 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅. Próximo: a11y audit, demais features | 🟡 Em progresso (C.1-C.7 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -99,6 +101,30 @@ ds/
 ```
 
 ---
+
+## Component docs
+
+Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / variants / states / a11y / examples.
+
+### Base
+- [reset](./base/reset.md) — foundational reset HTML
+
+### Atoms
+- [typography](./atoms/typography.md) — `.ds-h1..h3`, `.ds-p..`, `.ds-label`
+- [buttons](./atoms/buttons.md) — `.ds-btn` + 7 variants + 2 sizes + pílulas especiais
+- [links](./atoms/links.md) — `.ds-link` + size/color variants
+- [inputs](./atoms/inputs.md) — `.ds-input`, `.ds-select`, `.ds-textarea`
+- [fields](./atoms/fields.md) — `.ds-field`, `.ds-field-label`, `.ds-field-inline`
+- [checkbox](./atoms/checkbox.md) — `.ds-check` (checkbox + radio)
+- [pills](./atoms/pills.md) — `.ds-pill` + 6 status variants
+- [cards](./atoms/cards.md) — `.ds-card` + variants
+
+### Molecules
+- [select](./molecules/select.md) — `.odex-select` (via `.ds-replace`)
+- [menu](./molecules/menu.md) — `.ds-menu` (toolbar dropdown)
+
+### Features
+- [auth](../features/auth/README.md) — Login + Cadastro + Redefinir senha
 
 ## Cascade architecture (`@layer`)
 
@@ -422,7 +448,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.4 · Build pipeline** — `tokens.json → tokens.css` generator + `--check` mode · zero dependências · `npm run build-tokens` / `npm run check-tokens`
 - [x] **C.5 · Tokens faltantes** — motion (duration + easing), z-index scale, breakpoint scale, base/reset.css (extraído de index.html)
 - [x] **C.6 · CSS @layer architecture** — cascade determinístico · 7 layers (reset/tokens/atoms/molecules/features/legacy/utilities) · DS + auth wrapped
-- [ ] **C.7 · Component README** — doc por atom (when use/when not/a11y/examples)
+- [x] **C.7 · Component README** — `.md` doc irmão pra cada atom/molecule + base/reset + features/auth/README.md
 - [ ] **C.8 · A11y audit** — contrast WCAG AA, focus visible, ARIA, keyboard nav
 - [ ] **C.9 · Input-group molecule** — promove `.auth-input-wrap` → `.ds-input-group`
 - [ ] **C.10+ · Demais features** — mk, ov, ped, ck, clientes, calculadora, ajuda, dashboard, topbar/sidebar
@@ -455,5 +481,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.6.0 | C.4 | 2026-05-20 | Build pipeline `tokens.json → tokens.css` (Node, zero deps) + `--check` mode CI · package.json com `npm run build-tokens` |
 | 0.7.0 | C.5 | 2026-05-20 | Motion tokens (5 durations + 5 easings) · Z-index scale (9 layers) · Breakpoint scale (5 sizes) · `ds/base/reset.css` extraído de index.html |
 | 0.8.0 | C.6 | 2026-05-20 | CSS `@layer` architecture · 7 camadas (reset/tokens/atoms/molecules/features/legacy/utilities) · cascade determinístico |
+| 0.9.0 | C.7 | 2026-05-20 | Component docs · `.md` irmão pra cada atom/molecule (12 arquivos) + features/auth/README.md |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.
