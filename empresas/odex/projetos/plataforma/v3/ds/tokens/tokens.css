@@ -1,0 +1,156 @@
+/* ==========================================================================
+   ODEX · PLATAFORMA SOLAR · DESIGN TOKENS
+   Source of truth: ds/tokens/tokens.json
+   Generated/edited by hand. Mantenha sincronizado com tokens.json.
+   ========================================================================== */
+
+:root {
+  /* ============================================================
+     COLOR · BRAND
+     ============================================================ */
+  --navy:           #0D1D52;  /* Azul Odex · primário corporativo */
+  --blue:           #005AFF;  /* Azul complementar 1 · CTAs */
+  --blue-button:    #22437D;  /* Button padrão (variante navy) */
+  --blue-hover:     #0046CC;  /* Hover .ds-btn-primary */
+  --navy-hover:     #162460;  /* Hover .ds-btn-primary-navy */
+  --slate:          #5A616F;  /* Azul complementar */
+  --slate-2:        #3B537D;  /* Azul complementar 2 */
+  --slate-soft:     #ABB7CD;  /* Slate suave */
+  --slate-soft-2:   #BDC7D8;  /* Slate ainda mais suave */
+
+  /* ============================================================
+     COLOR · TEXT
+     ============================================================ */
+  --ink:            #000000;
+  --muted:          #6E6E6E;
+  --soft:           #EDEDED;  /* BG hover · não usar pra texto */
+  --placeholder:    #B9B9B9;
+
+  /* ============================================================
+     COLOR · SURFACE
+     ============================================================ */
+  --bg:             #F9F9F9;
+  --white:          #FFFFFF;
+  --line:           #E6E6E6;
+  --sidebar-bg:     #0D1D52;  /* alias semântico de --navy */
+
+  /* ============================================================
+     COLOR · FEEDBACK (success / warning / error)
+     ============================================================ */
+  --green:          #53C667;
+  --green-soft:     #98DDA4;
+  --green-softer:   #CCEED2;
+  --yellow:         #F39200;
+  --amber:          #F39200;  /* alias compat */
+  --yellow-soft:    #F8BE66;
+  --yellow-softer:  #FCDFB3;
+  --red:            #E94647;
+  --red-soft:       #F29091;
+
+  /* ============================================================
+     COLOR · INFO (banners/alerts azuis)
+     ============================================================ */
+  --info-bg:        #EFF4FF;
+  --info-border:    #DDE9FF;
+  --info-text:      #3B537D;  /* = --slate-2 */
+
+  /* ============================================================
+     RADIUS
+     ============================================================ */
+  --r-form:         4px;     /* inputs/selects/botões · DEFAULT */
+  --r-tag:          4px;     /* tags / status pills */
+  --r-pill:         2px;     /* pílulas especiais */
+  --r-card:         12px;    /* cards regulares */
+  --r-card-lg:      16px;    /* cards grandes / modais */
+  --r-circle:       9999px;
+  /* aliases legados (manter compat) */
+  --r:              4px;
+  --rx:             12px;
+
+  /* ============================================================
+     SHADOW
+     ============================================================ */
+  --shadow-sm:      0 1px 2px 0 rgba(0,0,0,.05);
+  --shadow:         0 4px 6px -1px rgba(0,0,0,.05), 0 2px 4px -1px rgba(0,0,0,.03);
+  --shadow-lg:      0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -2px rgba(0,0,0,.025);
+  --shadow-card:    0 0 16px 0 rgba(0,0,0,.08);
+
+  /* ============================================================
+     FONT · family
+     ============================================================ */
+  --font:           'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* ============================================================
+     FONT · weight
+     ============================================================ */
+  --fw-regular:     400;
+  --fw-medium:      500;
+  --fw-semibold:    600;
+  --fw-bold:        700;
+
+  /* ============================================================
+     FONT · size (escala oficial)
+     ============================================================ */
+  --fs-12: 12px;  /* P3 · captions, meta */
+  --fs-13: 13px;  /* Links, microcopy */
+  --fs-14: 14px;  /* P · body padrão */
+  --fs-15: 15px;  /* Inputs auth */
+  --fs-16: 16px;  /* P2 / P-bold · inputs DS canônico */
+  --fs-18: 18px;  /* Pequenos headings */
+  --fs-24: 24px;  /* H3 */
+  --fs-28: 28px;  /* Auth form title */
+  --fs-38: 38px;  /* H2 */
+  --fs-44: 44px;  /* Auth brand title */
+  --fs-64: 64px;  /* H1 */
+
+  /* ============================================================
+     FONT · line-height
+     ============================================================ */
+  --lh-tight:    1;
+  --lh-snug:     1.05;
+  --lh-normal:   1.2;
+  --lh-relaxed:  1.4;
+  --lh-loose:    1.5;
+  --lh-looser:   1.6;
+
+  /* ============================================================
+     SPACING (escala 4px base)
+     ============================================================ */
+  --space-0:  0;
+  --space-2:  2px;
+  --space-4:  4px;
+  --space-6:  6px;
+  --space-8:  8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-22: 22px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-44: 44px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+
+  /* ============================================================
+     SIZE · control (botões/inputs altura)
+     ============================================================ */
+  --control-sm: 32px;  /* .ds-btn-sm */
+  --control-md: 42px;  /* .ds-btn, .ds-input default */
+  --control-lg: 48px;  /* .ds-btn-lg, .auth-submit */
+
+  /* ============================================================
+     SIZE · icon
+     ============================================================ */
+  --icon-xs: 12px;
+  --icon-sm: 14px;
+  --icon-md: 16px;  /* default · inputs, botões */
+  --icon-lg: 18px;  /* standalone */
+  --icon-xl: 24px;
+}
