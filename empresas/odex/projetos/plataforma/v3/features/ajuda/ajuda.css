@@ -52,7 +52,7 @@
     .ajuda-hero h2 { font:700 38px/1.1 var(--font); color:white; margin:0 0 10px; letter-spacing:-.02em; }
     .ajuda-hero p { font:400 14px/1.55 var(--font); color:rgba(255,255,255,.7); margin:0 0 26px; }
     .ajuda-srch-wrap { max-width:520px; margin:0 auto; position:relative; }
-    .ajuda-srch-icon { position:absolute; left:18px; top:50%; transform:translateY(-50%); width:18px; height:18px; color:var(--placeholder); pointer-events:none; }
+    .ajuda-srch-icon, svg.ajuda-srch-icon { position:absolute; left:18px; top:50%; transform:translateY(-50%); width:18px !important; height:18px !important; color:var(--placeholder); pointer-events:none; }
     .ajuda-srch { width:100%; height:50px; border:0; border-radius:var(--r-form); padding:0 18px 0 48px; font:400 16px/1 var(--font); color:var(--ink); background:var(--white); box-shadow:0 8px 32px rgba(0,0,0,.22); }
     .ajuda-srch::placeholder { color:var(--placeholder); }
     .ajuda-srch:focus { outline:none; }
