@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.5.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.6.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens (primitivos e semânticos) em todos estados.
 
@@ -27,7 +27,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic tokens ✅. Próximo: build pipeline, reset/motion/z-index/breakpoint tokens, @layer | 🟡 Em progresso (C.1-C.3 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅. Próximo: reset/motion/z-index/breakpoint tokens, @layer | 🟡 Em progresso (C.1-C.4 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -179,9 +179,29 @@ Exemplos:
    └──────────────────┘            └──────────────────────┘
 ```
 
-**Hoje:** `tokens.css` é editado manualmente sincronizado com `tokens.json`. Se mudar um, mude o outro.
+**Source of truth:** `tokens.json`. NUNCA edite `tokens.css` manualmente — ele é gerado.
 
-**Futuro (Phase A.2):** script `build-tokens.js` gera `tokens.css` a partir de `tokens.json` automaticamente.
+**Build:**
+
+```bash
+# Re-gera ds/tokens/tokens.css a partir de ds/tokens/tokens.json
+npm run build-tokens
+# ou diretamente:
+node ds/scripts/build-tokens.js
+```
+
+**Check (CI):** verifica se `tokens.css` está sincronizado com `tokens.json` · falha exit code 1 se drift:
+
+```bash
+npm run check-tokens
+```
+
+O script (`ds/scripts/build-tokens.js`):
+- Zero dependências · só Node stdlib (Node 18+)
+- Resolve referências `{path.to.token}` pra `var(--name)`
+- Aplica regras de naming por categoria (ex: `radius.form` → `--r-form`, `font.size.12` → `--fs-12`)
+- Detecta colisões de var name e aborta
+- Aliases legados (`--amber`, `--r`, `--rx`, `--shadow`) injetados no final pra compat com classes antigas
 
 ---
 
@@ -337,7 +357,7 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.1 · Auth feature** — extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead code
 - [x] **C.2 · Catálogo visual** — `ds/catalog.html` · todos atoms/molecules/tokens em todos estados
 - [x] **C.3 · Semantic tokens** — primitive ↔ semantic split · atoms + molecules migrados pra `--color-*` semantic
-- [ ] **C.4 · Build pipeline** — `tokens.json → tokens.css` generator · elimina sync manual
+- [x] **C.4 · Build pipeline** — `tokens.json → tokens.css` generator + `--check` mode · zero dependências · `npm run build-tokens` / `npm run check-tokens`
 - [ ] **C.5 · Tokens faltantes** — reset, motion, z-index, breakpoint
 - [ ] **C.6 · CSS @layer architecture** — cascade determinístico
 - [ ] **C.7 · Component README** — doc por atom (when use/when not/a11y/examples)
@@ -370,5 +390,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.3.0 | C.1 | 2026-05-20 | Auth feature extraído pra `features/auth/auth.css` · removido `.auth-redefinir-*` dead |
 | 0.4.0 | C.2 | 2026-05-20 | Catálogo visual `ds/catalog.html` · todos atoms/molecules/tokens em todos estados |
 | 0.5.0 | C.3 | 2026-05-20 | Semantic tokens (primitive ↔ semantic) · atoms + molecules migrados pra `--color-*` aliases por intenção |
+| 0.6.0 | C.4 | 2026-05-20 | Build pipeline `tokens.json → tokens.css` (Node, zero deps) + `--check` mode CI · package.json com `npm run build-tokens` |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

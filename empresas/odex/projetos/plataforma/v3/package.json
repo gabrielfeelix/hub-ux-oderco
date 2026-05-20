@@ -1,0 +1,14 @@
+{
+  "name": "odex-plataforma-v3",
+  "version": "0.5.0",
+  "private": true,
+  "description": "Odex · Plataforma Solar v3 · HTML prototype + Design System",
+  "scripts": {
+    "build-tokens": "node ds/scripts/build-tokens.js",
+    "check-tokens": "node ds/scripts/build-tokens.js --check",
+    "serve": "python3 -m http.server 8080 --bind 127.0.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

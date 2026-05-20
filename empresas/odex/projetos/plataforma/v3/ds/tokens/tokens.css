@@ -1,133 +1,129 @@
 /* ==========================================================================
    ODEX · PLATAFORMA SOLAR · DESIGN TOKENS
-   Source of truth: ds/tokens/tokens.json
-   Generated/edited by hand. Mantenha sincronizado com tokens.json.
+   GERADO AUTOMATICAMENTE por ds/scripts/build-tokens.js
+   NÃO EDITE ESTE ARQUIVO MANUALMENTE · edite ds/tokens/tokens.json
+   Re-gere com:  node ds/scripts/build-tokens.js  (ou: npm run build-tokens)
    ========================================================================== */
 
 :root {
+
   /* ============================================================
      COLOR · BRAND (primitives)
      ============================================================ */
-  --navy:           #0D1D52;  /* Azul Odex · primário corporativo */
-  --navy-hover:     #162460;  /* Hover navy variant */
-  --navy-50:        #F0F3FA;  /* Tint claríssimo · hover bg secondary-navy */
-  --navy-100:       #E4ECFF;  /* Tint claro · pill semcliente bg */
-
-  --blue:           #005AFF;  /* Azul complementar 1 · CTAs */
-  --blue-hover:     #0046CC;  /* Hover blue variant */
-  --blue-50:        #F0F5FF;  /* Tint claríssimo · hover bg secondary */
-  --blue-100:       #DDE8FF;  /* Tint claro · pill andamento bg */
-  --blue-button:    #22437D;  /* Button padrão (variante navy mid) */
-
-  --slate:          #5A616F;  /* Azul complementar */
-  --slate-2:        #3B537D;  /* Azul complementar 2 */
-  --slate-300:      #CBD5E1;  /* Tint slate · hover border subtle */
-  --slate-soft:     #ABB7CD;  /* Slate suave */
-  --slate-soft-2:   #BDC7D8;  /* Slate ainda mais suave */
+  --navy:         #0D1D52;                                    /* Azul Odex · primário corporativo (sidebar, headings principais) */
+  --navy-hover:   #162460;                                    /* Hover navy variant */
+  --navy-50:      #F0F3FA;                                    /* Tint claríssimo navy · hover bg secondary-navy */
+  --navy-100:     #E4ECFF;                                    /* Tint claro navy · pill semcliente bg */
+  --blue:         #005AFF;                                    /* Azul complementar 1 · CTAs primários, links */
+  --blue-hover:   #0046CC;                                    /* Hover blue variant */
+  --blue-50:      #F0F5FF;                                    /* Tint claríssimo blue · hover bg secondary */
+  --blue-100:     #DDE8FF;                                    /* Tint claro blue · pill andamento bg */
+  --blue-button:  #22437D;                                    /* Azul botão (variante navy mid) */
+  --slate:        #5A616F;                                    /* Cinza-azulado complementar */
+  --slate-2:      #3B537D;                                    /* Azul complementar 2 · texto sobre info-bg */
+  --slate-300:    #CBD5E1;                                    /* Tint slate · hover border subtle */
+  --slate-soft:   #ABB7CD;                                    /* Slate suave · borders sutis */
+  --slate-soft-2: #BDC7D8;                                    /* Slate ainda mais suave */
 
   /* ============================================================
      COLOR · TEXT
      ============================================================ */
-  --ink:            #000000;
-  --muted:          #6E6E6E;
-  --soft:           #EDEDED;  /* BG hover · não usar pra texto */
-  --placeholder:    #B9B9B9;
+  --ink:         #000000;                                     /* Text padrão · headings e body principal */
+  --muted:       #6E6E6E;                                     /* Text complementar · labels secundárias, hints */
+  --soft:        #EDEDED;                                     /* BG neutro hover · não usar pra texto */
+  --placeholder: #B9B9B9;                                     /* Input placeholder */
 
   /* ============================================================
      COLOR · SURFACE
      ============================================================ */
-  --bg:             #F9F9F9;
-  --white:          #FFFFFF;
-  --line:           #E6E6E6;
-  --sidebar-bg:     #0D1D52;  /* alias semântico de --navy */
+  --bg:         #F9F9F9;                                      /* BG padrão da página */
+  --white:      #FFFFFF;                                      /* BG cards, inputs, modais */
+  --line:       #E6E6E6;                                      /* Border padrão · separadores, contornos de inputs */
+  --sidebar-bg: #0D1D52;                                      /* BG da sidebar (alias semântico de brand.navy) */
 
   /* ============================================================
      COLOR · FEEDBACK (primitives · success / warning / error)
      ============================================================ */
-  --green:          #53C667;
-  --green-soft:     #98DDA4;
-  --green-softer:   #CCEED2;
-  --green-700:      #1C7A36;  /* Texto sobre green-softer (contraste WCAG) */
-  --yellow:         #F39200;
-  --amber:          #F39200;  /* alias compat */
-  --yellow-soft:    #F8BE66;
-  --yellow-softer:  #FCDFB3;
-  --yellow-700:     #8A5400;  /* Texto sobre yellow-softer */
-  --red:            #E94647;
-  --red-soft:       #F29091;
-  --red-50:         #FDE0E0;  /* Tint claríssimo · pill cancelado bg, hover danger */
-  --red-700:        #B8191C;  /* Texto sobre red-50 */
+  --green:         #53C667;                                   /* Success · confirmações, status aprovado */
+  --green-soft:    #98DDA4;                                   /* Success suave · borders/strokes */
+  --green-softer:  #CCEED2;                                   /* Success BG · pílulas, banners */
+  --green-700:     #1C7A36;                                   /* Texto sobre green-softer (contraste WCAG) */
+  --yellow:        #F39200;                                   /* Warning · pendentes, atenção */
+  --yellow-soft:   #F8BE66;                                   /* Warning suave */
+  --yellow-softer: #FCDFB3;                                   /* Warning BG · pill backgrounds */
+  --yellow-700:    #8A5400;                                   /* Texto sobre yellow-softer (contraste WCAG) */
+  --red:           #E94647;                                   /* Error / destructive · validações, deleções */
+  --red-soft:      #F29091;                                   /* Error suave · disabled danger button */
+  --red-50:        #FDE0E0;                                   /* Tint error · pill cancelado bg, hover danger */
+  --red-700:       #B8191C;                                   /* Texto sobre red-50 (contraste WCAG) */
 
   /* ============================================================
      COLOR · INFO (banners/alerts azuis)
      ============================================================ */
-  --info-bg:        #EFF4FF;
-  --info-border:    #DDE9FF;
-  --info-text:      #3B537D;  /* = --slate-2 */
+  --info-bg:     #EFF4FF;                                     /* BG de banners/alerts informativos azuis */
+  --info-border: #DDE9FF;                                     /* Border de banners info */
+  --info-text:   #3B537D;                                     /* Texto sobre info.bg (alias de brand.slate-2) */
 
   /* ============================================================
      RADIUS
      ============================================================ */
-  --r-form:         4px;     /* inputs/selects/botões · DEFAULT */
-  --r-tag:          4px;     /* tags / status pills */
-  --r-pill:         2px;     /* pílulas especiais */
-  --r-card:         12px;    /* cards regulares */
-  --r-card-lg:      16px;    /* cards grandes / modais */
-  --r-circle:       9999px;
-  /* aliases legados (manter compat) */
-  --r:              4px;
-  --rx:             12px;
+  --r-form:    4px;                                           /* Inputs, selects, botões · DEFAULT do DS (Figma padrão) */
+  --r-tag:     4px;                                           /* Tags, status pills regulares */
+  --r-pill:    2px;                                           /* Pílulas especiais (Tornar Pedido, Ir para produtos) */
+  --r-card:    12px;                                          /* Cards regulares · listings, panels */
+  --r-card-lg: 16px;                                          /* Cards grandes, modais */
+  --r-circle:  9999px;                                        /* Circular total · avatars, dots */
 
   /* ============================================================
      SHADOW
      ============================================================ */
-  --shadow-sm:      0 1px 2px 0 rgba(0,0,0,.05);
-  --shadow:         0 4px 6px -1px rgba(0,0,0,.05), 0 2px 4px -1px rgba(0,0,0,.03);
-  --shadow-lg:      0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -2px rgba(0,0,0,.025);
-  --shadow-card:    0 0 16px 0 rgba(0,0,0,.08);
+  --shadow-sm:   0 1px 2px 0 rgba(0,0,0,0.05);                /* Sutil · botões, badges */
+  --shadow-md:   0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);/* Padrão · dropdowns, popovers */
+  --shadow-lg:   0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);/* Grande · modais, overlays principais */
+  --shadow-card: 0 0 16px 0 rgba(0,0,0,0.08);                 /* Card hover · listings interativos */
 
   /* ============================================================
      FONT · family
      ============================================================ */
-  --font:           'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;/* Fonte sans padrão. Inter como primária */
 
   /* ============================================================
      FONT · weight
      ============================================================ */
-  --fw-regular:     400;
-  --fw-medium:      500;
-  --fw-semibold:    600;
-  --fw-bold:        700;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
 
   /* ============================================================
-     FONT · size (escala oficial)
+     FONT · size
      ============================================================ */
-  --fs-12: 12px;  /* P3 · captions, meta */
-  --fs-13: 13px;  /* Links, microcopy */
-  --fs-14: 14px;  /* P · body padrão */
-  --fs-15: 15px;  /* Inputs auth */
-  --fs-16: 16px;  /* P2 / P-bold · inputs DS canônico */
-  --fs-18: 18px;  /* Pequenos headings */
-  --fs-24: 24px;  /* H3 */
-  --fs-28: 28px;  /* Auth form title */
-  --fs-38: 38px;  /* H2 */
-  --fs-44: 44px;  /* Auth brand title */
-  --fs-64: 64px;  /* H1 */
+  --fs-12: 12px;                                              /* P3 · captions, meta */
+  --fs-13: 13px;                                              /* Links, microcopy */
+  --fs-14: 14px;                                              /* P · body padrão */
+  --fs-15: 15px;                                              /* Inputs · auth pattern */
+  --fs-16: 16px;                                              /* P2 / P-bold · inputs DS canônico */
+  --fs-18: 18px;                                              /* Pequenos headings */
+  --fs-24: 24px;                                              /* H3 */
+  --fs-28: 28px;                                              /* Auth form title */
+  --fs-38: 38px;                                              /* H2 */
+  --fs-44: 44px;                                              /* Auth brand title */
+  --fs-64: 64px;                                              /* H1 */
 
   /* ============================================================
      FONT · line-height
      ============================================================ */
-  --lh-tight:    1;
-  --lh-snug:     1.05;
-  --lh-normal:   1.2;
-  --lh-relaxed:  1.4;
-  --lh-loose:    1.5;
-  --lh-looser:   1.6;
+  --lh-tight:   1;                                            /* 100% · headings DS canônico */
+  --lh-snug:    1.05;                                         /* H2 */
+  --lh-normal:  1.2;                                          /* H3 */
+  --lh-relaxed: 1.4;                                          /* P-bold */
+  --lh-loose:   1.5;                                          /* Body padrão */
+  --lh-looser:  1.6;                                          /* Auth brand sub */
 
   /* ============================================================
      SPACING (escala 4px base)
      ============================================================ */
-  --space-0:  0;
+  --space-0:  0px;
   --space-2:  2px;
   --space-4:  4px;
   --space-6:  6px;
@@ -152,116 +148,124 @@
   /* ============================================================
      SIZE · control (botões/inputs altura)
      ============================================================ */
-  --control-sm: 32px;  /* .ds-btn-sm */
-  --control-md: 42px;  /* .ds-btn, .ds-input default */
-  --control-lg: 48px;  /* .ds-btn-lg, .auth-submit */
+  --control-sm: 32px;                                         /* Botões/inputs pequenos · .ds-btn-sm */
+  --control-md: 42px;                                         /* Botões/inputs default · .ds-btn, .ds-input */
+  --control-lg: 48px;                                         /* Botões/inputs grandes · .ds-btn-lg, .auth-submit */
 
   /* ============================================================
      SIZE · icon
      ============================================================ */
   --icon-xs: 12px;
   --icon-sm: 14px;
-  --icon-md: 16px;  /* default · inputs, botões */
-  --icon-lg: 18px;  /* standalone */
+  --icon-md: 16px;                                            /* Default · inputs, botões */
+  --icon-lg: 18px;                                            /* Standalone, hero */
   --icon-xl: 24px;
 
   /* ============================================================
      ========================= SEMANTIC =========================
      ============================================================
      Aliases por INTENÇÃO. Components usam essas variáveis em vez
-     de primitivas. Permite tematização (dark mode, brand variant)
-     trocando só este bloco · primitivas ficam intactas.
-
-     Padrão de naming: --color-<categoria>-<elemento>-<estado>
-       categoria : action | surface | text | border | feedback | status
-       elemento  : bg | fg | border | shadow
-       estado    : default (implícito) | hover | disabled
+     de primitivas. Permite tematização trocando só este bloco.
      ============================================================ */
 
-  /* === ACTION · botões e elementos interativos === */
-  --color-action-primary-bg:           var(--blue);
-  --color-action-primary-bg-hover:     var(--blue-hover);
-  --color-action-primary-fg:           var(--white);
+  /* ============================================================
+     SEMANTIC · ACTION · botões e elementos interativos
+     ============================================================ */
+  --color-action-primary-bg:              var(--blue);
+  --color-action-primary-bg-hover:        var(--blue-hover);
+  --color-action-primary-fg:              var(--white);
+  --color-action-primary-navy-bg:         var(--navy);
+  --color-action-primary-navy-bg-hover:   var(--navy-hover);
+  --color-action-primary-navy-fg:         var(--white);
+  --color-action-secondary-bg:            var(--white);
+  --color-action-secondary-bg-hover:      var(--blue-50);
+  --color-action-secondary-fg:            var(--blue);
+  --color-action-secondary-border:        var(--blue);
+  --color-action-secondary-navy-bg:       var(--white);
+  --color-action-secondary-navy-bg-hover: var(--navy-50);
+  --color-action-secondary-navy-fg:       var(--navy);
+  --color-action-secondary-navy-border:   var(--navy);
+  --color-action-ghost-bg:                var(--white);
+  --color-action-ghost-fg:                var(--ink);
+  --color-action-ghost-border:            var(--line);
+  --color-action-ghost-border-hover:      var(--ink);
+  --color-action-danger-bg:               var(--white);
+  --color-action-danger-bg-hover:         var(--red-50);
+  --color-action-danger-fg:               var(--red);
+  --color-action-danger-border:           var(--red);
+  --color-action-danger-disabled-fg:      var(--red-soft);
+  --color-action-danger-disabled-border:  var(--red-soft);
 
-  --color-action-primary-navy-bg:        var(--navy);
-  --color-action-primary-navy-bg-hover:  var(--navy-hover);
-  --color-action-primary-navy-fg:        var(--white);
+  /* ============================================================
+     SEMANTIC · SURFACE · backgrounds
+     ============================================================ */
+  --color-surface-page:   var(--bg);                          /* BG da página */
+  --color-surface-card:   var(--white);                       /* BG cards/inputs/modais */
+  --color-surface-sunken: var(--soft);                        /* BG hover, disabled */
+  --color-surface-raised: var(--white);                       /* Alias elementos elevados */
+  --color-surface-info:   var(--info-bg);                     /* BG banners info */
 
-  --color-action-secondary-bg:           var(--white);
-  --color-action-secondary-bg-hover:     var(--blue-50);
-  --color-action-secondary-fg:           var(--blue);
-  --color-action-secondary-border:       var(--blue);
+  /* ============================================================
+     SEMANTIC · TEXT
+     ============================================================ */
+  --color-text-default:     var(--ink);
+  --color-text-strong:      var(--navy);                      /* Headings importantes */
+  --color-text-label:       var(--navy);                      /* Labels de campo */
+  --color-text-muted:       var(--muted);
+  --color-text-placeholder: var(--placeholder);
+  --color-text-link:        var(--blue);
+  --color-text-on-brand:    var(--white);                     /* Text sobre brand bg (navy/blue) */
+  --color-text-disabled:    var(--muted);
 
-  --color-action-secondary-navy-bg:        var(--white);
-  --color-action-secondary-navy-bg-hover:  var(--navy-50);
-  --color-action-secondary-navy-fg:        var(--navy);
-  --color-action-secondary-navy-border:    var(--navy);
+  /* ============================================================
+     SEMANTIC · BORDER
+     ============================================================ */
+  --color-border-default: var(--line);
+  --color-border-focus:   var(--blue);
+  --color-border-strong:  var(--slate-soft-2);
+  --color-border-hover:   var(--slate-300);
 
-  --color-action-ghost-bg:               var(--white);
-  --color-action-ghost-fg:               var(--ink);
-  --color-action-ghost-border:           var(--line);
-  --color-action-ghost-border-hover:     var(--ink);
-
-  --color-action-danger-bg:              var(--white);
-  --color-action-danger-bg-hover:        var(--red-50);
-  --color-action-danger-fg:              var(--red);
-  --color-action-danger-border:          var(--red);
-  --color-action-danger-disabled-fg:     var(--red-soft);
-  --color-action-danger-disabled-border: var(--red-soft);
-
-  /* === SURFACE · backgrounds === */
-  --color-surface-page:    var(--bg);          /* BG da página */
-  --color-surface-card:    var(--white);       /* BG cards, inputs, modais */
-  --color-surface-sunken:  var(--soft);        /* BG hover, disabled input bg */
-  --color-surface-raised:  var(--white);       /* BG elementos elevados (alias) */
-  --color-surface-info:    var(--info-bg);     /* BG banners info */
-
-  /* === TEXT === */
-  --color-text-default:     var(--ink);         /* Text padrão (body) */
-  --color-text-strong:      var(--navy);        /* Headings importantes, ênfase */
-  --color-text-label:       var(--navy);        /* Labels de campo (alias semântico) */
-  --color-text-muted:       var(--muted);       /* Text complementar, hints */
-  --color-text-placeholder: var(--placeholder); /* Input placeholder */
-  --color-text-link:        var(--blue);        /* Links */
-  --color-text-on-brand:    var(--white);       /* Text sobre brand bg (navy/blue) */
-  --color-text-disabled:    var(--muted);       /* Text disabled */
-
-  /* === BORDER === */
-  --color-border-default: var(--line);         /* Border padrão (inputs, cards) */
-  --color-border-focus:   var(--blue);         /* Border focus (inputs) */
-  --color-border-strong:  var(--slate-soft-2); /* Border destaque (hover btn-secondary) */
-  --color-border-hover:   var(--slate-300);    /* Border sutil em hover */
-
-  /* === FEEDBACK · success/warning/error/info (uso semântico) === */
+  /* ============================================================
+     SEMANTIC · FEEDBACK · success/warning/error/info
+     ============================================================ */
   --color-feedback-success-bg:     var(--green-softer);
   --color-feedback-success-fg:     var(--green-700);
   --color-feedback-success-strong: var(--green);
   --color-feedback-success-border: var(--green-soft);
-
   --color-feedback-warning-bg:     var(--yellow-softer);
   --color-feedback-warning-fg:     var(--yellow-700);
   --color-feedback-warning-strong: var(--yellow);
   --color-feedback-warning-border: var(--yellow-soft);
+  --color-feedback-error-bg:       var(--red-50);
+  --color-feedback-error-fg:       var(--red-700);
+  --color-feedback-error-strong:   var(--red);
+  --color-feedback-error-border:   var(--red-soft);
+  --color-feedback-info-bg:        var(--info-bg);
+  --color-feedback-info-fg:        var(--info-text);
+  --color-feedback-info-strong:    var(--blue);
+  --color-feedback-info-border:    var(--info-border);
 
-  --color-feedback-error-bg:     var(--red-50);
-  --color-feedback-error-fg:     var(--red-700);
-  --color-feedback-error-strong: var(--red);
-  --color-feedback-error-border: var(--red-soft);
+  /* ============================================================
+     SEMANTIC · STATUS · domain-specific pills
+     ============================================================ */
+  --color-status-andamento-bg:  var(--blue-100);              /* Pill 'Em andamento' bg */
+  --color-status-andamento-fg:  var(--blue);
+  --color-status-semcliente-bg: var(--navy-100);              /* Pill 'Sem cliente' bg */
+  --color-status-semcliente-fg: var(--navy);
 
-  --color-feedback-info-bg:     var(--info-bg);
-  --color-feedback-info-fg:     var(--info-text);
-  --color-feedback-info-strong: var(--blue);
-  --color-feedback-info-border: var(--info-border);
+  /* ============================================================
+     SEMANTIC · SHADOW
+     ============================================================ */
+  --shadow-focus-blue:     0 0 0 3px rgba(0, 90, 255, 0.10);  /* Focus ring inputs/buttons */
+  --shadow-focus-error:    0 0 0 3px rgba(233, 70, 71, 0.10); /* Focus ring error state */
+  --shadow-cta-blue:       0 4px 12px rgba(0, 90, 255, 0.20); /* Drop shadow CTA primary */
+  --shadow-cta-blue-hover: 0 6px 16px rgba(0, 90, 255, 0.25); /* Drop shadow CTA primary hover */
 
-  /* === STATUS · pills específicos do domínio (orçamentos/pedidos) === */
-  --color-status-andamento-bg:   var(--blue-100);
-  --color-status-andamento-fg:   var(--blue);
-  --color-status-semcliente-bg:  var(--navy-100);
-  --color-status-semcliente-fg:  var(--navy);
-
-  /* === SHADOW · semantic === */
-  --shadow-focus-blue:    0 0 0 3px rgba(0, 90, 255, .10);  /* Focus ring inputs/buttons */
-  --shadow-focus-error:   0 0 0 3px rgba(233, 70, 71, .10); /* Focus ring error state */
-  --shadow-cta-blue:      0 4px 12px rgba(0, 90, 255, .20); /* Drop shadow CTA primary */
-  --shadow-cta-blue-hover:0 6px 16px rgba(0, 90, 255, .25); /* Drop shadow CTA primary hover */
+  /* ============================================================
+     LEGACY ALIASES · compat com classes antigas
+     ============================================================ */
+  --amber:  var(--yellow);                                    /* alias compat de --yellow */
+  --r:      var(--r-form);                                    /* alias compat de --r-form */
+  --rx:     var(--r-card);                                    /* alias compat de --r-card */
+  --shadow: var(--shadow-md);                                 /* alias compat de --shadow-md (default shadow) */
 }
