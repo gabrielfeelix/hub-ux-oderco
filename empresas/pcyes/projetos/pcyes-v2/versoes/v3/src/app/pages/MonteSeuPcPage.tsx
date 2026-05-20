@@ -645,59 +645,31 @@ type QuizGame = {
   cover: string;
   weight: "light" | "medium" | "heavy";
   tag: string;
+  bg1?: string;
+  bg2?: string;
 };
 
 const steamCover = (appId: number) =>
   `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`;
 
-const buildGameCover = (
-  title: string,
-  tag: string,
-  c1: string,
-  c2: string,
-  initial: string,
-) => {
-  const safeTitle = escapeSvgText(title);
-  const safeTag = escapeSvgText(tag);
-  const safeInitial = escapeSvgText(initial);
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="460" height="215" viewBox="0 0 460 215">
-      <defs>
-        <linearGradient id="bg" x1="0" y1="0" x2="460" y2="215" gradientUnits="userSpaceOnUse">
-          <stop stop-color="${c1}"/>
-          <stop offset="1" stop-color="${c2}"/>
-        </linearGradient>
-        <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(115 108) scale(190 130)">
-          <stop stop-color="rgba(255,255,255,0.35)"/>
-          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
-        </radialGradient>
-      </defs>
-      <rect width="460" height="215" fill="url(#bg)"/>
-      <rect width="460" height="215" fill="url(#glow)"/>
-      <text x="42" y="124" font-family="Inter, system-ui, sans-serif" font-size="116" font-weight="900" fill="rgba(255,255,255,0.92)" letter-spacing="-6">${safeInitial}</text>
-      <text x="200" y="100" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.7)" letter-spacing="3">${safeTag.toUpperCase()}</text>
-      <text x="200" y="132" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="800" fill="#ffffff" letter-spacing="-0.8">${safeTitle}</text>
-    </svg>
-  `;
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-};
+const wikiImg = (path: string) => `https://upload.wikimedia.org/wikipedia/${path}`;
 
 const quizGames: QuizGame[] = [
   { id: "cs2", name: "Counter-Strike 2", cover: steamCover(730), weight: "light", tag: "FPS / Esports" },
-  { id: "valorant", name: "Valorant", cover: buildGameCover("Valorant", "FPS Tático", "#FF4655", "#0F1923", "V"), weight: "light", tag: "FPS Tático" },
-  { id: "lol", name: "League of Legends", cover: buildGameCover("League of Legends", "MOBA", "#0AC8B9", "#091428", "L"), weight: "light", tag: "MOBA / Esports" },
+  { id: "valorant", name: "Valorant", cover: wikiImg("en/b/ba/Valorant_cover.jpg"), bg1: "#FF4655", bg2: "#0F1923", weight: "light", tag: "FPS Tático" },
+  { id: "lol", name: "League of Legends", cover: wikiImg("commons/d/d8/League_of_Legends_2019_vector.svg"), bg1: "#0AC8B9", bg2: "#091428", weight: "light", tag: "MOBA / Esports" },
   { id: "dota2", name: "Dota 2", cover: steamCover(570), weight: "light", tag: "MOBA / Esports" },
-  { id: "fortnite", name: "Fortnite", cover: buildGameCover("Fortnite", "Battle Royale", "#7B4ACB", "#1F0A4B", "F"), weight: "medium", tag: "Battle Royale" },
+  { id: "fortnite", name: "Fortnite", cover: wikiImg("commons/0/0e/FortniteLogo.svg"), bg1: "#7B4ACB", bg2: "#1F0A4B", weight: "medium", tag: "Battle Royale" },
   { id: "apex", name: "Apex Legends", cover: steamCover(1172470), weight: "medium", tag: "Battle Royale" },
   { id: "pubg", name: "PUBG: Battlegrounds", cover: steamCover(578080), weight: "medium", tag: "Battle Royale" },
-  { id: "warzone", name: "Call of Duty: Warzone", cover: buildGameCover("Warzone", "Battle Royale", "#FF8200", "#1A1208", "W"), weight: "heavy", tag: "Battle Royale" },
+  { id: "warzone", name: "Call of Duty: Warzone", cover: steamCover(1962663), weight: "heavy", tag: "Battle Royale" },
   { id: "rainbow6", name: "Rainbow Six Siege", cover: steamCover(359550), weight: "medium", tag: "FPS Tático" },
-  { id: "overwatch2", name: "Overwatch 2", cover: buildGameCover("Overwatch 2", "Hero Shooter", "#F99E1A", "#16202E", "O"), weight: "medium", tag: "Hero Shooter" },
+  { id: "overwatch2", name: "Overwatch 2", cover: wikiImg("en/8/89/Overwatch_2_Steam_artwork.jpg"), bg1: "#F99E1A", bg2: "#16202E", weight: "medium", tag: "Hero Shooter" },
   { id: "rocket", name: "Rocket League", cover: steamCover(252950), weight: "light", tag: "Esportes / Arcade" },
   { id: "fc24", name: "EA Sports FC 24", cover: steamCover(2195250), weight: "medium", tag: "Esportes" },
-  { id: "freefire", name: "Free Fire", cover: buildGameCover("Free Fire", "Battle Royale", "#FE7900", "#1C1410", "F"), weight: "light", tag: "Battle Royale Mobile" },
-  { id: "minecraft", name: "Minecraft", cover: buildGameCover("Minecraft", "Sandbox", "#5C7C2F", "#1E2B0E", "M"), weight: "light", tag: "Sandbox" },
-  { id: "roblox", name: "Roblox", cover: buildGameCover("Roblox", "Multiplayer", "#E2231A", "#0A0A0A", "R"), weight: "light", tag: "Multiplayer" },
+  { id: "freefire", name: "Free Fire", cover: wikiImg("en/3/38/Free_Fire_New_Logo.svg"), bg1: "#FE7900", bg2: "#1C1410", weight: "light", tag: "Battle Royale Mobile" },
+  { id: "minecraft", name: "Minecraft", cover: wikiImg("en/b/be/Minecraft_game_logo_2023.png"), bg1: "#5C7C2F", bg2: "#1E2B0E", weight: "light", tag: "Sandbox" },
+  { id: "roblox", name: "Roblox", cover: wikiImg("commons/4/4b/Roblox_Logo_2022.svg"), bg1: "#E2231A", bg2: "#0A0A0A", weight: "light", tag: "Multiplayer" },
   { id: "gta5", name: "GTA V", cover: steamCover(271590), weight: "medium", tag: "Open World" },
   { id: "rdr2", name: "Red Dead Redemption 2", cover: steamCover(1174180), weight: "heavy", tag: "Open World" },
   { id: "witcher3", name: "The Witcher 3", cover: steamCover(292030), weight: "heavy", tag: "AAA RPG" },
@@ -706,11 +678,11 @@ const quizGames: QuizGame[] = [
   { id: "bg3", name: "Baldur's Gate 3", cover: steamCover(1086940), weight: "heavy", tag: "AAA RPG" },
   { id: "hogwarts", name: "Hogwarts Legacy", cover: steamCover(990080), weight: "heavy", tag: "AAA Aventura" },
   { id: "starfield", name: "Starfield", cover: steamCover(1716740), weight: "heavy", tag: "AAA RPG" },
-  { id: "alan-wake-2", name: "Alan Wake 2", cover: buildGameCover("Alan Wake 2", "AAA pesado", "#2A1A4F", "#0A0716", "A"), weight: "heavy", tag: "AAA pesado" },
+  { id: "alan-wake-2", name: "Alan Wake 2", cover: wikiImg("en/e/ed/Alan_Wake_2_box_art.jpg"), bg1: "#2A1A4F", bg2: "#0A0716", weight: "heavy", tag: "AAA pesado" },
   { id: "wukong", name: "Black Myth Wukong", cover: steamCover(2358720), weight: "heavy", tag: "AAA pesado" },
-  { id: "stellar", name: "Stellar Blade", cover: buildGameCover("Stellar Blade", "AAA Ação", "#1E5BC6", "#08152B", "S"), weight: "heavy", tag: "AAA Ação" },
-  { id: "lol-arena", name: "Genshin Impact", cover: buildGameCover("Genshin Impact", "Open World RPG", "#FFCE71", "#1B2233", "G"), weight: "medium", tag: "RPG Online" },
-  { id: "wow", name: "World of Warcraft", cover: buildGameCover("World of Warcraft", "MMORPG", "#FFB100", "#0E1620", "W"), weight: "medium", tag: "MMORPG" },
+  { id: "stellar", name: "Stellar Blade", cover: steamCover(3489700), weight: "heavy", tag: "AAA Ação" },
+  { id: "genshin", name: "Genshin Impact", cover: wikiImg("en/5/5d/Genshin_Impact_logo.svg"), bg1: "#FFCE71", bg2: "#1B2233", weight: "medium", tag: "RPG Online" },
+  { id: "wow", name: "World of Warcraft", cover: wikiImg("en/6/65/World_of_Warcraft.png"), bg1: "#FFB100", bg2: "#0E1620", weight: "medium", tag: "MMORPG" },
 ];
 
 type QuizProgram = {
@@ -827,6 +799,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1A1A1F",
     fg: "#5B8AF5",
     weight: "light",
+    logo: wikiImg("en/a/a0/Capcut-logo.svg"),
   },
   {
     id: "vegas",
@@ -836,6 +809,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1B1B1B",
     fg: "#FFB400",
     weight: "heavy",
+    logo: wikiImg("commons/4/45/Vegas_Pro_Logo_2026.svg"),
   },
   {
     id: "aftereffects",
@@ -895,6 +869,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1F1F1F",
     fg: "#C5A572",
     weight: "heavy",
+    logo: wikiImg("commons/9/95/ZBrush_icon_new.svg"),
   },
   {
     id: "unreal",
@@ -934,6 +909,7 @@ const quizPrograms: QuizProgram[] = [
     bg: "#1A1A1A",
     fg: "#FF6B00",
     weight: "heavy",
+    logo: wikiImg("en/6/69/FL_Studio_11_just_logo.png"),
   },
   {
     id: "vscode",
@@ -1457,18 +1433,49 @@ function GameTile({
       }
     >
       <div className="relative aspect-[460/215] w-full overflow-hidden deal-image-bg">
-        <img
-          src={game.cover}
-          alt={game.name}
-          loading="lazy"
-          className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-all duration-500",
-            selected ? "scale-[1.04]" : "group-hover:scale-[1.04]",
-          )}
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.opacity = "0";
-          }}
-        />
+        {game.bg1 ? (
+          <>
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(135deg, ${game.bg1} 0%, ${game.bg2 ?? "#000"} 100%)`,
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(circle at 28% 50%, rgba(255,255,255,0.18) 0%, transparent 60%)",
+              }}
+            />
+            <img
+              src={game.cover}
+              alt={game.name}
+              loading="lazy"
+              className={cn(
+                "absolute left-1/2 top-1/2 h-[68%] max-w-[60%] -translate-x-1/2 -translate-y-1/2 object-contain transition-all duration-500",
+                selected ? "scale-[1.06]" : "group-hover:scale-[1.06]",
+              )}
+              style={{ filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.55))" }}
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).style.opacity = "0";
+              }}
+            />
+          </>
+        ) : (
+          <img
+            src={game.cover}
+            alt={game.name}
+            loading="lazy"
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover transition-all duration-500",
+              selected ? "scale-[1.04]" : "group-hover:scale-[1.04]",
+            )}
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.opacity = "0";
+            }}
+          />
+        )}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
