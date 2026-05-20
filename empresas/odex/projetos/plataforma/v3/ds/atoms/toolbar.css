@@ -1,0 +1,124 @@
+/* ==========================================================================
+   DS · TOOLBAR
+   Header de listagem · search + filters + actions à direita.
+   Card-style container · padding 14/18 default · flex row align-center.
+   Phase H.8 · consolida 5 DUPES (clients-toolbar, orc-toolbar, ped-toolbar,
+   mk-toolbar, admin-toolbar).
+   ========================================================================== */
+
+.ds-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+
+/* === Search slot · expands to fill ============================== */
+.ds-toolbar-search {
+  flex: 1;
+  min-width: 200px;
+  max-width: 420px;
+  position: relative;
+}
+.ds-toolbar-search input {
+  width: 100%;
+  height: 42px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--r-form);
+  padding: 0 14px 0 38px;
+  font: 400 14px/1 var(--font);
+  color: var(--color-text-default);
+  background: var(--color-surface-card);
+  transition: border-color var(--motion-default), box-shadow var(--motion-default);
+}
+.ds-toolbar-search input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus-blue);
+}
+.ds-toolbar-search input::placeholder {
+  color: var(--placeholder);
+}
+.ds-toolbar-search-icon,
+svg.ds-toolbar-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px !important;
+  height: 15px !important;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* === Filter group slot (chips, date range, etc) ================= */
+.ds-toolbar-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* === Actions slot · push to right ============================== */
+.ds-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* === Spacer (manual push to right) =============================== */
+.ds-toolbar-spacer {
+  flex: 1;
+}
+
+/* === Sizes ====================================================== */
+.ds-toolbar-sm {
+  padding: 10px 14px;
+  gap: 8px;
+}
+.ds-toolbar-sm .ds-toolbar-search input {
+  height: 36px;
+  font-size: 13px;
+}
+.ds-toolbar-sm .ds-toolbar-search-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.ds-toolbar-md {
+  padding: 14px 18px;
+}  /* default */
+
+.ds-toolbar-lg {
+  padding: 18px 22px;
+  gap: 12px;
+}
+.ds-toolbar-lg .ds-toolbar-search input {
+  height: 46px;
+  font-size: 15px;
+}
+
+/* === Variants =================================================== */
+
+/* Flush · sem card · pra dentro de cards maiores */
+.ds-toolbar-flush {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+/* Sticky · gruda no topo ao scrollar */
+.ds-toolbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}

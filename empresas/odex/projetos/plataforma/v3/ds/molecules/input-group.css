@@ -47,15 +47,30 @@
   cursor: pointer;
 }
 
-/* === Ícone à esquerda (decorativo, non-interactive) === */
-.ds-input-group-icon {
+/* === Ícone à esquerda (decorativo, non-interactive) ===
+   Força sizing 16×16 sobre lucide SVG default 24×24 · pattern unificado pra
+   evitar overlap com placeholder em todos os inputs com ícone.
+*/
+.ds-input-group-icon,
+svg.ds-input-group-icon,
+.ds-input-group-icon > svg,
+.ds-input-group-icon > i {
   position: absolute;
   left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px !important;
+  height: 16px !important;
   color: var(--color-text-muted);
   pointer-events: none;
   transition: color var(--motion-medium);
-  display: flex;
-  align-items: center;
+}
+/* Se o elemento .ds-input-group-icon for o container (wrapper sem display:flex), reset transform pra inner svg */
+.ds-input-group-icon > svg,
+.ds-input-group-icon > i {
+  position: static;
+  transform: none;
+  display: block;
 }
 .ds-input-group:focus-within .ds-input-group-icon {
   color: var(--color-border-focus);
@@ -64,17 +79,28 @@
 /* Quando há ícone left, input/select empurra padding · usa :has() (Chrome 105+/FF 121+/Safari 15.4+) */
 .ds-input-group:has(.ds-input-group-icon) > input,
 .ds-input-group:has(.ds-input-group-icon) > select {
-  padding-left: 42px;
+  padding-left: 44px;
 }
 
 /* === Ícone à direita (decorativo) === */
-.ds-input-group-icon-right {
+.ds-input-group-icon-right,
+svg.ds-input-group-icon-right,
+.ds-input-group-icon-right > svg,
+.ds-input-group-icon-right > i {
   position: absolute;
   right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px !important;
+  height: 16px !important;
   color: var(--color-text-muted);
   pointer-events: none;
-  display: flex;
-  align-items: center;
+}
+.ds-input-group-icon-right > svg,
+.ds-input-group-icon-right > i {
+  position: static;
+  transform: none;
+  display: block;
 }
 
 /* === Botão à direita interativo (reveal/clear/etc) === */

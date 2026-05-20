@@ -306,6 +306,7 @@
         <a href="#hero-gradient">Hero gradient ⭐ H.5</a>
         <a href="#kpi">KPI card ⭐ H.6</a>
         <a href="#empty-state">Empty state ⭐ H.7</a>
+        <a href="#toolbar">Toolbar ⭐ H.8</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -1819,6 +1820,72 @@
     &lt;p class="ds-empty-state-desc"&gt;Tente refinar a busca.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · TOOLBAR (Phase H.8 · 5 DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="toolbar">Toolbar</h2>
+        <p class="cat-section-desc"><strong>Phase H.8 atom</strong> · consolida 5 DUPES (clients-toolbar, orc-toolbar, ped-toolbar, mk-toolbar, admin-toolbar). Header de listagem · search + filters + actions à direita · search input com lucide icon auto-sized via <code>!important</code> (fix universal pra overlap problem).</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Default · search + actions</h3><span class="cat-component-class">.ds-toolbar · .ds-toolbar-search · .ds-toolbar-actions</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-toolbar">
+                <div class="ds-toolbar-search">
+                  <span class="ds-toolbar-search-icon" aria-hidden="true">🔍</span>
+                  <input type="text" placeholder="Buscar por código, nome, documento..." />
+                </div>
+                <div class="ds-toolbar-actions">
+                  <button class="ds-btn ds-btn-ghost">Filtrar</button>
+                  <button class="ds-btn ds-btn-primary">+ Adicionar</button>
+                </div>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-toolbar"&gt;
+  &lt;div class="ds-toolbar-search"&gt;
+    &lt;i data-lucide="search" class="ds-toolbar-search-icon"&gt;&lt;/i&gt;
+    &lt;input type="text" placeholder="Buscar..." /&gt;
+  &lt;/div&gt;
+  &lt;div class="ds-toolbar-actions"&gt;
+    &lt;button class="ds-btn ds-btn-ghost"&gt;Filtrar&lt;/button&gt;
+    &lt;button class="ds-btn ds-btn-primary"&gt;+ Novo&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Sizes</h3><span class="cat-component-class">.ds-toolbar-{sm,md,lg}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-toolbar ds-toolbar-sm" style="margin-bottom:8px;">
+                <div class="ds-toolbar-search"><span class="ds-toolbar-search-icon">🔍</span><input placeholder="SM 36h..." /></div>
+              </div>
+              <div class="ds-toolbar ds-toolbar-md" style="margin-bottom:8px;">
+                <div class="ds-toolbar-search"><span class="ds-toolbar-search-icon">🔍</span><input placeholder="MD 42h (default)..." /></div>
+              </div>
+              <div class="ds-toolbar ds-toolbar-lg">
+                <div class="ds-toolbar-search"><span class="ds-toolbar-search-icon">🔍</span><input placeholder="LG 46h..." /></div>
+              </div>
+              <div class="cat-note">sm 36h (drawers) · md 42h default · lg 46h (hero-level prominent).</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-toolbar ds-toolbar-lg"&gt;...&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Modes</h3><span class="cat-component-class">.ds-toolbar-flush · -sticky</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-note"><strong>Flush:</strong> sem bg/border/shadow · use dentro de cards maiores onde já tem visual container.<br><strong>Sticky:</strong> <code>position:sticky; top:0; z-index: var(--z-sticky)</code> · gruda no scroll de listas longas.</div>
+            </div>
+            <pre class="cat-code">&lt;div class="ds-toolbar ds-toolbar-flush"&gt;...&lt;/div&gt;
+&lt;div class="ds-toolbar ds-toolbar-sticky"&gt;...&lt;/div&gt;</pre>
           </div>
         </div>
       </section>
