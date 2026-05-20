@@ -1664,15 +1664,20 @@ function QuizFlow({
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                {filteredGames.map((g) => (
-                  <GameTile
-                    key={g.id}
-                    game={g}
-                    selected={(answers.games ?? []).includes(g.id)}
-                    onClick={() => toggleGame(g.id)}
-                  />
-                ))}
+              <div
+                className="overflow-y-auto rounded-[8px] pr-2"
+                style={{ maxHeight: "min(420px, 55vh)" }}
+              >
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                  {filteredGames.map((g) => (
+                    <GameTile
+                      key={g.id}
+                      game={g}
+                      selected={(answers.games ?? []).includes(g.id)}
+                      onClick={() => toggleGame(g.id)}
+                    />
+                  ))}
+                </div>
               </div>
             )}
 
@@ -5027,6 +5032,7 @@ export function MonteSeuPcPage() {
                   <HeroBuilderBanner
                     totalSelected={completedSteps.length}
                     totalCount={categories.length}
+                    onBack={goToWelcome}
                   />
                   <HorizontalStepper
                     categories={categoriesWithSelected.map((c) => ({
