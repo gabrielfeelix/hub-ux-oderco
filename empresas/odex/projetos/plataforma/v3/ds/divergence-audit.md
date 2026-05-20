@@ -12,9 +12,9 @@ Source: agregação dos `features/*/README.md` · seção "Divergence audit" de 
 
 | Métrica | Valor |
 |---|---|
-| Features extraídas (C.10-C.20) | 12 (auth, checkout, orcamentos, pedidos, monte-kit, clientes, calculadora, ajuda, dashboard, pv, novidades, de-chat) |
-| Features restantes (C.21+) | ~4 (notif, admin, loja, chrome) |
-| **DS atoms/molecules confirmados** (≥2 features DUPE) | **17 · ds-icon-btn 8x · ds-hero-gradient 5x · ds-overlay 5x** |
+| Features extraídas (C.10-C.21) | 13 (auth, checkout, orc, ped, mk, clientes, calc, ajuda, dash, pv, novidades, de-chat, notif) |
+| Features restantes (C.22+) | ~3 (admin, loja, chrome) |
+| **DS atoms/molecules confirmados** (≥2 features DUPE) | **20 · ds-icon-btn 8x · ds-icon-box 7x · ds-overlay 6x · ds-empty-state 5x · ds-drawer 3x · ds-status-dot 3x · ds-tab-pill 2x** |
 | Possíveis novos (sugeridos · ≥1 feature) | 16 |
 
 ---
@@ -491,3 +491,4 @@ Update history:
 - v0.5 · 2026-05-20 · Atualizado após C.18 (premio venda direta) · 10 features mapeadas · upgrades múltiplos: .ds-table-grid 4x→5x · .ds-link-back 4x→5x · .ds-kpi 4x→5x · .ds-icon-box 5x→6x · .ds-icon-btn 5x→6x · .ds-alert 3x→4x (com 5 tones) · .ds-section-head sobe pra confirmed 3x · 3 novos sugeridos (.ds-dropzone, .ds-meta-strip, .ds-timeline)
 - v0.6 · 2026-05-20 · Atualizado após C.19 (novidades) · 11 features mapeadas · .ds-icon-btn 6x→7x · 4 novos sugeridos (.ds-drawer 2x, .ds-toast, .ds-empty-state 4x, .ds-list-item-selectable)
 - v0.7 · 2026-05-20 · Atualizado após C.20 (dé chat) · 12 features mapeadas · .ds-icon-btn 7x→8x · .ds-hero-gradient 4x→5x · .ds-overlay sobe 5x · 3 novos sugeridos (.ds-chip 2x, .ds-chat-bubble, .ds-status-dot)
+- v0.8 · 2026-05-20 · Atualizado após C.21 (notif) · 13 features · .ds-overlay 5x→6x · .ds-icon-box 6x→7x · .ds-empty-state 4x→5x · .ds-drawer 2x→3x (CONFIRMED) · .ds-tab-pill sobe pra CONFIRMED 2x · .ds-status-dot sobe pra CONFIRMED 3x · 2 novos sugeridos (.ds-popover, .ds-badge-counter)
