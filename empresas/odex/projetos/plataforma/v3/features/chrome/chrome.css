@@ -1,0 +1,179 @@
+/* ========================================================================
+ * Feature · Chrome (App Shell)
+ * ========================================================================
+ * Sidebar + Topbar + Main wrapper + Shell containers + User menu dropdown.
+ * Body modifiers: .is-auth (hides chrome) · .sb-collapsed (sidebar narrow).
+ * Source: extracted from index.html (DS Phase C.24).
+ * ====================================================================== */
+
+@layer features {
+
+  /* ============ Sidebar ============ */
+  .sidebar {
+    width: 252px;
+    background: var(--sidebar-bg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 20;
+    border-right: 1px solid rgba(255,255,255,0.09);
+    box-shadow: 1px 0 0 rgba(255,255,255,0.04), 4px 0 24px rgba(0,0,0,0.18);
+    border-radius: 0 22px 22px 0;
+  }
+  .sidebar-header {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .sidebar-header img { height: 28px; object-fit: contain; filter: brightness(0) invert(1); }
+  .sidebar-nav { flex: 1; padding: 24px 16px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; }
+  .sidebar-link {
+    display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+    border-radius: var(--r-form); color: #B9B9B9; font-size: 14px; font-weight: 500; transition: 0.2s;
+  }
+  .sidebar-link i { width: 18px; text-align: center; font-size: 16px; }
+  .sidebar-link:hover { color: white; background: rgba(255,255,255,0.05); }
+  .sidebar-link.active { color: white; background: var(--blue); }
+  .sidebar-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0; }
+
+  /* ============ Main + Topbar ============ */
+  .main { margin-left: 286px; min-height: 100vh; display: flex; flex-direction: column; }
+  .topbar {
+    height: 72px; background: white; border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px; position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-title { margin: 0; font-size: 20px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+  .topbar-title small { color: var(--muted); font-weight: 400; font-size: 14px; }
+  .topbar-actions { display: flex; align-items: center; gap: 20px; }
+  .icon-btn { position: relative; width: 40px; height: 40px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; color: var(--muted); transition: 0.2s; }
+  .icon-btn:hover { background: var(--line); color: var(--ink); }
+  .icon-btn .dot { position: absolute; top: 8px; right: 10px; width: 8px; height: 8px; background: #E94647; border-radius: 50%; border: 2px solid white; }
+  .badge { position: absolute; top: 4px; right: 4px; background: var(--blue); color: white; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: var(--r-form); line-height: 1; border: 2px solid white; display: none; }
+  .user-profile { display: flex; align-items: center; gap: 12px; padding-left: 20px; border-left: 1px solid var(--line); cursor: pointer; }
+  .user-profile img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+  .user-profile .info { display: flex; flex-direction: column; }
+  .user-profile .name { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .user-profile .role { font-size: 12px; color: var(--muted); }
+
+  /* ============ Shell + view system ============ */
+  .shell { padding: 26px 28px 44px; flex: 1; width: 100%; max-width: 1480px; margin: 0 auto; }
+  body.is-auth .sidebar,
+  body.is-auth .topbar { display: none !important; }
+  body.is-auth .main { margin-left: 0 !important; }
+  body.is-auth .shell { max-width: none; padding: 0; }
+  body.is-auth { background: #f1f5f9; }
+  .view-fullscreen { min-height: 100vh; }
+  .shell--narrow { max-width: 1080px; margin: 0 auto; }
+  .shell--mid    { max-width: 1180px; margin: 0 auto; }
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.3s; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============ Responsive (≤1024) — sidebar collapse off-canvas ============ */
+  @media (max-width: 1024px) {
+    .sidebar { transform: translateX(-100%); }
+    .main { margin-left: 0; }
+  }
+
+  /* ============ Sidebar collapse mechanics (.sb-collapsed) ============ */
+  .sidebar { transition: width .28s cubic-bezier(.4,0,.2,1); overflow: hidden; }
+  .main { transition: margin-left .28s cubic-bezier(.4,0,.2,1); }
+  .sidebar-logo-full { display: block; }
+  .sidebar-logo-icon { display: none; width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1); }
+  .sidebar-link .nav-label {
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity .15s ease;
+  }
+  body.sb-collapsed .sidebar { width: 72px; }
+  body.sb-collapsed .main { margin-left: 96px; }
+  body.sb-collapsed .sidebar-header { padding: 0; justify-content: center; }
+  body.sb-collapsed .sidebar-logo-full { display: none; }
+  body.sb-collapsed .sidebar-logo-icon { display: block; }
+  body.sb-collapsed .sidebar-nav { padding: 12px 8px; }
+  body.sb-collapsed .sidebar-link { padding: 11px; justify-content: center; gap: 0; }
+  body.sb-collapsed .sidebar-link .nav-label {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: opacity .12s ease;
+  }
+  body.sb-collapsed .sidebar-link i { width: auto; }
+  body.sb-collapsed .sidebar-divider { margin: 8px 0; }
+
+  /* ============ Topbar redesign (compact 62h) ============ */
+  .topbar { height: 62px; padding: 0 20px; border-bottom: 0; box-shadow: 0 1px 0 var(--line); }
+  .topbar-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+  .sidebar-toggle { width: 34px; height: 34px; border-radius: var(--r-form); background: transparent; color: var(--muted); display: grid; place-items: center; transition: 0.15s; flex-shrink: 0; }
+  .sidebar-toggle:hover { background: var(--soft); color: var(--ink); }
+  .topbar-title { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0; display: flex; align-items: center; gap: 6px; }
+  .topbar-title small { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .topbar-actions { gap: 4px; }
+  .icon-btn { width: 34px; height: 34px; border-radius: var(--r-form); background: transparent; }
+  .icon-btn:hover { background: var(--soft); }
+  .topbar-sep { width: 1px; height: 24px; background: var(--line); margin: 0 6px; flex-shrink: 0; }
+  .user-profile { padding-left: 0; border-left: 0; gap: 10px; }
+  .user-profile img { width: 32px; height: 32px; box-shadow: 0 0 0 2px var(--line); }
+  .user-profile .name { font-size: 13px; }
+  .user-profile .role { font-size: 11px; }
+
+  /* ============ Topbar overflow fix + user menu ============ */
+  .topbar-left { overflow: hidden; }
+  .topbar-title { max-width: 100%; }
+  .user-profile { flex-shrink: 0; }
+  .user-profile .name { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+  .user-menu-wrap { position: relative; }
+  .user-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 8px 4px 0;
+    background: transparent;
+    color: inherit;
+  }
+  .user-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 220px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    padding: 8px;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: all 180ms ease;
+    z-index: 120;
+  }
+  .user-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .user-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 42px;
+    padding: 0 12px;
+    border-radius: var(--r-card);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .user-menu-link:hover { background: var(--soft); }
+  .user-menu-link svg { width: 16px; height: 16px; color: var(--muted); }
+
+  /* ============ Sidebar SVG icons + badge fix ============ */
+  .sidebar-link svg { width: 20px; height: 20px; }
+  .sidebar-link i { width: 20px; height: 20px; }
+  .badge { padding: 0 4px; min-width: 16px; height: 16px; font-size: 9px; top: -3px; right: -3px; border-radius: var(--r-form); line-height: 16px; }
+
+}
