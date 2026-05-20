@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.15.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.16.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -31,7 +31,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y audit ✅ · A11y keyboard ✅ · Input-group ✅ · Checkout ✅ · Orçamentos ✅ · Pedidos ✅. Próximo: mk, clientes, calc, ajuda, dash, etc | 🟡 Em progresso (C.1-C.12 ✅) |
+| **C · Componentes contextuais** | Auth ✅ · Catálogo ✅ · Semantic ✅ · Build pipeline ✅ · Motion+z+bp+base ✅ · @layer ✅ · Component docs ✅ · A11y ✅+keyboard ✅ · Input-group ✅ · Checkout ✅ · Orçamentos ✅ · Pedidos ✅ · Monte-kit ✅. Próximo: clientes, calc, ajuda, dash, etc | 🟡 Em progresso (C.1-C.13 ✅) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -131,6 +131,7 @@ Cada atom/molecule tem `.md` irmão documentando: quando usar / quando não / va
 - [checkout](../features/checkout/README.md) — Cart drawer + Checkout page
 - [orcamentos](../features/orcamentos/README.md) — Lista + Detail v1/v2 + Form novo + WhatsApp modal
 - [pedidos](../features/pedidos/README.md) — Lista + Detail v2 + Modal Resumo
+- [monte-kit](../features/monte-kit/README.md) — Kit builder multi-step (fotovoltaico/híbrido/BESS/eletroposto)
 
 ### Accessibility
 - [a11y.md](./a11y.md) — WCAG 2.1 AA audit completo · contrast, focus, motion, ARIA
@@ -464,7 +465,8 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.10 · Checkout feature** — `.cart-*` (drawer) + `.ckform-*`/`.cksummary-*`/`.ckitem-*`/`.ckprice-*`/CTAs/`.radio-opt`/`.premia-row` extraídos pra `features/checkout/checkout.css` · `@layer features` · -105 linhas em index.html
 - [x] **C.11 · Orçamentos feature** — `.orc-*` (lista + detail v1) + `.ov-*` (form v2 + WhatsApp modal) + `.orc-doc-brandbar` extraídos pra `features/orcamentos/orcamentos.css` · `@layer features` · -201 linhas em index.html · README c/ **divergence audit** (Phase H prep)
 - [x] **C.12 · Pedidos feature** — `.ped-*` (lista + detail v2) + `.ped-resumo-*` modal + `.resumo-*` sub-classes extraídos pra `features/pedidos/pedidos.css` · `@layer features` · -289 linhas em index.html · README c/ divergence audit (sugere `.ds-modal`/`.ds-toolbar`/`.ds-table-grid`/`.ds-kv-list` molecules na Phase H)
-- [ ] **C.13+ · Demais features** — monte-kit (mk), clientes, calculadora, ajuda, dashboard, topbar/sidebar
+- [x] **C.13 · Monte Kit feature** — maior feature (.mk-* + .mk-v3-* · 413 decls) extraída pra `features/monte-kit/monte-kit.css` · multi-step wizard fotovoltaico/hibrido/bess/eletroposto · **-936 linhas** em index.html · README sugere `.ds-stepper`/`.ds-tabs`/`.ds-card-selectable`/`.ds-stepper-input`/`.ds-tips` molecules Phase H
+- [ ] **C.14+ · Demais features** — clientes, calculadora, ajuda, dashboard, premio venda direta, novas, dé, notif, admin, loja/produto, chrome (topbar/sidebar)
 - [ ] **Phase H · Consolidação DS adoption** — automated audit script + cluster review + markup migration · gather divergence audits dos READMEs features
 
 ### Phase D · Figma DS espelho
@@ -502,5 +504,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.13.0 | C.10 | 2026-05-20 | Checkout feature extraído pra `features/checkout/checkout.css` · cart drawer + checkout page · -105 linhas em index.html · `@layer features` |
 | 0.14.0 | C.11 | 2026-05-20 | Orçamentos feature extraído pra `features/orcamentos/orcamentos.css` · lista + detail v1/v2 + WhatsApp modal · -201 linhas em index.html · README inclui divergence audit (Phase H prep) |
 | 0.15.0 | C.12 | 2026-05-20 | Pedidos feature extraído pra `features/pedidos/pedidos.css` · lista + detail v2 + modal resumo + .resumo-* sub-classes · -289 linhas em index.html · divergence audit sugere `.ds-modal`/`.ds-toolbar`/`.ds-table-grid`/`.ds-kv-list` molecules |
+| 0.16.0 | C.13 | 2026-05-20 | Monte Kit feature (MAIOR · 413 decls) extraída pra `features/monte-kit/monte-kit.css` · multi-step wizard fotovoltaico/hibrido/BESS/eletroposto · -936 linhas em index.html · divergence audit sugere `.ds-stepper`/`.ds-tabs`/`.ds-card-selectable`/`.ds-stepper-input`/`.ds-tips` molecules |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.
