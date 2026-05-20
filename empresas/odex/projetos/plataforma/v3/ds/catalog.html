@@ -303,6 +303,7 @@
         <a href="#table-grid">Table grid ⭐ H.2</a>
         <a href="#icon-box">Icon box ⭐ H.3</a>
         <a href="#overlay">Overlay ⭐ H.4</a>
+        <a href="#hero-gradient">Hero gradient ⭐ H.5</a>
 
         <div class="cat-nav-group">Molecules</div>
         <a href="#input-group">Input Group</a>
@@ -1541,6 +1542,82 @@
               <div class="cat-note">Tokens z-index: <code>--z-dropdown 100</code> · <code>--z-sticky 200</code> · <code>--z-overlay 300</code> (default) · <code>--z-popover 400</code>. Use intent class pra documentar layer · evita números mágicos.</div>
             </div>
             <pre class="cat-code">&lt;div class="ds-overlay ds-overlay-z-dropdown"&gt;&lt;/div&gt; &lt;!-- help-modal-mask --&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ATOMS · HERO GRADIENT (Phase H.5 · 7 DUPES consolidated) -->
+      <!-- ============================================================ -->
+      <section class="cat-section">
+        <h2 id="hero-gradient">Hero gradient</h2>
+        <p class="cat-section-desc"><strong>Phase H.5 atom</strong> · consolida 7 DUPES (dash-hero, auth-brand, ajuda-hero, admin-hero, de-chat-head, help-modal-head, loja hero). Background gradient navy → blue + texto on-brand · 4 gradient variants × 4 padding × 3 radius × decoration opt-in. Tokens consumidos: <code>--navy</code>, <code>--blue-button</code>, <code>--blue</code>, <code>--color-text-on-brand</code>, <code>--color-glass-white-medium</code>.</p>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Gradient variants</h3><span class="cat-component-class">.ds-hero-gradient-{3stop,2stop,horizontal,radial}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div class="ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-pad-sm ds-hero-gradient-radius" style="min-height:60px;">
+                  <p class="ds-hero-gradient-eyebrow">3-stop · default</p>
+                  <h3 style="font-size:14px;">Navy → Blue-button → Blue</h3>
+                </div>
+                <div class="ds-hero-gradient ds-hero-gradient-2stop ds-hero-gradient-pad-sm ds-hero-gradient-radius" style="min-height:60px;">
+                  <p class="ds-hero-gradient-eyebrow">2-stop</p>
+                  <h3 style="font-size:14px;">Navy → Blue</h3>
+                </div>
+                <div class="ds-hero-gradient ds-hero-gradient-horizontal ds-hero-gradient-pad-sm ds-hero-gradient-radius" style="min-height:60px;">
+                  <p class="ds-hero-gradient-eyebrow">Horizontal</p>
+                  <h3 style="font-size:14px;">90deg navy → blue · progress bars</h3>
+                </div>
+                <div class="ds-hero-gradient ds-hero-gradient-radial ds-hero-gradient-pad-sm ds-hero-gradient-radius" style="min-height:60px;">
+                  <p class="ds-hero-gradient-eyebrow">Radial</p>
+                  <h3 style="font-size:14px;">Radial top-left ambient</h3>
+                </div>
+              </div>
+            </div>
+            <pre class="cat-code">&lt;section class="ds-hero-gradient ds-hero-gradient-3stop
+                  ds-hero-gradient-pad-md ds-hero-gradient-radius-xl"&gt;
+  &lt;p class="ds-hero-gradient-eyebrow"&gt;Eyebrow&lt;/p&gt;
+  &lt;h2&gt;Boa tarde, Gabriel&lt;/h2&gt;
+  &lt;p&gt;Texto descritivo...&lt;/p&gt;
+&lt;/section&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">With decoration (radial blobs)</h3><span class="cat-component-class">.ds-hero-gradient-decorated</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-decorated ds-hero-gradient-pad-md ds-hero-gradient-radius-xl" style="min-height:130px;">
+                <p class="ds-hero-gradient-eyebrow">Dash-hero pattern</p>
+                <h2 style="font-size:22px;">Hero com 2 blobs radiais</h2>
+                <p>Decoração ::before + ::after · right-anchored circles · pointer-events:none.</p>
+              </div>
+              <div class="cat-note">Dash-hero usa este pattern · auth-brand, ajuda-hero opcionalmente.</div>
+            </div>
+            <pre class="cat-code">&lt;section class="ds-hero-gradient ds-hero-gradient-3stop
+                  ds-hero-gradient-decorated
+                  ds-hero-gradient-radius-xl ds-hero-gradient-pad-md"&gt;
+  ...
+&lt;/section&gt;</pre>
+          </div>
+        </div>
+
+        <div class="cat-component">
+          <div class="cat-component-head"><h3 class="cat-component-title">Padding × Radius presets</h3><span class="cat-component-class">.ds-hero-gradient-pad-{sm,md,lg,xl} · -radius{,-lg,-xl}</span></div>
+          <div class="cat-grid">
+            <div class="cat-preview">
+              <div class="cat-note">
+                <strong>Pad:</strong> sm 16/20 (modal head) · md 24/30 (dash-hero) · lg 40/48 (auth) · xl 56/48/60 (ajuda)<br>
+                <strong>Radius:</strong> (none · modal head) · -radius 12px (admin) · -radius-lg 16px (ajuda) · -radius-xl 24px (dash-hero)
+              </div>
+            </div>
+            <pre class="cat-code">&lt;!-- Modal head (no radius · sm pad) --&gt;
+&lt;header class="ds-hero-gradient ds-hero-gradient-2stop ds-hero-gradient-pad-sm"&gt;...&lt;/header&gt;
+
+&lt;!-- Ajuda hero (lg radius · xl pad) --&gt;
+&lt;section class="ds-hero-gradient ds-hero-gradient-3stop ds-hero-gradient-radius-lg ds-hero-gradient-pad-xl"&gt;...&lt;/section&gt;</pre>
           </div>
         </div>
       </section>

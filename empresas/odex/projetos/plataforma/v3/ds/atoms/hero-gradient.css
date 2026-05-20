@@ -1,0 +1,85 @@
+/* ==========================================================================
+   DS · HERO GRADIENT
+   Background gradient navy → blue + text-on-brand color · pra heroes, banners,
+   modal-heads e qualquer container que precise da brand-bg corporativa.
+   Phase H.5 · consolida 7 DUPES (dash-hero, auth-brand, ajuda-hero, admin-hero,
+   de-chat-head, help-modal-head, loja hero variants).
+   Decoração radial opcional via ::before/::after (não-clicáveis).
+   ========================================================================== */
+
+.ds-hero-gradient {
+  position: relative;
+  background: var(--ds-hero-gradient-bg,
+    linear-gradient(135deg, var(--navy) 0%, var(--blue-button) 50%, var(--blue) 100%));
+  color: var(--color-text-on-brand);
+  overflow: hidden;
+}
+
+/* === Gradient stops ============================================== */
+.ds-hero-gradient-3stop {
+  --ds-hero-gradient-bg: linear-gradient(135deg, var(--navy) 0%, var(--blue-button) 50%, var(--blue) 100%);
+}
+.ds-hero-gradient-2stop {
+  --ds-hero-gradient-bg: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+}
+.ds-hero-gradient-horizontal {
+  --ds-hero-gradient-bg: linear-gradient(90deg, var(--navy) 0%, var(--blue) 100%);
+}
+.ds-hero-gradient-radial {
+  --ds-hero-gradient-bg: radial-gradient(ellipse at top left, var(--blue) 0%, var(--navy) 70%);
+}
+
+/* === Decoration (opt-in radial blobs) ============================ */
+.ds-hero-gradient-decorated::before,
+.ds-hero-gradient-decorated::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ds-hero-gradient-decorated::before {
+  right: -80px;
+  top: -80px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, var(--color-glass-white-medium), transparent 70%);
+}
+.ds-hero-gradient-decorated::after {
+  right: 120px;
+  bottom: -100px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.18), transparent 70%);
+}
+
+/* === Text helpers within hero =================================== */
+.ds-hero-gradient h1,
+.ds-hero-gradient h2,
+.ds-hero-gradient h3 {
+  color: var(--color-text-on-brand);
+  margin: 0;
+}
+.ds-hero-gradient p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+.ds-hero-gradient-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 700 11px/1 var(--font);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* === Padding presets (opt-in) ==================================== */
+.ds-hero-gradient-pad-sm { padding: 16px 20px; }
+.ds-hero-gradient-pad-md { padding: 24px 30px; }
+.ds-hero-gradient-pad-lg { padding: 40px 48px; }
+.ds-hero-gradient-pad-xl { padding: 56px 48px 60px; }
+
+/* === Radius presets (opt-in) ===================================== */
+.ds-hero-gradient-radius { border-radius: var(--r-card); }
+.ds-hero-gradient-radius-lg { border-radius: var(--r-card-lg); }
+.ds-hero-gradient-radius-xl { border-radius: 24px; }
