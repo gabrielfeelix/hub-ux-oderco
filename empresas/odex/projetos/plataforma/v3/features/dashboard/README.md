@@ -119,8 +119,30 @@ Maioria primitives. Phase H migra junto.
 - `@media(max-width:760px)` interna (alerts grid)
 - Plus cross-feature em index.html (dash-kpis · dash-bottom em compat block)
 
+## C.25c · Home content blocks (extracted)
+
+Phase C.25c trouxe pra dashboard.css todos os blocos `.home-*` que faltavam (estavam num `<style>` separado após o link do dashboard.css). Agrupados em 9 sub-seções:
+
+1. **Home KPIs** (`.home-kpis`, `.home-kpi-grid/lbl/row/val/trend.is-up/is-down`) — KPIs sutis no hero direito
+2. **Perks strip** (`.home-perks`, `.home-perk`, `.home-perk-icon`, `.home-perk strong/small`) — 3 mini-cards horizontais
+3. **Showcase** (`.home-showcase`, `.home-showcase-media + .is-ambient`, `.home-showcase-tag`, `.home-showcase-info/cat/name/specs/spec/desc/price-block/price-row/old/discount/price-line/price-lbl/price-tax/price/cta-row/cta-primary/cta-secondary`) — produto destaque grande
+4. **Categorias grid** (`.home-categories-grid`, `.home-cat-card/icon/info/arrow`) — v2
+5. **Categorias pills** (`.home-categories-pills`, `.home-cat-pill/-icon/-label`) — v3 circulares
+6. **Sections head** (`.home-section`, `.home-section-head/title/sub/link`)
+7. **Product mini cards** (`.home-products-grid`, `.home-prod-card/badge/img/body/cat/name/foot/old/price`)
+8. **Recent grid** (`.home-recent-grid`, `.home-recent-card/head/head-info/head-icon/list/row/avatar/avatar-green/info/name/meta/code/dot/tail/total`) — orçamentos | pedidos rails
+9. **Home responsive** (3 media queries: 1100/720/680px)
+
+**DUPES adicionais notadas em C.25c (Phase H prep):**
+- `.home-kpi` → `.ds-kpi` (já confirmado 6x, agora também home variant com bg dark)
+- `.home-prod-card` → `.ds-product-card` pattern (com `.product-card` da loja · 3+ variantes do mesmo conceito)
+- `.home-recent-card/row` → `.ds-list-card` pattern (com `.dash-feat-product`)
+- `.home-section-head` → `.ds-section-head` (já confirmado 4x · agora 5x)
+- `.home-cat-pill` → `.ds-icon-button-circle` ou `.ds-quick-pick` pattern
+
 ## Related
 
 - [DS atoms](../../ds/) — DUPES massivos
 - [Clientes](../clientes/README.md) / [Calculadora](../calculadora/README.md) — `.ds-kpi` DUPE 3x já confirmado
 - [Ajuda](../ajuda/README.md) — `.ds-hero-gradient` DUPE
+- [Loja](../loja/README.md) — `.product-card` ↔ `.home-prod-card` DUPE pattern (Phase H consolida)

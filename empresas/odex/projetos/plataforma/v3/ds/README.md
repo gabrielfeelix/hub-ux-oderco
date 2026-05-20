@@ -1,6 +1,6 @@
 # Odex · Plataforma Solar · Design System
 
-> v0.27.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
+> v0.28.0 · 2026-05-20 · Owner: Gabriel Felix Barbosa
 
 📖 **[Catálogo visual](./catalog.html)** · abra no navegador pra ver todos atoms + molecules + tokens em todos estados.
 
@@ -33,7 +33,7 @@ Este DS resolve esses 4 pontos sem destruir a ergonomia do `index.html`. Tokens 
 |---|---|---|
 | **A · Tokens** | Cores, radius, shadows, font family/sizes/weights, spacing, sizes | ✅ Pronto |
 | **B · CSS atomic** | `.ds-*` extraídos pra `ds/atoms/` + `.odex-select`/`.ds-menu` em `ds/molecules/` | ✅ Pronto |
-| **C · Componentes contextuais** | DS infra C.1-C.9 ✅ · 16 features extraídas ✅. Próximo: cleanup misc (C.25) | 🟡 Em progresso (C.1-C.24 ✅) |
+| **C · Componentes contextuais** | DS infra C.1-C.9 ✅ · 16 features extraídas ✅ · C.25 cleanup ✅ (legacy-compat + loja residue + home blocks) | ✅ Completo (C.1-C.25) |
 | **D · Figma DS espelho** | Criar componentes 1:1 no `Design System [ODEX]` da file Figma | ⏳ |
 | **E · Code Connect** | Mapear cada CSS class ↔ Figma component | ⏳ |
 | **F · Icon library** | Subset lucide como component set no Figma | ⏳ |
@@ -490,7 +490,8 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 - [x] **C.22 · Admin feature** — `.admin-*` (hero + tabs + cards + tables + banners CMS + auditoria) extraídos pra `features/admin/admin.css` · -334 linhas · MAIORES UPGRADES: .ds-icon-btn 9x · .ds-table-grid 8x · .ds-kpi 6x · .ds-hero-gradient 6x · .ds-toolbar 5x · .ds-empty-state 6x · .ds-section-head 4x · 3 sugeridos SOBEM pra CONFIRMED (.ds-tabs 3x, .ds-card-link 2x, .ds-btn-on-brand 2x) · 2 novos (.ds-toggle, .ds-btn-ghost-sm)
 - [x] **C.23 · Loja/Produto feature** — `.pdp-*` (PDP V2 rich) + `.hero-*` (carousel) extraídos pra `features/loja/loja.css` · -298 linhas · UPGRADES: .ds-status-dot 4x · .ds-stepper-input CONFIRMED 3x · .ds-tabs 4x · .ds-kv-list 3x · .ds-btn-on-brand 3x · 2 novos (.ds-carousel, .ds-rating) · Loja CSS scattered, restantes (product/store/toolbar/search/filter-chip/qty-stepper/etc) ficam pra C.25 cleanup
 - [x] **C.24 · Chrome (app shell) feature** — `.sidebar*` + `.topbar*` + `.shell*` + `.user-menu*` + body modifiers (`.is-auth`, `.sb-collapsed`) extraídos pra `features/chrome/chrome.css` · -157 linhas · UPGRADE forte: **.ds-icon-btn 9x → 10x** (pico do DS · justifica icon-btn como atom #1 prioritário) · 3 novos sugeridos: .ds-notif-dot, .ds-nav-link, .ds-divider --vertical · layout primitives candidatos: .ds-app-sidebar + .ds-app-topbar (não atom, layout)
-- [ ] **C.25 · Misc/cleanup** — loja residue (.product/.store/.toolbar/.search/.filter-chip/.qty-stepper) + legacy compat block consolidation + notif-badge-novas refs + home-prod-card
+- [x] **C.25 · Misc/cleanup** — 3 sub-phases concluídas: **C.25a** legacy compat block (155 linhas force-radius/font-family) extraído pra `ds/legacy-compat.css` (`@layer legacy` self-declared, importado via `ds/index.css`) · **C.25b** loja residue (280+ linhas: store v1/v2, product-card, filter-chip, qty-stepper, price-slider, cart-overlay, list-view, empty-state, search) anexado em `features/loja/loja.css` · **C.25c** home content blocks (365 linhas: home-kpis, home-perks, home-showcase, home-categories grid/pills, home-products-grid, home-recent rails) anexado em `features/dashboard/dashboard.css` · NO new atoms confirmed (cleanup-only) · DUPES adicionais: `.home-prod-card` ↔ `.product-card` 3+ variantes, `.home-section-head` 5x · total -921 linhas index.html (10589 → 9668)
+- [x] **Phase C COMPLETO** — DS infra (C.1-C.9) + 16 features (C.10-C.24) + cleanup (C.25). Próximo: **Phase H** consolidação (criar 23 atoms confirmados em `ds/`, migrar markup, deletar dupes em features).
 - [ ] **Phase H · Consolidação DS adoption** — automated audit script + cluster review + markup migration · gather divergence audits dos READMEs features
 
 ### Phase D · Figma DS espelho
@@ -540,5 +541,6 @@ Mudar token significa mudar visual em **toda a plataforma**. Sempre:
 | 0.25.0 | C.22 | 2026-05-20 | Admin feature extraída pra `features/admin/admin.css` · hero + tabs + 5 cards + 3 tables + banners CMS + auditoria · -334 linhas · MAIORES UPGRADES até agora: ds-icon-btn 9x · ds-table-grid 8x · ds-kpi 6x · ds-hero-gradient 6x · ds-toolbar 5x · ds-empty-state 6x · ds-section-head 4x · 3 sugeridos viram CONFIRMED (.ds-tabs, .ds-card-link, .ds-btn-on-brand) · 2 novos (.ds-toggle, .ds-btn-ghost-sm) |
 | 0.26.0 | C.23 | 2026-05-20 | Loja/Produto feature extraída (PDP V2 + Hero Carousel) pra `features/loja/loja.css` · -298 linhas · UPGRADES: ds-status-dot 4x · ds-stepper-input CONFIRMED 3x · ds-tabs 4x · ds-kv-list 3x · ds-btn-on-brand 3x · 2 novos (.ds-carousel, .ds-rating) · resto da loja (product/store/filter/qty-stepper) fica pra C.25 cleanup |
 | 0.27.0 | C.24 | 2026-05-20 | **Chrome (app shell) feature extraída** pra `features/chrome/chrome.css` (sidebar + topbar + shell + user-menu + body modifiers) · -157 linhas · **MAIOR upgrade do DS: .ds-icon-btn 9x→10x** (pico absoluto · justifica icon-btn como atom #1 prioritário pra Phase H) · 3 novos sugeridos: `.ds-notif-dot` (red 8×8 anchored), `.ds-nav-link` (vertical sidebar nav atom), `.ds-divider --vertical` (extender existing) · layout primitives candidatos: `.ds-app-sidebar` + `.ds-app-topbar` (não atom · shell layout) · index.html: 10589 → 10432 linhas |
+| 0.28.0 | C.25 | 2026-05-20 | **Phase C COMPLETO · cleanup sweep final em 3 sub-phases**: C.25a legacy compat (155 linhas force-radius/font-family) → `ds/legacy-compat.css` (`@layer legacy` self-declared, importado via `ds/index.css`) · C.25b loja residue (280+ linhas: store v1/v2, product-card, filter-chip, qty-stepper, price-slider, cart-overlay, list-view, empty-state, search) anexado em `features/loja/loja.css` · C.25c home content (365 linhas: home-kpis, home-perks, home-showcase, home-categories grid/pills, home-products-grid, home-recent rails) anexado em `features/dashboard/dashboard.css` · NO new atoms confirmed (cleanup-only) · DUPES adicionais pra Phase H: `.home-prod-card` ↔ `.product-card` 3+ variantes, `.home-section-head` 5x · index.html: 10432 → 9668 linhas (-764 nesta phase · -35% acumulado desde C.10 inicial 14901) |
 
 Breaking changes em tokens = major bump. Aditivos = minor. Fixes/docs = patch.

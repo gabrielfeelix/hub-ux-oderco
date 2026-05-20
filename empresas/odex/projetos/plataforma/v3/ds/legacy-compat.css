@@ -1,0 +1,153 @@
+/* ========================================================================
+ * DS · Legacy Compat (retroactive force-overrides)
+ * ========================================================================
+ * Phase B band-aid: force border-radius + border-color + font-family on legacy
+ * class names from before DS extraction. Most feature CSS files (C.10-C.24)
+ * now already use correct tokens — this block is mostly redundant after
+ * Phase H consolidation, BUT kept as @layer legacy safety-net during
+ * incremental migration.
+ *
+ * To delete: confirm each feature CSS already enforces the right token, then
+ * remove the selector. Phase H targeted cleanup.
+ *
+ * Layer: legacy (between features and utilities · low specificity but uses
+ * !important explicitly per the historical band-aid pattern).
+ * Source: extracted from index.html (DS Phase C.25).
+ * ====================================================================== */
+
+@layer legacy {
+
+  /* ============ Inputs/selects/textareas/dates → 4px + #E6E6E6 + focus #005AFF ============ */
+  .form-input, .ckform-input, .ckform-textarea,
+  .nc-input, .nc-textarea,
+  .ov-input,
+  .calc-inp,
+  .clients-srch, .clients-date-inp,
+  .orc-srch, .ped-srch,
+  .novas-feedback-input,
+  .ajuda-srch,
+  .dash-month-input {
+    border-radius: var(--r-form) !important;
+    border-color: var(--line);
+    font-family: var(--font);
+  }
+  .form-input:focus, .ckform-input:focus, .ckform-textarea:focus,
+  .nc-input:focus, .nc-textarea:focus,
+  .ov-input:focus,
+  .calc-inp:focus,
+  .clients-srch:focus, .clients-date-inp:focus,
+  .orc-srch:focus, .ped-srch:focus,
+  .novas-feedback-input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0,90,255,.10);
+  }
+  ::placeholder { color: var(--placeholder); }
+
+  /* ============ font-family Figma · seletores massa de classes legacy ============ */
+  .btn-primary, .btn-cancel, .btn-add,
+  .ov-save-btn, .ov-buscar-btn, .ov-premia-input, .ov-premia-save,
+  .nc-cancel, .nc-next,
+  .calc-sim-btn, .calc-clr-btn, .calc-prod-add,
+  .clients-srch-btn, .clients-clr-btn, .clients-add-btn,
+  .orc-filter-btn, .orc-add-btn,
+  .ped-filter-btn, .ped-email-btn,
+  .ck-submit-btn, .ck-back-btn,
+  .ckform-input, .ckform-textarea,
+  .calc-kit-cta,
+  .pg-btn,
+  .ajuda-cta-btn, .ajuda-faq-item,
+  .help-modal-link,
+  .row-action,
+  .orc-status-pill, .ped-status-pill,
+  .order-status, .role-pill, .ped-v2-pill,
+  .novas-tag, .novas-react, .novas-saiba, .novas-feedback-btn, .novas-fb-cancel, .novas-fb-send,
+  .nc-tipo-opt, .nc-radio-opt,
+  .ds-pill, .ds-btn,
+  .ckform-input, .cart-checkout-btn,
+  .ped-v2-ghost, .ped-v2-solid,
+  .ped-nf-select,
+  .quick-act-btn,
+  .ov-radio-row, .ov-check, .ov-radio,
+  .premia-row, .ov-premia,
+  .ov-input,
+  .topbar input, .topbar button,
+  .input-group input, .date-input,
+  .cart-trigger, .pill-btn,
+  .category-btn, .tab,
+  .product-badge,
+  .checks label,
+  .empty-state button,
+  .filter-btn,
+  .badge,
+  .calc-prod-spec, .calc-info-stat,
+  .client-edit-btn2, .client-back-btn, .client-new-orc, .client-row-arrow, .client-tab-btn,
+  .client-addr-tag,
+  .clients-srch, .clients-date-inp,
+  .ov-summary,
+  .stat-card,
+  .ajuda-cat,
+  .help-link-icon,
+  .modal-close, .cart-close,
+  .icon-btn,
+  .sidebar-link,
+  .user-menu, .notif-panel, .modal,
+  .topbar-title, .topbar-actions {
+    font-family: var(--font);
+  }
+
+  /* ============ Force-radius form/button → r-form ============ */
+  .btn-primary, .btn-cancel, .btn-add,
+  .ov-save-btn, .ov-buscar-btn, .ov-premia-input, .ov-premia-save,
+  .nc-cancel, .nc-next,
+  .calc-sim-btn, .calc-clr-btn, .calc-prod-add,
+  .clients-srch-btn, .clients-clr-btn, .clients-add-btn,
+  .orc-filter-btn, .orc-add-btn,
+  .ped-filter-btn, .ped-email-btn,
+  .ck-submit-btn, .ck-back-btn,
+  .pg-btn,
+  .ped-v2-ghost, .ped-v2-solid,
+  .ped-nf-select,
+  .calc-prod-add, .calc-prod-add-btn,
+  .ped-action-icon, .row-action,
+  .quick-act-btn,
+  .empty-state button,
+  .help-modal-link,
+  .ov-actions,
+  .ov-radio, .ov-check { border-radius: var(--r-form) !important; }
+
+  /* ============ Modal radius ============ */
+  .modal { border-radius: var(--r-card-lg) !important; }
+
+  /* ============ Cards → r-card ============ */
+  .nc-tipo-opt, .ckform-card, .ov-section, .clients-toolbar, .orc-toolbar, .ped-toolbar,
+  .ov-summary, .calc-form-card, .calc-info-card, .calc-metric, .stat-card,
+  .help-modal-link, .ajuda-cat, .ajuda-faq-item,
+  .quick-act-btn,
+  .calc-kit-card,
+  .client-info-card, .client-addr-card, .client-tabs-card,
+  .ped-info-card, .ped-v2-card, .ped-v2-prods-card, .ped-v2-premia-card,
+  .ped-client-strip,
+  .stat-card, .profile-info-card, .profile-summary-card, .profile-actions-card,
+  .users-card,
+  .dash-kpi,
+  .novas-item { border-radius: var(--r-card) !important; }
+
+  /* ============ Tags / status pills / radios → r-tag (4px) ============ */
+  .orc-status-pill, .ped-status-pill,
+  .order-status, .role-pill, .ped-v2-pill,
+  .novas-tag, .ds-pill,
+  .client-addr-tag,
+  .ckitem-qty,
+  .ped-v2-prod-qty,
+  .calc-prod-spec, .spec-tag, .tag,
+  .product-badge,
+  .ckform-section-title,
+  .ov-input,
+  .ov-premia-input,
+  .ov-radio-row,
+  .nc-radio-opt {
+    border-radius: var(--r-tag);
+  }
+  /* Avatares quadrados não cabem aqui (mantém maior) */
+
+}

@@ -23,3 +23,4 @@
 @import url('./base/reset.css')         layer(reset);
 @import url('./atoms/index.css')        layer(atoms);
 @import url('./molecules/index.css')    layer(molecules);
+@import url('./legacy-compat.css');     /* self-declares @layer legacy */

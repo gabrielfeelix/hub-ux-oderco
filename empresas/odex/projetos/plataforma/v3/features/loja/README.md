@@ -82,23 +82,29 @@ Loja online · catalog grid + filtros + busca + categorias + Hero carousel decor
 
 ## Notas de extração
 
-Loja CSS é HIGHLY scattered no index.html original. Esta extração cobre só os 2 blocos maiores bem-delimitados:
-- **PDP V2** (lines 293-469 do index pre-c23)
-- **Hero Carousel** (lines 474-595 do index pre-c23)
+Loja CSS estava HIGHLY scattered no index.html original. Extração feita em duas fases:
 
-**Ficam no index.html (legacy compat · cleanup em C.25):**
-- `.product` / `.product-card` (loja grid card)
-- `.product-img` / `.product-badge` / `.product-info`
-- `.product-actions` / `.qty-stepper` / `.cart-btn` (shared com cart)
-- `.product-footer` / `.price-block`
-- `.filter-chip` / `.filter-chip-clear` / `.active-filters`
-- `.store` / `.store-layout` / `.store-page` (v1 + v2)
-- `.toolbar` / `.search` / `.search-icon` / `.search-clear`
-- `.category-btn` (filter button)
-- `.filter-group` / `.price-slider` / `.price-track` / `.price-fill`
-- `.catalog` / `.catalog-head` / `.catalog-header` / `.catalog-controls`
-- `.grid.list-view` overrides
-- `.spec-tag` / `.product-rating` / `.product-specs`
+**C.23 (PDP V2 + Hero Carousel):**
+- PDP V2 rich page (lines 293-469 pre-c23)
+- Hero Carousel (lines 474-595 pre-c23)
+
+**C.25b (residue cleanup · grande sweep final):**
+- Store v1 layout (`.store-layout`, `.catalog`, `.grid`, `.product`, `.product-img`, `.product-info`, `.product-foot`, `.product h3`, `.tag`, `.sku`, `.tags`, `.btn-add`, `.price`)
+- Cart overlay/drawer (`.cart-overlay`, `.cart`, `.cart.open`, `.cart-head`, `.cart-close`) — shared com checkout, fica em loja por simplicidade
+- Product PDP v1 hero (`.product-hero`, `.gallery-main`, `.thumb`)
+- Store v2 layout (`.store`, `.toolbar`, `.tabs`, `.tab`, `.search`, `.cart-trigger`, `.store-cart-badge`)
+- Filters (`.filters`, `.filter-title`, `.checks`, `.price-inputs`, `.filter-group`, `.price-slider-container`, `.price-track`, `.price-fill`, `.price-input-wrapper`)
+- Category bar (`.category-bar`, `.category-btn`)
+- Product card v2 + v3 (`.product-card`, `.product-promo-badge`, `.product-image` + `.is-cover/.is-inset`, `.product-sku`, `.product-title`, `.product-rating`, `.rating-val`, `.rating-count`, `.product-specs`, `.spec-tag`)
+- Active filter chips (`.active-filters`, `.filter-chip`, `.filter-chip-x`, `.filter-chip-clear`)
+- Product footer + cart actions (`.product-footer`, `.product-actions`, `.qty-stepper`, `.cart-btn`, `.action-pill`)
+- List view (`.grid.list-view` + children)
+- Empty state (`.empty-state`)
+- Catalog header (`.catalog-header`, `.catalog-sort`, `.catalog-controls`, `.view-toggle`, `.view-btn`)
+- Store search icon + store proportions overrides
+
+**Restante na compat block (C.25a → `ds/legacy-compat.css`):**
+- Força font-family/border-radius em `.product-badge`, `.category-btn`, `.tab`, `.filter-btn` etc — esses overrides ficam em legacy layer.
 
 ## Tokens
 
