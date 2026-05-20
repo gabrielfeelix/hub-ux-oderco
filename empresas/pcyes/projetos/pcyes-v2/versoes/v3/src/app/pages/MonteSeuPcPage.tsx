@@ -3138,7 +3138,7 @@ function PresetMiniCard({
           className="block w-full cursor-pointer text-left"
         >
           <div
-            className="relative aspect-square overflow-hidden transition-all duration-300 neon-hover-red"
+            className="relative aspect-[4/3] overflow-hidden transition-all duration-300 neon-hover-red"
             style={{
               background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
               borderRadius: "20px",
@@ -3164,7 +3164,7 @@ function PresetMiniCard({
               src={preset.heroImage}
               alt={`Setup ${preset.name}`}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.05]"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.display = "none";
               }}
@@ -3230,13 +3230,12 @@ function PresetMiniCard({
 
           <div className="mt-3 px-1">
             <p
-              className="mb-0.5 uppercase"
+              className="mb-1 uppercase text-zinc-500"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9px",
-                letterSpacing: "0.22em",
-                fontWeight: 700,
-                color: preset.accent,
+                fontSize: "10px",
+                letterSpacing: "0.14em",
+                fontWeight: 600,
               }}
             >
               {preset.tagline}
