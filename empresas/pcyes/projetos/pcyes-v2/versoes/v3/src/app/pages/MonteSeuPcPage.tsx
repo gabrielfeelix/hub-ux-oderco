@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUpDown,
   Briefcase,
   Check,
   ChevronDown,
@@ -37,6 +38,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "../components/ui/sheet";
 import { cn } from "../components/ui/utils";
 import { ScrollArea } from "../components/ui/scroll-area";
 
@@ -639,63 +647,70 @@ type QuizGame = {
   tag: string;
 };
 
+const steamCover = (appId: number) =>
+  `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`;
+
+const buildGameCover = (
+  title: string,
+  tag: string,
+  c1: string,
+  c2: string,
+  initial: string,
+) => {
+  const safeTitle = escapeSvgText(title);
+  const safeTag = escapeSvgText(tag);
+  const safeInitial = escapeSvgText(initial);
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="460" height="215" viewBox="0 0 460 215">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="460" y2="215" gradientUnits="userSpaceOnUse">
+          <stop stop-color="${c1}"/>
+          <stop offset="1" stop-color="${c2}"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(115 108) scale(190 130)">
+          <stop stop-color="rgba(255,255,255,0.35)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+      </defs>
+      <rect width="460" height="215" fill="url(#bg)"/>
+      <rect width="460" height="215" fill="url(#glow)"/>
+      <text x="42" y="124" font-family="Inter, system-ui, sans-serif" font-size="116" font-weight="900" fill="rgba(255,255,255,0.92)" letter-spacing="-6">${safeInitial}</text>
+      <text x="200" y="100" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.7)" letter-spacing="3">${safeTag.toUpperCase()}</text>
+      <text x="200" y="132" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="800" fill="#ffffff" letter-spacing="-0.8">${safeTitle}</text>
+    </svg>
+  `;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+};
+
 const quizGames: QuizGame[] = [
-  {
-    id: "cs2",
-    name: "Counter-Strike 2",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg",
-    weight: "light",
-    tag: "FPS / Esports",
-  },
-  {
-    id: "dota2",
-    name: "Dota 2",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg",
-    weight: "light",
-    tag: "MOBA / Esports",
-  },
-  {
-    id: "apex",
-    name: "Apex Legends",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg",
-    weight: "medium",
-    tag: "Battle Royale",
-  },
-  {
-    id: "fc24",
-    name: "EA Sports FC 24",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2195250/header.jpg",
-    weight: "medium",
-    tag: "Esportes",
-  },
-  {
-    id: "gta5",
-    name: "GTA V",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
-    weight: "medium",
-    tag: "Open World",
-  },
-  {
-    id: "cyberpunk",
-    name: "Cyberpunk 2077",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
-    weight: "heavy",
-    tag: "AAA pesado",
-  },
-  {
-    id: "elden",
-    name: "Elden Ring",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
-    weight: "heavy",
-    tag: "AAA RPG",
-  },
-  {
-    id: "bg3",
-    name: "Baldur's Gate 3",
-    cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
-    weight: "heavy",
-    tag: "AAA RPG",
-  },
+  { id: "cs2", name: "Counter-Strike 2", cover: steamCover(730), weight: "light", tag: "FPS / Esports" },
+  { id: "valorant", name: "Valorant", cover: buildGameCover("Valorant", "FPS Tático", "#FF4655", "#0F1923", "V"), weight: "light", tag: "FPS Tático" },
+  { id: "lol", name: "League of Legends", cover: buildGameCover("League of Legends", "MOBA", "#0AC8B9", "#091428", "L"), weight: "light", tag: "MOBA / Esports" },
+  { id: "dota2", name: "Dota 2", cover: steamCover(570), weight: "light", tag: "MOBA / Esports" },
+  { id: "fortnite", name: "Fortnite", cover: buildGameCover("Fortnite", "Battle Royale", "#7B4ACB", "#1F0A4B", "F"), weight: "medium", tag: "Battle Royale" },
+  { id: "apex", name: "Apex Legends", cover: steamCover(1172470), weight: "medium", tag: "Battle Royale" },
+  { id: "pubg", name: "PUBG: Battlegrounds", cover: steamCover(578080), weight: "medium", tag: "Battle Royale" },
+  { id: "warzone", name: "Call of Duty: Warzone", cover: buildGameCover("Warzone", "Battle Royale", "#FF8200", "#1A1208", "W"), weight: "heavy", tag: "Battle Royale" },
+  { id: "rainbow6", name: "Rainbow Six Siege", cover: steamCover(359550), weight: "medium", tag: "FPS Tático" },
+  { id: "overwatch2", name: "Overwatch 2", cover: buildGameCover("Overwatch 2", "Hero Shooter", "#F99E1A", "#16202E", "O"), weight: "medium", tag: "Hero Shooter" },
+  { id: "rocket", name: "Rocket League", cover: steamCover(252950), weight: "light", tag: "Esportes / Arcade" },
+  { id: "fc24", name: "EA Sports FC 24", cover: steamCover(2195250), weight: "medium", tag: "Esportes" },
+  { id: "freefire", name: "Free Fire", cover: buildGameCover("Free Fire", "Battle Royale", "#FE7900", "#1C1410", "F"), weight: "light", tag: "Battle Royale Mobile" },
+  { id: "minecraft", name: "Minecraft", cover: buildGameCover("Minecraft", "Sandbox", "#5C7C2F", "#1E2B0E", "M"), weight: "light", tag: "Sandbox" },
+  { id: "roblox", name: "Roblox", cover: buildGameCover("Roblox", "Multiplayer", "#E2231A", "#0A0A0A", "R"), weight: "light", tag: "Multiplayer" },
+  { id: "gta5", name: "GTA V", cover: steamCover(271590), weight: "medium", tag: "Open World" },
+  { id: "rdr2", name: "Red Dead Redemption 2", cover: steamCover(1174180), weight: "heavy", tag: "Open World" },
+  { id: "witcher3", name: "The Witcher 3", cover: steamCover(292030), weight: "heavy", tag: "AAA RPG" },
+  { id: "cyberpunk", name: "Cyberpunk 2077", cover: steamCover(1091500), weight: "heavy", tag: "AAA pesado" },
+  { id: "elden", name: "Elden Ring", cover: steamCover(1245620), weight: "heavy", tag: "AAA RPG" },
+  { id: "bg3", name: "Baldur's Gate 3", cover: steamCover(1086940), weight: "heavy", tag: "AAA RPG" },
+  { id: "hogwarts", name: "Hogwarts Legacy", cover: steamCover(990080), weight: "heavy", tag: "AAA Aventura" },
+  { id: "starfield", name: "Starfield", cover: steamCover(1716740), weight: "heavy", tag: "AAA RPG" },
+  { id: "alan-wake-2", name: "Alan Wake 2", cover: buildGameCover("Alan Wake 2", "AAA pesado", "#2A1A4F", "#0A0716", "A"), weight: "heavy", tag: "AAA pesado" },
+  { id: "wukong", name: "Black Myth Wukong", cover: steamCover(2358720), weight: "heavy", tag: "AAA pesado" },
+  { id: "stellar", name: "Stellar Blade", cover: buildGameCover("Stellar Blade", "AAA Ação", "#1E5BC6", "#08152B", "S"), weight: "heavy", tag: "AAA Ação" },
+  { id: "lol-arena", name: "Genshin Impact", cover: buildGameCover("Genshin Impact", "Open World RPG", "#FFCE71", "#1B2233", "G"), weight: "medium", tag: "RPG Online" },
+  { id: "wow", name: "World of Warcraft", cover: buildGameCover("World of Warcraft", "MMORPG", "#FFB100", "#0E1620", "W"), weight: "medium", tag: "MMORPG" },
 ];
 
 type QuizProgram = {
@@ -1510,15 +1525,22 @@ function QuizFlow({
     onComplete(recommendPreset(final));
   };
 
-  const maxWidth =
-    stepId === "use"
-      ? "max-w-[1180px]"
-      : stepId === "games" || stepId === "programs"
-        ? "max-w-[1080px]"
-        : "max-w-[720px]";
+  const [gameSearch, setGameSearch] = useState("");
+  const normalizedSearch = gameSearch.trim().toLowerCase();
+  const filteredGames = useMemo(() => {
+    if (!normalizedSearch) return quizGames;
+    return quizGames.filter(
+      (g) =>
+        g.name.toLowerCase().includes(normalizedSearch) ||
+        g.tag.toLowerCase().includes(normalizedSearch),
+    );
+  }, [normalizedSearch]);
+
+  const selectedGameCount = (answers.games ?? []).length;
+  const selectedProgramCount = (answers.programs ?? []).length;
 
   return (
-    <div className={cn("mx-auto px-6 py-12 md:py-14", maxWidth)}>
+    <div className="mx-auto max-w-[1080px] px-6 py-12 md:py-14">
       <AnimatePresence mode="wait">
         {stepId === "use" && (
           <motion.div
@@ -1560,26 +1582,108 @@ function QuizFlow({
               title="Quais jogos você joga?"
               subtitle="Selecione um ou mais. A gente usa isso pra calibrar GPU e CPU — esports é diferente de AAA pesado."
             />
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {quizGames.map((g) => (
-                <GameTile
-                  key={g.id}
-                  game={g}
-                  selected={(answers.games ?? []).includes(g.id)}
-                  onClick={() => toggleGame(g.id)}
+
+            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="relative w-full sm:max-w-[360px]">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+                  <path
+                    d="M20 20l-3.5-3.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <input
+                  type="search"
+                  value={gameSearch}
+                  onChange={(e) => setGameSearch(e.target.value)}
+                  placeholder="Buscar jogo (ex: Valorant, RPG, FPS)"
+                  aria-label="Buscar jogo"
+                  className="h-11 w-full rounded-[12px] border border-white/[0.08] bg-[#0f0f12] pl-10 pr-10 text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "13.5px",
+                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.02)",
+                  }}
                 />
-              ))}
+                {gameSearch && (
+                  <button
+                    type="button"
+                    onClick={() => setGameSearch("")}
+                    aria-label="Limpar busca"
+                    className="absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/[0.05] hover:text-white"
+                  >
+                    <X size={13} />
+                  </button>
+                )}
+              </div>
+              <p
+                className="text-zinc-500"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "12px",
+                  fontWeight: 500,
+                }}
+              >
+                {selectedGameCount > 0 ? (
+                  <span className="text-white">
+                    {selectedGameCount}{" "}
+                    {selectedGameCount === 1 ? "jogo selecionado" : "jogos selecionados"}
+                  </span>
+                ) : (
+                  `${filteredGames.length} ${filteredGames.length === 1 ? "jogo" : "jogos"} disponíve${filteredGames.length === 1 ? "l" : "is"}`
+                )}
+              </p>
             </div>
+
+            {filteredGames.length === 0 ? (
+              <div className="flex flex-col items-center gap-2 rounded-[18px] border border-white/[0.06] bg-[#0d0d0d] px-6 py-14 text-center">
+                <p
+                  className="text-white"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "16px",
+                    fontWeight: 700,
+                  }}
+                >
+                  Nenhum jogo encontrado
+                </p>
+                <p
+                  className="text-zinc-400"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                >
+                  Sem stress — pode pular essa etapa, a gente sugere por gênero.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                {filteredGames.map((g) => (
+                  <GameTile
+                    key={g.id}
+                    game={g}
+                    selected={(answers.games ?? []).includes(g.id)}
+                    onClick={() => toggleGame(g.id)}
+                  />
+                ))}
+              </div>
+            )}
+
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
               <p
                 className="text-zinc-500"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
               >
-                {(answers.games ?? []).length === 0
+                {selectedGameCount === 0
                   ? "Nenhum jogo selecionado — pode pular se preferir"
-                  : `${(answers.games ?? []).length} ${
-                      (answers.games ?? []).length === 1 ? "jogo" : "jogos"
-                    } selecionado${(answers.games ?? []).length === 1 ? "" : "s"}`}
+                  : "Pode continuar quando quiser"}
               </p>
               <button
                 type="button"
@@ -1615,7 +1719,7 @@ function QuizFlow({
               title="Como você joga?"
               subtitle="Define se vamos priorizar FPS bruto, refresh-rate alto ou estabilidade de live."
             />
-            <div className="space-y-2.5">
+            <div className="mx-auto max-w-[640px] space-y-2.5">
               {gamingLevelCards.map((c) => (
                 <LevelCard
                   key={c.id}
@@ -1646,6 +1750,27 @@ function QuizFlow({
               title="Quais programas você usa?"
               subtitle="Foto, vídeo, motion ou 3D pedem hardware diferente. Selecione todos os que entram na sua rotina."
             />
+            <div className="mb-6 flex items-center justify-end">
+              <p
+                className="text-zinc-500"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "12px",
+                  fontWeight: 500,
+                }}
+              >
+                {selectedProgramCount > 0 ? (
+                  <span className="text-white">
+                    {selectedProgramCount}{" "}
+                    {selectedProgramCount === 1
+                      ? "programa selecionado"
+                      : "programas selecionados"}
+                  </span>
+                ) : (
+                  `${quizPrograms.length} programas disponíveis`
+                )}
+              </p>
+            </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {quizPrograms.map((p) => (
                 <ProgramTile
@@ -1661,11 +1786,9 @@ function QuizFlow({
                 className="text-zinc-500"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
               >
-                {(answers.programs ?? []).length === 0
+                {selectedProgramCount === 0
                   ? "Nenhum programa selecionado — pode pular se preferir"
-                  : `${(answers.programs ?? []).length} ${
-                      (answers.programs ?? []).length === 1 ? "programa" : "programas"
-                    } selecionado${(answers.programs ?? []).length === 1 ? "" : "s"}`}
+                  : "Pode continuar quando quiser"}
               </p>
               <button
                 type="button"
@@ -1701,7 +1824,7 @@ function QuizFlow({
               title="Qual seu nível de uso?"
               subtitle="Hobby pede uma máquina ágil. Profissional pede CPU forte, RAM sobrando e render que respeita prazo."
             />
-            <div className="space-y-2.5">
+            <div className="mx-auto max-w-[640px] space-y-2.5">
               {creatingLevelCards.map((c) => (
                 <LevelCard
                   key={c.id}
@@ -1732,7 +1855,7 @@ function QuizFlow({
               title="Quanto desempenho você quer?"
               subtitle="Pra rodar planilha, navegador e vídeo o básico já entrega. Multitarefa pesada pede outro patamar."
             />
-            <div className="space-y-2.5">
+            <div className="mx-auto max-w-[640px] space-y-2.5">
               {generalLevelCards.map((c) => (
                 <LevelCard
                   key={c.id}
@@ -1801,8 +1924,15 @@ function StarRating({ rating, reviews }: { rating: number; reviews: number }) {
   );
 }
 
-function PresetComponentsAccordion({ preset }: { preset: Preset }) {
-  const [open, setOpen] = useState(false);
+function PresetComponentsDrawer({
+  preset,
+  open,
+  onOpenChange,
+}: {
+  preset: Preset;
+  open: boolean;
+  onOpenChange: (o: boolean) => void;
+}) {
   const items = Object.entries(preset.selections)
     .map(([catId, optId]) => {
       const cat = categories.find((c) => c.id === catId);
@@ -1812,81 +1942,192 @@ function PresetComponentsAccordion({ preset }: { preset: Preset }) {
     })
     .filter((x): x is { catTitle: string; catIcon: React.ReactNode; opt: Option } => Boolean(x));
 
+  const subtotal = items.reduce((sum, it) => sum + it.opt.price, 0);
+
   return (
-    <div className="mt-3 overflow-hidden rounded-[12px] border border-white/[0.06] bg-white/[0.02]">
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        className="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2.5 text-left transition-colors hover:bg-white/[0.04]"
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent
+        side="right"
+        className="flex h-full w-full flex-col gap-0 border-l border-white/[0.08] bg-[#0a0a0a] p-0 sm:max-w-[460px]"
       >
-        <span
-          className="flex items-center gap-2 text-white"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
-        >
-          <Layers size={13} className="text-primary" />
-          Ver todos os componentes ({items.length})
-        </span>
-        <ChevronDown
-          size={14}
-          className={cn("text-zinc-400 transition-transform", open && "rotate-180")}
-        />
-      </button>
-      {open && (
-        <div className="space-y-1.5 border-t border-white/[0.05] px-2 py-2">
-          {items.map((item) => (
-            <div
-              key={item.opt.id}
-              className="flex items-center gap-2.5 rounded-md p-1.5"
+        <SheetHeader className="border-b border-white/[0.06] bg-[#0d0d0d] p-5">
+          <div className="flex items-center gap-2">
+            <span
+              className="rounded-full px-2 py-0.5 uppercase text-white"
+              style={{
+                backgroundColor: preset.accent,
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "9px",
+                letterSpacing: "0.18em",
+                fontWeight: 700,
+              }}
             >
-              <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md deal-image-bg">
-                {item.opt.image ? (
-                  <img src={item.opt.image} alt="" className="h-full w-full object-contain p-0.5" />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center text-zinc-500">
-                    {item.catIcon}
-                  </div>
-                )}
-              </div>
-              <div className="min-w-0 flex-1">
-                <p
-                  className="uppercase text-zinc-500"
-                  style={{
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "8.5px",
-                    letterSpacing: "0.18em",
-                    fontWeight: 700,
-                  }}
-                >
-                  {item.catTitle}
-                </p>
-                <p
-                  className="truncate text-white"
-                  style={{
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "11.5px",
-                    fontWeight: 500,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {item.opt.name}
-                </p>
-              </div>
-              <span
-                className="shrink-0 tabular-nums text-primary"
-                style={{
-                  fontFamily: "var(--font-family-figtree)",
-                  fontSize: "11px",
-                  fontWeight: 700,
-                }}
+              {preset.performance}
+            </span>
+            <span
+              className="uppercase text-zinc-500"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "9.5px",
+                letterSpacing: "0.22em",
+                fontWeight: 700,
+              }}
+            >
+              {preset.tagline}
+            </span>
+          </div>
+          <SheetTitle
+            className="text-white"
+            style={{
+              fontFamily: "var(--font-family-figtree)",
+              fontSize: "24px",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
+            }}
+          >
+            {preset.name} · {items.length} peças
+          </SheetTitle>
+          <SheetDescription
+            className="text-zinc-400"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", lineHeight: 1.5 }}
+          >
+            Toda peça pode ser trocada na hora de personalizar.
+          </SheetDescription>
+        </SheetHeader>
+
+        <ScrollArea className="flex-1">
+          <div className="space-y-2 p-4">
+            {items.map((item, idx) => (
+              <article
+                key={item.opt.id}
+                className="flex gap-3 rounded-[14px] border border-white/[0.06] bg-[#0f0f12] p-3 transition-colors hover:border-white/[0.16]"
               >
-                {formatBRL(item.opt.price)}
-              </span>
-            </div>
-          ))}
+                <div
+                  className="h-[68px] w-[68px] shrink-0 overflow-hidden rounded-[10px] deal-image-bg"
+                  aria-hidden="true"
+                >
+                  {item.opt.image ? (
+                    <img
+                      src={item.opt.image}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-contain p-1"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-zinc-500">
+                      {item.catIcon}
+                    </div>
+                  )}
+                </div>
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-primary">{item.catIcon}</span>
+                    <p
+                      className="uppercase text-zinc-500"
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "9px",
+                        letterSpacing: "0.2em",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {item.catTitle}
+                    </p>
+                  </div>
+                  <p
+                    className="text-white"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      lineHeight: 1.25,
+                      letterSpacing: "-0.005em",
+                    }}
+                  >
+                    {item.opt.name}
+                  </p>
+                  {item.opt.highlights && item.opt.highlights.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {item.opt.highlights.slice(0, 3).map((h) => (
+                        <span
+                          key={h}
+                          className="rounded-full border border-white/[0.08] bg-white/[0.02] px-1.5 py-0.5 text-zinc-300"
+                          style={{
+                            fontFamily: "var(--font-family-inter)",
+                            fontSize: "9.5px",
+                            fontWeight: 600,
+                            letterSpacing: "0.02em",
+                          }}
+                        >
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <p
+                    className="mt-0.5 tabular-nums text-primary"
+                    style={{
+                      fontFamily: "var(--font-family-figtree)",
+                      fontSize: "12.5px",
+                      fontWeight: 800,
+                    }}
+                  >
+                    {formatBRL(item.opt.price)}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </ScrollArea>
+
+        <div className="border-t border-white/[0.06] bg-[#0d0d0d] p-5">
+          <div className="mb-3 flex items-baseline justify-between">
+            <span
+              className="uppercase text-zinc-500"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "10px",
+                letterSpacing: "0.2em",
+                fontWeight: 700,
+              }}
+            >
+              Soma dos componentes
+            </span>
+            <span
+              className="tabular-nums text-white"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "20px",
+                fontWeight: 800,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {formatBRL(subtotal)}
+            </span>
+          </div>
+          <div className="flex items-baseline justify-between">
+            <span
+              className="text-zinc-300"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+            >
+              Preço final do setup
+            </span>
+            <span
+              className="tabular-nums text-primary"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "22px",
+                fontWeight: 800,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {formatBRL(preset.price)}
+            </span>
+          </div>
         </div>
-      )}
-    </div>
+      </SheetContent>
+    </Sheet>
   );
 }
 
