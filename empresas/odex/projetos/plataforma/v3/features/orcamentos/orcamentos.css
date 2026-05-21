@@ -44,12 +44,6 @@
     .orc-code { font-size:14px; font-weight:700; color:var(--ink); }
     .orc-nome { font-size:14px; color:var(--ink); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .orc-date { font-size:12px; color:var(--muted); }
-    .orc-status-pill { display:inline-flex; align-items:center; height:24px; padding:0 10px; border-radius:var(--r-form); font-size:11px; font-weight:600; white-space:nowrap; }
-    .orc-s-semcliente { background:#f0f9ff; color:#0369a1; }
-    .orc-s-expirado { background:#fde6e6; color:#d04848; }
-    .orc-s-pendente { background:#FCDFB3; color:#8a5400; }
-    .orc-s-aprovado { background:#CCEED2; color:#1c7a36; }
-    .orc-s-cancelado { background:#fde0e0; color:#b8191c; }
     .orc-potencia { font-size:13px; color:var(--ink); font-weight:500; }
     .orc-total { font-size:13px; font-weight:700; color:var(--ink); }
     .orc-action-link { display:flex; align-items:center; gap:4px; font-size:13px; font-weight:600; color:var(--blue); }
@@ -65,11 +59,6 @@
     .ov-header-with-actions { display:flex; justify-content:space-between; align-items:flex-end; gap:18px; flex-wrap:wrap; }
     .ov-header-left { min-width:0; }
     .ov-header-actions { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-    .ov-print-btn, .ov-share-btn, .ov-whats-btn { display:inline-flex; align-items:center; gap:7px; height:42px; padding:0 16px; border:1px solid var(--line); background:var(--white); color:var(--navy); border-radius:var(--r-form); font:400 14px/1 var(--font); cursor:pointer; transition:.12s; font-family:var(--font); }
-    .ov-print-btn:hover, .ov-share-btn:hover { border-color:var(--navy); }
-    .ov-whats-btn { color:#15803d; border-color:#bbf7d0; background:#f0fdf4; }
-    .ov-whats-btn:hover { background:#dcfce7; border-color:#86efac; }
-    .ov-whats-btn i { color:#25D366; }
 
     /* Modal WhatsApp */
     .ov-whats-modal-icon { width:36px; height:36px; border-radius:50%; background:#dcfce7; display:grid; place-items:center; }
@@ -96,28 +85,16 @@
     .ov-section-head h3 { font:700 16px/1 var(--font); color:var(--navy); margin:0; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; }
     .ov-section-head h3::before { content:''; display:inline-block; width:4px; height:18px; background:var(--blue); border-radius:99px; }
     .ov-section-aside { font:400 13px/1 var(--font); color:var(--muted); margin-left:6px; }
-    .ov-buscar-btn { display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 12px; border:0; background:transparent; color:var(--blue); font-size:13px; font-weight:600; cursor:pointer; border-radius:var(--r-form); font-family:inherit; transition:.12s; }
-    .ov-buscar-btn:hover { background:#eff6ff; }
     .ov-radio-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
-    .ov-radio { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-size:14px; font-weight:500; color:var(--ink); padding:6px 0; }
-    .ov-radio input[type=radio] { width:16px; height:16px; accent-color:var(--blue); cursor:pointer; }
-    .ov-radio.checked { color:var(--blue); font-weight:600; }
     .ov-check-row { display:flex; gap:18px; flex-wrap:wrap; }
-    .ov-check { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-size:14px; color:var(--ink); }
-    .ov-check input[type=checkbox] { width:16px; height:16px; accent-color:var(--blue); cursor:pointer; }
     .ov-field { display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
     .ov-field:last-child { margin-bottom:0; }
     .ov-label { font:400 14px/1 var(--font); color:var(--navy); }
     .ov-label .req { color:#E94647; margin-left:2px; }
-    .ov-input { width:100%; height:44px; border:1px solid var(--line); border-radius:var(--r-form); padding:0 14px; font-size:14px; color:var(--ink); background:white; transition:.15s; font-family:inherit; }
-    .ov-input:focus { border-color:var(--blue); outline:none; box-shadow:0 0 0 3px rgba(0,90,255,.08); }
-    .ov-input::placeholder { color:#B9B9B9; }
 
     .ov-actions { display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding:6px 4px 0; }
     .ov-print-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--blue); background:transparent; border:0; padding:6px 0; cursor:pointer; font-family:inherit; }
     .ov-print-link:hover { text-decoration:underline; }
-    .ov-save-btn { height:44px; padding:0 28px; background:var(--blue); color:white; border-radius:var(--r-form); font-size:14px; font-weight:700; display:inline-flex; align-items:center; gap:7px; cursor:pointer; border:0; font-family:inherit; transition:.15s; box-shadow:0 1px 2px rgba(0,90,255,.2); }
-    .ov-save-btn:hover { background:#0046cc; box-shadow:0 4px 14px rgba(0,90,255,.28); }
 
     .ov-summary { padding:24px 26px; position:sticky; top:80px; }
     .ov-summary-title { font:700 17px/1 var(--font); color:var(--navy); margin:0 0 18px; letter-spacing:-.01em; display:flex; align-items:center; gap:8px; }
@@ -141,7 +118,6 @@
     .ov-item-qty { font:700 13px/1 var(--font); color:var(--navy); padding:6px 10px; background:var(--soft); border-radius:99px; min-width:38px; text-align:center; }
     .ov-items-empty { display:flex; flex-direction:column; align-items:center; gap:8px; padding:36px 18px; text-align:center; color:var(--muted); font:400 13px/1.5 var(--font); }
     .ov-items-empty p { margin:0; }
-    .ov-items-empty-cta { display:inline-flex; align-items:center; gap:5px; height:32px; padding:0 16px; background:var(--blue); color:white; border-radius:var(--r-form); font:400 13px/1 var(--font); margin-top:6px; text-decoration:none; }
 
     .ov-summary-rows { padding:14px 0 6px; border-top:1px solid var(--line); margin-top:8px; }
     .ov-summary-row { display:flex; justify-content:space-between; align-items:center; font-size:13.5px; padding:6px 0; color:#374151; }
@@ -151,8 +127,6 @@
     .ov-premia { padding:14px 0; border-top:1px solid var(--line); }
     .ov-premia-head { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; }
     .ov-premia-row { display:flex; align-items:center; gap:12px; }
-    .ov-premia-radio { display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:500; color:var(--ink); cursor:pointer; }
-    .ov-premia-radio input[type=radio] { width:15px; height:15px; accent-color:var(--blue); cursor:pointer; }
     .ov-premia-input { flex:1; height:34px; border:1px solid var(--line); border-radius:var(--r-form); padding:0 12px; font-size:13px; background:white; font-family:inherit; }
     .ov-premia-input:focus { border-color:var(--blue); outline:none; box-shadow:0 0 0 3px rgba(0,90,255,.08); }
     .ov-premia-save { width:34px; height:34px; border-radius:var(--r-form); background:var(--soft); border:1px solid var(--line); color:var(--muted); display:grid; place-items:center; cursor:pointer; transition:.12s; }
@@ -216,11 +190,5 @@
     .orc-doc-brandbar-info { flex:1; }
     .orc-doc-brandbar-info strong { display:block; font:700 14px/1.3 var(--font); color:var(--ink); }
     .orc-doc-brandbar-info small { font:400 12px/1.3 var(--font); color:var(--muted); }
-    .orc-doc-brandbar-cta {
-      background:#f4f6fb; color:var(--navy); border:1px solid var(--line);
-      border-radius:6px; padding:7px 12px; font:600 12px/1 var(--font); cursor:pointer;
-      display:inline-flex; align-items:center; gap:5px;
-    }
-    .orc-doc-brandbar-cta:hover { background:#e8edf6; }
 
 /* end @layer features wrapper */

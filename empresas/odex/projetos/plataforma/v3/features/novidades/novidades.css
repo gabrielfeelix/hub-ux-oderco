@@ -125,12 +125,6 @@
       margin:0 0 10px; letter-spacing:-.015em;
     }
     .novas-item-meta { display:flex; align-items:center; gap:10px; }
-    .novas-tag {
-      display:inline-flex; align-items:center;
-      height:22px; padding:0 11px;
-      border-radius:99px;
-      font:700 10px/1 var(--font); letter-spacing:.06em; text-transform:uppercase;
-    }
     .novas-tag-cyan  { background:#cffafe; color:#0891b2; }
     .novas-tag-green { background:var(--green-softer); color:#1c7a36; }
     .novas-tag-amber { background:var(--yellow-softer); color:#c2410c; }
@@ -140,12 +134,6 @@
     .novas-content { margin-bottom:18px; }
     .novas-desc { font:400 14px/1.6 var(--font); color:var(--ink); margin:0 0 8px; }
     .novas-desc.is-clamped { display:-webkit-box; -webkit-line-clamp:3; line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-    .novas-more-btn {
-      display:inline-flex; align-items:center; gap:4px;
-      font:400 14px/1 var(--font); color:var(--blue);
-      background:transparent; border:0; padding:0; cursor:pointer; font-family:var(--font);
-    }
-    .novas-more-btn:hover { text-decoration:underline; }
 
     /* Hero (gradient com ícone) */
     .novas-hero {

@@ -98,19 +98,9 @@
     .resumo-nf-num { font:700 15px/1.2 var(--font); color:var(--navy); margin-top:3px; }
     .resumo-nf-meta { font:400 12px/1 var(--font); color:var(--muted); }
     .resumo-nf-actions { display:flex; gap:8px; flex-shrink:0; }
-    .resumo-nf-btn {
-      display:inline-flex; align-items:center; gap:6px;
-      height:36px; padding:0 14px;
-      background:var(--white); color:var(--navy);
-      border:1px solid var(--line); border-radius:var(--r-form);
-      font:700 12px/1 var(--font); cursor:pointer; font-family:var(--font);
-      transition:.15s;
-    }
-    .resumo-nf-btn:hover { border-color:var(--blue); color:var(--blue); background:#eff4ff; }
     @media (max-width:680px) {
       .resumo-nf-body { grid-template-columns:1fr; }
       .resumo-nf-actions { flex-wrap:wrap; }
-      .resumo-nf-btn { flex:1; justify-content:center; }
     }
     .resumo-prod { display:grid; grid-template-columns:48px minmax(0,1fr) 50px 100px; gap:12px; align-items:center; padding:10px 18px; border-bottom:1px solid #f3f4f6; }
     .resumo-prod:last-child { border-bottom:0; }
@@ -163,12 +153,6 @@
     .ped-code { font-size:14px; font-weight:700; color:var(--ink); }
     .ped-nome { font-size:13px; color:var(--ink); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .ped-date { font-size:12px; color:var(--muted); }
-    .ped-status-pill { display:inline-flex; align-items:center; height:24px; padding:0 10px; border-radius:var(--r-form); font-size:11px; font-weight:600; white-space:nowrap; }
-    .ped-s-finalizado { background:#CCEED2; color:#1c7a36; }
-    .ped-s-emandamento { background:#eff6ff; color:#005AFF; }
-    .ped-s-aguardando { background:#fff5e1; color:#c97a00; }
-    .ped-s-bloqueado { background:#f5e6ff; color:#8b3fce; }
-    .ped-s-cancelado { background:#fde0e0; color:#b8191c; }
     .ped-faturado-sim { font-size:12px; color:#1c7a36; font-weight:600; }
     .ped-faturado-nao { font-size:12px; color:var(--muted); }
     .ped-potencia { font-size:13px; color:var(--ink); font-weight:500; }
@@ -176,11 +160,6 @@
     .ped-action-icon { width:30px; height:30px; border-radius:var(--r-form); background:var(--soft); display:grid; place-items:center; color:var(--muted); transition:.12s; }
     .ped-tbl-row:hover .ped-action-icon { background:#eff6ff; color:var(--blue); }
     .ped-row-actions { display:flex; align-items:center; gap:5px; justify-content:flex-end; }
-    .ped-status-pill { white-space:nowrap; max-width:100%; overflow:hidden; text-overflow:ellipsis; }
-    .ped-row-btn { width:32px; height:32px; border-radius:var(--r-form); background:transparent; border:1px solid transparent; color:var(--muted); display:grid; place-items:center; cursor:pointer; transition:.12s; padding:0; }
-    .ped-row-btn:hover { background:var(--soft); color:var(--navy); border-color:var(--line); }
-    .ped-row-btn-primary { background:#eff6ff; color:var(--blue); }
-    .ped-row-btn-primary:hover { background:var(--blue); color:white; border-color:var(--blue); }
     .ped-list-foot { padding:14px 20px; display:flex; align-items:center; justify-content:center; gap:6px; border-top:1px solid var(--line); }
     /* Pedido detail */
     .ped-detail-wrap { max-width:1100px; margin:0 auto; }

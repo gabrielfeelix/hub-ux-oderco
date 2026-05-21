@@ -32,9 +32,6 @@
     .calc-field-lbl .req { color:#E94647; margin-left:2px; }
     .calc-inp-wrap { position:relative; }
     .calc-inp-icon, svg.calc-inp-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); width:16px !important; height:16px !important; color:var(--placeholder); pointer-events:none; }
-    .calc-inp { width:100%; height:42px; border:1px solid var(--line); border-radius:var(--r-form); padding:0 14px 0 40px; font:400 16px/1 var(--font); color:var(--ink); background:var(--white); transition:.15s; }
-    .calc-inp:focus { border-color:var(--blue); outline:none; box-shadow:0 0 0 3px rgba(0,90,255,.10); }
-    .calc-inp::placeholder { color:var(--placeholder); }
     .calc-inp-sfx { position:absolute; right:14px; top:50%; transform:translateY(-50%); font:400 14px/1 var(--font); color:var(--placeholder); pointer-events:none; }
     .calc-actions { display:flex; gap:10px; align-items:center; }
     .calc-sim-btn { height:50px; padding:0 28px; background:var(--blue); color:white; border-radius:var(--r-card); font-size:15px; font-weight:700; display:flex; align-items:center; gap:8px; transition:.15s; }

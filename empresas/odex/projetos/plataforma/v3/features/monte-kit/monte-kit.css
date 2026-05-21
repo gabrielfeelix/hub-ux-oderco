@@ -89,13 +89,6 @@
     /* Footer buttons (Voltar / Continuar) */
     .mk-actions { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:24px; max-width:520px; }
     .mk-actions.right { max-width:none; grid-template-columns:auto auto; justify-content:end; }
-    .mk-btn { height:46px; border-radius:var(--r-form); font:600 14px/1 var(--font); display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:0 28px; cursor:pointer; transition:.15s; border:1px solid transparent; }
-    .mk-btn-secondary { background:var(--white); color:var(--blue); border-color:var(--slate-soft); }
-    .mk-btn-secondary:hover { background:var(--soft); }
-    .mk-btn-primary { background:var(--blue); color:#fff; }
-    .mk-btn-primary:hover { background:var(--navy); }
-    .mk-btn[disabled] { background:var(--slate-soft); color:#fff; cursor:not-allowed; }
-    .mk-btn[disabled]:hover { background:var(--slate-soft); }
 
     /* === Stepper === */
     .mk-stepper { display:flex; align-items:flex-start; justify-content:space-between; margin:14px auto 28px; max-width:920px; padding:0 30px; position:relative; }
@@ -363,18 +356,6 @@
     .mk-stepper-card-head .step-of {
       font:700 11px/1 var(--font); color:var(--muted); letter-spacing:.06em; text-transform:uppercase;
     }
-    .mk-reset-btn {
-      display:inline-flex; align-items:center; gap:6px;
-      height:30px; padding:0 12px;
-      background:#fff; color:var(--muted);
-      border:1px solid var(--line); border-radius:8px;
-      font:600 12px/1 var(--font); cursor:pointer;
-      transition:.15s; font-family:var(--font);
-    }
-    .mk-reset-btn:hover { color:var(--ink); border-color:var(--slate-soft-2); background:#fafbfc; }
-    .mk-reset-btn:active { transform:translateY(1px); }
-    .mk-reset-btn > i,
-    .mk-reset-btn > svg { width:13px !important; height:13px !important; }
     .mk-stepper-grid {
       display:grid; gap:8px;
       grid-template-columns:repeat(var(--mk-step-count, 7), 1fr);
@@ -457,7 +438,8 @@
     .mk-toolbar-search input:focus {
       outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,90,255,.12);
     }
-    .mk-toolbar-sort, .mk-toolbar-iconbtn, .mk-toolbar-viewbtn {
+    .mk-toolbar-sort,
+.mk-toolbar-viewbtn {
       height:42px; border:1px solid var(--line); border-radius:var(--r-form);
       background:#fff; font:600 13px/1 var(--font); color:var(--ink);
       cursor:pointer; transition:.15s;
@@ -465,10 +447,6 @@
     .mk-toolbar-sort { padding:0 32px 0 14px; appearance:none; min-width:160px;
       background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E6E6E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") no-repeat right 12px center/14px 14px var(--white);
     }
-    .mk-toolbar-iconbtn { width:42px; display:flex; align-items:center; justify-content:center; color:var(--muted); }
-    .mk-toolbar-iconbtn:hover { color:var(--ink); }
-    .mk-toolbar-iconbtn > i,
-    .mk-toolbar-iconbtn > svg { width:16px !important; height:16px !important; }
     /* View toggle (Grid/Lista) — mesmo padrao do .view-toggle do DS (radius 4px) */
     .mk-toolbar-view {
       display:inline-flex; align-items:center; gap:2px; padding:3px;
@@ -712,8 +690,7 @@
     .mk-resumo-side-foot-total .val {
       font:700 22px/1 var(--font); color:var(--navy);
     }
-    /* CTA "Concluir montagem" — usa .ds-btn .ds-btn-primary do DS, com width 100% */
-    .mk-resumo-side-cta {
+    /* CTA "Concluir montagem" — usa .ds-btn .ds-btn-primary do DS {
       width:100%; margin-top:12px;
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       height:42px; padding:0 18px;
@@ -722,10 +699,6 @@
       font:400 14px/1 var(--font); cursor:pointer;
       transition:.15s; font-family:var(--font);
     }
-    .mk-resumo-side-cta:hover:not([disabled]) { background:#0046cc; }
-    .mk-resumo-side-cta[disabled] { opacity:.55; cursor:not-allowed; }
-    .mk-resumo-side-cta > svg,
-    .mk-resumo-side-cta > i { width:14px !important; height:14px !important; }
     .mk-resumo-side-item-rm > svg,
     .mk-resumo-side-item-rm > i { width:13px !important; height:13px !important; }
 

@@ -118,10 +118,6 @@
   .ckform-group { display: flex; flex-direction: column; gap: 6px; }
   .ckform-label { font: 400 14px/1 var(--font); color: var(--navy); }
   .ckform-label .req { color: var(--red); margin-left: 2px; }
-  .ckform-input { height: 42px; border: 1px solid var(--line); border-radius: var(--r-form); padding: 0 14px; font-size: 14px; color: var(--ink); background: white; transition: var(--motion-default); width: 100%; }
-  .ckform-input:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,90,255,0.08); }
-  .ckform-textarea { border: 1px solid var(--line); border-radius: var(--r-form); padding: 12px 14px; font-size: 14px; color: var(--ink); background: white; transition: var(--motion-default); width: 100%; resize: vertical; min-height: 90px; font-family: inherit; }
-  .ckform-textarea:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,90,255,0.08); }
 
   /* Checkout summary (sticky sidebar) */
   .cksummary-card { padding: 24px; position: sticky; top: 80px; }
