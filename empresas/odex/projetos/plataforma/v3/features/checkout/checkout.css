@@ -42,7 +42,7 @@
     border-radius: 0;
     box-shadow: -3px 0 17px 0 rgba(0,0,0,.08);
     overflow: hidden;
-    z-index: 50;
+    z-index: var(--z-modal);
     transform: translateX(100%);
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
