@@ -1,0 +1,1204 @@
+{
+  "primitives": {
+    "color": {
+      "brand": {
+        "navy": {
+          "value": "#0D1D52",
+          "type": "color",
+          "description": "Azul Odex · primário corporativo (sidebar, headings principais)"
+        },
+        "navy-hover": {
+          "value": "#162460",
+          "type": "color",
+          "description": "Hover navy variant"
+        },
+        "navy-50": {
+          "value": "#F0F3FA",
+          "type": "color",
+          "description": "Tint claríssimo navy · hover bg secondary-navy"
+        },
+        "navy-100": {
+          "value": "#E4ECFF",
+          "type": "color",
+          "description": "Tint claro navy · pill semcliente bg"
+        },
+        "blue": {
+          "value": "#005AFF",
+          "type": "color",
+          "description": "Azul complementar 1 · CTAs primários, links"
+        },
+        "blue-hover": {
+          "value": "#0046CC",
+          "type": "color",
+          "description": "Hover blue variant"
+        },
+        "blue-50": {
+          "value": "#F0F5FF",
+          "type": "color",
+          "description": "Tint claríssimo blue · hover bg secondary"
+        },
+        "blue-100": {
+          "value": "#DDE8FF",
+          "type": "color",
+          "description": "Tint claro blue · pill andamento bg"
+        },
+        "blue-700": {
+          "value": "#003BB3",
+          "type": "color",
+          "description": "Blue escuro · texto sobre blue-100 (contraste AA)"
+        },
+        "blue-button": {
+          "value": "#22437D",
+          "type": "color",
+          "description": "Azul botão (variante navy mid)"
+        },
+        "slate": {
+          "value": "#5A616F",
+          "type": "color",
+          "description": "Cinza-azulado complementar"
+        },
+        "slate-2": {
+          "value": "#3B537D",
+          "type": "color",
+          "description": "Azul complementar 2 · texto sobre info-bg"
+        },
+        "slate-300": {
+          "value": "#CBD5E1",
+          "type": "color",
+          "description": "Tint slate · hover border subtle"
+        },
+        "slate-soft": {
+          "value": "#ABB7CD",
+          "type": "color",
+          "description": "Slate suave · borders sutis"
+        },
+        "slate-soft-2": {
+          "value": "#BDC7D8",
+          "type": "color",
+          "description": "Slate ainda mais suave"
+        }
+      },
+      "text": {
+        "ink": {
+          "value": "#000000",
+          "type": "color",
+          "description": "Text padrão · headings e body principal"
+        },
+        "muted": {
+          "value": "#6E6E6E",
+          "type": "color",
+          "description": "Text complementar · labels secundárias, hints"
+        },
+        "soft": {
+          "value": "#EDEDED",
+          "type": "color",
+          "description": "BG neutro hover · não usar pra texto"
+        },
+        "placeholder": {
+          "value": "#B9B9B9",
+          "type": "color",
+          "description": "Input placeholder"
+        }
+      },
+      "surface": {
+        "bg": {
+          "value": "#F9F9F9",
+          "type": "color",
+          "description": "BG padrão da página"
+        },
+        "white": {
+          "value": "#FFFFFF",
+          "type": "color",
+          "description": "BG cards, inputs, modais"
+        },
+        "line": {
+          "value": "#E6E6E6",
+          "type": "color",
+          "description": "Border padrão · separadores, contornos de inputs"
+        },
+        "sidebar-bg": {
+          "value": "#0D1D52",
+          "type": "color",
+          "description": "BG da sidebar (alias semântico de brand.navy)"
+        }
+      },
+      "feedback": {
+        "green": {
+          "value": "#53C667",
+          "type": "color",
+          "description": "Success · confirmações, status aprovado"
+        },
+        "green-soft": {
+          "value": "#98DDA4",
+          "type": "color",
+          "description": "Success suave · borders/strokes"
+        },
+        "green-softer": {
+          "value": "#CCEED2",
+          "type": "color",
+          "description": "Success BG · pílulas, banners"
+        },
+        "green-700": {
+          "value": "#1C7A36",
+          "type": "color",
+          "description": "Texto sobre green-softer (4.30:1 · marginal, ainda usado em legacy)"
+        },
+        "green-800": {
+          "value": "#155A28",
+          "type": "color",
+          "description": "Texto sobre green-softer (6.62:1 · AA) · default em semantic"
+        },
+        "yellow": {
+          "value": "#F39200",
+          "type": "color",
+          "description": "Warning · pendentes, atenção"
+        },
+        "yellow-soft": {
+          "value": "#F8BE66",
+          "type": "color",
+          "description": "Warning suave"
+        },
+        "yellow-softer": {
+          "value": "#FCDFB3",
+          "type": "color",
+          "description": "Warning BG · pill backgrounds"
+        },
+        "yellow-700": {
+          "value": "#8A5400",
+          "type": "color",
+          "description": "Texto sobre yellow-softer (contraste WCAG)"
+        },
+        "red": {
+          "value": "#E94647",
+          "type": "color",
+          "description": "Error / destructive · validações, deleções"
+        },
+        "red-soft": {
+          "value": "#F29091",
+          "type": "color",
+          "description": "Error suave · disabled danger button"
+        },
+        "red-50": {
+          "value": "#FDE0E0",
+          "type": "color",
+          "description": "Tint error · pill cancelado bg, hover danger"
+        },
+        "red-700": {
+          "value": "#B8191C",
+          "type": "color",
+          "description": "Texto sobre red-50 (contraste WCAG)"
+        }
+      },
+      "info": {
+        "bg": {
+          "value": "#EFF4FF",
+          "type": "color",
+          "description": "BG de banners/alerts informativos azuis"
+        },
+        "border": {
+          "value": "#DDE9FF",
+          "type": "color",
+          "description": "Border de banners info"
+        },
+        "text": {
+          "value": "#3B537D",
+          "type": "color",
+          "description": "Texto sobre info.bg (alias de brand.slate-2)"
+        }
+      }
+    },
+    "radius": {
+      "form": {
+        "value": "4px",
+        "type": "borderRadius",
+        "description": "Inputs, selects, botões · DEFAULT do DS (Figma padrão)"
+      },
+      "tag": {
+        "value": "4px",
+        "type": "borderRadius",
+        "description": "Tags, status pills regulares"
+      },
+      "pill": {
+        "value": "2px",
+        "type": "borderRadius",
+        "description": "Pílulas especiais (Tornar Pedido, Ir para produtos)"
+      },
+      "card": {
+        "value": "12px",
+        "type": "borderRadius",
+        "description": "Cards regulares · listings, panels"
+      },
+      "card-lg": {
+        "value": "16px",
+        "type": "borderRadius",
+        "description": "Cards grandes, modais"
+      },
+      "circle": {
+        "value": "9999px",
+        "type": "borderRadius",
+        "description": "Circular total · avatars, dots"
+      }
+    },
+    "spacing": {
+      "0": {
+        "value": "0px",
+        "type": "spacing"
+      },
+      "2": {
+        "value": "2px",
+        "type": "spacing"
+      },
+      "4": {
+        "value": "4px",
+        "type": "spacing"
+      },
+      "6": {
+        "value": "6px",
+        "type": "spacing"
+      },
+      "8": {
+        "value": "8px",
+        "type": "spacing"
+      },
+      "10": {
+        "value": "10px",
+        "type": "spacing"
+      },
+      "12": {
+        "value": "12px",
+        "type": "spacing"
+      },
+      "14": {
+        "value": "14px",
+        "type": "spacing"
+      },
+      "16": {
+        "value": "16px",
+        "type": "spacing"
+      },
+      "18": {
+        "value": "18px",
+        "type": "spacing"
+      },
+      "20": {
+        "value": "20px",
+        "type": "spacing"
+      },
+      "22": {
+        "value": "22px",
+        "type": "spacing"
+      },
+      "24": {
+        "value": "24px",
+        "type": "spacing"
+      },
+      "28": {
+        "value": "28px",
+        "type": "spacing"
+      },
+      "32": {
+        "value": "32px",
+        "type": "spacing"
+      },
+      "36": {
+        "value": "36px",
+        "type": "spacing"
+      },
+      "40": {
+        "value": "40px",
+        "type": "spacing"
+      },
+      "44": {
+        "value": "44px",
+        "type": "spacing"
+      },
+      "48": {
+        "value": "48px",
+        "type": "spacing"
+      },
+      "56": {
+        "value": "56px",
+        "type": "spacing"
+      },
+      "64": {
+        "value": "64px",
+        "type": "spacing"
+      }
+    },
+    "shadow": {
+      "sm": {
+        "value": [
+          {
+            "x": "0",
+            "y": "1px",
+            "blur": "2px",
+            "spread": "0",
+            "color": "rgba(0,0,0,0.05)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Sutil · botões, badges"
+      },
+      "md": {
+        "value": [
+          {
+            "x": "0",
+            "y": "4px",
+            "blur": "6px",
+            "spread": "-1px",
+            "color": "rgba(0,0,0,0.05)",
+            "type": "dropShadow"
+          },
+          {
+            "x": "0",
+            "y": "2px",
+            "blur": "4px",
+            "spread": "-1px",
+            "color": "rgba(0,0,0,0.03)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Padrão · dropdowns, popovers"
+      },
+      "lg": {
+        "value": [
+          {
+            "x": "0",
+            "y": "10px",
+            "blur": "15px",
+            "spread": "-3px",
+            "color": "rgba(0,0,0,0.05)",
+            "type": "dropShadow"
+          },
+          {
+            "x": "0",
+            "y": "4px",
+            "blur": "6px",
+            "spread": "-2px",
+            "color": "rgba(0,0,0,0.025)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Grande · modais, overlays principais"
+      },
+      "card": {
+        "value": [
+          {
+            "x": "0",
+            "y": "0",
+            "blur": "16px",
+            "spread": "0",
+            "color": "rgba(0,0,0,0.08)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Card hover · listings interativos"
+      },
+      "dropdown": {
+        "value": [
+          {
+            "x": "0",
+            "y": "8px",
+            "blur": "24px",
+            "spread": "0",
+            "color": "rgba(13,29,82,.14)",
+            "type": "dropShadow"
+          },
+          {
+            "x": "0",
+            "y": "2px",
+            "blur": "6px",
+            "spread": "0",
+            "color": "rgba(0,0,0,.04)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Dropdown menu · navy-tinted lift"
+      },
+      "popover": {
+        "value": [
+          {
+            "x": "0",
+            "y": "12px",
+            "blur": "32px",
+            "spread": "0",
+            "color": "rgba(13,29,82,.14)",
+            "type": "dropShadow"
+          },
+          {
+            "x": "0",
+            "y": "4px",
+            "blur": "12px",
+            "spread": "0",
+            "color": "rgba(0,0,0,.04)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Popover · select menu open"
+      }
+    },
+    "overlay": {
+      "navy-soft": {
+        "value": "rgba(13, 29, 82, 0.20)",
+        "type": "color",
+        "description": "Sub-menus, light backdrop"
+      },
+      "navy-medium": {
+        "value": "rgba(13, 29, 82, 0.32)",
+        "type": "color",
+        "description": "Drawers default · notif/novidades"
+      },
+      "navy-strong": {
+        "value": "rgba(13, 29, 82, 0.42)",
+        "type": "color",
+        "description": "Modal default"
+      },
+      "navy-deep": {
+        "value": "rgba(13, 29, 82, 0.45)",
+        "type": "color",
+        "description": "Modal critical · ped-resumo"
+      },
+      "dark": {
+        "value": "rgba(8, 15, 49, 0.42)",
+        "type": "color",
+        "description": "Dark chat/help overlay"
+      },
+      "gray": {
+        "value": "rgba(17, 24, 39, 0.40)",
+        "type": "color",
+        "description": "Cart drawer overlay (gray-900)"
+      }
+    },
+    "glass": {
+      "white-light": {
+        "value": "rgba(255, 255, 255, 0.08)",
+        "type": "color",
+        "description": "dash-hero-stat backdrop"
+      },
+      "white-medium": {
+        "value": "rgba(255, 255, 255, 0.12)",
+        "type": "color",
+        "description": "dash-hero-quick-ico bg"
+      },
+      "white-strong": {
+        "value": "rgba(255, 255, 255, 0.16)",
+        "type": "color",
+        "description": "icon-btn-glass default"
+      },
+      "white-hover": {
+        "value": "rgba(255, 255, 255, 0.28)",
+        "type": "color",
+        "description": "Glass hover state"
+      },
+      "border": {
+        "value": "rgba(255, 255, 255, 0.14)",
+        "type": "color",
+        "description": "Glass card border"
+      },
+      "border-strong": {
+        "value": "rgba(255, 255, 255, 0.22)",
+        "type": "color",
+        "description": "Glass border emphasized"
+      },
+      "text-muted": {
+        "value": "rgba(255, 255, 255, 0.55)",
+        "type": "color",
+        "description": "Muted label sobre brand bg (kpi-glass label)"
+      },
+      "text-soft": {
+        "value": "rgba(255, 255, 255, 0.65)",
+        "type": "color",
+        "description": "Secondary text sobre brand bg"
+      },
+      "text-strong": {
+        "value": "rgba(255, 255, 255, 0.70)",
+        "type": "color",
+        "description": "Eyebrow text sobre brand bg"
+      },
+      "success-bg": {
+        "value": "rgba(34, 197, 94, 0.18)",
+        "type": "color",
+        "description": "Success pill bg sobre brand (kpi-glass trend up)"
+      },
+      "success-fg": {
+        "value": "#86EFAC",
+        "type": "color",
+        "description": "Success pill fg sobre brand (green-300)"
+      },
+      "error-bg": {
+        "value": "rgba(248, 113, 113, 0.18)",
+        "type": "color",
+        "description": "Error pill bg sobre brand (kpi-glass trend down)"
+      },
+      "error-fg": {
+        "value": "#FCA5A5",
+        "type": "color",
+        "description": "Error pill fg sobre brand (red-300)"
+      }
+    },
+    "tint": {
+      "blue-soft": {
+        "value": "rgba(0, 90, 255, 0.08)",
+        "type": "color",
+        "description": "Subtle blue tint · row hover, icon hover"
+      },
+      "blue-medium": {
+        "value": "rgba(0, 90, 255, 0.10)",
+        "type": "color",
+        "description": "Focus ring background"
+      },
+      "blue-strong": {
+        "value": "rgba(0, 90, 255, 0.18)",
+        "type": "color",
+        "description": "Active state subtle"
+      },
+      "blue-shadow": {
+        "value": "rgba(0, 90, 255, 0.30)",
+        "type": "color",
+        "description": "Shadow blue · CTA emphasis"
+      },
+      "warning-glow": {
+        "value": "rgba(243, 146, 0, 0.24)",
+        "type": "color",
+        "description": "Warm pill shadow"
+      },
+      "navy-glow": {
+        "value": "rgba(34, 67, 125, 0.20)",
+        "type": "color",
+        "description": "Cool pill shadow"
+      }
+    },
+    "font": {
+      "family": {
+        "sans": {
+          "value": "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          "type": "fontFamilies",
+          "description": "Fonte sans padrão. Inter como primária"
+        }
+      },
+      "weight": {
+        "regular": {
+          "value": 400,
+          "type": "fontWeights"
+        },
+        "medium": {
+          "value": 500,
+          "type": "fontWeights"
+        },
+        "semibold": {
+          "value": 600,
+          "type": "fontWeights"
+        },
+        "bold": {
+          "value": 700,
+          "type": "fontWeights"
+        }
+      },
+      "size": {
+        "12": {
+          "value": "12px",
+          "type": "fontSizes",
+          "description": "P3 · captions, meta"
+        },
+        "13": {
+          "value": "13px",
+          "type": "fontSizes",
+          "description": "Links, microcopy"
+        },
+        "14": {
+          "value": "14px",
+          "type": "fontSizes",
+          "description": "P · body padrão"
+        },
+        "15": {
+          "value": "15px",
+          "type": "fontSizes",
+          "description": "Inputs · auth pattern"
+        },
+        "16": {
+          "value": "16px",
+          "type": "fontSizes",
+          "description": "P2 / P-bold · inputs DS canônico"
+        },
+        "18": {
+          "value": "18px",
+          "type": "fontSizes",
+          "description": "Pequenos headings"
+        },
+        "24": {
+          "value": "24px",
+          "type": "fontSizes",
+          "description": "H3"
+        },
+        "28": {
+          "value": "28px",
+          "type": "fontSizes",
+          "description": "Auth form title"
+        },
+        "38": {
+          "value": "38px",
+          "type": "fontSizes",
+          "description": "H2"
+        },
+        "44": {
+          "value": "44px",
+          "type": "fontSizes",
+          "description": "Auth brand title"
+        },
+        "64": {
+          "value": "64px",
+          "type": "fontSizes",
+          "description": "H1"
+        }
+      },
+      "lineHeight": {
+        "tight": {
+          "value": "1",
+          "type": "lineHeights",
+          "description": "100% · headings DS canônico"
+        },
+        "snug": {
+          "value": "1.05",
+          "type": "lineHeights",
+          "description": "H2"
+        },
+        "normal": {
+          "value": "1.2",
+          "type": "lineHeights",
+          "description": "H3"
+        },
+        "relaxed": {
+          "value": "1.4",
+          "type": "lineHeights",
+          "description": "P-bold"
+        },
+        "loose": {
+          "value": "1.5",
+          "type": "lineHeights",
+          "description": "Body padrão"
+        },
+        "looser": {
+          "value": "1.6",
+          "type": "lineHeights",
+          "description": "Auth brand sub"
+        }
+      }
+    },
+    "size": {
+      "control": {
+        "sm": {
+          "value": "32px",
+          "type": "sizing",
+          "description": "Botões/inputs pequenos · .ds-btn-sm"
+        },
+        "md": {
+          "value": "42px",
+          "type": "sizing",
+          "description": "Botões/inputs default · .ds-btn, .ds-input"
+        },
+        "lg": {
+          "value": "48px",
+          "type": "sizing",
+          "description": "Botões/inputs grandes · .ds-btn-lg, .auth-submit"
+        }
+      },
+      "icon": {
+        "xs": {
+          "value": "12px",
+          "type": "sizing"
+        },
+        "sm": {
+          "value": "14px",
+          "type": "sizing"
+        },
+        "md": {
+          "value": "16px",
+          "type": "sizing",
+          "description": "Default · inputs, botões"
+        },
+        "lg": {
+          "value": "18px",
+          "type": "sizing",
+          "description": "Standalone, hero"
+        },
+        "xl": {
+          "value": "24px",
+          "type": "sizing"
+        }
+      }
+    },
+    "motion": {
+      "duration": {
+        "instant": {
+          "value": "0ms",
+          "type": "other",
+          "description": "Sem animação · toggle states"
+        },
+        "fast": {
+          "value": "120ms",
+          "type": "other",
+          "description": "Hover, micro-interaction (option hover, reveal)"
+        },
+        "default": {
+          "value": "150ms",
+          "type": "other",
+          "description": "Padrão · botões, links, focus rings"
+        },
+        "medium": {
+          "value": "200ms",
+          "type": "other",
+          "description": "Transição maior · inputs, dropdowns"
+        },
+        "slow": {
+          "value": "300ms",
+          "type": "other",
+          "description": "Animação grande · progress bars, fades"
+        }
+      },
+      "easing": {
+        "default": {
+          "value": "ease",
+          "type": "other",
+          "description": "Browser default · uso geral"
+        },
+        "standard": {
+          "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "type": "other",
+          "description": "Material standard · enter+exit balanced"
+        },
+        "decelerate": {
+          "value": "cubic-bezier(0, 0, 0.2, 1)",
+          "type": "other",
+          "description": "Enter (in) · slows at end"
+        },
+        "accelerate": {
+          "value": "cubic-bezier(0.4, 0, 1, 1)",
+          "type": "other",
+          "description": "Exit (out) · accelerates"
+        },
+        "linear": {
+          "value": "linear",
+          "type": "other",
+          "description": "Linear · progress, loading"
+        }
+      }
+    },
+    "z": {
+      "base": {
+        "value": "0",
+        "type": "other",
+        "description": "Default · sem stacking"
+      },
+      "rise": {
+        "value": "1",
+        "type": "other",
+        "description": "Pequeno lift · cards on hover"
+      },
+      "dropdown": {
+        "value": "100",
+        "type": "other",
+        "description": "Dropdowns, menus contextuais"
+      },
+      "sticky": {
+        "value": "200",
+        "type": "other",
+        "description": "Sticky elements, sidebar fixa"
+      },
+      "overlay": {
+        "value": "300",
+        "type": "other",
+        "description": "Modal overlay (backdrop)"
+      },
+      "modal": {
+        "value": "310",
+        "type": "other",
+        "description": "Modal content (acima do overlay)"
+      },
+      "popover": {
+        "value": "400",
+        "type": "other",
+        "description": "Popovers, tooltips · acima de modal"
+      },
+      "toast": {
+        "value": "500",
+        "type": "other",
+        "description": "Toasts, notifications · top of stack"
+      },
+      "loader": {
+        "value": "9999",
+        "type": "other",
+        "description": "Full-screen loader"
+      }
+    },
+    "breakpoint": {
+      "sm": {
+        "value": "600px",
+        "type": "sizing",
+        "description": "Mobile · phones · @media (max-width: 600px)"
+      },
+      "md": {
+        "value": "768px",
+        "type": "sizing",
+        "description": "Tablet · @media (max-width: 768px)"
+      },
+      "lg": {
+        "value": "960px",
+        "type": "sizing",
+        "description": "Small desktop · @media (max-width: 960px)"
+      },
+      "xl": {
+        "value": "1100px",
+        "type": "sizing",
+        "description": "Desktop · @media (max-width: 1100px)"
+      },
+      "xxl": {
+        "value": "1280px",
+        "type": "sizing",
+        "description": "Wide desktop · @media (max-width: 1280px)"
+      }
+    }
+  },
+  "semantic": {
+    "action": {
+      "primary-bg": {
+        "value": "{color.brand.blue}",
+        "type": "color"
+      },
+      "primary-bg-hover": {
+        "value": "{color.brand.blue-hover}",
+        "type": "color"
+      },
+      "primary-fg": {
+        "value": "{color.surface.white}",
+        "type": "color"
+      },
+      "primary-navy-bg": {
+        "value": "{color.brand.navy}",
+        "type": "color"
+      },
+      "primary-navy-bg-hover": {
+        "value": "{color.brand.navy-hover}",
+        "type": "color"
+      },
+      "primary-navy-fg": {
+        "value": "{color.surface.white}",
+        "type": "color"
+      },
+      "secondary-bg": {
+        "value": "{color.surface.white}",
+        "type": "color"
+      },
+      "secondary-bg-hover": {
+        "value": "{color.brand.blue-50}",
+        "type": "color"
+      },
+      "secondary-fg": {
+        "value": "{color.brand.blue}",
+        "type": "color"
+      },
+      "secondary-border": {
+        "value": "{color.brand.blue}",
+        "type": "color"
+      },
+      "secondary-navy-bg": {
+        "value": "{color.surface.white}",
+        "type": "color"
+      },
+      "secondary-navy-bg-hover": {
+        "value": "{color.brand.navy-50}",
+        "type": "color"
+      },
+      "secondary-navy-fg": {
+        "value": "{color.brand.navy}",
+        "type": "color"
+      },
+      "secondary-navy-border": {
+        "value": "{color.brand.navy}",
+        "type": "color"
+      },
+      "ghost-bg": {
+        "value": "{color.surface.white}",
+        "type": "color"
+      },
+      "ghost-fg": {
+        "value": "{color.text.ink}",
+        "type": "color"
+      },
+      "ghost-border": {
+        "value": "{color.surface.line}",
+        "type": "color"
+      },
+      "ghost-border-hover": {
+        "value": "{color.text.ink}",
+        "type": "color"
+      },
+      "danger-bg": {
+        "value": "{color.surface.white}",
+        "type": "color"
+      },
+      "danger-bg-hover": {
+        "value": "{color.feedback.red-50}",
+        "type": "color"
+      },
+      "danger-fg": {
+        "value": "{color.feedback.red-700}",
+        "type": "color",
+        "description": "Red escuro · AA contraste sobre white (6.58:1)"
+      },
+      "danger-border": {
+        "value": "{color.feedback.red}",
+        "type": "color",
+        "description": "Red claro · UI border passa 3:1 sobre white"
+      },
+      "danger-disabled-fg": {
+        "value": "{color.feedback.red-soft}",
+        "type": "color"
+      },
+      "danger-disabled-border": {
+        "value": "{color.feedback.red-soft}",
+        "type": "color"
+      }
+    },
+    "surface": {
+      "page": {
+        "value": "{color.surface.bg}",
+        "type": "color",
+        "description": "BG da página"
+      },
+      "card": {
+        "value": "{color.surface.white}",
+        "type": "color",
+        "description": "BG cards/inputs/modais"
+      },
+      "sunken": {
+        "value": "{color.text.soft}",
+        "type": "color",
+        "description": "BG hover, disabled"
+      },
+      "raised": {
+        "value": "{color.surface.white}",
+        "type": "color",
+        "description": "Alias elementos elevados"
+      },
+      "info": {
+        "value": "{color.info.bg}",
+        "type": "color",
+        "description": "BG banners info"
+      }
+    },
+    "text": {
+      "default": {
+        "value": "{color.text.ink}",
+        "type": "color"
+      },
+      "strong": {
+        "value": "{color.brand.navy}",
+        "type": "color",
+        "description": "Headings importantes"
+      },
+      "label": {
+        "value": "{color.brand.navy}",
+        "type": "color",
+        "description": "Labels de campo"
+      },
+      "muted": {
+        "value": "{color.text.muted}",
+        "type": "color"
+      },
+      "placeholder": {
+        "value": "{color.text.placeholder}",
+        "type": "color"
+      },
+      "link": {
+        "value": "{color.brand.blue}",
+        "type": "color"
+      },
+      "on-brand": {
+        "value": "{color.surface.white}",
+        "type": "color",
+        "description": "Text sobre brand bg (navy/blue)"
+      },
+      "disabled": {
+        "value": "{color.text.muted}",
+        "type": "color"
+      }
+    },
+    "border": {
+      "default": {
+        "value": "{color.surface.line}",
+        "type": "color"
+      },
+      "focus": {
+        "value": "{color.brand.blue}",
+        "type": "color"
+      },
+      "strong": {
+        "value": "{color.brand.slate-soft-2}",
+        "type": "color"
+      },
+      "hover": {
+        "value": "{color.brand.slate-300}",
+        "type": "color"
+      }
+    },
+    "feedback": {
+      "success-bg": {
+        "value": "{color.feedback.green-softer}",
+        "type": "color"
+      },
+      "success-fg": {
+        "value": "{color.feedback.green-800}",
+        "type": "color",
+        "description": "AA contraste sobre green-softer (6.62:1)"
+      },
+      "success-strong": {
+        "value": "{color.feedback.green}",
+        "type": "color"
+      },
+      "success-border": {
+        "value": "{color.feedback.green-soft}",
+        "type": "color"
+      },
+      "warning-bg": {
+        "value": "{color.feedback.yellow-softer}",
+        "type": "color"
+      },
+      "warning-fg": {
+        "value": "{color.feedback.yellow-700}",
+        "type": "color"
+      },
+      "warning-strong": {
+        "value": "{color.feedback.yellow}",
+        "type": "color"
+      },
+      "warning-border": {
+        "value": "{color.feedback.yellow-soft}",
+        "type": "color"
+      },
+      "error-bg": {
+        "value": "{color.feedback.red-50}",
+        "type": "color"
+      },
+      "error-fg": {
+        "value": "{color.feedback.red-700}",
+        "type": "color"
+      },
+      "error-strong": {
+        "value": "{color.feedback.red}",
+        "type": "color"
+      },
+      "error-border": {
+        "value": "{color.feedback.red-soft}",
+        "type": "color"
+      },
+      "info-bg": {
+        "value": "{color.info.bg}",
+        "type": "color"
+      },
+      "info-fg": {
+        "value": "{color.info.text}",
+        "type": "color"
+      },
+      "info-strong": {
+        "value": "{color.brand.blue}",
+        "type": "color"
+      },
+      "info-border": {
+        "value": "{color.info.border}",
+        "type": "color"
+      }
+    },
+    "status": {
+      "andamento-bg": {
+        "value": "{color.brand.blue-100}",
+        "type": "color",
+        "description": "Pill 'Em andamento' bg"
+      },
+      "andamento-fg": {
+        "value": "{color.brand.blue-700}",
+        "type": "color",
+        "description": "AA contraste sobre blue-100 (7.49:1)"
+      },
+      "semcliente-bg": {
+        "value": "{color.brand.navy-100}",
+        "type": "color",
+        "description": "Pill 'Sem cliente' bg"
+      },
+      "semcliente-fg": {
+        "value": "{color.brand.navy}",
+        "type": "color"
+      }
+    },
+    "shadow": {
+      "focus-blue": {
+        "value": [
+          {
+            "x": "0",
+            "y": "0",
+            "blur": "0",
+            "spread": "3px",
+            "color": "rgba(0, 90, 255, 0.10)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Focus ring inputs/buttons"
+      },
+      "focus-error": {
+        "value": [
+          {
+            "x": "0",
+            "y": "0",
+            "blur": "0",
+            "spread": "3px",
+            "color": "rgba(233, 70, 71, 0.10)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Focus ring error state"
+      },
+      "cta-blue": {
+        "value": [
+          {
+            "x": "0",
+            "y": "4px",
+            "blur": "12px",
+            "spread": "0",
+            "color": "rgba(0, 90, 255, 0.20)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Drop shadow CTA primary"
+      },
+      "cta-blue-hover": {
+        "value": [
+          {
+            "x": "0",
+            "y": "6px",
+            "blur": "16px",
+            "spread": "0",
+            "color": "rgba(0, 90, 255, 0.25)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Drop shadow CTA primary hover"
+      }
+    }
+  },
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "primitives",
+      "semantic"
+    ]
+  }
+}
