@@ -2257,7 +2257,7 @@
               <p class="resumo-client-name">${o.nome}</p>
               <p class="resumo-client-meta">Criado em ${o.data} · ${o.potencia}</p>
             </div>
-            <div class="resumo-status"><span class="ped-v2-pill ds-tab-pill ${statusMap[o.status]||'ped-v2-pill-and'}">${o.status}</span></div>
+            <div class="resumo-status"><span class="ds-tab-pill ${statusMap[o.status]||'ped-v2-pill-and'}">${o.status}</span></div>
           </div>
 
           <div class="resumo-grid-2col">
@@ -4712,8 +4712,8 @@
               <div class="ped-v2-banner-left">
                 <h2>Pedido #${p.id}</h2>
                 <div class="ped-v2-meta">
-                  <span class="ped-v2-pill ds-tab-pill ${statusPillClass}">${p.status}</span>
-                  ${p.faturado?`<span class="ped-v2-pill ds-tab-pill ped-v2-pill-fat">Faturado</span>`:''}
+                  <span class="ds-tab-pill ${statusPillClass}">${p.status}</span>
+                  ${p.faturado?`<span class="ds-tab-pill ped-v2-pill-fat">Faturado</span>`:''}
                   <span class="ped-v2-date">${p.data}</span>
                 </div>
               </div>
@@ -5634,7 +5634,7 @@
       /* ====== MODAL RESUMO DO PEDIDO ====== */
       function _resumoStatusPill(s) {
         const m = { 'Finalizado':'ped-v2-pill-fin', 'Em andamento':'ped-v2-pill-and', 'Cancelado':'ped-v2-pill-can' };
-        return `<span class="ped-v2-pill ds-tab-pill ${m[s]||'ped-v2-pill-and'}">${s}</span>`;
+        return `<span class="ds-tab-pill ${m[s]||'ped-v2-pill-and'}">${s}</span>`;
       }
       window.downloadPedido = function(id, format) {
         const p = pedidosData.find(x => x.id === id);
