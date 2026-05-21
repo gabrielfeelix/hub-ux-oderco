@@ -1161,8 +1161,8 @@
           <div class="nc-field"><label class="nc-label">Estado (sigla) <span class="req">*</span></label><input type="text" class="nc-input" id="ncEstado" placeholder="UF" maxlength="2"></div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">Local da Entrega <span class="req">*</span></label><div class="nc-radio-row"><label class="nc-radio-opt"><input type="radio" name="ncLocal" value="urbano" checked onchange="toggleNcRuralKm(false)"> Área Urbana</label><label class="nc-radio-opt"><input type="radio" name="ncLocal" value="rural" onchange="toggleNcRuralKm(true)"> Área Rural</label></div></div>
-          <div class="nc-field"><label class="nc-label">Possível Carreta <span class="req">*</span></label><div class="nc-radio-row"><label class="nc-radio-opt"><input type="radio" name="ncCarreta" value="sim"> Sim</label><label class="nc-radio-opt"><input type="radio" name="ncCarreta" value="nao" checked> Não</label></div></div>
+          <div class="nc-field"><label class="nc-label">Local da Entrega <span class="req">*</span></label><div class="nc-radio-row"><label class="ds-check"><input type="radio" name="ncLocal" value="urbano" checked onchange="toggleNcRuralKm(false)"> Área Urbana</label><label class="ds-check"><input type="radio" name="ncLocal" value="rural" onchange="toggleNcRuralKm(true)"> Área Rural</label></div></div>
+          <div class="nc-field"><label class="nc-label">Possível Carreta <span class="req">*</span></label><div class="nc-radio-row"><label class="ds-check"><input type="radio" name="ncCarreta" value="sim"> Sim</label><label class="ds-check"><input type="radio" name="ncCarreta" value="nao" checked> Não</label></div></div>
         </div>
         <div class="nc-field" id="ncRuralKmField" style="display:none;margin-bottom:14px;">
           <label class="nc-label">Distância da cidade até o local <span class="req">*</span></label>
@@ -3667,13 +3667,13 @@
                     <button class="ov-buscar-btn" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
                   </div>
                   <div class="ov-radio-row">
-                    <label class="ov-radio"><input type="radio" name="ck_tipo_v" value="direta" checked> <span>Venda Direta</span></label>
-                    <label class="ov-radio"><input type="radio" name="ck_tipo_v" value="revenda"> <span>Revenda</span></label>
+                    <label class="ds-check"><input type="radio" name="ck_tipo_v" value="direta" checked> <span>Venda Direta</span></label>
+                    <label class="ds-check"><input type="radio" name="ck_tipo_v" value="revenda"> <span>Revenda</span></label>
                   </div>
                   <div class="ov-radio-row" style="margin-top:0;">
-                    <label class="ov-radio"><input type="radio" name="ck_tipo_c" value="pj" checked> <span>Pessoa Jurídica</span></label>
-                    <label class="ov-radio"><input type="radio" name="ck_tipo_c" value="pf"> <span>Pessoa Física</span></label>
-                    <label class="ov-radio"><input type="radio" name="ck_tipo_c" value="ni"> <span>Não Informar</span></label>
+                    <label class="ds-check"><input type="radio" name="ck_tipo_c" value="pj" checked> <span>Pessoa Jurídica</span></label>
+                    <label class="ds-check"><input type="radio" name="ck_tipo_c" value="pf"> <span>Pessoa Física</span></label>
+                    <label class="ds-check"><input type="radio" name="ck_tipo_c" value="ni"> <span>Não Informar</span></label>
                   </div>
                   <div class="ov-field">
                     <label class="ov-label">Título do Orçamento <span class="req">*</span></label>
@@ -3689,8 +3689,8 @@
                   <div class="ov-field">
                     <label class="ov-label">Local de Entrega</label>
                     <div class="ov-radio-row">
-                      <label class="ov-radio checked"><input type="radio" name="ck_local" value="urbano" checked onchange="setCkLocal('urbano')"> <span>Área Urbana</span></label>
-                      <label class="ov-radio"><input type="radio" name="ck_local" value="rural" onchange="setCkLocal('rural')"> <span>Área Rural</span></label>
+                      <label class="ds-check"><input type="radio" name="ck_local" value="urbano" checked onchange="setCkLocal('urbano')"> <span>Área Urbana</span></label>
+                      <label class="ds-check"><input type="radio" name="ck_local" value="rural" onchange="setCkLocal('rural')"> <span>Área Rural</span></label>
                     </div>
                   </div>
                   <div class="ov-field" id="ckRuralKmField" style="display:none;">
@@ -3784,8 +3784,8 @@
                   <div class="ov-premia">
                     <div class="ov-premia-head">Prêmio Venda Direta</div>
                     <div class="ov-premia-row">
-                      <label class="ov-premia-radio"><input type="radio" name="ck_premia_t" value="pct" checked> <span>%</span></label>
-                      <label class="ov-premia-radio"><input type="radio" name="ck_premia_t" value="rs"> <span>R$</span></label>
+                      <label class="ds-check"><input type="radio" name="ck_premia_t" value="pct" checked> <span>%</span></label>
+                      <label class="ds-check"><input type="radio" name="ck_premia_t" value="rs"> <span>R$</span></label>
                       <input type="text" class="ov-premia-input" value="0,0000">
                       <button class="ov-premia-save" aria-label="Salvar prêmio"><i data-lucide="save" style="width:13px;height:13px;"></i></button>
                     </div>
@@ -4267,9 +4267,9 @@
                     <button class="ov-buscar-btn" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
                   </div>
                   <div class="ov-radio-row">
-                    <label class="ov-radio"><input type="radio" name="ov_tipo" value="pj" onchange="setOvTipoCliente('pj')"> <span>Pessoa Jurídica</span></label>
-                    <label class="ov-radio"><input type="radio" name="ov_tipo" value="pf" onchange="setOvTipoCliente('pf')"> <span>Pessoa Física</span></label>
-                    <label class="ov-radio checked"><input type="radio" name="ov_tipo" value="ni" checked onchange="setOvTipoCliente('ni')"> <span>Não Informar</span></label>
+                    <label class="ds-check"><input type="radio" name="ov_tipo" value="pj" onchange="setOvTipoCliente('pj')"> <span>Pessoa Jurídica</span></label>
+                    <label class="ds-check"><input type="radio" name="ov_tipo" value="pf" onchange="setOvTipoCliente('pf')"> <span>Pessoa Física</span></label>
+                    <label class="ds-check"><input type="radio" name="ov_tipo" value="ni" checked onchange="setOvTipoCliente('ni')"> <span>Não Informar</span></label>
                   </div>
                   <div id="ovCadFields"></div>
                 </div>
@@ -4292,8 +4292,8 @@
                 <div class="ov-premia">
                   <div class="ov-premia-head">Prêmio Venda Direta</div>
                   <div class="ov-premia-row">
-                    <label class="ov-premia-radio"><input type="radio" name="ov_premia_t" value="pct" checked> <span>%</span></label>
-                    <label class="ov-premia-radio"><input type="radio" name="ov_premia_t" value="rs"> <span>R$</span></label>
+                    <label class="ds-check"><input type="radio" name="ov_premia_t" value="pct" checked> <span>%</span></label>
+                    <label class="ds-check"><input type="radio" name="ov_premia_t" value="rs"> <span>R$</span></label>
                     <input type="text" class="ov-premia-input" value="0,0000">
                     <button class="ov-premia-save" aria-label="Salvar prêmio"><i data-lucide="save" style="width:13px;height:13px;"></i></button>
                   </div>
@@ -4329,8 +4329,8 @@
           <div class="ov-field">
             <label class="ov-label">Local de Entrega <span class="req">*</span></label>
             <div class="ov-check-row">
-              <label class="ov-check"><input type="checkbox" name="ovLocal" value="urbano" onchange="setOvLocal('urbano')"> <span>Área Urbana</span></label>
-              <label class="ov-check"><input type="checkbox" name="ovLocal" value="rural" onchange="setOvLocal('rural')"> <span>Área Rural</span></label>
+              <label class="ds-check"><input type="checkbox" name="ovLocal" value="urbano" onchange="setOvLocal('urbano')"> <span>Área Urbana</span></label>
+              <label class="ds-check"><input type="checkbox" name="ovLocal" value="rural" onchange="setOvLocal('rural')"> <span>Área Rural</span></label>
             </div>
           </div>
           <div class="ov-field" id="ovRuralKmField" style="display:none;">
@@ -4394,8 +4394,8 @@
           <div class="ov-field">
             <label class="ov-label">Local de Entrega</label>
             <div class="ov-check-row">
-              <label class="ov-check"><input type="checkbox"> <span>Área Urbana</span></label>
-              <label class="ov-check"><input type="checkbox"> <span>Área Rural</span></label>
+              <label class="ds-check"><input type="checkbox"> <span>Área Urbana</span></label>
+              <label class="ds-check"><input type="checkbox"> <span>Área Rural</span></label>
             </div>
           </div>
           <div class="ov-field">
@@ -4446,7 +4446,7 @@
               <div class="ov-field">
                 <label class="ov-label">Inscrição Estadual <span class="req">*</span></label>
                 <input type="text" class="ov-input" placeholder="Insento / Número">
-                <label class="ov-check" style="margin-top:6px;"><input type="checkbox"> <span>Isento</span></label>
+                <label class="ds-check" style="margin-top:6px;"><input type="checkbox"> <span>Isento</span></label>
               </div>
             </div>
             <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
@@ -8083,7 +8083,7 @@ Fone: (44) 2101-1400`;
                 </select>
               </div>
             </div>
-            <label class="auth-check">
+            <label class="ds-check">
               <input type="checkbox">
               <span>Li e aceito os <a href="#" class="auth-link">termos e condições</a> de uso da plataforma.</span>
             </label>
