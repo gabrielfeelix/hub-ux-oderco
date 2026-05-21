@@ -1868,7 +1868,7 @@
                 <strong>Adicione sua marca</strong>
                 <small>Esta logo aparecerá no orçamento enviado ao cliente final.</small>
               </div>
-              <button class="orc-doc-brandbar-cta" onclick="openIntegradorLogoModal()"><i data-lucide="upload" style="width:12px;height:12px;"></i> Enviar logo</button>
+              <button class="ds-btn ds-btn-ghost ds-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="upload" style="width:12px;height:12px;"></i> Enviar logo</button>
             </div>`;
         }
         return `
@@ -1878,7 +1878,7 @@
               <strong>${nome}</strong>
               <small>Logo do integrador no orçamento</small>
             </div>
-            <button class="orc-doc-brandbar-cta" onclick="openIntegradorLogoModal()"><i data-lucide="pencil" style="width:12px;height:12px;"></i> Trocar</button>
+            <button class="ds-btn ds-btn-ghost ds-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="pencil" style="width:12px;height:12px;"></i> Trocar</button>
           </div>`;
       }
       function openIntegradorLogoModal() {
@@ -2889,7 +2889,7 @@
                     <span id="pdpQtyVal">1</span>
                     <button onclick="pdpQty(1)" aria-label="Aumentar">+</button>
                   </div>
-                  <button class="pdp-add-btn" onclick="addCart('${p.sku}',pdpGetQty())" ${!p.available?'disabled':''}>
+                  <button class="ds-btn ds-btn-primary ds-btn-lg" style="flex:1" onclick="addCart('${p.sku}',pdpGetQty())" ${!p.available?'disabled':''}>
                     <i data-lucide="shopping-cart" style="width:16px;height:16px;"></i> ${p.available ? 'Adicionar ao Orçamento' : 'Indisponível'}
                   </button>
                 </div>
@@ -3652,7 +3652,7 @@
                 <p class="ov-sub">${entries.length} ${entries.length===1?'item':'itens'} · ${totalKw.toFixed(2)} kWp · ${fmt(total)}</p>
               </div>
               <div class="ov-header-actions">
-                <button class="ov-print-btn" type="button" onclick="history.back()"><i data-lucide="x" style="width:15px;height:15px;"></i> Cancelar</button>
+                <button class="ds-btn ds-btn-ghost" type="button" onclick="history.back()"><i data-lucide="x" style="width:15px;height:15px;"></i> Cancelar</button>
                 <button class="ds-btn ds-btn-primary" type="button"><i data-lucide="send" style="width:15px;height:15px;"></i> Enviar Orçamento</button>
               </div>
             </div>
@@ -3912,7 +3912,7 @@
                       </button>
                     </div>
                   </div>
-                  <button class="profile-hero-edit-btn" onclick="openProfileEdit()">
+                  <button class="ds-btn ds-btn-secondary ds-btn-sm" onclick="openProfileEdit()">
                     <i data-lucide="edit-3" style="width:14px;height:14px;"></i> Editar perfil
                   </button>
                 </div>
@@ -4245,9 +4245,9 @@
                 <p class="ov-sub">Criado em ${o.data} · ${o.items.length} ${o.items.length===1?'item':'itens'} · ${o.potencia}</p>
               </div>
               <div class="ov-header-actions">
-                <button class="ov-print-btn" title="Imprimir"><i data-lucide="printer" style="width:15px;height:15px;"></i> Imprimir</button>
-                <button class="ov-share-btn" title="Enviar por email" onclick="openOrcamentoEmail(${o.id})"><i data-lucide="mail" style="width:15px;height:15px;"></i> Enviar</button>
-                <button class="ov-whats-btn" title="Enviar por WhatsApp" onclick="openOrcamentoWhats(${o.id})"><i data-lucide="message-circle" style="width:15px;height:15px;"></i> WhatsApp</button>
+                <button class="ds-btn ds-btn-ghost" title="Imprimir"><i data-lucide="printer" style="width:15px;height:15px;"></i> Imprimir</button>
+                <button class="ds-btn ds-btn-ghost" title="Enviar por email" onclick="openOrcamentoEmail(${o.id})"><i data-lucide="mail" style="width:15px;height:15px;"></i> Enviar</button>
+                <button class="ds-btn ds-btn-ghost" title="Enviar por WhatsApp" onclick="openOrcamentoWhats(${o.id})"><i data-lucide="message-circle" style="width:15px;height:15px;"></i> WhatsApp</button>
                 <button class="ds-btn ds-btn-primary"><i data-lucide="save" style="width:15px;height:15px;"></i> Salvar</button>
               </div>
             </div>
@@ -5743,13 +5743,13 @@
                   <span class="resumo-nf-meta">Emitida em ${p.data}</span>
                 </div>
                 <div class="resumo-nf-actions">
-                  <button class="resumo-nf-btn" onclick="downloadPedidoNF(${p.id}, 'pdf')" title="Baixar PDF">
+                  <button class="ds-btn ds-btn-secondary" style="flex:1" onclick="downloadPedidoNF(${p.id}, 'pdf')" title="Baixar PDF">
                     <i data-lucide="file-text" style="width:14px;height:14px;"></i> PDF
                   </button>
-                  <button class="resumo-nf-btn" onclick="downloadPedidoNF(${p.id}, 'xml')" title="Baixar XML">
+                  <button class="ds-btn ds-btn-secondary" style="flex:1" onclick="downloadPedidoNF(${p.id}, 'xml')" title="Baixar XML">
                     <i data-lucide="code-2" style="width:14px;height:14px;"></i> XML
                   </button>
-                  <button class="resumo-nf-btn" onclick="downloadPedidoNF(${p.id}, 'danfe')" title="Baixar DANFE">
+                  <button class="ds-btn ds-btn-secondary" style="flex:1" onclick="downloadPedidoNF(${p.id}, 'danfe')" title="Baixar DANFE">
                     <i data-lucide="receipt" style="width:14px;height:14px;"></i> DANFE
                   </button>
                 </div>
@@ -5877,7 +5877,7 @@
             </div>
             <div class="novas-content">
               <p class="novas-desc${n.expanded?'':' is-clamped'}">${n.desc}</p>
-              <button class="novas-more-btn" onclick="novaToggleMore(${i})">
+              <button class="ds-btn ds-btn-ghost ds-btn-sm" onclick="novaToggleMore(${i})">
                 ${n.expanded?'Menos':'Mais'} <i data-lucide="${n.expanded?'chevron-up':'chevron-down'}" style="width:14px;height:14px;"></i>
               </button>
             </div>
@@ -6480,7 +6480,7 @@
                       <div class="client-detail-code">#${c.id} · ERP: ${c.erp}</div>
                     </div>
                   </div>
-                  <button class="client-edit-btn2" onclick="openClienteEdit(${c.id})"><i data-lucide="edit-2" style="width:13px;height:13px;"></i> Editar</button>
+                  <button class="ds-btn ds-btn-ghost ds-btn-sm" onclick="openClienteEdit(${c.id})"><i data-lucide="edit-2" style="width:13px;height:13px;"></i> Editar</button>
                 </div>
                 <div class="client-kpis ds-kpi-grid">
                   <div class="client-kpi ds-kpi ds-kpi-sm"><div class="client-kpi-lbl ds-kpi-lbl">Valor em Orçamentos</div><div class="client-kpi-val ds-kpi-val">${fmt(c.orcamentos.reduce((s,o)=>s+o.total,0))}</div></div>
@@ -6497,7 +6497,7 @@
               <div class="card client-addr-card">
                 <div class="client-addr-title">
                   <span>Endereços Cadastrados</span>
-                  <button class="client-edit-btn2" onclick="openClienteEndereco(${c.id})"><i data-lucide="plus" style="width:13px;height:13px;"></i> Adicionar</button>
+                  <button class="ds-btn ds-btn-ghost ds-btn-sm" onclick="openClienteEndereco(${c.id})"><i data-lucide="plus" style="width:13px;height:13px;"></i> Adicionar</button>
                 </div>
                 ${c.enderecos.length?c.enderecos.map(e=>`
                   <div class="client-addr-item">
@@ -8771,7 +8771,7 @@ Fone: (44) 2101-1400`;
                 <div class="mk-stepper-card">
                   <div class="mk-stepper-card-head">
                     <span class="step-of">Passo ${idx+1} de ${steps.length}</span>
-                    <button type="button" class="mk-reset-btn" onclick="mkResetBuilder()" title="Reiniciar montagem">
+                    <button type="button" class="ds-btn ds-btn-ghost ds-btn-sm" onclick="mkResetBuilder()" title="Reiniciar montagem">
                       <i data-lucide="timer-reset"></i> Reiniciar
                     </button>
                   </div>
@@ -9094,7 +9094,7 @@ Fone: (44) 2101-1400`;
                 <div class="lbl">Total<small>Pode variar conforme tributação.</small></div>
                 <span class="val">${mkFmt(totalFinal)}</span>
               </div>
-              <button class="mk-resumo-side-cta" ${items.length?'':'disabled'} onclick="mkFazerOrcamento()"><i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Concluir montagem</button>
+              <button class="ds-btn ds-btn-primary" style="width:100%" ${items.length?'':'disabled'} onclick="mkFazerOrcamento()"><i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Concluir montagem</button>
             </div>
           </div>
         `;
