@@ -7,20 +7,19 @@ const columns = [
   {
     title: "AJUDA E SUPORTE",
     links: [
-      { label: "F.A.Q", href: "#" },
-      { label: "Drivers e Manuais", href: "#" },
-      { label: "Download e Suporte", href: "#" },
+      { label: "F.A.Q", href: "/faq" },
+      { label: "Drivers e Manuais", href: "/drivers-e-manuais" },
       { label: "Fale Conosco", href: "/fale-conosco" },
       { label: "Pedidos", href: "/perfil" },
-      { label: "Política de Garantia, Trocas e Devoluções", href: "#" },
-      { label: "Política de Privacidade", href: "#" },
-      { label: "Termos de uso", href: "#" },
+      { label: "Política de Garantia, Trocas e Devoluções", href: "/politica-de-garantia" },
+      { label: "Política de Privacidade", href: "/politica-de-privacidade" },
+      { label: "Termos de uso", href: "/termos-de-uso" },
     ],
   },
   {
     title: "SOBRE A PCYES",
     links: [
-      { label: "Quem somos", href: "#" },
+      { label: "Quem somos", href: "/quem-somos" },
       { label: "Onde Encontrar", href: "/onde-encontrar" },
       { label: "Seja um Influenciador", href: "/influenciadores" },
       { label: "Seja um Revendedor", href: "/revendedor" },

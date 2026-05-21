@@ -13,6 +13,13 @@ import { ContactPage } from "./components/pages/ContactPage";
 import { StoreLocatorPage } from "./components/pages/StoreLocatorPage";
 import { MaringaFCCollabPage } from "./components/pages/MaringaFCCollabPage";
 import { MonteSeuPcPage } from "./pages/MonteSeuPcPage";
+import { DriversManuaisPage } from "./pages/DriversManuaisPage";
+import { DriverDetailPage } from "./pages/DriverDetailPage";
+import { FaqPage } from "./pages/FaqPage";
+import { QuemSomosPage } from "./pages/QuemSomosPage";
+import { PrivacyPage } from "./pages/PrivacyPage";
+import { WarrantyPage } from "./pages/WarrantyPage";
+import { TermsPage } from "./pages/TermsPage";
 import { GlobalErrorBoundary } from "./components/GlobalErrorBoundary";
 
 const basename =
@@ -39,6 +46,13 @@ export const router = createBrowserRouter([
       { path: "onde-encontrar", Component: StoreLocatorPage },
       { path: "maringa-fc", Component: MaringaFCCollabPage },
       { path: "monte-seu-pc", Component: MonteSeuPcPage },
+      { path: "drivers-e-manuais", Component: DriversManuaisPage },
+      { path: "drivers-e-manuais/:slug", Component: DriverDetailPage },
+      { path: "faq", Component: FaqPage },
+      { path: "quem-somos", Component: QuemSomosPage },
+      { path: "politica-de-privacidade", Component: PrivacyPage },
+      { path: "politica-de-garantia", Component: WarrantyPage },
+      { path: "termos-de-uso", Component: TermsPage },
     ],
   },
 ], { basename });
