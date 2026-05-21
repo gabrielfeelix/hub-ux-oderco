@@ -101,9 +101,15 @@ for (const { company, project, prototype } of getAllPrototypes()) {
   const destinationDir = join(publicRoot, company.slug, project.slug, prototype.version);
   const basePath = `/${company.slug}/${project.slug}/${prototype.version}/`;
 
-  if (!existsSync(join(sourceDir, 'package.json'))) {
+  const pkgJsonPath = join(sourceDir, 'package.json');
+  const pkgJson = existsSync(pkgJsonPath)
+    ? JSON.parse(readFileSync(pkgJsonPath, 'utf8'))
+    : null;
+  const hasBuildScript = Boolean(pkgJson?.scripts?.build);
+
+  if (!hasBuildScript) {
     if (!existsSync(join(sourceDir, 'index.html'))) {
-      throw new Error(`Missing package.json or index.html for prototype "${prototype.slug}" at ${sourceDir}`);
+      throw new Error(`Missing build script or index.html for prototype "${prototype.slug}" at ${sourceDir}`);
     }
 
     console.log(`\nCopying static prototype ${prototype.name} at ${basePath}`);
