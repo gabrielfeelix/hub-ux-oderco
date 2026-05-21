@@ -1,6 +1,6 @@
 /* ==========================================================================
    DS · CHECKBOX / RADIO
-   Quadrado checked com bg navy · 18x18 / radius 4 (checkbox) ou 50% (radio)
+   Quadrado checked com bg azul ação · 18x18 / radius 4 (checkbox) ou 50% (radio)
    ========================================================================== */
 
 .ds-check {
@@ -37,8 +37,8 @@
 }
 
 .ds-check input:checked {
-  background: var(--color-text-strong);
-  border-color: var(--color-text-strong);
+  background: var(--color-action-primary-bg);
+  border-color: var(--color-action-primary-bg);
 }
 
 .ds-check input[type=checkbox]:checked::after {
