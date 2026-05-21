@@ -295,7 +295,7 @@ const megaMenus: Record<string, MegaMenu> = {
     title: "Drivers e Manuais",
     subItems: [
       {
-        label: "Headsets", href: "#",
+        label: "Headsets", href: "/drivers-e-manuais",
         right: {
           type: "downloads", title: "Headsets — Drivers",
           items: [
@@ -306,7 +306,7 @@ const megaMenus: Record<string, MegaMenu> = {
         }
       },
       {
-        label: "Teclados", href: "#",
+        label: "Teclados", href: "/drivers-e-manuais",
         right: {
           type: "downloads", title: "Teclados — Drivers & Software",
           items: [
@@ -317,7 +317,7 @@ const megaMenus: Record<string, MegaMenu> = {
         }
       },
       {
-        label: "Mouse", href: "#",
+        label: "Mouse", href: "/drivers-e-manuais",
         right: {
           type: "downloads", title: "Mouse — Drivers & Software",
           items: [
@@ -328,7 +328,7 @@ const megaMenus: Record<string, MegaMenu> = {
         }
       },
       {
-        label: "Monitores", href: "#",
+        label: "Monitores", href: "/drivers-e-manuais",
         right: {
           type: "downloads", title: "Monitores — Manuais",
           items: [
@@ -339,7 +339,7 @@ const megaMenus: Record<string, MegaMenu> = {
         }
       },
       {
-        label: "Gabinetes", href: "#",
+        label: "Gabinetes", href: "/drivers-e-manuais",
         right: {
           type: "downloads", title: "Gabinetes — Manuais",
           items: [
@@ -350,7 +350,7 @@ const megaMenus: Record<string, MegaMenu> = {
         }
       },
       {
-        label: "Cadeiras", href: "#",
+        label: "Cadeiras", href: "/drivers-e-manuais",
         right: {
           type: "downloads", title: "Cadeiras — Manuais",
           items: [
@@ -1107,7 +1107,7 @@ export function Navbar() {
               )
             })}
             <motion.div variants={itemVariants}>
-              <Link to="/fale-conosco" onClick={() => setActiveMega(null)} className="group flex h-full min-h-[140px] flex-col justify-center rounded-[24px] border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5">
+              <Link to="/drivers-e-manuais" onClick={() => setActiveMega(null)} className="group flex h-full min-h-[140px] flex-col justify-center rounded-[24px] border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5">
                 <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.18em" }}>
                   CENTRAL DE SUPORTE
                 </p>
