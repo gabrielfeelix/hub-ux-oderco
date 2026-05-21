@@ -1102,8 +1102,8 @@
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
-        <button class="btn-primary">Salvar Usuário</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeModal()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary">Salvar Usuário</button>
       </div>
     </div>
 
@@ -1173,8 +1173,8 @@
         <div class="nc-legal">Para pessoa jurídica, o endereço de entrega deve ser o mesmo informado no cadastro do CNPJ. Caso haja alguma mudança, favor entrar em contato conosco.<br><br><strong>É responsabilidade do integrador todos os dados solicitados aos clientes.</strong></div>
       </div>
       <div class="nc-foot" id="ncFoot">
-        <button class="nc-cancel" onclick="closeNovoCliente()">Cancelar</button>
-        <button class="nc-next" id="ncNextBtn" onclick="ncNextStep()"><span id="ncNextLabel">Próximo</span> <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>
+        <button class="ds-btn ds-btn-ghost" onclick="closeNovoCliente()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary" id="ncNextBtn" onclick="ncNextStep()"><span id="ncNextLabel">Próximo</span> <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>
       </div>
     </div>
 
@@ -1193,8 +1193,8 @@
         <div class="cliente-search-list" id="clienteSearchList"></div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeClienteSearch()">Cancelar</button>
-        <button class="btn-primary" onclick="closeClienteSearch()">Selecionar</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeClienteSearch()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary" onclick="closeClienteSearch()">Selecionar</button>
       </div>
     </div>
 
@@ -1250,8 +1250,8 @@
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeNovidadeForm()">Cancelar</button>
-        <button class="btn-primary" id="novidadeFormSave" onclick="saveNovidadeForm()"><i data-lucide="send" style="width:14px;height:14px;"></i> Publicar agora</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeNovidadeForm()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary" id="novidadeFormSave" onclick="saveNovidadeForm()"><i data-lucide="send" style="width:14px;height:14px;"></i> Publicar agora</button>
       </div>
     </div>
 
@@ -1271,7 +1271,7 @@
             <input type="tel" class="ds-input" id="calcShareTel" placeholder="(00) 00000-0000" style="padding-left:42px;">
           </div>
         </div>
-        <button class="btn-primary" style="width:100%;justify-content:center;background:#25d366;" onclick="calcShareSendWhats()">
+        <button class="ds-btn ds-btn-primary" style="width:100%;justify-content:center;background:#25d366;" onclick="calcShareSendWhats()">
           <i data-lucide="message-circle" style="width:15px;height:15px;"></i> Enviar pelo WhatsApp
         </button>
         <div style="display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--placeholder);font:600 11px/1 var(--font);letter-spacing:.1em;">
@@ -1280,7 +1280,7 @@
         <label class="form-label">Link público da calculadora</label>
         <div style="display:flex;gap:8px;">
           <input type="text" class="ds-input" id="calcShareLink" readonly style="flex:1;font:400 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:#fafbff;">
-          <button class="btn-cancel" id="calcShareCopyBtn" onclick="calcShareCopyLink()" style="padding:0 14px;display:inline-flex;align-items:center;gap:6px;">
+          <button class="ds-btn ds-btn-secondary" id="calcShareCopyBtn" onclick="calcShareCopyLink()" style="padding:0 14px;display:inline-flex;align-items:center;gap:6px;">
             <i data-lucide="copy" style="width:14px;height:14px;"></i> Copiar
           </button>
         </div>
@@ -1324,8 +1324,8 @@
       <div class="modal-foot" style="justify-content:space-between;">
         <button class="btn-danger-ghost" id="artigoFormDeleteBtn" style="display:none;" onclick="const id=$('artigoFormId').value; closeArtigoForm(); openArtigoDelete(id);"><i data-lucide="trash-2" style="width:14px;height:14px;"></i> Despublicar</button>
         <div style="display:flex;gap:8px;margin-left:auto;">
-          <button class="btn-cancel" onclick="closeArtigoForm()">Cancelar</button>
-          <button class="btn-primary" onclick="saveArtigo()"><i data-lucide="check" style="width:14px;height:14px;"></i> Salvar artigo</button>
+          <button class="ds-btn ds-btn-secondary" onclick="closeArtigoForm()">Cancelar</button>
+          <button class="ds-btn ds-btn-primary" onclick="saveArtigo()"><i data-lucide="check" style="width:14px;height:14px;"></i> Salvar artigo</button>
         </div>
       </div>
     </div>
@@ -1343,7 +1343,7 @@
         <div id="novidadeFeedbacksList" class="feedback-list"></div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeNovidadeFeedbacks()">Fechar</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeNovidadeFeedbacks()">Fechar</button>
       </div>
     </div>
 
@@ -1363,8 +1363,8 @@
         <p style="margin:14px 0 0;font:400 12px/1.5 var(--font);color:var(--muted);">As reações e leituras já registradas serão preservadas para fins de auditoria.</p>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeNovidadeDelete()">Cancelar</button>
-        <button class="btn-primary" style="background:#d04848;" onclick="confirmNovidadeDelete()"><i data-lucide="trash-2" style="width:14px;height:14px;"></i> Despublicar</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeNovidadeDelete()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary" style="background:#d04848;" onclick="confirmNovidadeDelete()"><i data-lucide="trash-2" style="width:14px;height:14px;"></i> Despublicar</button>
       </div>
     </div>
 
@@ -1414,8 +1414,8 @@
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeLogoUpload()">Cancelar</button>
-        <button class="btn-primary" onclick="saveLogoUpload()"><i data-lucide="check" style="width:14px;height:14px;"></i> Salvar logo</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeLogoUpload()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary" onclick="saveLogoUpload()"><i data-lucide="check" style="width:14px;height:14px;"></i> Salvar logo</button>
       </div>
     </div>
 
@@ -1456,8 +1456,8 @@
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeClienteEdit()">Voltar</button>
-        <button class="btn-primary" onclick="saveClienteEdit()"><i data-lucide="save" style="width:14px;height:14px;"></i> Salvar</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeClienteEdit()">Voltar</button>
+        <button class="ds-btn ds-btn-primary" onclick="saveClienteEdit()"><i data-lucide="save" style="width:14px;height:14px;"></i> Salvar</button>
       </div>
     </div>
 
@@ -1526,8 +1526,8 @@
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeClienteEndereco()">Cancelar</button>
-        <button class="btn-primary" onclick="saveClienteEndereco()"><i data-lucide="save" style="width:14px;height:14px;"></i> Salvar Endereço</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeClienteEndereco()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary" onclick="saveClienteEndereco()"><i data-lucide="save" style="width:14px;height:14px;"></i> Salvar Endereço</button>
       </div>
     </div>
 
@@ -1552,8 +1552,8 @@
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeProfileEdit()">Voltar</button>
-        <button class="btn-primary" onclick="saveProfileEdit()"><i data-lucide="save" style="width:14px;height:14px;"></i> Salvar</button>
+        <button class="ds-btn ds-btn-secondary" onclick="closeProfileEdit()">Voltar</button>
+        <button class="ds-btn ds-btn-primary" onclick="saveProfileEdit()"><i data-lucide="save" style="width:14px;height:14px;"></i> Salvar</button>
       </div>
     </div>
 
@@ -1591,8 +1591,8 @@
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-cancel" onclick="closeOrcamentoWhats()">Cancelar</button>
-        <button class="btn-primary" style="background:#25D366;" onclick="sendOrcamentoWhats()">
+        <button class="ds-btn ds-btn-secondary" onclick="closeOrcamentoWhats()">Cancelar</button>
+        <button class="ds-btn ds-btn-primary" style="background:#25D366;" onclick="sendOrcamentoWhats()">
           <i data-lucide="send" style="width:14px;height:14px;"></i> Enviar pelo WhatsApp
         </button>
       </div>
@@ -2351,8 +2351,8 @@
               <h2>${greet}, Gabriel 👋</h2>
               <p>Você está <strong style="color:#86efac;">R$ 16,5k acima</strong> do mês anterior. Mantenha o ritmo e crie um novo orçamento para ampliar suas vendas.</p>
               <div class="dash-hero-ctas">
-                <a href="#monte-kit" class="dash-hero-cta ds-btn ds-btn-on-brand ds-btn ds-btn-on-brand"><i data-lucide="layers" style="width:15px;height:15px;"></i> Monte Seu Kit</a>
-                <a href="#loja" class="dash-hero-cta ds-btn ds-btn-on-brand dash-hero-cta-ghost"><i data-lucide="plus" style="width:15px;height:15px;"></i> Novo Orçamento</a>
+                <a href="#monte-kit" class="ds-btn ds-btn-on-brand"><i data-lucide="layers" style="width:15px;height:15px;"></i> Monte Seu Kit</a>
+                <a href="#loja" class="ds-btn ds-btn-on-brand-ghost"><i data-lucide="plus" style="width:15px;height:15px;"></i> Novo Orçamento</a>
               </div>
             </div>
             <div class="dash-hero-right home-kpis">
@@ -3638,7 +3638,7 @@
           <div class="ov-items-empty ds-empty-state ds-empty-state-sm">
             <i data-lucide="shopping-cart" style="width:28px;height:28px;opacity:.4;"></i>
             <p>Nenhum produto no carrinho.</p>
-            <a href="#loja" class="ov-items-empty-cta">Ir para a loja</a>
+            <a href="#loja" class="ds-btn ds-btn-primary ds-btn-sm">Ir para a loja</a>
           </div>`;
 
         const totalKw = entries.reduce((acc, [sku, qty]) => acc + (products.find(x=>x.sku===sku)?.power||0)*qty, 0)/1000;
@@ -3653,7 +3653,7 @@
               </div>
               <div class="ov-header-actions">
                 <button class="ov-print-btn" type="button" onclick="history.back()"><i data-lucide="x" style="width:15px;height:15px;"></i> Cancelar</button>
-                <button class="ov-save-btn" type="button"><i data-lucide="send" style="width:15px;height:15px;"></i> Enviar Orçamento</button>
+                <button class="ds-btn ds-btn-primary" type="button"><i data-lucide="send" style="width:15px;height:15px;"></i> Enviar Orçamento</button>
               </div>
             </div>
 
@@ -3664,7 +3664,7 @@
                 <div class="card ov-section">
                   <div class="ov-section-head ds-section-head ds-section-head-bordered">
                     <h3>Cliente</h3>
-                    <button class="ov-buscar-btn" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
+                    <button class="ds-btn ds-btn-ghost ds-btn-sm" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
                   </div>
                   <div class="ov-radio-row">
                     <label class="ds-check"><input type="radio" name="ck_tipo_v" value="direta" checked> <span>Venda Direta</span></label>
@@ -3946,7 +3946,7 @@
                   <h3>Equipe da empresa</h3>
                   <p>Funcionários da Oderco Distribuidora que têm acesso à sua plataforma.</p>
                 </div>
-                <button class="btn-primary btn-sm" onclick="openUserModal()">
+                <button class="ds-btn ds-btn-primary ds-btn-sm" onclick="openUserModal()">
                   <i data-lucide="user-plus" style="width:14px;height:14px;"></i> Adicionar membro
                 </button>
               </div>
@@ -4122,7 +4122,7 @@
                   <label>Buscar</label>
                   <input type="text" placeholder="Código, nome...">
                 </div>
-                <button class="list-toolbar-filter-btn" id="orcFiltersBtn" onclick="toggleListFilters('orcFilters')">
+                <button class="ds-btn ds-btn-ghost" id="orcFiltersBtn" onclick="toggleListFilters('orcFilters')">
                   <i data-lucide="sliders-horizontal" class="icon-funnel" style="width:16px;height:16px;"></i>
                   Filtros
                   <i data-lucide="chevron-down" class="icon-chev" style="width:16px;height:16px;"></i>
@@ -4153,14 +4153,14 @@
                   </div>
                 </div>
                 <div class="list-filter-actions">
-                  <button class="list-filter-btn-clear"><i data-lucide="x" style="width:14px;height:14px;"></i> Limpar filtros</button>
-                  <button class="list-filter-btn-apply"><i data-lucide="check" style="width:14px;height:14px;"></i> Aplicar</button>
+                  <button class="ds-btn ds-btn-ghost ds-btn-sm"><i data-lucide="x" style="width:14px;height:14px;"></i> Limpar filtros</button>
+                  <button class="ds-btn ds-btn-primary ds-btn-sm"><i data-lucide="check" style="width:14px;height:14px;"></i> Aplicar</button>
                 </div>
               </div>
             </div>
 
             <div class="list-actions-row">
-              <a href="#orcamento" class="list-add-btn"><i data-lucide="plus"></i> Novo Orçamento</a>
+              <a href="#orcamento" class="ds-btn ds-btn-primary"><i data-lucide="plus"></i> Novo Orçamento</a>
             </div>
 
             <div class="card orc-list-card">
@@ -4233,7 +4233,7 @@
           : `<div class="ov-items-empty ds-empty-state ds-empty-state-sm">
                <i data-lucide="inbox" style="width:28px;height:28px;opacity:.4;"></i>
                <p>Nenhum item adicionado.</p>
-               <a href="#loja" class="ov-items-empty-cta">Adicionar produtos</a>
+               <a href="#loja" class="ds-btn ds-btn-primary ds-btn-sm">Adicionar produtos</a>
              </div>`;
 
         $("view-orcamento-ver").innerHTML = `
@@ -4248,7 +4248,7 @@
                 <button class="ov-print-btn" title="Imprimir"><i data-lucide="printer" style="width:15px;height:15px;"></i> Imprimir</button>
                 <button class="ov-share-btn" title="Enviar por email" onclick="openOrcamentoEmail(${o.id})"><i data-lucide="mail" style="width:15px;height:15px;"></i> Enviar</button>
                 <button class="ov-whats-btn" title="Enviar por WhatsApp" onclick="openOrcamentoWhats(${o.id})"><i data-lucide="message-circle" style="width:15px;height:15px;"></i> WhatsApp</button>
-                <button class="ov-save-btn"><i data-lucide="save" style="width:15px;height:15px;"></i> Salvar</button>
+                <button class="ds-btn ds-btn-primary"><i data-lucide="save" style="width:15px;height:15px;"></i> Salvar</button>
               </div>
             </div>
 
@@ -4264,7 +4264,7 @@
                 <div class="card ov-section">
                   <div class="ov-section-head ds-section-head ds-section-head-bordered">
                     <h3>Dados Cadastrais</h3>
-                    <button class="ov-buscar-btn" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
+                    <button class="ds-btn ds-btn-ghost ds-btn-sm" onclick="openClienteSearch()"><i data-lucide="user-search" style="width:14px;height:14px;"></i> Buscar Cliente</button>
                   </div>
                   <div class="ov-radio-row">
                     <label class="ds-check"><input type="radio" name="ov_tipo" value="pj" onchange="setOvTipoCliente('pj')"> <span>Pessoa Jurídica</span></label>
@@ -4599,7 +4599,7 @@
                   <label>Buscar</label>
                   <input type="text" placeholder="Código, nome, pedido...">
                 </div>
-                <button class="list-toolbar-filter-btn" id="pedFiltersBtn" onclick="toggleListFilters('pedFilters')">
+                <button class="ds-btn ds-btn-ghost" id="pedFiltersBtn" onclick="toggleListFilters('pedFilters')">
                   <i data-lucide="sliders-horizontal" class="icon-funnel" style="width:16px;height:16px;"></i>
                   Filtros
                   <i data-lucide="chevron-down" class="icon-chev" style="width:16px;height:16px;"></i>
@@ -4641,14 +4641,14 @@
                   </div>
                 </div>
                 <div class="list-filter-actions">
-                  <button class="list-filter-btn-clear"><i data-lucide="x" style="width:14px;height:14px;"></i> Limpar filtros</button>
-                  <button class="list-filter-btn-apply"><i data-lucide="check" style="width:14px;height:14px;"></i> Aplicar</button>
+                  <button class="ds-btn ds-btn-ghost ds-btn-sm"><i data-lucide="x" style="width:14px;height:14px;"></i> Limpar filtros</button>
+                  <button class="ds-btn ds-btn-primary ds-btn-sm"><i data-lucide="check" style="width:14px;height:14px;"></i> Aplicar</button>
                 </div>
               </div>
             </div>
 
             <div class="list-actions-row">
-              <a href="#orcamento" class="list-add-btn"><i data-lucide="plus"></i> Novo Pedido</a>
+              <a href="#orcamento" class="ds-btn ds-btn-primary"><i data-lucide="plus"></i> Novo Pedido</a>
             </div>
 
             <div class="card ped-list-card">
@@ -5211,14 +5211,14 @@
           sep.className="nc-step-sep";
           $("ncNextLabel").textContent="Próximo";
           const foot=$("ncFoot");
-          foot.innerHTML=`<button class="nc-cancel" onclick="closeNovoCliente()">Cancelar</button><button class="nc-next" onclick="ncNextStep()"><span>Próximo</span> <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>`;
+          foot.innerHTML=`<button class="ds-btn ds-btn-ghost" onclick="closeNovoCliente()">Cancelar</button><button class="ds-btn ds-btn-primary" onclick="ncNextStep()"><span>Próximo</span> <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>`;
         } else {
           d1.className="nc-step-dot done"; l1.className="nc-step-lbl";
           d1.innerHTML='<i data-lucide="check" style="width:12px;height:12px;"></i>';lucide.createIcons({nodes:[d1]});
           d2.className="nc-step-dot s-active"; l2.className="nc-step-lbl s-active";
           sep.className="nc-step-sep done";
           const foot=$("ncFoot");
-          foot.innerHTML=`<button class="nc-cancel" onclick="ncPrevStep()"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button><button class="nc-next" onclick="ncNextStep()"><i data-lucide="check" style="width:15px;height:15px;"></i> <span>Salvar Cliente</span></button>`;
+          foot.innerHTML=`<button class="ds-btn ds-btn-ghost" onclick="ncPrevStep()"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button><button class="ds-btn ds-btn-primary" onclick="ncNextStep()"><i data-lucide="check" style="width:15px;height:15px;"></i> <span>Salvar Cliente</span></button>`;
         }
         lucide.createIcons();
       }
@@ -6166,8 +6166,8 @@
                 </div>
               </div>
               <div class="modal-foot">
-                <button class="btn-cancel" onclick="calcCloseWa()">Cancelar</button>
-                <button class="btn-primary" style="background:#22c55e;" onclick="calcSendWa()"><i data-lucide="send" style="width:14px;height:14px;"></i> Abrir WhatsApp</button>
+                <button class="ds-btn ds-btn-secondary" onclick="calcCloseWa()">Cancelar</button>
+                <button class="ds-btn ds-btn-primary" style="background:#22c55e;" onclick="calcSendWa()"><i data-lucide="send" style="width:14px;height:14px;"></i> Abrir WhatsApp</button>
               </div>
             </div>
           </div>
@@ -6641,7 +6641,7 @@
                   <label>Buscar</label>
                   <input type="text" placeholder="Código, nome, email, telefone...">
                 </div>
-                <button class="list-toolbar-filter-btn" id="premioFiltersBtn" onclick="toggleListFilters('premioFilters')">
+                <button class="ds-btn ds-btn-ghost" id="premioFiltersBtn" onclick="toggleListFilters('premioFilters')">
                   <i data-lucide="sliders-horizontal" class="icon-funnel" style="width:16px;height:16px;"></i>
                   Filtros
                   <i data-lucide="chevron-down" class="icon-chev" style="width:16px;height:16px;"></i>
@@ -6678,8 +6678,8 @@
                   </div>
                 </div>
                 <div class="list-filter-actions">
-                  <button class="list-filter-btn-clear"><i data-lucide="x" style="width:14px;height:14px;"></i> Limpar filtros</button>
-                  <button class="list-filter-btn-apply"><i data-lucide="check" style="width:14px;height:14px;"></i> Aplicar</button>
+                  <button class="ds-btn ds-btn-ghost ds-btn-sm"><i data-lucide="x" style="width:14px;height:14px;"></i> Limpar filtros</button>
+                  <button class="ds-btn ds-btn-primary ds-btn-sm"><i data-lucide="check" style="width:14px;height:14px;"></i> Aplicar</button>
                 </div>
               </div>
             </div>
@@ -6995,10 +6995,10 @@ Fone: (44) 2101-1400`;
             <div class="premio-page-head">
               <h2>Relatórios</h2>
               <div style="display:flex;gap:10px;">
-                <button class="list-add-btn" style="background:transparent;color:var(--navy);border:1px solid var(--line);box-shadow:none;" onclick="alert('Exportando relatório consolidado em CSV…')">
+                <button class="ds-btn ds-btn-primary" style="background:transparent;color:var(--navy);border:1px solid var(--line);box-shadow:none;" onclick="alert('Exportando relatório consolidado em CSV…')">
                   <i data-lucide="file-spreadsheet"></i> Exportar CSV
                 </button>
-                <button class="list-add-btn" onclick="alert('Gerando relatório consolidado em PDF…')">
+                <button class="ds-btn ds-btn-primary" onclick="alert('Gerando relatório consolidado em PDF…')">
                   <i data-lucide="file-text"></i> Exportar PDF
                 </button>
               </div>
@@ -7062,7 +7062,7 @@ Fone: (44) 2101-1400`;
                   <option>Personalizado…</option>
                 </select>
               </div>
-              <button class="list-toolbar-filter-btn" onclick="alert('Filtros adicionais em desenvolvimento.')">
+              <button class="ds-btn ds-btn-ghost" onclick="alert('Filtros adicionais em desenvolvimento.')">
                 <i data-lucide="sliders-horizontal" class="icon-funnel" style="width:16px;height:16px;"></i>
                 Filtros
               </button>
@@ -7320,7 +7320,7 @@ Fone: (44) 2101-1400`;
                 <h3>Banners e campanhas</h3>
                 <p>${bannersData.length} banners cadastrados · ${totalLive} no ar agora.</p>
               </div>
-              <button class="list-add-btn" onclick="openBannerForm()">
+              <button class="ds-btn ds-btn-primary" onclick="openBannerForm()">
                 <i data-lucide="plus"></i> Novo banner
               </button>
             </div>
@@ -7480,8 +7480,8 @@ Fone: (44) 2101-1400`;
             </div>
           </div>
           <div class="modal-foot">
-            <button class="btn-cancel" onclick="closeBannerForm()">Cancelar</button>
-            <button class="btn-primary" onclick="saveBannerForm(${editing?editing.id:'null'})"><i data-lucide="check" style="width:14px;height:14px;"></i> ${editing?'Salvar alterações':'Criar banner'}</button>
+            <button class="ds-btn ds-btn-secondary" onclick="closeBannerForm()">Cancelar</button>
+            <button class="ds-btn ds-btn-primary" onclick="saveBannerForm(${editing?editing.id:'null'})"><i data-lucide="check" style="width:14px;height:14px;"></i> ${editing?'Salvar alterações':'Criar banner'}</button>
           </div>`;
         document.body.appendChild(modal);
         document.body.classList.add('no-scroll');
@@ -7554,7 +7554,7 @@ Fone: (44) 2101-1400`;
                 <h3>Gestão de Usuários</h3>
                 <p>Adicionar, editar e remover acessos da plataforma.</p>
               </div>
-              <button class="list-add-btn" onclick="openUserModal()">
+              <button class="ds-btn ds-btn-primary" onclick="openUserModal()">
                 <i data-lucide="user-plus"></i> Adicionar usuário
               </button>
             </div>
@@ -7599,7 +7599,7 @@ Fone: (44) 2101-1400`;
                 <h3>Novidades publicadas</h3>
                 <p>Gerencie comunicados, lançamentos e melhorias visíveis para os integradores.</p>
               </div>
-              <button class="list-add-btn" onclick="openNovidadeForm()">
+              <button class="ds-btn ds-btn-primary" onclick="openNovidadeForm()">
                 <i data-lucide="plus"></i> Publicar novidade
               </button>
             </div>
@@ -7645,7 +7645,7 @@ Fone: (44) 2101-1400`;
                 <h3>Relatórios</h3>
                 <p>Visão consolidada da plataforma. Acesse a página completa para detalhes e exportação.</p>
               </div>
-              <a href="#relatorios" class="list-add-btn">
+              <a href="#relatorios" class="ds-btn ds-btn-primary">
                 <i data-lucide="bar-chart-2"></i> Abrir relatórios
               </a>
             </div>
@@ -7795,7 +7795,7 @@ Fone: (44) 2101-1400`;
                 <h3>Biblioteca de artigos</h3>
                 <p>${totalArtigos} artigos publicados · ${totalViews.toLocaleString('pt-BR')} visualizações totais.</p>
               </div>
-              <button class="list-add-btn" onclick="openArtigoForm()">
+              <button class="ds-btn ds-btn-primary" onclick="openArtigoForm()">
                 <i data-lucide="plus"></i> Novo artigo
               </button>
             </div>
@@ -8008,7 +8008,7 @@ Fone: (44) 2101-1400`;
                   <div class="auth-form-row">
                     <a href="#redefinir" class="auth-link">Esqueci minha senha</a>
                   </div>
-                  <button class="auth-submit" type="submit">Entrar na plataforma <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>
+                  <button class="ds-btn ds-btn-primary ds-btn-lg" style="width:100%" type="submit">Entrar na plataforma <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>
                 </form>
 
                 <div class="auth-divider"><span>Ainda não possui cadastro?</span></div>
@@ -8472,8 +8472,8 @@ Fone: (44) 2101-1400`;
                 </div>
 
                 <div class="mk-content-foot">
-                  <button class="mk-btn mk-btn-secondary" onclick="history.back()"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button>
-                  <button class="mk-btn mk-btn-primary" onclick="mkAdvanceFromForm()">Avançar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+                  <button class="ds-btn ds-btn-secondary" onclick="history.back()"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button>
+                  <button class="ds-btn ds-btn-primary" onclick="mkAdvanceFromForm()">Avançar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
                 </div>
               </div>
 
@@ -9109,10 +9109,10 @@ Fone: (44) 2101-1400`;
         const isLast = currentId === "resumo";
         return `
           <div class="mk-content-foot">
-            <button class="mk-btn mk-btn-secondary" onclick="location.hash='${prevHash}'"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button>
+            <button class="ds-btn ds-btn-secondary" onclick="location.hash='${prevHash}'"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Voltar</button>
             ${isLast
-              ? `<button class="mk-btn mk-btn-primary" onclick="mkFazerOrcamento()"><i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Inserir no pedido</button>`
-              : `<button class="mk-btn mk-btn-primary" ${canAdvance?"":"disabled"} onclick="${canAdvance?`location.hash='${nextHash}'`:""}">Avançar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>`}
+              ? `<button class="ds-btn ds-btn-primary" onclick="mkFazerOrcamento()"><i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Inserir no pedido</button>`
+              : `<button class="ds-btn ds-btn-primary" ${canAdvance?"":"disabled"} onclick="${canAdvance?`location.hash='${nextHash}'`:""}">Avançar <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>`}
           </div>
         `;
       }
@@ -9562,7 +9562,7 @@ Fone: (44) 2101-1400`;
                       <input id="redEmail" type="text" autocomplete="username" required placeholder="seu@email.com.br ou 00.000.000/0000-00">
                     </div>
                   </div>
-                  <button class="auth-submit" type="submit"><i data-lucide="send" style="width:15px;height:15px;"></i> Enviar instruções</button>
+                  <button class="ds-btn ds-btn-primary ds-btn-lg" style="width:100%" type="submit"><i data-lucide="send" style="width:15px;height:15px;"></i> Enviar instruções</button>
                 </form>
 
                 <div class="auth-divider"><span>Lembrou da senha?</span></div>
