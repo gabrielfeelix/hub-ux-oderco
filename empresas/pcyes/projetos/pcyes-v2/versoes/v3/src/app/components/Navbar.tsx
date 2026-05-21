@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo, type ReactNode } from "react";
 import { Link, useNavigate, useLocation } from "react-router";
-import { Search, ShoppingBag, User, Menu, X, Clock, TrendingUp, ArrowUpRight, Heart, ChevronRight, ChevronLeft, ChevronDown, Download, FileText, Sparkles, Grid2x2, Box, Monitor, Cpu, Radio, Globe2, MapPin } from "lucide-react";
+import { Search, ShoppingBag, User, Menu, X, Clock, TrendingUp, ArrowUpRight, Heart, ChevronRight, ChevronLeft, ChevronDown, Download, FileText, Sparkles, Grid2x2, Box, Monitor, Cpu, Radio, Globe2, MapPin, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { useCart } from "./CartContext";
@@ -1777,12 +1777,12 @@ export function Navbar() {
                     <button
                       onClick={() => navigate("/fale-conosco")}
                       className={`relative flex h-10 w-10 items-center justify-center transition-colors cursor-pointer ${iconColor}`}
-                      aria-label="Lojas"
+                      aria-label="Ajuda"
                     >
-                      <MapPin size={20} strokeWidth={1.5} />
+                      <HelpCircle size={20} strokeWidth={1.5} />
                     </button>
                   </TooltipTrigger>
-                  <TooltipContent sideOffset={6} className={tooltipContentClass}>Onde encontrar</TooltipContent>
+                  <TooltipContent sideOffset={6} className={tooltipContentClass}>Ajuda</TooltipContent>
                 </Tooltip>
 
                 <Tooltip>
@@ -2352,7 +2352,7 @@ export function Navbar() {
                       {[
                         { icon: Heart, label: "Lista de desejos", action: () => navigate("/perfil?tab=favorites"), badge: favCount },
                         { icon: User, label: isLoggedIn ? "Minha conta" : "Login", action: handleUserClick },
-                        { icon: MapPin, label: "Onde comprar", action: () => navigate("/fale-conosco") },
+                        { icon: MapPin, label: "Onde comprar", action: () => navigate("/onde-encontrar") },
                       ].map((item) => {
                         const Icon = item.icon;
                         return (
