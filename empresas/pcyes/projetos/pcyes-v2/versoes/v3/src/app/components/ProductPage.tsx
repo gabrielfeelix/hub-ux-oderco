@@ -801,9 +801,9 @@ function StickyPriceCard({
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "11px",
                     fontWeight: 800,
-                    color: "#0a0a0a",
-                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-                    boxShadow: "0 4px 14px -4px rgba(16,185,129,0.6)",
+                    color: "#ffffff",
+                    background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                    boxShadow: "0 4px 14px -4px rgba(255,43,46,0.6)",
                     letterSpacing: "-0.01em",
                   }}
                 >
@@ -970,9 +970,9 @@ function MobilePurchaseFlow({
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "10.5px",
                     fontWeight: 800,
-                    color: "#0a0a0a",
-                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-                    boxShadow: "0 4px 14px -4px rgba(16,185,129,0.6)",
+                    color: "#ffffff",
+                    background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                    boxShadow: "0 4px 14px -4px rgba(255,43,46,0.6)",
                   }}
                 >
                   -{discount}%
