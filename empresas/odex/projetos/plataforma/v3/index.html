@@ -929,11 +929,11 @@
           <h1 class="topbar-title" id="pageTitle">Home</h1>
         </div>
         <div class="topbar-actions">
-          <button class="icon-btn ds-icon-btn ds-icon-btn-ghost" onclick="openCart()" style="position:relative;" title="Carrinho">
+          <button class="ds-icon-btn ds-icon-btn-ghost" onclick="openCart()" style="position:relative;" title="Carrinho">
             <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i>
             <span class="badge" id="cartBadge">0</span>
           </button>
-          <button class="icon-btn ds-icon-btn ds-icon-btn-ghost" id="bellBtn" onclick="openNotifDrawer()" title="Notificações" style="position:relative;">
+          <button class="ds-icon-btn ds-icon-btn-ghost" id="bellBtn" onclick="openNotifDrawer()" title="Notificações" style="position:relative;">
             <i data-lucide="bell" style="width:18px;height:18px;"></i>
             <div class="dot" id="notifDot"></div>
           </button>
@@ -1843,7 +1843,7 @@
                 <strong>${nome}</strong>
                 <small>Logo aparece nos orçamentos enviados</small>
               </div>
-              <button class="dash-hero-brand-edit ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="pencil"></i> Editar</button>
+              <button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="pencil"></i> Editar</button>
             </div>`;
         }
         return `
@@ -1853,7 +1853,7 @@
               <strong>Adicione a logo da sua empresa</strong>
               <small>Aparece nos orçamentos enviados ao cliente final</small>
             </div>
-            <button class="dash-hero-brand-edit ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="upload"></i> Adicionar</button>
+            <button class="ds-icon-btn ds-icon-btn-glass ds-icon-btn-sm" onclick="openIntegradorLogoModal()"><i data-lucide="upload"></i> Adicionar</button>
           </div>`;
       }
       function renderOrcamentoBrandBar() {
@@ -3958,8 +3958,8 @@
                   </div>
                   <span class="role-pill ${roleClass[u.role] || ''}">${u.role}</span>
                   <span class="user-status ${u.active ? 'status-on' : 'status-off'}">${u.active ? 'Ativo' : 'Inativo'}</span>
-                  <button class="row-action" title="Editar membro" onclick="openUserModal()"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
-                  <button class="row-action danger" title="Remover membro" onclick="confirm('Remover ${u.name} da equipe? (mock)')"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
+                  <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Editar membro" onclick="openUserModal()"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
+                  <button class="ds-icon-btn ds-icon-btn-danger ds-icon-btn-sm" title="Remover membro" onclick="confirm('Remover ${u.name} da equipe? (mock)')"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
                 </div>
               `).join('')}
             </div>
@@ -4524,16 +4524,16 @@
             <div class="ped-potencia">${p.potencia}</div>
             <div class="ped-total">${fmt(p.total)}</div>
             <div class="ped-row-actions">
-              <button class="ped-row-btn" title="Resumo do pedido" onclick="event.stopPropagation();openPedidoResumo(${p.id})">
+              <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Resumo do pedido" onclick="event.stopPropagation();openPedidoResumo(${p.id})">
                 <i data-lucide="eye" style="width:14px;height:14px;"></i>
               </button>
-              <button class="ped-row-btn" title="Baixar PDF" onclick="event.stopPropagation();downloadPedido(${p.id}, 'pdf')">
+              <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Baixar PDF" onclick="event.stopPropagation();downloadPedido(${p.id}, 'pdf')">
                 <i data-lucide="file-text" style="width:14px;height:14px;"></i>
               </button>
-              <button class="ped-row-btn" title="Baixar CSV" onclick="event.stopPropagation();downloadPedido(${p.id}, 'csv')">
+              <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Baixar CSV" onclick="event.stopPropagation();downloadPedido(${p.id}, 'csv')">
                 <i data-lucide="file-spreadsheet" style="width:14px;height:14px;"></i>
               </button>
-              <button class="ped-row-btn ped-row-btn-primary" title="Ver pedido completo">
+              <button class="ds-icon-btn ds-icon-btn-soft ds-icon-btn-sm" title="Ver pedido completo">
                 <i data-lucide="arrow-up-right" style="width:14px;height:14px;"></i>
               </button>
             </div>
@@ -4814,7 +4814,7 @@
                   <div class="ped-v2-card-icon ds-icon-box ds-icon-box-sm" style="background:#FCDFB3;color:#ea580c;"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
                   <span class="ped-v2-card-hdr-title">Endereço de Entrega</span>
                   ${p.entrega.passivel?`<span style="margin-left:auto;font-size:10px;font-weight:700;background:#FCDFB3;color:#8a5400;padding:2px 8px;border-radius:var(--r-form);border:1px solid #F8BE66;white-space:nowrap;">${p.entrega.passivel}</span>`:''}
-                  <button class="ped-row-btn" style="margin-left:8px;" title="Editar endereço" onclick="openPedidoEnderecoEdit(${p.id})"><i data-lucide="pencil" style="width:13px;height:13px;"></i></button>
+                  <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" style="margin-left:8px;" title="Editar endereço" onclick="openPedidoEnderecoEdit(${p.id})"><i data-lucide="pencil" style="width:13px;height:13px;"></i></button>
                 </div>
                 <div style="margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                   <div>
@@ -6984,8 +6984,8 @@ Fone: (44) 2101-1400`;
             <span class="rel-qtd">${v.qtd}</span>
             <span class="rel-val">${fmt(v.total)}</span>
             <span class="rel-act">
-              <button class="ped-row-btn" title="Baixar PDF deste mês" onclick="alert('Mock: PDF do relatório de ${m}')"><i data-lucide="file-text" style="width:14px;height:14px;"></i></button>
-              <button class="ped-row-btn" title="Baixar CSV deste mês" onclick="alert('Mock: CSV do relatório de ${m}')"><i data-lucide="file-spreadsheet" style="width:14px;height:14px;"></i></button>
+              <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Baixar PDF deste mês" onclick="alert('Mock: PDF do relatório de ${m}')"><i data-lucide="file-text" style="width:14px;height:14px;"></i></button>
+              <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Baixar CSV deste mês" onclick="alert('Mock: CSV do relatório de ${m}')"><i data-lucide="file-spreadsheet" style="width:14px;height:14px;"></i></button>
             </span>
           </div>`).join('') || '<div class="premio-empty ds-empty-state">Sem dados para exibir.</div>';
 
@@ -7362,9 +7362,9 @@ Fone: (44) 2101-1400`;
                         <input type="checkbox" ${b.active ? 'checked' : ''} onchange="toggleBannerActive(${b.id})">
                         <span class="admin-toggle-slider"></span>
                       </label>
-                      <button class="row-action" title="Editar" onclick="openBannerForm(${b.id})"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
-                      <button class="row-action" title="Duplicar" onclick="duplicateBanner(${b.id})"><i data-lucide="copy" style="width:14px;height:14px;"></i></button>
-                      <button class="row-action danger" title="Remover" onclick="deleteBanner(${b.id})"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
+                      <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Editar" onclick="openBannerForm(${b.id})"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
+                      <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Duplicar" onclick="duplicateBanner(${b.id})"><i data-lucide="copy" style="width:14px;height:14px;"></i></button>
+                      <button class="ds-icon-btn ds-icon-btn-danger ds-icon-btn-sm" title="Remover" onclick="deleteBanner(${b.id})"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
                     </div>
                   </div>`;
               }).join('') : `<div class="premio-empty ds-empty-state" style="grid-column:1/-1;">Nenhum banner encontrado com este filtro.</div>`}
@@ -7583,8 +7583,8 @@ Fone: (44) 2101-1400`;
                     <input type="checkbox" ${u.active ? 'checked' : ''} onchange="alert('Toggle ativo (mock)')">
                     <span class="admin-toggle-slider"></span>
                   </label>
-                  <button class="row-action" title="Editar" onclick="openUserModal()"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
-                  <button class="row-action danger" title="Remover" onclick="confirm('Remover ${u.name}? (mock)')"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
+                  <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Editar" onclick="openUserModal()"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
+                  <button class="ds-icon-btn ds-icon-btn-danger ds-icon-btn-sm" title="Remover" onclick="confirm('Remover ${u.name}? (mock)')"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
                 </div>
               `).join('')}
             </div>
@@ -7626,12 +7626,12 @@ Fone: (44) 2101-1400`;
                   <span class="admin-novidade-stats" title="Reações">
                     <i data-lucide="thumbs-up" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;"></i> ${n.reactions?.clap || 0} · <i data-lucide="heart" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;"></i> ${n.reactions?.love || 0} · <i data-lucide="frown" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;"></i> ${n.reactions?.cry || 0}
                   </span>
-                  <button class="row-action row-action-feedback" title="Ver feedbacks (${(n.feedbacks||[]).length})" onclick="openNovidadeFeedbacks(${i})">
+                  <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm row-action-feedback" title="Ver feedbacks (${(n.feedbacks||[]).length})" onclick="openNovidadeFeedbacks(${i})">
                     <i data-lucide="message-square-text" style="width:14px;height:14px;"></i>
                     ${(n.feedbacks||[]).length ? `<span class="row-action-badge">${(n.feedbacks||[]).length}</span>` : ''}
                   </button>
-                  <button class="row-action" title="Editar" onclick="openNovidadeForm(${i})"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
-                  <button class="row-action danger" title="Despublicar" onclick="openNovidadeDelete(${i})"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
+                  <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Editar" onclick="openNovidadeForm(${i})"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
+                  <button class="ds-icon-btn ds-icon-btn-danger ds-icon-btn-sm" title="Despublicar" onclick="openNovidadeDelete(${i})"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
                 </div>
               `).join('')}
             </div>
@@ -7821,9 +7821,9 @@ Fone: (44) 2101-1400`;
                       <p class="admin-artigo-title">${a.title}</p>
                       <p class="admin-artigo-meta">${a.readTime} min · ${a.views.toLocaleString('pt-BR')} visualizações · atualizado ${a.updated}</p>
                     </div>
-                    <a class="row-action" title="Visualizar artigo" href="#artigo-${a.id}"><i data-lucide="eye" style="width:14px;height:14px;"></i></a>
-                    <button class="row-action" title="Editar" onclick="openArtigoForm('${a.id}')"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
-                    <button class="row-action danger" title="Despublicar" onclick="openArtigoDelete('${a.id}')"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
+                    <a class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Visualizar artigo" href="#artigo-${a.id}"><i data-lucide="eye" style="width:14px;height:14px;"></i></a>
+                    <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Editar" onclick="openArtigoForm('${a.id}')"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
+                    <button class="ds-icon-btn ds-icon-btn-danger ds-icon-btn-sm" title="Despublicar" onclick="openArtigoDelete('${a.id}')"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
                   </div>
                 `;
               }).join('') : `
@@ -8844,10 +8844,10 @@ Fone: (44) 2101-1400`;
               <option value="brand"  ${sortKey==='brand' ?'selected':''}>Marca</option>
               <option value="power"  ${sortKey==='power' ?'selected':''}>Potência</option>
             </select>
-            <button class="mk-toolbar-iconbtn" onclick="mkOnSortDir('${stepId}')" title="${asc?'Crescente':'Decrescente'}">
+            <button class="ds-icon-btn ds-icon-btn-lg" onclick="mkOnSortDir('${stepId}')" title="${asc?'Crescente':'Decrescente'}">
               <i data-lucide="arrow-up" style="transform:${asc?'none':'rotate(180deg)'};transition:.15s;"></i>
             </button>
-            <button class="mk-toolbar-iconbtn" onclick="mkOnClearFilters('${stepId}')" title="Limpar filtros">
+            <button class="ds-icon-btn ds-icon-btn-lg" onclick="mkOnClearFilters('${stepId}')" title="Limpar filtros">
               <i data-lucide="x"></i>
             </button>
             <div class="mk-toolbar-view">
