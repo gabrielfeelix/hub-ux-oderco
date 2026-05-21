@@ -42,6 +42,29 @@ button {
 }
 
 /* ============================================================
+   Block-element + media resets
+   Antes vinham do Tailwind preflight (cdn.tailwindcss.com removido).
+   Mantém o reset self-sufficient · sem dependência externa.
+   ============================================================ */
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd, pre {
+  margin: 0;
+}
+ul, ol, menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img, svg, video, canvas {
+  display: block;
+  vertical-align: middle;
+}
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
    A11Y · Focus visible baseline
    Caso atom/molecule não defina focus próprio, browser default fica.
    ============================================================ */
