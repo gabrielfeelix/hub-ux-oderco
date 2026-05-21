@@ -1356,7 +1356,7 @@
         <input type="hidden" id="novidadeDeleteIdx">
         <p style="margin:0 0 14px;font:400 14px/1.5 var(--font);color:var(--ink);">Tem certeza que deseja despublicar essa novidade? Ela deixará de aparecer no painel dos integradores imediatamente.</p>
         <div style="padding:14px 16px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-form);">
-          <span class="admin-novidade-tag" id="novidadeDeleteTag">Categoria</span>
+          <span class="ds-pill ds-pill-neutral" id="novidadeDeleteTag">Categoria</span>
           <p style="margin:8px 0 0;font:600 13px/1.3 var(--font);color:var(--navy);" id="novidadeDeleteTitle">Título da novidade</p>
         </div>
         <p style="margin:14px 0 0;font:400 12px/1.5 var(--font);color:var(--muted);">As reações e leituras já registradas serão preservadas para fins de auditoria.</p>
@@ -2002,9 +2002,9 @@
               <div class="product-sku">SKU ${p.sku} · ${p.brand}</div>
               <a href="#produto-${p.sku}" style="text-decoration:none;color:inherit"><h3 class="product-title" title="${p.name}">${p.name}</h3></a>
               <div class="product-specs">
-                ${showSpecs && p.power ? `<span class="spec-tag">${p.powerLabel || (p.power + (p.category === 'Painéis' || p.category === 'Inversores' ? 'W' : (p.category === 'Armazenamento' ? 'Wh' : '')))}</span>` : ''}
-                ${showSpecs && p.eff && p.eff !== '—' ? `<span class="spec-tag">${p.eff}</span>` : ''}
-                ${p.tech.slice(0,2).map(t=>`<span class="spec-tag">${t}</span>`).join("")}
+                ${showSpecs && p.power ? `<span class="ds-pill ds-pill-neutral">${p.powerLabel || (p.power + (p.category === 'Painéis' || p.category === 'Inversores' ? 'W' : (p.category === 'Armazenamento' ? 'Wh' : '')))}</span>` : ''}
+                ${showSpecs && p.eff && p.eff !== '—' ? `<span class="ds-pill ds-pill-neutral">${p.eff}</span>` : ''}
+                ${p.tech.slice(0,2).map(t=>`<span class="ds-pill ds-pill-neutral">${t}</span>`).join("")}
               </div>
               <div class="product-footer">
                 ${p.available
@@ -2488,7 +2488,7 @@
                       </p>
                     </div>
                     <div class="home-recent-tail">
-                      <span class="orc-status-pill ${o.status === 'Aprovado' ? 'orc-s-aprovado' : o.status === 'Pendente' ? 'orc-s-pendente' : o.status === 'Cancelado' ? 'orc-s-cancelado' : 'orc-s-expirado'}">${o.status}</span>
+                      <span class="ds-pill ${o.status === 'Aprovado' ? 'ds-pill-aprovado' : o.status === 'Pendente' ? 'ds-pill-pendente' : o.status === 'Cancelado' ? 'ds-pill-cancelado' : 'ds-pill-cancelado'}">${o.status}</span>
                       <strong class="home-recent-total">${fmt(o.total)}</strong>
                     </div>
                   </div>`).join('')}
@@ -2917,7 +2917,7 @@
 
             <!-- Tab: Overview -->
             <section class="pdp-tab-pane ds-tab-pane active" id="pdpTabOverview">
-              <div class="card pdp-content-card">
+              <div class="ds-card pdp-content-card">
                 <h3 class="pdp-section-title">Sobre o produto</h3>
                 <p class="pdp-content-p">O ${p.name} é um painel solar fotovoltaico de alta performance ${p.tech.includes('Bifacial')?'<strong>bifacial</strong>':'monofacial'} ${p.tech.includes('N-Type')?'com células <strong>N-Type</strong>':''} ideal para projetos residenciais, comerciais e industriais. Com potência de <strong>${p.power}W</strong> e eficiência de <strong>${p.eff}</strong>, garante alta produção de energia mesmo em condições adversas.</p>
                 <p class="pdp-content-p">Fabricado pela ${p.brand}, o módulo ${p.model||p.sku} segue rigorosos padrões internacionais de qualidade e durabilidade, com certificação Tier 1 Bloomberg, garantindo investimento seguro de longo prazo.</p>
@@ -2936,7 +2936,7 @@
 
             <!-- Tab: Especificações -->
             <section class="pdp-tab-pane ds-tab-pane ds-tab-pane" id="pdpTabSpecs" style="display:none;">
-              <div class="card pdp-content-card">
+              <div class="ds-card pdp-content-card">
                 ${(() => {
                   const eff = parseFloat((p.eff || '0').replace(',','.')) || 22.5;
                   const vmp = (40 + p.power*0.0017).toFixed(2);
@@ -3042,7 +3042,7 @@
               </div>
 
               <!-- Outros documentos -->
-              <div class="card pdp-content-card" style="margin-top:14px;">
+              <div class="ds-card pdp-content-card" style="margin-top:14px;">
                 <h3 class="pdp-section-title">Outros documentos e manuais</h3>
                 <div class="pdp-docs-list">
                   ${[
@@ -3892,7 +3892,7 @@
                 <div class="profile-hero-info">
                   <div class="profile-hero-name-row">
                     <h2 class="profile-hero-name">Gabriel Barbosa</h2>
-                    <span class="role-pill role-admin">Administrador</span>
+                    <span class="ds-pill ds-pill-neutral role-admin">Administrador</span>
                   </div>
                   <ul class="profile-hero-meta-list">
                     <li><i data-lucide="building-2"></i> Oderco Distribuidora</li>
@@ -3956,7 +3956,7 @@
                     <p class="user-row-name">${u.name}</p>
                     <p class="user-row-email">${u.cargo} · ${u.email}</p>
                   </div>
-                  <span class="role-pill ${roleClass[u.role] || ''}">${u.role}</span>
+                  <span class="ds-pill ${roleClass[u.role] || ''}">${u.role}</span>
                   <span class="user-status ${u.active ? 'status-on' : 'status-off'}">${u.active ? 'Ativo' : 'Inativo'}</span>
                   <button class="ds-icon-btn ds-icon-btn-ghost ds-icon-btn-sm" title="Editar membro" onclick="openUserModal()"><i data-lucide="edit-2" style="width:14px;height:14px;"></i></button>
                   <button class="ds-icon-btn ds-icon-btn-danger ds-icon-btn-sm" title="Remover membro" onclick="confirm('Remover ${u.name} da equipe? (mock)')"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
@@ -4046,13 +4046,13 @@
       /* ====== ORÇAMENTOS LIST ====== */
       function _orcStatus(s) {
         const m={
-          "Expirado":"orc-s-expirado",
-          "Sem cliente":"orc-s-expirado",
-          "Pendente":"orc-s-pendente",
-          "Aprovado":"orc-s-aprovado",
-          "Cancelado":"orc-s-cancelado"
+          "Expirado":"ds-pill-cancelado",
+          "Sem cliente":"ds-pill-cancelado",
+          "Pendente":"ds-pill-pendente",
+          "Aprovado":"ds-pill-aprovado",
+          "Cancelado":"ds-pill-cancelado"
         };
-        return `<span class="orc-status-pill ${m[s]||'orc-s-pendente'}">${s}</span>`;
+        return `<span class="ds-pill ${m[s]||'ds-pill-pendente'}">${s}</span>`;
       }
       function renderOrcamentos() {
         updatePageTitle("Orçamentos");
@@ -4503,13 +4503,13 @@
       /* ====== PEDIDOS ====== */
       function _pedStatus(s) {
         const m={
-          "Finalizado":"ped-s-finalizado",
-          "Em andamento":"ped-s-emandamento",
-          "Aguardando pagamento":"ped-s-aguardando",
-          "Bloqueado":"ped-s-bloqueado",
-          "Cancelado":"ped-s-cancelado"
+          "Finalizado":"ds-pill-finalizado",
+          "Em andamento":"ds-pill-andamento",
+          "Aguardando pagamento":"ds-pill-pendente",
+          "Bloqueado":"ds-pill-neutral",
+          "Cancelado":"ds-pill-cancelado"
         };
-        return `<span class="ped-status-pill ${m[s]||'ped-s-emandamento'}">${s}</span>`;
+        return `<span class="ds-pill ${m[s]||'ds-pill-andamento'}">${s}</span>`;
       }
       function renderPedidos() {
         updatePageTitle("Pedidos");
@@ -4776,7 +4776,7 @@
             <!-- 3-col info row -->
             <div class="ped-v2-3col">
               <!-- Logistics -->
-              <div class="card ped-v2-card">
+              <div class="ds-card ped-v2-card">
                 <div class="ped-v2-card-hdr">
                   <div class="ped-v2-card-icon ds-icon-box ds-icon-box-sm" style="background:#eff6ff;color:var(--blue);"><i data-lucide="truck" style="width:16px;height:16px;"></i></div>
                   <span class="ped-v2-card-hdr-title">Logística</span>
@@ -4795,7 +4795,7 @@
               </div>
 
               <!-- Payment -->
-              <div class="card ped-v2-card">
+              <div class="ds-card ped-v2-card">
                 <div class="ped-v2-card-hdr">
                   <div class="ped-v2-card-icon ds-icon-box ds-icon-box-sm" style="background:#CCEED2;color:#1c7a36;"><i data-lucide="credit-card" style="width:16px;height:16px;"></i></div>
                   <span class="ped-v2-card-hdr-title">Pagamento</span>
@@ -4809,7 +4809,7 @@
               </div>
 
               <!-- Delivery -->
-              <div class="card ped-v2-card">
+              <div class="ds-card ped-v2-card">
                 <div class="ped-v2-card-hdr">
                   <div class="ped-v2-card-icon ds-icon-box ds-icon-box-sm" style="background:#FCDFB3;color:#ea580c;"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
                   <span class="ped-v2-card-hdr-title">Endereço de Entrega</span>
@@ -5870,7 +5870,7 @@
             <div class="novas-item-top">
               <h3 class="novas-title">${n.title}</h3>
               <div class="novas-item-meta">
-                <span class="novas-tag ${n.tagClass}">${n.tag}</span>
+                <span class="ds-pill ${n.tagClass}">${n.tag}</span>
                 <span class="novas-time">${n.time}</span>
               </div>
             </div>
@@ -6461,7 +6461,7 @@
             +list.map(o=>`<div class="client-order-row">
               <span class="order-code">${o.codigo}</span>
               <span class="order-date">${o.data}</span>
-              <span><span class="order-status ${o.status==='Aprovado'?'s-aprovado':o.status==='Pendente'?'s-pendente':'s-cancelado'}">${o.status}</span></span>
+              <span><span class="ds-pill ${o.status==='Aprovado'?'ds-pill-aprovado':o.status==='Pendente'?'ds-pill-pendente':'ds-pill-cancelado'}">${o.status}</span></span>
               <span class="order-power">${o.potencia}</span>
               <span class="order-total">${fmt(o.total)}</span>
             </div>`).join("");
@@ -6503,8 +6503,8 @@
                     <div class="client-addr-type">${e.tipo}</div>
                     <div class="client-addr-line">${e.rua}, ${e.cidade} - ${e.estado}, ${e.cep}</div>
                     <div class="client-addr-tags">
-                      <span class="client-addr-tag ${e.local==='Área Rural'?'tag-rural':'tag-urbano'}">${e.local}${e.local==='Área Rural' && e.distanciaKm ? ' · '+e.distanciaKm+' km' : ''}</span>
-                      <span class="client-addr-tag ${e.carreta==='Sim'?'tag-carreta-sim':'tag-carreta-nao'}">Carreta: ${e.carreta}</span>
+                      <span class="ds-pill ${e.local==='Área Rural'?'tag-rural':'tag-urbano'}">${e.local}${e.local==='Área Rural' && e.distanciaKm ? ' · '+e.distanciaKm+' km' : ''}</span>
+                      <span class="ds-pill ${e.carreta==='Sim'?'tag-carreta-sim':'tag-carreta-nao'}">Carreta: ${e.carreta}</span>
                     </div>
                   </div>`).join(""):'<div style="font-size:13px;color:var(--muted);padding:4px 0;">Nenhum endereço cadastrado.</div>'}
               </div>
@@ -6540,7 +6540,7 @@
           +list.map(o=>`<div class="client-order-row">
             <span class="order-code">${o.codigo}</span>
             <span class="order-date">${o.data}</span>
-            <span><span class="order-status ${o.status==='Aprovado'?'s-aprovado':o.status==='Pendente'?'s-pendente':'s-cancelado'}">${o.status}</span></span>
+            <span><span class="ds-pill ${o.status==='Aprovado'?'ds-pill-aprovado':o.status==='Pendente'?'ds-pill-pendente':'ds-pill-cancelado'}">${o.status}</span></span>
             <span class="order-power">${o.potencia}</span>
             <span class="order-total">${fmt(o.total)}</span>
           </div>`).join("");
@@ -6559,8 +6559,8 @@
         { codPedido:"1271203", cliente:"Elder Meneguelli De Almeida", nf:"011602", pagamentoRecebido:1320.00, valorComissao:1320.00, venceEm:"15/03/2026", status:"Recebido"   }
       ];
       function _premioStatus(s) {
-        const m = { 'Recebido':'premio-s-recebido', 'Aguardando':'premio-s-aguardando', 'Vencendo':'premio-s-vencendo', 'Vencido':'premio-s-vencido', 'Cancelado':'premio-s-cancelado' };
-        return `<span class="premio-status-pill ${m[s]||'premio-s-aguardando'}">${s}</span>`;
+        const m = { 'Recebido':'ds-pill-finalizado', 'Aguardando':'ds-pill-andamento', 'Vencendo':'ds-pill-pendente', 'Vencido':'ds-pill-cancelado', 'Cancelado':'ds-pill-neutral' };
+        return `<span class="ds-pill ${m[s]||'ds-pill-andamento'}">${s}</span>`;
       }
       function renderPremio() {
         updatePageTitle("Prêmio Venda Direta");
@@ -6712,15 +6712,15 @@
       // Map textual de status para classe da pill da tela de detalhe (reusa as classes da tabela + 2 extras)
       function _premioDetailPill(s) {
         const cls = ({
-          'Recebido':'premio-s-recebido',
-          'Aguardando':'premio-s-aguardando',
-          'Vencendo':'premio-s-vencendo',
-          'Vencido':'premio-s-vencido',
-          'Cancelado':'premio-s-cancelado',
-          'Alteração Solicitada':'premio-s-vencendo',
-          'Para Análise':'premio-s-aguardando'
-        })[s] || 'premio-s-aguardando';
-        return `<span class="premio-status-pill ${cls}">${s}</span>`;
+          'Recebido':'ds-pill-finalizado',
+          'Aguardando':'ds-pill-andamento',
+          'Vencendo':'ds-pill-pendente',
+          'Vencido':'ds-pill-cancelado',
+          'Cancelado':'ds-pill-neutral',
+          'Alteração Solicitada':'ds-pill-pendente',
+          'Para Análise':'ds-pill-andamento'
+        })[s] || 'ds-pill-andamento';
+        return `<span class="ds-pill ${cls}">${s}</span>`;
       }
       // Mapa de status → contexto para o banner de ação
       const _premioStatusBanner = {
@@ -7178,8 +7178,8 @@ Fone: (44) 2101-1400`;
         const fbs = n.feedbacks || [];
         $("novidadeFeedbacksTitle").innerHTML = `<i data-lucide="message-square-text" style="width:18px;height:18px;color:var(--blue);vertical-align:-3px;"></i> Feedbacks · ${n.title}`;
         $("novidadeFeedbacksSubtitle").innerHTML = fbs.length
-          ? `<span class="admin-novidade-tag ${n.tagClass || 'novas-tag-cyan'}">${n.tag}</span><strong>${fbs.length} ${fbs.length===1?'feedback recebido':'feedbacks recebidos'}</strong>`
-          : `<span class="admin-novidade-tag ${n.tagClass || 'novas-tag-cyan'}">${n.tag}</span><strong>Nenhum feedback ainda</strong>`;
+          ? `<span class="ds-pill ${n.tagClass || 'novas-tag-cyan'}">${n.tag}</span><strong>${fbs.length} ${fbs.length===1?'feedback recebido':'feedbacks recebidos'}</strong>`
+          : `<span class="ds-pill ${n.tagClass || 'novas-tag-cyan'}">${n.tag}</span><strong>Nenhum feedback ainda</strong>`;
         $("novidadeFeedbacksList").innerHTML = fbs.length
           ? fbs.map(f => {
               const inits = (f.user || '').split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase() || '—';
@@ -7313,7 +7313,7 @@ Fone: (44) 2101-1400`;
         });
         const totalLive = bannersData.filter(_bannerIsLive).length;
         return `
-          <div class="card admin-card">
+          <div class="ds-card admin-card">
             <div class="admin-card-head">
               <div class="admin-card-head-title">
                 <h3>Banners e campanhas</h3>
@@ -7547,7 +7547,7 @@ Fone: (44) 2101-1400`;
 
         // Conteúdo dos panes
         const paneUsuarios = `
-          <div class="card admin-card">
+          <div class="ds-card admin-card">
             <div class="admin-card-head">
               <div class="admin-card-head-title">
                 <h3>Gestão de Usuários</h3>
@@ -7578,7 +7578,7 @@ Fone: (44) 2101-1400`;
                     <p class="admin-user-name">${u.name}</p>
                     <p class="admin-user-email">${u.email}</p>
                   </div>
-                  <span class="role-pill ${roleClass[u.role] || ''}">${u.role}</span>
+                  <span class="ds-pill ${roleClass[u.role] || ''}">${u.role}</span>
                   <label class="admin-user-toggle" title="${u.active ? 'Desativar' : 'Ativar'} usuário">
                     <input type="checkbox" ${u.active ? 'checked' : ''} onchange="alert('Toggle ativo (mock)')">
                     <span class="admin-toggle-slider"></span>
@@ -7592,7 +7592,7 @@ Fone: (44) 2101-1400`;
 
         const novidadeCategorias = [...new Set(novasData.map(n => n.tag))];
         const paneNovidades = `
-          <div class="card admin-card">
+          <div class="ds-card admin-card">
             <div class="admin-card-head">
               <div class="admin-card-head-title">
                 <h3>Novidades publicadas</h3>
@@ -7618,7 +7618,7 @@ Fone: (44) 2101-1400`;
             <div class="admin-novidades-list">
               ${novasData.map((n,i) => `
                 <div class="admin-novidade-row" data-cat="${n.tag}" data-title="${n.title.toLowerCase()}">
-                  <span class="admin-novidade-tag ${n.tagClass || 'novas-tag-cyan'}">${n.tag}</span>
+                  <span class="ds-pill ${n.tagClass || 'novas-tag-cyan'}">${n.tag}</span>
                   <div class="admin-novidade-info">
                     <p class="admin-novidade-title">${n.title}</p>
                     <p class="admin-novidade-meta">${n.time}${n.isRead === false ? ' · <span style="color:var(--blue);font-weight:700;">não lida</span>' : ''}</p>
@@ -7638,7 +7638,7 @@ Fone: (44) 2101-1400`;
           </div>`;
 
         const paneRelatorios = `
-          <div class="card admin-card">
+          <div class="ds-card admin-card">
             <div class="admin-card-head">
               <div class="admin-card-head-title">
                 <h3>Relatórios</h3>
@@ -7669,7 +7669,7 @@ Fone: (44) 2101-1400`;
           </div>`;
 
         const paneAtividade = `
-          <div class="card admin-card">
+          <div class="ds-card admin-card">
             <div class="admin-card-head">
               <div class="admin-card-head-title">
                 <h3>Atividade recente</h3>
@@ -7788,7 +7788,7 @@ Fone: (44) 2101-1400`;
         const totalArtigos = articles.length;
         const totalViews = articles.reduce((s,a)=>s+(a.views||0),0);
         return `
-          <div class="card admin-card">
+          <div class="ds-card admin-card">
             <div class="admin-card-head">
               <div class="admin-card-head-title">
                 <h3>Biblioteca de artigos</h3>

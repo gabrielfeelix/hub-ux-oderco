@@ -21,3 +21,6 @@
 .ds-pill-cancelado  { background: var(--color-feedback-error-bg);   color: var(--color-feedback-error-fg); }
 .ds-pill-andamento  { background: var(--color-status-andamento-bg); color: var(--color-status-andamento-fg); }
 .ds-pill-semcliente { background: var(--color-status-semcliente-bg); color: var(--color-status-semcliente-fg); }
+
+/* Neutral · tags genéricas e estados inativos (bloqueado, sem status) */
+.ds-pill-neutral { background: var(--color-surface-sunken); color: var(--color-text-muted); }
