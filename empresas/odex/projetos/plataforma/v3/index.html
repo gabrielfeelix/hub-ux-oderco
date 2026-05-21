@@ -1074,25 +1074,25 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label">Nome completo <span class="req">*</span></label>
-          <input type="text" class="form-input" placeholder="Ex: João da Silva">
+          <input type="text" class="ds-input" placeholder="Ex: João da Silva">
         </div>
         <div class="form-group">
           <label class="form-label">Email <span class="req">*</span></label>
-          <input type="email" class="form-input" placeholder="email@empresa.com">
+          <input type="email" class="ds-input" placeholder="email@empresa.com">
         </div>
         <div class="form-row form-group">
           <div>
             <label class="form-label">Senha <span class="req">*</span></label>
-            <input type="password" class="form-input" placeholder="••••••••">
+            <input type="password" class="ds-input" placeholder="••••••••">
           </div>
           <div>
             <label class="form-label">Confirmar Senha <span class="req">*</span></label>
-            <input type="password" class="form-input" placeholder="••••••••">
+            <input type="password" class="ds-input" placeholder="••••••••">
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Função <span class="req">*</span></label>
-          <select class="form-input ds-replace">
+          <select class="ds-replace">
             <option value="">Selecionar função...</option>
             <option>Administrador</option>
             <option>Integrador</option>
@@ -1126,39 +1126,39 @@
           <div class="nc-tipo-opt ds-card-selectable ds-card-selectable" onclick="selectNcTipo(this,'pf')"><b>Pessoa Física</b><small>CPF, Nome</small></div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">CNPJ <span class="req">*</span></label><input type="text" class="nc-input" id="ncCnpj" placeholder="00.000.000/0001-00"></div>
-          <div class="nc-field"><label class="nc-label">Razão Social <span class="req">*</span></label><input type="text" class="nc-input" id="ncRazao" placeholder="Nome da empresa"></div>
+          <div class="nc-field"><label class="nc-label">CNPJ <span class="req">*</span></label><input type="text" class="ds-input" id="ncCnpj" placeholder="00.000.000/0001-00"></div>
+          <div class="nc-field"><label class="nc-label">Razão Social <span class="req">*</span></label><input type="text" class="ds-input" id="ncRazao" placeholder="Nome da empresa"></div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">Inscrição Estadual <span class="req">*</span></label><input type="text" class="nc-input" id="ncIE" placeholder="Insento / Número"></div>
-          <div class="nc-field"><label class="nc-label">Principal Atividade <span class="req">*</span></label><select class="nc-input" id="ncAtiv"><option value="">Selecionar...</option><option>Instalador / Integrador</option><option>Distribuidor</option><option>Construtora</option><option>Outros</option></select></div>
+          <div class="nc-field"><label class="nc-label">Inscrição Estadual <span class="req">*</span></label><input type="text" class="ds-input" id="ncIE" placeholder="Insento / Número"></div>
+          <div class="nc-field"><label class="nc-label">Principal Atividade <span class="req">*</span></label><select class="ds-select" id="ncAtiv"><option value="">Selecionar...</option><option>Instalador / Integrador</option><option>Distribuidor</option><option>Construtora</option><option>Outros</option></select></div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">Ramo de Atividade <span class="req">*</span></label><select class="nc-input" id="ncRamo"><option value="">Selecionar...</option><option>Energia Solar</option><option>Construção Civil</option><option>Comércio</option><option>Outros</option></select></div>
-          <div class="nc-field"><label class="nc-label">Nome Completo (contato) <span class="req">*</span></label><input type="text" class="nc-input" id="ncNome" placeholder="João da Silva"></div>
+          <div class="nc-field"><label class="nc-label">Ramo de Atividade <span class="req">*</span></label><select class="ds-select" id="ncRamo"><option value="">Selecionar...</option><option>Energia Solar</option><option>Construção Civil</option><option>Comércio</option><option>Outros</option></select></div>
+          <div class="nc-field"><label class="nc-label">Nome Completo (contato) <span class="req">*</span></label><input type="text" class="ds-input" id="ncNome" placeholder="João da Silva"></div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">Telefone <span class="req">*</span></label><input type="text" class="nc-input" id="ncTel" placeholder="(00) 9 0000-0000"></div>
-          <div class="nc-field"><label class="nc-label">Email <span class="req">*</span></label><input type="email" class="nc-input" id="ncEmail" placeholder="email@empresa.com"></div>
+          <div class="nc-field"><label class="nc-label">Telefone <span class="req">*</span></label><input type="text" class="ds-input" id="ncTel" placeholder="(00) 9 0000-0000"></div>
+          <div class="nc-field"><label class="nc-label">Email <span class="req">*</span></label><input type="email" class="ds-input" id="ncEmail" placeholder="email@empresa.com"></div>
         </div>
-        <div class="nc-field"><label class="nc-label">Integrador <span class="req">*</span></label><input type="text" class="nc-input" id="ncInteg" placeholder="Código, nome, CNPJ..."></div>
+        <div class="nc-field"><label class="nc-label">Integrador <span class="req">*</span></label><input type="text" class="ds-input" id="ncInteg" placeholder="Código, nome, CNPJ..."></div>
       </div>
       <!-- Step 2 -->
       <div class="nc-body" id="ncStep2" style="display:none;">
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">CEP <span class="req">*</span></label><input type="text" class="nc-input" id="ncCep" placeholder="00000-000"></div>
+          <div class="nc-field"><label class="nc-label">CEP <span class="req">*</span></label><input type="text" class="ds-input" id="ncCep" placeholder="00000-000"></div>
           <div class="nc-field" style="flex-direction:row;gap:10px;align-items:flex-end;">
-            <div style="flex:1;"><label class="nc-label">Endereço <span class="req">*</span></label><input type="text" class="nc-input" id="ncEnd" placeholder="Rua, Av..."></div>
-            <div style="width:80px;"><label class="nc-label">Nº <span class="req">*</span></label><input type="text" class="nc-input" id="ncNum" placeholder="Nº"></div>
+            <div style="flex:1;"><label class="nc-label">Endereço <span class="req">*</span></label><input type="text" class="ds-input" id="ncEnd" placeholder="Rua, Av..."></div>
+            <div style="width:80px;"><label class="nc-label">Nº <span class="req">*</span></label><input type="text" class="ds-input" id="ncNum" placeholder="Nº"></div>
           </div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">Complemento</label><input type="text" class="nc-input" id="ncComp" placeholder="Apto, Bloco..."></div>
-          <div class="nc-field"><label class="nc-label">Bairro <span class="req">*</span></label><input type="text" class="nc-input" id="ncBairro" placeholder="Bairro"></div>
+          <div class="nc-field"><label class="nc-label">Complemento</label><input type="text" class="ds-input" id="ncComp" placeholder="Apto, Bloco..."></div>
+          <div class="nc-field"><label class="nc-label">Bairro <span class="req">*</span></label><input type="text" class="ds-input" id="ncBairro" placeholder="Bairro"></div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
-          <div class="nc-field"><label class="nc-label">Cidade <span class="req">*</span></label><input type="text" class="nc-input" id="ncCidade" placeholder="Cidade"></div>
-          <div class="nc-field"><label class="nc-label">Estado (sigla) <span class="req">*</span></label><input type="text" class="nc-input" id="ncEstado" placeholder="UF" maxlength="2"></div>
+          <div class="nc-field"><label class="nc-label">Cidade <span class="req">*</span></label><input type="text" class="ds-input" id="ncCidade" placeholder="Cidade"></div>
+          <div class="nc-field"><label class="nc-label">Estado (sigla) <span class="req">*</span></label><input type="text" class="ds-input" id="ncEstado" placeholder="UF" maxlength="2"></div>
         </div>
         <div class="nc-grid-2 ds-form-grid ds-form-grid-2" style="margin-bottom:14px;">
           <div class="nc-field"><label class="nc-label">Local da Entrega <span class="req">*</span></label><div class="nc-radio-row"><label class="ds-check"><input type="radio" name="ncLocal" value="urbano" checked onchange="toggleNcRuralKm(false)"> Área Urbana</label><label class="ds-check"><input type="radio" name="ncLocal" value="rural" onchange="toggleNcRuralKm(true)"> Área Rural</label></div></div>
@@ -1166,7 +1166,7 @@
         </div>
         <div class="nc-field" id="ncRuralKmField" style="display:none;margin-bottom:14px;">
           <label class="nc-label">Distância da cidade até o local <span class="req">*</span></label>
-          <input type="number" class="nc-input" id="ncRuralKm" placeholder="Ex: 12" min="0" step="0.1">
+          <input type="number" class="ds-input" id="ncRuralKm" placeholder="Ex: 12" min="0" step="0.1">
           <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">Em km. Necessário para o cálculo correto do frete em área rural.</small>
         </div>
         <div class="nc-field"><label class="nc-label">Observações</label><textarea class="nc-textarea" id="ncObs" placeholder="Ex: Restrições de horário"></textarea></div>
@@ -1188,7 +1188,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label">Buscar</label>
-          <input type="text" id="clienteSearchInput" class="form-input" placeholder="Código, nome, CPF, email..." oninput="renderClienteSearchList(this.value)">
+          <input type="text" id="clienteSearchInput" class="ds-input" placeholder="Código, nome, CPF, email..." oninput="renderClienteSearchList(this.value)">
         </div>
         <div class="cliente-search-list" id="clienteSearchList"></div>
       </div>
@@ -1209,15 +1209,15 @@
         <input type="hidden" id="novidadeFormIdx">
         <div class="form-group">
           <label class="form-label">Título <span class="req">*</span></label>
-          <input type="text" class="form-input" id="novidadeFormTitulo" placeholder="Ex: Nova Calculadora Solar disponível">
+          <input type="text" class="ds-input" id="novidadeFormTitulo" placeholder="Ex: Nova Calculadora Solar disponível">
         </div>
         <div class="form-group">
           <label class="form-label">Descrição <span class="req">*</span></label>
-          <textarea class="form-input" id="novidadeFormDesc" rows="4" placeholder="Conte aos integradores o que mudou e o que eles ganham com essa novidade…" style="resize:vertical;font-family:var(--font);"></textarea>
+          <textarea class="ds-textarea" id="novidadeFormDesc" rows="4" placeholder="Conte aos integradores o que mudou e o que eles ganham com essa novidade…" style="resize:vertical;font-family:var(--font);"></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">Categoria <span class="req">*</span></label>
-          <select class="form-input ds-replace" id="novidadeFormCat" data-allow-empty="1">
+          <select class="ds-replace" id="novidadeFormCat" data-allow-empty="1">
             <option value="Calculadora Solar">Calculadora Solar</option>
             <option value="Clientes">Clientes</option>
             <option value="Orçamentos">Orçamentos</option>
@@ -1228,7 +1228,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">Imagem do banner</label>
-          <input type="file" class="form-input" id="novidadeFormImg" accept="image/*">
+          <input type="file" class="ds-input" id="novidadeFormImg" accept="image/*">
           <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">Recomendado: <strong>1200 × 480 px</strong> (proporção 5:2), formato JPG/PNG, até 2MB. Se não enviar, usaremos um placeholder colorido com o ícone da categoria.</small>
         </div>
         <div class="form-group">
@@ -1245,7 +1245,7 @@
           </div>
           <div class="form-group" id="novidadeFormSchedField" style="display:none;margin-top:10px;">
             <label class="form-label" style="font-weight:400;">Data e horário</label>
-            <input type="datetime-local" class="form-input">
+            <input type="datetime-local" class="ds-input">
           </div>
         </div>
       </div>
@@ -1268,7 +1268,7 @@
           <label class="form-label">WhatsApp do cliente</label>
           <div style="position:relative;">
             <i data-lucide="phone" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--placeholder);"></i>
-            <input type="tel" class="form-input" id="calcShareTel" placeholder="(00) 00000-0000" style="padding-left:42px;">
+            <input type="tel" class="ds-input" id="calcShareTel" placeholder="(00) 00000-0000" style="padding-left:42px;">
           </div>
         </div>
         <button class="btn-primary" style="width:100%;justify-content:center;background:#25d366;" onclick="calcShareSendWhats()">
@@ -1279,7 +1279,7 @@
         </div>
         <label class="form-label">Link público da calculadora</label>
         <div style="display:flex;gap:8px;">
-          <input type="text" class="form-input" id="calcShareLink" readonly style="flex:1;font:400 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:#fafbff;">
+          <input type="text" class="ds-input" id="calcShareLink" readonly style="flex:1;font:400 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;background:#fafbff;">
           <button class="btn-cancel" id="calcShareCopyBtn" onclick="calcShareCopyLink()" style="padding:0 14px;display:inline-flex;align-items:center;gap:6px;">
             <i data-lucide="copy" style="width:14px;height:14px;"></i> Copiar
           </button>
@@ -1300,24 +1300,24 @@
         <div class="form-row form-group" style="display:grid;grid-template-columns:2fr 1fr;gap:14px;">
           <div>
             <label class="form-label">Categoria <span class="req">*</span></label>
-            <select class="form-input ds-replace" id="artigoFormCat"></select>
+            <select class="ds-replace" id="artigoFormCat"></select>
           </div>
           <div>
             <label class="form-label">Tempo de leitura (min) <span class="req">*</span></label>
-            <input type="number" min="1" max="60" class="form-input" id="artigoFormReadTime" value="3">
+            <input type="number" min="1" max="60" class="ds-input" id="artigoFormReadTime" value="3">
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Título <span class="req">*</span></label>
-          <input type="text" class="form-input" id="artigoFormTitleInput" placeholder="Ex: Como criar meu primeiro orçamento solar">
+          <input type="text" class="ds-input" id="artigoFormTitleInput" placeholder="Ex: Como criar meu primeiro orçamento solar">
         </div>
         <div class="form-group">
           <label class="form-label">Resumo <span class="req">*</span></label>
-          <textarea class="form-input" id="artigoFormSummary" rows="2" placeholder="1-2 frases que aparecem na lista de artigos." style="resize:vertical;min-height:60px;font-family:var(--font);"></textarea>
+          <textarea class="ds-textarea" id="artigoFormSummary" rows="2" placeholder="1-2 frases que aparecem na lista de artigos." style="resize:vertical;min-height:60px;font-family:var(--font);"></textarea>
         </div>
         <div class="form-group" style="flex:1;display:flex;flex-direction:column;min-height:0;">
           <label class="form-label">Conteúdo <span class="req">*</span> <small style="font-weight:400;color:var(--muted);">· aceita HTML simples</small></label>
-          <textarea class="form-input" id="artigoFormContent" placeholder="<h2>Antes de começar</h2><p>Para criar um orçamento...</p>" style="resize:vertical;flex:1;min-height:320px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.55;"></textarea>
+          <textarea class="ds-textarea" id="artigoFormContent" placeholder="<h2>Antes de começar</h2><p>Para criar um orçamento...</p>" style="resize:vertical;flex:1;min-height:320px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.55;"></textarea>
           <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">Tags suportadas: <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;a&gt;</code>.</small>
         </div>
       </div>
@@ -1429,11 +1429,11 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label">Nome <span class="req">*</span></label>
-          <input type="text" class="form-input" id="clienteEditNome">
+          <input type="text" class="ds-input" id="clienteEditNome">
         </div>
         <div class="form-group">
           <label class="form-label">Telefone <span class="req">*</span></label>
-          <input type="tel" class="form-input" id="clienteEditTel" placeholder="(00) 00000-0000">
+          <input type="tel" class="ds-input" id="clienteEditTel" placeholder="(00) 00000-0000">
         </div>
         <div class="form-group">
           <label class="form-label" style="display:flex;align-items:center;gap:6px;">
@@ -1442,7 +1442,7 @@
               <i data-lucide="lock" style="width:11px;height:11px;"></i> Bloqueado
             </span>
           </label>
-          <input type="email" class="form-input" id="clienteEditEmail" readonly disabled style="background:var(--soft);color:var(--muted);cursor:not-allowed;">
+          <input type="email" class="ds-input" id="clienteEditEmail" readonly disabled style="background:var(--soft);color:var(--muted);cursor:not-allowed;">
           <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">O e-mail é usado para emissão da nota fiscal e não pode ser alterado. Em caso de necessidade, entre em contato com o suporte.</small>
         </div>
         <div class="form-group">
@@ -1452,7 +1452,7 @@
               <i data-lucide="lock" style="width:11px;height:11px;"></i> Bloqueado
             </span>
           </label>
-          <input type="text" class="form-input" id="clienteEditCpf" readonly disabled style="background:var(--soft);color:var(--muted);cursor:not-allowed;">
+          <input type="text" class="ds-input" id="clienteEditCpf" readonly disabled style="background:var(--soft);color:var(--muted);cursor:not-allowed;">
         </div>
       </div>
       <div class="modal-foot">
@@ -1472,36 +1472,36 @@
         <div class="form-row form-group" style="grid-template-columns:1fr 100px;display:grid;gap:12px;">
           <div>
             <label class="form-label">CEP <span class="req">*</span></label>
-            <input type="text" class="form-input" id="endCep" placeholder="00000-000">
+            <input type="text" class="ds-input" id="endCep" placeholder="00000-000">
           </div>
           <div>
             <label class="form-label">UF <span class="req">*</span></label>
-            <input type="text" class="form-input" id="endEstado" maxlength="2" placeholder="UF">
+            <input type="text" class="ds-input" id="endEstado" maxlength="2" placeholder="UF">
           </div>
         </div>
         <div class="form-row form-group" style="grid-template-columns:1fr 100px;display:grid;gap:12px;">
           <div>
             <label class="form-label">Endereço <span class="req">*</span></label>
-            <input type="text" class="form-input" id="endRua" placeholder="Rua, Avenida...">
+            <input type="text" class="ds-input" id="endRua" placeholder="Rua, Avenida...">
           </div>
           <div>
             <label class="form-label">Nº <span class="req">*</span></label>
-            <input type="text" class="form-input" id="endNumero" placeholder="Nº">
+            <input type="text" class="ds-input" id="endNumero" placeholder="Nº">
           </div>
         </div>
         <div class="form-row form-group" style="grid-template-columns:1fr 1fr;display:grid;gap:12px;">
           <div>
             <label class="form-label">Bairro <span class="req">*</span></label>
-            <input type="text" class="form-input" id="endBairro" placeholder="Bairro">
+            <input type="text" class="ds-input" id="endBairro" placeholder="Bairro">
           </div>
           <div>
             <label class="form-label">Cidade <span class="req">*</span></label>
-            <input type="text" class="form-input" id="endCidade" placeholder="Cidade">
+            <input type="text" class="ds-input" id="endCidade" placeholder="Cidade">
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Complemento</label>
-          <input type="text" class="form-input" id="endComp" placeholder="Apto, Bloco, ponto de referência...">
+          <input type="text" class="ds-input" id="endComp" placeholder="Apto, Bloco, ponto de referência...">
         </div>
         <div class="form-row form-group" style="grid-template-columns:1fr 1fr;display:grid;gap:12px;">
           <div>
@@ -1521,7 +1521,7 @@
         </div>
         <div class="form-group" id="endRuralKmField" style="display:none;">
           <label class="form-label">Distância da cidade até o local <span class="req">*</span></label>
-          <input type="number" class="form-input" id="endRuralKm" placeholder="Ex: 12" min="0" step="0.1">
+          <input type="number" class="ds-input" id="endRuralKm" placeholder="Ex: 12" min="0" step="0.1">
           <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">Em km. Necessário para o cálculo correto do frete em área rural.</small>
         </div>
       </div>
@@ -1540,15 +1540,15 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label">Nome <span class="req">*</span></label>
-          <input type="text" class="form-input" value="Gabriel Barbosa">
+          <input type="text" class="ds-input" value="Gabriel Barbosa">
         </div>
         <div class="form-group">
           <label class="form-label">Telefone <span class="req">*</span></label>
-          <input type="tel" class="form-input" placeholder="(00) 00000-0000">
+          <input type="tel" class="ds-input" placeholder="(00) 00000-0000">
         </div>
         <div class="form-group">
           <label class="form-label">Email <span class="req">*</span></label>
-          <input type="email" class="form-input" value="gabriel.barbosa@oderco.com.br">
+          <input type="email" class="ds-input" value="gabriel.barbosa@oderco.com.br">
         </div>
       </div>
       <div class="modal-foot">
@@ -1570,7 +1570,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label">Telefone do cliente <span class="req">*</span></label>
-          <input type="tel" id="ovWhatsTel" class="form-input" placeholder="(00) 00000-0000">
+          <input type="tel" id="ovWhatsTel" class="ds-input" placeholder="(00) 00000-0000">
         </div>
 
         <div class="ov-whats-preview">
@@ -1587,7 +1587,7 @@
 
         <div class="form-group">
           <label class="form-label">Mensagem</label>
-          <textarea id="ovWhatsMsg" class="form-input" rows="5" style="height:auto;padding:12px 14px;line-height:1.55;resize:vertical;font-family:var(--font);"></textarea>
+          <textarea id="ovWhatsMsg" class="ds-textarea" rows="5" style="height:auto;padding:12px 14px;line-height:1.55;resize:vertical;font-family:var(--font);"></textarea>
         </div>
       </div>
       <div class="modal-foot">
@@ -1904,7 +1904,7 @@
           <div class="modal-body">
             <div class="form-group">
               <label class="form-label">Nome da sua empresa</label>
-              <input type="text" class="form-input" id="integradorNomeInput" placeholder="Ex: Solar Integradores Ltda" value="${curNome === 'Sua empresa' ? '' : curNome}">
+              <input type="text" class="ds-input" id="integradorNomeInput" placeholder="Ex: Solar Integradores Ltda" value="${curNome === 'Sua empresa' ? '' : curNome}">
             </div>
             <div class="form-group">
               <label class="form-label">Logo</label>
@@ -3677,7 +3677,7 @@
                   </div>
                   <div class="ov-field">
                     <label class="ov-label">Título do Orçamento <span class="req">*</span></label>
-                    <input id="ckTitulo" type="text" class="ov-input" placeholder="Ex: Projeto Residencial · Rua das Flores">
+                    <input id="ckTitulo" type="text" class="ds-input" placeholder="Ex: Projeto Residencial · Rua das Flores">
                   </div>
                 </div>
 
@@ -3695,47 +3695,47 @@
                   </div>
                   <div class="ov-field" id="ckRuralKmField" style="display:none;">
                     <label class="ov-label">Distância da cidade até o local <span class="req">*</span></label>
-                    <input type="number" class="ov-input" placeholder="Ex: 12" min="0" step="0.1" id="ckRuralKm">
+                    <input type="number" class="ds-input" placeholder="Ex: 12" min="0" step="0.1" id="ckRuralKm">
                     <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">Em km. Necessário para o cálculo correto do frete.</small>
                   </div>
                   <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
                     <div class="ov-field">
                       <label class="ov-label">CEP <span class="req">*</span></label>
-                      <input id="ckCep" type="text" class="ov-input" placeholder="00000-000">
+                      <input id="ckCep" type="text" class="ds-input" placeholder="00000-000">
                     </div>
                     <div class="ov-field">
                       <label class="ov-label">Estado <span class="req">*</span></label>
-                      <input id="ckEstado" type="text" class="ov-input" maxlength="2" placeholder="UF">
+                      <input id="ckEstado" type="text" class="ds-input" maxlength="2" placeholder="UF">
                     </div>
                   </div>
                   <div class="ov-grid-3-1 ds-form-grid ds-form-grid-31">
                     <div class="ov-field">
                       <label class="ov-label">Endereço <span class="req">*</span></label>
-                      <input id="ckRua" type="text" class="ov-input" placeholder="Rua, Av...">
+                      <input id="ckRua" type="text" class="ds-input" placeholder="Rua, Av...">
                     </div>
                     <div class="ov-field">
                       <label class="ov-label">Nº <span class="req">*</span></label>
-                      <input id="ckNumero" type="text" class="ov-input" placeholder="Nº">
+                      <input id="ckNumero" type="text" class="ds-input" placeholder="Nº">
                     </div>
                   </div>
                   <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
                     <div class="ov-field">
                       <label class="ov-label">Bairro <span class="req">*</span></label>
-                      <input id="ckBairro" type="text" class="ov-input" placeholder="Bairro">
+                      <input id="ckBairro" type="text" class="ds-input" placeholder="Bairro">
                     </div>
                     <div class="ov-field">
                       <label class="ov-label">Cidade <span class="req">*</span></label>
-                      <input id="ckCidade" type="text" class="ov-input" placeholder="Cidade">
+                      <input id="ckCidade" type="text" class="ds-input" placeholder="Cidade">
                     </div>
                   </div>
                   <div class="ov-field">
                     <label class="ov-label">Complemento</label>
-                    <input type="text" class="ov-input" placeholder="Apto, Bloco, ponto de referência...">
+                    <input type="text" class="ds-input" placeholder="Apto, Bloco, ponto de referência...">
                   </div>
                   <div class="ov-field">
                     <label class="ov-label">Tipo de Frete <span class="req">*</span></label>
                     <div style="position:relative;">
-                      <select class="ov-input" style="appearance:none;padding-right:36px;">
+                      <select class="ds-select" style="appearance:none;padding-right:36px;">
                         <option value="">Selecionar...</option>
                         <option>FOB · Retira na fábrica</option>
                         <option>CIF · Entrega no endereço</option>
@@ -3754,16 +3754,16 @@
                   <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
                     <div class="ov-field">
                       <label class="ov-label">Validade do orçamento</label>
-                      <input type="date" class="ov-input">
+                      <input type="date" class="ds-input">
                     </div>
                     <div class="ov-field">
                       <label class="ov-label">Potência total</label>
-                      <input type="text" class="ov-input" value="${totalKw.toFixed(2)} kWp" readonly style="background:var(--soft);color:var(--muted);">
+                      <input type="text" class="ds-input" value="${totalKw.toFixed(2)} kWp" readonly style="background:var(--soft);color:var(--muted);">
                     </div>
                   </div>
                   <div class="ov-field">
                     <label class="ov-label">Observações</label>
-                    <textarea class="ov-input" rows="3" style="height:auto;padding:12px 14px;line-height:1.55;resize:vertical;font-family:var(--font);" placeholder="Informações adicionais sobre o pedido, instruções de entrega..."></textarea>
+                    <textarea class="ds-textarea" rows="3" style="height:auto;padding:12px 14px;line-height:1.55;resize:vertical;font-family:var(--font);" placeholder="Informações adicionais sobre o pedido, instruções de entrega..."></textarea>
                   </div>
                 </div>
               </div>
@@ -4335,46 +4335,46 @@
           </div>
           <div class="ov-field" id="ovRuralKmField" style="display:none;">
             <label class="ov-label">Distância da cidade até o local <span class="req">*</span></label>
-            <input type="number" class="ov-input" placeholder="Ex: 12" min="0" step="0.1" style="max-width:200px;">
+            <input type="number" class="ds-input" placeholder="Ex: 12" min="0" step="0.1" style="max-width:200px;">
             <small style="display:block;margin-top:6px;font:400 12px/1.4 var(--font);color:var(--muted);">Em km. Necessário para o cálculo correto do frete em área rural.</small>
           </div>
           <div class="ov-field">
             <label class="ov-label">CEP <span class="req">*</span></label>
-            <input type="text" class="ov-input" placeholder="00000-000" style="max-width:200px;">
+            <input type="text" class="ds-input" placeholder="00000-000" style="max-width:200px;">
           </div>
           <div class="ov-grid-3-1 ds-form-grid ds-form-grid-31">
             <div class="ov-field">
               <label class="ov-label">Endereço <span class="req">*</span></label>
-              <input type="text" class="ov-input" placeholder="Rua, Av...">
+              <input type="text" class="ds-input" placeholder="Rua, Av...">
             </div>
             <div class="ov-field">
               <label class="ov-label">Nº <span class="req">*</span></label>
-              <input type="text" class="ov-input" placeholder="Nº">
+              <input type="text" class="ds-input" placeholder="Nº">
             </div>
           </div>
           <div class="ov-field">
             <label class="ov-label">Complemento</label>
-            <input type="text" class="ov-input" placeholder="Apto, bloco, ponto de referência...">
+            <input type="text" class="ds-input" placeholder="Apto, bloco, ponto de referência...">
           </div>
           <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
             <div class="ov-field">
               <label class="ov-label">Bairro <span class="req">*</span></label>
-              <input type="text" class="ov-input" placeholder="Bairro">
+              <input type="text" class="ds-input" placeholder="Bairro">
             </div>
             <div class="ov-field">
               <label class="ov-label">Cidade <span class="req">*</span></label>
-              <input type="text" class="ov-input" placeholder="Cidade">
+              <input type="text" class="ds-input" placeholder="Cidade">
             </div>
           </div>
           <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
             <div class="ov-field">
               <label class="ov-label">Estado <span class="req">*</span></label>
-              <input type="text" class="ov-input" maxlength="2" placeholder="UF" style="max-width:120px;">
+              <input type="text" class="ds-input" maxlength="2" placeholder="UF" style="max-width:120px;">
             </div>
             <div class="ov-field">
               <label class="ov-label">Tipo de Frete</label>
               <div style="position:relative;">
-                <select class="ov-input" style="appearance:none;padding-right:36px;">
+                <select class="ds-select" style="appearance:none;padding-right:36px;">
                   <option value="">Selecionar...</option>
                   <option>FOB · Retira na fábrica</option>
                   <option>CIF · Entrega no endereço</option>
@@ -4400,16 +4400,16 @@
           </div>
           <div class="ov-field">
             <label class="ov-label">CEP</label>
-            <input type="text" class="ov-input" placeholder="00000-000" style="max-width:200px;">
+            <input type="text" class="ds-input" placeholder="00000-000" style="max-width:200px;">
           </div>
           <div class="ov-field">
             <label class="ov-label">Estado (sigla)</label>
-            <input type="text" class="ov-input" maxlength="2" placeholder="UF" style="max-width:140px;">
+            <input type="text" class="ds-input" maxlength="2" placeholder="UF" style="max-width:140px;">
           </div>
           <div class="ov-field">
             <label class="ov-label">Tipo de Frete</label>
             <div style="position:relative;">
-              <select class="ov-input" style="appearance:none;padding-right:36px;">
+              <select class="ds-select" style="appearance:none;padding-right:36px;">
                 <option value="">Selecionar...</option>
                 <option>FOB · Retira na fábrica</option>
                 <option>CIF · Entrega no endereço</option>
@@ -4431,32 +4431,32 @@
             <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Nome Completo <span class="req">*</span></label>
-                <input type="text" class="ov-input" placeholder="Nome do contato">
+                <input type="text" class="ds-input" placeholder="Nome do contato">
               </div>
               <div class="ov-field">
                 <label class="ov-label">CNPJ <span class="req">*</span></label>
-                <input type="text" class="ov-input" placeholder="00.000.000/0000-00">
+                <input type="text" class="ds-input" placeholder="00.000.000/0000-00">
               </div>
             </div>
             <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Razão Social <span class="req">*</span></label>
-                <input type="text" class="ov-input" placeholder="Nome da empresa">
+                <input type="text" class="ds-input" placeholder="Nome da empresa">
               </div>
               <div class="ov-field">
                 <label class="ov-label">Inscrição Estadual <span class="req">*</span></label>
-                <input type="text" class="ov-input" placeholder="Insento / Número">
+                <input type="text" class="ds-input" placeholder="Insento / Número">
                 <label class="ds-check" style="margin-top:6px;"><input type="checkbox"> <span>Isento</span></label>
               </div>
             </div>
             <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Telefone <span class="req">*</span></label>
-                <input type="tel" class="ov-input" placeholder="(00) 00000-0000">
+                <input type="tel" class="ds-input" placeholder="(00) 00000-0000">
               </div>
               <div class="ov-field">
                 <label class="ov-label">Email <span class="req">*</span></label>
-                <input type="email" class="ov-input" placeholder="email@empresa.com">
+                <input type="email" class="ds-input" placeholder="email@empresa.com">
               </div>
             </div>
           `;
@@ -4466,21 +4466,21 @@
             <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Nome Completo <span class="req">*</span></label>
-                <input type="text" class="ov-input" placeholder="Nome do cliente">
+                <input type="text" class="ds-input" placeholder="Nome do cliente">
               </div>
               <div class="ov-field">
                 <label class="ov-label">CPF <span class="req">*</span></label>
-                <input type="text" class="ov-input" placeholder="000.000.000-00">
+                <input type="text" class="ds-input" placeholder="000.000.000-00">
               </div>
             </div>
             <div class="ov-grid-2 ds-form-grid ds-form-grid-2">
               <div class="ov-field">
                 <label class="ov-label">Telefone <span class="req">*</span></label>
-                <input type="tel" class="ov-input" placeholder="(00) 00000-0000">
+                <input type="tel" class="ds-input" placeholder="(00) 00000-0000">
               </div>
               <div class="ov-field">
                 <label class="ov-label">Email <span class="req">*</span></label>
-                <input type="email" class="ov-input" placeholder="email@cliente.com">
+                <input type="email" class="ds-input" placeholder="email@cliente.com">
               </div>
             </div>
           `;
@@ -4489,7 +4489,7 @@
           cad.innerHTML = `
             <div class="ov-field">
               <label class="ov-label">Título <span class="req">*</span></label>
-              <input id="ovInputTitulo" type="text" class="ov-input" value="${titleVal||''}" placeholder="Nome do orçamento">
+              <input id="ovInputTitulo" type="text" class="ds-input" value="${titleVal||''}" placeholder="Nome do orçamento">
             </div>
           `;
           end.innerHTML = _ovEndConsultaHTML();
@@ -5045,9 +5045,9 @@
               <div class="ajuda-hero-inner">
                 <h2>Central de Ajuda</h2>
                 <p>Encontre respostas, tutoriais e tudo que você precisa para aproveitar ao máximo nossa plataforma.</p>
-                <div class="ajuda-srch-wrap">
-                  <i data-lucide="search" class="ajuda-srch-icon"></i>
-                  <input type="text" class="ajuda-srch" placeholder="Pesquisar na central de ajuda...">
+                <div class="ds-toolbar-search">
+                  <i data-lucide="search" class="ds-toolbar-search-icon"></i>
+                  <input type="text" placeholder="Pesquisar na central de ajuda...">
                 </div>
               </div>
             </div>
@@ -6053,14 +6053,14 @@
                     <label class="calc-field-lbl">CEP <span class="req">*</span></label>
                     <div class="calc-inp-wrap">
                       <i data-lucide="map-pin" class="calc-inp-icon"></i>
-                      <input id="calcCep" type="text" class="calc-inp" placeholder="00000-000" maxlength="9">
+                      <input id="calcCep" type="text" class="ds-input" style="padding-left:40px;" placeholder="00000-000" maxlength="9">
                     </div>
                   </div>
                   <div>
                     <label class="calc-field-lbl">Consumo médio mensal <span class="req">*</span></label>
                     <div class="calc-inp-wrap">
                       <i data-lucide="zap" class="calc-inp-icon"></i>
-                      <input id="calcKwh" type="number" class="calc-inp" placeholder="500" min="1" style="padding-right:46px;">
+                      <input id="calcKwh" type="number" class="ds-input" placeholder="500" min="1" style="padding-right:46px;padding-left:40px;">
                       <span class="calc-inp-sfx">kWh</span>
                     </div>
                   </div>
@@ -6154,15 +6154,15 @@
               <div class="modal-body">
                 <div class="form-group">
                   <label class="form-label">Nome do cliente</label>
-                  <input type="text" class="form-input" id="calcWaNome" placeholder="Ex: João Silva">
+                  <input type="text" class="ds-input" id="calcWaNome" placeholder="Ex: João Silva">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Telefone (com DDD)</label>
-                  <input type="tel" class="form-input" id="calcWaTel" placeholder="(00) 00000-0000">
+                  <input type="tel" class="ds-input" id="calcWaTel" placeholder="(00) 00000-0000">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Mensagem</label>
-                  <textarea class="form-input" id="calcWaMsg" rows="8" style="resize:vertical;font-family:var(--font);"></textarea>
+                  <textarea class="ds-textarea" id="calcWaMsg" rows="8" style="resize:vertical;font-family:var(--font);"></textarea>
                 </div>
               </div>
               <div class="modal-foot">
@@ -6413,7 +6413,7 @@
             <div class="clients-toolbar ds-toolbar">
               <div class="clients-srch-wrap ds-toolbar-search">
                 <i data-lucide="search" class="clients-srch-icon ds-toolbar-search-icon"></i>
-                <input type="text" class="clients-srch" id="clientSrch" placeholder="Buscar por código, nome, documento..." oninput="filterClients()">
+                <input type="text" id="clientSrch" placeholder="Buscar por código, nome, documento..." oninput="filterClients()">
               </div>
               <div class="clients-date-range ds-toolbar-filters">
                 <span class="clients-date-lbl">Última compra</span>
@@ -7424,18 +7424,18 @@ Fone: (44) 2101-1400`;
           <div class="modal-body">
             <div class="form-group">
               <label class="form-label">Título <span class="req">*</span></label>
-              <input type="text" class="form-input" id="bannerTitle" placeholder="Ex: Black Friday Solar" value="${editing?.title || ''}">
+              <input type="text" class="ds-input" id="bannerTitle" placeholder="Ex: Black Friday Solar" value="${editing?.title || ''}">
             </div>
             <div class="form-row form-group" style="grid-template-columns:1fr 1fr;display:grid;gap:12px;">
               <div>
                 <label class="form-label">Posição <span class="req">*</span></label>
-                <select id="bannerPosition" class="form-input">
+                <select id="bannerPosition" class="ds-select">
                   ${BANNER_POSITIONS.map(p => `<option value="${p.key}" ${editing?.position===p.key?'selected':''}>${p.label}</option>`).join('')}
                 </select>
               </div>
               <div>
                 <label class="form-label">Prioridade</label>
-                <select id="bannerPriority" class="form-input">
+                <select id="bannerPriority" class="ds-select">
                   ${[1,2,3,4,5].map(n => `<option value="${n}" ${editing?.priority===n?'selected':''}>P${n}${n===1?' (maior)':n===5?' (menor)':''}</option>`).join('')}
                 </select>
               </div>
@@ -7460,16 +7460,16 @@ Fone: (44) 2101-1400`;
             </div>
             <div class="form-group">
               <label class="form-label">URL de destino</label>
-              <input type="text" class="form-input" id="bannerLink" placeholder="#loja  ·  #produto-352531  ·  https://..." value="${editing?.link || ''}">
+              <input type="text" class="ds-input" id="bannerLink" placeholder="#loja  ·  #produto-352531  ·  https://..." value="${editing?.link || ''}">
             </div>
             <div class="form-row form-group" style="grid-template-columns:1fr 1fr;display:grid;gap:12px;">
               <div>
                 <label class="form-label">Início da exibição</label>
-                <input type="date" class="form-input" id="bannerStartsAt" value="${editing?.startsAt || ''}">
+                <input type="date" class="ds-input" id="bannerStartsAt" value="${editing?.startsAt || ''}">
               </div>
               <div>
                 <label class="form-label">Fim da exibição</label>
-                <input type="date" class="form-input" id="bannerEndsAt" value="${editing?.endsAt || ''}">
+                <input type="date" class="ds-input" id="bannerEndsAt" value="${editing?.endsAt || ''}">
               </div>
             </div>
             <div class="form-group">
@@ -9383,7 +9383,7 @@ Fone: (44) 2101-1400`;
                   <div class="form-row form-group" style="grid-template-columns:1fr 1fr;display:grid;gap:14px;margin-bottom:18px;">
                     <div>
                       <label class="form-label">Título do orçamento <span class="req">*</span></label>
-                      <input type="text" class="form-input" id="mkResumoTitulo" value="${mkEsc(mkState.titulo)}" placeholder="Ex: Gerador Solar · Cliente João">
+                      <input type="text" class="ds-input" id="mkResumoTitulo" value="${mkEsc(mkState.titulo)}" placeholder="Ex: Gerador Solar · Cliente João">
                     </div>
                     <div>
                       <label class="form-label">Prêmio venda direta</label>
@@ -9392,7 +9392,7 @@ Fone: (44) 2101-1400`;
                           <button type="button" onclick="mkState.premio.mode='%';renderMonteKit('resumo')" style="width:38px;border:0;border-radius:8px;font-weight:700;background:${premioMode==='%'?'var(--navy)':'transparent'};color:${premioMode==='%'?'#fff':'var(--muted)'};cursor:pointer;">%</button>
                           <button type="button" onclick="mkState.premio.mode='R$';renderMonteKit('resumo')" style="width:38px;border:0;border-radius:8px;font-weight:700;background:${premioMode==='R$'?'var(--navy)':'transparent'};color:${premioMode==='R$'?'#fff':'var(--muted)'};cursor:pointer;">R$</button>
                         </div>
-                        <input type="number" min="0" step="0.01" class="form-input" id="mkResumoPremioVal" value="${premioVal}" oninput="mkState.premio.value=parseFloat(this.value)||0;mkRefreshSideSummary()">
+                        <input type="number" min="0" step="0.01" class="ds-input" id="mkResumoPremioVal" value="${premioVal}" oninput="mkState.premio.value=parseFloat(this.value)||0;mkRefreshSideSummary()">
                       </div>
                     </div>
                   </div>
