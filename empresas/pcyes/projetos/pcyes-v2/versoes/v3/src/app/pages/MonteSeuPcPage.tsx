@@ -2788,14 +2788,14 @@ function PresetCard({
               <span
                 className="inline-flex shrink-0 items-center text-white tabular-nums"
                 style={{
-                  background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                  background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
                   padding: "6px 10px",
                   borderRadius: "10px",
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "13px",
                   fontWeight: 900,
                   letterSpacing: "-0.01em",
-                  boxShadow: "0 12px 28px -8px rgba(34,197,94,0.55)",
+                  boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
                 }}
               >
                 -{discount}%
@@ -3174,14 +3174,14 @@ function PresetMiniCard({
               <span
                 className="absolute left-3 top-3 z-20 inline-flex items-center text-white tabular-nums"
                 style={{
-                  background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                  background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
                   padding: "6px 12px",
                   borderRadius: "10px",
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "15px",
                   fontWeight: 900,
                   letterSpacing: "-0.02em",
-                  boxShadow: "0 12px 28px -8px rgba(34,197,94,0.55)",
+                  boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
                 }}
               >
                 -{discount}%
