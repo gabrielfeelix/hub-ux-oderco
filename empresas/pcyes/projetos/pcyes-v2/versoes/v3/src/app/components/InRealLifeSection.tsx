@@ -172,13 +172,13 @@ export function InRealLifeSection() {
         <div className="relative group/carousel">
         <button
           onClick={() => scroll("left")}
-          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 cursor-pointer"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 cursor-pointer"
         >
           <ChevronLeft size={18} />
         </button>
         <button
           onClick={() => scroll("right")}
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 cursor-pointer"
         >
           <ChevronRight size={18} />
         </button>
@@ -195,7 +195,7 @@ export function InRealLifeSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="flex-shrink-0 w-[260px] md:w-[300px] aspect-[3/4] relative group/card cursor-pointer overflow-hidden"
+              className="flex-shrink-0 w-[240px] md:w-[300px] aspect-[3/4] relative group/card cursor-pointer overflow-hidden"
               style={{
                 borderRadius: "20px",
                 border: "1px solid rgba(var(--foreground-rgb), 0.08)",
@@ -210,7 +210,7 @@ export function InRealLifeSection() {
               />
 
               {/* Hover overlay with dots preview */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity duration-400">
+              <div className="absolute inset-0 bg-black/40 opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-400">
                 {/* Mini dots */}
                 {post.products.map((_, pi) => (
                   <div
@@ -232,7 +232,7 @@ export function InRealLifeSection() {
               </div>
 
               {/* Username at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-400">
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-400">
                 <span
                   className="text-white/80"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}
@@ -267,7 +267,7 @@ export function InRealLifeSection() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Left — image with dots */}
-              <div className="md:w-[60%] flex-shrink-0 relative">
+              <div className="md:w-[60%] flex-shrink-0 relative max-h-[40vh] md:max-h-none overflow-hidden">
                 <ImageWithFallback
                   src={selectedPost.image}
                   alt={selectedPost.username}
@@ -278,24 +278,30 @@ export function InRealLifeSection() {
                 {selectedPost.products.map((product, pi) => (
                   <button
                     key={pi}
-                    className={`absolute cursor-pointer transition-all duration-300 ${highlightedProduct === pi
-                      ? "w-9 h-9 bg-primary shadow-[0_0_20px_rgba(var(--primary-rgb,255,255,255),0.4)]"
-                      : "w-7 h-7 bg-white/90 hover:bg-white hover:scale-110 shadow-lg"
-                      } rounded-full flex items-center justify-center`}
+                    className="absolute flex h-11 w-11 cursor-pointer items-center justify-center"
                     style={{
                       left: `${product.x}%`,
                       top: `${product.y}%`,
                       transform: "translate(-50%, -50%)",
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: highlightedProduct === pi ? "13px" : "12px",
-                      fontWeight: "var(--font-weight-semibold)",
-                      color: highlightedProduct === pi ? "#fff" : "#000",
                     }}
                     onClick={() => setHighlightedProduct(highlightedProduct === pi ? null : pi)}
                     onMouseEnter={() => setHighlightedProduct(pi)}
                     onMouseLeave={() => setHighlightedProduct(null)}
                   >
-                    {pi + 1}
+                    <span
+                      className={`transition-all duration-300 ${highlightedProduct === pi
+                        ? "w-9 h-9 bg-primary shadow-[0_0_20px_rgba(var(--primary-rgb,255,255,255),0.4)]"
+                        : "w-7 h-7 bg-white/90 hover:bg-white hover:scale-110 shadow-lg"
+                        } rounded-full flex items-center justify-center`}
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: highlightedProduct === pi ? "13px" : "12px",
+                        fontWeight: "var(--font-weight-semibold)",
+                        color: highlightedProduct === pi ? "#fff" : "#000",
+                      }}
+                    >
+                      {pi + 1}
+                    </span>
                   </button>
                 ))}
 
@@ -320,7 +326,7 @@ export function InRealLifeSection() {
                 {/* Close */}
                 <button
                   onClick={() => setSelectedPost(null)}
-                  className="self-end text-foreground/30 hover:text-foreground transition-colors cursor-pointer mb-4"
+                  className="self-end flex h-11 w-11 items-center justify-center text-foreground/30 hover:text-foreground transition-colors cursor-pointer mb-4"
                 >
                   <X size={20} />
                 </button>
@@ -395,7 +401,7 @@ export function InRealLifeSection() {
                       {/* Add to cart button */}
                       <button
                         onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }}
-                        className="flex-shrink-0 w-9 h-9 rounded-full border border-foreground/15 text-foreground/40 hover:text-foreground hover:border-foreground/40 transition-all duration-300 cursor-pointer flex items-center justify-center"
+                        className="flex-shrink-0 w-11 h-11 md:w-9 md:h-9 rounded-full border border-foreground/15 text-foreground/40 hover:text-foreground hover:border-foreground/40 transition-all duration-300 cursor-pointer flex items-center justify-center"
                         title="Comprar"
                       >
                         <ShoppingBag size={14} />
