@@ -1586,7 +1586,7 @@ export function ProfilePage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome completo</label>
-                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="flex items-center gap-1 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -1594,15 +1594,15 @@ export function ProfilePage() {
                           <Check size={11} className="text-green-500" />
                           <span className="text-green-500" style={{ letterSpacing: "0.08em" }}>verificado</span>
                         </label>
-                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
-                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Data de nascimento</label>
-                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
+                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
                       </div>
                       <div className="md:col-span-2">
                         <label className="flex items-center gap-1.5 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -1610,14 +1610,14 @@ export function ProfilePage() {
                           <Shield size={11} className="text-foreground/45" />
                           <span className="text-foreground/45" style={{ letterSpacing: "0.06em" }}>não editável</span>
                         </label>
-                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-60 cursor-not-allowed" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.015)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-60 cursor-not-allowed profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.015)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <button onClick={() => updateUser({ updatedAt: new Date().toISOString() })} className="px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                    <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2">
+                      <button onClick={() => updateUser({ updatedAt: new Date().toISOString() })} className="w-full md:w-auto min-h-[44px] md:min-h-0 px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                         style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                       >Salvar alterações</button>
-                      <button className="px-4 py-2.5 text-foreground/65 hover:text-foreground transition-all cursor-pointer"
+                      <button className="w-full md:w-auto min-h-[44px] md:min-h-0 px-4 py-2.5 text-foreground/65 hover:text-foreground transition-all cursor-pointer"
                         style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                       >Cancelar</button>
                     </div>
