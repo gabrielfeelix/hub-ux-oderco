@@ -77,16 +77,16 @@ function OrderStatusTimeline({ status }: { status: Order["status"] }) {
 
 type Tab = "overview" | "orders" | "points" | "favorites" | "addresses" | "data" | "cards" | "help" | "privacy";
 
-const TABS: { key: Tab; icon: typeof Package; label: string }[] = [
-  { key: "overview", icon: LayoutDashboard, label: "Visão Geral" },
-  { key: "orders", icon: Package, label: "Meus Pedidos" },
-  { key: "points", icon: Sparkles, label: "PCYES Points" },
-  { key: "favorites", icon: Heart, label: "Favoritos" },
-  { key: "addresses", icon: MapPin, label: "Endereços" },
-  { key: "data", icon: User, label: "Dados Pessoais" },
-  { key: "cards", icon: CreditCard, label: "Cartões" },
-  { key: "help", icon: HelpCircle, label: "Ajuda e Suporte" },
-  { key: "privacy", icon: Shield, label: "Privacidade" },
+const TABS: { key: Tab; icon: typeof Package; label: string; short: string }[] = [
+  { key: "overview",  icon: LayoutDashboard, label: "Visão Geral",     short: "Visão"       },
+  { key: "orders",    icon: Package,         label: "Meus Pedidos",    short: "Pedidos"     },
+  { key: "points",    icon: Sparkles,        label: "PCYES Points",    short: "Points"      },
+  { key: "favorites", icon: Heart,           label: "Favoritos",       short: "Favoritos"   },
+  { key: "addresses", icon: MapPin,          label: "Endereços",       short: "Endereços"   },
+  { key: "data",      icon: User,            label: "Dados Pessoais",  short: "Dados"       },
+  { key: "cards",     icon: CreditCard,      label: "Cartões",         short: "Cartões"     },
+  { key: "help",      icon: HelpCircle,      label: "Ajuda e Suporte", short: "Ajuda"       },
+  { key: "privacy",   icon: Shield,          label: "Privacidade",     short: "Privacidade" },
 ];
 
 const STATUS_MAP = {
@@ -230,7 +230,7 @@ export function ProfilePage() {
     <div className="pt-[96px] md:pt-[190px]">
       {/* Header */}
       <div className="px-5 md:px-8 pt-9 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
-        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
+        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-8 md:gap-8">
           <div className="flex items-center gap-5">
             <div className="relative flex-shrink-0">
               <div className="w-[78px] h-[78px] rounded-full bg-primary/10 flex items-center justify-center border border-primary/20" style={{ boxShadow: "0 0 0 4px rgba(255,43,46,0.04)" }}>
@@ -263,12 +263,13 @@ export function ProfilePage() {
               <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Favoritos</p>
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>{favorites.size}</p>
             </div>
-            <div className="h-8 w-px bg-foreground/10 hidden sm:block" />
-            <div className="hidden sm:flex items-center gap-3 px-3 py-1.5" style={{ borderRadius: "12px", background: isDark ? "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.04) 100%)" : "linear-gradient(135deg, rgba(250,204,21,0.16) 0%, rgba(180,83,9,0.06) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
-              <PcyesCoin size={28} />
+            <div className="h-8 w-px bg-foreground/10" />
+            <div className="flex items-center gap-2 sm:gap-3 px-2.5 sm:px-3 py-1.5" style={{ borderRadius: "12px", background: isDark ? "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.04) 100%)" : "linear-gradient(135deg, rgba(250,204,21,0.16) 0%, rgba(180,83,9,0.06) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
+              <PcyesCoin size={22} className="sm:hidden" />
+              <PcyesCoin size={28} className="hidden sm:block" />
               <div>
                 <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#facc15" }}>PCYES Points</p>
-                <p style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 700, lineHeight: 1.1, color: "#facc15", textShadow: "0 0 18px rgba(250,204,21,0.35)" }}>
+                <p style={{ fontFamily: "var(--font-family-figtree)", fontWeight: 700, lineHeight: 1.1, color: "#facc15", textShadow: "0 0 18px rgba(250,204,21,0.35)", fontSize: "20px" }} className="sm:text-[24px]">
                   {(user.pcyesPoints ?? 0).toLocaleString("pt-BR")}
                 </p>
               </div>
@@ -281,38 +282,70 @@ export function ProfilePage() {
         <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10">
           {/* Sidebar — vertical on desktop, horizontal scrollable tab bar on mobile */}
           <aside className="w-full lg:w-[230px] flex-shrink-0">
-            <nav
-              className="profile-tabs flex flex-row gap-2 overflow-x-auto -mx-5 px-5 lg:mx-0 lg:px-0 lg:block lg:space-y-0.5 lg:overflow-visible"
-              style={{ scrollbarWidth: "none" }}
-            >
-              {TABS.map((tab) => (
-                <button key={tab.key} onClick={() => setProfileTab(tab.key)}
-                  className={`relative flex-shrink-0 lg:flex-shrink whitespace-nowrap lg:whitespace-normal flex items-center gap-2 lg:gap-3 px-4 lg:px-3.5 min-h-[44px] lg:min-h-0 lg:w-full lg:py-2.5 transition-all duration-200 cursor-pointer ${
-                    activeTab === tab.key
-                      ? "text-primary"
-                      : "text-foreground/60 hover:text-foreground/88"
-                  }`}
-                  style={{
-                    borderRadius: "10px",
-                    background: activeTab === tab.key
-                      ? (isDark ? "linear-gradient(90deg, rgba(255,43,46,0.12) 0%, rgba(255,43,46,0.04) 100%)" : "linear-gradient(90deg, rgba(220,20,20,0.08) 0%, rgba(220,20,20,0.02) 100%)")
-                      : "transparent",
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "13px",
-                    fontWeight: activeTab === tab.key ? 600 : 500,
-                    boxShadow: activeTab === tab.key ? "inset 2px 0 0 var(--primary)" : "none",
-                  }}
+            {/* Fade-right affordance wrapper (mobile only) */}
+            <div className="relative lg:contents">
+              <nav
+                className="profile-tabs flex flex-row gap-2 overflow-x-auto -mx-5 px-5 lg:mx-0 lg:px-0 lg:block lg:space-y-0.5 lg:overflow-visible"
+                style={{ scrollbarWidth: "none" }}
+              >
+                {TABS.map((tab) => (
+                  <button key={tab.key} onClick={() => setProfileTab(tab.key)}
+                    className={`relative flex-shrink-0 lg:flex-shrink
+                      flex flex-col items-center justify-center
+                      lg:flex-row lg:items-center lg:justify-start
+                      gap-0 lg:gap-3
+                      min-w-[72px] min-h-[60px] px-2 py-2
+                      lg:min-w-0 lg:min-h-0 lg:w-full lg:py-2.5 lg:px-3.5
+                      whitespace-nowrap lg:whitespace-normal
+                      transition-all duration-200 cursor-pointer
+                      ${activeTab === tab.key ? "text-primary" : "text-foreground/60 hover:text-foreground/88"}`}
+                    style={{
+                      borderRadius: "10px",
+                      background: activeTab === tab.key
+                        ? (isDark ? "linear-gradient(90deg, rgba(255,43,46,0.12) 0%, rgba(255,43,46,0.04) 100%)" : "linear-gradient(90deg, rgba(220,20,20,0.08) 0%, rgba(220,20,20,0.02) 100%)")
+                        : "transparent",
+                      fontFamily: "var(--font-family-inter)",
+                      fontWeight: activeTab === tab.key ? 600 : 500,
+                      boxShadow: activeTab === tab.key ? "inset 2px 0 0 var(--primary)" : "none",
+                    }}
+                  >
+                    <tab.icon size={18} className="lg:hidden mb-1 flex-shrink-0" />
+                    <tab.icon size={15} className="hidden lg:block flex-shrink-0" />
+                    {/* Mobile: short label below icon */}
+                    <span className="lg:hidden text-center leading-tight" style={{ fontSize: "10px" }}>{tab.short}</span>
+                    {/* Desktop: full label inline */}
+                    <span className="hidden lg:inline" style={{ fontSize: "13px" }}>{tab.label}</span>
+                  </button>
+                ))}
+                <div className="hidden lg:block h-px bg-foreground/8 my-3" />
+                {/* Logout — same compact tile treatment on mobile */}
+                <button onClick={logout}
+                  className="flex-shrink-0 lg:flex-shrink
+                    flex flex-col items-center justify-center
+                    lg:flex-row lg:items-center lg:justify-start
+                    gap-0 lg:gap-3
+                    min-w-[72px] min-h-[60px] px-2 py-2
+                    lg:min-w-0 lg:min-h-0 lg:w-full lg:py-2.5 lg:px-3.5
+                    whitespace-nowrap lg:whitespace-normal
+                    text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
+                  style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontWeight: 500 }}
                 >
-                  <tab.icon size={15} />
-                  {tab.label}
+                  <LogOut size={18} className="lg:hidden mb-1 flex-shrink-0" />
+                  <LogOut size={15} className="hidden lg:block flex-shrink-0" />
+                  <span className="lg:hidden text-center leading-tight" style={{ fontSize: "10px" }}>Sair</span>
+                  <span className="hidden lg:inline" style={{ fontSize: "13px" }}>Sair</span>
                 </button>
-              ))}
-              <div className="hidden lg:block h-px bg-foreground/8 my-3" />
-              <button onClick={logout}
-                className="flex-shrink-0 lg:flex-shrink whitespace-nowrap lg:whitespace-normal flex items-center gap-2 lg:gap-3 px-4 lg:px-3.5 min-h-[44px] lg:min-h-0 lg:w-full lg:py-2.5 text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
-                style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 500 }}
-              ><LogOut size={15} /> Sair</button>
-            </nav>
+              </nav>
+              {/* Right-edge fade gradient — mobile only, hints scroll */}
+              <div
+                className="pointer-events-none absolute inset-y-0 right-0 w-10 lg:hidden"
+                style={{
+                  background: isDark
+                    ? "linear-gradient(to left, var(--background) 0%, transparent 100%)"
+                    : "linear-gradient(to left, var(--background) 0%, transparent 100%)",
+                }}
+              />
+            </div>
           </aside>
 
           {/* Content */}
