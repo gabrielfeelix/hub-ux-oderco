@@ -354,7 +354,7 @@ export function ProfilePage() {
                               Que tal um upgrade no setup?
                             </p>
                           </div>
-                          <Link to="/produtos" className="px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                          <Link to="/produtos" className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
                             Explorar
                           </Link>
                         </div>
@@ -393,7 +393,7 @@ export function ProfilePage() {
                             {otherActiveCount > 0 && (
                               <button
                                 onClick={() => setProfileTab("orders")}
-                                className="cursor-pointer px-2 py-0.5 text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
+                                className="inline-flex items-center min-h-[44px] md:min-h-0 cursor-pointer px-2 py-0.5 text-foreground/70 hover:text-foreground transition-colors gap-1"
                                 style={{ borderRadius: "100px", background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.06em" }}
                               >
                                 +{otherActiveCount} {otherActiveCount === 1 ? "outro pedido" : "outros pedidos"} em rota
@@ -474,14 +474,14 @@ export function ProfilePage() {
                         <div className="flex items-center gap-2 px-5 py-3 border-t border-foreground/6">
                           <button
                             onClick={() => { setProfileTab("orders"); setSelectedOrderId(nextOrder.id); }}
-                            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                            className="flex-1 sm:flex-initial inline-flex items-center justify-center min-h-[44px] md:min-h-0 gap-1.5 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                             style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
                           >
                             <Truck size={13} /> Rastrear pedido
                           </button>
                           <button
                             onClick={() => setProfileTab("help")}
-                            className="flex items-center justify-center gap-1.5 px-3 py-2 text-foreground/70 hover:text-foreground transition-all cursor-pointer"
+                            className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 gap-1.5 px-3 py-2 text-foreground/70 hover:text-foreground transition-all cursor-pointer"
                             style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
                           >
                             <HelpCircle size={13} /> Ajuda
@@ -570,7 +570,7 @@ export function ProfilePage() {
                         <div className="space-y-1.5">
                           {missionsPending.slice(0, 3).map((task, i) => (
                             <button key={i} onClick={task.action}
-                              className="group/task cursor-pointer w-full flex items-center gap-3 px-3 py-2.5 transition-all hover:bg-white/[0.025]"
+                              className="group/task cursor-pointer w-full flex items-center gap-3 px-3 py-2.5 min-h-[44px] md:min-h-0 transition-all hover:bg-white/[0.025]"
                               style={{ borderRadius: "10px", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)", border: "1px solid rgba(56,189,248,0.10)" }}
                             >
                               <div className="w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors group-hover/task:border-sky-400" style={{ borderColor: "rgba(56,189,248,0.4)" }} />
@@ -792,7 +792,7 @@ export function ProfilePage() {
                         </p>
                       </div>
                     </div>
-                    <Link to="/produtos" className="px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>
+                    <Link to="/produtos" className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>
                       Ver produtos
                     </Link>
                   </div>
@@ -806,9 +806,9 @@ export function ProfilePage() {
                       <div className="flex items-center justify-between mb-5">
                         <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Meus Pedidos</h2>
                         <div className="flex gap-2">
-                          <button className="px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
-                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
-                          <button className="px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
+                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
+                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
+                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
                         </div>
                       </div>
                       {user.orders.length === 0 ? (
@@ -918,18 +918,18 @@ export function ProfilePage() {
                                   {isDelivered && (
                                     <>
                                       <button onClick={(e) => { e.stopPropagation(); addItem({ ...firstItem, id: firstItem.name, price: firstItem.price, originalPrice: firstItem.price, category: "", brand: "", description: "", rating: 5, reviews: 0, images: [firstItem.image] } as any); }}
-                                        className="px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
+                                        className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer"
                                         style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                         <ShoppingBag size={12} /> Comprar de novo
                                       </button>
                                       {reviewedOrders.has(order.id) ? (
-                                        <span className="px-3 py-1.5 text-green-500 flex items-center gap-1.5"
+                                        <span className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-green-500"
                                           style={{ borderRadius: "8px", background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.18)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                           <Check size={12} /> Avaliado
                                         </span>
                                       ) : (
                                         <button onClick={(e) => { e.stopPropagation(); setReviewOrderId(order.id); }}
-                                          className="px-3 py-1.5 text-foreground/70 hover:text-yellow-400 transition-all cursor-pointer flex items-center gap-1.5"
+                                          className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-yellow-400 transition-all cursor-pointer"
                                           style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                           <Star size={12} /> Avaliar
                                         </button>
@@ -938,21 +938,21 @@ export function ProfilePage() {
                                   )}
                                   {isShipped && (
                                     <button onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
-                                      className="px-3 py-1.5 text-blue-400 hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
+                                      className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-blue-400 hover:brightness-110 transition-all cursor-pointer"
                                       style={{ borderRadius: "8px", background: "rgba(96,165,250,0.10)", border: "1px solid rgba(96,165,250,0.22)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                       <Truck size={12} /> Rastrear pedido
                                     </button>
                                   )}
                                   {isProcessing && (
                                     <button onClick={(e) => e.stopPropagation()}
-                                      className="px-3 py-1.5 text-red-400 hover:bg-red-500/10 transition-all cursor-pointer flex items-center gap-1.5"
+                                      className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-red-400 hover:bg-red-500/10 transition-all cursor-pointer"
                                       style={{ borderRadius: "8px", background: "rgba(239,68,68,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                       <XIcon size={12} /> Cancelar
                                     </button>
                                   )}
                                   {isCancelled && (
                                     <button onClick={(e) => e.stopPropagation()}
-                                      className="px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer flex items-center gap-1.5"
+                                      className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer"
                                       style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                       <ShoppingBag size={12} /> Comprar de novo
                                     </button>
@@ -960,7 +960,7 @@ export function ProfilePage() {
                                 </div>
                                 <button
                                   onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
-                                  className="px-3 py-1.5 text-foreground/70 hover:text-primary transition-all flex-shrink-0 cursor-pointer flex items-center gap-1"
+                                  className="inline-flex items-center gap-1 min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-primary transition-all flex-shrink-0 cursor-pointer"
                                   style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
                                 >
                                   Ver detalhes <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
@@ -1015,7 +1015,7 @@ export function ProfilePage() {
                               <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/5 text-primary border border-primary/10" style={{ borderRadius: "var(--radius-button)" }}>
                                 <Truck size={14} />
                                 <span className="font-mono text-[11px] font-bold">{order.tracking}</span>
-                                <button onClick={() => { navigator.clipboard.writeText(order.tracking!); }} className="hover:text-primary/70 transition-colors ml-1 cursor-pointer">
+                                <button onClick={() => { navigator.clipboard.writeText(order.tracking!); }} className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0 hover:text-primary/70 transition-colors ml-1 cursor-pointer">
                                   <Copy size={12} />
                                 </button>
                               </div>
@@ -1076,9 +1076,9 @@ export function ProfilePage() {
                                       <h4 className="text-foreground font-medium mb-1 truncate" style={{ fontSize: "14px" }}>{item.name}</h4>
                                       <p className="text-foreground/45 mb-2" style={{ fontSize: "12px" }}>Quantidade: {item.qty}</p>
                                       <div className="flex items-center gap-2">
-                                        <button className="text-primary hover:underline font-medium cursor-pointer" style={{ fontSize: "12px" }}>Comprar novamente</button>
+                                        <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-2 md:px-0 text-primary hover:underline font-medium cursor-pointer" style={{ fontSize: "12px" }}>Comprar novamente</button>
                                         <span className="text-foreground/35">•</span>
-                                        <button className="text-foreground/55 hover:text-foreground/75 transition-colors cursor-pointer" style={{ fontSize: "12px" }}>Ver produto</button>
+                                        <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-2 md:px-0 text-foreground/55 hover:text-foreground/75 transition-colors cursor-pointer" style={{ fontSize: "12px" }}>Ver produto</button>
                                       </div>
                                     </div>
                                     <div className="text-right">
@@ -1365,7 +1365,7 @@ export function ProfilePage() {
                                     action: () => deleteSavedBuild(b.id),
                                   })}
                                   aria-label={`Apagar ${b.name}`}
-                                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-foreground/40 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                                  className="flex h-11 w-11 md:h-8 md:w-8 cursor-pointer items-center justify-center rounded-full text-foreground/40 transition-colors hover:bg-red-500/10 hover:text-red-400"
                                 >
                                   <Trash2 size={13} />
                                 </button>
@@ -1394,7 +1394,7 @@ export function ProfilePage() {
                                 </div>
                                 <Link
                                   to="/monte-seu-pc"
-                                  className="flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-2 text-primary-foreground transition-all hover:brightness-110"
+                                  className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 rounded-full bg-primary px-3.5 py-2 text-primary-foreground transition-all hover:brightness-110"
                                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
                                 >
                                   Abrir setup <ChevronRight size={13} />
@@ -1448,7 +1448,7 @@ export function ProfilePage() {
                                 )}
                               </div>
                               <button onClick={(e) => { e.preventDefault(); toggleFavorite(product.id); }}
-                                className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md cursor-pointer"
+                                className="absolute top-2 right-2 w-11 h-11 md:w-7 md:h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md cursor-pointer"
                                 style={{ borderRadius: "8px", background: "rgba(0,0,0,0.3)" }}
                               ><Heart size={12} className="fill-primary" /></button>
                             </Link>
@@ -1477,7 +1477,7 @@ export function ProfilePage() {
                               </div>
                               <button onClick={() => addItem(product)}
                                 disabled={!inStock}
-                                className={`w-full py-1.5 flex items-center justify-center gap-1.5 transition-all cursor-pointer ${inStock ? "bg-primary text-primary-foreground hover:brightness-110" : "bg-foreground/8 text-foreground/40 cursor-not-allowed"}`}
+                                className={`w-full min-h-[44px] md:min-h-0 py-1.5 inline-flex items-center justify-center gap-1.5 transition-all cursor-pointer ${inStock ? "bg-primary text-primary-foreground hover:brightness-110" : "bg-foreground/8 text-foreground/40 cursor-not-allowed"}`}
                                 style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
                               ><ShoppingBag size={11} /> {inStock ? "Comprar" : "Avisar quando voltar"}</button>
                             </div>
@@ -1495,14 +1495,14 @@ export function ProfilePage() {
                 <motion.div key="addresses" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
-                    <button onClick={() => setAddressModal({ open: true, editing: null })} className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.addresses.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <MapPin size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum endereço cadastrado</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione um endereço pra receber seus pedidos.</p>
-                      <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar endereço</button>
+                      <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar endereço</button>
                     </div>
                   ) : (
                   <div className="space-y-2">
@@ -1527,9 +1527,9 @@ export function ProfilePage() {
                         </div>
                         <div className="flex flex-col gap-1.5 flex-shrink-0">
                           {!a.isDefault && (
-                            <button onClick={() => setDefaultAddress(a.id)} className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer flex items-center gap-1" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                            <button onClick={() => setDefaultAddress(a.id)} className="inline-flex items-center gap-1 min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                           )}
-                          <button onClick={() => setAddressModal({ open: true, editing: a })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                          <button onClick={() => setAddressModal({ open: true, editing: a })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                           {user.addresses.length > 1 && (
                             <button onClick={() => askConfirm({
                               title: `Remover endereço "${a.label}"?`,
@@ -1537,7 +1537,7 @@ export function ProfilePage() {
                               confirmLabel: "Remover endereço",
                               destructive: true,
                               action: () => removeAddress(a.id),
-                            })} className="px-3 py-1.5 text-foreground/55 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
+                            })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/55 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
                           )}
                         </div>
                       </div>
@@ -1629,14 +1629,14 @@ export function ProfilePage() {
                 <motion.div key="cards" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
-                    <button onClick={() => setCardModal({ open: true, editing: null })} className="px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.cards.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <CreditCard size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum cartão salvo</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione pra checkout mais rápido. Seus dados ficam criptografados.</p>
-                      <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar cartão</button>
+                      <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar cartão</button>
                     </div>
                   ) : (
                   <div className="space-y-2">
@@ -1661,16 +1661,16 @@ export function ProfilePage() {
                           </div>
                           <div className="flex flex-col gap-1.5 flex-shrink-0">
                             {!c.isDefault && (
-                              <button onClick={() => setDefaultCard(c.id)} className="px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                              <button onClick={() => setDefaultCard(c.id)} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                             )}
-                            <button onClick={() => setCardModal({ open: true, editing: c })} className="px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                            <button onClick={() => setCardModal({ open: true, editing: c })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                             <button onClick={() => askConfirm({
                               title: `Remover cartão •••• ${c.last4}?`,
                               description: `${c.brand || "Cartão"} · ${c.name} · Validade ${c.expiry}. Você precisará adicioná-lo de novo se quiser usar.`,
                               confirmLabel: "Remover cartão",
                               destructive: true,
                               action: () => removeCard(c.id),
-                            })} className="px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                            })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                           </div>
                         </div>
                       );
@@ -1759,7 +1759,7 @@ export function ProfilePage() {
                       </div>
                       <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Adicione uma camada extra de segurança ao seu login</p>
                     </div>
-                    <button className="px-3.5 py-1.5 bg-green-500 text-white hover:brightness-110 transition-all cursor-pointer flex-shrink-0" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Ativar</button>
+                    <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 bg-green-500 text-white hover:brightness-110 transition-all cursor-pointer flex-shrink-0" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Ativar</button>
                   </div>
 
                   <div className="space-y-2">
