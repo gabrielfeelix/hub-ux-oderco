@@ -167,6 +167,10 @@ export function CartDrawer() {
                 <ShoppingBag size={18} className="text-foreground" strokeWidth={1.5} />
                 <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>Carrinho</span>
                 <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}>{totalItems}</span>
+                <span className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/10 text-yellow-500/70" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 600 }}>
+                  <PcyesCoin size={14} />
+                  {formatInt(USER_PCYES_POINTS)}
+                </span>
               </div>
               <button onClick={() => setIsOpen(false)} className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5 cursor-pointer">
                 <X size={18} />
@@ -452,37 +456,6 @@ export function CartDrawer() {
                   </AnimatePresence>
                 </div>
 
-                <div>
-                  <button
-                    onClick={() => setPointsApplied(!pointsApplied)}
-                    disabled={maxPointsRedeem <= 0}
-                    className={`flex items-center justify-between w-full py-2 px-3 cursor-pointer group transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-                      pointsApplied ? "rounded-[10px] border border-yellow-500/25 bg-yellow-500/[0.06]" : ""
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 min-w-0">
-                      <PcyesCoin size={16} />
-                      <span
-                        className={pointsApplied ? "text-yellow-400" : "text-foreground/65 group-hover:text-foreground/85 transition-colors"}
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
-                      >
-                        PCYES Points
-                      </span>
-                      <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
-                        {formatInt(USER_PCYES_POINTS)} disponíveis
-                      </span>
-                    </div>
-                    {maxPointsRedeem > 0 && (
-                      <span
-                        className={pointsApplied ? "text-yellow-400" : "text-foreground/55 group-hover:text-foreground/80 transition-colors"}
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}
-                      >
-                        {pointsApplied ? `−${formatPrice(pointsValue)}` : `Usar ${formatInt(maxPointsRedeem)}`}
-                      </span>
-                    )}
-                  </button>
-                </div>
-
                 <div className="h-px bg-foreground/5" />
 
                 <div className="space-y-1.5">
@@ -502,12 +475,6 @@ export function CartDrawer() {
                       <span className={shippingCost === 0 ? "text-green-500" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
                         {shippingCost === 0 ? "Grátis" : formatPrice(shippingCost)}
                       </span>
-                    </div>
-                  )}
-                  {pointsValue > 0 && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-yellow-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>PCYES Points</span>
-                      <span className="text-yellow-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>-{formatPrice(pointsValue)}</span>
                     </div>
                   )}
                 </div>
@@ -531,15 +498,16 @@ export function CartDrawer() {
                   onClick={() => { setIsOpen(false); navigate("/checkout"); }}
                   aria-label="Finalizar pedido"
                 >Finalizar pedido</button>
-                <div className="flex items-center justify-between gap-3 pt-1">
-                  <button onClick={() => setIsOpen(false)}
-                    className="text-foreground/35 hover:text-foreground/65 transition-colors cursor-pointer"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
-                  >Continuar comprando</button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-full flex items-center justify-center border border-foreground/12 bg-transparent text-foreground/55 hover:text-foreground/85 hover:border-foreground/22 transition-colors cursor-pointer rounded-full"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, minHeight: "44px" }}
+                >Continuar comprando</button>
+                <div className="flex items-center justify-center pt-1">
                   <button
                     onClick={() => clearCart()}
-                    className="inline-flex items-center gap-1 text-foreground/35 hover:text-primary transition-colors cursor-pointer"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                    className="inline-flex items-center gap-1 text-foreground/30 hover:text-primary transition-colors cursor-pointer"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
                     aria-label="Limpar carrinho"
                   >
                     <Trash2 size={12} strokeWidth={2} />
