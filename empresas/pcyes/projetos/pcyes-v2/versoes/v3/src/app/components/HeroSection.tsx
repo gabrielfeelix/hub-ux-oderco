@@ -19,7 +19,7 @@ const slides: Slide[] = [
 ];
 
 const SLIDE_DURATION = 6500;
-const GAP_PX = 44;
+const slideGap = "clamp(14px, 4vw, 44px)";
 
 export function HeroSection() {
   const N = slides.length;
@@ -92,17 +92,17 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-x-hidden pb-6 md:pb-8 pt-[160px] md:pt-[210px]"
+      className="relative overflow-x-hidden pb-6 md:pb-8 pt-[96px] md:pt-[210px]"
       style={{ background: "#0a0a0a" }}
     >
       {/* Carousel track */}
       <div className="relative">
-        <div className="overflow-hidden" style={{ height: "clamp(420px, 48vw, 600px)" }}>
+        <div className="overflow-hidden" style={{ height: "clamp(300px, 48vw, 600px)" }}>
           <motion.div
             className="flex h-full"
-            style={{ gap: `${GAP_PX}px`, paddingLeft: "0px", paddingRight: "0px" }}
+            style={{ gap: slideGap, paddingLeft: "0px", paddingRight: "0px" }}
             animate={{
-              x: `calc(${-pos} * (82% + ${GAP_PX}px) + 9%)`,
+              x: `calc(${-pos} * (82% + ${slideGap}) + 9%)`,
             }}
             transition={
               skip
@@ -207,24 +207,29 @@ export function HeroSection() {
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="relative h-2 cursor-pointer overflow-hidden rounded-full transition-all duration-500"
-              style={{
-                width: isActive ? "44px" : "10px",
-                background: isActive ? "rgba(var(--foreground-rgb), 0.18)" : "rgba(var(--foreground-rgb), 0.25)",
-              }}
+              className="flex h-11 cursor-pointer items-center justify-center px-1.5"
               aria-label={`Banner ${i + 1}`}
             >
-              {isActive && (
-                <span
-                  className="absolute inset-y-0 left-0 rounded-full"
-                  style={{
-                    width: `${progress * 100}%`,
-                    background: "linear-gradient(90deg, var(--primary) 0%, #ff2419 100%)",
-                    boxShadow: "0 0 10px rgba(225,6,0,0.6)",
-                    transition: "width 50ms linear",
-                  }}
-                />
-              )}
+              <span
+                className="relative block overflow-hidden rounded-full transition-all duration-500"
+                style={{
+                  height: "8px",
+                  width: isActive ? "44px" : "10px",
+                  background: isActive ? "rgba(var(--foreground-rgb), 0.18)" : "rgba(var(--foreground-rgb), 0.25)",
+                }}
+              >
+                {isActive && (
+                  <span
+                    className="absolute inset-y-0 left-0 rounded-full"
+                    style={{
+                      width: `${progress * 100}%`,
+                      background: "linear-gradient(90deg, var(--primary) 0%, #ff2419 100%)",
+                      boxShadow: "0 0 10px rgba(225,6,0,0.6)",
+                      transition: "width 50ms linear",
+                    }}
+                  />
+                )}
+              </span>
             </button>
           );
         })}
