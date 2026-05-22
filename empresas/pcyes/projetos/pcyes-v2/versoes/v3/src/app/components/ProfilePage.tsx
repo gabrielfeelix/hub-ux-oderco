@@ -42,10 +42,10 @@ function OrderStatusTimeline({ status }: { status: Order["status"] }) {
 
   return (
     <div className="relative flex justify-between items-start mb-12 mt-4 px-2 sm:px-4">
-      <div className="absolute top-[20px] left-[10%] right-[10%] h-[2px] bg-foreground/5 hidden sm:block z-0" />
+      <div className="absolute top-[20px] left-[10%] right-[10%] h-[2px] bg-foreground/5 block z-0" />
       {currentIndex >= 0 && (
-        <div 
-          className="absolute top-[20px] left-[10%] h-[2px] bg-primary transition-all duration-1000 hidden sm:block z-0"
+        <div
+          className="absolute top-[20px] left-[10%] h-[2px] bg-primary transition-all duration-1000 block z-0"
           style={{ width: `${(currentIndex / 3) * 80}%` }} 
         />
       )}
@@ -203,7 +203,7 @@ export function ProfilePage() {
 
   if (!isLoggedIn || !user) {
     return (
-      <div className="pt-[160px] md:pt-[190px] min-h-screen flex items-center justify-center px-8">
+      <div className="pt-[96px] md:pt-[190px] min-h-screen flex items-center justify-center px-8">
         <div className="text-center max-w-md">
           <User size={40} className="text-foreground/30 mx-auto mb-6" />
           <h2 className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-light)" }}>
@@ -227,7 +227,7 @@ export function ProfilePage() {
   const tier = getTier(user.orders.length);
 
   return (
-    <div className="pt-[160px] md:pt-[190px]">
+    <div className="pt-[96px] md:pt-[190px]">
       {/* Header */}
       <div className="px-5 md:px-8 pt-9 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
@@ -243,7 +243,7 @@ export function ProfilePage() {
               </span>
             </div>
             <div>
-              <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "34px", fontWeight: 600, lineHeight: "1.1" }}>
+              <h1 className="text-foreground mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(22px, 6vw, 34px)", fontWeight: 600, lineHeight: "1.1" }}>
                 E aí, {user.name.split(" ")[0]}
               </h1>
               <p className="text-foreground/60 flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
@@ -253,7 +253,7 @@ export function ProfilePage() {
               </p>
             </div>
           </div>
-          <div className="md:ml-auto flex items-center gap-6 md:gap-8">
+          <div className="md:ml-auto flex flex-wrap items-center gap-3 md:gap-8">
             <div>
               <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pedidos</p>
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>{user.orders.length}</p>
@@ -512,7 +512,7 @@ export function ProfilePage() {
                   <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     {/* Título da seção (contextualiza o card pra novos usuários) */}
                     <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-3" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}>
                           Seu nível PCYES
                         </p>
@@ -522,7 +522,7 @@ export function ProfilePage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 md:gap-3 px-5 pt-4 pb-3">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(56,189,248,0.12)" }}>
                           <Sparkles size={16} style={{ color: "#38bdf8", fill: "rgba(56,189,248,0.2)" }} />
@@ -780,7 +780,7 @@ export function ProfilePage() {
                   </div>
 
                   {/* Atalhos rápidos */}
-                  <div className="mt-6 flex items-center justify-between p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,43,46,0.04)" : "rgba(220,20,20,0.03)", border: "1px solid rgba(255,43,46,0.12)" }}>
+                  <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,43,46,0.04)" : "rgba(220,20,20,0.03)", border: "1px solid rgba(255,43,46,0.12)" }}>
                     <div className="flex items-center gap-3">
                       <Sparkles size={18} className="text-primary" />
                       <div>
@@ -803,9 +803,9 @@ export function ProfilePage() {
                 <motion.div key="orders" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   {!selectedOrderId ? (
                     <>
-                      <div className="flex items-center justify-between mb-5">
+                      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-5">
                         <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Meus Pedidos</h2>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                           <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
                           <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
                           <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
@@ -853,7 +853,7 @@ export function ProfilePage() {
                               }}
                             >
                               {/* Header: identidade + status + total */}
-                              <div className="flex items-center gap-3 px-4 pt-4 pb-3">
+                              <div className="flex flex-wrap items-center gap-3 px-4 pt-4 pb-3">
                                 <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${s.bg} ${s.color}`}>
                                   <s.icon size={15} />
                                 </div>
@@ -913,7 +913,7 @@ export function ProfilePage() {
                               </div>
 
                               {/* CTAs contextuais */}
-                              <div className="flex items-center justify-between gap-2 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
+                              <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                                 <div className="flex items-center gap-1.5 flex-wrap">
                                   {isDelivered && (
                                     <>
@@ -989,15 +989,15 @@ export function ProfilePage() {
 
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                           <div>
-                            <div className="flex items-center gap-3 mb-1">
-                              <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: "var(--font-weight-medium)" }}>Pedido {order.id}</h2>
+                            <div className="flex flex-wrap items-center gap-3 mb-1">
+                              <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(18px, 5vw, 24px)", fontWeight: "var(--font-weight-medium)" }}>Pedido {order.id}</h2>
                               <span className={`flex items-center gap-1.5 px-3 py-1 ${s.bg} ${s.color}`} style={{ borderRadius: "100px", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}>
                                 {s.label}
                               </span>
                             </div>
                             <p className="text-foreground/45" style={{ fontSize: "13px" }}>Realizado em {new Date(order.date).toLocaleDateString("pt-BR")} às 14:30</p>
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex flex-wrap gap-2">
                             <button className="flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/80 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-button)", fontSize: "12px" }}>
                               <Receipt size={14} /> Nota Fiscal
                             </button>
@@ -1008,7 +1008,7 @@ export function ProfilePage() {
                         </div>
 
                         {/* Visual Tracking */}
-                        <div className="bg-foreground/[0.02] border border-foreground/5 p-8" style={{ borderRadius: "var(--radius-card)" }}>
+                        <div className="bg-foreground/[0.02] border border-foreground/5 p-4 md:p-8" style={{ borderRadius: "var(--radius-card)" }}>
                           <div className="flex items-center justify-between mb-8">
                             <h3 className="text-foreground/88 font-medium" style={{ fontSize: "16px" }}>Acompanhamento do Pedido</h3>
                             {order.tracking && (
@@ -1041,7 +1041,7 @@ export function ProfilePage() {
                               <div className="px-6 py-4 border-b border-foreground/5 bg-foreground/[0.01]">
                                 <h3 className="text-foreground/80 font-medium" style={{ fontSize: "14px" }}>Histórico de Atualizações</h3>
                               </div>
-                              <div className="p-6">
+                              <div className="p-4 md:p-6">
                                 <div className="space-y-8 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[1px] before:bg-foreground/5">
                                   {order.history?.map((event, i) => (
                                     <div key={i} className="relative pl-8">
