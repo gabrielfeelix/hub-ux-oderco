@@ -90,7 +90,6 @@ const inputStyle: React.CSSProperties = {
   border: inputBorder,
   background: inputBg,
   fontFamily: "var(--font-family-inter)",
-  fontSize: "13.5px",
   fontWeight: 600,
   letterSpacing: "0.01em",
 };
@@ -1128,7 +1127,7 @@ export function CheckoutPage() {
                                 setAddress((a) => ({ ...a, zip: v }));
                                 if (v.replace(/\D/g, "").length === 8) handleCepLookup(v);
                               }}
-                              className={inputClass}
+                              className={`${inputClass} checkout-field`}
                               style={inputStyle}
                             />
                             {loadingCep && <Loader2 size={14} className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-white/60" />}
@@ -1139,7 +1138,7 @@ export function CheckoutPage() {
                             value={address.recipient}
                             placeholder="Quem vai receber?"
                             onChange={(e) => setAddress((a) => ({ ...a, recipient: e.target.value }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1148,7 +1147,7 @@ export function CheckoutPage() {
                             value={address.street}
                             placeholder="Nome da rua"
                             onChange={(e) => setAddress((a) => ({ ...a, street: e.target.value }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1157,7 +1156,7 @@ export function CheckoutPage() {
                             value={address.number}
                             placeholder="123"
                             onChange={(e) => setAddress((a) => ({ ...a, number: e.target.value.replace(/\D/g, "") }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1166,7 +1165,7 @@ export function CheckoutPage() {
                             value={address.complement}
                             placeholder="Apto, bloco, etc."
                             onChange={(e) => setAddress((a) => ({ ...a, complement: e.target.value }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1175,7 +1174,7 @@ export function CheckoutPage() {
                             value={address.district}
                             placeholder="Bairro"
                             onChange={(e) => setAddress((a) => ({ ...a, district: e.target.value }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1184,7 +1183,7 @@ export function CheckoutPage() {
                             value={address.city}
                             placeholder="Cidade"
                             onChange={(e) => setAddress((a) => ({ ...a, city: e.target.value }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1194,7 +1193,7 @@ export function CheckoutPage() {
                             placeholder="UF"
                             maxLength={2}
                             onChange={(e) => setAddress((a) => ({ ...a, state: e.target.value.toUpperCase() }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1204,7 +1203,7 @@ export function CheckoutPage() {
                             value={address.phone}
                             placeholder="(00) 00000-0000"
                             onChange={(e) => setAddress((a) => ({ ...a, phone: formatPhone(e.target.value) }))}
-                            className={inputClass}
+                            className={`${inputClass} checkout-field`}
                             style={inputStyle}
                           />
                         </Field>
@@ -1470,7 +1469,7 @@ export function CheckoutPage() {
                                   value={cardName}
                                   placeholder="Como está impresso"
                                   onChange={(e) => setCardName(e.target.value.toUpperCase())}
-                                  className={inputClass}
+                                  className={`${inputClass} checkout-field`}
                                   style={inputStyle}
                                 />
                               </Field>
@@ -1481,7 +1480,7 @@ export function CheckoutPage() {
                                     value={cardNumber}
                                     placeholder="0000 0000 0000 0000"
                                     onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
-                                    className={inputClass}
+                                    className={`${inputClass} checkout-field`}
                                     style={{ ...inputStyle, paddingRight: "60px" }}
                                   />
                                   <CardBrand digits={cardNumber.replace(/\D/g, "")} />
@@ -1493,7 +1492,7 @@ export function CheckoutPage() {
                                   value={cardExp}
                                   placeholder="MM/AA"
                                   onChange={(e) => setCardExp(formatExp(e.target.value))}
-                                  className={inputClass}
+                                  className={`${inputClass} checkout-field`}
                                   style={inputStyle}
                                 />
                               </Field>
@@ -1504,7 +1503,7 @@ export function CheckoutPage() {
                                   placeholder="000"
                                   maxLength={3}
                                   onChange={(e) => setCardCvc(e.target.value.replace(/\D/g, "").slice(0, 3))}
-                                  className={inputClass}
+                                  className={`${inputClass} checkout-field`}
                                   style={inputStyle}
                                 />
                               </Field>
@@ -1517,7 +1516,7 @@ export function CheckoutPage() {
                                 <select
                                   value={installments}
                                   onChange={(e) => setInstallments(Number(e.target.value))}
-                                  className={inputClass}
+                                  className={`${inputClass} checkout-field`}
                                   style={inputStyle}
                                 >
                                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (

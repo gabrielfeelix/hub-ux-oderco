@@ -80,6 +80,12 @@
   }
 }
 
+/* Checkout form fields — responsive touch targets and font size */
+.checkout-field { font-size: 13.5px; }
+@media (max-width: 767px) {
+  .checkout-field { min-height: 44px; font-size: 16px; }
+}
+
 /* Homepage shelves — hide scrollbars on horizontal carousels */
 .shelf-track::-webkit-scrollbar,
 .deals-track::-webkit-scrollbar,
