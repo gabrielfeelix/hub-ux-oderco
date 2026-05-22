@@ -558,7 +558,7 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                 </h3>
                 <button
                   onClick={onClose}
-                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-foreground/8 text-foreground/45 hover:text-foreground transition-all cursor-pointer"
+                  className="w-11 h-11 md:w-8 md:h-8 flex items-center justify-center rounded-full hover:bg-foreground/8 text-foreground/45 hover:text-foreground transition-all cursor-pointer"
                   aria-label="Fechar"
                 >
                   <X size={16} strokeWidth={1.8} />
@@ -2349,9 +2349,9 @@ export function ProductPage() {
   const liked = isFavorite(product.id);
 
   return (
-    <div className="pt-[110px] lg:pt-[220px]">
+    <div className="pt-[96px] lg:pt-[220px]">
       {/* Breadcrumb */}
-      <div className="px-5 md:px-8 pt-1 pb-0 lg:pt-6 lg:pb-2">
+      <div className="hidden lg:block px-5 md:px-8 pt-1 pb-0 lg:pt-6 lg:pb-2">
         <div className="max-w-[1760px] mx-auto hidden lg:flex items-center gap-1.5 flex-wrap">
           {[
             { label: "Home", to: "/" },
@@ -2507,7 +2507,7 @@ export function ProductPage() {
             {/* Rating */}
             <div className="flex items-center gap-2.5 mb-6 flex-wrap">
               <div
-                className="flex items-center gap-0.5 cursor-pointer group"
+                className="inline-flex items-center gap-0.5 cursor-pointer group min-h-[44px] md:min-h-0"
                 onClick={scrollToReviews}
               >
                 {[...Array(5)].map((_, i) => (
@@ -2520,7 +2520,7 @@ export function ProductPage() {
                 ))}
               </div>
               <span
-                className="text-foreground/70 font-semibold tabular-nums cursor-pointer hover:text-[#FFB800] transition-colors"
+                className="inline-flex items-center min-h-[44px] md:min-h-0 text-foreground/70 font-semibold tabular-nums cursor-pointer hover:text-[#FFB800] transition-colors"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                 onClick={scrollToReviews}
               >
@@ -2528,7 +2528,7 @@ export function ProductPage() {
               </span>
               <span className="text-foreground/15">·</span>
               <span
-                className="text-foreground/45 hover:text-foreground/65 cursor-pointer transition-colors"
+                className="inline-flex items-center min-h-[44px] md:min-h-0 text-foreground/45 hover:text-foreground/65 cursor-pointer transition-colors"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
                 onClick={scrollToReviews}
               >
