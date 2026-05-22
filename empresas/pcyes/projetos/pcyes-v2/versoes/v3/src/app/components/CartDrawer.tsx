@@ -532,7 +532,7 @@ export function CartDrawer() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 18, scale: 0.97 }}
                   transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:h-auto md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
+                  className="flex h-auto max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
                   style={{
                     background: "#1f1c1c",
                     border: "1px solid rgba(var(--foreground-rgb), 0.08)",
@@ -556,7 +556,7 @@ export function CartDrawer() {
                           Você atingiu {formatPrice(GIFT_THRESHOLD)}. Selecione um produto pra entrar no carrinho com selo de presente e valor zerado.
                         </p>
                       </div>
-                      <button onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); }} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:text-white hover:bg-white/[0.06] cursor-pointer flex-shrink-0">
+                      <button onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); }} className="flex h-11 w-11 md:h-10 md:w-10 items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:text-white hover:bg-white/[0.06] cursor-pointer flex-shrink-0">
                         <X size={16} />
                       </button>
                     </div>
@@ -641,7 +641,7 @@ export function CartDrawer() {
                   <div className="flex items-center justify-between border-t border-white/5 px-6 py-5 md:px-9 md:py-6">
                     <button
                       onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); setSelectedGiftId(null); }}
-                      className="text-white/45 transition-colors hover:text-white/75 cursor-pointer"
+                      className="inline-flex items-center cursor-pointer text-white/45 transition-colors hover:text-white/75 min-h-[44px] px-3 md:min-h-0 md:px-0"
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.06em" }}
                     >
                       Agora não
@@ -649,7 +649,7 @@ export function CartDrawer() {
                     <button
                       onClick={confirmGift}
                       disabled={!selectedGiftId}
-                      className="rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100"
+                      className="cursor-pointer rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                       style={{
                         background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
                         fontFamily: "var(--font-family-inter)",

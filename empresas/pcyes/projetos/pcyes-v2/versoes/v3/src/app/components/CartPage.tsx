@@ -995,7 +995,7 @@ export function CartPage() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 18, scale: 0.97 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="flex h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:h-auto md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
+              className="flex h-auto max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
               style={{
                 background: "#1f1c1c",
                 border: "1px solid rgba(var(--foreground-rgb), 0.08)",
