@@ -246,7 +246,7 @@ export function CartPage() {
           {/* Breadcrumb */}
           <Link
             to="/produtos"
-            className="mb-6 inline-flex items-center gap-1.5 text-white/45 transition-colors hover:text-white/75"
+            className="mb-6 inline-flex items-center gap-1.5 text-white/45 transition-colors hover:text-white/75 min-h-[44px] md:min-h-0"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
           >
             <ChevronLeft size={14} strokeWidth={2} />
@@ -277,7 +277,7 @@ export function CartPage() {
             </div>
             <button
               onClick={clearCart}
-              className="hidden items-center gap-1.5 cursor-pointer text-white/40 transition-colors hover:text-white/75 md:inline-flex"
+              className="inline-flex items-center gap-1.5 cursor-pointer text-white/40 transition-colors hover:text-white/75 min-h-[44px] md:min-h-0"
               style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
             >
               <Trash2 size={13} strokeWidth={2} />
@@ -317,7 +317,7 @@ export function CartPage() {
               </div>
               <button
                 onClick={() => { setGiftDismissed(false); setGiftModalOpen(true); }}
-                className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2.5 text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
+                className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2.5 text-white transition-transform hover:scale-[1.03] active:scale-[0.98] min-h-[44px] md:min-h-0"
                 style={{
                   background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
                   fontFamily: "var(--font-family-inter)",
@@ -361,7 +361,7 @@ export function CartPage() {
               </div>
               <button
                 onClick={() => { setGiftItem(null); setGiftDismissed(false); setGiftModalOpen(true); }}
-                className="cursor-pointer text-white/55 transition-colors hover:text-white"
+                className="inline-flex items-center cursor-pointer text-white/55 transition-colors hover:text-white min-h-[44px] px-3 md:min-h-0 md:px-0"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
               >
                 Trocar
@@ -481,7 +481,7 @@ export function CartPage() {
                           </Link>
                           <button
                             onClick={() => removeItem(item.cartKey)}
-                            className="flex h-8 w-8 flex-shrink-0 cursor-pointer items-center justify-center rounded-full text-white/40 transition-colors hover:bg-white/[0.06] hover:text-primary"
+                            className="flex h-11 w-11 md:h-8 md:w-8 flex-shrink-0 cursor-pointer items-center justify-center rounded-full text-white/40 transition-colors hover:bg-white/[0.06] hover:text-primary"
                             aria-label="Remover item"
                           >
                             <Trash2 size={14} strokeWidth={1.8} />
@@ -501,20 +501,20 @@ export function CartPage() {
                             >
                               <button
                                 onClick={() => updateQuantity(item.cartKey, item.quantity - 1)}
-                                className="flex h-8 w-8 cursor-pointer items-center justify-center text-white/55 transition-colors hover:bg-white/[0.05] hover:text-white"
+                                className="flex h-11 w-11 md:h-8 md:w-8 cursor-pointer items-center justify-center text-white/55 transition-colors hover:bg-white/[0.05] hover:text-white"
                                 aria-label="Diminuir quantidade"
                               >
                                 <Minus size={12} strokeWidth={2} />
                               </button>
                               <span
-                                className="flex h-8 w-9 items-center justify-center text-white tabular-nums"
+                                className="flex h-11 w-9 md:h-8 md:w-9 items-center justify-center text-white tabular-nums"
                                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700 }}
                               >
                                 {item.quantity}
                               </span>
                               <button
                                 onClick={() => updateQuantity(item.cartKey, item.quantity + 1)}
-                                className="flex h-8 w-8 cursor-pointer items-center justify-center text-white/55 transition-colors hover:bg-white/[0.05] hover:text-white"
+                                className="flex h-11 w-11 md:h-8 md:w-8 cursor-pointer items-center justify-center text-white/55 transition-colors hover:bg-white/[0.05] hover:text-white"
                                 aria-label="Aumentar quantidade"
                               >
                                 <Plus size={12} strokeWidth={2} />
@@ -675,7 +675,7 @@ export function CartPage() {
                               <button
                                 key={opt.id}
                                 onClick={() => setSelectedShipping(opt.id)}
-                                className="flex w-full items-center gap-2.5 rounded-[10px] px-3 py-2 text-left transition-colors"
+                                className="flex w-full items-center gap-2.5 rounded-[10px] px-3 py-2 text-left transition-colors min-h-[44px] md:min-h-0"
                                 style={{
                                   background: active ? "rgba(34,197,94,0.06)" : "rgba(var(--foreground-rgb), 0.02)",
                                   border: active ? "1.5px solid rgba(34,197,94,0.5)" : "1px solid rgba(var(--foreground-rgb), 0.06)",
@@ -775,7 +775,7 @@ export function CartPage() {
                         <button
                           onClick={handleApplyCoupon}
                           disabled={!coupon.trim()}
-                          className="cursor-pointer rounded-[10px] px-4 py-2.5 text-white transition-transform hover:scale-[1.02] active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+                          className="cursor-pointer rounded-[10px] px-4 py-2.5 text-white transition-transform hover:scale-[1.02] active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                           style={{
                             background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
                             fontFamily: "var(--font-family-inter)",
@@ -1021,7 +1021,7 @@ export function CartPage() {
                   </div>
                   <button
                     onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); }}
-                    className="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:bg-white/[0.06] hover:text-white"
+                    className="flex h-11 w-11 md:h-10 md:w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:bg-white/[0.06] hover:text-white"
                     aria-label="Fechar"
                   >
                     <X size={16} />
@@ -1113,7 +1113,7 @@ export function CartPage() {
               <div className="flex items-center justify-between border-t border-white/5 px-6 py-5 md:px-9 md:py-6">
                 <button
                   onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); setSelectedGiftId(null); }}
-                  className="cursor-pointer text-white/45 transition-colors hover:text-white/75"
+                  className="inline-flex items-center cursor-pointer text-white/45 transition-colors hover:text-white/75 min-h-[44px] px-3 md:min-h-0 md:px-0"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.06em" }}
                 >
                   Agora não
@@ -1121,7 +1121,7 @@ export function CartPage() {
                 <button
                   onClick={confirmGift}
                   disabled={!selectedGiftId}
-                  className="cursor-pointer rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100"
+                  className="cursor-pointer rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                   style={{
                     background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
                     fontFamily: "var(--font-family-inter)",
@@ -1263,7 +1263,7 @@ function NumberStepper({
           type="button"
           onClick={() => onChange(clamp(value + step))}
           aria-label="Aumentar"
-          className="flex h-4 w-7 items-center justify-center transition-colors hover:bg-white/[0.08]"
+          className="flex h-4 w-7 min-h-[24px] min-w-[44px] md:min-h-0 md:min-w-0 items-center justify-center transition-colors hover:bg-white/[0.08]"
           style={{ color: accent }}
         >
           <svg width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden>
@@ -1275,7 +1275,7 @@ function NumberStepper({
           type="button"
           onClick={() => onChange(clamp(value - step))}
           aria-label="Diminuir"
-          className="flex h-4 w-7 items-center justify-center transition-colors hover:bg-white/[0.08]"
+          className="flex h-4 w-7 min-h-[24px] min-w-[44px] md:min-h-0 md:min-w-0 items-center justify-center transition-colors hover:bg-white/[0.08]"
           style={{ color: accent }}
         >
           <svg width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden>
