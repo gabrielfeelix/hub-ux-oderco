@@ -8,7 +8,9 @@ import {
   Briefcase,
   Check,
   ChevronDown,
+  ChevronLeft,
   ChevronRight,
+  ChevronUp,
   Cpu,
   Expand,
   Gamepad2,
@@ -5696,6 +5698,7 @@ export function MonteSeuPcPage() {
   const [quizRec, setQuizRec] = useState<PresetTier | null>(null);
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
   const [stepSheetOpen, setStepSheetOpen] = useState(false);
+  const [summarySheetOpen, setSummarySheetOpen] = useState(false);
   const [stepSearch, setStepSearch] = useState<string>("");
   const [sortMode, setSortMode] = useState<SortMode>("suggested");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
@@ -6192,7 +6195,7 @@ export function MonteSeuPcPage() {
                     }}
                   />
 
-                  <main className="mx-auto grid max-w-[1520px] grid-cols-1 gap-6 px-5 py-6 md:px-8 lg:grid-cols-[1fr_380px]">
+                  <main className="mx-auto grid max-w-[1520px] grid-cols-1 gap-6 px-5 py-6 pb-28 md:px-8 lg:grid-cols-[1fr_380px] lg:pb-6">
                     <section className="min-w-0">
                       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                         <div>
@@ -6464,7 +6467,7 @@ export function MonteSeuPcPage() {
                       </AnimatePresence>
                     </section>
 
-                    <aside className="space-y-4 lg:sticky lg:top-[180px] lg:self-start">
+                    <aside className="hidden space-y-4 lg:block lg:sticky lg:top-[180px] lg:self-start">
                       <SelectedItemCard
                         category={currentCategory}
                         options={stepSelectedOptions}
@@ -6495,6 +6498,131 @@ export function MonteSeuPcPage() {
                       />
                     </aside>
                   </main>
+
+                  {/* Mobile fixed action bar */}
+                  <div
+                    className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-3 border-t border-white/10 px-4 py-3 lg:hidden"
+                    style={{
+                      background: "rgba(14,14,14,0.96)",
+                      backdropFilter: "blur(20px)",
+                      WebkitBackdropFilter: "blur(20px)",
+                      paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))",
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={goPrev}
+                      disabled={isFirst}
+                      aria-label="Voltar etapa"
+                      className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-[12px] border border-white/[0.1] bg-white/[0.02] text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white disabled:cursor-not-allowed disabled:opacity-25"
+                    >
+                      <ChevronLeft size={18} />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setSummarySheetOpen(true)}
+                      aria-label="Ver resumo da build"
+                      className="flex min-w-0 flex-1 cursor-pointer flex-col items-start rounded-[10px] px-1 py-0.5 text-left transition-colors hover:bg-white/[0.03]"
+                    >
+                      <span className="flex items-center gap-1">
+                        <span
+                          className="uppercase text-zinc-500"
+                          style={{
+                            fontFamily: "var(--font-family-inter)",
+                            fontSize: "9px",
+                            letterSpacing: "0.18em",
+                            fontWeight: 700,
+                          }}
+                        >
+                          Total parcial
+                        </span>
+                        <ChevronUp size={11} className="text-zinc-500" />
+                        <span
+                          className="text-zinc-500"
+                          style={{
+                            fontFamily: "var(--font-family-inter)",
+                            fontSize: "9.5px",
+                            fontWeight: 600,
+                          }}
+                        >
+                          resumo
+                        </span>
+                      </span>
+                      <span
+                        className="text-white tabular-nums"
+                        style={{
+                          fontFamily: "var(--font-family-figtree)",
+                          fontSize: "18px",
+                          fontWeight: 700,
+                          letterSpacing: "-0.015em",
+                          lineHeight: 1.15,
+                        }}
+                      >
+                        {formatBRL(priceBreakdown.total)}
+                      </span>
+                      <span
+                        className="text-zinc-500 tabular-nums"
+                        style={{
+                          fontFamily: "var(--font-family-inter)",
+                          fontSize: "10px",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {completedSteps.length} de {categories.length} escolhidos
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={goNext}
+                      disabled={!stepValid}
+                      className="flex h-11 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] bg-primary px-5 text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "13.5px",
+                        fontWeight: 700,
+                        letterSpacing: "0.01em",
+                        boxShadow: !stepValid ? "none" : "0 8px 24px -8px rgba(255,43,46,0.5)",
+                      }}
+                    >
+                      {isLast ? "Revisar" : "Avançar"} <ArrowRight size={14} />
+                    </button>
+                  </div>
+
+                  {/* Mobile "Ver resumo" sheet */}
+                  <Sheet open={summarySheetOpen} onOpenChange={setSummarySheetOpen}>
+                    <SheetContent
+                      side="bottom"
+                      className="max-h-[85vh] gap-0 overflow-y-auto rounded-t-2xl border-white/[0.08] bg-[#0d0d0d] p-0 lg:hidden"
+                    >
+                      <SheetHeader className="border-b border-white/[0.06] p-5">
+                        <SheetTitle
+                          className="text-white"
+                          style={{
+                            fontFamily: "var(--font-family-inter)",
+                            fontSize: "16px",
+                            fontWeight: 700,
+                          }}
+                        >
+                          Resumo da build
+                        </SheetTitle>
+                      </SheetHeader>
+                      <div className="space-y-4 p-5">
+                        <StepMessages messages={computeStepMessages(currentCategory, selections)} />
+                        <ConfiguracaoSelecionadaCard
+                          categories={categoriesWithSelected}
+                          selections={selections}
+                          total={priceBreakdown.total}
+                          onEdit={(id) => {
+                            setActiveCategory(id);
+                            setExpandedCategory(id);
+                            setSummarySheetOpen(false);
+                          }}
+                        />
+                      </div>
+                    </SheetContent>
+                  </Sheet>
                 </>
               );
             })()}
