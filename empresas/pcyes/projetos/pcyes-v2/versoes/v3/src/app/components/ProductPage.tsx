@@ -1590,10 +1590,10 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={{ type: "spring", damping: 28, stiffness: 260 }}
-              className="fixed inset-4 z-50 mx-auto flex max-w-[980px] items-start justify-center overflow-y-auto pointer-events-none md:inset-8 md:items-center md:overflow-hidden"
+              className="fixed inset-4 z-50 mx-auto flex max-w-[980px] items-start justify-center pointer-events-none md:inset-8 md:items-center md:overflow-hidden"
             >
               <div
-                className="grid w-full overflow-visible md:max-h-[88vh] md:overflow-hidden border border-white/10 shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
+                className="grid w-full max-h-[calc(100vh-32px)] overflow-y-auto md:max-h-[88vh] md:overflow-hidden border border-white/10 shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
                 style={{
                   borderRadius: "18px",
                   background: isDark ? "rgba(16,16,17,0.98)" : "rgba(var(--foreground-rgb), 0.98)",
