@@ -631,6 +631,13 @@ export function ProductsPage() {
     return () => window.removeEventListener("mousedown", handlePointerDown);
   }, [itemsPerPageDropdownOpen]);
 
+  useEffect(() => {
+    if (!mobileFiltersOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, [mobileFiltersOpen]);
+
   const pageCount = Math.ceil(filtered.length / itemsPerPage);
   const paginatedProducts = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
