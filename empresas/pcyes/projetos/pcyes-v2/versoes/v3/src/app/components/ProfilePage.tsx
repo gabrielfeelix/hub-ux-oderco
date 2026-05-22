@@ -279,12 +279,15 @@ export function ProfilePage() {
 
       <div className="px-5 md:px-8 py-10">
         <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10">
-          {/* Sidebar */}
+          {/* Sidebar — vertical on desktop, horizontal scrollable tab bar on mobile */}
           <aside className="w-full lg:w-[230px] flex-shrink-0">
-            <nav className="space-y-0.5">
+            <nav
+              className="profile-tabs flex flex-row gap-2 overflow-x-auto -mx-5 px-5 lg:mx-0 lg:px-0 lg:block lg:space-y-0.5 lg:overflow-visible"
+              style={{ scrollbarWidth: "none" }}
+            >
               {TABS.map((tab) => (
                 <button key={tab.key} onClick={() => setProfileTab(tab.key)}
-                  className={`relative w-full flex items-center gap-3 px-3.5 py-2.5 transition-all duration-200 cursor-pointer ${
+                  className={`relative flex-shrink-0 lg:flex-shrink whitespace-nowrap lg:whitespace-normal flex items-center gap-2 lg:gap-3 px-4 lg:px-3.5 min-h-[44px] lg:min-h-0 lg:w-full lg:py-2.5 transition-all duration-200 cursor-pointer ${
                     activeTab === tab.key
                       ? "text-primary"
                       : "text-foreground/60 hover:text-foreground/88"
@@ -304,9 +307,9 @@ export function ProfilePage() {
                   {tab.label}
                 </button>
               ))}
-              <div className="h-px bg-foreground/8 my-3" />
+              <div className="hidden lg:block h-px bg-foreground/8 my-3" />
               <button onClick={logout}
-                className="w-full flex items-center gap-3 px-3.5 py-2.5 text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
+                className="flex-shrink-0 lg:flex-shrink whitespace-nowrap lg:whitespace-normal flex items-center gap-2 lg:gap-3 px-4 lg:px-3.5 min-h-[44px] lg:min-h-0 lg:w-full lg:py-2.5 text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
                 style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 500 }}
               ><LogOut size={15} /> Sair</button>
             </nav>
