@@ -242,7 +242,7 @@ export function CartPage() {
   return (
     <>
       <div className="pt-[80px] md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "100vh" }}>
-        <div className="mx-auto max-w-[1320px] px-5 py-8 md:px-8 md:py-10">
+        <div className="mx-auto max-w-[1320px] px-5 py-8 pb-24 md:px-8 md:py-10 lg:pb-10">
           {/* Breadcrumb */}
           <Link
             to="/produtos"
@@ -957,7 +957,7 @@ export function CartPage() {
                 {/* CTA */}
                 <button
                   onClick={() => navigate("/checkout")}
-                  className="mb-3 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-3.5 text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="mb-3 hidden w-full cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-3.5 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] lg:inline-flex"
                   style={{
                     background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                     fontFamily: "var(--font-family-inter)",
@@ -1138,6 +1138,46 @@ export function CartPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Mobile fixed bottom action bar — total + checkout CTA. lg:hidden, abaixo dos modais (z-[80]). */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden">
+        <div
+          className="flex items-center gap-3 border-t border-white/10 px-4 py-3"
+          style={{ background: "rgba(14,14,14,0.95)", backdropFilter: "blur(20px)" }}
+        >
+          <div className="flex-1 min-w-0">
+            <p
+              className="text-white/45"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}
+            >
+              Total
+            </p>
+            <p
+              className="text-white"
+              style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+            >
+              {formatBRL(total)}
+            </p>
+          </div>
+          <button
+            onClick={() => navigate("/checkout")}
+            className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97]"
+            style={{
+              minHeight: 46,
+              background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "12.5px",
+              fontWeight: 800,
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+            }}
+          >
+            <Lock size={14} strokeWidth={2.4} />
+            Finalizar compra
+          </button>
+        </div>
+      </div>
 
       <Footer />
     </>
