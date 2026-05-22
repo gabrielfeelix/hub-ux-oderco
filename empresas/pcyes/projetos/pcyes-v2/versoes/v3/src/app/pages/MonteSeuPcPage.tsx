@@ -2673,7 +2673,7 @@ function PresetComponentsDrawer({
                     onApply();
                     onOpenChange(false);
                   }}
-                  className="h-9 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200"
+                  className="h-11 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200 md:h-9"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "11.5px",
@@ -2950,7 +2950,7 @@ function PresetCard({
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
-            className="mt-3 flex w-full cursor-pointer items-center justify-between gap-2 rounded-[10px] border border-white/[0.08] bg-white/[0.015] px-3 py-2.5 text-left transition-all hover:border-primary/40 hover:bg-primary/[0.04]"
+            className="mt-3 flex min-h-[44px] w-full cursor-pointer items-center justify-between gap-2 rounded-[10px] border border-white/[0.08] bg-white/[0.015] px-3 py-2.5 text-left transition-all hover:border-primary/40 hover:bg-primary/[0.04] md:min-h-0"
           >
             <span
               className="flex items-center gap-2 text-white"
@@ -3085,7 +3085,7 @@ function PresetCard({
             <button
               type="button"
               onClick={onApply}
-              className="mt-2 h-9 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200"
+              className="mt-2 h-11 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200 md:h-9"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "11.5px",
@@ -3211,7 +3211,7 @@ function PresetMiniCard({
                 e.stopPropagation();
                 onBuy();
               }}
-              className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap px-7 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+              className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 whitespace-nowrap px-7 py-3 opacity-100 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
               style={{
                 background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                 color: "white",
@@ -3389,7 +3389,7 @@ function PresetGallery({
         <button
           type="button"
           onClick={onBack}
-          className="mb-8 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white cursor-pointer"
+          className="mb-8 flex h-11 items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white cursor-pointer md:h-9"
           style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600 }}
         >
           <ArrowLeft size={14} /> Voltar
@@ -3577,7 +3577,7 @@ function PresetGallery({
                 aria-selected={active}
                 onClick={() => setFilter(c.id)}
                 className={cn(
-                  "group inline-flex cursor-pointer items-baseline gap-1.5 rounded-full border px-3.5 py-2 transition-all",
+                  "group inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-full border px-3.5 py-2 transition-all md:min-h-0",
                   active
                     ? "border-primary/60 bg-primary/[0.1] text-white"
                     : "border-white/[0.08] bg-white/[0.015] text-zinc-300 hover:border-white/25 hover:bg-white/[0.05] hover:text-white",
@@ -3614,7 +3614,7 @@ function PresetGallery({
           <ArrowUpDown size={13} className="text-zinc-500" />
           <Select value={sort} onValueChange={(v) => setSort(v as PresetSort)}>
             <SelectTrigger
-              className="h-9 w-[180px] rounded-full border-white/[0.1] bg-white/[0.015] text-zinc-200 hover:border-white/25"
+              className="h-11 w-[180px] rounded-full border-white/[0.1] bg-white/[0.015] text-zinc-200 hover:border-white/25 md:h-9"
               style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
             >
               <SelectValue placeholder="Ordenar" />
