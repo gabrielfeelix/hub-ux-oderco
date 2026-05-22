@@ -646,7 +646,7 @@ export function CartPage() {
                         placeholder="Digite seu CEP"
                         value={cep}
                         onChange={(e) => setCep(formatCep(e.target.value))}
-                        className="w-full px-3.5 py-2.5 pr-9 text-white placeholder:text-white/25 focus:outline-none transition-all"
+                        className="w-full px-3.5 py-2.5 pr-9 text-white placeholder:text-white/25 focus:outline-none transition-all cart-field"
                         aria-label="CEP para cálculo de frete"
                         style={{
                           borderRadius: "10px",
@@ -761,7 +761,7 @@ export function CartPage() {
                             setCouponError("");
                           }}
                           onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
-                          className="flex-1 px-3.5 py-2.5 text-white placeholder:text-white/25 focus:outline-none transition-all"
+                          className="flex-1 px-3.5 py-2.5 text-white placeholder:text-white/25 focus:outline-none transition-all cart-field"
                           style={{
                             borderRadius: "10px",
                             border: "1px solid rgba(var(--foreground-rgb), 0.1)",
@@ -1250,7 +1250,7 @@ function NumberStepper({
         value={value}
         onChange={(e) => onChange(clamp(Number(e.target.value.replace(/\D/g, "")) || 0))}
         aria-label={ariaLabel}
-        className="w-14 bg-transparent px-2 py-1 text-center text-white focus:outline-none"
+        className="w-14 bg-transparent px-2 py-1 text-center text-white focus:outline-none cart-field"
         style={{
           fontFamily: "var(--font-family-figtree)",
           fontSize: "15px",

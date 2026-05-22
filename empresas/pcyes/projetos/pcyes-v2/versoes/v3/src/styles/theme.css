@@ -86,6 +86,11 @@
   .checkout-field { min-height: 44px; font-size: 16px; }
 }
 
+/* Cart form fields — mobile touch targets and prevent iOS zoom (font-size < 16px triggers zoom) */
+@media (max-width: 767px) {
+  .cart-field { min-height: 44px; font-size: 16px !important; }
+}
+
 /* Homepage shelves — hide scrollbars on horizontal carousels */
 .shelf-track::-webkit-scrollbar,
 .deals-track::-webkit-scrollbar,
