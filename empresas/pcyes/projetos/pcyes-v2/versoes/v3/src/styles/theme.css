@@ -435,6 +435,10 @@ html {
     inset 0 0 80px -16px rgba(225, 6, 0, 0.18);
 }
 
+/* === Monte seu PC — Quiz scroll area: unbounded on mobile, capped on desktop === */
+.quiz-scroll-area { height: auto; max-height: none; }
+@media (min-width: 768px) { .quiz-scroll-area { height: min(420px, 55vh); } }
+
 /* === Monte seu PC — product image bg (mesmo padrão FlashDealsStrip) === */
 .deal-image-bg {
   background:

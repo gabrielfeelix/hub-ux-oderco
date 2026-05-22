@@ -1506,7 +1506,7 @@ function QuizHeader({
         <button
           type="button"
           onClick={onBack}
-          className="flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+          className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 text-zinc-400 transition-colors hover:text-white cursor-pointer"
           style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
         >
           <ArrowLeft size={13} /> Voltar
@@ -1576,7 +1576,7 @@ function UseTypeCard({
       }}
       aria-label={card.title}
     >
-      <div className="relative aspect-[5/4] w-full overflow-hidden deal-image-bg">
+      <div className="relative aspect-[16/9] md:aspect-[5/4] w-full overflow-hidden deal-image-bg">
         <img
           src={card.image}
           alt=""
@@ -1685,7 +1685,7 @@ function GameTile({
           : { boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }
       }
     >
-      <div className="relative aspect-[460/215] w-full overflow-hidden deal-image-bg">
+      <div className="relative aspect-[3/2] md:aspect-[460/215] w-full overflow-hidden deal-image-bg">
         {game.bg1 ? (
           <>
             <div
@@ -1816,7 +1816,7 @@ function ProgramTile({
           : { boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }
       }
     >
-      <div className="relative aspect-[460/215] w-full overflow-hidden">
+      <div className="relative aspect-[3/2] md:aspect-[460/215] w-full overflow-hidden">
         <div className="absolute inset-0" style={{ background: program.bg }} />
         <div
           className="pointer-events-none absolute inset-0"
@@ -2121,7 +2121,7 @@ function QuizFlow({
                     type="button"
                     onClick={() => setGameSearch("")}
                     aria-label="Limpar busca"
-                    className="absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/[0.05] hover:text-white"
+                    className="absolute right-2 top-1/2 flex h-11 w-11 md:h-7 md:w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/[0.05] hover:text-white"
                   >
                     <X size={13} />
                   </button>
@@ -2168,8 +2168,7 @@ function QuizFlow({
             ) : (
               <ScrollArea
                 type="always"
-                className="rounded-[8px]"
-                style={{ height: "min(420px, 55vh)" }}
+                className="quiz-scroll-area rounded-[8px]"
               >
                 <div className="grid grid-cols-2 gap-3 pr-3 sm:grid-cols-3 lg:grid-cols-4">
                   {filteredGames.map((g) => (
@@ -2281,8 +2280,7 @@ function QuizFlow({
             </div>
             <ScrollArea
               type="always"
-              className="rounded-[8px]"
-              style={{ height: "min(420px, 55vh)" }}
+              className="quiz-scroll-area rounded-[8px]"
             >
               <div className="grid grid-cols-2 gap-3 pr-3 sm:grid-cols-3 lg:grid-cols-4">
                 {quizPrograms.map((p) => (
