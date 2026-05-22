@@ -144,7 +144,7 @@ export function QuemSomosPage() {
       {/* ============================== HERO ============================== */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden pt-[152px] md:pt-[182px]"
+        className="relative overflow-hidden pt-[96px] md:pt-[182px]"
         style={{ background: "#0e0e0e" }}
       >
         {/* atmospheric red radial mesh */}
@@ -177,7 +177,7 @@ export function QuemSomosPage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1434px] px-5 pb-28 pt-16 md:px-12 md:pb-36 md:pt-24">
+        <div className="relative mx-auto max-w-[1434px] px-5 pb-16 pt-10 md:px-12 md:pb-36 md:pt-24">
           <motion.div
             initial="hidden"
             animate="show"
@@ -193,14 +193,14 @@ export function QuemSomosPage() {
               className="mt-8 max-w-[16ch] text-white"
               style={{
                 fontFamily: FIGTREE,
-                fontSize: "clamp(44px, 6.4vw, 92px)",
+                fontSize: "clamp(34px, 6.4vw, 92px)",
                 fontWeight: 700,
                 letterSpacing: "-0.04em",
                 lineHeight: 1.04,
               }}
             >
               Existimos para você{" "}
-              <span className="relative whitespace-nowrap">
+              <span className="relative whitespace-normal md:whitespace-nowrap">
                 <span
                   style={{
                     background:
@@ -239,7 +239,7 @@ export function QuemSomosPage() {
             >
               <Link
                 to="/produtos"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-white transition-transform duration-300 hover:-translate-y-0.5"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-white transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                 style={{
                   fontFamily: INTER,
                   fontSize: "14px",
@@ -255,7 +255,7 @@ export function QuemSomosPage() {
               </Link>
               <Link
                 to="/monte-seu-pc"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-white/90 transition-colors duration-300 hover:border-white/30 hover:text-white"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-white/90 transition-colors duration-300 hover:border-white/30 hover:text-white active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                 style={{ fontFamily: INTER, fontSize: "14px", fontWeight: 700 }}
               >
                 Montar meu PC
@@ -426,7 +426,7 @@ export function QuemSomosPage() {
                   className="relative tabular-nums text-white"
                   style={{
                     fontFamily: FIGTREE,
-                    fontSize: "clamp(48px, 6vw, 76px)",
+                    fontSize: "clamp(40px, 6vw, 76px)",
                     fontWeight: 700,
                     letterSpacing: "-0.04em",
                     lineHeight: 1,
@@ -585,7 +585,7 @@ export function QuemSomosPage() {
             {/* vertical rail */}
             <div
               aria-hidden
-              className="absolute left-[19px] top-2 bottom-2 w-px md:left-1/2 md:-translate-x-1/2"
+              className="absolute left-[13px] top-2 bottom-2 w-px md:left-1/2 md:-translate-x-1/2"
               style={{
                 background:
                   "linear-gradient(to bottom, transparent, rgba(255,43,46,0.5) 12%, rgba(255,43,46,0.5) 88%, transparent)",
@@ -602,7 +602,7 @@ export function QuemSomosPage() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.6 }}
-                    className="relative grid grid-cols-[40px_1fr] items-start gap-5 md:grid-cols-[1fr_40px_1fr] md:gap-8"
+                    className="relative grid grid-cols-[28px_1fr] items-start gap-3 md:grid-cols-[1fr_40px_1fr] md:gap-8"
                   >
                     {/* left column (desktop) */}
                     <div
@@ -709,7 +709,7 @@ export function QuemSomosPage() {
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   to="/produtos"
-                  className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-white transition-transform duration-300 hover:-translate-y-0.5"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-white transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                   style={{
                     fontFamily: INTER,
                     fontSize: "14px",
@@ -725,7 +725,7 @@ export function QuemSomosPage() {
                 </Link>
                 <Link
                   to="/monte-seu-pc"
-                  className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-white/90 transition-colors duration-300 hover:border-white/30 hover:text-white"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-white/90 transition-colors duration-300 hover:border-white/30 hover:text-white active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                   style={{
                     fontFamily: INTER,
                     fontSize: "14px",
