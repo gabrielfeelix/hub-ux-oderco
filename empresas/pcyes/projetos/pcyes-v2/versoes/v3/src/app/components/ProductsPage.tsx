@@ -1136,7 +1136,7 @@ export function ProductsPage() {
                             {/* Favorite + Quick View — top-right */}
                             <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
                               <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(displayProduct.id); }}
-                                className="w-9 h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50 hover:scale-105 cursor-pointer"
+                                className="w-11 h-11 lg:w-9 lg:h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50 hover:scale-105 cursor-pointer"
                                 aria-label={isFavorite(displayProduct.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
                               >
                                 <Heart size={16} className={isFavorite(displayProduct.id) ? "fill-red-500 text-red-500" : "text-white"} strokeWidth={2} />
@@ -1155,7 +1155,7 @@ export function ProductsPage() {
                                 {imgIdx > 0 && (
                                   <button
                                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setImageIdx(imageKey, imgIdx - 1, productImages.length); }}
-                                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 text-white hover:bg-black/50 z-10"
+                                    className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 text-white hover:bg-black/50 z-10"
                                     aria-label="Imagem anterior"
                                   >
                                     <ChevronLeft size={18} />
@@ -1164,7 +1164,7 @@ export function ProductsPage() {
                                 {imgIdx < productImages.length - 1 && (
                                   <button
                                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setImageIdx(imageKey, imgIdx + 1, productImages.length); }}
-                                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75 text-white hover:bg-black/50 z-10"
+                                    className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 delay-75 text-white hover:bg-black/50 z-10"
                                     aria-label="Próxima imagem"
                                   >
                                     <ChevronRight size={18} />
@@ -1176,7 +1176,7 @@ export function ProductsPage() {
                             {/* Quick add — floating pill on hover */}
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
-                              className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+                              className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
                               style={{ background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", color: "white", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)" }}
                             >
                               <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
@@ -1198,12 +1198,7 @@ export function ProductsPage() {
                                   {swatches.map((sw) => (
                                     <button
                                       key={sw.productId}
-                                      className="h-3 w-3 rounded-full cursor-pointer transition-all hover:scale-110"
-                                      style={{
-                                        backgroundColor: sw.color,
-                                        border: sw.productId === displayProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
-                                        boxShadow: sw.productId === displayProduct.id ? "0 0 8px rgba(225,6,0,0.5)" : "none",
-                                      }}
+                                      className="p-3 lg:p-0 -m-3 lg:m-0 cursor-pointer flex items-center justify-center"
                                       title={sw.label}
                                       onClick={(e) => {
                                         e.preventDefault();
@@ -1211,7 +1206,16 @@ export function ProductsPage() {
                                         const variant = getProductVariantByColor(product, sw.label) ?? productById.get(sw.productId) ?? null;
                                         if (variant) setSelectedVariantIds((prev) => ({ ...prev, [product.id]: variant.id }));
                                       }}
-                                    />
+                                    >
+                                      <span
+                                        className="h-3 w-3 rounded-full block transition-all hover:scale-110"
+                                        style={{
+                                          backgroundColor: sw.color,
+                                          border: sw.productId === displayProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
+                                          boxShadow: sw.productId === displayProduct.id ? "0 0 8px rgba(225,6,0,0.5)" : "none",
+                                        }}
+                                      />
+                                    </button>
                                   ))}
                                 </div>
                               )}
