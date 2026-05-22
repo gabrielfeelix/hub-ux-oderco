@@ -190,15 +190,32 @@ function PriceRangeSlider({
   const minPct = ((safeMin - minBound) / range) * 100;
   const maxPct = ((safeMax - minBound) / range) * 100;
 
-  const getPctFromEvent = (e: MouseEvent | React.MouseEvent) => {
+  // Extract an X coordinate from either a mouse or touch event (native or React).
+  const getClientX = (
+    e: MouseEvent | TouchEvent | React.MouseEvent | React.TouchEvent,
+  ): number | null => {
+    if ("touches" in e) {
+      const t = e.touches[0] ?? e.changedTouches[0];
+      return t ? t.clientX : null;
+    }
+    return e.clientX;
+  };
+
+  const getPctFromEvent = (
+    e: MouseEvent | TouchEvent | React.MouseEvent | React.TouchEvent,
+  ) => {
     if (!trackRef.current) return 0;
     const rect = trackRef.current.getBoundingClientRect();
-    const x = "touches" in e ? (e as any).touches[0].clientX : e.clientX;
+    const x = getClientX(e);
+    if (x == null) return 0;
     return Math.max(0, Math.min(1, (x - rect.left) / rect.width));
   };
 
   const handlePointerDown = (thumb: "min" | "max") => (e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault();
+    // Only call preventDefault for mouse — React onTouchStart is passive so it
+    // would be ignored (and warn). Page-scroll prevention is handled by the
+    // non-passive touchmove listener below.
+    if (!("touches" in e)) e.preventDefault();
     setDragging(thumb);
     const pct = getPctFromEvent(e);
     const val = Math.round(minBound + pct * range);
@@ -208,8 +225,13 @@ function PriceRangeSlider({
 
   useEffect(() => {
     if (!dragging) return;
-    const handleMove = (e: MouseEvent) => {
-      const pct = getPctFromEvent(e as any);
+    const handleMove = (e: MouseEvent | TouchEvent) => {
+      // Stop the page from scrolling while a thumb is being dragged by touch.
+      if ("touches" in e) e.preventDefault();
+      // If the X coordinate can't be read (e.g. degenerate touch event with
+      // empty touches), do nothing — never snap the thumb to 0.
+      if (getClientX(e) == null) return;
+      const pct = getPctFromEvent(e);
       const val = Math.round(minBound + pct * range);
       if (dragging === "min") onMinChange(Math.min(val, max));
       else onMaxChange(Math.max(val, min));
@@ -217,7 +239,16 @@ function PriceRangeSlider({
     const handleUp = () => { setDragging(null); onApply(); };
     window.addEventListener("mousemove", handleMove);
     window.addEventListener("mouseup", handleUp);
-    return () => { window.removeEventListener("mousemove", handleMove); window.removeEventListener("mouseup", handleUp); };
+    window.addEventListener("touchmove", handleMove, { passive: false });
+    window.addEventListener("touchend", handleUp);
+    window.addEventListener("touchcancel", handleUp);
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mouseup", handleUp);
+      window.removeEventListener("touchmove", handleMove);
+      window.removeEventListener("touchend", handleUp);
+      window.removeEventListener("touchcancel", handleUp);
+    };
   }, [dragging, min, max, minBound, range, onMinChange, onMaxChange, onApply]);
 
   const formatBRL = (v: number) =>
@@ -233,27 +264,27 @@ function PriceRangeSlider({
           className="absolute top-0 h-full rounded-full bg-primary"
           style={{ left: `${minPct}%`, width: `${maxPct - minPct}%` }}
         />
-        {/* Min thumb */}
+        {/* Min thumb — 44px hit area, 20px visible circle */}
         <div
           onMouseDown={handlePointerDown("min")}
-          onTouchStart={handlePointerDown("min") as any}
-          className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary border-2 border-background shadow-md cursor-grab active:cursor-grabbing z-10 flex items-center justify-center"
-          style={{ left: `calc(${minPct}% - 10px)` }}
+          onTouchStart={handlePointerDown("min")}
+          className="absolute top-1/2 w-11 h-11 -translate-x-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing z-10 flex items-center justify-center"
+          style={{ left: `${minPct}%`, touchAction: "none" }}
           aria-label="Preço mínimo"
           role="slider"
         >
-          <div className="absolute w-11 h-11 bg-transparent" />
+          <div className="w-5 h-5 rounded-full bg-primary border-2 border-background shadow-md" />
         </div>
-        {/* Max thumb */}
+        {/* Max thumb — 44px hit area, 20px visible circle */}
         <div
           onMouseDown={handlePointerDown("max")}
-          onTouchStart={handlePointerDown("max") as any}
-          className="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary border-2 border-background shadow-md cursor-grab active:cursor-grabbing z-10 flex items-center justify-center"
-          style={{ left: `calc(${maxPct}% - 10px)` }}
+          onTouchStart={handlePointerDown("max")}
+          className="absolute top-1/2 w-11 h-11 -translate-x-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing z-10 flex items-center justify-center"
+          style={{ left: `${maxPct}%`, touchAction: "none" }}
           aria-label="Preço máximo"
           role="slider"
         >
-          <div className="absolute w-11 h-11 bg-transparent" />
+          <div className="w-5 h-5 rounded-full bg-primary border-2 border-background shadow-md" />
         </div>
       </div>
       </div>
@@ -262,20 +293,20 @@ function PriceRangeSlider({
         <div className="flex-1">
           <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.06em" }}>MÍN</label>
           <input
-            type="text" value={formatBRL(safeMin)}
+            type="text" inputMode="numeric" value={formatBRL(safeMin)}
             onChange={(e) => onMinChange(Math.max(minBound, Math.min(parseInt(e.target.value.replace(/\D/g, "")) || minBound, max)))}
             onBlur={onApply}
-            className="w-full border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
+            className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
             style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
           />
         </div>
         <div className="flex-1">
           <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.06em" }}>MÁX</label>
           <input
-            type="text" value={formatBRL(safeMax)}
+            type="text" inputMode="numeric" value={formatBRL(safeMax)}
             onChange={(e) => onMaxChange(Math.min(maxBound, Math.max(parseInt(e.target.value.replace(/\D/g, "")) || maxBound, min)))}
             onBlur={onApply}
-            className="w-full border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
+            className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
             style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
           />
         </div>
