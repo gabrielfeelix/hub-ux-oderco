@@ -688,7 +688,7 @@ function FiltersBar({
         <div className="flex items-center gap-2.5 flex-wrap">
           {/* search */}
           <div
-            className="flex items-center gap-2.5 px-4 h-10 flex-1 min-w-[200px] max-w-[320px] transition-colors focus-within:border-white/20"
+            className="flex items-center gap-2.5 px-4 h-11 md:h-10 w-full md:w-auto md:flex-1 md:min-w-[200px] md:max-w-[320px] transition-colors focus-within:border-white/20"
             style={{
               background: "rgba(var(--foreground-rgb), 0.025)",
               border: "1px solid rgba(var(--foreground-rgb), 0.06)",
@@ -700,7 +700,7 @@ function FiltersBar({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar lançamento..."
-              className="bg-transparent outline-none flex-1 text-white placeholder:text-white/30"
+              className="preorder-field bg-transparent outline-none flex-1 text-white placeholder:text-white/30"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13px",
@@ -709,7 +709,7 @@ function FiltersBar({
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="text-white/35 hover:text-white cursor-pointer"
+                className="flex items-center justify-center h-11 w-11 md:h-auto md:w-auto text-white/35 hover:text-white cursor-pointer"
               >
                 <X size={13} strokeWidth={2.2} />
               </button>
@@ -745,7 +745,7 @@ function FiltersBar({
           {/* mobile filter toggle */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="md:hidden inline-flex items-center gap-2 h-10 px-3.5 rounded-full text-white/75 cursor-pointer"
+            className="md:hidden inline-flex items-center gap-2 h-11 md:h-10 px-3.5 rounded-full text-white/75 cursor-pointer"
             style={{
               background: "rgba(var(--foreground-rgb), 0.025)",
               border: "1px solid rgba(var(--foreground-rgb), 0.07)",
@@ -771,14 +771,14 @@ function FiltersBar({
             )}
           </button>
 
-          <div className="flex-1" />
+          <div className="hidden md:block md:flex-1" />
 
           {/* sort */}
           <div className="relative">
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="appearance-none h-10 pl-9 pr-9 rounded-full text-white/75 cursor-pointer hover:text-white transition-colors"
+              className="preorder-field appearance-none h-11 md:h-10 pl-9 pr-9 rounded-full text-white/75 cursor-pointer hover:text-white transition-colors"
               style={{
                 background: "rgba(var(--foreground-rgb), 0.025)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.07)",
@@ -821,7 +821,7 @@ function FiltersBar({
               <button
                 key={d}
                 onClick={() => setDelivery(d)}
-                className="px-3 h-7 rounded-full transition-all cursor-pointer"
+                className="px-3 h-11 md:h-7 rounded-full transition-all cursor-pointer"
                 style={{
                   background: isActive ? "rgba(var(--foreground-rgb), 0.06)" : "transparent",
                   border: isActive
@@ -854,7 +854,7 @@ function FiltersBar({
                       <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
-                        className="px-3 h-7 rounded-full transition-all cursor-pointer"
+                        className="px-3 h-11 rounded-full transition-all cursor-pointer"
                         style={{
                           background: isActive ? "rgba(var(--foreground-rgb), 0.08)" : "transparent",
                           border: isActive
