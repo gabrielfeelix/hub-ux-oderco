@@ -59,7 +59,7 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
           <ImageWithFallback
             src={image}
             alt={product.name}
-            className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.05]"
+            className="absolute inset-0 h-full w-full object-contain p-3 md:p-6 transition-transform duration-500 group-hover:scale-[1.05]"
           />
 
           {/* Discount badge */}
@@ -88,7 +88,7 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
               setIsFavorited(!isFavorited);
               onFavorite(product);
             }}
-            className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
+            className="absolute right-3 top-3 z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
             style={{
               background: isFavorited ? "rgba(225,6,0,0.2)" : "rgba(0,0,0,0.55)",
               border: isFavorited ? "1px solid rgba(225,6,0,0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
@@ -107,7 +107,7 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
               e.stopPropagation();
               onAdd(product);
             }}
-            className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+            className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
               color: "white",
@@ -278,7 +278,7 @@ export function DealsHighlight({
               border: "1.5px solid rgba(255, 90, 80, 0.45)",
               boxShadow:
                 "0 30px 80px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",
-              minHeight: "460px",
+              minHeight: "clamp(320px, 70vw, 460px)",
             }}
           >
             {/* Faint grid texture */}
@@ -299,7 +299,7 @@ export function DealsHighlight({
                 right: "-20px",
                 bottom: "-50px",
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "360px",
+                fontSize: "clamp(160px, 48vw, 360px)",
                 fontWeight: 900,
                 lineHeight: 1,
                 color: "rgba(var(--foreground-rgb), 0.06)",
