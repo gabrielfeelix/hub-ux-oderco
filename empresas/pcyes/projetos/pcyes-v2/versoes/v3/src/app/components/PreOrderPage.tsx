@@ -148,7 +148,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
         </div>
 
         {/* details */}
-        <div className="p-6 md:p-7 flex flex-col">
+        <div className="p-5 md:p-7 flex flex-col">
           <p
             className="text-white/40 mb-2"
             style={{
@@ -271,7 +271,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           </div>
 
           {/* footer row */}
-          <div className="flex items-end justify-between gap-3 mt-auto pt-1">
+          <div className="flex flex-col items-stretch gap-3 mt-auto pt-1 md:flex-row md:items-end md:justify-between">
             <div>
               <p
                 className="text-white/40 mb-1"
@@ -298,7 +298,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
               </p>
             </div>
             <span
-              className="inline-flex items-center gap-1.5 h-11 px-5 rounded-full text-white transition-all duration-300 group-hover:translate-x-0.5"
+              className="inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-full text-white transition-all duration-300 group-hover:translate-x-0.5 w-full md:w-auto md:justify-start"
               style={{
                 background: "#ff2419",
                 fontFamily: "var(--font-family-inter)",
@@ -554,7 +554,7 @@ function HeroSection({
           className="mb-7 max-w-[900px]"
           style={{
             fontFamily: "var(--font-family-figtree)",
-            fontSize: "clamp(40px, 6vw, 76px)",
+            fontSize: "clamp(32px, 6vw, 76px)",
             fontWeight: 600,
             letterSpacing: "-0.04em",
             lineHeight: 0.98,
@@ -1001,7 +1001,7 @@ export function PreOrderPage() {
       />
 
       {/* grid */}
-      <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-16 md:py-20">
+      <section className="max-w-[1600px] mx-auto px-6 md:px-10 py-10 md:py-20">
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
             <p
@@ -1033,7 +1033,7 @@ export function PreOrderPage() {
 
         {filtered.length === 0 ? (
           <div
-            className="flex flex-col items-center justify-center py-24 text-center"
+            className="flex flex-col items-center justify-center py-14 md:py-24 text-center"
             style={{
               background: "rgba(var(--foreground-rgb), 0.015)",
               border: "1px dashed rgba(var(--foreground-rgb), 0.08)",
@@ -1064,7 +1064,7 @@ export function PreOrderPage() {
             </p>
             <button
               onClick={clearFilters}
-              className="px-5 h-10 rounded-full text-white cursor-pointer transition-colors hover:bg-white/95"
+              className="px-5 h-11 md:h-10 rounded-full text-white cursor-pointer transition-colors hover:bg-white/95"
               style={{
                 background: "#fff",
                 color: "#0a0a0c",
