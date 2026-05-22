@@ -2784,7 +2784,7 @@ export function ProductPage() {
           </div>
           <button
             onClick={handleBuyNow}
-            disabled={product.inStock === false}
+            disabled={preOrderInfo ? (preOrderInfo.reservedUnits >= preOrderInfo.totalUnits) : (product.inStock === false)}
             className="px-5 py-3 flex items-center gap-2 font-semibold transition-all cursor-pointer disabled:opacity-40 text-white"
             style={{
               borderRadius: "var(--radius-button)",
@@ -2797,7 +2797,11 @@ export function ProductPage() {
             }}
           >
             {preOrderInfo ? (
-              <><Rocket size={14} strokeWidth={2.4} /> Comprar agora</>
+              preOrderInfo.reservedUnits >= preOrderInfo.totalUnits ? (
+                <>Esgotado</>
+              ) : (
+                <><Rocket size={14} strokeWidth={2.4} /> Comprar agora</>
+              )
             ) : (
               <><Zap size={14} fill="currentColor" /> Comprar</>
             )}
