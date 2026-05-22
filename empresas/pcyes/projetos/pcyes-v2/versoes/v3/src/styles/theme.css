@@ -101,6 +101,11 @@
   .preorder-field { font-size: 16px !important; }
 }
 
+/* MonteSeuPc builder search field — prevent iOS zoom on focus (font-size < 16px triggers zoom) */
+@media (max-width: 767px) {
+  .msp-field { font-size: 16px !important; }
+}
+
 /* Homepage shelves — hide scrollbars on horizontal carousels */
 .shelf-track::-webkit-scrollbar,
 .deals-track::-webkit-scrollbar,

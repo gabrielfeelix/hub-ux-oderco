@@ -6214,7 +6214,7 @@ export function MonteSeuPcPage() {
                             className="text-white"
                             style={{
                               fontFamily: "var(--font-family-figtree)",
-                              fontSize: "26px",
+                              fontSize: "clamp(20px, 5vw, 26px)",
                               fontWeight: 700,
                               letterSpacing: "-0.015em",
                               lineHeight: 1.1,
@@ -6235,8 +6235,8 @@ export function MonteSeuPcPage() {
                         </div>
                       </div>
 
-                      <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_200px_auto]">
-                        <div className="relative">
+                      <div className="mb-4 grid grid-cols-[1fr_auto] gap-3 sm:grid-cols-[1fr_200px_auto]">
+                        <div className="relative col-span-2 sm:col-span-1">
                           <label
                             className="mb-1.5 block uppercase text-zinc-400"
                             htmlFor="step-search"
@@ -6256,7 +6256,7 @@ export function MonteSeuPcPage() {
                             onChange={(e) => setStepSearch(e.target.value)}
                             placeholder="Busque por nome ou código"
                             aria-label={`Buscar em ${currentCategory.title}`}
-                            className="w-full rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a]"
+                            className="msp-field h-11 w-full rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] sm:h-auto"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                           />
                           {stepSearch && (
@@ -6264,7 +6264,7 @@ export function MonteSeuPcPage() {
                               type="button"
                               onClick={() => setStepSearch("")}
                               aria-label="Limpar busca"
-                              className="absolute right-3 top-[34px] flex h-6 w-6 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/10 hover:text-white"
+                              className="absolute right-2 top-[28px] flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/10 hover:text-white sm:right-3 sm:top-[34px] sm:h-6 sm:w-6 md:h-6 md:w-6"
                             >
                               <X size={12} />
                             </button>
@@ -6325,7 +6325,7 @@ export function MonteSeuPcPage() {
                           <div
                             role="group"
                             aria-label="Modo de exibição"
-                            className="flex h-[46px] items-center gap-0.5 rounded-[12px] border border-white/[0.1] bg-[#0f0f12] p-1"
+                            className="flex h-11 items-center gap-0.5 rounded-[12px] border border-white/[0.1] bg-[#0f0f12] p-1 sm:h-[46px]"
                           >
                             <button
                               type="button"
@@ -6333,7 +6333,7 @@ export function MonteSeuPcPage() {
                               aria-pressed={viewMode === "grid"}
                               aria-label="Modo grade"
                               className={cn(
-                                "flex h-full w-10 cursor-pointer items-center justify-center rounded-[8px] transition-all",
+                                "flex h-full w-11 cursor-pointer items-center justify-center rounded-[8px] transition-all sm:w-10",
                                 viewMode === "grid"
                                   ? "bg-primary text-white"
                                   : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
@@ -6352,7 +6352,7 @@ export function MonteSeuPcPage() {
                               aria-pressed={viewMode === "list"}
                               aria-label="Modo lista"
                               className={cn(
-                                "flex h-full w-10 cursor-pointer items-center justify-center rounded-[8px] transition-all",
+                                "flex h-full w-11 cursor-pointer items-center justify-center rounded-[8px] transition-all sm:w-10",
                                 viewMode === "list"
                                   ? "bg-primary text-white"
                                   : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
