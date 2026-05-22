@@ -16,6 +16,7 @@ import {
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
 import { PreOrderBadge } from "./PreOrderBanner";
+import { CarouselDots } from "./CarouselDots";
 
 interface ProductShelfProps {
   label: string;
@@ -75,7 +76,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
   return (
     <div
       className="snap-start flex-shrink-0 group"
-      style={{ width: "380px" }}
+      style={{ width: "clamp(264px, 78vw, 380px)" }}
     >
       <Link to={`/produto/${product.id}`} className="block">
         <div
@@ -101,7 +102,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
           <ImageWithFallback
             src={image}
             alt={product.name}
-            className="absolute inset-0 h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-[1.05]"
+            className="absolute inset-0 h-full w-full object-contain p-4 md:p-8 transition-transform duration-500 group-hover:scale-[1.05]"
           />
 
           {rank !== undefined && (
@@ -156,7 +157,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
           {isLoggedIn && (
             <button
               onClick={handleFavorite}
-              className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
+              className="absolute right-3 top-3 z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
               style={{
                 background: isFavorited ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
                 border: isFavorited ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
@@ -176,7 +177,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
               e.stopPropagation();
               onAdd(product);
             }}
-            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
               color: "white",
@@ -247,19 +248,23 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
                 e.stopPropagation();
                 setSelectedSwatchId(s.productId === selectedSwatchId ? null : s.productId);
               }}
-              className="inline-block h-3 w-3 rounded-full cursor-pointer transition-all hover:scale-110"
-              style={{
-                background: s.color,
-                border: selectedSwatchId === s.productId
-                  ? "2px solid rgba(225, 6, 0, 0.9)"
-                  : "1px solid rgba(var(--foreground-rgb), 0.18)",
-                boxShadow: selectedSwatchId === s.productId
-                  ? "0 0 8px rgba(225, 6, 0, 0.5)"
-                  : "none",
-              }}
+              className="inline-flex items-center justify-center p-4 -m-4 md:p-0 md:m-0 cursor-pointer transition-all hover:scale-110"
               aria-label={s.label}
               type="button"
-            />
+            >
+              <span
+                className="block h-3 w-3 rounded-full"
+                style={{
+                  background: s.color,
+                  border: selectedSwatchId === s.productId
+                    ? "2px solid rgba(225, 6, 0, 0.9)"
+                    : "1px solid rgba(var(--foreground-rgb), 0.18)",
+                  boxShadow: selectedSwatchId === s.productId
+                    ? "0 0 8px rgba(225, 6, 0, 0.5)"
+                    : "none",
+                }}
+              />
+            </button>
           ))}
           {swatches.length > 5 && (
             <span
@@ -320,7 +325,8 @@ export function ProductShelf({
   const scrollByCards = (dir: -1 | 1) => {
     const el = scrollRef.current;
     if (!el) return;
-    const cardWithGap = 380 + 24;
+    const cardWidth = (el.firstElementChild as HTMLElement)?.getBoundingClientRect().width ?? 380;
+    const cardWithGap = cardWidth + 24;
     el.scrollBy({ left: dir * cardWithGap * 2, behavior: "smooth" });
   };
 
@@ -419,6 +425,7 @@ export function ProductShelf({
               </motion.div>
             ))}
           </div>
+          <CarouselDots trackRef={scrollRef} />
         </div>
       </div>
     </section>
