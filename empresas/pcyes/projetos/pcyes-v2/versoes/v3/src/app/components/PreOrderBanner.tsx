@@ -13,7 +13,7 @@ type Props = {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function useCountdown(targetIso: string) {
+export function useCountdown(targetIso: string) {
   const target = useMemo(() => new Date(targetIso).getTime(), [targetIso]);
   const [now, setNow] = useState(() => Date.now());
 

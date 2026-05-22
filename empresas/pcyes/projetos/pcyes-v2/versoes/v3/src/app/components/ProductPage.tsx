@@ -5,6 +5,7 @@ import {
   ShoppingBag, Heart, Star, ChevronLeft, ChevronRight, ChevronDown, Truck,
   Check, Minus, Plus, Share2, MapPin, CreditCard, Banknote, QrCode,
   Loader2, ArrowUpRight, Zap, X, Clock, Info,
+  Rocket, CalendarDays, ShieldCheck,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
@@ -19,7 +20,8 @@ import {
 } from "./productPresentation";
 import { toast } from "sonner";
 import { getPreOrderInfo } from "./PreOrderData";
-import { PreOrderBanner } from "./PreOrderBanner";
+import type { PreOrderInfo } from "./PreOrderData";
+import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -944,18 +946,73 @@ function StickyPriceCard({
   );
 }
 
+const pad2 = (n: number) => String(n).padStart(2, "0");
+
+function formatPreOrderDate(iso: string) {
+  return new Date(iso).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+}
+
 function MobilePurchaseFlow({
-  product, qty, setQty, onBuyNow, onAddToCart, addedToCart, pixPrice, installment, discount, onSeeDescription, shippingRef,
-}: StickyCardProps & { onSeeDescription: () => void; shippingRef?: React.RefObject<HTMLDivElement> }) {
+  product, qty, setQty, onBuyNow, onAddToCart, addedToCart, pixPrice, installment, discount, onSeeDescription, shippingRef, preOrderInfo,
+}: StickyCardProps & { onSeeDescription: () => void; shippingRef?: React.RefObject<HTMLDivElement>; preOrderInfo?: PreOrderInfo | null }) {
   const [paymentOpen, setPaymentOpen] = useState(false);
   const inStock = product.inStock !== false;
   const stockLabel = getStockLabel(product);
 
+  const isPreOrder = !!preOrderInfo;
+  const countdown = useCountdown(preOrderInfo?.releaseDate ?? new Date().toISOString());
+  const reservedPct = preOrderInfo
+    ? Math.min(100, Math.round((preOrderInfo.reservedUnits / preOrderInfo.totalUnits) * 100))
+    : 0;
+  const remaining = preOrderInfo
+    ? Math.max(0, preOrderInfo.totalUnits - preOrderInfo.reservedUnits)
+    : 0;
+  const preOrderSoldOut = isPreOrder && remaining <= 0;
+  const buyDisabled = isPreOrder ? preOrderSoldOut : !inStock;
+
   return (
     <section className="order-4 lg:hidden w-full mt-2 mb-10" data-purchase-card="mobile-product-flow">
       <div className="py-5 border-y border-foreground/8">
+        {isPreOrder && (
+          <div className="flex items-center gap-2 mb-4">
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
+              style={{
+                background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
+                color: "#fff",
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "10px",
+                fontWeight: 900,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                boxShadow: "0 6px 16px -4px rgba(249,115,22,0.55)",
+              }}
+            >
+              <Rocket size={11} strokeWidth={2.6} />
+              Pré-venda
+            </span>
+            <span
+              className="text-foreground/45"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "11px",
+                fontWeight: 600,
+                lineHeight: 1.4,
+              }}
+            >
+              {preOrderInfo!.highlight}
+            </span>
+          </div>
+        )}
+
         <div className="flex items-center justify-between gap-3 mb-3">
-          {product.oldPrice ? (
+          {isPreOrder ? (
+            <span />
+          ) : product.oldPrice ? (
             <div className="flex items-center gap-2">
               <span
                 className="text-foreground/35 line-through"
@@ -981,51 +1038,230 @@ function MobilePurchaseFlow({
             </div>
           ) : <span />}
 
-          <span
-            className={inStock ? "text-green-500" : "text-foreground/45"}
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
-          >
-            {inStock ? stockLabel : "Sem estoque"}
-          </span>
+          {isPreOrder ? (
+            <span
+              className="text-[#f97316]"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+            >
+              {preOrderSoldOut ? "Reservas esgotadas" : "Reserva garantida"}
+            </span>
+          ) : (
+            <span
+              className={inStock ? "text-green-500" : "text-foreground/45"}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+            >
+              {inStock ? stockLabel : "Sem estoque"}
+            </span>
+          )}
         </div>
 
         <div className="mb-3">
-          <p
-            className="text-foreground leading-none mb-2"
-            style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "clamp(34px, 10vw, 44px)",
-              fontWeight: 650,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {formatBRL(pixPrice)}
-          </p>
-          <p
-            className="text-foreground/60"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.55" }}
-          >
-            à vista no <span className="text-[#4CAF50] font-bold">PIX</span> com{" "}
-            <span className="text-[#4CAF50] font-bold">10% de desconto</span>
-          </p>
+          {isPreOrder ? (
+            <>
+              <p
+                className="text-foreground/45 mb-1"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10.5px",
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                }}
+              >
+                Preço de pré-venda
+              </p>
+              <div className="flex items-baseline gap-2">
+                <span
+                  className="text-foreground leading-none"
+                  style={{
+                    fontFamily: "var(--font-family-figtree)",
+                    fontSize: "clamp(34px, 10vw, 44px)",
+                    fontWeight: 650,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {preOrderInfo!.preOrderPrice ?? product.price}
+                </span>
+                {preOrderInfo!.preOrderPrice && preOrderInfo!.preOrderPrice !== product.price && (
+                  <span
+                    className="line-through text-foreground/35"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                  >
+                    {product.price}
+                  </span>
+                )}
+              </div>
+              <p
+                className="text-foreground/60 mt-1"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.55" }}
+              >
+                Pagamento parcelado · sem cobrança até o envio
+              </p>
+            </>
+          ) : (
+            <>
+              <p
+                className="text-foreground leading-none mb-2"
+                style={{
+                  fontFamily: "var(--font-family-figtree)",
+                  fontSize: "clamp(34px, 10vw, 44px)",
+                  fontWeight: 650,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {formatBRL(pixPrice)}
+              </p>
+              <p
+                className="text-foreground/60"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.55" }}
+              >
+                à vista no <span className="text-[#4CAF50] font-bold">PIX</span> com{" "}
+                <span className="text-[#4CAF50] font-bold">10% de desconto</span>
+              </p>
+            </>
+          )}
         </div>
 
-        <p
-          className="text-foreground/68 mb-3"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.6" }}
-        >
-          ou <span className="text-foreground font-bold">{product.price}</span> em até{" "}
-          <span className="text-foreground font-bold">12x de {formatBRL(installment)}</span> sem juros no cartão
-        </p>
+        {!isPreOrder && (
+          <p
+            className="text-foreground/68 mb-3"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.6" }}
+          >
+            ou <span className="text-foreground font-bold">{product.price}</span> em até{" "}
+            <span className="text-foreground font-bold">12x de {formatBRL(installment)}</span> sem juros no cartão
+          </p>
+        )}
 
-        <button
-          onClick={() => setPaymentOpen(true)}
-          className="mb-5 inline-flex items-center gap-1 text-foreground underline underline-offset-4 decoration-foreground/30 cursor-pointer"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
-        >
-          Ver opções de pagamento
-          <ArrowUpRight size={12} />
-        </button>
+        {!isPreOrder && (
+          <button
+            onClick={() => setPaymentOpen(true)}
+            className="mb-5 inline-flex items-center gap-1 text-foreground underline underline-offset-4 decoration-foreground/30 cursor-pointer"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+          >
+            Ver opções de pagamento
+            <ArrowUpRight size={12} />
+          </button>
+        )}
+
+        {isPreOrder && (
+          <div className="mt-4 mb-5">
+            {/* countdown */}
+            <p
+              className="text-foreground/45 mb-2"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "10.5px",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+              }}
+            >
+              {countdown.isLive ? "Já disponível" : "Lança em"}
+            </p>
+            {!countdown.isLive && (
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  { v: countdown.days, l: "Dias" },
+                  { v: countdown.hours, l: "Horas" },
+                  { v: countdown.minutes, l: "Min" },
+                  { v: countdown.seconds, l: "Seg" },
+                ].map((unit) => (
+                  <div
+                    key={unit.l}
+                    className="flex flex-col items-center justify-center py-2.5"
+                    style={{
+                      background: "rgba(var(--foreground-rgb), 0.04)",
+                      border: "1px solid rgba(249,115,22,0.18)",
+                      borderRadius: "12px",
+                    }}
+                  >
+                    <span
+                      className="text-foreground tabular-nums leading-none"
+                      style={{
+                        fontFamily: "var(--font-family-figtree)",
+                        fontSize: "24px",
+                        fontWeight: 700,
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      {pad2(unit.v)}
+                    </span>
+                    <span
+                      className="text-foreground/40 mt-1"
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "9.5px",
+                        letterSpacing: "0.18em",
+                        textTransform: "uppercase",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {unit.l}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* release date */}
+            <div className="flex items-center gap-2 mt-4">
+              <CalendarDays size={13} className="text-foreground/55" strokeWidth={2.2} />
+              <span
+                className="text-foreground/65"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+              >
+                Entrega prevista:{" "}
+                <span className="text-foreground">{formatPreOrderDate(preOrderInfo!.releaseDate)}</span>
+              </span>
+            </div>
+
+            {/* reservations progress */}
+            <div className="mt-4">
+              <div className="flex items-center justify-between mb-1.5">
+                <span
+                  className="text-foreground/55"
+                  style={{
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "10.5px",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                  }}
+                >
+                  // RESERVAS
+                </span>
+                <span
+                  className="text-foreground tabular-nums"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+                >
+                  {preOrderInfo!.reservedUnits.toLocaleString("pt-BR")} / {preOrderInfo!.totalUnits.toLocaleString("pt-BR")}
+                </span>
+              </div>
+              <div
+                className="relative h-2 w-full overflow-hidden"
+                style={{ background: "rgba(var(--foreground-rgb), 0.08)", borderRadius: "999px" }}
+              >
+                <div
+                  className="absolute inset-y-0 left-0"
+                  style={{
+                    width: `${reservedPct}%`,
+                    background: "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
+                    borderRadius: "999px",
+                    boxShadow: "0 0 16px rgba(255,36,25,0.45)",
+                  }}
+                />
+              </div>
+              <p
+                className="text-foreground/45 mt-1.5"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+              >
+                {remaining > 0
+                  ? `Restam ${remaining.toLocaleString("pt-BR")} reservas`
+                  : "Reservas esgotadas"}
+              </p>
+            </div>
+          </div>
+        )}
 
         <div className="flex items-center justify-between mb-3">
           <span
@@ -1052,7 +1288,7 @@ function MobilePurchaseFlow({
             <button
               onClick={() => setQty(qty + 1)}
               className="w-9 h-9 flex items-center justify-center text-foreground/45 disabled:opacity-30"
-              disabled={!inStock}
+              disabled={isPreOrder ? preOrderSoldOut : !inStock}
               aria-label="Aumentar quantidade"
             >
               <Plus size={13} />
@@ -1063,23 +1299,30 @@ function MobilePurchaseFlow({
         <div className="flex flex-col gap-2.5">
           <button
             onClick={onBuyNow}
-            disabled={!inStock}
+            disabled={buyDisabled}
             className="h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
             style={{
-              background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+              background: isPreOrder
+                ? "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
+                : "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
               fontFamily: "var(--font-family-inter)",
               fontSize: "14px",
               fontWeight: 700,
               letterSpacing: "0.04em",
-              boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+              boxShadow: isPreOrder
+                ? "0 14px 32px -8px rgba(249,115,22,0.55)"
+                : "0 14px 32px -8px rgba(34,197,94,0.55)",
             }}
           >
-            <Zap size={15} strokeWidth={2.4} fill="currentColor" />
-            Comprar agora
+            {isPreOrder ? (
+              <><Rocket size={15} strokeWidth={2.4} /> {preOrderSoldOut ? "Esgotado" : "Comprar agora"}</>
+            ) : (
+              <><Zap size={15} strokeWidth={2.4} fill="currentColor" /> Comprar agora</>
+            )}
           </button>
           <button
             onClick={onAddToCart}
-            disabled={!inStock}
+            disabled={isPreOrder ? preOrderSoldOut : !inStock}
             className={`h-12 flex items-center justify-center gap-2 font-bold transition-all cursor-pointer disabled:opacity-40 ${
               addedToCart
                 ? "bg-[#4CAF50]/10 text-[#4CAF50]"
@@ -1094,6 +1337,19 @@ function MobilePurchaseFlow({
             )}
           </button>
         </div>
+
+        {isPreOrder && (
+          <div className="mt-4 flex items-start gap-2">
+            <ShieldCheck size={13} className="text-[#22c55e] mt-0.5 flex-shrink-0" strokeWidth={2.2} />
+            <p
+              className="text-foreground/55"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", lineHeight: 1.5 }}
+            >
+              Você pode cancelar a reserva a qualquer momento antes do envio.
+              Cobrança só acontece no despacho do produto.
+            </p>
+          </div>
+        )}
       </div>
 
       <div ref={shippingRef} className="py-5 border-b border-foreground/8" data-mobile-shipping-checkpoint>
@@ -2168,29 +2424,20 @@ export function ProductPage() {
             </div>
           )}
 
-          {preOrderInfo ? (
-            <section className="order-4 lg:hidden w-full mt-2 mb-10">
-              <PreOrderBanner
-                info={preOrderInfo}
-                productPrice={product.price}
-                onReserve={handleBuyNow}
-              />
-            </section>
-          ) : (
-            <MobilePurchaseFlow
-              product={product}
-              qty={qty}
-              setQty={setQty}
-              onBuyNow={handleBuyNow}
-              onAddToCart={handleAdd}
-              addedToCart={addedToCart}
-              pixPrice={pixPrice}
-              installment={installment}
-              discount={discount}
-              onSeeDescription={scrollToDescription}
-              shippingRef={mobileShippingRef}
-            />
-          )}
+          <MobilePurchaseFlow
+            product={product}
+            qty={qty}
+            setQty={setQty}
+            onBuyNow={handleBuyNow}
+            onAddToCart={handleAdd}
+            addedToCart={addedToCart}
+            pixPrice={pixPrice}
+            installment={installment}
+            discount={discount}
+            onSeeDescription={scrollToDescription}
+            shippingRef={mobileShippingRef}
+            preOrderInfo={preOrderInfo}
+          />
 
           {/* Middle column: title, rating, share/like, description */}
           <motion.div
@@ -2525,17 +2772,35 @@ export function ProductPage() {
               {product.name.split(" ").slice(0, 5).join(" ")}…
             </p>
             <p className="text-foreground font-bold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px" }}>
-              {formatBRL(pixPrice)} <span className="text-[#4CAF50] text-xs font-normal">no PIX</span>
+              {preOrderInfo
+                ? (preOrderInfo.preOrderPrice ?? formatBRL(pixPrice))
+                : formatBRL(pixPrice)}{" "}
+              {preOrderInfo ? (
+                <span className="text-[#f97316] text-xs font-normal">pré-venda</span>
+              ) : (
+                <span className="text-[#4CAF50] text-xs font-normal">no PIX</span>
+              )}
             </p>
           </div>
           <button
             onClick={handleBuyNow}
             disabled={product.inStock === false}
-            className="px-5 py-3 flex items-center gap-2 font-semibold transition-all cursor-pointer disabled:opacity-40 bg-[#4CAF50] text-white"
-            style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", whiteSpace: "nowrap" }}
+            className="px-5 py-3 flex items-center gap-2 font-semibold transition-all cursor-pointer disabled:opacity-40 text-white"
+            style={{
+              borderRadius: "var(--radius-button)",
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "13px",
+              whiteSpace: "nowrap",
+              background: preOrderInfo
+                ? "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
+                : "#4CAF50",
+            }}
           >
-            <Zap size={14} fill="currentColor" />
-            Comprar
+            {preOrderInfo ? (
+              <><Rocket size={14} strokeWidth={2.4} /> Comprar agora</>
+            ) : (
+              <><Zap size={14} fill="currentColor" /> Comprar</>
+            )}
           </button>
         </div>
       </div>
