@@ -74,7 +74,7 @@ export function Newsletter() {
             className="text-white mb-4"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "clamp(32px, 4.5vw, 52px)",
+              fontSize: "clamp(26px, 7vw, 52px)",
               fontWeight: 700,
               lineHeight: 1.02,
               letterSpacing: "-0.025em",
@@ -145,8 +145,44 @@ export function Newsletter() {
                 className="mx-auto"
                 style={{ maxWidth: "520px" }}
               >
+                {/* Mobile: stacked column; Desktop (md+): single pill row */}
+                <div className="flex flex-col gap-3 md:hidden">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="seu@email.com"
+                    className="w-full bg-transparent text-white placeholder:text-white/30 outline-none rounded-full min-h-[44px] px-5"
+                    style={{
+                      fontFamily: "var(--font-family-inter)",
+                      fontSize: "14.5px",
+                      background: "rgba(var(--foreground-rgb), 0.04)",
+                      border: "1px solid rgba(var(--foreground-rgb), 0.10)",
+                      boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
+                    }}
+                  />
+                  <button
+                    type="submit"
+                    className="w-full flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-5 min-h-[44px] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
+                    style={{
+                      background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                      color: "white",
+                      fontFamily: "var(--font-family-inter)",
+                      fontSize: "12px",
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      textTransform: "uppercase",
+                      boxShadow: "0 8px 22px -6px rgba(225, 6, 0, 0.55)",
+                    }}
+                  >
+                    Assinar <ArrowRight size={13} strokeWidth={2.4} />
+                  </button>
+                </div>
+
+                {/* Desktop pill (hidden on mobile) */}
                 <div
-                  className="group flex items-center overflow-hidden rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 focus-within:scale-[1.01]"
+                  className="group hidden md:flex items-center overflow-hidden rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 focus-within:scale-[1.01]"
                   style={{
                     background: "rgba(var(--foreground-rgb), 0.04)",
                     border: "1px solid rgba(var(--foreground-rgb), 0.10)",
