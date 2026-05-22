@@ -70,6 +70,16 @@
   --space-section-xl: 168px;
 }
 
+/* Mobile: compress section spacing — desktop tokens leave ~256px dead space */
+@media (max-width: 767px) {
+  :root {
+    --space-section-sm: 40px;
+    --space-section-md: 56px;
+    --space-section-lg: 72px;
+    --space-section-xl: 96px;
+  }
+}
+
 /* Homepage shelves — hide scrollbars on horizontal carousels */
 .shelf-track::-webkit-scrollbar,
 .deals-track::-webkit-scrollbar,
