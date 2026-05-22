@@ -64,12 +64,12 @@ function EssentialCard({ product }: EssentialCardProps) {
       {/* Image side */}
       <Link
         to={productHref}
-        className="relative flex items-center justify-start pl-8 pr-4 py-8 md:pl-10 md:pr-4 md:py-10 group"
+        className="relative flex items-center justify-center md:justify-start pl-0 pr-4 py-8 md:pl-10 md:pr-4 md:py-10 group"
       >
         <ImageWithFallback
           src={image}
           alt={product.name}
-          className="relative z-10 max-h-[280px] w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+          className="relative z-10 max-h-[200px] md:max-h-[280px] w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
           style={{ filter: "drop-shadow(0 18px 28px rgba(0,0,0,0.55))" }}
         />
       </Link>
@@ -124,18 +124,22 @@ function EssentialCard({ product }: EssentialCardProps) {
                 key={s.productId}
                 type="button"
                 onClick={() => setSelectedSwatchId(s.productId === selectedSwatchId ? null : s.productId)}
-                className="h-4 w-4 rounded-full cursor-pointer transition-all hover:scale-110"
-                style={{
-                  background: s.color,
-                  border: selectedSwatchId === s.productId
-                    ? "2px solid rgba(225, 6, 0, 0.9)"
-                    : "1px solid rgba(var(--foreground-rgb), 0.22)",
-                  boxShadow: selectedSwatchId === s.productId
-                    ? "0 0 10px rgba(225, 6, 0, 0.5)"
-                    : "none",
-                }}
+                className="p-3 md:p-0 -m-3 md:m-0 cursor-pointer"
                 aria-label={s.label}
-              />
+              >
+                <span
+                  className="block h-4 w-4 rounded-full transition-all hover:scale-110"
+                  style={{
+                    background: s.color,
+                    border: selectedSwatchId === s.productId
+                      ? "2px solid rgba(225, 6, 0, 0.9)"
+                      : "1px solid rgba(var(--foreground-rgb), 0.22)",
+                    boxShadow: selectedSwatchId === s.productId
+                      ? "0 0 10px rgba(225, 6, 0, 0.5)"
+                      : "none",
+                  }}
+                />
+              </button>
             ))}
             </div>
           </div>
@@ -195,7 +199,7 @@ function EssentialCard({ product }: EssentialCardProps) {
 
           <button
             onClick={handleAdd}
-            className="whitespace-nowrap rounded-full px-7 py-2.5 transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
+            className="whitespace-nowrap rounded-full px-7 py-2.5 min-h-[44px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
             style={{
               background:
                 "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",

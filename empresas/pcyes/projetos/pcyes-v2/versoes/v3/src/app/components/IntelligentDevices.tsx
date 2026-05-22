@@ -130,7 +130,7 @@ export function IntelligentDevices() {
         </div>
 
         {/* Category circles */}
-        <div className="mb-14 flex flex-wrap items-start justify-center gap-8 md:gap-12">
+        <div className="mb-14 flex flex-wrap items-start justify-center gap-4 md:gap-12">
           {CATEGORIES.map((cat, i) => {
             const isActive = i === activeCat;
             return (
@@ -185,7 +185,7 @@ export function IntelligentDevices() {
         </div>
 
         {/* Products row */}
-        <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
           {products.map((product) => {
             const image = getPrimaryProductImage(product);
             const isFav = favoritedIds.has(product.id);
@@ -212,7 +212,7 @@ export function IntelligentDevices() {
                     <ImageWithFallback
                       src={image}
                       alt={product.name}
-                      className="absolute inset-0 h-full w-full object-contain p-7 transition-transform duration-500 group-hover:scale-[1.06]"
+                      className="absolute inset-0 h-full w-full object-contain p-4 md:p-7 transition-transform duration-500 group-hover:scale-[1.06]"
                     />
                     {/* Hover actions */}
                     {/* Favorite */}
@@ -227,7 +227,7 @@ export function IntelligentDevices() {
                         });
                         addFavorite({ id: product.id, name: product.name, price: product.price, image });
                       }}
-                      className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
+                      className="absolute right-3 top-3 z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
                       style={{
                         background: isFav ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
                         border: isFav ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
@@ -246,7 +246,7 @@ export function IntelligentDevices() {
                         e.stopPropagation();
                         addItem({ id: product.id, name: product.name, price: product.price, image });
                       }}
-                      className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-5 py-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+                      className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-5 py-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
                       style={{
                         background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                         color: "white",
@@ -295,7 +295,7 @@ export function IntelligentDevices() {
         <div className="mt-10 text-center">
           <Link
             to={CATEGORIES[activeCat].href}
-            className="inline-flex items-center gap-2 rounded-full border px-6 py-2.5 transition-all hover:scale-[1.03] cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-full border px-6 py-2.5 min-h-[44px] transition-all hover:scale-[1.03] cursor-pointer"
             style={{
               border: "1px solid rgba(225, 6, 0, 0.5)",
               color: "rgba(255, 80, 70, 0.95)",
