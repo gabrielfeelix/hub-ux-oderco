@@ -8,6 +8,7 @@ import {
   Briefcase,
   Check,
   ChevronDown,
+  ChevronRight,
   Cpu,
   Expand,
   Gamepad2,
@@ -4652,6 +4653,195 @@ function HorizontalStepper({
   );
 }
 
+function MobileStepNav({
+  categories,
+  currentId,
+  completedIds,
+  open,
+  onOpenChange,
+  onJump,
+}: {
+  categories: Array<{ id: string; title: string; icon: React.ReactNode; selectedOption?: Option }>;
+  currentId: string;
+  completedIds: string[];
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onJump: (id: string) => void;
+}) {
+  const currentIdx = categories.findIndex((c) => c.id === currentId);
+  const current = categories[currentIdx];
+  const progress = categories.length > 0 ? (completedIds.length / categories.length) * 100 : 0;
+
+  return (
+    <div className="border-b border-white/[0.05] backdrop-blur-xl lg:hidden">
+      <Sheet open={open} onOpenChange={onOpenChange}>
+        <SheetTrigger asChild>
+          <button
+            type="button"
+            className="flex w-full min-h-[44px] items-center gap-3 px-5 py-3 text-left focus-visible:outline-none"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(15,15,18,0.85) 0%, rgba(10,10,12,0.9) 100%)",
+            }}
+            aria-label="Abrir etapas da montagem"
+          >
+            <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-primary text-white [&>svg]:size-[16px]">
+              {current?.icon}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p
+                className="uppercase text-zinc-500"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "10px",
+                  letterSpacing: "0.22em",
+                  fontWeight: 700,
+                }}
+              >
+                Etapa {currentIdx + 1} de {categories.length}
+              </p>
+              <p
+                className="truncate text-white"
+                style={{
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  lineHeight: 1.25,
+                }}
+              >
+                {current?.title}
+              </p>
+            </div>
+            <span
+              className="flex shrink-0 items-center gap-1 text-zinc-400"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "11px",
+                fontWeight: 600,
+              }}
+            >
+              Ver etapas
+              <ChevronRight size={14} />
+            </span>
+          </button>
+        </SheetTrigger>
+        <div className="h-[3px] overflow-hidden bg-white/[0.06]">
+          <motion.div
+            className="h-full"
+            initial={false}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
+              boxShadow: "0 0 12px rgba(255,43,46,0.55)",
+            }}
+          />
+        </div>
+        <SheetContent
+          side="bottom"
+          className="max-h-[80vh] gap-0 overflow-y-auto rounded-t-2xl border-white/[0.08] bg-[#0d0d0d] p-0"
+        >
+          <SheetHeader className="border-b border-white/[0.06] p-5">
+            <SheetTitle
+              className="text-white"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "16px",
+                fontWeight: 700,
+              }}
+            >
+              Etapas da montagem
+            </SheetTitle>
+          </SheetHeader>
+          <div className="flex flex-col gap-1.5 p-3">
+            {categories.map((c, idx) => {
+              const done = completedIds.includes(c.id);
+              const active = c.id === currentId;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => {
+                    onJump(c.id);
+                    onOpenChange(false);
+                  }}
+                  aria-current={active ? "step" : undefined}
+                  className={cn(
+                    "flex min-h-[44px] w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors",
+                    active
+                      ? "border-primary/50 bg-primary/[0.12]"
+                      : "border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05]",
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full transition-colors [&>svg]:size-[15px]",
+                      active
+                        ? "bg-primary text-white"
+                        : done
+                          ? "bg-[#0d1f14] text-emerald-400"
+                          : "bg-[#16161a] text-zinc-500",
+                    )}
+                  >
+                    {done && !active ? <Check size={15} strokeWidth={3} /> : c.icon}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p
+                      className={cn(
+                        "truncate",
+                        active ? "text-white" : done ? "text-emerald-300" : "text-zinc-200",
+                      )}
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "13.5px",
+                        fontWeight: active ? 700 : 600,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {idx + 1}. {c.title}
+                    </p>
+                    <p
+                      className={cn(
+                        "truncate",
+                        c.selectedOption ? "text-zinc-400" : "text-zinc-600",
+                      )}
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "11.5px",
+                        fontWeight: 500,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {c.selectedOption?.name ?? "A escolher"}
+                    </p>
+                  </div>
+                  {active ? (
+                    <span
+                      className="shrink-0 rounded-full bg-primary/20 px-2 py-0.5 text-primary"
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "9.5px",
+                        fontWeight: 700,
+                        letterSpacing: "0.08em",
+                      }}
+                    >
+                      ATUAL
+                    </span>
+                  ) : done ? (
+                    <Check size={16} strokeWidth={3} className="shrink-0 text-emerald-400" />
+                  ) : (
+                    <ChevronRight size={16} className="shrink-0 text-zinc-600" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </SheetContent>
+      </Sheet>
+    </div>
+  );
+}
+
 function ProductTile({
   option,
   category,
@@ -5505,6 +5695,7 @@ export function MonteSeuPcPage() {
   const [view, setView] = useState<View>("welcome");
   const [quizRec, setQuizRec] = useState<PresetTier | null>(null);
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
+  const [stepSheetOpen, setStepSheetOpen] = useState(false);
   const [stepSearch, setStepSearch] = useState<string>("");
   const [sortMode, setSortMode] = useState<SortMode>("suggested");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
@@ -5969,14 +6160,32 @@ export function MonteSeuPcPage() {
                     totalCount={categories.length}
                     onBack={goToWelcome}
                   />
-                  <HorizontalStepper
+                  <div className="hidden lg:block">
+                    <HorizontalStepper
+                      categories={categoriesWithSelected.map((c) => ({
+                        id: c.id,
+                        title: c.title,
+                        icon: c.icon,
+                      }))}
+                      currentId={activeCategory}
+                      completedIds={completedSteps}
+                      onJump={(id) => {
+                        setActiveCategory(id);
+                        setExpandedCategory(id);
+                      }}
+                    />
+                  </div>
+                  <MobileStepNav
                     categories={categoriesWithSelected.map((c) => ({
                       id: c.id,
                       title: c.title,
                       icon: c.icon,
+                      selectedOption: c.selectedOption,
                     }))}
                     currentId={activeCategory}
                     completedIds={completedSteps}
+                    open={stepSheetOpen}
+                    onOpenChange={setStepSheetOpen}
                     onJump={(id) => {
                       setActiveCategory(id);
                       setExpandedCategory(id);
