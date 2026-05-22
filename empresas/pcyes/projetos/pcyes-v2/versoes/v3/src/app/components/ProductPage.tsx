@@ -2448,7 +2448,7 @@ export function ProductPage() {
                       <ImageWithFallback
                         src={getPrimaryProductImage(rProduct)}
                         alt={rProduct.name}
-                        className="absolute inset-0 h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-[1.05]"
+                        className="absolute inset-0 h-full w-full object-contain p-4 md:p-8 transition-transform duration-500 group-hover:scale-[1.05]"
                       />
                       {rDiscount > 0 && (
                         <span
@@ -2471,7 +2471,7 @@ export function ProductPage() {
                       )}
                       <button
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem({ id: rProduct.id, name: rProduct.name, price: rProduct.price, image: getPrimaryProductImage(rProduct) }); toast.success("Adicionado!"); }}
-                        className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+                        className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 whitespace-nowrap rounded-full px-10 py-3 opacity-100 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
                         style={{
                           background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                           color: "white",
