@@ -888,11 +888,11 @@ export function ProductsPage() {
      ═══════════════════════════════════════════════════════ */
 
   return (
-    <div ref={mainRef} className="pt-[152px] md:pt-[182px] min-h-screen" style={{ background: "#0e0e0e" }}>
+    <div ref={mainRef} className="pt-[96px] md:pt-[182px] min-h-screen" style={{ background: "#0e0e0e" }}>
       {/* ── Breadcrumb strip ── */}
       <div className="px-5 md:px-8 py-3" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <div style={{ maxWidth: "1600px", margin: "0 auto" }}>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Link to="/" className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Home</Link>
               <span className="text-foreground/20" style={{ fontSize: "12px" }}>›</span>
               {activeCategoryLabel ? (
@@ -940,7 +940,7 @@ export function ProductsPage() {
               {/* Sort */}
               <div className="relative">
                 <button onClick={() => setSortDropdownOpen(!sortDropdownOpen)}
-                  className="flex items-center gap-2 text-foreground/50 hover:text-foreground/80 transition-colors"
+                  className="flex items-center gap-2 min-h-[44px] lg:min-h-0 text-foreground/50 hover:text-foreground/80 transition-colors"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                 >
                   <ArrowUpDown size={14} />
@@ -970,7 +970,7 @@ export function ProductsPage() {
                 <button
                   type="button"
                   onClick={() => setItemsPerPageDropdownOpen((prev) => !prev)}
-                  className={`relative inline-flex h-9 min-w-[62px] items-center justify-between gap-2 rounded-[10px] border px-3 transition-all cursor-pointer ${
+                  className={`relative inline-flex h-9 min-h-[44px] lg:min-h-0 min-w-[62px] items-center justify-between gap-2 rounded-[10px] border px-3 transition-all cursor-pointer ${
                     itemsPerPageDropdownOpen
                       ? "border-primary/50 bg-foreground/[0.06] text-foreground shadow-[0_0_0_1px_rgba(255,59,48,0.16)]"
                       : "border-foreground/10 bg-foreground/[0.03] text-foreground hover:border-foreground/20"
@@ -1076,7 +1076,7 @@ export function ProductsPage() {
                     </div>
                   )}
                   {gridMode === "grid" ? (
-                    <div className="grid gap-x-4 sm:gap-x-6 gap-y-14 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-14 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                       <AnimatePresence mode="popLayout">
                     {paginatedProducts.map((product, i) => {
                       const displayProduct = getColorMatchedProduct(product);
