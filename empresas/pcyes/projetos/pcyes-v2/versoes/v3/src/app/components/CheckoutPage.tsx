@@ -939,7 +939,7 @@ export function CheckoutPage() {
 
   return (
     <>
-      <div className="pt-[80px] md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "100vh" }}>
+      <div className="pt-[80px] md:pt-[88px] pb-24 lg:pb-0" style={{ background: "#0e0e0e", minHeight: "100vh" }}>
         <div className="mx-auto max-w-[1320px] px-5 py-4 md:px-8 md:py-6">
           <Link
             to="/carrinho"
@@ -1674,7 +1674,7 @@ export function CheckoutPage() {
                   <button
                     onClick={() => setStep((s) => (s + 1) as Step)}
                     disabled={!canAdvance}
-                    className="inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:scale-100"
                     style={{
                       background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
                       fontFamily: "var(--font-family-inter)",
@@ -1691,7 +1691,7 @@ export function CheckoutPage() {
                 ) : (
                   <button
                     onClick={handleFinish}
-                    className="inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97]"
+                    className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97]"
                     style={{
                       background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                       fontFamily: "var(--font-family-inter)",
@@ -1984,6 +1984,67 @@ export function CheckoutPage() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile fixed bottom action bar — total + step CTA. lg:hidden, abaixo dos modais (z-[120]). */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden">
+        <div
+          className="flex items-center gap-3 border-t border-white/10 px-4 py-3"
+          style={{ background: "rgba(14,14,14,0.95)", backdropFilter: "blur(20px)" }}
+        >
+          <div className="flex-1 min-w-0">
+            <p
+              className="text-white/45"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}
+            >
+              Total
+            </p>
+            <p
+              className="text-white"
+              style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+            >
+              {formatBRL(total)}
+            </p>
+          </div>
+          {step < 3 ? (
+            <button
+              onClick={() => setStep((s) => (s + 1) as Step)}
+              disabled={!canAdvance}
+              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:active:scale-100"
+              style={{
+                minHeight: 46,
+                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "12.5px",
+                fontWeight: 800,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+              }}
+            >
+              Continuar
+              <ChevronRight size={14} strokeWidth={2.6} />
+            </button>
+          ) : (
+            <button
+              onClick={handleFinish}
+              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97]"
+              style={{
+                minHeight: 46,
+                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "12.5px",
+                fontWeight: 800,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+              }}
+            >
+              <Lock size={13} strokeWidth={2.6} />
+              Finalizar pedido
+            </button>
+          )}
         </div>
       </div>
       <Footer />
