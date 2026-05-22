@@ -1823,7 +1823,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             <p className="mb-4 text-primary tracking-[0.24em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 800 }}>
               // {product.category}
             </p>
-            <h2 className="mx-auto max-w-[820px] text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(30px, 5vw, 52px)", lineHeight: 1.02, fontWeight: 700, letterSpacing: "-0.04em" }}>
+            <h2 className="mx-auto max-w-[820px] text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 5vw, 52px)", lineHeight: 1.02, fontWeight: 700, letterSpacing: "-0.04em" }}>
               {product.name}
             </h2>
             <p className="mx-auto mt-5 max-w-[820px] text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "17px", lineHeight: 1.65 }}>
@@ -1843,7 +1843,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
 
           <section className="border-t border-white/5 px-6 py-10 md:px-10">
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-              <article className="relative min-h-[540px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
+              <article className="relative min-h-[360px] md:min-h-[540px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
                 <ImageWithFallback src={secondaryImage} alt={`${product.name} em destaque`} className="absolute inset-0 h-full w-full object-cover opacity-90" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-7">
@@ -1858,29 +1858,29 @@ function ProductStandardDescription({ product, images }: { product: any; images:
 
               <div className="grid gap-6">
                 <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
-                  <div className="relative z-10 max-w-[58%] p-7">
-                    <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "25px", lineHeight: 1.1, fontWeight: 700 }}>
+                  <div className="relative z-10 max-w-full md:max-w-[58%] p-7">
+                    <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
                       Design para o dia a dia
                     </h3>
                     <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.6 }}>
                       Visual moderno, presença equilibrada e experiência consistente para trabalho, estudo ou gameplay.
                     </p>
                   </div>
-                  <ImageWithFallback src={tertiaryImage} alt={`${product.name} detalhe`} className="absolute inset-y-0 right-0 h-full w-[52%] object-contain p-6" />
-                  <div className="absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#161617] via-[#161617]/55 to-transparent pointer-events-none" />
+                  <ImageWithFallback src={tertiaryImage} alt={`${product.name} detalhe`} className="hidden md:block absolute inset-y-0 right-0 h-full w-[52%] object-contain p-6" />
+                  <div className="hidden md:block absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#161617] via-[#161617]/55 to-transparent pointer-events-none" />
                 </article>
 
                 <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
-                  <div className="relative z-10 max-w-[58%] p-7">
-                    <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "25px", lineHeight: 1.1, fontWeight: 700 }}>
+                  <div className="relative z-10 max-w-full md:max-w-[58%] p-7">
+                    <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
                       Pronto para acompanhar seu ritmo
                     </h3>
                     <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.6 }}>
                       Recursos essenciais reunidos em um produto confiável, bonito e fácil de integrar ao seu setup.
                     </p>
                   </div>
-                  <ImageWithFallback src={primaryImage} alt={`${product.name} em uso`} className="absolute inset-y-0 right-0 h-full w-[52%] object-contain p-6" />
-                  <div className="absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#161617] via-[#161617]/55 to-transparent pointer-events-none" />
+                  <ImageWithFallback src={primaryImage} alt={`${product.name} em uso`} className="hidden md:block absolute inset-y-0 right-0 h-full w-[52%] object-contain p-6" />
+                  <div className="hidden md:block absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#161617] via-[#161617]/55 to-transparent pointer-events-none" />
                 </article>
               </div>
             </div>
