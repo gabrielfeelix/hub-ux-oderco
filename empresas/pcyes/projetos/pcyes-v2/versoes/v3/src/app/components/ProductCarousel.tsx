@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { CarouselDots } from "./CarouselDots";
 import { motion, useInView } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -169,7 +170,7 @@ export function ProductCarousel({
                 animate={isInView ? { y: 0 } : {}}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="text-foreground"
-                style={{ fontSize: "clamp(36px, 5vw, 48px)", lineHeight: "48px", fontFamily: "var(--font-family-figtree)", fontWeight: "var(--font-weight-light)" }}
+                style={{ fontSize: "clamp(26px, 6vw, 48px)", lineHeight: 1.1, fontFamily: "var(--font-family-figtree)", fontWeight: "var(--font-weight-light)" }}
               >
                 {title}
               </motion.h2>
@@ -230,7 +231,8 @@ export function ProductCarousel({
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.08 * i }}
-              className="group relative block w-[300px] flex-shrink-0 cursor-pointer snap-center md:w-[440px]"
+              className="group relative block flex-shrink-0 cursor-pointer snap-center"
+              style={{ width: "clamp(264px, 78vw, 440px)" }}
               data-carousel-card="true"
             >
               {(() => {
@@ -311,7 +313,7 @@ export function ProductCarousel({
                     </div>
                   )}
 
-                  <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
+                  <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
                     <button
                       className="w-full py-2.5 text-white flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02]"
                       style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
@@ -323,9 +325,9 @@ export function ProductCarousel({
                   </div>
 
                   {isLoggedIn && (
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="absolute top-4 right-4 opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button
-                        className="w-9 h-9 bg-black/35 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center text-white/85 hover:text-white hover:bg-black/50 transition-all duration-300"
+                        className="w-11 h-11 md:w-9 md:h-9 bg-black/35 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center text-white/85 hover:text-white hover:bg-black/50 transition-all duration-300"
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); addFavorite({ id: displayProduct.id, name: displayProduct.name, price: displayProduct.price, image: getPrimaryProductImage(displayProduct) }); }}
                         aria-label="Favoritar"
                       >
@@ -347,10 +349,7 @@ export function ProductCarousel({
                       {swatches.map((swatch) => (
                         <button
                           key={`${product.id}-${swatch.label}`}
-                          className={`h-3.5 w-3.5 rounded-full border border-foreground/10 shadow-[0_0_0_1px_rgba(var(--foreground-rgb), 0.04)_inset] transition-transform hover:scale-125 ${
-                            swatch.productId === displayProduct.id ? "ring-2 ring-primary/70 ring-offset-2 ring-offset-background" : ""
-                          }`}
-                          style={{ backgroundColor: swatch.color }}
+                          className="p-4 md:p-0 -m-4 md:m-0 rounded-full"
                           title={swatch.label}
                           onClick={(e) => {
                             e.preventDefault();
@@ -358,7 +357,14 @@ export function ProductCarousel({
                             const variant = findProductBySwatch(swatch);
                             if (variant) setSelectedVariants((prev) => ({ ...prev, [key]: variant }));
                           }}
-                        />
+                        >
+                          <span
+                            className={`block h-3.5 w-3.5 rounded-full border border-foreground/10 shadow-[0_0_0_1px_rgba(var(--foreground-rgb),0.04)_inset] transition-transform hover:scale-125 ${
+                              swatch.productId === displayProduct.id ? "ring-2 ring-primary/70 ring-offset-2 ring-offset-background" : ""
+                            }`}
+                            style={{ backgroundColor: swatch.color }}
+                          />
+                        </button>
                       ))}
                     </div>
                   ) : null;
@@ -394,6 +400,7 @@ export function ProductCarousel({
             </motion.div>
           ))}
         </div>
+        <CarouselDots trackRef={scrollRef} className="mt-4" />
       </motion.div>
     </section>
   );
