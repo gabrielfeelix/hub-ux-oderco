@@ -1525,7 +1525,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     </div>
                   )}
 
-                  <button className="flex items-center gap-2 text-foreground/30 hover:text-foreground transition-colors" style={{ fontSize: "12px" }}>
+                  <button className="inline-flex items-center gap-2 min-h-[44px] md:min-h-0 text-foreground/30 hover:text-foreground transition-colors" style={{ fontSize: "12px" }}>
                     Útil? ({rev.likes})
                   </button>
                 </div>
@@ -1541,7 +1541,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                   <button
                     onClick={() => goToReviewPage(Math.max(1, reviewPage - 1))}
                     disabled={reviewPage === 1}
-                    className="h-9 px-4 border border-foreground/10 text-foreground/55 transition-colors hover:border-foreground/25 hover:text-foreground disabled:opacity-30 disabled:hover:border-foreground/10 disabled:hover:text-foreground/55 cursor-pointer disabled:cursor-not-allowed"
+                    className="h-11 md:h-9 px-4 border border-foreground/10 text-foreground/55 transition-colors hover:border-foreground/25 hover:text-foreground disabled:opacity-30 disabled:hover:border-foreground/10 disabled:hover:text-foreground/55 cursor-pointer disabled:cursor-not-allowed"
                     style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
                   >
                     Anterior
@@ -1550,7 +1550,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     <button
                       key={page}
                       onClick={() => goToReviewPage(page)}
-                      className={`h-9 w-9 transition-colors cursor-pointer ${
+                      className={`h-11 w-11 md:h-9 md:w-9 transition-colors cursor-pointer ${
                         page === reviewPage
                           ? "bg-primary text-primary-foreground"
                           : "bg-foreground/5 text-foreground/45 hover:bg-foreground/10 hover:text-foreground"
@@ -1563,7 +1563,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                   <button
                     onClick={() => goToReviewPage(Math.min(totalReviewPages, reviewPage + 1))}
                     disabled={reviewPage === totalReviewPages}
-                    className="h-9 px-4 border border-foreground/10 text-foreground/55 transition-colors hover:border-foreground/25 hover:text-foreground disabled:opacity-30 disabled:hover:border-foreground/10 disabled:hover:text-foreground/55 cursor-pointer disabled:cursor-not-allowed"
+                    className="h-11 md:h-9 px-4 border border-foreground/10 text-foreground/55 transition-colors hover:border-foreground/25 hover:text-foreground disabled:opacity-30 disabled:hover:border-foreground/10 disabled:hover:text-foreground/55 cursor-pointer disabled:cursor-not-allowed"
                     style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
                   >
                     Próxima
@@ -1590,10 +1590,10 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={{ type: "spring", damping: 28, stiffness: 260 }}
-              className="fixed inset-4 z-50 mx-auto flex max-w-[980px] items-center justify-center pointer-events-none md:inset-8"
+              className="fixed inset-4 z-50 mx-auto flex max-w-[980px] items-start justify-center overflow-y-auto pointer-events-none md:inset-8 md:items-center md:overflow-hidden"
             >
               <div
-                className="grid w-full max-h-[88vh] overflow-hidden border border-white/10 shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
+                className="grid w-full overflow-visible md:max-h-[88vh] md:overflow-hidden border border-white/10 shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
                 style={{
                   borderRadius: "18px",
                   background: isDark ? "rgba(16,16,17,0.98)" : "rgba(var(--foreground-rgb), 0.98)",
@@ -1606,14 +1606,14 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     <>
                       <button
                         onClick={() => moveMedia(-1)}
-                        className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md transition-colors hover:bg-black/55"
+                        className="absolute left-4 top-1/2 flex h-11 w-11 md:h-10 md:w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md transition-colors hover:bg-black/55"
                         aria-label="Foto anterior desta avaliação"
                       >
                         <ChevronLeft size={18} />
                       </button>
                       <button
                         onClick={() => moveMedia(1)}
-                        className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md transition-colors hover:bg-black/55"
+                        className="absolute right-4 top-1/2 flex h-11 w-11 md:h-10 md:w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md transition-colors hover:bg-black/55"
                         aria-label="Próxima foto desta avaliação"
                       >
                         <ChevronRight size={18} />
@@ -1622,7 +1622,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                   )}
                 </div>
 
-                <aside className="flex max-h-[88vh] flex-col p-5 md:p-6">
+                <aside className="flex md:max-h-[88vh] flex-col p-5 md:p-6">
                   <div className="mb-5 flex items-start justify-between gap-4">
                     <div>
                       <p className="text-foreground font-semibold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>
@@ -1677,14 +1677,14 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               >
                 <button
                   onClick={() => moveReview(-1)}
-                  className="pointer-events-auto absolute left-5 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-2xl transition-transform hover:scale-105 hover:bg-white md:left-[7vw] cursor-pointer"
+                  className="hidden md:flex pointer-events-auto absolute left-5 top-1/2 h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-2xl transition-transform hover:scale-105 hover:bg-white md:left-[7vw] cursor-pointer"
                   aria-label="Avaliação anterior"
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={() => moveReview(1)}
-                  className="pointer-events-auto absolute right-5 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-2xl transition-transform hover:scale-105 hover:bg-white md:right-[7vw] cursor-pointer"
+                  className="hidden md:flex pointer-events-auto absolute right-5 top-1/2 h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-2xl transition-transform hover:scale-105 hover:bg-white md:right-[7vw] cursor-pointer"
                   aria-label="Próxima avaliação"
                 >
                   <ChevronRight size={24} />
@@ -1707,14 +1707,13 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
               onClick={() => setReviewModalOpen(false)}
             />
-            <div className="fixed inset-0 z-[60] flex items-center justify-center pointer-events-none p-4">
+            <div className="fixed inset-0 z-[60] flex items-end md:items-center justify-center pointer-events-none md:p-4">
               <motion.div
                 initial={{ opacity: 0, y: 40, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 40, scale: 0.96 }}
                 transition={{ type: "spring", damping: 28, stiffness: 280 }}
-                className="pointer-events-auto w-full max-w-[500px] bg-background border border-foreground/10 shadow-2xl p-6"
-                style={{ borderRadius: "20px" }}
+                className="pointer-events-auto w-full max-w-[500px] max-h-[90vh] overflow-y-auto bg-background border border-foreground/10 shadow-2xl p-6 rounded-t-[20px] md:rounded-[20px]"
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600 }}>
@@ -1722,7 +1721,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                   </h3>
                   <button
                     onClick={() => setReviewModalOpen(false)}
-                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-foreground/8 text-foreground/45 hover:text-foreground transition-all cursor-pointer"
+                    className="w-11 h-11 md:w-8 md:h-8 flex items-center justify-center rounded-full hover:bg-foreground/8 text-foreground/45 hover:text-foreground transition-all cursor-pointer"
                   >
                     <X size={16} strokeWidth={1.8} />
                   </button>
@@ -1736,7 +1735,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                         <button
                           key={star}
                           onClick={() => setNewReviewRating(star)}
-                          className="cursor-pointer transition-transform hover:scale-110"
+                          className="cursor-pointer transition-transform hover:scale-110 p-1.5 md:p-0 -m-1.5 md:m-0"
                         >
                           <Star size={28} className={star <= newReviewRating ? "fill-[#FFB800] text-[#FFB800]" : "text-foreground/20"} />
                         </button>
