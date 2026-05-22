@@ -1,4 +1,14 @@
-.vercel
-.env*.local
+# Dependencies
 node_modules
+
+# Build output
+dist
+
+# Environment / secrets
+.env*.local
+.vercel
 kaspersky-ca-bundle.crt
+
+# Local tooling
+.antigravitycli
+*.log
