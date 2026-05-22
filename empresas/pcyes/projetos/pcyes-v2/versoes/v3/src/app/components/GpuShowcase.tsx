@@ -83,6 +83,7 @@ export function GpuShowcase() {
   useEffect(() => {
     const onMove = (e: MouseEvent | TouchEvent) => {
       if (!draggingRef.current) return;
+      if ("touches" in e) e.preventDefault();
       const x = "touches" in e ? e.touches[0]?.clientX : e.clientX;
       if (typeof x === "number") updatePosition(x);
     };
@@ -186,7 +187,7 @@ export function GpuShowcase() {
                   setActiveIdx(i);
                   setPos(52);
                 }}
-                className="relative rounded-full px-5 py-2.5 transition-all duration-300 cursor-pointer"
+                className="relative rounded-full px-5 py-2.5 min-h-[44px] transition-all duration-300 cursor-pointer"
                 style={{
                   background: isActive
                     ? "linear-gradient(135deg, rgba(225,6,0,0.18) 0%, rgba(225,6,0,0.06) 100%)"
@@ -214,9 +215,9 @@ export function GpuShowcase() {
         <div
           ref={containerRef}
           onClick={handleAreaClick}
-          className="relative w-full select-none overflow-hidden cursor-ew-resize"
+          className="relative w-full select-none overflow-hidden cursor-ew-resize [aspect-ratio:4/3] md:[aspect-ratio:21/9]"
           style={{
-            aspectRatio: "21 / 9",
+            touchAction: "none",
             borderTop: "1px solid rgba(var(--foreground-rgb), 0.08)",
             borderBottom: "1px solid rgba(var(--foreground-rgb), 0.08)",
           }}
@@ -278,18 +279,18 @@ export function GpuShowcase() {
           </AnimatePresence>
 
           {/* Badges */}
-          <div className="pointer-events-none absolute left-4 bottom-4 md:left-6 md:bottom-6 z-20">
+          <div className="pointer-events-none absolute left-2 bottom-2 md:left-6 md:bottom-6 z-20">
             <div
-              className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 backdrop-blur-md"
+              className="inline-flex items-center gap-1.5 md:gap-2 rounded-full px-2.5 md:px-3.5 py-1.5 md:py-2 backdrop-blur-md"
               style={{
                 background: "rgba(20, 20, 22, 0.65)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.1)",
               }}
             >
               <span
+                className="text-[8.5px] md:text-[10.5px]"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
                   fontWeight: 500,
                   letterSpacing: "0.08em",
                   color: "rgba(var(--foreground-rgb), 0.5)",
@@ -299,10 +300,9 @@ export function GpuShowcase() {
                 Geração anterior
               </span>
               <span
-                className="text-white"
+                className="text-white text-[11px] md:text-[13px]"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "13px",
                   fontWeight: 700,
                 }}
               >
@@ -311,9 +311,9 @@ export function GpuShowcase() {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute right-4 bottom-4 md:right-6 md:bottom-6 z-20">
+          <div className="pointer-events-none absolute right-2 bottom-2 md:right-6 md:bottom-6 z-20">
             <div
-              className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 backdrop-blur-md"
+              className="inline-flex items-center gap-1.5 md:gap-2 rounded-full px-2.5 md:px-3.5 py-1.5 md:py-2 backdrop-blur-md"
               style={{
                 background: "rgba(20, 20, 22, 0.7)",
                 border: "1px solid rgba(225, 6, 0, 0.45)",
@@ -321,9 +321,9 @@ export function GpuShowcase() {
               }}
             >
               <span
+                className="text-[8.5px] md:text-[10.5px]"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
                   fontWeight: 500,
                   letterSpacing: "0.08em",
                   color: "rgba(var(--foreground-rgb), 0.5)",
@@ -333,9 +333,9 @@ export function GpuShowcase() {
                 Nova geração
               </span>
               <span
+                className="text-[11px] md:text-[13px]"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "13px",
                   fontWeight: 700,
                   color: ACCENT,
                 }}
@@ -346,18 +346,18 @@ export function GpuShowcase() {
           </div>
 
           {/* Metric badge top-center */}
-          <div className="pointer-events-none absolute top-5 left-1/2 z-20 -translate-x-1/2">
+          <div className="pointer-events-none absolute top-3 md:top-5 left-1/2 z-20 -translate-x-1/2 max-w-[90vw]">
             <div
-              className="rounded-full px-3.5 py-1.5 backdrop-blur-md"
+              className="rounded-full px-2.5 md:px-3.5 py-1 md:py-1.5 backdrop-blur-md"
               style={{
                 background: "rgba(0, 0, 0, 0.55)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.1)",
               }}
             >
               <span
+                className="text-[9px] md:text-[11px] whitespace-normal md:whitespace-nowrap text-center block"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "11px",
                   fontWeight: 700,
                   letterSpacing: "0.12em",
                   color: ACCENT,
@@ -414,7 +414,7 @@ export function GpuShowcase() {
               className="mx-auto mt-8 md:mt-10 max-w-[680px] px-5 md:px-8"
             >
               <div
-                className="flex items-center gap-4 md:gap-5 rounded-2xl p-3 md:p-4"
+                className="flex flex-col md:flex-row items-center gap-4 md:gap-5 rounded-2xl p-3 md:p-4"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
@@ -476,7 +476,7 @@ export function GpuShowcase() {
 
                 <Link
                   to={`/produto/${product.id}`}
-                  className="flex-shrink-0 inline-flex items-center gap-2 whitespace-nowrap rounded-full px-10 py-3 transition-transform hover:scale-[1.04] active:scale-[0.97]"
+                  className="flex-shrink-0 inline-flex items-center gap-2 whitespace-nowrap rounded-full px-6 md:px-10 py-3 transition-transform hover:scale-[1.04] active:scale-[0.97]"
                   style={{
                     background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                     color: "#ffffff",
