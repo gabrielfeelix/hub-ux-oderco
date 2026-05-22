@@ -16,6 +16,7 @@ import { PreOrderBadge } from "./PreOrderBanner";
 import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
 import { useFavorites } from "./FavoritesContext";
+import { CarouselDots } from "./CarouselDots";
 
 const DEAL_IDS = [436, 72, 199, 329, 446, 433, 30, 295, 375];
 
@@ -121,7 +122,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
   return (
     <div
       className="snap-start flex-shrink-0 group"
-      style={{ width: "380px" }}
+      style={{ width: "clamp(264px, 78vw, 380px)" }}
     >
       <Link to={`/produto/${product.id}`} className="block">
         <div
@@ -171,7 +172,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
           <ImageWithFallback
             src={image}
             alt={product.name}
-            className="absolute inset-0 h-full w-full object-contain p-9 transition-transform duration-500 group-hover:scale-[1.06]"
+            className="absolute inset-0 h-full w-full object-contain p-4 md:p-9 transition-transform duration-500 group-hover:scale-[1.06]"
           />
 
           {/* Favorite (top-right, on hover) — only when logged in */}
@@ -183,7 +184,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
                 setIsFavorited(!isFavorited);
                 addFavorite({ id: product.id, name: product.name, price: product.price, image });
               }}
-              className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
+              className="absolute right-3 top-3 z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
               style={{
                 background: isFavorited ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
                 border: isFavorited ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
@@ -202,7 +203,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
               e.preventDefault();
               onAdd(product);
             }}
-            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
+            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 md:opacity-0 transition-all duration-300 group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
               color: "white",
@@ -275,14 +276,18 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
                   e.stopPropagation();
                   setSelectedSwatchId(active ? null : s.productId);
                 }}
-                className="inline-block h-3 w-3 rounded-full cursor-pointer transition-all hover:scale-110"
-                style={{
-                  background: s.color,
-                  border: active ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
-                  boxShadow: active ? "0 0 8px rgba(225,6,0,0.5)" : "none",
-                }}
+                className="inline-flex items-center justify-center p-4 md:p-0 -m-4 md:m-0 rounded-full cursor-pointer hover:scale-110 transition-all"
                 aria-label={s.label}
-              />
+              >
+                <span
+                  className="block h-3 w-3 rounded-full pointer-events-none"
+                  style={{
+                    background: s.color,
+                    border: active ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
+                    boxShadow: active ? "0 0 8px rgba(225,6,0,0.5)" : "none",
+                  }}
+                />
+              </button>
             );
           })}
         </div>
@@ -329,7 +334,8 @@ export function FlashDealsStrip() {
   const scrollByCards = (dir: -1 | 1) => {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir * (380 + 24) * 2, behavior: "smooth" });
+    const cardWidth = (el.firstElementChild as HTMLElement | null)?.getBoundingClientRect().width ?? 380;
+    el.scrollBy({ left: dir * (cardWidth + 24) * 2, behavior: "smooth" });
   };
 
   const navBtn = (onClick: () => void, disabled: boolean, label: string, icon: React.ReactNode, side: "left" | "right") => (
@@ -424,6 +430,8 @@ export function FlashDealsStrip() {
               </motion.div>
             ))}
           </div>
+
+          <CarouselDots trackRef={scrollRef} className="mt-4" />
 
           {navBtn(() => scrollByCards(-1), !canPrev, "Anterior", <ChevronLeft size={20} strokeWidth={2.2} />, "left")}
           {navBtn(() => scrollByCards(1), !canNext, "Próximo", <ChevronRight size={20} strokeWidth={2.2} />, "right")}
