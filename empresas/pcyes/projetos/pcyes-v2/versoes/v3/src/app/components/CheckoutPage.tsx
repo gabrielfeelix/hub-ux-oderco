@@ -2068,7 +2068,7 @@ export function CheckoutPage() {
               exit={{ y: "100%" }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[480px] overflow-hidden"
+              className="w-full max-w-[480px] max-h-[90vh] overflow-y-auto"
               style={{
                 background: "#1d1d1f",
                 color: "#fff",
@@ -2084,7 +2084,7 @@ export function CheckoutPage() {
                 <button
                   onClick={() => !walletConfirming && setWalletSheet(null)}
                   aria-label="Fechar Apple Pay"
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-white/55 transition-colors hover:bg-white/[0.08] hover:text-white"
+                  className="flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full text-white/55 transition-colors hover:bg-white/[0.08] hover:text-white"
                 >
                   <X size={16} />
                 </button>
@@ -2166,7 +2166,7 @@ export function CheckoutPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => !walletConfirming && setWalletSheet(null)}
-            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[120] flex items-end justify-center bg-black/80 backdrop-blur-md p-0 md:items-center md:p-4"
             role="dialog"
             aria-modal="true"
             aria-label="Google Pay"
@@ -2176,10 +2176,9 @@ export function CheckoutPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 16 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[420px] overflow-hidden"
+              className="w-full max-w-[420px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[20px]"
               style={{
                 background: "#fff",
-                borderRadius: "20px",
                 boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
               }}
             >
@@ -2193,7 +2192,7 @@ export function CheckoutPage() {
                   </svg>
                   Pay
                 </div>
-                <button onClick={() => !walletConfirming && setWalletSheet(null)} aria-label="Fechar Google Pay" className="text-[#5f6368] hover:bg-black/[0.06] rounded-full h-8 w-8 flex items-center justify-center">
+                <button onClick={() => !walletConfirming && setWalletSheet(null)} aria-label="Fechar Google Pay" className="text-[#5f6368] hover:bg-black/[0.06] rounded-full h-11 w-11 md:h-8 md:w-8 flex items-center justify-center">
                   <X size={16} />
                 </button>
               </div>
@@ -2247,7 +2246,7 @@ export function CheckoutPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => !walletConfirming && setWalletSheet(null)}
-            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[120] flex items-end justify-center bg-black/80 backdrop-blur-md p-0 md:items-center md:p-4"
             role="dialog"
             aria-modal="true"
             aria-label="Mercado Pago"
@@ -2257,10 +2256,9 @@ export function CheckoutPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 16 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[440px] overflow-hidden"
+              className="w-full max-w-[440px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[20px]"
               style={{
                 background: "#fff",
-                borderRadius: "20px",
                 boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
               }}
             >
@@ -2272,7 +2270,7 @@ export function CheckoutPage() {
                   </svg>
                   Mercado Pago
                 </div>
-                <button onClick={() => !walletConfirming && setWalletSheet(null)} aria-label="Fechar Mercado Pago" className="text-[#009ee3] hover:bg-black/[0.06] rounded-full h-8 w-8 flex items-center justify-center">
+                <button onClick={() => !walletConfirming && setWalletSheet(null)} aria-label="Fechar Mercado Pago" className="text-[#009ee3] hover:bg-black/[0.06] rounded-full h-11 w-11 md:h-8 md:w-8 flex items-center justify-center">
                   <X size={16} />
                 </button>
               </div>
