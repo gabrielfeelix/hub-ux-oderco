@@ -35,7 +35,7 @@ export function TrustStrip() {
       className="border-y border-white/5 px-5 py-8 md:px-[72px] md:py-10"
       style={{ background: "#0a0a0a" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 min-[420px]:grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4">
         {features.map((f, i) => (
           <motion.div
             key={f.title}

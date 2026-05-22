@@ -112,7 +112,7 @@ export function DropDoDiaSection() {
                       <ImageWithFallback
                         src={getPrimaryProductImage(product)}
                         alt={product.name}
-                        className="absolute inset-0 h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-[1.05]"
+                        className="absolute inset-0 h-full w-full object-contain p-4 md:p-8 transition-transform duration-500 group-hover:scale-[1.05]"
                       />
                       {discount > 0 && (
                         <span

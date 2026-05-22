@@ -165,7 +165,7 @@ export function Footer() {
                 <a key={social.label} href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${isDark ? "border-foreground/10 text-foreground/60 hover:text-foreground hover:border-foreground/30" : "border-foreground/20 text-foreground/60 hover:text-foreground hover:border-foreground/40"}`}
+                  className={`w-11 h-11 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${isDark ? "border-foreground/10 text-foreground/60 hover:text-foreground hover:border-foreground/30" : "border-foreground/20 text-foreground/60 hover:text-foreground hover:border-foreground/40"}`}
                   aria-label={social.label}
                 >
                   <SocialIcon label={social.label} />
@@ -181,10 +181,10 @@ export function Footer() {
                 <p className={isDark ? "text-foreground mb-6 tracking-wide" : "text-foreground mb-6 tracking-wide"}
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-bold)", letterSpacing: "0.04em" }}
                 >{col.title}</p>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1 md:gap-4">
                   {col.links.map((link) => (
                     <Link key={link.label} to={link.href}
-                      className={isDark ? "text-foreground/60 hover:text-foreground transition-colors duration-300" : "text-foreground/70 hover:text-foreground transition-colors duration-300"}
+                      className={`flex items-center min-h-[44px] md:block md:min-h-0 ${isDark ? "text-foreground/60 hover:text-foreground transition-colors duration-300" : "text-foreground/70 hover:text-foreground transition-colors duration-300"}`}
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
                     >{link.label}</Link>
                   ))}
