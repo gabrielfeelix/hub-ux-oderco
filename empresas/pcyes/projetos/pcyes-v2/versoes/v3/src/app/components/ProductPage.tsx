@@ -173,14 +173,14 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
           <>
 	            <button
 	              onClick={(e) => { e.stopPropagation(); prev(); }}
-	              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/85 hover:bg-black/45 hover:text-white md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
+	              className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/85 hover:bg-black/45 hover:text-white md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
 	              aria-label="Imagem anterior"
 	            >
               <ChevronLeft size={17} />
             </button>
 	            <button
 	              onClick={(e) => { e.stopPropagation(); next(); }}
-	              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/85 hover:bg-black/45 hover:text-white md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
+	              className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/85 hover:bg-black/45 hover:text-white md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
 	              aria-label="Próxima imagem"
 	            >
               <ChevronRight size={17} />
@@ -235,7 +235,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
             >
               <button
                 onClick={(e) => { e.stopPropagation(); setZoomed(false); }}
-                className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/80 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:right-6 md:top-6"
+                className="absolute right-4 top-[max(16px,env(safe-area-inset-top))] z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/80 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:right-6 md:top-6"
                 aria-label="Fechar imagem ampliada"
               >
                 <X size={18} />
@@ -245,14 +245,14 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
                 <>
                   <button
                     onClick={(e) => { e.stopPropagation(); prev(); }}
-                    className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white/85 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:left-6 md:h-12 md:w-12"
+                    className="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white/85 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:left-6 md:h-12 md:w-12"
                     aria-label="Imagem anterior"
                   >
                     <ChevronLeft size={22} />
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); next(); }}
-                    className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white/85 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:right-6 md:h-12 md:w-12"
+                    className="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white/85 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:right-6 md:h-12 md:w-12"
                     aria-label="Próxima imagem"
                   >
                     <ChevronRight size={22} />
@@ -2226,7 +2226,7 @@ export function ProductPage() {
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => toggleFavorite(product.id)}
-                  className={`w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`w-11 h-11 md:w-9 md:h-9 flex items-center justify-center rounded-full transition-all duration-300 cursor-pointer ${
                     liked
                       ? "bg-red-500/10 text-red-500"
                       : "text-foreground/35 hover:text-foreground/70 hover:bg-foreground/5"
@@ -2237,7 +2237,7 @@ export function ProductPage() {
                 </button>
                 <button
                   onClick={handleShare}
-                  className="w-9 h-9 flex items-center justify-center rounded-full text-foreground/35 hover:text-foreground/70 hover:bg-foreground/5 transition-all duration-300 cursor-pointer"
+                  className="w-11 h-11 md:w-9 md:h-9 flex items-center justify-center rounded-full text-foreground/35 hover:text-foreground/70 hover:bg-foreground/5 transition-all duration-300 cursor-pointer"
                   aria-label="Compartilhar"
                 >
                   <Share2 size={15} strokeWidth={1.7} />
