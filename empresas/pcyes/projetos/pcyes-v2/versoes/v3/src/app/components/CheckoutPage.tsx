@@ -982,7 +982,7 @@ export function CheckoutPage() {
                     key={s.key}
                     onClick={() => done && setStep(s.key as Step)}
                     disabled={!done}
-                    className="flex flex-1 items-center gap-2 disabled:cursor-not-allowed"
+                    className="flex flex-1 items-center gap-2 min-h-[44px] md:min-h-0 disabled:cursor-not-allowed"
                   >
                     <div
                       className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-all"
@@ -1016,6 +1016,12 @@ export function CheckoutPage() {
                 );
               })}
             </div>
+            <p
+              className="md:hidden mt-2 text-white/45"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.04em" }}
+            >
+              Etapa {step + 1} de 4 · {STEPS[step].label}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-8">
@@ -1061,7 +1067,7 @@ export function CheckoutPage() {
                               return (
                                 <div
                                   key={a.id}
-                                  className="relative text-left p-3 transition-all cursor-pointer"
+                                  className="relative text-left p-3 min-h-[44px] transition-all cursor-pointer"
                                   onClick={() => setSelectedAddressId(a.id)}
                                   style={{
                                     borderRadius: 12,
@@ -1084,7 +1090,7 @@ export function CheckoutPage() {
                                       <button
                                         type="button"
                                         onClick={(e) => { e.stopPropagation(); setSelectedAddressId(null); }}
-                                        className="flex-shrink-0 px-2 py-1 text-white/70 hover:text-white transition-all cursor-pointer"
+                                        className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-white/70 hover:text-white transition-all cursor-pointer"
                                         style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
                                       >
                                         Editar
@@ -1153,6 +1159,7 @@ export function CheckoutPage() {
                         </Field>
                         <Field label="Número" required>
                           <input
+                            inputMode="numeric"
                             value={address.number}
                             placeholder="123"
                             onChange={(e) => setAddress((a) => ({ ...a, number: e.target.value.replace(/\D/g, "") }))}
@@ -1227,7 +1234,7 @@ export function CheckoutPage() {
                             <button
                               key={opt.id}
                               onClick={() => setSelectedShipping(opt.id)}
-                              className="flex items-center gap-4 p-4 text-left transition-all"
+                              className="flex items-center gap-2.5 md:gap-4 p-4 text-left transition-all"
                               style={{
                                 borderRadius: "14px",
                                 background: active ? "rgba(34,197,94,0.06)" : "rgba(var(--foreground-rgb), 0.02)",
@@ -1428,7 +1435,7 @@ export function CheckoutPage() {
                                           <button
                                             type="button"
                                             onClick={(e) => { e.stopPropagation(); setSelectedCardId(null); }}
-                                            className="flex-shrink-0 px-2 py-1 text-white/70 hover:text-white transition-all cursor-pointer"
+                                            className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-white/70 hover:text-white transition-all cursor-pointer"
                                             style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
                                           >
                                             Editar
@@ -1663,7 +1670,7 @@ export function CheckoutPage() {
               <div className="mt-6 flex items-center justify-between gap-3">
                 <button
                   onClick={() => (step === 0 ? navigate("/carrinho") : setStep((s) => (s - 1) as Step))}
-                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-3 text-white/60 transition-colors hover:bg-white/[0.05] hover:text-white"
+                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-3 min-h-[44px] md:min-h-0 text-white/60 transition-colors hover:bg-white/[0.05] hover:text-white"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
                 >
                   <ChevronLeft size={14} strokeWidth={2.4} />
@@ -1783,7 +1790,7 @@ export function CheckoutPage() {
                 <div className="mb-3">
                   <button
                     onClick={() => setCouponOpen((v) => !v)}
-                    className={`flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-2.5 transition-colors ${
+                    className={`flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-2.5 min-h-[44px] md:min-h-0 transition-colors ${
                       appliedCoupon ? "rounded-[12px] border border-green-500/25 bg-green-500/[0.06]" : "rounded-[12px] border border-white/8 hover:border-white/14 hover:bg-white/[0.03]"
                     }`}
                     aria-expanded={couponOpen}
@@ -1835,7 +1842,7 @@ export function CheckoutPage() {
                           <button
                             onClick={handleApplyCoupon}
                             disabled={!coupon.trim()}
-                            className="cursor-pointer rounded-[10px] px-4 py-2 text-white transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+                            className="cursor-pointer rounded-[10px] px-4 py-2 min-h-[44px] md:min-h-0 text-white transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
                             style={{
                               background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
                               fontFamily: "var(--font-family-inter)",
@@ -1869,7 +1876,7 @@ export function CheckoutPage() {
                 >
                   <button
                     onClick={() => { setPointsApplied((v) => !v); setPointsOpen((v) => !v); }}
-                    className="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2.5"
+                    className="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2.5 min-h-[44px] md:min-h-0"
                     aria-expanded={pointsApplied}
                   >
                     <span className="flex items-center gap-2">
@@ -2491,7 +2498,7 @@ function NumberStepperRed({
           type="button"
           onClick={() => onChange(clamp(value + step))}
           aria-label="Aumentar"
-          className="flex h-4 w-7 items-center justify-center transition-colors hover:bg-white/[0.08]"
+          className="flex h-4 w-7 min-h-[24px] min-w-[44px] md:min-h-0 md:min-w-0 items-center justify-center transition-colors hover:bg-white/[0.08]"
           style={{ color: "#facc15" }}
         >
           <svg width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden>
@@ -2503,7 +2510,7 @@ function NumberStepperRed({
           type="button"
           onClick={() => onChange(clamp(value - step))}
           aria-label="Diminuir"
-          className="flex h-4 w-7 items-center justify-center transition-colors hover:bg-white/[0.08]"
+          className="flex h-4 w-7 min-h-[24px] min-w-[44px] md:min-h-0 md:min-w-0 items-center justify-center transition-colors hover:bg-white/[0.08]"
           style={{ color: "#facc15" }}
         >
           <svg width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden>
