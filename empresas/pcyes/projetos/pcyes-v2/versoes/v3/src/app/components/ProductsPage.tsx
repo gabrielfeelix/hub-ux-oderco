@@ -654,7 +654,7 @@ export function ProductsPage() {
       ))}
       {inStockOnly && <FilterPill label="Em estoque" onRemove={() => setInStockOnly(false)} />}
       {activeFilterCount > 0 && (
-        <button onClick={clearAll} className="text-foreground/50 hover:text-foreground underline px-2 py-1 text-[12px] font-inter transition-colors">Limpar tudo</button>
+        <button onClick={clearAll} className="inline-flex items-center text-foreground/50 hover:text-foreground underline px-2 py-1 min-h-[44px] lg:min-h-0 text-[12px] font-inter transition-colors">Limpar tudo</button>
       )}
     </>
   );
@@ -716,7 +716,7 @@ export function ProductsPage() {
               <button
                 key={label}
                 onClick={() => toggleFeaturedCategory(label)}
-                className="flex w-full items-center justify-between gap-3 py-2 text-left group/item cursor-pointer"
+                className="flex w-full items-center justify-between gap-3 py-2 min-h-[44px] lg:min-h-0 text-left group/item cursor-pointer"
               >
                 <span
                   className={`transition-colors flex-1 ${isSelected ? "text-foreground font-medium" : "text-foreground/72 group-hover/item:text-foreground"}`}
@@ -739,7 +739,7 @@ export function ProductsPage() {
             {availableAttributes.map(({ label, count }) => {
               const active = selectedAttributes.has(label);
               return (
-                <label key={label} className="flex items-center gap-3 py-1.5 cursor-pointer group/item">
+                <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
                   <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedAttributes, label)} />
                   <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
                     {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -775,23 +775,27 @@ export function ProductsPage() {
                 key={label}
                 type="button"
                 onClick={() => toggleColor(label)}
-                className={`relative flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-200 hover:scale-110 cursor-pointer ${active ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""}`}
-                style={{
-                  backgroundColor: color,
-                  borderColor: active ? "var(--primary)" : (isLight ? "rgba(0,0,0,0.14)" : "rgba(var(--foreground-rgb), 0.16)"),
-                  boxShadow: active ? "0 8px 20px rgba(255,43,46,0.26)" : "0 1px 2px rgba(0,0,0,0.08)",
-                }}
+                className="relative flex items-center justify-center p-1.5 lg:p-0 -m-1.5 lg:m-0 cursor-pointer group/swatch"
                 title={`${label} (${count})`}
                 aria-label={`${label} (${count})`}
                 aria-pressed={active}
               >
-                {active && (
-                  <Check
-                    size={14}
-                    className={isLight ? "text-black" : "text-white"}
-                    strokeWidth={3}
-                  />
-                )}
+                <span
+                  className={`relative flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-200 group-hover/swatch:scale-110 flex-shrink-0 ${active ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""}`}
+                  style={{
+                    backgroundColor: color,
+                    borderColor: active ? "var(--primary)" : (isLight ? "rgba(0,0,0,0.14)" : "rgba(var(--foreground-rgb), 0.16)"),
+                    boxShadow: active ? "0 8px 20px rgba(255,43,46,0.26)" : "0 1px 2px rgba(0,0,0,0.08)",
+                  }}
+                >
+                  {active && (
+                    <Check
+                      size={14}
+                      className={isLight ? "text-black" : "text-white"}
+                      strokeWidth={3}
+                    />
+                  )}
+                </span>
               </button>
             );
             })}
@@ -801,7 +805,7 @@ export function ProductsPage() {
 
       {/* Promoção */}
       <FilterSection title="Promoção" expanded={expandedSections.promo} onToggle={() => toggleSection("promo")}>
-        <label className="flex items-center gap-3 py-2 cursor-pointer group/item">
+        <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
           <input type="checkbox" className="hidden" checked={onlyDiscount} onChange={() => setOnlyDiscount(!onlyDiscount)} />
           <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${onlyDiscount ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
             {onlyDiscount && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -812,7 +816,7 @@ export function ProductsPage() {
           const count = productsBeforeColorFilter.filter((pr) => getDiscount(getColorMatchedProduct(pr)) >= pct).length;
           const active = selectedDiscounts.has(pct);
           return (
-            <label key={pct} className="flex items-center gap-3 py-2 cursor-pointer group/item">
+            <label key={pct} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
               <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedDiscounts, pct)} />
               <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
                 {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -831,7 +835,7 @@ export function ProductsPage() {
             const active = selectedTags.has(tag);
             return (
               <button key={tag} onClick={() => toggleSet(setSelectedTags, tag)}
-                className={`px-4 py-2 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/50 hover:border-foreground/25"
+                className={`flex items-center px-4 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/50 hover:border-foreground/25"
                   }`}
                 style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
               >{tag}</button>
@@ -845,7 +849,7 @@ export function ProductsPage() {
         {[5, 4.5, 4, 3.5, 3].map((r) => {
           const active = selectedRatings.has(r);
           return (
-            <label key={r} className="flex items-center gap-3 py-2 cursor-pointer group/item">
+            <label key={r} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
               <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedRatings, r)} />
               <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
                 {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -861,7 +865,7 @@ export function ProductsPage() {
 
       {/* Em estoque */}
       <div>
-        <label className="flex items-center gap-3 py-2 cursor-pointer group/item">
+        <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
           <input type="checkbox" className="hidden" checked={inStockOnly} onChange={() => setInStockOnly(!inStockOnly)} />
           <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${inStockOnly ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
             {inStockOnly && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -912,7 +916,7 @@ export function ProductsPage() {
           <div className="flex flex-col gap-4 mb-6 pb-4 border-b border-foreground/10 xl:flex-row xl:items-center xl:justify-between">
             <div className="flex min-w-0 flex-wrap items-center gap-4">
               <button onClick={() => setMobileFiltersOpen(true)}
-                className="lg:hidden flex items-center gap-2 px-4 py-2 border border-foreground/15 text-foreground/70 hover:text-foreground transition-colors"
+                className="lg:hidden flex items-center gap-2 px-4 py-2 min-h-[44px] border border-foreground/15 text-foreground/70 hover:text-foreground transition-colors"
                 style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
               >
                 <SlidersHorizontal size={14} /> Filtros
@@ -1654,7 +1658,7 @@ function FilterSection({ title, expanded = true, onToggle, children }: { title: 
 function FilterPill({ label, onRemove }: { label: string; onRemove: () => void }) {
   return (
     <button onClick={onRemove}
-      className="flex items-center gap-1.5 px-3 py-1.5 bg-foreground/[0.06] text-foreground/80 border border-foreground/10 hover:border-foreground/25 hover:bg-foreground/[0.08] transition-colors font-medium"
+      className="flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] lg:min-h-0 bg-foreground/[0.06] text-foreground/80 border border-foreground/10 hover:border-foreground/25 hover:bg-foreground/[0.08] transition-colors font-medium"
       style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
       aria-label={`Remover filtro ${label}`}
     >
