@@ -3718,10 +3718,10 @@ function PathCard({
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex flex-col overflow-hidden rounded-[24px] border border-white/[0.08] bg-[#0f0f12] p-7 text-left transition-all duration-300 hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
+      className="group relative flex flex-col overflow-hidden rounded-[24px] border border-white/[0.16] bg-[#0f0f12] p-7 text-left transition-all duration-300 md:border-white/[0.08] hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-[0.35] transition-opacity duration-500 group-hover:opacity-100 md:opacity-0"
         style={{ background: "radial-gradient(circle at 50% 0%, rgba(255,43,46,0.18), transparent 60%)" }}
       />
       {badge && (
@@ -3809,7 +3809,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
               "linear-gradient(180deg, transparent 0%, rgba(10,10,10,1) 100%)",
           }}
         />
-        <div className="relative mx-auto max-w-[1320px] px-6 py-20 md:py-24 lg:py-28 text-center">
+        <div className="relative mx-auto max-w-[1320px] px-6 py-12 md:py-24 lg:py-28 text-center">
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -3831,7 +3831,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             className="text-white"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "clamp(38px, 6vw, 68px)",
+              fontSize: "clamp(30px, 6vw, 68px)",
               fontWeight: 700,
               letterSpacing: "-0.035em",
               lineHeight: 1,
