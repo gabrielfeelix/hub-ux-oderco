@@ -957,7 +957,7 @@ function formatPreOrderDate(iso: string) {
 }
 
 function MobilePurchaseFlow({
-  product, qty, setQty, onBuyNow, onAddToCart, addedToCart, pixPrice, installment, discount, onSeeDescription, shippingRef, preOrderInfo,
+  product, qty, setQty, onBuyNow, pixPrice, installment, discount, onSeeDescription, shippingRef, preOrderInfo,
 }: StickyCardProps & { onSeeDescription: () => void; shippingRef?: React.RefObject<HTMLDivElement>; preOrderInfo?: PreOrderInfo | null }) {
   const [paymentOpen, setPaymentOpen] = useState(false);
   const inStock = product.inStock !== false;
@@ -1296,47 +1296,29 @@ function MobilePurchaseFlow({
           </div>
         </div>
 
-        <div className="flex flex-col gap-2.5">
-          <button
-            onClick={onBuyNow}
-            disabled={buyDisabled}
-            className="h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{
-              background: isPreOrder
-                ? "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
-                : "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "14px",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              boxShadow: isPreOrder
-                ? "0 14px 32px -8px rgba(249,115,22,0.55)"
-                : "0 14px 32px -8px rgba(34,197,94,0.55)",
-            }}
-          >
-            {isPreOrder ? (
-              <><Rocket size={15} strokeWidth={2.4} /> {preOrderSoldOut ? "Esgotado" : "Comprar agora"}</>
-            ) : (
-              <><Zap size={15} strokeWidth={2.4} fill="currentColor" /> Comprar agora</>
-            )}
-          </button>
-          <button
-            onClick={onAddToCart}
-            disabled={isPreOrder ? preOrderSoldOut : !inStock}
-            className={`h-12 flex items-center justify-center gap-2 font-bold transition-all cursor-pointer disabled:opacity-40 ${
-              addedToCart
-                ? "bg-[#4CAF50]/10 text-[#4CAF50]"
-                : "bg-white text-black border border-foreground/10"
-            }`}
-            style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
-          >
-            {addedToCart ? (
-              <><Check size={15} strokeWidth={2.2} /> Adicionado ao carrinho</>
-            ) : (
-              <><ShoppingBag size={15} strokeWidth={1.9} /> Comprar</>
-            )}
-          </button>
-        </div>
+        <button
+          onClick={onBuyNow}
+          disabled={buyDisabled}
+          className="h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          style={{
+            background: isPreOrder
+              ? "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
+              : "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+            fontFamily: "var(--font-family-inter)",
+            fontSize: "14px",
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+            boxShadow: isPreOrder
+              ? "0 14px 32px -8px rgba(249,115,22,0.55)"
+              : "0 14px 32px -8px rgba(34,197,94,0.55)",
+          }}
+        >
+          {isPreOrder ? (
+            <><Rocket size={15} strokeWidth={2.4} /> {preOrderSoldOut ? "Esgotado" : "Comprar agora"}</>
+          ) : (
+            <><Zap size={15} strokeWidth={2.4} fill="currentColor" /> Comprar agora</>
+          )}
+        </button>
 
         {isPreOrder && (
           <div className="mt-4 flex items-start gap-2">
@@ -2429,8 +2411,6 @@ export function ProductPage() {
             qty={qty}
             setQty={setQty}
             onBuyNow={handleBuyNow}
-            onAddToCart={handleAdd}
-            addedToCart={addedToCart}
             pixPrice={pixPrice}
             installment={installment}
             discount={discount}
@@ -2803,7 +2783,7 @@ export function ProductPage() {
                 <><Rocket size={14} strokeWidth={2.4} /> Comprar agora</>
               )
             ) : (
-              <><Zap size={14} fill="currentColor" /> Comprar</>
+              <><Zap size={14} fill="currentColor" /> Comprar agora</>
             )}
           </button>
         </div>
