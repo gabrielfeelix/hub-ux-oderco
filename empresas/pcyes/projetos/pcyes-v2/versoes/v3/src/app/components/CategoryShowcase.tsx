@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router";
-import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { getCatalogHref } from "./productPresentation";
+import { CarouselDots } from "./CarouselDots";
 
 interface CategoryItem {
   label: string;
@@ -126,34 +126,12 @@ const CATEGORIES: CategoryItem[] = [
 const GAP_PX = 24;
 
 export function CategoryShowcase() {
-  const N = CATEGORIES.length;
-  // Triple buffer so we can snap back invisibly when nearing edges
-  const items = useMemo(() => [...CATEGORIES, ...CATEGORIES, ...CATEGORIES], []);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  // Position is logical (0 .. 3N-1). Start at first item of MIDDLE copy.
-  const [pos, setPos] = useState(N);
-  const [skip, setSkip] = useState(false);
-
-  const activeIdx = ((pos % N) + N) % N;
-  const active = CATEGORIES[activeIdx];
-
-  const goPrev = () => {
-    setSkip(false);
-    setPos((p) => p - 1);
-  };
-  const goNext = () => {
-    setSkip(false);
-    setPos((p) => p + 1);
-  };
-
-  const handleSettled = () => {
-    if (pos >= 2 * N) {
-      setSkip(true);
-      setPos(pos - N);
-    } else if (pos < N) {
-      setSkip(true);
-      setPos(pos + N);
-    }
+  const scrollByPage = (dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * el.clientWidth, behavior: "smooth" });
   };
 
   return (
@@ -197,183 +175,115 @@ export function CategoryShowcase() {
         </div>
       </div>
 
-      {/* Carousel — single sliding track */}
+      {/* Carousel — native horizontal scroll (touch swipe on mobile, arrows on desktop) */}
       <div className="relative">
-        <div className="overflow-hidden" style={{ height: "clamp(360px, 38vw, 460px)" }}>
-          <motion.div
-            className="flex h-full"
-            style={{ gap: `${GAP_PX}px`, paddingLeft: `${GAP_PX}px`, paddingRight: `${GAP_PX}px` }}
-            animate={{
-              x: `calc(${-(pos - 1)} * (33.333% + ${GAP_PX / 3}px))`,
+        <div style={{ height: "clamp(300px, 56vw, 460px)" }}>
+          <div
+            ref={trackRef}
+            className="category-track flex h-full overflow-x-auto snap-x snap-mandatory"
+            style={{
+              gap: `${GAP_PX}px`,
+              paddingLeft: `${GAP_PX}px`,
+              paddingRight: `${GAP_PX}px`,
+              scrollbarWidth: "none",
             }}
-            transition={
-              skip
-                ? { duration: 0 }
-                : { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-            }
-            onAnimationComplete={handleSettled}
           >
-            {items.map((cat, i) => {
-              const isLit = i === pos || i === pos + 1;
-              const isFeatured = isLit;
-              const isPrimary = i === pos;
-              return (
+            {CATEGORIES.map((cat, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 relative overflow-hidden h-full group category-card category-active snap-start"
+                style={{
+                  width: "clamp(220px, 70vw, calc((100% - 48px) / 3))",
+                  borderRadius: "26px",
+                  border: "1px solid transparent",
+                  boxShadow:
+                    "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 18px -6px rgba(255,36,25,0.2), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
+                  transition: "border-color 320ms ease, box-shadow 320ms ease",
+                }}
+              >
                 <div
-                  key={i}
-                  className={`flex-shrink-0 relative overflow-hidden h-full group category-card ${isFeatured ? "category-active" : ""}`}
+                  className="pointer-events-none absolute inset-0"
                   style={{
-                    width: `calc((100% - ${GAP_PX * 2}px) / 3)`,
                     borderRadius: "26px",
-                    border: isLit
-                      ? "1px solid transparent"
-                      : "1px solid rgba(var(--foreground-rgb), 0.06)",
-                    boxShadow: isFeatured
-                      ? "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 18px -6px rgba(255,36,25,0.2), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)"
-                      : "none",
-                    transition: "border-color 320ms ease, box-shadow 320ms ease",
+                    padding: "1px",
+                    background:
+                      "linear-gradient(135deg, rgba(255,36,25,0.45) 0%, rgba(255,36,25,0.05) 45%, rgba(255,36,25,0.35) 100%)",
+                    WebkitMask:
+                      "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                    WebkitMaskComposite: "xor",
+                    maskComposite: "exclude",
+                    zIndex: 5,
                   }}
-                >
-                  {isLit && (
-                    <div
-                      className="pointer-events-none absolute inset-0"
-                      style={{
-                        borderRadius: "26px",
-                        padding: "1px",
-                        background:
-                          "linear-gradient(135deg, rgba(255,36,25,0.45) 0%, rgba(255,36,25,0.05) 45%, rgba(255,36,25,0.35) 100%)",
-                        WebkitMask:
-                          "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-                        WebkitMaskComposite: "xor",
-                        maskComposite: "exclude",
-                        zIndex: 5,
-                      }}
-                    />
-                  )}
-                  <div className="absolute inset-0 overflow-hidden">
-                    <ImageWithFallback
-                      src={cat.image}
-                      alt={cat.label}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                      style={{ filter: isLit ? "none" : "brightness(0.55) saturate(0.85)" }}
-                    />
-                  </div>
-
-                  <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background: isFeatured
-                        ? "linear-gradient(180deg, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.45) 70%, rgba(0,0,0,0.85) 100%)"
-                        : isLit
-                        ? "linear-gradient(180deg, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.6) 100%)"
-                        : "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%)",
-                    }}
+                />
+                <div className="absolute inset-0 overflow-hidden">
+                  <ImageWithFallback
+                    src={cat.image}
+                    alt={cat.label}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   />
-
-                  {isFeatured ? (
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-10">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={cat.label}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 12 }}
-                          transition={{ duration: 0.4, delay: 0.15 }}
-                          className="max-w-[460px]"
-                        >
-                          <h3
-                            className="text-white mb-2"
-                            style={{
-                              fontFamily: "var(--font-family-figtree)",
-                              fontSize: "clamp(22px, 2.4vw, 34px)",
-                              fontWeight: 700,
-                              lineHeight: 1.05,
-                              letterSpacing: "-0.02em",
-                              textShadow: "0 2px 12px rgba(0,0,0,0.55)",
-                            }}
-                          >
-                            {cat.label}
-                          </h3>
-                          <p
-                            className="mb-4"
-                            style={{
-                              fontFamily: "var(--font-family-inter)",
-                              fontSize: "clamp(12px, 1vw, 14px)",
-                              lineHeight: 1.5,
-                              color: "rgba(var(--foreground-rgb), 0.85)",
-                              textShadow: "0 1px 6px rgba(0,0,0,0.55)",
-                            }}
-                          >
-                            {cat.description}
-                          </p>
-                          <Link
-                            to={cat.href}
-                            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full px-5 py-2.5 transition-transform hover:scale-[1.04] active:scale-[0.97]"
-                            style={{
-                              background:
-                                "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
-                              color: "white",
-                              fontFamily: "var(--font-family-inter)",
-                              fontSize: "11px",
-                              fontWeight: 700,
-                              letterSpacing: "0.06em",
-                              textTransform: "uppercase",
-                              boxShadow: "0 14px 32px -10px rgba(225,6,0,0.6)",
-                            }}
-                          >
-                            {cat.cta} <ArrowRight size={13} strokeWidth={2.4} />
-                          </Link>
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        setSkip(false);
-                        setPos(i);
-                      }}
-                      className="absolute inset-0 flex items-end p-4 md:p-5 cursor-pointer"
-                      aria-label={cat.label}
-                    >
-                      <span
-                        className="text-white"
-                        style={{
-                          fontFamily: "var(--font-family-figtree)",
-                          fontSize: "clamp(13px, 1.2vw, 16px)",
-                          fontWeight: 700,
-                          letterSpacing: "-0.01em",
-                          textShadow: "0 2px 8px rgba(0,0,0,0.6)",
-                        }}
-                      >
-                        {cat.label}
-                      </span>
-                    </button>
-                  )}
-
-                  {isPrimary && (
-                    <div className="pointer-events-none absolute top-5 right-5 flex items-center gap-1 z-10">
-                      {CATEGORIES.map((_, j) => (
-                        <span
-                          key={j}
-                          className="h-1.5 rounded-full transition-all"
-                          style={{
-                            width: j === activeIdx ? "18px" : "5px",
-                            background:
-                              j === activeIdx
-                                ? "rgba(var(--foreground-rgb), 0.95)"
-                                : "rgba(var(--foreground-rgb), 0.35)",
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
                 </div>
-              );
-            })}
-          </motion.div>
+
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.45) 70%, rgba(0,0,0,0.85) 100%)",
+                  }}
+                />
+
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-10">
+                  <div className="max-w-[460px]">
+                    <h3
+                      className="text-white mb-2"
+                      style={{
+                        fontFamily: "var(--font-family-figtree)",
+                        fontSize: "clamp(22px, 2.4vw, 34px)",
+                        fontWeight: 700,
+                        lineHeight: 1.05,
+                        letterSpacing: "-0.02em",
+                        textShadow: "0 2px 12px rgba(0,0,0,0.55)",
+                      }}
+                    >
+                      {cat.label}
+                    </h3>
+                    <p
+                      className="mb-4"
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "clamp(12px, 1vw, 14px)",
+                        lineHeight: 1.5,
+                        color: "rgba(var(--foreground-rgb), 0.85)",
+                        textShadow: "0 1px 6px rgba(0,0,0,0.55)",
+                      }}
+                    >
+                      {cat.description}
+                    </p>
+                    <Link
+                      to={cat.href}
+                      className="inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-2.5 transition-transform hover:scale-[1.04] active:scale-[0.97]"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                        color: "white",
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                        boxShadow: "0 14px 32px -10px rgba(225,6,0,0.6)",
+                      }}
+                    >
+                      {cat.cta} <ArrowRight size={13} strokeWidth={2.4} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <button
-          onClick={goPrev}
+          onClick={() => scrollByPage(-1)}
           aria-label="Anterior"
           className="absolute left-4 md:left-6 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
           style={{
@@ -387,7 +297,7 @@ export function CategoryShowcase() {
           <ChevronLeft size={20} strokeWidth={2.2} />
         </button>
         <button
-          onClick={goNext}
+          onClick={() => scrollByPage(1)}
           aria-label="Próximo"
           className="absolute right-4 md:right-6 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
           style={{
@@ -401,6 +311,9 @@ export function CategoryShowcase() {
           <ChevronRight size={20} strokeWidth={2.2} />
         </button>
       </div>
+
+      {/* Mobile-only position dots driven by native scroll */}
+      <CarouselDots trackRef={trackRef} className="mt-6" />
     </section>
   );
 }

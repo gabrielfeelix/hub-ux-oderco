@@ -83,7 +83,8 @@
 /* Homepage shelves — hide scrollbars on horizontal carousels */
 .shelf-track::-webkit-scrollbar,
 .deals-track::-webkit-scrollbar,
-.essentials-track::-webkit-scrollbar { display: none; }
+.essentials-track::-webkit-scrollbar,
+.category-track::-webkit-scrollbar { display: none; }
 
 /* Essentials card hover treatment */
 .essential-card { transition: border-color 300ms ease, box-shadow 300ms ease; }
