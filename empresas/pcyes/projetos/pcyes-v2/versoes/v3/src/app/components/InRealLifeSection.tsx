@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { X, ChevronLeft, ChevronRight, ShoppingBag } from "lucide-react";
@@ -111,6 +111,56 @@ export function InRealLifeSection() {
     const amount = scrollRef.current.clientWidth * 0.6;
     scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(max-width: 767px)");
+    const el = scrollRef.current;
+    if (!mq.matches || !el) return;
+
+    let raf = 0;
+    let paused = false;
+    let resumeTimer: ReturnType<typeof setTimeout> | null = null;
+    const SPEED = 0.35;
+
+    const pause = () => {
+      paused = true;
+      if (resumeTimer) clearTimeout(resumeTimer);
+    };
+    const scheduleResume = () => {
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; }, 1800);
+    };
+
+    el.addEventListener("touchstart", pause, { passive: true });
+    el.addEventListener("touchend", scheduleResume, { passive: true });
+    el.addEventListener("touchcancel", scheduleResume, { passive: true });
+
+    const step = () => {
+      if (!paused) {
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        if (maxScroll <= 0) {
+          raf = requestAnimationFrame(step);
+          return;
+        }
+        if (el.scrollLeft + SPEED >= maxScroll) {
+          el.scrollLeft = 0;
+        } else {
+          el.scrollLeft += SPEED;
+        }
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      if (resumeTimer) clearTimeout(resumeTimer);
+      el.removeEventListener("touchstart", pause);
+      el.removeEventListener("touchend", scheduleResume);
+      el.removeEventListener("touchcancel", scheduleResume);
+    };
+  }, []);
 
   const handleAddToCart = (product: TaggedProduct) => {
     addItem({

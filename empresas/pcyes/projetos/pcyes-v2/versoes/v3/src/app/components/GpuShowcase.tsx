@@ -360,7 +360,7 @@ export function GpuShowcase() {
                   fontFamily: "var(--font-family-inter)",
                   fontWeight: 700,
                   letterSpacing: "0.12em",
-                  color: ACCENT,
+                  color: "#ffffff",
                 }}
               >
                 {active.metric} · {active.tagline}
@@ -414,7 +414,7 @@ export function GpuShowcase() {
               className="mx-auto mt-8 md:mt-10 max-w-[680px] px-5 md:px-8"
             >
               <div
-                className="flex flex-col md:flex-row items-center gap-4 md:gap-5 rounded-2xl p-3 md:p-4"
+                className="flex flex-col gap-4 rounded-2xl p-4 md:flex-row md:items-center md:gap-5"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
@@ -422,61 +422,64 @@ export function GpuShowcase() {
                   boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
                 }}
               >
-                <div
-                  className="relative h-16 w-16 md:h-20 md:w-20 flex-shrink-0 overflow-hidden"
-                  style={{
-                    background: "rgba(0,0,0,0.4)",
-                    borderRadius: "14px",
-                    border: "1px solid rgba(var(--foreground-rgb), 0.05)",
-                  }}
-                >
-                  <ImageWithFallback
-                    src={getPrimaryProductImage(product)}
-                    alt={product.name}
-                    className="h-full w-full object-contain p-1.5"
-                  />
-                </div>
+                <div className="flex flex-row items-center gap-4 md:contents">
+                  <div
+                    className="relative h-24 w-24 flex-shrink-0 overflow-hidden md:h-20 md:w-20"
+                    style={{
+                      background: "rgba(0,0,0,0.4)",
+                      borderRadius: "14px",
+                      border: "1px solid rgba(var(--foreground-rgb), 0.05)",
+                    }}
+                  >
+                    <ImageWithFallback
+                      src={getPrimaryProductImage(product)}
+                      alt={product.name}
+                      className="h-full w-full object-contain p-2"
+                    />
+                  </div>
 
-                <div className="flex-1 min-w-0">
-                  <p
-                    style={{
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: "11px",
-                      fontWeight: 600,
-                      letterSpacing: "0.14em",
-                      color: "rgba(var(--foreground-rgb), 0.45)",
-                      textTransform: "uppercase",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    Featured Build
-                  </p>
-                  <h3
-                    className="line-clamp-1 text-white"
-                    style={{
-                      fontFamily: "var(--font-family-figtree)",
-                      fontSize: "clamp(14px, 1.5vw, 16px)",
-                      fontWeight: 700,
-                      letterSpacing: "-0.01em",
-                    }}
-                  >
-                    {active.newName} · {active.tagline}
-                  </h3>
-                  <p
-                    className="mt-1 text-white"
-                    style={{
-                      fontFamily: "var(--font-family-figtree)",
-                      fontSize: "15px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {product.price}
-                  </p>
+                  <div className="flex-1 min-w-0">
+                    <p
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "11px",
+                        fontWeight: 600,
+                        letterSpacing: "0.14em",
+                        color: "rgba(var(--foreground-rgb), 0.45)",
+                        textTransform: "uppercase",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      Featured Build
+                    </p>
+                    <h3
+                      className="line-clamp-2 text-white md:line-clamp-1"
+                      style={{
+                        fontFamily: "var(--font-family-figtree)",
+                        fontSize: "clamp(14px, 1.5vw, 16px)",
+                        fontWeight: 700,
+                        letterSpacing: "-0.01em",
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      {active.newName} · {active.tagline}
+                    </h3>
+                    <p
+                      className="mt-1 text-white"
+                      style={{
+                        fontFamily: "var(--font-family-figtree)",
+                        fontSize: "16px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {product.price}
+                    </p>
+                  </div>
                 </div>
 
                 <Link
                   to={`/produto/${product.id}`}
-                  className="flex-shrink-0 inline-flex items-center gap-2 whitespace-nowrap rounded-full px-6 md:px-10 py-3 transition-transform hover:scale-[1.04] active:scale-[0.97]"
+                  className="inline-flex w-full flex-shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full py-3 transition-transform hover:scale-[1.02] active:scale-[0.98] md:w-auto md:px-10"
                   style={{
                     background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
                     color: "#ffffff",

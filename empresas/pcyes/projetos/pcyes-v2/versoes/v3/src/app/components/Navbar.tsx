@@ -2320,32 +2320,49 @@ export function Navbar() {
 
                   <div className="min-h-0 flex-1 overflow-y-auto">
                     <div className="border-b border-foreground/8">
-                      {navItems.map((item, i) => (
-                        <motion.div
-                          key={item.label}
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: i * 0.025, duration: 0.18 }}
-                        >
-                          <button
-                            onClick={() => {
-                              if (item.mega) {
-                                setMobileActiveMega(item.mega);
-                                setMobileMenuView("category");
-                              } else {
-                                navigate(resolveMenuHref(item.href));
-                                setMobileOpen(false);
-                              }
-                            }}
-                            className="flex min-h-[58px] w-full items-center justify-between border-b border-foreground/7 px-7 text-left last:border-b-0"
+                      {navItems.map((item, i) => {
+                        const isGreen = item.emphasis === "green";
+                        const isBuild = item.emphasis === "build";
+                        const labelStyle: React.CSSProperties = {
+                          fontFamily: "var(--font-family-inter)",
+                          fontSize: "15px",
+                          fontWeight: isBuild ? 700 : 500,
+                        };
+                        if (isGreen) labelStyle.color = "#34d399";
+                        if (isBuild) {
+                          labelStyle.color = "#ff2419";
+                          labelStyle.letterSpacing = "0.02em";
+                        }
+                        return (
+                          <motion.div
+                            key={item.label}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.025, duration: 0.18 }}
                           >
-                            <span className="text-foreground/74" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 500 }}>
-                              {item.label}
-                            </span>
-                            {item.mega && <ChevronRight size={17} className="text-foreground/32" strokeWidth={1.5} />}
-                          </button>
-                        </motion.div>
-                      ))}
+                            <button
+                              onClick={() => {
+                                if (item.mega) {
+                                  setMobileActiveMega(item.mega);
+                                  setMobileMenuView("category");
+                                } else {
+                                  navigate(resolveMenuHref(item.href));
+                                  setMobileOpen(false);
+                                }
+                              }}
+                              className="flex min-h-[58px] w-full items-center justify-between border-b border-foreground/7 px-7 text-left last:border-b-0"
+                            >
+                              <span
+                                className={isGreen || isBuild ? "" : "text-foreground/74"}
+                                style={labelStyle}
+                              >
+                                {item.label}
+                              </span>
+                              {item.mega && <ChevronRight size={17} className="text-foreground/32" strokeWidth={1.5} />}
+                            </button>
+                          </motion.div>
+                        );
+                      })}
                     </div>
 
                     <div className="bg-foreground/[0.025] px-7 py-4">
