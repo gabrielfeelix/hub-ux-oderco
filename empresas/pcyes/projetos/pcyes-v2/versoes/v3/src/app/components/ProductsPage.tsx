@@ -1198,7 +1198,7 @@ export function ProductsPage() {
                           {/* Product info */}
                           <div className="mt-4 px-1">
                             <Link to={`/produto/${displayProduct.id}`}>
-                              <h3 className="line-clamp-1 text-white"
+                              <h3 className="line-clamp-2 md:line-clamp-1 text-white"
                                 style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600, lineHeight: 1.3, letterSpacing: "-0.01em" }}>
                                 {displayProduct.name}
                               </h3>

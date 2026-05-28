@@ -193,7 +193,7 @@ export function CategoryShowcase() {
                 key={i}
                 className="flex-shrink-0 relative overflow-hidden h-full group category-card category-active snap-start"
                 style={{
-                  width: "clamp(220px, 70vw, calc((100% - 48px) / 3))",
+                  width: "clamp(260px, 82vw, calc((100% - 48px) / 3))",
                   borderRadius: "26px",
                   border: "1px solid transparent",
                   boxShadow:
@@ -227,7 +227,7 @@ export function CategoryShowcase() {
                   className="pointer-events-none absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(180deg, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.45) 70%, rgba(0,0,0,0.85) 100%)",
+                      "linear-gradient(180deg, rgba(0,0,0,0.0) 20%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.92) 100%)",
                   }}
                 />
 

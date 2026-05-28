@@ -563,7 +563,7 @@ export function CheckoutPage() {
   if (items.length === 0 && !orderConfirmed) {
     return (
       <>
-        <div className="pt-[112px] md:pt-[142px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 200px)" }}>
+        <div className="pt-3 md:pt-[142px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 200px)" }}>
           <div className="mx-auto flex max-w-[640px] flex-col items-center px-5 py-24 text-center">
             <p
               className="mb-3 text-primary"
@@ -611,7 +611,7 @@ export function CheckoutPage() {
     const s = (pixTimer % 60).toString().padStart(2, "0");
     return (
       <>
-        <div className="pt-[80px] md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 120px)" }}>
+        <div className="pt-3 md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 120px)" }}>
           <div className="mx-auto max-w-[720px] px-5 py-10 md:px-8">
             <p
               className="mb-3 text-primary"
@@ -762,7 +762,7 @@ export function CheckoutPage() {
     const snap = confirmedSnapshot;
     return (
       <>
-        <div className="pt-[80px] md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 200px)" }}>
+        <div className="pt-3 md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 200px)" }}>
           <div className="mx-auto max-w-[720px] px-5 py-12 md:px-8">
             <div className="mb-10 flex flex-col items-center text-center">
               <motion.div
@@ -939,7 +939,7 @@ export function CheckoutPage() {
 
   return (
     <>
-      <div className="pt-[80px] md:pt-[88px] pb-24 lg:pb-0" style={{ background: "#0e0e0e", minHeight: "100vh" }}>
+      <div className="pt-3 md:pt-[88px] pb-24 lg:pb-0" style={{ background: "#0e0e0e", minHeight: "100vh" }}>
         <div className="mx-auto max-w-[1320px] px-5 py-4 md:px-8 md:py-6">
           <Link
             to="/carrinho"
