@@ -17,7 +17,7 @@ import {
 import { getPreOrderInfo } from "./PreOrderData";
 import { PreOrderBadge } from "./PreOrderBanner";
 import { CarouselDots } from "./CarouselDots";
-import { SectionHeader, CTAButton } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge } from "./section";
 
 interface ProductShelfProps {
   label: string;
@@ -123,23 +123,11 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
           )}
 
           {discount > 0 && !preOrderInfo && (
-            <span
-              className="absolute z-20 inline-flex items-center text-white"
-              style={{
-                background: "var(--gradient-discount)",
-                left: rank !== undefined ? "60px" : "12px",
-                top: "12px",
-                padding: "6px 12px",
-                borderRadius: "10px",
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
-                fontWeight: 900,
-                letterSpacing: "-0.02em",
-                boxShadow: "var(--shadow-discount-badge)",
-              }}
-            >
-              -{discount}%
-            </span>
+            <DiscountBadge
+              percent={discount}
+              className="absolute z-20"
+              style={{ left: rank !== undefined ? "60px" : "12px", top: "12px" }}
+            />
           )}
 
           {preOrderInfo && (

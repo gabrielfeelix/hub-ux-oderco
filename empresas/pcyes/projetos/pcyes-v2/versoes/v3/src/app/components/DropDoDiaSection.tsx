@@ -9,7 +9,7 @@ import { useCart } from "./CartContext";
 import { allProducts, type Product } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
 import { getPixPrice, formatBRL } from "./productEnhancements";
-import { SectionHeader, CTAButton } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge } from "./section";
 
 const DROP_IDS = [446, 433, 30];
 
@@ -99,23 +99,11 @@ export function DropDoDiaSection() {
                         className="absolute inset-0 h-full w-full object-contain p-4 md:p-8 transition-transform duration-500 group-hover:scale-[1.05]"
                       />
                       {discount > 0 && (
-                        <span
-                          className="absolute z-20 inline-flex items-center text-white"
-                          style={{
-                            top: "16px",
-                            left: "16px",
-                            padding: "6px 12px",
-                            borderRadius: "10px",
-                            background: "var(--gradient-discount)",
-                            fontFamily: "var(--font-family-figtree)",
-                            fontSize: "15px",
-                            fontWeight: 900,
-                            letterSpacing: "-0.02em",
-                            boxShadow: "var(--shadow-discount-badge)",
-                          }}
-                        >
-                          -{discount}%
-                        </span>
+                        <DiscountBadge
+                          percent={discount}
+                          className="absolute z-20"
+                          style={{ top: "16px", left: "16px" }}
+                        />
                       )}
                       <span
                         className="absolute z-20 inline-flex items-center gap-1 text-white"

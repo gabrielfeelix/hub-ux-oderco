@@ -2,3 +2,5 @@ export { Eyebrow } from "./Eyebrow";
 export { SectionHeader } from "./SectionHeader";
 export { SectionContainer } from "./SectionContainer";
 export { CTAButton, ctaVariants } from "./CTAButton";
+export { DiscountBadge } from "./DiscountBadge";
+export { BrindePill } from "./BrindePill";

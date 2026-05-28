@@ -24,6 +24,7 @@ import {
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
 import { PreOrderBadge } from "./PreOrderBanner";
+import { DiscountBadge } from "./section";
 import { CategorySeoBlock } from "./CategorySeoBlock";
 
 const categoryMap: Record<string, string> = {
@@ -1256,21 +1257,7 @@ export function ProductsPage() {
                                 <PreOrderBadge info={preOrderInfo} />
                               </span>
                             ) : discount > 0 ? (
-                              <span
-                                className="absolute top-3 left-3 z-10 inline-flex items-center text-white"
-                                style={{
-                                  background: "var(--gradient-discount)",
-                                  padding: "6px 12px",
-                                  borderRadius: "10px",
-                                  fontFamily: "var(--font-family-figtree)",
-                                  fontSize: "15px",
-                                  fontWeight: 900,
-                                  letterSpacing: "-0.02em",
-                                  boxShadow: "var(--shadow-discount-badge)",
-                                }}
-                              >
-                                -{discount}%
-                              </span>
+                              <DiscountBadge percent={discount} className="absolute top-3 left-3 z-10" />
                             ) : (
                               <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full px-2.5 py-1 backdrop-blur-md"
                                 style={{ background: "rgba(0,0,0,0.55)", border: "1px solid rgba(var(--foreground-rgb), 0.1)" }}>

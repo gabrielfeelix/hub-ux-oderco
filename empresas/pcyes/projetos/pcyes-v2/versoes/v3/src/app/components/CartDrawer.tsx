@@ -9,6 +9,7 @@ import { allProducts } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
 import { PcyesCoin } from "./PcyesCoin";
 import { useCheckoutPrefs } from "./CheckoutPrefsContext";
+import { BrindePill } from "./section";
 
 const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string }[]> = {
   default: [
@@ -266,11 +267,7 @@ export function CartDrawer() {
                           <div>
                             <div className="flex items-center gap-2">
                               <p className="truncate text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>{item.name}</p>
-                              {item.isGift && (
-                                <span className="rounded-full bg-primary/[0.1] px-2 py-0.5 text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: "700", letterSpacing: "0.08em" }}>
-                                  BRINDE
-                                </span>
-                              )}
+                              {item.isGift && <BrindePill />}
                             </div>
                             <div className="flex items-center gap-2">
                               {item.isGift && item.originalPrice && (

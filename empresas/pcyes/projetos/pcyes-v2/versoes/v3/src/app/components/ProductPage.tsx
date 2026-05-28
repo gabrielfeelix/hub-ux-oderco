@@ -22,7 +22,7 @@ import { toast } from "sonner";
 import { getPreOrderInfo } from "./PreOrderData";
 import type { PreOrderInfo } from "./PreOrderData";
 import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
-import { CTAButton } from "./section";
+import { CTAButton, DiscountBadge } from "./section";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -797,22 +797,7 @@ function StickyPriceCard({
               >
                 {product.oldPrice}
               </span>
-              {discount > 0 && (
-                <span
-                  className="inline-flex items-center rounded-md px-1.5 py-0.5 leading-none"
-                  style={{
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    color: "#ffffff",
-                    background: "var(--gradient-discount)",
-                    boxShadow: "var(--shadow-discount-sm)",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  -{discount}%
-                </span>
-              )}
+              {discount > 0 && <DiscountBadge percent={discount} size="sm" />}
             </div>
           )}
 
@@ -1015,21 +1000,7 @@ function MobilePurchaseFlow({
               >
                 {product.oldPrice}
               </span>
-              {discount > 0 && (
-                <span
-                  className="inline-flex items-center rounded-md px-1.5 py-0.5 leading-none"
-                  style={{
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "10.5px",
-                    fontWeight: 800,
-                    color: "#ffffff",
-                    background: "var(--gradient-discount)",
-                    boxShadow: "var(--shadow-discount-sm)",
-                  }}
-                >
-                  -{discount}%
-                </span>
-              )}
+              {discount > 0 && <DiscountBadge percent={discount} size="sm" style={{ fontSize: "10.5px" }} />}
             </div>
           ) : <span />}
 

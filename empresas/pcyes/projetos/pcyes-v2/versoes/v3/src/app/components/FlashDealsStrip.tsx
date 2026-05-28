@@ -17,7 +17,7 @@ import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
 import { useFavorites } from "./FavoritesContext";
 import { CarouselDots } from "./CarouselDots";
-import { SectionHeader, CTAButton } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge } from "./section";
 
 const DEAL_IDS = [436, 72, 199, 329, 446, 433, 30, 295, 375];
 
@@ -145,23 +145,11 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
           />
 
           {discount > 0 && !preOrderInfo && (
-            <span
-              className="absolute z-20 inline-flex items-center text-white"
-              style={{
-                background: "var(--gradient-discount)",
-                top: "14px",
-                left: "14px",
-                padding: "6px 12px",
-                borderRadius: "10px",
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
-                fontWeight: 900,
-                letterSpacing: "-0.02em",
-                boxShadow: "var(--shadow-discount-badge)",
-              }}
-            >
-              -{discount}%
-            </span>
+            <DiscountBadge
+              percent={discount}
+              className="absolute z-20"
+              style={{ top: "14px", left: "14px" }}
+            />
           )}
 
           {preOrderInfo && (

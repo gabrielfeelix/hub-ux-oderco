@@ -12,7 +12,7 @@ import {
   getPrimaryProductImage,
   getVisibleCatalogProducts,
 } from "./productPresentation";
-import { SectionHeader, CTAButton } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge } from "./section";
 
 interface DealsHighlightProps {
   label?: string;
@@ -64,23 +64,7 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
           />
 
           {/* Discount badge */}
-          {discount > 0 && (
-            <span
-              className="absolute top-3 left-3 z-20 inline-flex items-center text-white"
-              style={{
-                background: "var(--gradient-discount)",
-                padding: "6px 12px",
-                borderRadius: "10px",
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
-                fontWeight: 900,
-                letterSpacing: "-0.02em",
-                boxShadow: "var(--shadow-discount-badge)",
-              }}
-            >
-              -{discount}%
-            </span>
-          )}
+          {discount > 0 && <DiscountBadge percent={discount} className="absolute top-3 left-3 z-20" />}
 
           {/* Favorite (hover) */}
           <button

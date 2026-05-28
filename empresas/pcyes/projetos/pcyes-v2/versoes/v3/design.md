@@ -603,6 +603,8 @@ import { Eyebrow, SectionHeader, SectionContainer, CTAButton } from "./section";
 | `<SectionHeader eyebrow title size weight animated />` | `size: sm/md/lg` (36/38/44px), `weight: 500/600/700`, `animated: bool`, `eyebrowIcon`, `align`, `titleStyle` | Eyebrow + h2 com scroll reveal padrão |
 | `<SectionContainer maxWidth paddingY background>` | `maxWidth: 1200/1600/1760`, `paddingY: sm/md/lg/xl` | Wrapper `<section>` com padding lateral + max-width centralizado |
 | `<CTAButton variant size block />` | `variant: buy/buy-sm/brand/brand-pill/preorder`, `size: sm/md/lg/xl` (h10/11/12/12), `block: bool` | CTAs principais (verde/vermelho/laranja) com hover scale + active scale |
+| `<DiscountBadge percent size />` | `percent: number`, `size: sm/lg` | Pill -X% sobre product card (lg) ou inline em ProductPage (sm) |
+| `<BrindePill>BRINDE</BrindePill>` | `children?`, `className?`, `style?` | Tag "BRINDE" em CartDrawer (rounded-pill, bg-primary/10) |
 
 Animação padrão (em `SectionHeader animated={true}`):
 - Eyebrow: `y: 16→0, opacity: 0→1, 0.5s, easing house`
@@ -926,3 +928,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 | 2026-05-28 | **Aplicação dos tokens** — 81 gradients + 38 sombras + ~70 raios migrados pra `var(--*)` em ~20 componentes (ProductShelf, FlashDealsStrip, CartDrawer, CheckoutPage, ProductPage, etc). Adicionados `-sm` variants para sombras (buy-cta-sm, brand-cta-sm, brand-pill, discount-sm). Bundle CSS +0.42 kB, JS −2.23 kB. |
 | 2026-05-28 | **Primitivos de seção** — criados `<Eyebrow>` + `<SectionHeader>` + `<SectionContainer>` em `src/app/components/section/`. Migradas 6 seções (ProductShelf, DealsHighlight, FlashDealsStrip, DropDoDiaSection, CategoryShowcase, Newsletter). Net −125 linhas. |
 | 2026-05-28 | **CTAButton primitivo** — criado `<CTAButton>` em `src/app/components/section/CTAButton.tsx` com variants `buy/buy-sm/brand/brand-pill/preorder` × sizes `sm/md/lg/xl` + `block`. Migrados 6 CTAs (ProductShelf, FlashDealsStrip, DealsHighlight, DropDoDiaSection, Newsletter desktop+mobile, ProductPage desktop+mobile). Token novo `--shadow-preorder-cta`. |
+| 2026-05-28 | **Badges primitivos** — criados `<DiscountBadge percent size />` + `<BrindePill>`. Migrados 7 discount badges (ProductShelf, FlashDealsStrip, DealsHighlight, DropDoDiaSection, ProductsPage, ProductPage 2x) + 1 BrindePill (CartDrawer item). ProductCarousel skip (API discountBadge string). |
