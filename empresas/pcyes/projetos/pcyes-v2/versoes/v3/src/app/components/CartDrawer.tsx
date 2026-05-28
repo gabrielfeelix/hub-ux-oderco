@@ -2,14 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
-import { X, Minus, Plus, ShoppingBag, Trash2, Truck, Tag, Loader2, Check, MapPin, ChevronDown, Gift, Sparkles } from "lucide-react";
+import { X, ShoppingBag, Trash2, Truck, Tag, Loader2, Check, MapPin, ChevronDown, Gift, Sparkles } from "lucide-react";
 import { useCart } from "./CartContext";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
 import { PcyesCoin } from "./PcyesCoin";
 import { useCheckoutPrefs } from "./CheckoutPrefsContext";
-import { BrindePill } from "./section";
+import { BrindePill, QtyStepper } from "./section";
 
 const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string }[]> = {
   default: [
@@ -287,11 +287,11 @@ export function CartDrawer() {
                                 </span>
                               </div>
                             ) : (
-                              <div className="flex items-center gap-0 border border-foreground/10" style={{ borderRadius: "var(--radius)" }}>
-                                <button onClick={() => updateQuantity(item.cartKey, item.quantity - 1)} className="w-7 h-7 flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors cursor-pointer"><Minus size={12} /></button>
-                                <span className="w-7 h-7 flex items-center justify-center text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>{item.quantity}</span>
-                                <button onClick={() => updateQuantity(item.cartKey, item.quantity + 1)} className="w-7 h-7 flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors cursor-pointer"><Plus size={12} /></button>
-                              </div>
+                              <QtyStepper
+                                size="sm"
+                                value={item.quantity}
+                                onChange={(next) => updateQuantity(item.cartKey, next)}
+                              />
                             )}
                             <button onClick={() => item.isGift ? setGiftItem(null) : removeItem(item.cartKey)} className="text-foreground/20 hover:text-primary transition-colors cursor-pointer">
                               <Trash2 size={14} />

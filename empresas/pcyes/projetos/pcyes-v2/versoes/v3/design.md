@@ -610,7 +610,7 @@ import { Eyebrow, SectionHeader, SectionContainer, CTAButton } from "./section";
 | `<Tag variant>texto</Tag>` | `variant: brand/neutral` | Tag/chip rounded-pill (Essentials section, feature tags) |
 | `<FieldLabel required>X</FieldLabel>` | `required?: bool`, `htmlFor?`, `children` | Label de form (Inter 10.5/700 ls 0.14em uppercase fg/55) |
 | `<FieldInput ... />` | props nativos de `<input>` | Input de form (padding 11×13, radius 10, border fg/8, bg fg/3, Inter 13/500) |
-| `<QtyStepper value onChange size />` | `size: sm/md`, `min?`, `max?`, `disabled?` | Stepper qty −/+ (CartDrawer sm, ProductPage md) |
+| `<QtyStepper value onChange size shape />` | `size: sm/md/lg`, `shape: rect/pill`, `min?`, `max?`, `disabled?` | Stepper qty −/+ (CartDrawer sm/rect, ProductPage desktop md/rect, ProductPage mobile lg/pill) |
 
 Animação padrão (em `SectionHeader animated={true}`):
 - Eyebrow: `y: 16→0, opacity: 0→1, 0.5s, easing house`
@@ -938,3 +938,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 | 2026-05-28 | **PreOrderPill + Tag primitives** — extraído `<PreOrderPill>` de `PreOrderBanner.tsx` pra `section/PreOrderPill.tsx` (re-export legacy mantido). DiscountBadge agora aceita `children` override (migrou ProductCarousel). Criado `<Tag variant="brand|neutral">` (migrado EssentialsSection). Token novo `--shadow-preorder-pill`. Total primitivos: 9. |
 | 2026-05-28 | **Form primitives** — criados `<FieldLabel>` + `<FieldInput>` + `<QtyStepper>`. Migrado AddressFormModal (8 inputs + 8 labels → primitivos, removidos constants `inputStyle`/`labelStyle`) + ProductPage desktop qty (−24 linhas). Total primitivos: 12. |
 | 2026-05-28 | **Hover CSS consolidation** — `.essential-card`, `.profile-card`, `.order-card`, `.deal-card-img`, `.hero-card`, `.category-active`, `.neon-hover-red` reescritos pra usar `var(--shadow-*)` tokens já existentes (em vez de inline shadows duplicados). Token novo `--shadow-neon-glow-deepen`. `--shadow-neon-red` ajustado pra incluir 7ª inset layer que faltava. CSS theme.css −31 linhas. |
+| 2026-05-28 | **QtyStepper extensions** — adicionados `size="lg"` (w-9/w-10) + `shape="pill"` (rounded-pill, sem border interna grossa). Migrados ProductPage mobile qty (lg/pill) + CartDrawer item qty (sm/rect). Removidos imports Minus/Plus dos consumers. Net −24 linhas. |

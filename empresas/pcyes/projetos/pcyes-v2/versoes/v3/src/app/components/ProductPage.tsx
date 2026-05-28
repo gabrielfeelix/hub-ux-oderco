@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
   ShoppingBag, Heart, Star, ChevronLeft, ChevronRight, ChevronDown, Truck,
-  Check, Minus, Plus, Share2, MapPin, CreditCard, Banknote, QrCode,
+  Check, Share2, MapPin, CreditCard, Banknote, QrCode,
   Loader2, ArrowUpRight, Zap, X, Clock, Info,
   Rocket, CalendarDays, ShieldCheck,
 } from "lucide-react";
@@ -1212,30 +1212,13 @@ function MobilePurchaseFlow({
           >
             QUANTIDADE
           </span>
-          <div className="flex items-center rounded-full border border-foreground/12 overflow-hidden">
-            <button
-              onClick={() => setQty(Math.max(1, qty - 1))}
-              className="w-9 h-9 flex items-center justify-center text-foreground/45 disabled:opacity-30"
-              disabled={qty <= 1}
-              aria-label="Diminuir quantidade"
-            >
-              <Minus size={13} />
-            </button>
-            <span
-              className="w-10 h-9 flex items-center justify-center text-foreground border-x border-foreground/8 tabular-nums"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700 }}
-            >
-              {qty}
-            </span>
-            <button
-              onClick={() => setQty(qty + 1)}
-              className="w-9 h-9 flex items-center justify-center text-foreground/45 disabled:opacity-30"
-              disabled={isPreOrder ? preOrderSoldOut : !inStock}
-              aria-label="Aumentar quantidade"
-            >
-              <Plus size={13} />
-            </button>
-          </div>
+          <QtyStepper
+            value={qty}
+            onChange={setQty}
+            size="lg"
+            shape="pill"
+            disabled={isPreOrder ? preOrderSoldOut : !inStock}
+          />
         </div>
 
         <CTAButton
