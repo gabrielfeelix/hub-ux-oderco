@@ -9,7 +9,7 @@ import { useCart } from "./CartContext";
 import { allProducts, type Product } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
 import { getPixPrice, formatBRL } from "./productEnhancements";
-import { SectionHeader } from "./section";
+import { SectionHeader, CTAButton } from "./section";
 
 const DROP_IDS = [446, 433, 30];
 
@@ -221,22 +221,16 @@ export function DropDoDiaSection() {
                       )}
                     </div>
 
-                    <button
+                    <CTAButton
+                      variant="buy"
+                      size="lg"
+                      block
                       onClick={handleAdd}
-                      className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3 transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-                      style={{
-                        background: "var(--gradient-buy)",
-                        color: "white",
-                        fontFamily: "var(--font-family-inter)",
-                        fontSize: "13px",
-                        fontWeight: 700,
-                        letterSpacing: "0.04em",
-                        boxShadow: "var(--shadow-buy-cta)",
-                      }}
+                      className="mt-5 cursor-pointer"
                     >
                       <ShoppingBag size={14} strokeWidth={2.2} />
                       Comprar
-                    </button>
+                    </CTAButton>
                   </div>
                 </div>
               </motion.div>

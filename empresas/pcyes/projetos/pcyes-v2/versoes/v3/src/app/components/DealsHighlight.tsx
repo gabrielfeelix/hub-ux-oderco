@@ -12,7 +12,7 @@ import {
   getPrimaryProductImage,
   getVisibleCatalogProducts,
 } from "./productPresentation";
-import { SectionHeader } from "./section";
+import { SectionHeader, CTAButton } from "./section";
 
 interface DealsHighlightProps {
   label?: string;
@@ -102,25 +102,18 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
           </button>
 
           {/* Quick add pill */}
-          <button
+          <CTAButton
+            variant="buy-sm"
+            size="lg"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               onAdd(product);
             }}
-            className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
-            style={{
-              background: "var(--gradient-buy)",
-              color: "white",
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              boxShadow: "var(--shadow-buy-cta-sm)",
-            }}
+            className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
           >
-            <span className="inline-flex items-center gap-1.5"><ShoppingBag size={11} strokeWidth={2} /> Adicionar</span>
-          </button>
+            <ShoppingBag size={11} strokeWidth={2} /> Adicionar
+          </CTAButton>
         </div>
 
         <div className="mt-3 px-1">

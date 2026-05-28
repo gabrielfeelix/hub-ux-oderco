@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
-import { Eyebrow } from "./section";
+import { Eyebrow, CTAButton } from "./section";
 
 export function Newsletter() {
   const ref = useRef<HTMLDivElement>(null);
@@ -152,22 +152,9 @@ export function Newsletter() {
                       boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                     }}
                   />
-                  <button
-                    type="submit"
-                    className="w-full flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-5 min-h-[44px] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
-                    style={{
-                      background: "var(--gradient-brand)",
-                      color: "white",
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                      textTransform: "uppercase",
-                      boxShadow: "var(--shadow-brand-pill)",
-                    }}
-                  >
+                  <CTAButton type="submit" variant="brand-pill" size="md" block className="min-h-[44px] cursor-pointer">
                     Assinar <ArrowRight size={13} strokeWidth={2.4} />
-                  </button>
+                  </CTAButton>
                 </div>
 
                 {/* Desktop pill (hidden on mobile) */}
@@ -193,22 +180,9 @@ export function Newsletter() {
                       paddingBottom: "10px",
                     }}
                   />
-                  <button
-                    type="submit"
-                    className="flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
-                    style={{
-                      background: "var(--gradient-brand)",
-                      color: "white",
-                      fontFamily: "var(--font-family-inter)",
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                      textTransform: "uppercase",
-                      boxShadow: "var(--shadow-brand-pill)",
-                    }}
-                  >
+                  <CTAButton type="submit" variant="brand-pill" size="md" className="flex-shrink-0 cursor-pointer">
                     Assinar <ArrowRight size={13} strokeWidth={2.4} />
-                  </button>
+                  </CTAButton>
                 </div>
 
                 <p

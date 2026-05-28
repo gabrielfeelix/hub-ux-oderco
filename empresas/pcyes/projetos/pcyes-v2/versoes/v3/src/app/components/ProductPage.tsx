@@ -22,6 +22,7 @@ import { toast } from "sonner";
 import { getPreOrderInfo } from "./PreOrderData";
 import type { PreOrderInfo } from "./PreOrderData";
 import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
+import { CTAButton } from "./section";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -910,23 +911,17 @@ function StickyPriceCard({
 
         {/* CTAs */}
         <div className="relative flex flex-col gap-2 mb-5">
-          <button
+          <CTAButton
+            variant="buy"
+            size="xl"
+            block
             onClick={onBuyNow}
             disabled={!inStock}
-            className="h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{
-              background: "var(--gradient-buy)",
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "14px",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              boxShadow: "var(--shadow-buy-cta)",
-            }}
+            className="cursor-pointer disabled:cursor-not-allowed"
           >
             <Zap size={15} strokeWidth={2.4} fill="currentColor" />
             Comprar agora
-          </button>
-
+          </CTAButton>
         </div>
 
         <div className="h-px bg-foreground/6 mb-5" />
@@ -1296,29 +1291,20 @@ function MobilePurchaseFlow({
           </div>
         </div>
 
-        <button
+        <CTAButton
+          variant={isPreOrder ? "preorder" : "buy"}
+          size="xl"
+          block
           onClick={onBuyNow}
           disabled={buyDisabled}
-          className="h-12 w-full px-6 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-          style={{
-            background: isPreOrder
-              ? "var(--gradient-preorder-orange)"
-              : "var(--gradient-buy)",
-            fontFamily: "var(--font-family-inter)",
-            fontSize: "14px",
-            fontWeight: 700,
-            letterSpacing: "0.04em",
-            boxShadow: isPreOrder
-              ? "0 14px 32px -8px rgba(249,115,22,0.55)"
-              : "var(--shadow-buy-cta)",
-          }}
+          className="cursor-pointer disabled:cursor-not-allowed"
         >
           {isPreOrder ? (
             <><Rocket size={15} strokeWidth={2.4} className="flex-shrink-0" /> {preOrderSoldOut ? "Esgotado" : "Comprar agora"}</>
           ) : (
             <><Zap size={15} strokeWidth={2.4} fill="currentColor" className="flex-shrink-0" /> Comprar agora</>
           )}
-        </button>
+        </CTAButton>
 
         {isPreOrder && (
           <div className="mt-4 flex items-start gap-2">

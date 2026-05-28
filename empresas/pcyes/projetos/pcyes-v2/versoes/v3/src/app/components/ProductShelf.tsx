@@ -17,7 +17,7 @@ import {
 import { getPreOrderInfo } from "./PreOrderData";
 import { PreOrderBadge } from "./PreOrderBanner";
 import { CarouselDots } from "./CarouselDots";
-import { SectionHeader } from "./section";
+import { SectionHeader, CTAButton } from "./section";
 
 interface ProductShelfProps {
   label: string;
@@ -172,25 +172,18 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
           )}
 
           {/* Quick add — floating pill */}
-          <button
+          <CTAButton
+            variant="buy-sm"
+            size="lg"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               onAdd(product);
             }}
-            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
-            style={{
-              background: "var(--gradient-buy)",
-              color: "white",
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              boxShadow: "var(--shadow-buy-cta-sm)",
-            }}
+            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
           >
-            <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
-          </button>
+            <ShoppingBag size={14} strokeWidth={2} /> Comprar
+          </CTAButton>
         </div>
 
         <div className="mt-4 px-1">
