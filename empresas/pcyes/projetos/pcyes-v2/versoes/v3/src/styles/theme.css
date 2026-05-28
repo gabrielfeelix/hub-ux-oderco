@@ -68,6 +68,71 @@
   --space-section-md: 88px;
   --space-section-lg: 128px;
   --space-section-xl: 168px;
+
+  /* ===================================================================
+     CARD RADIUS FAMILY
+     Existing --radius (4px) and --radius-card (8px) cover form controls
+     and small cards. v3 also uses 18 / 22 / 26 px for large "premium"
+     cards. Promoting these to tokens so designers (and Figma) have
+     a finite scale instead of magic numbers.
+     =================================================================== */
+  --radius-card-sm: 12px;   /* modais centralizados, search box, countdown cells */
+  --radius-card-md: 18px;   /* brinde card, cards intermediários */
+  --radius-card-lg: 22px;   /* product card image well, cart drawer corner, welcome popup */
+  --radius-card-xl: 26px;   /* category showcase, drop-do-dia, mega-menu showcase */
+  --radius-pill: 9999px;    /* CTAs principais, pills, search input, badges circulares */
+
+  /* ===================================================================
+     BRAND GRADIENTS
+     Os vermelhos do v3 são SEMPRE em gradient diagonal 135deg.
+     Tokenizar evita drift (todo lugar copiando hex levemente diferente).
+     =================================================================== */
+  --gradient-brand:           linear-gradient(135deg, var(--primary) 0%, #ff2419 100%);
+  --gradient-discount:        linear-gradient(135deg, #ff3b3e 0%, #d31417 100%);
+  --gradient-buy:             linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  --gradient-preorder-orange: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  --gradient-preorder-red:    linear-gradient(135deg, #ff2419 0%, #b91c1c 100%);
+  --gradient-hero-stroke:     linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 100%);
+  --gradient-hero-stroke-hover: linear-gradient(135deg, var(--primary) 0%, #ff2419 35%, rgba(225,6,0,0.55) 65%, rgba(225,6,0,0.15) 100%);
+  --gradient-category-grid:   linear-gradient(72.85deg, #000000 44.62%, #0f0f0f 100.35%);
+
+  /* ===================================================================
+     SHADOW FAMILY — 13 famílias catalogadas
+     Famílias "-hover" assumem que o componente já paga a transição
+     (transition: box-shadow 320ms ease-out, easing house [0.16,1,0.3,1]).
+     =================================================================== */
+  --shadow-neon-red:
+    0 0 0 1px rgba(225, 6, 0, 0.55),
+    0 0 0 4px rgba(225, 6, 0, 0.10),
+    0 0 22px -2px rgba(225, 6, 0, 0.45),
+    0 0 60px -8px rgba(225, 6, 0, 0.25),
+    0 16px 44px -16px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --shadow-hero-card-hover:
+    0 30px 80px -24px rgba(0, 0, 0, 0.75),
+    0 0 50px -10px rgba(225, 6, 0, 0.35);
+  --shadow-category-active:
+    0 0 0 1px rgba(225, 6, 0, 0.45),
+    0 30px 80px -20px rgba(0, 0, 0, 0.7),
+    0 0 32px -4px rgba(225, 6, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-essential-hover:
+    0 0 0 1px rgba(225, 6, 0, 0.18),
+    0 24px 60px -28px rgba(225, 6, 0, 0.5);
+  --shadow-deal-hover:
+    0 0 0 1px rgba(225, 6, 0, 0.15),
+    0 22px 50px -28px rgba(225, 6, 0, 0.45);
+  --shadow-profile-hover:
+    0 0 0 1px rgba(225, 6, 0, 0.12),
+    0 18px 40px -22px rgba(225, 6, 0, 0.35);
+  --shadow-order-hover:
+    0 0 0 1px rgba(225, 6, 0, 0.08),
+    0 14px 30px -20px rgba(0, 0, 0, 0.5);
+  --shadow-buy-cta:        0 12px 28px -7px rgba(34, 197, 94, 0.55);
+  --shadow-brand-cta:      0 8px 22px -6px rgba(225, 6, 0, 0.55);
+  --shadow-discount-badge: 0 12px 28px -8px rgba(255, 43, 46, 0.55);
+  --shadow-drawer-side:    -24px 0 60px -12px rgba(0, 0, 0, 0.55);
+  --shadow-search-open:    0 10px 32px rgba(0, 0, 0, 0.55);
 }
 
 /* Mobile: compress section spacing — desktop tokens leave ~256px dead space */
@@ -303,6 +368,25 @@ input:-webkit-autofill:active {
   --radius-md: var(--radius);
   --radius-lg: var(--radius-card);
   --radius-xl: calc(var(--radius-card) + 4px);
+  /* Card radius family — generates rounded-card-sm/md/lg/xl + rounded-pill utilities */
+  --radius-card-sm: var(--radius-card-sm);
+  --radius-card-md: var(--radius-card-md);
+  --radius-card-lg: var(--radius-card-lg);
+  --radius-card-xl: var(--radius-card-xl);
+  --radius-pill: var(--radius-pill);
+  /* Shadow family — generates shadow-neon-red, shadow-hero-card-hover, etc */
+  --shadow-neon-red: var(--shadow-neon-red);
+  --shadow-hero-card-hover: var(--shadow-hero-card-hover);
+  --shadow-category-active: var(--shadow-category-active);
+  --shadow-essential-hover: var(--shadow-essential-hover);
+  --shadow-deal-hover: var(--shadow-deal-hover);
+  --shadow-profile-hover: var(--shadow-profile-hover);
+  --shadow-order-hover: var(--shadow-order-hover);
+  --shadow-buy-cta: var(--shadow-buy-cta);
+  --shadow-brand-cta: var(--shadow-brand-cta);
+  --shadow-discount-badge: var(--shadow-discount-badge);
+  --shadow-drawer-side: var(--shadow-drawer-side);
+  --shadow-search-open: var(--shadow-search-open);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
