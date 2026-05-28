@@ -3,6 +3,10 @@
 > Auditoria da realidade visual do site v3 (mobile-first, dark-default, gamer/PC aesthetic).
 > Fonte: `src/styles/theme.css` + componentes em `src/app/components/`. Última revisão: 2026-05-28.
 > Este documento é o blueprint para reconstrução em Figma — fundações, componentes, padrões.
+>
+> **Arquivos relacionados:**
+> - [`tokens.json`](tokens.json) — DTCG format pra import em Tokens Studio (Figma) / Style Dictionary
+> - [`design-section-map.md`](design-section-map.md) — Mapa seção → primitivos usados
 
 ---
 
@@ -939,3 +943,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 | 2026-05-28 | **Form primitives** — criados `<FieldLabel>` + `<FieldInput>` + `<QtyStepper>`. Migrado AddressFormModal (8 inputs + 8 labels → primitivos, removidos constants `inputStyle`/`labelStyle`) + ProductPage desktop qty (−24 linhas). Total primitivos: 12. |
 | 2026-05-28 | **Hover CSS consolidation** — `.essential-card`, `.profile-card`, `.order-card`, `.deal-card-img`, `.hero-card`, `.category-active`, `.neon-hover-red` reescritos pra usar `var(--shadow-*)` tokens já existentes (em vez de inline shadows duplicados). Token novo `--shadow-neon-glow-deepen`. `--shadow-neon-red` ajustado pra incluir 7ª inset layer que faltava. CSS theme.css −31 linhas. |
 | 2026-05-28 | **QtyStepper extensions** — adicionados `size="lg"` (w-9/w-10) + `shape="pill"` (rounded-pill, sem border interna grossa). Migrados ProductPage mobile qty (lg/pill) + CartDrawer item qty (sm/rect). Removidos imports Minus/Plus dos consumers. Net −24 linhas. |
+| 2026-05-28 | **Pré-Figma essentials** — criados `tokens.json` (DTCG format, ~12kB) com toda fundação (cores light/dark, gradients, shadows, radii, spacing, typography, motion). Criado `design-section-map.md` — mapa visual seção→primitivos com cobertura primitivos atual + heurística pra reuso. |
