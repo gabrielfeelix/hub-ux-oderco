@@ -125,7 +125,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                   const hover = hoverRatings[key] ?? 0;
                   const display = hover || rating;
                   return (
-                    <div key={key} className="flex items-center gap-3 p-3" style={{ borderRadius: "12px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div key={key} className="flex items-center gap-3 p-3" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <div className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                         <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
@@ -284,7 +284,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
             <p className="mt-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(var(--foreground-rgb), 0.6)" : "rgba(0,0,0,0.6)" }}>
               Nota média {avgRating.toFixed(1)} ⭐ · Sua opinião vai ajudar a galera
             </p>
-            <div className="mt-5 inline-flex items-center gap-2 px-4 py-2.5" style={{ borderRadius: "12px", background: "rgba(250,204,21,0.10)", border: "1px solid rgba(250,204,21,0.28)" }}>
+            <div className="mt-5 inline-flex items-center gap-2 px-4 py-2.5" style={{ borderRadius: "var(--radius-card-sm)", background: "rgba(250,204,21,0.10)", border: "1px solid rgba(250,204,21,0.28)" }}>
               <Sparkles size={14} style={{ color: "#facc15" }} />
               <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, color: "#facc15" }}>
                 +{earnedPoints} PCYES Points creditados

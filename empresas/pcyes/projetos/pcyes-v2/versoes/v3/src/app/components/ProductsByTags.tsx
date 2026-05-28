@@ -172,7 +172,7 @@ export function ProductsByTags() {
                     <button
                       onClick={(e) => { e.preventDefault(); addItem(displayProduct); }}
                       className="w-full py-2.5 text-white flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02]"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
+                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "var(--gradient-buy)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
                     >
                       <ShoppingBag size={13} strokeWidth={1.5} />
                       Adicionar

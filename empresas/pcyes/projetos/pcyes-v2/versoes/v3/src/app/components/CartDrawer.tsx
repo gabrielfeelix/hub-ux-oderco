@@ -156,10 +156,10 @@ export function CartDrawer() {
             className="fixed top-0 right-0 bottom-0 z-[61] flex w-full max-w-[460px] flex-col overflow-hidden"
             style={{
               background: isDark ? "#161617" : "white",
-              borderTopLeftRadius: "22px",
-              borderBottomLeftRadius: "22px",
+              borderTopLeftRadius: "var(--radius-card-lg)",
+              borderBottomLeftRadius: "var(--radius-card-lg)",
               borderLeft: "1px solid rgba(var(--foreground-rgb), 0.06)",
-              boxShadow: "-24px 0 60px -12px rgba(0,0,0,0.55)",
+              boxShadow: "var(--shadow-drawer-side)",
             }}
           >
             <div className="flex items-center justify-between border-b border-foreground/5 px-7 py-5">
@@ -179,7 +179,7 @@ export function CartDrawer() {
 
             {paidItems.length > 0 && (
               <div className="border-b border-foreground/5 px-7 py-3.5">
-                <div className={`overflow-hidden rounded-[18px] border ${giftUnlocked ? "border-primary/18 bg-primary/[0.06]" : "border-foreground/8 bg-foreground/[0.03]"}`}>
+                <div className={`overflow-hidden rounded-card-md border ${giftUnlocked ? "border-primary/18 bg-primary/[0.06]" : "border-foreground/8 bg-foreground/[0.03]"}`}>
                   <div className="px-4 py-3.5">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-start gap-3">
@@ -487,13 +487,13 @@ export function CartDrawer() {
                 <button
                   className="w-full py-4 rounded-full text-white transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
                   style={{
-                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                    background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13.5px",
                     fontWeight: 800,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
-                    boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+                    boxShadow: "var(--shadow-buy-cta)",
                   }}
                   onClick={() => { setIsOpen(false); navigate("/checkout"); }}
                   aria-label="Finalizar pedido"
@@ -596,7 +596,7 @@ export function CartDrawer() {
                           <div
                             className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:left-4 md:top-4 md:h-9 md:w-9"
                             style={{
-                              background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                              background: "var(--gradient-brand)",
                               boxShadow: "0 6px 18px -4px rgba(225,6,0,0.5)",
                             }}
                           >
@@ -607,7 +607,7 @@ export function CartDrawer() {
                             <div
                               className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:right-4 md:top-4 md:h-9 md:w-9"
                               style={{
-                                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                                background: "var(--gradient-brand)",
                                 boxShadow: "0 6px 18px -4px rgba(225,6,0,0.5)",
                               }}
                             >
@@ -656,12 +656,12 @@ export function CartDrawer() {
                       disabled={!selectedGiftId}
                       className="cursor-pointer rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                       style={{
-                        background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                        background: "var(--gradient-brand)",
                         fontFamily: "var(--font-family-inter)",
                         fontSize: "13px",
                         fontWeight: 700,
                         letterSpacing: "0.04em",
-                        boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                        boxShadow: "var(--shadow-brand-cta)",
                       }}
                     >
                       Selecionar presente

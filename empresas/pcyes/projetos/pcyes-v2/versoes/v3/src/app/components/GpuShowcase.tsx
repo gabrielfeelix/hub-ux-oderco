@@ -61,7 +61,7 @@ const BEFORE_FILTER = "blur(8px)";
 const AFTER_FILTER = "saturate(1.15) contrast(1.05)";
 const ACCENT = "#ff2419";
 const ACCENT_GLOW = "rgba(225, 6, 0, 0.55)";
-const ACCENT_BG = "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)";
+const ACCENT_BG = "var(--gradient-brand)";
 
 export function GpuShowcase() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -481,7 +481,7 @@ export function GpuShowcase() {
                   to={`/produto/${product.id}`}
                   className="inline-flex w-full flex-shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full py-3 transition-transform hover:scale-[1.02] active:scale-[0.98] md:w-auto md:px-10"
                   style={{
-                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                    background: "var(--gradient-buy)",
                     color: "#ffffff",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13px",

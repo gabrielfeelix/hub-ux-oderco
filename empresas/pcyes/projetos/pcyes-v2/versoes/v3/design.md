@@ -248,9 +248,13 @@ Todas as 13 famílias de sombra do v3 viraram tokens em `theme.css`:
 | `--shadow-deal-hover` | `shadow-deal-hover` | Flash deals |
 | `--shadow-profile-hover` | `shadow-profile-hover` | Profile dashboard |
 | `--shadow-order-hover` | `shadow-order-hover` | Lista de pedidos |
-| `--shadow-buy-cta` | `shadow-buy-cta` | "Comprar agora" / "Adicionar" |
-| `--shadow-brand-cta` | `shadow-brand-cta` | Newsletter / brand pills vermelhas |
-| `--shadow-discount-badge` | `shadow-discount-badge` | -X% pill |
+| `--shadow-buy-cta` | `shadow-buy-cta` | "Comprar agora" / "Adicionar" (dominante `0 14px 32px -8px`) |
+| `--shadow-buy-cta-sm` | `shadow-buy-cta-sm` | Quick-add em product card (`0 10px 26px -6px`) |
+| `--shadow-brand-cta` | `shadow-brand-cta` | CTA principal vermelho (`0 14px 32px -8px`) |
+| `--shadow-brand-cta-sm` | `shadow-brand-cta-sm` | CTA secundário vermelho (`0 8px 22px -8px`) |
+| `--shadow-brand-pill` | `shadow-brand-pill` | Newsletter / brand pills (`0 8px 22px -6px`) |
+| `--shadow-discount-badge` | `shadow-discount-badge` | -X% pill (`0 12px 28px -8px`) |
+| `--shadow-discount-sm` | `shadow-discount-sm` | Discount badge menor (`0 4px 14px -4px`, alpha 0.6) |
 | `--shadow-drawer-side` | `shadow-drawer-side` | CartDrawer lateral |
 | `--shadow-search-open` | `shadow-search-open` | Navbar search input focused |
 
@@ -901,3 +905,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 |---|---|
 | 2026-05-28 | Documento inicial — auditoria completa pós-mobile-first homepage + ProductPage. |
 | 2026-05-28 | **Tokenização** — promovido a tokens: família de raios "Card" (12/18/22/26), gradientes especiais (brand/discount/buy/preorder/hero/category), 13 famílias de sombra. Adicionado roadmap §10.4 de migração pra semantic tokens em light mode. |
+| 2026-05-28 | **Aplicação dos tokens** — 81 gradients + 38 sombras + ~70 raios migrados pra `var(--*)` em ~20 componentes (ProductShelf, FlashDealsStrip, CartDrawer, CheckoutPage, ProductPage, etc). Adicionados `-sm` variants para sombras (buy-cta-sm, brand-cta-sm, brand-pill, discount-sm). Bundle CSS +0.42 kB, JS −2.23 kB. |

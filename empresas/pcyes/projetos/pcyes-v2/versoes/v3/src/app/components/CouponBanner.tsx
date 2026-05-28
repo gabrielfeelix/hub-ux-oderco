@@ -51,7 +51,7 @@ export function CouponBanner() {
             <div
               className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white"
               style={{
-                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                background: "var(--gradient-brand)",
                 boxShadow: "0 8px 24px -6px rgba(225,6,0,0.6)",
               }}
             >

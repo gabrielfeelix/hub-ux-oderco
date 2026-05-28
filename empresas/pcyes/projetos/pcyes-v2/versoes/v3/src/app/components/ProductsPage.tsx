@@ -1259,14 +1259,14 @@ export function ProductsPage() {
                               <span
                                 className="absolute top-3 left-3 z-10 inline-flex items-center text-white"
                                 style={{
-                                  background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                                  background: "var(--gradient-discount)",
                                   padding: "6px 12px",
                                   borderRadius: "10px",
                                   fontFamily: "var(--font-family-figtree)",
                                   fontSize: "15px",
                                   fontWeight: 900,
                                   letterSpacing: "-0.02em",
-                                  boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
+                                  boxShadow: "var(--shadow-discount-badge)",
                                 }}
                               >
                                 -{discount}%
@@ -1330,7 +1330,7 @@ export function ProductsPage() {
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
                               className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-4 py-1.5 text-[11px] lg:bottom-4 lg:px-10 lg:py-3 lg:text-[13px] opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
-                              style={{ background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 6px 16px -4px rgba(34,197,94,0.45)" }}
+                              style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 6px 16px -4px rgba(34,197,94,0.45)" }}
                             >
                               <span className="inline-flex items-center gap-1.5 lg:gap-2"><ShoppingBag size={12} strokeWidth={2} className="lg:hidden" /><ShoppingBag size={14} strokeWidth={2} className="hidden lg:block" /> Comprar</span>
                             </button>
@@ -1437,13 +1437,13 @@ export function ProductsPage() {
                             <button onClick={() => handleAddToCart(displayProduct)}
                               className="flex items-center gap-2 px-7 py-3 rounded-full transition-transform hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
                               style={{
-                                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                                background: "var(--gradient-buy)",
                                 color: "white",
                                 fontFamily: "var(--font-family-inter)",
                                 fontSize: "13px",
                                 fontWeight: 700,
                                 letterSpacing: "0.04em",
-                                boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
+                                boxShadow: "var(--shadow-buy-cta-sm)",
                               }}
                             ><ShoppingBag size={14} strokeWidth={2} /> Comprar</button>
                           </div>
@@ -1586,7 +1586,7 @@ export function ProductsPage() {
             <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 16 }}
               transition={{ type: "spring", damping: 26, stiffness: 320 }}
               className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[1040px] md:max-w-[95vw] md:max-h-[90vh] z-50 overflow-y-auto p-6 md:p-8 shadow-2xl"
-              style={{ background: "#0f0f10", borderRadius: "22px", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
+              style={{ background: "#0f0f10", borderRadius: "var(--radius-card-lg)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
             >
               <button onClick={() => setQuickViewProduct(null)}
                 className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-white/55 hover:text-white hover:bg-white/8 transition-colors z-20 cursor-pointer"
@@ -1604,7 +1604,7 @@ export function ProductsPage() {
                           onClick={(e) => { e.preventDefault(); setImageIdx(quickViewProduct.id, idx, quickViewImages.length); }}
                           className="aspect-square overflow-hidden transition-all cursor-pointer"
                           style={{
-                            borderRadius: "12px",
+                            borderRadius: "var(--radius-card-sm)",
                             background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                             border: idx === quickViewImageIndex
                               ? "2px solid rgba(225,6,0,0.85)"
@@ -1621,7 +1621,7 @@ export function ProductsPage() {
                   <div
                     className="relative flex-1 aspect-square overflow-hidden"
                     style={{
-                      borderRadius: "18px",
+                      borderRadius: "var(--radius-card-md)",
                       background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
                       border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                       boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
@@ -1629,7 +1629,7 @@ export function ProductsPage() {
                   >
                     <div
                       className="pointer-events-none absolute inset-0"
-                      style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "18px" }}
+                      style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "var(--radius-card-md)" }}
                     />
                     <ImageWithFallback
                       src={quickViewImages[quickViewImageIndex]}
@@ -1642,7 +1642,7 @@ export function ProductsPage() {
                       <span
                         className="absolute top-4 left-4 z-20 px-3 py-1.5 text-white"
                         style={{
-                          background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                          background: "var(--gradient-brand)",
                           borderRadius: "999px",
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "11px",
@@ -1758,7 +1758,7 @@ export function ProductsPage() {
                     onClick={() => { handleAddToCart(quickViewProduct); setQuickViewProduct(null); }}
                     className="w-full py-4 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer mt-auto"
                     style={{
-                      background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                      background: "var(--gradient-buy)",
                       color: "white",
                       borderRadius: "999px",
                       fontFamily: "var(--font-family-inter)",

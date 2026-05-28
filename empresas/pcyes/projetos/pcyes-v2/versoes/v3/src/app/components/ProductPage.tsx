@@ -401,7 +401,7 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
           onChange={(e) => setCep(formatCep(e.target.value))}
           className="w-full text-foreground placeholder-foreground/30 px-4 py-3 pr-11 focus:outline-none transition-all"
           style={{
-            borderRadius: "12px",
+            borderRadius: "var(--radius-card-sm)",
             border: "1px solid rgba(var(--foreground-rgb), 0.10)",
             background: "rgba(var(--foreground-rgb), 0.04)",
             fontFamily: "var(--font-family-inter)",
@@ -804,8 +804,8 @@ function StickyPriceCard({
                     fontSize: "11px",
                     fontWeight: 800,
                     color: "#ffffff",
-                    background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
-                    boxShadow: "0 4px 14px -4px rgba(255,43,46,0.6)",
+                    background: "var(--gradient-discount)",
+                    boxShadow: "var(--shadow-discount-sm)",
                     letterSpacing: "-0.01em",
                   }}
                 >
@@ -915,12 +915,12 @@ function StickyPriceCard({
             disabled={!inStock}
             className="h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
             style={{
-              background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+              background: "var(--gradient-buy)",
               fontFamily: "var(--font-family-inter)",
               fontSize: "14px",
               fontWeight: 700,
               letterSpacing: "0.04em",
-              boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+              boxShadow: "var(--shadow-buy-cta)",
             }}
           >
             <Zap size={15} strokeWidth={2.4} fill="currentColor" />
@@ -982,7 +982,7 @@ function MobilePurchaseFlow({
             <span
               className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
               style={{
-                background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
+                background: "var(--gradient-preorder-orange)",
                 color: "#fff",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "10px",
@@ -1028,8 +1028,8 @@ function MobilePurchaseFlow({
                     fontSize: "10.5px",
                     fontWeight: 800,
                     color: "#ffffff",
-                    background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
-                    boxShadow: "0 4px 14px -4px rgba(255,43,46,0.6)",
+                    background: "var(--gradient-discount)",
+                    boxShadow: "var(--shadow-discount-sm)",
                   }}
                 >
                   -{discount}%
@@ -1172,7 +1172,7 @@ function MobilePurchaseFlow({
                     style={{
                       background: "rgba(var(--foreground-rgb), 0.04)",
                       border: "1px solid rgba(249,115,22,0.18)",
-                      borderRadius: "12px",
+                      borderRadius: "var(--radius-card-sm)",
                     }}
                   >
                     <span
@@ -1302,15 +1302,15 @@ function MobilePurchaseFlow({
           className="h-12 w-full px-6 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           style={{
             background: isPreOrder
-              ? "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
-              : "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+              ? "var(--gradient-preorder-orange)"
+              : "var(--gradient-buy)",
             fontFamily: "var(--font-family-inter)",
             fontSize: "14px",
             fontWeight: 700,
             letterSpacing: "0.04em",
             boxShadow: isPreOrder
               ? "0 14px 32px -8px rgba(249,115,22,0.55)"
-              : "0 14px 32px -8px rgba(34,197,94,0.55)",
+              : "var(--shadow-buy-cta)",
           }}
         >
           {isPreOrder ? (
@@ -1663,7 +1663,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -6, scale: 0.97 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute right-0 top-full z-30 mt-2 min-w-[180px] overflow-hidden rounded-[12px] border border-white/10 shadow-2xl"
+                        className="absolute right-0 top-full z-30 mt-2 min-w-[180px] overflow-hidden rounded-card-sm border border-white/10 shadow-2xl"
                         style={{ background: "#1f1c1c" }}
                         role="listbox"
                       >
@@ -1833,7 +1833,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               <div
                 className="grid w-full max-h-[calc(100vh-32px)] overflow-y-auto md:max-h-[88vh] md:overflow-hidden border border-white/10 shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
                 style={{
-                  borderRadius: "18px",
+                  borderRadius: "var(--radius-card-md)",
                   background: isDark ? "rgba(16,16,17,0.98)" : "rgba(var(--foreground-rgb), 0.98)",
                 }}
                 onClick={(e) => e.stopPropagation()}
@@ -2126,12 +2126,12 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           <section className="border-t border-white/5 px-6 py-10 md:px-10">
             <div className="grid gap-7 md:grid-cols-2">
               {[primaryImage, secondaryImage].map((image, index) => (
-                <div key={`${image}-${index}`} className="relative aspect-[16/10] overflow-hidden" style={{ borderRadius: "22px", ...productImageBg }}>
+                <div key={`${image}-${index}`} className="relative aspect-[16/10] overflow-hidden" style={{ borderRadius: "var(--radius-card-lg)", ...productImageBg }}>
                   <div
                     className="pointer-events-none absolute inset-0"
                     style={{
                       background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-                      borderRadius: "22px",
+                      borderRadius: "var(--radius-card-lg)",
                     }}
                   />
                   <ImageWithFallback src={image} alt={`${product.name} galeria ${index + 1}`} className="relative h-full w-full object-contain p-6" />
@@ -2147,7 +2147,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             <h3 className="mb-6 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3.4vw, 32px)", lineHeight: 1.08, fontWeight: 700, letterSpacing: "-0.02em" }}>
               Veja {product.name.split(" ").slice(0, 4).join(" ")} em ação
             </h3>
-            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "22px", background: "#0a0a0a", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
+            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "var(--radius-card-lg)", background: "#0a0a0a", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
               <iframe
                 className="absolute inset-0 h-full w-full"
                 src={`https://www.youtube.com/embed/${product.id % 2 === 0 ? "dQw4w9WgXcQ" : "M7lc1UVf-VE"}?rel=0&modestbranding=1`}
@@ -2680,7 +2680,7 @@ export function ProductPage() {
                         <span
                           className="absolute z-20 inline-flex items-center text-white"
                           style={{
-                            background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                            background: "var(--gradient-buy)",
                             top: "12px",
                             left: "12px",
                             padding: "6px 12px",
@@ -2699,13 +2699,13 @@ export function ProductPage() {
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem({ id: rProduct.id, name: rProduct.name, price: rProduct.price, image: getPrimaryProductImage(rProduct) }); toast.success("Adicionado!"); }}
                         className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 whitespace-nowrap rounded-full px-10 py-3 opacity-100 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
                         style={{
-                          background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                          background: "var(--gradient-buy)",
                           color: "white",
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "13px",
                           fontWeight: 700,
                           letterSpacing: "0.04em",
-                          boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
+                          boxShadow: "var(--shadow-buy-cta-sm)",
                         }}
                       >
                         <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
@@ -2772,7 +2772,7 @@ export function ProductPage() {
               fontSize: "13px",
               whiteSpace: "nowrap",
               background: preOrderInfo
-                ? "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
+                ? "var(--gradient-preorder-orange)"
                 : "#4CAF50",
             }}
           >

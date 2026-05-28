@@ -289,14 +289,14 @@ export function ProductCarousel({
                         <span
                           className="inline-flex items-center text-white"
                           style={{
-                            background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                            background: "var(--gradient-discount)",
                             padding: "6px 12px",
                             borderRadius: "10px",
                             fontFamily: "var(--font-family-figtree)",
                             fontSize: "15px",
                             fontWeight: 900,
                             letterSpacing: "-0.02em",
-                            boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
+                            boxShadow: "var(--shadow-discount-badge)",
                           }}
                         >
                           {discountBadge}
@@ -316,7 +316,7 @@ export function ProductCarousel({
                   <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
                     <button
                       className="w-full py-2.5 text-white flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02]"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
+                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "var(--gradient-buy)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem(displayProduct); }}
                     >
                       <ShoppingBag size={13} strokeWidth={1.5} />

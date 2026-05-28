@@ -42,7 +42,7 @@ export function MegaSaleBanner() {
           transition={{ duration: 0.5 }}
           className="relative overflow-hidden"
           style={{
-            borderRadius: "26px",
+            borderRadius: "var(--radius-card-xl)",
             background:
               "radial-gradient(circle at 18% 20%, rgba(255,90,80,0.4) 0%, transparent 55%), radial-gradient(circle at 85% 80%, rgba(225,6,0,0.45) 0%, transparent 55%), linear-gradient(135deg, #b00500 0%, #6e0200 50%, #2a0000 100%)",
             border: "1.5px solid rgba(255,90,80,0.45)",

@@ -220,13 +220,13 @@ export function CartPage() {
               to="/produtos"
               className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-white transition-transform hover:scale-[1.03] active:scale-[0.97]"
               style={{
-                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                background: "var(--gradient-brand)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "14px",
                 fontWeight: 700,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                boxShadow: "var(--shadow-brand-cta)",
               }}
             >
               Explorar produtos
@@ -300,7 +300,7 @@ export function CartPage() {
                 <div
                   className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white"
                   style={{
-                    background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                    background: "var(--gradient-brand)",
                     boxShadow: "0 8px 20px -4px rgba(225,6,0,0.55)",
                   }}
                 >
@@ -319,7 +319,7 @@ export function CartPage() {
                 onClick={() => { setGiftDismissed(false); setGiftModalOpen(true); }}
                 className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-2.5 text-white transition-transform hover:scale-[1.03] active:scale-[0.98] min-h-[44px] md:min-h-0"
                 style={{
-                  background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                  background: "var(--gradient-brand)",
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "12px",
                   fontWeight: 800,
@@ -346,7 +346,7 @@ export function CartPage() {
               <div className="flex items-center gap-3">
                 <div
                   className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white"
-                  style={{ background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)" }}
+                  style={{ background: "var(--gradient-buy)" }}
                 >
                   <Check size={16} strokeWidth={2.4} />
                 </div>
@@ -380,7 +380,7 @@ export function CartPage() {
                   <div
                     className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-white"
                     style={{
-                      background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                      background: "var(--gradient-brand)",
                       boxShadow: "0 6px 18px -4px rgba(225,6,0,0.5)",
                     }}
                   >
@@ -422,7 +422,7 @@ export function CartPage() {
                       transition={{ duration: 0.22 }}
                       className="relative flex gap-4 overflow-hidden p-4 md:gap-5 md:p-5"
                       style={{
-                        borderRadius: "18px",
+                        borderRadius: "var(--radius-card-md)",
                         background: cardBg,
                         border: cardBorder,
                         boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
@@ -448,7 +448,7 @@ export function CartPage() {
                             style={{
                               padding: "3px 7px",
                               borderRadius: "8px",
-                              background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                              background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
                               fontSize: "9px",
                               fontWeight: 800,
@@ -610,7 +610,7 @@ export function CartPage() {
                 {/* Shipping (acima do cupom — frete grátis ou cálculo) */}
                 {freeShipping ? (
                   <div
-                    className="mb-3 flex items-center gap-2.5 rounded-[12px] p-3"
+                    className="mb-3 flex items-center gap-2.5 rounded-card-sm p-3"
                     style={{
                       background: "rgba(34,197,94,0.08)",
                       border: "1px solid rgba(34,197,94,0.3)",
@@ -684,7 +684,7 @@ export function CartPage() {
                                 <span
                                   className="flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full"
                                   style={{
-                                    background: active ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)" : "transparent",
+                                    background: active ? "var(--gradient-buy)" : "transparent",
                                     border: active ? "none" : "1.5px solid rgba(var(--foreground-rgb), 0.2)",
                                   }}
                                 >
@@ -714,7 +714,7 @@ export function CartPage() {
                 <button
                   onClick={() => setCouponOpen((v) => !v)}
                   className={`mb-3 flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-3 transition-colors ${
-                    appliedCoupon ? "rounded-[12px] border border-green-500/25 bg-green-500/[0.06]" : "rounded-[12px] border border-white/8 hover:border-white/14 hover:bg-white/[0.03]"
+                    appliedCoupon ? "rounded-card-sm border border-green-500/25 bg-green-500/[0.06]" : "rounded-card-sm border border-white/8 hover:border-white/14 hover:bg-white/[0.03]"
                   }`}
                 >
                   <span className="flex items-center gap-2">
@@ -777,13 +777,13 @@ export function CartPage() {
                           disabled={!coupon.trim()}
                           className="cursor-pointer rounded-[10px] px-4 py-2.5 text-white transition-transform hover:scale-[1.02] active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                           style={{
-                            background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                            background: "var(--gradient-brand)",
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "12px",
                             fontWeight: 700,
                             letterSpacing: "0.06em",
                             textTransform: "uppercase",
-                            boxShadow: "0 8px 22px -8px rgba(225,6,0,0.55)",
+                            boxShadow: "var(--shadow-brand-cta-sm)",
                           }}
                         >
                           Aplicar
@@ -803,7 +803,7 @@ export function CartPage() {
 
                 {/* PCYES Points */}
                 <div
-                  className={`mb-5 overflow-hidden rounded-[12px] transition-colors ${
+                  className={`mb-5 overflow-hidden rounded-card-sm transition-colors ${
                     pointsApplied
                       ? "border border-yellow-300/40 bg-yellow-300/[0.05]"
                       : "border border-white/8 hover:border-yellow-300/35 hover:bg-yellow-300/[0.05]"
@@ -959,13 +959,13 @@ export function CartPage() {
                   onClick={() => navigate("/checkout")}
                   className="mb-3 hidden w-full cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-3.5 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] lg:inline-flex"
                   style={{
-                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                    background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "14px",
                     fontWeight: 800,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
-                    boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+                    boxShadow: "var(--shadow-buy-cta)",
                   }}
                 >
                   <Lock size={14} strokeWidth={2.4} />
@@ -1060,7 +1060,7 @@ export function CartPage() {
                           <div
                             className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:left-4 md:top-4 md:h-9 md:w-9"
                             style={{
-                              background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                              background: "var(--gradient-brand)",
                               boxShadow: "0 6px 18px -4px rgba(225,6,0,0.5)",
                             }}
                           >
@@ -1071,7 +1071,7 @@ export function CartPage() {
                             <div
                               className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:right-4 md:top-4 md:h-9 md:w-9"
                               style={{
-                                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                                background: "var(--gradient-brand)",
                                 boxShadow: "0 6px 18px -4px rgba(225,6,0,0.5)",
                               }}
                             >
@@ -1125,12 +1125,12 @@ export function CartPage() {
                   disabled={!selectedGiftId}
                   className="cursor-pointer rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                   style={{
-                    background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                    background: "var(--gradient-brand)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13px",
                     fontWeight: 700,
                     letterSpacing: "0.04em",
-                    boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                    boxShadow: "var(--shadow-brand-cta)",
                   }}
                 >
                   Selecionar presente
@@ -1166,13 +1166,13 @@ export function CartPage() {
             className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97]"
             style={{
               minHeight: 46,
-              background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+              background: "var(--gradient-buy)",
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
               fontWeight: 800,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
-              boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+              boxShadow: "var(--shadow-buy-cta)",
             }}
           >
             <Lock size={14} strokeWidth={2.4} />

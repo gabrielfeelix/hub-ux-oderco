@@ -109,7 +109,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
             <span
               className="absolute left-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full text-white"
               style={{
-                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                background: "var(--gradient-brand)",
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "15px",
                 fontWeight: 800,
@@ -125,7 +125,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
             <span
               className="absolute z-20 inline-flex items-center text-white"
               style={{
-                background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                background: "var(--gradient-discount)",
                 left: rank !== undefined ? "60px" : "12px",
                 top: "12px",
                 padding: "6px 12px",
@@ -134,7 +134,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
                 fontSize: "15px",
                 fontWeight: 900,
                 letterSpacing: "-0.02em",
-                boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
+                boxShadow: "var(--shadow-discount-badge)",
               }}
             >
               -{discount}%
@@ -179,13 +179,13 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
             }}
             className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
             style={{
-              background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+              background: "var(--gradient-buy)",
               color: "white",
               fontFamily: "var(--font-family-inter)",
               fontSize: "13px",
               fontWeight: 700,
               letterSpacing: "0.04em",
-              boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
+              boxShadow: "var(--shadow-buy-cta-sm)",
             }}
           >
             <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>

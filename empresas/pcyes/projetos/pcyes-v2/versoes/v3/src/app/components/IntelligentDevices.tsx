@@ -248,13 +248,13 @@ export function IntelligentDevices() {
                       }}
                       className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-5 py-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
                       style={{
-                        background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                        background: "var(--gradient-buy)",
                         color: "white",
                         fontFamily: "var(--font-family-inter)",
                         fontSize: "11px",
                         fontWeight: 700,
                         letterSpacing: "0.04em",
-                        boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
+                        boxShadow: "var(--shadow-buy-cta-sm)",
                       }}
                     >
                       <span className="inline-flex items-center gap-1.5"><ShoppingBag size={12} strokeWidth={2} /> Comprar</span>

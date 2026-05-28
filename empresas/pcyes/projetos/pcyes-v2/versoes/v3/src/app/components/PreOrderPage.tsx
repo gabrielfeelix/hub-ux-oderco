@@ -81,7 +81,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
       className="relative overflow-hidden group cursor-pointer"
       onClick={() => navigate(`/produto/${product.id}`)}
       style={{
-        borderRadius: "22px",
+        borderRadius: "var(--radius-card-lg)",
         background: "linear-gradient(135deg, #120608 0%, #1a080b 50%, #120608 100%)",
         border: "1px solid rgba(255,36,25,0.12)",
         boxShadow: "0 20px 50px -20px rgba(0,0,0,0.55)",

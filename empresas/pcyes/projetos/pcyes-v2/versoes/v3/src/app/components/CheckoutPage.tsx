@@ -586,13 +586,13 @@ export function CheckoutPage() {
               to="/produtos"
               className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-white transition-transform hover:scale-[1.03]"
               style={{
-                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                background: "var(--gradient-brand)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13px",
                 fontWeight: 700,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                boxShadow: "var(--shadow-brand-cta)",
               }}
             >
               Explorar produtos
@@ -725,14 +725,14 @@ export function CheckoutPage() {
                     className="inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400/60"
                     style={{
                       background: pixCopied
-                        ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"
-                        : "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                        ? "var(--gradient-buy)"
+                        : "var(--gradient-brand)",
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "13px",
                       fontWeight: 800,
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      boxShadow: pixCopied ? "0 14px 32px -8px rgba(34,197,94,0.55)" : "0 14px 32px -8px rgba(225,6,0,0.55)",
+                      boxShadow: pixCopied ? "var(--shadow-buy-cta)" : "var(--shadow-brand-cta)",
                     }}
                   >
                     {pixCopied ? <Check size={14} strokeWidth={2.6} /> : <Copy size={13} strokeWidth={2.4} />}
@@ -742,7 +742,7 @@ export function CheckoutPage() {
               </div>
 
               <div
-                className="mt-6 flex items-start gap-3 rounded-[12px] p-3.5"
+                className="mt-6 flex items-start gap-3 rounded-card-sm p-3.5"
                 style={{ background: "rgba(var(--foreground-rgb), 0.02)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
               >
                 <ShieldCheck size={14} strokeWidth={2} className="mt-0.5 flex-shrink-0 text-green-500" />
@@ -771,7 +771,7 @@ export function CheckoutPage() {
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className="mb-7 flex h-24 w-24 items-center justify-center rounded-full text-white"
                 style={{
-                  background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                  background: "var(--gradient-buy)",
                   boxShadow: "0 30px 80px -16px rgba(34,197,94,0.55), 0 0 0 6px rgba(34,197,94,0.12)",
                 }}
               >
@@ -869,7 +869,7 @@ export function CheckoutPage() {
                           <span
                             className="absolute -right-1.5 -top-1.5 z-10 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-white"
                             style={{
-                              background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                              background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
                               fontSize: "10px",
                               fontWeight: 800,
@@ -915,13 +915,13 @@ export function CheckoutPage() {
                     to="/"
                     className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-white transition-transform hover:scale-[1.03]"
                     style={{
-                      background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                      background: "var(--gradient-brand)",
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "12.5px",
                       fontWeight: 800,
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                      boxShadow: "var(--shadow-brand-cta)",
                     }}
                   >
                     Voltar pra home
@@ -988,9 +988,9 @@ export function CheckoutPage() {
                       className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-all"
                       style={{
                         background: active
-                          ? "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)"
+                          ? "var(--gradient-brand)"
                           : done
-                          ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"
+                          ? "var(--gradient-buy)"
                           : "rgba(var(--foreground-rgb), 0.06)",
                         border: active || done ? "none" : "1px solid rgba(var(--foreground-rgb), 0.1)",
                         color: active || done ? "#fff" : "rgba(var(--foreground-rgb), 0.4)",
@@ -1245,7 +1245,7 @@ export function CheckoutPage() {
                               <div
                                 className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full"
                                 style={{
-                                  background: active ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)" : "transparent",
+                                  background: active ? "var(--gradient-buy)" : "transparent",
                                   border: active ? "none" : "1.5px solid rgba(var(--foreground-rgb), 0.25)",
                                 }}
                               >
@@ -1265,8 +1265,8 @@ export function CheckoutPage() {
                                         borderRadius: "999px",
                                         background:
                                           opt.badge === "GRÁTIS"
-                                            ? "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"
-                                            : "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                                            ? "var(--gradient-buy)"
+                                            : "var(--gradient-brand)",
                                         fontFamily: "var(--font-family-inter)",
                                         fontSize: "9.5px",
                                         fontWeight: 800,
@@ -1683,13 +1683,13 @@ export function CheckoutPage() {
                     disabled={!canAdvance}
                     className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:scale-100"
                     style={{
-                      background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                      background: "var(--gradient-brand)",
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "12.5px",
                       fontWeight: 800,
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                      boxShadow: "var(--shadow-brand-cta)",
                     }}
                   >
                     Continuar
@@ -1700,13 +1700,13 @@ export function CheckoutPage() {
                     onClick={handleFinish}
                     className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97]"
                     style={{
-                      background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                      background: "var(--gradient-buy)",
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "12.5px",
                       fontWeight: 800,
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+                      boxShadow: "var(--shadow-buy-cta)",
                     }}
                   >
                     <Lock size={13} strokeWidth={2.6} />
@@ -1753,7 +1753,7 @@ export function CheckoutPage() {
                             aria-label={`Quantidade ${item.quantity}`}
                             className="absolute -right-1.5 -top-1.5 z-10 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-white"
                             style={{
-                              background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                              background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
                               fontSize: "10px",
                               fontWeight: 800,
@@ -1791,7 +1791,7 @@ export function CheckoutPage() {
                   <button
                     onClick={() => setCouponOpen((v) => !v)}
                     className={`flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-2.5 min-h-[44px] md:min-h-0 transition-colors ${
-                      appliedCoupon ? "rounded-[12px] border border-green-500/25 bg-green-500/[0.06]" : "rounded-[12px] border border-white/8 hover:border-white/14 hover:bg-white/[0.03]"
+                      appliedCoupon ? "rounded-card-sm border border-green-500/25 bg-green-500/[0.06]" : "rounded-card-sm border border-white/8 hover:border-white/14 hover:bg-white/[0.03]"
                     }`}
                     aria-expanded={couponOpen}
                   >
@@ -1844,13 +1844,13 @@ export function CheckoutPage() {
                             disabled={!coupon.trim()}
                             className="cursor-pointer rounded-[10px] px-4 py-2 min-h-[44px] md:min-h-0 text-white transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
                             style={{
-                              background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                              background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
                               fontSize: "11px",
                               fontWeight: 800,
                               letterSpacing: "0.06em",
                               textTransform: "uppercase",
-                              boxShadow: "0 8px 22px -8px rgba(225,6,0,0.55)",
+                              boxShadow: "var(--shadow-brand-cta-sm)",
                             }}
                           >
                             Aplicar
@@ -1868,7 +1868,7 @@ export function CheckoutPage() {
 
                 {/* PCYES Points inline (CheckoutPage) */}
                 <div
-                  className={`mb-4 overflow-hidden rounded-[12px] transition-colors ${
+                  className={`mb-4 overflow-hidden rounded-card-sm transition-colors ${
                     pointsApplied
                       ? "border border-yellow-300/40 bg-yellow-300/[0.05]"
                       : "border border-white/8 hover:border-yellow-300/35 hover:bg-yellow-300/[0.05]"
@@ -2021,13 +2021,13 @@ export function CheckoutPage() {
               className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:active:scale-100"
               style={{
                 minHeight: 46,
-                background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                background: "var(--gradient-brand)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12.5px",
                 fontWeight: 800,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                boxShadow: "0 14px 32px -8px rgba(225,6,0,0.55)",
+                boxShadow: "var(--shadow-brand-cta)",
               }}
             >
               Continuar
@@ -2039,13 +2039,13 @@ export function CheckoutPage() {
               className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97]"
               style={{
                 minHeight: 46,
-                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                background: "var(--gradient-buy)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12.5px",
                 fontWeight: 800,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                boxShadow: "0 14px 32px -8px rgba(34,197,94,0.55)",
+                boxShadow: "var(--shadow-buy-cta)",
               }}
             >
               <Lock size={13} strokeWidth={2.6} />
@@ -2104,7 +2104,7 @@ export function CheckoutPage() {
                   <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.02em" }}>{formatBRL(total)}</span>
                 </div>
 
-                <div className="mb-3 rounded-[12px] p-3.5" style={{ background: "rgba(var(--foreground-rgb), 0.06)" }}>
+                <div className="mb-3 rounded-card-sm p-3.5" style={{ background: "rgba(var(--foreground-rgb), 0.06)" }}>
                   <div className="mb-1 flex items-center justify-between">
                     <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>Pagar com</span>
                   </div>
@@ -2212,7 +2212,7 @@ export function CheckoutPage() {
                 </p>
               </div>
 
-              <div className="mt-4 mx-5 mb-5 rounded-[12px] border" style={{ borderColor: "#dadce0" }}>
+              <div className="mt-4 mx-5 mb-5 rounded-card-sm border" style={{ borderColor: "#dadce0" }}>
                 <button className="flex w-full items-center gap-3 p-4 text-left">
                   <div className="flex h-10 w-12 items-center justify-center rounded-[6px]" style={{ background: "#1a73e8" }}>
                     <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, color: "#fff" }}>VISA</span>
@@ -2294,7 +2294,7 @@ export function CheckoutPage() {
                 </p>
 
                 <div className="mt-5 space-y-2">
-                  <button className="flex w-full items-center gap-3 rounded-[12px] border p-3.5 text-left transition-colors hover:bg-[#f5f5f5]" style={{ borderColor: "#009ee3", background: "rgba(0,158,227,0.05)" }}>
+                  <button className="flex w-full items-center gap-3 rounded-card-sm border p-3.5 text-left transition-colors hover:bg-[#f5f5f5]" style={{ borderColor: "#009ee3", background: "rgba(0,158,227,0.05)" }}>
                     <div className="flex h-9 w-9 items-center justify-center rounded-full" style={{ background: "#009ee3", color: "#fff", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 800 }}>
                       MP
                     </div>
@@ -2304,7 +2304,7 @@ export function CheckoutPage() {
                     </div>
                     <Check size={18} strokeWidth={2.4} className="text-[#009ee3]" />
                   </button>
-                  <button className="flex w-full items-center gap-3 rounded-[12px] border p-3.5 text-left transition-colors hover:bg-[#f5f5f5]" style={{ borderColor: "#dadce0" }}>
+                  <button className="flex w-full items-center gap-3 rounded-card-sm border p-3.5 text-left transition-colors hover:bg-[#f5f5f5]" style={{ borderColor: "#dadce0" }}>
                     <div className="flex h-9 w-12 items-center justify-center rounded-[6px]" style={{ background: "#eb001b" }}>
                       <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, color: "#fff" }}>MC</span>
                     </div>

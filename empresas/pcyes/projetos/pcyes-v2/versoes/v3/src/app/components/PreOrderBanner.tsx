@@ -79,7 +79,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           <span
             className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
             style={{
-              background: "linear-gradient(135deg, #ff2419 0%, #b91c1c 100%)",
+              background: "var(--gradient-preorder-red)",
               color: "#fff",
               fontFamily: "var(--font-family-inter)",
               fontSize: "10px",
@@ -153,7 +153,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                   style={{
                     background: "rgba(0,0,0,0.45)",
                     border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                    borderRadius: "12px",
+                    borderRadius: "var(--radius-card-sm)",
                   }}
                 >
                   <span
@@ -319,7 +319,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           disabled={remaining <= 0}
           className="w-full h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           style={{
-            background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
+            background: "var(--gradient-preorder-orange)",
             fontFamily: "var(--font-family-inter)",
             fontSize: "14px",
             fontWeight: 700,
@@ -362,7 +362,7 @@ export function PreOrderBadge({ info, compact = false }: { info: PreOrderInfo; c
     <span
       className="inline-flex items-center gap-1 rounded-full"
       style={{
-        background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
+        background: "var(--gradient-preorder-orange)",
         color: "#fff",
         fontFamily: "var(--font-family-inter)",
         fontSize: compact ? "8.5px" : "9.5px",

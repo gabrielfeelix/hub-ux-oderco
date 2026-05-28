@@ -117,7 +117,7 @@ export function Newsletter() {
                 <span
                   className="flex h-5 w-5 items-center justify-center rounded-full"
                   style={{
-                    background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                    background: "var(--gradient-brand)",
                     color: "white",
                   }}
                 >
@@ -166,14 +166,14 @@ export function Newsletter() {
                     type="submit"
                     className="w-full flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-5 min-h-[44px] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
                     style={{
-                      background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                      background: "var(--gradient-brand)",
                       color: "white",
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "12px",
                       fontWeight: 700,
                       letterSpacing: "0.05em",
                       textTransform: "uppercase",
-                      boxShadow: "0 8px 22px -6px rgba(225, 6, 0, 0.55)",
+                      boxShadow: "var(--shadow-brand-pill)",
                     }}
                   >
                     Assinar <ArrowRight size={13} strokeWidth={2.4} />
@@ -207,14 +207,14 @@ export function Newsletter() {
                     type="submit"
                     className="flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
                     style={{
-                      background: "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                      background: "var(--gradient-brand)",
                       color: "white",
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "12px",
                       fontWeight: 700,
                       letterSpacing: "0.05em",
                       textTransform: "uppercase",
-                      boxShadow: "0 8px 22px -6px rgba(225, 6, 0, 0.55)",
+                      boxShadow: "var(--shadow-brand-pill)",
                     }}
                   >
                     Assinar <ArrowRight size={13} strokeWidth={2.4} />

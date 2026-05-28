@@ -178,7 +178,7 @@ export function FeaturedProduct({ label, title, description, image, imageAlt, re
             <div className="flex items-center gap-3">
               <button
                 className="group relative px-8 py-3.5 text-white overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.35)] flex items-center gap-2 cursor-pointer"
-                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)", background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)" }}
+                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)", background: "var(--gradient-buy)" }}
                 onClick={() => addItem({ id: activeProductId, name: activeProduct.title, price: activeProduct.price, image: activeProduct.image })}
               >
                 <ShoppingBag size={14} strokeWidth={1.5} className="relative z-10" />

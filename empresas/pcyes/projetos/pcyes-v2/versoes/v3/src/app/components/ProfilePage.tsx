@@ -264,7 +264,7 @@ export function ProfilePage() {
               <p className="text-foreground mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: 600 }}>{favorites.size}</p>
             </div>
             <div className="h-8 w-px bg-foreground/10" />
-            <div className="flex items-center gap-2 sm:gap-3 px-2.5 sm:px-3 py-1.5" style={{ borderRadius: "12px", background: isDark ? "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.04) 100%)" : "linear-gradient(135deg, rgba(250,204,21,0.16) 0%, rgba(180,83,9,0.06) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
+            <div className="flex items-center gap-2 sm:gap-3 px-2.5 sm:px-3 py-1.5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.04) 100%)" : "linear-gradient(135deg, rgba(250,204,21,0.16) 0%, rgba(180,83,9,0.06) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
               <PcyesCoin size={22} className="sm:hidden" />
               <PcyesCoin size={28} className="hidden sm:block" />
               <div>

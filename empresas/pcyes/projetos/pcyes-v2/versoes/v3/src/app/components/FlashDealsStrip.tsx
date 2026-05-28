@@ -130,7 +130,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
           style={{
             background:
               "linear-gradient(140deg, rgba(var(--foreground-rgb), 0.07) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
-            borderRadius: "22px",
+            borderRadius: "var(--radius-card-lg)",
             border: "1px solid rgba(var(--foreground-rgb), 0.05)",
           }}
         >
@@ -139,7 +139,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
             style={{
               background:
                 "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-              borderRadius: "22px",
+              borderRadius: "var(--radius-card-lg)",
             }}
           />
 
@@ -147,7 +147,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
             <span
               className="absolute z-20 inline-flex items-center text-white"
               style={{
-                background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                background: "var(--gradient-discount)",
                 top: "14px",
                 left: "14px",
                 padding: "6px 12px",
@@ -156,7 +156,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
                 fontSize: "15px",
                 fontWeight: 900,
                 letterSpacing: "-0.02em",
-                boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
+                boxShadow: "var(--shadow-discount-badge)",
               }}
             >
               -{discount}%
@@ -205,7 +205,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
             }}
             className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 md:opacity-0 transition-all duration-300 group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
             style={{
-              background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+              background: "var(--gradient-buy)",
               color: "white",
               fontFamily: "var(--font-family-inter)",
               fontSize: "13px",

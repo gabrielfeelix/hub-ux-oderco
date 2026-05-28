@@ -128,9 +128,13 @@
   --shadow-order-hover:
     0 0 0 1px rgba(225, 6, 0, 0.08),
     0 14px 30px -20px rgba(0, 0, 0, 0.5);
-  --shadow-buy-cta:        0 12px 28px -7px rgba(34, 197, 94, 0.55);
-  --shadow-brand-cta:      0 8px 22px -6px rgba(225, 6, 0, 0.55);
-  --shadow-discount-badge: 0 12px 28px -8px rgba(255, 43, 46, 0.55);
+  --shadow-buy-cta:        0 14px 32px -8px rgba(34,197,94,0.55);
+  --shadow-buy-cta-sm:     0 10px 26px -6px rgba(34,197,94,0.55);
+  --shadow-brand-cta:      0 14px 32px -8px rgba(225,6,0,0.55);
+  --shadow-brand-cta-sm:   0 8px 22px -8px rgba(225,6,0,0.55);
+  --shadow-brand-pill:     0 8px 22px -6px rgba(225, 6, 0, 0.55);
+  --shadow-discount-badge: 0 12px 28px -8px rgba(255,43,46,0.55);
+  --shadow-discount-sm:    0 4px 14px -4px rgba(255,43,46,0.6);
   --shadow-drawer-side:    -24px 0 60px -12px rgba(0, 0, 0, 0.55);
   --shadow-search-open:    0 10px 32px rgba(0, 0, 0, 0.55);
 }
@@ -383,8 +387,12 @@ input:-webkit-autofill:active {
   --shadow-profile-hover: var(--shadow-profile-hover);
   --shadow-order-hover: var(--shadow-order-hover);
   --shadow-buy-cta: var(--shadow-buy-cta);
+  --shadow-buy-cta-sm: var(--shadow-buy-cta-sm);
   --shadow-brand-cta: var(--shadow-brand-cta);
+  --shadow-brand-cta-sm: var(--shadow-brand-cta-sm);
+  --shadow-brand-pill: var(--shadow-brand-pill);
   --shadow-discount-badge: var(--shadow-discount-badge);
+  --shadow-discount-sm: var(--shadow-discount-sm);
   --shadow-drawer-side: var(--shadow-drawer-side);
   --shadow-search-open: var(--shadow-search-open);
   --color-sidebar: var(--sidebar);

@@ -1928,11 +1928,11 @@ function LevelCard({
     <button
       type="button"
       onClick={onClick}
-      className="group flex w-full cursor-pointer items-center gap-4 rounded-[18px] border border-white/[0.08] bg-[#0f0f12] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-white/[0.22]"
+      className="group flex w-full cursor-pointer items-center gap-4 rounded-card-md border border-white/[0.08] bg-[#0f0f12] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-white/[0.22]"
       style={{ boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }}
     >
       <div
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] transition-all"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-card-sm transition-all"
         style={{
           background: `linear-gradient(135deg, ${accent}25 0%, ${accent}08 100%)`,
           color: accent,
@@ -2113,7 +2113,7 @@ function QuizFlow({
                   onChange={(e) => setGameSearch(e.target.value)}
                   placeholder="Buscar jogo (ex: Valorant, RPG, FPS)"
                   aria-label="Buscar jogo"
-                  className="h-11 w-full rounded-[12px] border border-white/[0.08] bg-[#0f0f12] pl-10 pr-10 text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
+                  className="h-11 w-full rounded-card-sm border border-white/[0.08] bg-[#0f0f12] pl-10 pr-10 text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13.5px",
@@ -2151,7 +2151,7 @@ function QuizFlow({
             </div>
 
             {filteredGames.length === 0 ? (
-              <div className="flex flex-col items-center gap-2 rounded-[18px] border border-white/[0.06] bg-[#0d0d0d] px-6 py-14 text-center">
+              <div className="flex flex-col items-center gap-2 rounded-card-md border border-white/[0.06] bg-[#0d0d0d] px-6 py-14 text-center">
                 <p
                   className="text-white"
                   style={{
@@ -2199,7 +2199,7 @@ function QuizFlow({
               <button
                 type="button"
                 onClick={continueFromGames}
-                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-[12px] bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
+                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13.5px",
@@ -2309,7 +2309,7 @@ function QuizFlow({
               <button
                 type="button"
                 onClick={continueFromPrograms}
-                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-[12px] bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
+                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13.5px",
@@ -2654,9 +2654,9 @@ function PresetComponentsDrawer({
                     onBuy();
                     onOpenChange(false);
                   }}
-                  className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                  className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
                   style={{
-                    background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                    background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13.5px",
                     fontWeight: 700,
@@ -2790,14 +2790,14 @@ function PresetCard({
               <span
                 className="inline-flex shrink-0 items-center text-white tabular-nums"
                 style={{
-                  background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                  background: "var(--gradient-discount)",
                   padding: "6px 10px",
                   borderRadius: "10px",
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "13px",
                   fontWeight: 900,
                   letterSpacing: "-0.01em",
-                  boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
+                  boxShadow: "var(--shadow-discount-badge)",
                 }}
               >
                 -{discount}%
@@ -2879,7 +2879,7 @@ function PresetCard({
           </ul>
 
           <div
-            className="mt-3 rounded-[12px] border border-white/[0.06] p-3"
+            className="mt-3 rounded-card-sm border border-white/[0.06] p-3"
             style={{
               background: `linear-gradient(135deg, ${preset.accent}14 0%, rgba(255,255,255,0.015) 100%)`,
             }}
@@ -3071,9 +3071,9 @@ function PresetCard({
             <button
               type="button"
               onClick={onBuy}
-              className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
+              className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
               style={{
-                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                background: "var(--gradient-buy)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13.5px",
                 fontWeight: 700,
@@ -3176,14 +3176,14 @@ function PresetMiniCard({
               <span
                 className="absolute left-3 top-3 z-20 inline-flex items-center text-white tabular-nums"
                 style={{
-                  background: "linear-gradient(135deg, #ff3b3e 0%, #d31417 100%)",
+                  background: "var(--gradient-discount)",
                   padding: "6px 12px",
                   borderRadius: "10px",
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "15px",
                   fontWeight: 900,
                   letterSpacing: "-0.02em",
-                  boxShadow: "0 12px 28px -8px rgba(255,43,46,0.55)",
+                  boxShadow: "var(--shadow-discount-badge)",
                 }}
               >
                 -{discount}%
@@ -3214,14 +3214,14 @@ function PresetMiniCard({
               }}
               className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 whitespace-nowrap px-7 py-3 opacity-100 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
               style={{
-                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                background: "var(--gradient-buy)",
                 color: "white",
                 borderRadius: "9999px",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12px",
                 fontWeight: 700,
                 letterSpacing: "0.04em",
-                boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)",
+                boxShadow: "var(--shadow-buy-cta-sm)",
               }}
             >
               <span className="inline-flex items-center gap-1.5">
@@ -4220,7 +4220,7 @@ function ReviewScreen({
             </div>
           </section>
 
-          <section className="rounded-[18px] border border-white/[0.08] bg-[#0f0f12] p-5">
+          <section className="rounded-card-md border border-white/[0.08] bg-[#0f0f12] p-5">
             <h3
               className="mb-4 text-white"
               style={{
@@ -4243,7 +4243,7 @@ function ReviewScreen({
                   <li
                     key={c.id}
                     className={cn(
-                      "flex items-start gap-3 rounded-[12px] p-3",
+                      "flex items-start gap-3 rounded-card-sm p-3",
                       c.severity === "ok" ? "" : `border ${tone.border} bg-white/[0.02]`,
                     )}
                   >
@@ -4303,7 +4303,7 @@ function ReviewScreen({
         </div>
 
         <div className="self-start lg:sticky lg:top-[100px]">
-          <div className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0f0f12]">
+          <div className="overflow-hidden rounded-card-md border border-white/[0.08] bg-[#0f0f12]">
             <div className="border-b border-white/[0.06] p-5">
               <label
                 htmlFor="cep-input"
@@ -4423,7 +4423,7 @@ function ReviewScreen({
               <button
                 type="button"
                 onClick={onBuy}
-                className="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[12px] bg-primary text-white transition-all hover:brightness-110"
+                className="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm bg-primary text-white transition-all hover:brightness-110"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13.5px",
@@ -5260,7 +5260,7 @@ function SelectedItemCard({
 
   return (
     <div
-      className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-gradient-to-b from-[#15151a] to-[#0d0d0d]"
+      className="overflow-hidden rounded-card-md border border-white/[0.08] bg-gradient-to-b from-[#15151a] to-[#0d0d0d]"
       style={{
         boxShadow:
           "0 16px 40px -16px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)",
@@ -5374,7 +5374,7 @@ function SelectedItemCard({
           {options.map((opt, idx) => (
             <div
               key={opt.id}
-              className="flex items-center gap-3 rounded-[12px] border border-emerald-500/30 bg-emerald-500/[0.04] p-2.5"
+              className="flex items-center gap-3 rounded-card-sm border border-emerald-500/30 bg-emerald-500/[0.04] p-2.5"
               style={{ borderStyle: "dashed" }}
             >
               <div className="h-12 w-12 shrink-0 overflow-hidden rounded-[8px] deal-image-bg">
@@ -5434,7 +5434,7 @@ function SelectedItemCard({
           {Array.from({ length: emptySlots }).map((_, idx) => (
             <div
               key={`empty-${idx}`}
-              className="flex items-center justify-center rounded-[12px] border border-white/[0.1] bg-white/[0.01] p-3"
+              className="flex items-center justify-center rounded-card-sm border border-white/[0.1] bg-white/[0.01] p-3"
               style={{ borderStyle: "dashed", minHeight: "60px" }}
             >
               <p
@@ -5452,7 +5452,7 @@ function SelectedItemCard({
           ))}
 
           {options.length === 0 && emptySlots === 0 && (
-            <div className="rounded-[12px] border border-white/[0.08] bg-white/[0.01] p-6 text-center">
+            <div className="rounded-card-sm border border-white/[0.08] bg-white/[0.01] p-6 text-center">
               <p
                 className="text-zinc-500"
                 style={{
@@ -5551,7 +5551,7 @@ function ConfiguracaoSelecionadaCard({
   const filled = categories.filter((c) => c.selectedOption);
   return (
     <div
-      className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-gradient-to-b from-[#13131a] to-[#0d0d0d]"
+      className="overflow-hidden rounded-card-md border border-white/[0.08] bg-gradient-to-b from-[#13131a] to-[#0d0d0d]"
       style={{
         boxShadow:
           "0 16px 40px -16px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)",
@@ -6267,7 +6267,7 @@ export function MonteSeuPcPage() {
                             onChange={(e) => setStepSearch(e.target.value)}
                             placeholder="Busque por nome ou código"
                             aria-label={`Buscar em ${currentCategory.title}`}
-                            className="msp-field h-11 w-full rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] sm:h-auto"
+                            className="msp-field h-11 w-full rounded-card-sm border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] sm:h-auto"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                           />
                           {stepSearch && (
@@ -6297,13 +6297,13 @@ export function MonteSeuPcPage() {
                           <Select value={sortMode} onValueChange={(v) => setSortMode(v as SortMode)}>
                             <SelectTrigger
                               id="step-sort"
-                              className="w-full !h-auto rounded-[12px] border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white transition-all hover:bg-[#15151a] focus:border-primary/45 focus:bg-[#15151a] data-[state=open]:border-primary/45 data-[state=open]:bg-[#15151a] [&_svg]:text-zinc-500"
+                              className="w-full !h-auto rounded-card-sm border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white transition-all hover:bg-[#15151a] focus:border-primary/45 focus:bg-[#15151a] data-[state=open]:border-primary/45 data-[state=open]:bg-[#15151a] [&_svg]:text-zinc-500"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                             >
                               <SelectValue placeholder="Selecionar ordenação" />
                             </SelectTrigger>
                             <SelectContent
-                              className="rounded-[12px] border border-white/[0.1] bg-[#0f0f12] text-white shadow-2xl shadow-black/60"
+                              className="rounded-card-sm border border-white/[0.1] bg-[#0f0f12] text-white shadow-2xl shadow-black/60"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                             >
                               <SelectItem value="suggested" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
@@ -6336,7 +6336,7 @@ export function MonteSeuPcPage() {
                           <div
                             role="group"
                             aria-label="Modo de exibição"
-                            className="flex h-11 items-center gap-0.5 rounded-[12px] border border-white/[0.1] bg-[#0f0f12] p-1 sm:h-[46px]"
+                            className="flex h-11 items-center gap-0.5 rounded-card-sm border border-white/[0.1] bg-[#0f0f12] p-1 sm:h-[46px]"
                           >
                             <button
                               type="button"
@@ -6525,7 +6525,7 @@ export function MonteSeuPcPage() {
                       onClick={goPrev}
                       disabled={isFirst}
                       aria-label="Voltar etapa"
-                      className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-[12px] border border-white/[0.1] bg-white/[0.02] text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white disabled:cursor-not-allowed disabled:opacity-25"
+                      className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-card-sm border border-white/[0.1] bg-white/[0.02] text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white disabled:cursor-not-allowed disabled:opacity-25"
                     >
                       <ChevronLeft size={18} />
                     </button>
@@ -6588,7 +6588,7 @@ export function MonteSeuPcPage() {
                       type="button"
                       onClick={goNext}
                       disabled={!stepValid}
-                      className="flex h-11 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-[12px] bg-primary px-5 text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+                      className="flex h-11 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-card-sm bg-primary px-5 text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
                       style={{
                         fontFamily: "var(--font-family-inter)",
                         fontSize: "13.5px",

@@ -48,7 +48,7 @@ function EssentialCard({ product }: EssentialCardProps) {
       style={{
         background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
         border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-        borderRadius: "22px",
+        borderRadius: "var(--radius-card-lg)",
         minHeight: "460px",
         boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 30px 60px -24px rgba(0,0,0,0.7)",
       }}
@@ -58,7 +58,7 @@ function EssentialCard({ product }: EssentialCardProps) {
         className="pointer-events-none absolute inset-0"
         style={{
           background: "radial-gradient(circle at 25% 15%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-          borderRadius: "22px",
+          borderRadius: "var(--radius-card-lg)",
         }}
       />
       {/* Image side */}
@@ -202,7 +202,7 @@ function EssentialCard({ product }: EssentialCardProps) {
             className="whitespace-nowrap rounded-full px-7 py-2.5 min-h-[44px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
             style={{
               background:
-                "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
+                "var(--gradient-buy)",
               color: "white",
               fontFamily: "var(--font-family-inter)",
               fontSize: "12px",

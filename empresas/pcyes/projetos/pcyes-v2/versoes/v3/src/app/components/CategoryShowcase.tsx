@@ -194,7 +194,7 @@ export function CategoryShowcase() {
                 className="flex-shrink-0 relative overflow-hidden h-full group category-card category-active snap-start"
                 style={{
                   width: "clamp(260px, 82vw, calc((100% - 48px) / 3))",
-                  borderRadius: "26px",
+                  borderRadius: "var(--radius-card-xl)",
                   border: "1px solid transparent",
                   boxShadow:
                     "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 18px -6px rgba(255,36,25,0.2), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
@@ -204,7 +204,7 @@ export function CategoryShowcase() {
                 <div
                   className="pointer-events-none absolute inset-0"
                   style={{
-                    borderRadius: "26px",
+                    borderRadius: "var(--radius-card-xl)",
                     padding: "1px",
                     background:
                       "linear-gradient(135deg, rgba(255,36,25,0.45) 0%, rgba(255,36,25,0.05) 45%, rgba(255,36,25,0.35) 100%)",
@@ -263,7 +263,7 @@ export function CategoryShowcase() {
                       className="inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-2.5 transition-transform hover:scale-[1.04] active:scale-[0.97]"
                       style={{
                         background:
-                          "linear-gradient(135deg, var(--primary) 0%, #ff2419 100%)",
+                          "var(--gradient-brand)",
                         color: "white",
                         fontFamily: "var(--font-family-inter)",
                         fontSize: "11px",
