@@ -1,0 +1,400 @@
+{
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": ["global", "light", "dark"]
+  },
+
+  "global": {
+    "color": {
+      "brand-red": {
+        "base":            { "value": "#dc1414", "type": "color" },
+        "dark-base":       { "value": "#ff2b2e", "type": "color" },
+        "glow":            { "value": "#ff2419", "type": "color" },
+        "discount-light":  { "value": "#ff3b3e", "type": "color" },
+        "discount-dark":   { "value": "#d31417", "type": "color" },
+        "preorder-deep":   { "value": "#b91c1c", "type": "color" }
+      },
+      "buy-green": {
+        "light":     { "value": "#22c55e", "type": "color" },
+        "dark-base": { "value": "#16a34a", "type": "color" },
+        "novelty":   { "value": "#34d399", "type": "color" }
+      },
+      "preorder-orange": {
+        "light":     { "value": "#f97316", "type": "color" },
+        "dark-base": { "value": "#ea580c", "type": "color" }
+      },
+      "coin": {
+        "gold-light":  { "value": "#fde68a", "type": "color" },
+        "gold-mid":    { "value": "#facc15", "type": "color" },
+        "gold-dark":   { "value": "#b45309", "type": "color" },
+        "bronze":      { "value": "#92400e", "type": "color" },
+        "letter":      { "value": "#7c2d12", "type": "color" }
+      },
+      "surface-dark": {
+        "0":   { "value": "#040404", "type": "color" },
+        "0a":  { "value": "#0a0a0a", "type": "color", "description": "Section bg default" },
+        "0e":  { "value": "#0e0e0e", "type": "color", "description": "ProductShelf bg" },
+        "1a":  { "value": "#1a1a1a", "type": "color", "description": "Card surface" },
+        "1f":  { "value": "#1f1c1c", "type": "color", "description": "Navbar search input" },
+        "32":  { "value": "#323232", "type": "color" }
+      }
+    },
+
+    "radius": {
+      "base":     { "value": "4",    "type": "borderRadius" },
+      "button":   { "value": "4",    "type": "borderRadius" },
+      "card":     { "value": "8",    "type": "borderRadius" },
+      "card-sm":  { "value": "12",   "type": "borderRadius", "description": "Modal central, countdown, search input" },
+      "card-md":  { "value": "18",   "type": "borderRadius", "description": "Brinde card, intermediários" },
+      "card-lg":  { "value": "22",   "type": "borderRadius", "description": "Product card, cart drawer, welcome popup" },
+      "card-xl":  { "value": "26",   "type": "borderRadius", "description": "CategoryShowcase, Drop-do-Dia, mega-menu" },
+      "pill":     { "value": "9999", "type": "borderRadius", "description": "CTAs, badges, search, ícones circulares" }
+    },
+
+    "spacing": {
+      "section-sm-desktop":   { "value": "56",  "type": "spacing" },
+      "section-md-desktop":   { "value": "88",  "type": "spacing" },
+      "section-lg-desktop":   { "value": "128", "type": "spacing" },
+      "section-xl-desktop":   { "value": "168", "type": "spacing" },
+      "section-sm-mobile":    { "value": "40",  "type": "spacing" },
+      "section-md-mobile":    { "value": "56",  "type": "spacing" },
+      "section-lg-mobile":    { "value": "72",  "type": "spacing" },
+      "section-xl-mobile":    { "value": "96",  "type": "spacing" },
+      "page-padding-mobile":  { "value": "20",  "type": "spacing" },
+      "page-padding-desktop": { "value": "72",  "type": "spacing" },
+      "grid-base":            { "value": "4",   "type": "spacing", "description": "Todo valor do DS no grid 4px" }
+    },
+
+    "size": {
+      "container-shelf":    { "value": "1600", "type": "sizing" },
+      "container-band":     { "value": "1760", "type": "sizing" },
+      "container-trust":    { "value": "1200", "type": "sizing" },
+      "container-modal-md": { "value": "560",  "type": "sizing" },
+      "container-modal-lg": { "value": "640",  "type": "sizing" },
+      "container-welcome":  { "value": "920",  "type": "sizing" },
+      "touch-target-min":   { "value": "44",   "type": "sizing", "description": "Mobile iOS HIG" }
+    },
+
+    "fontFamilies": {
+      "display": { "value": "Figtree", "type": "fontFamilies" },
+      "body":    { "value": "Inter",   "type": "fontFamilies" }
+    },
+
+    "fontWeights": {
+      "light":     { "value": "300", "type": "fontWeights" },
+      "normal":    { "value": "400", "type": "fontWeights" },
+      "medium":    { "value": "500", "type": "fontWeights" },
+      "semibold":  { "value": "600", "type": "fontWeights" },
+      "bold":      { "value": "700", "type": "fontWeights" },
+      "extrabold": { "value": "800", "type": "fontWeights" },
+      "black":     { "value": "900", "type": "fontWeights" }
+    },
+
+    "fontSizes": {
+      "h1":      { "value": "80", "type": "fontSizes" },
+      "h2":      { "value": "48", "type": "fontSizes" },
+      "h3":      { "value": "40", "type": "fontSizes" },
+      "h4":      { "value": "32", "type": "fontSizes" },
+      "base":    { "value": "16", "type": "fontSizes" },
+      "sm":      { "value": "14", "type": "fontSizes" },
+      "xs":      { "value": "13", "type": "fontSizes" },
+      "label":   { "value": "13", "type": "fontSizes" },
+      "caption": { "value": "12", "type": "fontSizes" },
+      "micro":   { "value": "11", "type": "fontSizes" }
+    },
+
+    "letterSpacing": {
+      "eyebrow":       { "value": "30%",  "type": "letterSpacing" },
+      "pill":          { "value": "16%",  "type": "letterSpacing" },
+      "pill-tight":    { "value": "12%",  "type": "letterSpacing" },
+      "form-label":    { "value": "14%",  "type": "letterSpacing" },
+      "cta":           { "value": "4%",   "type": "letterSpacing" },
+      "cta-brand":     { "value": "5%",   "type": "letterSpacing" },
+      "title-tight":   { "value": "-2%",  "type": "letterSpacing" },
+      "title-tighter": { "value": "-3%",  "type": "letterSpacing" }
+    },
+
+    "lineHeights": {
+      "tight":  { "value": "100%", "type": "lineHeights" },
+      "snug":   { "value": "105%", "type": "lineHeights" },
+      "normal": { "value": "125%", "type": "lineHeights" },
+      "body":   { "value": "150%", "type": "lineHeights" }
+    },
+
+    "typography": {
+      "h1": {
+        "type": "typography",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.normal}",
+          "fontSize":   "{fontSizes.h1}",
+          "lineHeight": "{lineHeights.tight}",
+          "letterSpacing": "{letterSpacing.title-tight}"
+        }
+      },
+      "h2": {
+        "type": "typography",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.light}",
+          "fontSize":   "{fontSizes.h2}",
+          "lineHeight": "{lineHeights.tight}",
+          "letterSpacing": "{letterSpacing.title-tight}"
+        }
+      },
+      "h3": {
+        "type": "typography",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.normal}",
+          "fontSize":   "{fontSizes.h3}",
+          "lineHeight": "{lineHeights.tight}",
+          "letterSpacing": "{letterSpacing.title-tight}"
+        }
+      },
+      "h4": {
+        "type": "typography",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.normal}",
+          "fontSize":   "{fontSizes.h4}",
+          "lineHeight": "{lineHeights.normal}"
+        }
+      },
+      "shelf-title": {
+        "type": "typography",
+        "description": "ProductShelf, DealsHighlight (size=sm)",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.semibold}",
+          "fontSize":   "36",
+          "lineHeight": "{lineHeights.snug}",
+          "letterSpacing": "{letterSpacing.title-tight}"
+        }
+      },
+      "deal-title": {
+        "type": "typography",
+        "description": "FlashDealsStrip, DropDoDia (size=md)",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.bold}",
+          "fontSize":   "38",
+          "lineHeight": "{lineHeights.snug}",
+          "letterSpacing": "{letterSpacing.title-tight}"
+        }
+      },
+      "category-title": {
+        "type": "typography",
+        "description": "CategoryShowcase (size=lg)",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.bold}",
+          "fontSize":   "44",
+          "lineHeight": "{lineHeights.snug}",
+          "letterSpacing": "{letterSpacing.title-tight}"
+        }
+      },
+      "eyebrow": {
+        "type": "typography",
+        "description": "// LABEL eyebrows",
+        "value": {
+          "fontFamily": "{fontFamilies.body}",
+          "fontWeight": "{fontWeights.bold}",
+          "fontSize":   "{fontSizes.micro}",
+          "letterSpacing": "{letterSpacing.eyebrow}"
+        }
+      },
+      "body": {
+        "type": "typography",
+        "value": {
+          "fontFamily": "{fontFamilies.body}",
+          "fontWeight": "{fontWeights.normal}",
+          "fontSize":   "{fontSizes.base}",
+          "lineHeight": "{lineHeights.body}"
+        }
+      },
+      "body-sm": {
+        "type": "typography",
+        "value": {
+          "fontFamily": "{fontFamilies.body}",
+          "fontWeight": "{fontWeights.normal}",
+          "fontSize":   "{fontSizes.sm}",
+          "lineHeight": "{lineHeights.body}"
+        }
+      },
+      "label-form": {
+        "type": "typography",
+        "description": "FieldLabel uppercase",
+        "value": {
+          "fontFamily": "{fontFamilies.body}",
+          "fontWeight": "{fontWeights.bold}",
+          "fontSize":   "10.5",
+          "letterSpacing": "{letterSpacing.form-label}",
+          "textCase": "uppercase"
+        }
+      },
+      "cta": {
+        "type": "typography",
+        "description": "CTAButton buy/preorder",
+        "value": {
+          "fontFamily": "{fontFamilies.body}",
+          "fontWeight": "{fontWeights.bold}",
+          "fontSize":   "{fontSizes.xs}",
+          "letterSpacing": "{letterSpacing.cta}"
+        }
+      },
+      "cta-brand": {
+        "type": "typography",
+        "description": "CTAButton brand uppercase",
+        "value": {
+          "fontFamily": "{fontFamilies.body}",
+          "fontWeight": "{fontWeights.bold}",
+          "fontSize":   "{fontSizes.caption}",
+          "letterSpacing": "{letterSpacing.cta-brand}",
+          "textCase": "uppercase"
+        }
+      },
+      "card-title": {
+        "type": "typography",
+        "description": "Product card title (15/600 Figtree)",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.semibold}",
+          "fontSize":   "15",
+          "lineHeight": "{lineHeights.normal}"
+        }
+      },
+      "card-price": {
+        "type": "typography",
+        "description": "Product card price main (20/700 Figtree)",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.bold}",
+          "fontSize":   "20"
+        }
+      },
+      "discount-badge": {
+        "type": "typography",
+        "description": "-X% pill (Figtree 15/900)",
+        "value": {
+          "fontFamily": "{fontFamilies.display}",
+          "fontWeight": "{fontWeights.black}",
+          "fontSize":   "15",
+          "letterSpacing": "{letterSpacing.title-tight}"
+        }
+      }
+    },
+
+    "shadow": {
+      "neon-red": {
+        "type": "boxShadow",
+        "description": "Canonical hover de card (.neon-hover-red)",
+        "value": [
+          { "x": "0", "y": "0",  "blur": "0",  "spread": "1",   "color": "rgba(225, 6, 0, 0.55)",     "type": "dropShadow" },
+          { "x": "0", "y": "0",  "blur": "0",  "spread": "4",   "color": "rgba(225, 6, 0, 0.10)",     "type": "dropShadow" },
+          { "x": "0", "y": "0",  "blur": "22", "spread": "-2",  "color": "rgba(225, 6, 0, 0.45)",     "type": "dropShadow" },
+          { "x": "0", "y": "0",  "blur": "60", "spread": "-8",  "color": "rgba(225, 6, 0, 0.25)",     "type": "dropShadow" },
+          { "x": "0", "y": "16", "blur": "44", "spread": "-16", "color": "rgba(0, 0, 0, 0.60)",       "type": "dropShadow" },
+          { "x": "0", "y": "1",  "blur": "0",  "spread": "0",   "color": "rgba(255, 255, 255, 0.10)", "type": "innerShadow" },
+          { "x": "0", "y": "40", "blur": "35", "spread": "-24", "color": "rgba(255, 255, 255, 0.05)", "type": "innerShadow" }
+        ]
+      },
+      "neon-glow-deepen": {
+        "type": "boxShadow",
+        "value": { "x": "0", "y": "0", "blur": "80", "spread": "-16", "color": "rgba(225, 6, 0, 0.18)", "type": "innerShadow" }
+      },
+      "hero-card-hover": {
+        "type": "boxShadow",
+        "value": [
+          { "x": "0", "y": "30", "blur": "80", "spread": "-24", "color": "rgba(0, 0, 0, 0.75)",   "type": "dropShadow" },
+          { "x": "0", "y": "0",  "blur": "50", "spread": "-10", "color": "rgba(225, 6, 0, 0.35)", "type": "dropShadow" }
+        ]
+      },
+      "category-active": {
+        "type": "boxShadow",
+        "value": [
+          { "x": "0", "y": "0",  "blur": "0",  "spread": "1",   "color": "rgba(225, 6, 0, 0.45)",     "type": "dropShadow" },
+          { "x": "0", "y": "30", "blur": "80", "spread": "-20", "color": "rgba(0, 0, 0, 0.70)",       "type": "dropShadow" },
+          { "x": "0", "y": "0",  "blur": "32", "spread": "-4",  "color": "rgba(225, 6, 0, 0.40)",     "type": "dropShadow" },
+          { "x": "0", "y": "1",  "blur": "0",  "spread": "0",   "color": "rgba(255, 255, 255, 0.06)", "type": "innerShadow" }
+        ]
+      },
+      "essential-hover": {
+        "type": "boxShadow",
+        "value": [
+          { "x": "0", "y": "0",  "blur": "0",  "spread": "1",   "color": "rgba(225, 6, 0, 0.18)", "type": "dropShadow" },
+          { "x": "0", "y": "24", "blur": "60", "spread": "-28", "color": "rgba(225, 6, 0, 0.50)", "type": "dropShadow" }
+        ]
+      },
+      "deal-hover": {
+        "type": "boxShadow",
+        "value": [
+          { "x": "0", "y": "0",  "blur": "0",  "spread": "1",   "color": "rgba(225, 6, 0, 0.15)", "type": "dropShadow" },
+          { "x": "0", "y": "22", "blur": "50", "spread": "-28", "color": "rgba(225, 6, 0, 0.45)", "type": "dropShadow" }
+        ]
+      },
+      "profile-hover": {
+        "type": "boxShadow",
+        "value": [
+          { "x": "0", "y": "0",  "blur": "0",  "spread": "1",   "color": "rgba(225, 6, 0, 0.12)", "type": "dropShadow" },
+          { "x": "0", "y": "18", "blur": "40", "spread": "-22", "color": "rgba(225, 6, 0, 0.35)", "type": "dropShadow" }
+        ]
+      },
+      "order-hover": {
+        "type": "boxShadow",
+        "value": [
+          { "x": "0", "y": "0",  "blur": "0",  "spread": "1",   "color": "rgba(225, 6, 0, 0.08)", "type": "dropShadow" },
+          { "x": "0", "y": "14", "blur": "30", "spread": "-20", "color": "rgba(0, 0, 0, 0.50)",   "type": "dropShadow" }
+        ]
+      },
+      "buy-cta":        { "type": "boxShadow", "value": { "x": "0", "y": "14", "blur": "32", "spread": "-8", "color": "rgba(34, 197, 94, 0.55)",  "type": "dropShadow" } },
+      "buy-cta-sm":     { "type": "boxShadow", "value": { "x": "0", "y": "10", "blur": "26", "spread": "-6", "color": "rgba(34, 197, 94, 0.55)",  "type": "dropShadow" } },
+      "brand-cta":      { "type": "boxShadow", "value": { "x": "0", "y": "14", "blur": "32", "spread": "-8", "color": "rgba(225, 6, 0, 0.55)",    "type": "dropShadow" } },
+      "brand-cta-sm":   { "type": "boxShadow", "value": { "x": "0", "y": "8",  "blur": "22", "spread": "-8", "color": "rgba(225, 6, 0, 0.55)",    "type": "dropShadow" } },
+      "brand-pill":     { "type": "boxShadow", "value": { "x": "0", "y": "8",  "blur": "22", "spread": "-6", "color": "rgba(225, 6, 0, 0.55)",    "type": "dropShadow" } },
+      "discount-badge": { "type": "boxShadow", "value": { "x": "0", "y": "12", "blur": "28", "spread": "-8", "color": "rgba(255, 43, 46, 0.55)",  "type": "dropShadow" } },
+      "discount-sm":    { "type": "boxShadow", "value": { "x": "0", "y": "4",  "blur": "14", "spread": "-4", "color": "rgba(255, 43, 46, 0.60)",  "type": "dropShadow" } },
+      "preorder-cta":   { "type": "boxShadow", "value": { "x": "0", "y": "14", "blur": "32", "spread": "-8", "color": "rgba(249, 115, 22, 0.55)", "type": "dropShadow" } },
+      "preorder-pill":  { "type": "boxShadow", "value": { "x": "0", "y": "6",  "blur": "16", "spread": "-4", "color": "rgba(249, 115, 22, 0.60)", "type": "dropShadow" } },
+      "drawer-side":    { "type": "boxShadow", "value": { "x": "-24", "y": "0", "blur": "60", "spread": "-12", "color": "rgba(0, 0, 0, 0.55)",    "type": "dropShadow" } },
+      "search-open":    { "type": "boxShadow", "value": { "x": "0",  "y": "10", "blur": "32", "spread": "0",   "color": "rgba(0, 0, 0, 0.55)",    "type": "dropShadow" } },
+      "elevation-sm": {
+        "type": "boxShadow",
+        "value": [
+          { "x": "0", "y": "1", "blur": "3", "spread": "0", "color": "rgba(0, 0, 0, 0.08)", "type": "dropShadow" },
+          { "x": "0", "y": "1", "blur": "2", "spread": "0", "color": "rgba(0, 0, 0, 0.04)", "type": "dropShadow" }
+        ]
+      }
+    }
+  },
+
+  "light": {
+    "color": {
+      "background":        { "value": "#fafafa", "type": "color" },
+      "foreground":        { "value": "#161616", "type": "color" },
+      "card":              { "value": "#ffffff", "type": "color" },
+      "primary":           { "value": "{global.color.brand-red.base}", "type": "color" },
+      "secondary":         { "value": "#f5f5f5", "type": "color" },
+      "muted":             { "value": "#8c8c8c", "type": "color" },
+      "muted-foreground":  { "value": "#646464", "type": "color" },
+      "accent":            { "value": "{global.color.brand-red.base}", "type": "color" },
+      "destructive":       { "value": "#dc3232", "type": "color" },
+      "border":            { "value": "#dcdcdc", "type": "color" }
+    }
+  },
+
+  "dark": {
+    "color": {
+      "background":        { "value": "#121212", "type": "color" },
+      "foreground":        { "value": "#ffffff", "type": "color" },
+      "card":              { "value": "rgba(26, 26, 26, 0.90)", "type": "color" },
+      "primary":           { "value": "{global.color.brand-red.dark-base}", "type": "color" },
+      "secondary":         { "value": "#cecece", "type": "color" },
+      "muted":             { "value": "#808080", "type": "color" },
+      "muted-foreground":  { "value": "#ffffff", "type": "color" },
+      "accent":            { "value": "#ff5558", "type": "color" },
+      "destructive":       { "value": "#f64c4c", "type": "color" },
+      "border":            { "value": "#808080", "type": "color" }
+    }
+  }
+}
