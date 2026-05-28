@@ -107,7 +107,10 @@
     0 0 22px -2px rgba(225, 6, 0, 0.45),
     0 0 60px -8px rgba(225, 6, 0, 0.25),
     0 16px 44px -16px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 40px 35px -24px rgba(255, 255, 255, 0.05);
+  --shadow-neon-glow-deepen:
+    inset 0 0 80px -16px rgba(225, 6, 0, 0.18);
   --shadow-hero-card-hover:
     0 30px 80px -24px rgba(0, 0, 0, 0.75),
     0 0 50px -10px rgba(225, 6, 0, 0.35);
@@ -184,27 +187,27 @@
 .category-track::-webkit-scrollbar,
 .profile-tabs::-webkit-scrollbar { display: none; }
 
-/* Essentials card hover treatment */
+/* Card hover treatments — see --shadow-{essential,profile,order,deal}-hover tokens.
+   Border alphas tuned per card family; shared transition curve = 300ms ease.
+   Adicione um destes selectors no card pra ativar hover red.            */
 .essential-card { transition: border-color 300ms ease, box-shadow 300ms ease; }
 .essential-card:hover {
   border-color: rgba(225, 6, 0, 0.45);
-  box-shadow: 0 0 0 1px rgba(225, 6, 0, 0.18), 0 24px 60px -28px rgba(225, 6, 0, 0.5);
+  box-shadow: var(--shadow-essential-hover);
 }
 .essential-card-glow { transition: opacity 500ms ease; }
 .essential-card:hover .essential-card-glow { opacity: 1; }
 
-/* Profile dashboard card hover treatment */
 .profile-card { transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease; }
 .profile-card:hover {
   border-color: rgba(225, 6, 0, 0.28) !important;
-  box-shadow: 0 0 0 1px rgba(225, 6, 0, 0.12), 0 18px 40px -22px rgba(225, 6, 0, 0.35);
+  box-shadow: var(--shadow-profile-hover);
 }
 
-/* Order list card hover — sutil elevation + primary stroke */
 .order-card { transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease; }
 .order-card:hover {
   border-color: rgba(225, 6, 0, 0.22) !important;
-  box-shadow: 0 0 0 1px rgba(225, 6, 0, 0.08), 0 14px 30px -20px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-order-hover);
   transform: translateY(-1px);
 }
 
@@ -226,11 +229,10 @@ input:-webkit-autofill:active {
   caret-color: rgba(255,255,255,0.95);
 }
 
-/* Deal card hover treatment */
 .deal-card-img { transition: border-color 300ms ease, box-shadow 300ms ease; }
 .deal-card-img:hover {
   border-color: rgba(225, 6, 0, 0.4);
-  box-shadow: 0 0 0 1px rgba(225, 6, 0, 0.15), 0 22px 50px -28px rgba(225, 6, 0, 0.45);
+  box-shadow: var(--shadow-deal-hover);
 }
 
 /* Glitch word — matrix/hack aesthetic */
@@ -382,6 +384,7 @@ input:-webkit-autofill:active {
   --radius-pill: var(--radius-pill);
   /* Shadow family — generates shadow-neon-red, shadow-hero-card-hover, etc */
   --shadow-neon-red: var(--shadow-neon-red);
+  --shadow-neon-glow-deepen: var(--shadow-neon-glow-deepen);
   --shadow-hero-card-hover: var(--shadow-hero-card-hover);
   --shadow-category-active: var(--shadow-category-active);
   --shadow-essential-hover: var(--shadow-essential-hover);
@@ -487,54 +490,25 @@ html {
   font-size: var(--font-size);
 }
 
-/* === Hero carousel card stroke ===
-   Gray gradient default. Red gradient on hover. */
-.hero-card-stroke {
-  background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 100%);
-}
-.hero-card {
-  transition: box-shadow 320ms ease;
-}
-.hero-card:hover .hero-card-stroke {
-  background: linear-gradient(135deg, var(--primary) 0%, #ff2419 35%, rgba(225,6,0,0.55) 65%, rgba(225,6,0,0.15) 100%);
-}
-.hero-card:hover {
-  box-shadow:
-    0 30px 80px -24px rgba(0,0,0,0.75),
-    0 0 50px -10px rgba(225,6,0,0.35);
-}
+/* Hero carousel card — stroke gray default, brand-gradient on hover.
+   Shadows in var(--shadow-hero-card-hover); stroke gradient in
+   var(--gradient-hero-stroke) / var(--gradient-hero-stroke-hover).      */
+.hero-card-stroke { background: var(--gradient-hero-stroke); }
+.hero-card { transition: box-shadow 320ms ease; }
+.hero-card:hover .hero-card-stroke { background: var(--gradient-hero-stroke-hover); }
+.hero-card:hover { box-shadow: var(--shadow-hero-card-hover); }
 
-/* === Category showcase active card hover ===
-   Red stroke + outer glow on hover. Image zoom handled in component. */
+/* Category showcase active card hover — see --shadow-category-active.  */
 .category-active:hover {
   border-color: rgba(225, 6, 0, 0.55) !important;
-  box-shadow:
-    0 0 0 1px rgba(225, 6, 0, 0.45),
-    0 30px 80px -20px rgba(0,0,0,0.7),
-    0 0 32px -4px rgba(225, 6, 0, 0.4),
-    inset 0 1px 0 rgba(255,255,255,0.06) !important;
+  box-shadow: var(--shadow-category-active) !important;
 }
 
-/* === V3 Neon hover (gamer aesthetic) ===
-   Subtle layered box-shadow with brand red. Modern, not 90s.
-   Opts in via className="neon-hover-red". Animates over 320ms. */
-.neon-hover-red {
-  transition: box-shadow 320ms ease-out, transform 320ms ease-out;
-}
-.neon-hover-red:hover {
-  box-shadow:
-    0 0 0 1px rgba(225, 6, 0, 0.55),
-    0 0 0 4px rgba(225, 6, 0, 0.10),
-    0 0 22px -2px rgba(225, 6, 0, 0.45),
-    0 0 60px -8px rgba(225, 6, 0, 0.25),
-    0 16px 44px -16px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    inset 0 40px 35px -24px rgba(255, 255, 255, 0.05);
-}
-.neon-hover-red:hover .neon-glow-deepen {
-  box-shadow:
-    inset 0 0 80px -16px rgba(225, 6, 0, 0.18);
-}
+/* V3 Neon hover — canonical gamer hover. Opt in via className="neon-hover-red".
+   Box-shadow recipe lives in --shadow-neon-red token.                  */
+.neon-hover-red { transition: box-shadow 320ms ease-out, transform 320ms ease-out; }
+.neon-hover-red:hover { box-shadow: var(--shadow-neon-red); }
+.neon-hover-red:hover .neon-glow-deepen { box-shadow: var(--shadow-neon-glow-deepen); }
 
 /* === Monte seu PC — Quiz scroll area: unbounded on mobile, capped on desktop === */
 .quiz-scroll-area { height: auto; max-height: none; }

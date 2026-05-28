@@ -257,6 +257,7 @@ Todas as 13 famílias de sombra do v3 viraram tokens em `theme.css`:
 | `--shadow-discount-sm` | `shadow-discount-sm` | Discount badge menor (`0 4px 14px -4px`, alpha 0.6) |
 | `--shadow-drawer-side` | `shadow-drawer-side` | CartDrawer lateral |
 | `--shadow-search-open` | `shadow-search-open` | Navbar search input focused |
+| `--shadow-neon-glow-deepen` | `shadow-neon-glow-deepen` | Inner glow (children `.neon-glow-deepen` dentro de `.neon-hover-red:hover`) |
 
 Token legacy mantido: `--elevation-sm` (sombra suave genérica `0 1px 3px / 0 1px 2px`).
 
@@ -936,3 +937,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 | 2026-05-28 | **Badges primitivos** — criados `<DiscountBadge percent size />` + `<BrindePill>`. Migrados 7 discount badges (ProductShelf, FlashDealsStrip, DealsHighlight, DropDoDiaSection, ProductsPage, ProductPage 2x) + 1 BrindePill (CartDrawer item). ProductCarousel skip (API discountBadge string). |
 | 2026-05-28 | **PreOrderPill + Tag primitives** — extraído `<PreOrderPill>` de `PreOrderBanner.tsx` pra `section/PreOrderPill.tsx` (re-export legacy mantido). DiscountBadge agora aceita `children` override (migrou ProductCarousel). Criado `<Tag variant="brand|neutral">` (migrado EssentialsSection). Token novo `--shadow-preorder-pill`. Total primitivos: 9. |
 | 2026-05-28 | **Form primitives** — criados `<FieldLabel>` + `<FieldInput>` + `<QtyStepper>`. Migrado AddressFormModal (8 inputs + 8 labels → primitivos, removidos constants `inputStyle`/`labelStyle`) + ProductPage desktop qty (−24 linhas). Total primitivos: 12. |
+| 2026-05-28 | **Hover CSS consolidation** — `.essential-card`, `.profile-card`, `.order-card`, `.deal-card-img`, `.hero-card`, `.category-active`, `.neon-hover-red` reescritos pra usar `var(--shadow-*)` tokens já existentes (em vez de inline shadows duplicados). Token novo `--shadow-neon-glow-deepen`. `--shadow-neon-red` ajustado pra incluir 7ª inset layer que faltava. CSS theme.css −31 linhas. |
