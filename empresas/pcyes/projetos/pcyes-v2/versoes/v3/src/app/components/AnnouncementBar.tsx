@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { X } from "lucide-react";
 
@@ -14,6 +14,14 @@ const MESSAGES = [
 export function AnnouncementBar() {
   const [dismissed, setDismissed] = useState(false);
   const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--announce-h", dismissed ? "0px" : "40px");
+  }, [dismissed]);
+
+  useEffect(() => () => {
+    document.documentElement.style.setProperty("--announce-h", "0px");
+  }, []);
 
   if (dismissed) return null;
 

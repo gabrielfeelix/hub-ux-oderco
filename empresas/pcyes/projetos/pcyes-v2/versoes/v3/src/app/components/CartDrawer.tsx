@@ -563,7 +563,7 @@ export function CartDrawer() {
                   </div>
 
                   <div className="min-h-0 flex-1 overflow-y-auto px-6 py-6 md:px-9 md:py-8">
-                    <div className="grid gap-3 md:grid-cols-3 md:gap-5">
+                    <div className="grid gap-4 md:grid-cols-3 md:gap-5">
                     {giftOptions.map((product) => {
                       const isSelected = selectedGiftId === product.id;
                       return (
@@ -589,10 +589,10 @@ export function CartDrawer() {
                           }}
                         />
                         <div
-                          className="relative h-[112px] w-[112px] flex-shrink-0 overflow-hidden border-r border-white/5 md:h-[210px] md:w-full md:border-r-0 md:border-b"
+                          className="relative h-[132px] w-[132px] flex-shrink-0 overflow-hidden border-r border-white/5 md:h-[210px] md:w-full md:border-r-0 md:border-b"
                           style={{ background: "radial-gradient(circle at top, rgba(225,6,0,0.12) 0%, transparent 60%)" }}
                         >
-                          <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-[1.04] md:p-6" />
+                          <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.04] md:p-6" />
                           <div
                             className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:left-4 md:top-4 md:h-9 md:w-9"
                             style={{
@@ -616,11 +616,11 @@ export function CartDrawer() {
                             </div>
                           )}
                         </div>
-                        <div className="relative flex flex-1 flex-col px-4 py-3 md:px-5 md:py-5">
-                          <p className="line-clamp-2 text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(14px, 3.8vw, 17px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+                        <div className="relative flex flex-1 flex-col px-4 py-4 md:px-5 md:py-5">
+                          <p className="line-clamp-2 text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(14px, 3.8vw, 17px)", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
                             {product.name}
                           </p>
-                          <div className="mt-2 flex items-baseline gap-2 md:mt-4">
+                          <div className="mt-3 flex items-baseline gap-2 md:mt-4">
                             <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.32)" }}>
                               {product.price}
                             </span>
@@ -628,7 +628,7 @@ export function CartDrawer() {
                               R$ 0,00
                             </span>
                           </div>
-                          <div className="mt-auto flex items-center justify-between pt-2 md:mt-4 md:pt-0">
+                          <div className="mt-auto flex items-center justify-between pt-4 md:mt-4 md:pt-0">
                             <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
                               PRESENTE PCYES
                             </span>

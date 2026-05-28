@@ -1132,7 +1132,7 @@ export function Navbar() {
   return (
     <>
       {/* Header wrapper with unified hover */}
-      <div className="fixed top-[40px] left-0 right-0 z-50" onMouseEnter={() => setPromoHovered(true)} onMouseLeave={() => setPromoHovered(false)}>
+      <div className="fixed left-0 right-0 z-50" style={{ top: "var(--announce-h, 40px)" }} onMouseEnter={() => setPromoHovered(true)} onMouseLeave={() => setPromoHovered(false)}>
         {/* Promo banner */}
         <AnimatePresence>
           {!promoDismissed && showExpanded && showPromoBanner && (
