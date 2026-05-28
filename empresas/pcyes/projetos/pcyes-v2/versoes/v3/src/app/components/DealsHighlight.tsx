@@ -12,6 +12,7 @@ import {
   getPrimaryProductImage,
   getVisibleCatalogProducts,
 } from "./productPresentation";
+import { SectionHeader } from "./section";
 
 interface DealsHighlightProps {
   label?: string;
@@ -212,37 +213,7 @@ export function DealsHighlight({
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         {/* Header */}
-        <div className="mb-10">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-3 text-primary"
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
-              fontWeight: 700,
-              letterSpacing: "0.3em",
-            }}
-          >
-            {label}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="text-white"
-            style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "clamp(28px, 3vw, 36px)",
-              fontWeight: 600,
-              lineHeight: 1.05,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {title}
-          </motion.h2>
-        </div>
+        <SectionHeader eyebrow={label} title={title} size="sm" weight={600} className="mb-10" />
 
         {/* Grid: products (left) + featured (right) */}
         <div className="grid gap-5 md:gap-6 lg:grid-cols-[2fr_1fr]">

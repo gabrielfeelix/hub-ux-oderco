@@ -9,6 +9,7 @@ import { useCart } from "./CartContext";
 import { allProducts, type Product } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
 import { getPixPrice, formatBRL } from "./productEnhancements";
+import { SectionHeader } from "./section";
 
 const DROP_IDS = [446, 433, 30];
 
@@ -39,32 +40,15 @@ export function DropDoDiaSection() {
     <section className="px-5 py-14 md:px-[72px] md:py-16" style={{ background: "#0a0a0a" }}>
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p
-              className="mb-3 inline-flex items-center gap-1.5 text-primary"
-              style={{
-                fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
-                fontWeight: 700,
-                letterSpacing: "0.3em",
-              }}
-            >
-              <Flame size={12} strokeWidth={2.4} />
-              // DROP DO DIA
-            </p>
-            <h2
-              className="text-white"
-              style={{
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "clamp(28px, 3vw, 38px)",
-                fontWeight: 700,
-                lineHeight: 1.04,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              3 deals selecionados só pra hoje
-            </h2>
-          </div>
+          <SectionHeader
+            eyebrow="// DROP DO DIA"
+            eyebrowIcon={<Flame size={12} strokeWidth={2.4} />}
+            title="3 deals selecionados só pra hoje"
+            size="md"
+            weight={700}
+            animated={false}
+            titleStyle={{ lineHeight: 1.04 }}
+          />
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">

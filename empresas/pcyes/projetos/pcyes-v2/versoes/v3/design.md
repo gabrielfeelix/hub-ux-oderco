@@ -591,6 +591,23 @@ SECTION
 └── (opcional) CTA secundário / link
 ```
 
+### 8.1.1 Primitivos disponíveis — `src/app/components/section/`
+
+```tsx
+import { Eyebrow, SectionHeader, SectionContainer } from "./section";
+```
+
+| Primitivo | Props principais | Uso |
+|---|---|---|
+| `<Eyebrow icon={<Flame/>}>// LABEL</Eyebrow>` | `icon?`, `className?`, `style?` | Eyebrow standalone (sem h2) |
+| `<SectionHeader eyebrow title size weight animated />` | `size: sm/md/lg` (36/38/44px), `weight: 500/600/700`, `animated: bool`, `eyebrowIcon`, `align`, `titleStyle` | Eyebrow + h2 com scroll reveal padrão |
+| `<SectionContainer maxWidth paddingY background>` | `maxWidth: 1200/1600/1760`, `paddingY: sm/md/lg/xl` | Wrapper `<section>` com padding lateral + max-width centralizado |
+
+Animação padrão (em `SectionHeader animated={true}`):
+- Eyebrow: `y: 16→0, opacity: 0→1, 0.5s, easing house`
+- Title: `y: 24→0, opacity: 0→1, 0.6s, delay 0.05s, easing house`
+- Trigger: `useScrollReveal()` (`useInView` com `once: true`, threshold 0.15)
+
 ### 8.2 Horizontal shelf (mais reutilizado)
 
 ```
@@ -906,3 +923,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 | 2026-05-28 | Documento inicial — auditoria completa pós-mobile-first homepage + ProductPage. |
 | 2026-05-28 | **Tokenização** — promovido a tokens: família de raios "Card" (12/18/22/26), gradientes especiais (brand/discount/buy/preorder/hero/category), 13 famílias de sombra. Adicionado roadmap §10.4 de migração pra semantic tokens em light mode. |
 | 2026-05-28 | **Aplicação dos tokens** — 81 gradients + 38 sombras + ~70 raios migrados pra `var(--*)` em ~20 componentes (ProductShelf, FlashDealsStrip, CartDrawer, CheckoutPage, ProductPage, etc). Adicionados `-sm` variants para sombras (buy-cta-sm, brand-cta-sm, brand-pill, discount-sm). Bundle CSS +0.42 kB, JS −2.23 kB. |
+| 2026-05-28 | **Primitivos de seção** — criados `<Eyebrow>` + `<SectionHeader>` + `<SectionContainer>` em `src/app/components/section/`. Migradas 6 seções (ProductShelf, DealsHighlight, FlashDealsStrip, DropDoDiaSection, CategoryShowcase, Newsletter). Net −125 linhas. |

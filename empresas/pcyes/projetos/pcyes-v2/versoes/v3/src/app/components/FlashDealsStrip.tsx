@@ -17,6 +17,7 @@ import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
 import { useFavorites } from "./FavoritesContext";
 import { CarouselDots } from "./CarouselDots";
+import { SectionHeader } from "./section";
 
 const DEAL_IDS = [436, 72, 199, 329, 446, 433, 30, 295, 375];
 
@@ -362,38 +363,13 @@ export function FlashDealsStrip() {
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         {/* Header */}
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55 }}
-            className="flex flex-col"
-          >
-            <span
-              className="mb-3 inline-flex items-center gap-1.5"
-              style={{
-                fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
-                fontWeight: 700,
-                letterSpacing: "0.3em",
-                color: "var(--primary)",
-              }}
-            >
-              <Flame size={13} strokeWidth={2.2} />
-              // PROMOÇÕES DA SEMANA
-            </span>
-            <h2
-              className="text-white"
-              style={{
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "clamp(28px, 3vw, 38px)",
-                fontWeight: 700,
-                lineHeight: 1.05,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Os deals que estão dominando
-            </h2>
-          </motion.div>
+          <SectionHeader
+            eyebrow="// PROMOÇÕES DA SEMANA"
+            eyebrowIcon={<Flame size={13} strokeWidth={2.2} />}
+            title="Os deals que estão dominando"
+            size="md"
+            weight={700}
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}

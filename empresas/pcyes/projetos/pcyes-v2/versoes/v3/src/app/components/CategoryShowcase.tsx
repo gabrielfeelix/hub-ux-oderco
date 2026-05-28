@@ -6,6 +6,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { getCatalogHref } from "./productPresentation";
 import { CarouselDots } from "./CarouselDots";
+import { SectionHeader } from "./section";
 
 interface CategoryItem {
   label: string;
@@ -147,31 +148,14 @@ export function CategoryShowcase() {
       {/* Header */}
       <div className="px-5 md:px-[72px] mb-10 md:mb-12">
         <div className="mx-auto" style={{ maxWidth: "1600px" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
-              fontWeight: 700,
-              letterSpacing: "0.3em",
-              color: "var(--primary)",
-              marginBottom: "10px",
-            }}
-          >
-            EXPLORE
-          </p>
-          <h2
-            className="text-white"
-            style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "clamp(28px, 3.4vw, 44px)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.02em",
-              maxWidth: "640px",
-            }}
-          >
-            Equipamentos por categoria
-          </h2>
+          <SectionHeader
+            eyebrow="EXPLORE"
+            title="Equipamentos por categoria"
+            size="lg"
+            weight={700}
+            animated={false}
+            titleStyle={{ maxWidth: "640px" }}
+          />
         </div>
       </div>
 

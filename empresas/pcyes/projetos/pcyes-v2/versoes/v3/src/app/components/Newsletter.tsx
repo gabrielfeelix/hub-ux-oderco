@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
+import { Eyebrow } from "./section";
 
 export function Newsletter() {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,18 +57,7 @@ export function Newsletter() {
           className="text-center"
         >
           {/* Label */}
-          <p
-            style={{
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
-              fontWeight: 700,
-              letterSpacing: "0.3em",
-              color: "var(--primary)",
-              marginBottom: "16px",
-            }}
-          >
-            FIQUE POR DENTRO
-          </p>
+          <Eyebrow style={{ marginBottom: "16px" }}>FIQUE POR DENTRO</Eyebrow>
 
           {/* Headline */}
           <h2
