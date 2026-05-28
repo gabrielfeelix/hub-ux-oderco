@@ -531,11 +531,37 @@ export function Navbar() {
     if (searchPanelOpen) setSearchCategoryOpen(false);
   }, [searchPanelOpen]);
 
+  const searchCategoryMatch = useMemo(() => {
+    const map: Record<string, string[]> = {
+      "Hardware": ["Hardware"],
+      "Periféricos": ["Periféricos"],
+      "Computadores": ["Computadores"],
+      "PC Gamer": ["Computadores"],
+    };
+    return map[searchCategory] ?? [];
+  }, [searchCategory]);
+
   const mostSearchedProducts = useMemo(() => {
-    return mostSearchedProductIds
-      .map((id) => visibleCatalogProducts.find((p) => p.id === id))
-      .filter(Boolean) as Product[];
-  }, []);
+    if (searchCategoryMatch.length === 0) {
+      return mostSearchedProductIds
+        .map((id) => visibleCatalogProducts.find((p) => p.id === id))
+        .filter(Boolean) as Product[];
+    }
+    return visibleCatalogProducts
+      .filter((p) => searchCategoryMatch.includes(p.category))
+      .sort((a, b) => (b.reviews ?? 0) - (a.reviews ?? 0))
+      .slice(0, 5);
+  }, [searchCategoryMatch]);
+
+  const displayedKeywords = useMemo(() => {
+    const keywords: Record<string, string[]> = {
+      "Hardware": ["Memória DDR5", "Memória DDR4", "Placa-mãe", "SSDs", "Hardware PCYES"],
+      "Periféricos": ["Headsets", "Teclados", "Mouses", "Mousepads", "Fone Gamer"],
+      "Computadores": ["PC Gamer", "Mini PC", "Setup completo", "Monitores", "Gabinetes"],
+      "PC Gamer": ["Setup completo", "Placas de Vídeo", "Gabinete Gamer", "Monitor Gamer", "Headset Gamer"],
+    };
+    return keywords[searchCategory] ?? mostSearchedKeywords;
+  }, [searchCategory]);
 
   // Auto-select first subitem when mega menu changes
   useEffect(() => {
@@ -1603,7 +1629,7 @@ export function Navbar() {
                               Termos mais buscados
                             </h4>
                             <div className="flex flex-col">
-                              {mostSearchedKeywords.map((kw) => (
+                              {displayedKeywords.map((kw) => (
                                 <Link
                                   key={kw}
                                   to={`/produtos?search=${encodeURIComponent(kw)}`}
