@@ -24,6 +24,7 @@ import {
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
 import { PreOrderBadge } from "./PreOrderBanner";
+import { CategorySeoBlock } from "./CategorySeoBlock";
 
 const categoryMap: Record<string, string> = {
   ...Object.fromEntries(productCategories.map((category) => [category, category])),
@@ -130,7 +131,7 @@ function getProductVariantByColor(product: Product, label: string) {
   return productVariantByColor[product.id]?.[label] ?? null;
 }
 
-const PAGE_SIZE_OPTIONS = [12, 24, 36] as const;
+const PAGE_SIZE_OPTIONS = [16, 24, 36] as const;
 const sortOptions = [
   { label: "Relevância", value: "relevance" },
   { label: "Mais vendidos", value: "bestselling" },
@@ -352,7 +353,7 @@ export function ProductsPage() {
   const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [itemsPerPageDropdownOpen, setItemsPerPageDropdownOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState<(typeof PAGE_SIZE_OPTIONS)[number]>(36);
+  const [itemsPerPage, setItemsPerPage] = useState<(typeof PAGE_SIZE_OPTIONS)[number]>(16);
   const [isLoading, setIsLoading] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState<Record<string, number>>({});
   const [selectedVariantIds, setSelectedVariantIds] = useState<Record<number, number>>({});
@@ -1386,6 +1387,13 @@ export function ProductsPage() {
               )}
             </div>
           </div>
+
+          {/* ── SEO content block (per category) ── */}
+          <CategorySeoBlock
+            categoryLabel={activeCategoryLabel}
+            subcategoryLabel={initialSubcategory}
+            featuredLabel={[...selectedFeaturedCategories][0] ?? ""}
+          />
         </div>
       </div>
 
