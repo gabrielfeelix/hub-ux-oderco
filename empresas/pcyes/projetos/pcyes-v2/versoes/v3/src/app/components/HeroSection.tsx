@@ -92,7 +92,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-x-hidden pb-6 md:pb-8 pt-[96px] md:pt-[210px]"
+      className="relative overflow-x-hidden pb-6 md:pb-8 pt-[112px] md:pt-[210px]"
       style={{ background: "#0a0a0a" }}
     >
       {/* Carousel track */}
