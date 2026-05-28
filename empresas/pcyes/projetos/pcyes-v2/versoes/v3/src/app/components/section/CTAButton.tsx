@@ -7,11 +7,11 @@ const ctaVariants = cva(
   {
     variants: {
       variant: {
-        buy:      "bg-[var(--gradient-buy)] shadow-[var(--shadow-buy-cta)] tracking-[0.04em]",
-        "buy-sm": "bg-[var(--gradient-buy)] shadow-[var(--shadow-buy-cta-sm)] tracking-[0.04em]",
-        brand:    "bg-[var(--gradient-brand)] shadow-[var(--shadow-brand-cta)] tracking-[0.05em] uppercase",
-        "brand-pill": "bg-[var(--gradient-brand)] shadow-[var(--shadow-brand-pill)] tracking-[0.05em] uppercase",
-        preorder: "bg-[var(--gradient-preorder-orange)] shadow-[var(--shadow-preorder-cta)] tracking-[0.04em]",
+        buy:      "[background-image:var(--gradient-buy)] shadow-[var(--shadow-buy-cta)] tracking-[0.04em]",
+        "buy-sm": "[background-image:var(--gradient-buy)] shadow-[var(--shadow-buy-cta-sm)] tracking-[0.04em]",
+        brand:    "[background-image:var(--gradient-brand)] shadow-[var(--shadow-brand-cta)] tracking-[0.05em] uppercase",
+        "brand-pill": "[background-image:var(--gradient-brand)] shadow-[var(--shadow-brand-pill)] tracking-[0.05em] uppercase",
+        preorder: "[background-image:var(--gradient-preorder-orange)] shadow-[var(--shadow-preorder-cta)] tracking-[0.04em]",
       },
       size: {
         sm: "h-10 px-6 text-[11px] font-bold",
