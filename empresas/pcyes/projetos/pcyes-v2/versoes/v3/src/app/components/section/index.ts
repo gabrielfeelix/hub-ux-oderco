@@ -6,3 +6,6 @@ export { DiscountBadge } from "./DiscountBadge";
 export { BrindePill } from "./BrindePill";
 export { PreOrderPill } from "./PreOrderPill";
 export { Tag } from "./Tag";
+export { FieldLabel } from "./FieldLabel";
+export { FieldInput } from "./FieldInput";
+export { QtyStepper } from "./QtyStepper";

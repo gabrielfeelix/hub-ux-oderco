@@ -607,6 +607,9 @@ import { Eyebrow, SectionHeader, SectionContainer, CTAButton } from "./section";
 | `<BrindePill>BRINDE</BrindePill>` | `children?`, `className?`, `style?` | Tag "BRINDE" em CartDrawer (rounded-pill, bg-primary/10) |
 | `<PreOrderPill info compact />` | `info: PreOrderInfo`, `compact?: bool` | Pré-venda pill (laranja gradient, Inter 9.5/900 ls 0.16em uppercase) |
 | `<Tag variant>texto</Tag>` | `variant: brand/neutral` | Tag/chip rounded-pill (Essentials section, feature tags) |
+| `<FieldLabel required>X</FieldLabel>` | `required?: bool`, `htmlFor?`, `children` | Label de form (Inter 10.5/700 ls 0.14em uppercase fg/55) |
+| `<FieldInput ... />` | props nativos de `<input>` | Input de form (padding 11×13, radius 10, border fg/8, bg fg/3, Inter 13/500) |
+| `<QtyStepper value onChange size />` | `size: sm/md`, `min?`, `max?`, `disabled?` | Stepper qty −/+ (CartDrawer sm, ProductPage md) |
 
 Animação padrão (em `SectionHeader animated={true}`):
 - Eyebrow: `y: 16→0, opacity: 0→1, 0.5s, easing house`
@@ -932,3 +935,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 | 2026-05-28 | **CTAButton primitivo** — criado `<CTAButton>` em `src/app/components/section/CTAButton.tsx` com variants `buy/buy-sm/brand/brand-pill/preorder` × sizes `sm/md/lg/xl` + `block`. Migrados 6 CTAs (ProductShelf, FlashDealsStrip, DealsHighlight, DropDoDiaSection, Newsletter desktop+mobile, ProductPage desktop+mobile). Token novo `--shadow-preorder-cta`. |
 | 2026-05-28 | **Badges primitivos** — criados `<DiscountBadge percent size />` + `<BrindePill>`. Migrados 7 discount badges (ProductShelf, FlashDealsStrip, DealsHighlight, DropDoDiaSection, ProductsPage, ProductPage 2x) + 1 BrindePill (CartDrawer item). ProductCarousel skip (API discountBadge string). |
 | 2026-05-28 | **PreOrderPill + Tag primitives** — extraído `<PreOrderPill>` de `PreOrderBanner.tsx` pra `section/PreOrderPill.tsx` (re-export legacy mantido). DiscountBadge agora aceita `children` override (migrou ProductCarousel). Criado `<Tag variant="brand|neutral">` (migrado EssentialsSection). Token novo `--shadow-preorder-pill`. Total primitivos: 9. |
+| 2026-05-28 | **Form primitives** — criados `<FieldLabel>` + `<FieldInput>` + `<QtyStepper>`. Migrado AddressFormModal (8 inputs + 8 labels → primitivos, removidos constants `inputStyle`/`labelStyle`) + ProductPage desktop qty (−24 linhas). Total primitivos: 12. |

@@ -22,7 +22,7 @@ import { toast } from "sonner";
 import { getPreOrderInfo } from "./PreOrderData";
 import type { PreOrderInfo } from "./PreOrderData";
 import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
-import { CTAButton, DiscountBadge } from "./section";
+import { CTAButton, DiscountBadge, QtyStepper } from "./section";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -867,31 +867,7 @@ function StickyPriceCard({
           >
             QUANTIDADE
           </span>
-          <div
-            className="flex items-center border border-foreground/12 overflow-hidden"
-            style={{ borderRadius: "var(--radius-button)" }}
-          >
-            <button
-              onClick={() => setQty(Math.max(1, qty - 1))}
-              className="w-8 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground hover:bg-foreground/5 transition-all cursor-pointer disabled:opacity-30"
-              disabled={qty <= 1}
-            >
-              <Minus size={12} />
-            </button>
-            <span
-              className="w-9 h-9 flex items-center justify-center text-foreground border-x border-foreground/10 select-none tabular-nums"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
-            >
-              {qty}
-            </span>
-            <button
-              onClick={() => setQty(qty + 1)}
-              className="w-8 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground hover:bg-foreground/5 transition-all cursor-pointer"
-              disabled={!inStock}
-            >
-              <Plus size={12} />
-            </button>
-          </div>
+          <QtyStepper value={qty} onChange={setQty} disabled={!inStock} />
         </div>
 
         {/* CTAs */}

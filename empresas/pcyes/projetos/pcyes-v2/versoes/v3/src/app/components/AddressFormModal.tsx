@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "./ui/dial
 import { useTheme } from "./ThemeProvider";
 import type { UserAddress } from "./AuthContext";
 import { MapPin } from "lucide-react";
+import { FieldLabel, FieldInput } from "./section";
 
 interface Props {
   open: boolean;
@@ -47,29 +48,6 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
 
   const valid = !!data.label && !!data.street && !!data.number && !!data.neighborhood && !!data.city && !!data.state && data.cep.replace(/\D/g, "").length === 8;
 
-  const inputStyle: React.CSSProperties = {
-    padding: "11px 13px",
-    borderRadius: "10px",
-    border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)",
-    background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)",
-    fontFamily: "var(--font-family-inter)",
-    fontSize: "13px",
-    fontWeight: 500,
-    color: isDark ? "#fafafa" : "#0a0a0a",
-    width: "100%",
-    outline: "none",
-  };
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    marginBottom: "6px",
-    fontFamily: "var(--font-family-inter)",
-    fontSize: "10.5px",
-    fontWeight: 700,
-    letterSpacing: "0.14em",
-    textTransform: "uppercase",
-    color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)",
-  };
-
   return (
     <Dialog open={open} onOpenChange={(v) => { if (!v) onClose(); }}>
       <DialogContent
@@ -100,19 +78,17 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
           className="px-6 py-5 grid grid-cols-12 gap-4"
         >
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>Nome do endereço <span style={{ color: "var(--primary)" }}>*</span></label>
-            <input
+            <FieldLabel required>Nome do endereço</FieldLabel>
+            <FieldInput
               autoFocus
-              style={inputStyle}
               placeholder="Casa, Trabalho..."
               value={data.label}
               onChange={(e) => setData((d) => ({ ...d, label: e.target.value }))}
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>CEP <span style={{ color: "var(--primary)" }}>*</span></label>
-            <input
-              style={inputStyle}
+            <FieldLabel required>CEP</FieldLabel>
+            <FieldInput
               placeholder="00000-000"
               value={data.cep}
               onChange={(e) => setData((d) => ({ ...d, cep: maskCep(e.target.value) }))}
@@ -120,54 +96,48 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             />
           </div>
           <div className="col-span-12 sm:col-span-9">
-            <label style={labelStyle}>Logradouro <span style={{ color: "var(--primary)" }}>*</span></label>
-            <input
-              style={inputStyle}
+            <FieldLabel required>Logradouro</FieldLabel>
+            <FieldInput
               placeholder="Av. Paranavaí"
               value={data.street}
               onChange={(e) => setData((d) => ({ ...d, street: e.target.value }))}
             />
           </div>
           <div className="col-span-12 sm:col-span-3">
-            <label style={labelStyle}>Número <span style={{ color: "var(--primary)" }}>*</span></label>
-            <input
-              style={inputStyle}
+            <FieldLabel required>Número</FieldLabel>
+            <FieldInput
               placeholder="1906"
               value={data.number}
               onChange={(e) => setData((d) => ({ ...d, number: e.target.value }))}
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>Complemento <span style={{ color: "rgba(var(--foreground-rgb), 0.35)", fontWeight: 500, letterSpacing: "0.04em" }}>(opcional)</span></label>
-            <input
-              style={inputStyle}
+            <FieldLabel>Complemento <span style={{ color: "rgba(var(--foreground-rgb), 0.35)", fontWeight: 500, letterSpacing: "0.04em", textTransform: "none" }}>(opcional)</span></FieldLabel>
+            <FieldInput
               placeholder="Sala, apto..."
               value={data.complement || ""}
               onChange={(e) => setData((d) => ({ ...d, complement: e.target.value }))}
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <label style={labelStyle}>Bairro <span style={{ color: "var(--primary)" }}>*</span></label>
-            <input
-              style={inputStyle}
+            <FieldLabel required>Bairro</FieldLabel>
+            <FieldInput
               placeholder="Parque Industrial"
               value={data.neighborhood}
               onChange={(e) => setData((d) => ({ ...d, neighborhood: e.target.value }))}
             />
           </div>
           <div className="col-span-12 sm:col-span-8">
-            <label style={labelStyle}>Cidade <span style={{ color: "var(--primary)" }}>*</span></label>
-            <input
-              style={inputStyle}
+            <FieldLabel required>Cidade</FieldLabel>
+            <FieldInput
               placeholder="Maringá"
               value={data.city}
               onChange={(e) => setData((d) => ({ ...d, city: e.target.value }))}
             />
           </div>
           <div className="col-span-12 sm:col-span-4">
-            <label style={labelStyle}>UF <span style={{ color: "var(--primary)" }}>*</span></label>
-            <input
-              style={inputStyle}
+            <FieldLabel required>UF</FieldLabel>
+            <FieldInput
               maxLength={2}
               placeholder="PR"
               value={data.state}
