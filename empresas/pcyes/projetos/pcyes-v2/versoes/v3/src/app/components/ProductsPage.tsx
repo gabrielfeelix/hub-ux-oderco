@@ -23,8 +23,7 @@ import {
   getVisibleCatalogProducts,
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
-import { PreOrderBadge } from "./PreOrderBanner";
-import { DiscountBadge } from "./section";
+import { DiscountBadge, PreOrderPill } from "./section";
 import { CategorySeoBlock } from "./CategorySeoBlock";
 
 const categoryMap: Record<string, string> = {
@@ -1254,7 +1253,7 @@ export function ProductsPage() {
                             {/* Top-left: pre-order > discount > rating */}
                             {preOrderInfo ? (
                               <span className="absolute top-3 left-3 z-10">
-                                <PreOrderBadge info={preOrderInfo} />
+                                <PreOrderPill info={preOrderInfo} />
                               </span>
                             ) : discount > 0 ? (
                               <DiscountBadge percent={discount} className="absolute top-3 left-3 z-10" />

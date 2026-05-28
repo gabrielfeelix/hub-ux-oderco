@@ -7,6 +7,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
 import { allProducts, type Product } from "./productsData";
 import { getPrimaryProductImage, getProductSwatches } from "./productPresentation";
+import { Tag } from "./section";
 
 const ESSENTIAL_IDS = [128, 173, 72, 436, 329] as const;
 
@@ -159,18 +160,7 @@ function EssentialCard({ product }: EssentialCardProps) {
             </span>
             <div className="flex flex-wrap gap-2">
               {product.tags.slice(0, 3).map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-semibold"
-                  style={{
-                    background: "rgba(225, 6, 0, 0.12)",
-                    border: "1px solid rgba(225, 6, 0, 0.35)",
-                    color: "rgba(255, 90, 80, 0.95)",
-                    fontFamily: "var(--font-family-inter)",
-                  }}
-                >
-                  {tag}
-                </span>
+                <Tag key={tag}>{tag}</Tag>
               ))}
             </div>
           </div>

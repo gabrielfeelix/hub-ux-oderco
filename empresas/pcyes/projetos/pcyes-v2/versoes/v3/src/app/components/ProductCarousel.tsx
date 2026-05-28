@@ -11,7 +11,7 @@ import { Link } from "react-router";
 import { allProducts, type Product } from "./productsData";
 import { findProductBySwatch, getPrimaryProductImage, getProductHoverMedia, getProductSwatches, getVisibleCatalogProducts } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
-import { PreOrderBadge } from "./PreOrderBanner";
+import { PreOrderPill, DiscountBadge } from "./section";
 
 interface ProductCarouselProps {
   label?: string;
@@ -284,24 +284,8 @@ export function ProductCarousel({
 
                   {(discountBadge || showNoveltyTag || preOrderInfo) && (
                     <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                      {preOrderInfo && <PreOrderBadge info={preOrderInfo} />}
-                      {discountBadge && (
-                        <span
-                          className="inline-flex items-center text-white"
-                          style={{
-                            background: "var(--gradient-discount)",
-                            padding: "6px 12px",
-                            borderRadius: "10px",
-                            fontFamily: "var(--font-family-figtree)",
-                            fontSize: "15px",
-                            fontWeight: 900,
-                            letterSpacing: "-0.02em",
-                            boxShadow: "var(--shadow-discount-badge)",
-                          }}
-                        >
-                          {discountBadge}
-                        </span>
-                      )}
+                      {preOrderInfo && <PreOrderPill info={preOrderInfo} />}
+                      {discountBadge && <DiscountBadge>{discountBadge}</DiscountBadge>}
                       {showNoveltyTag && (
                         <span
                           className="border border-white/12 bg-black/40 text-white/90 px-3 py-1 backdrop-blur-sm"

@@ -351,30 +351,4 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
   );
 }
 
-export function PreOrderBadge({ info, compact = false }: { info: PreOrderInfo; compact?: boolean }) {
-  const release = new Date(info.releaseDate);
-  const label = release.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-  });
-
-  return (
-    <span
-      className="inline-flex items-center gap-1 rounded-full"
-      style={{
-        background: "var(--gradient-preorder-orange)",
-        color: "#fff",
-        fontFamily: "var(--font-family-inter)",
-        fontSize: compact ? "8.5px" : "9.5px",
-        fontWeight: 900,
-        letterSpacing: "0.16em",
-        textTransform: "uppercase",
-        padding: compact ? "3px 7px" : "4px 9px",
-        boxShadow: "0 6px 16px -4px rgba(249,115,22,0.6)",
-      }}
-    >
-      <Rocket size={compact ? 8 : 9} strokeWidth={2.6} />
-      Pré-venda · {label}
-    </span>
-  );
-}
+export { PreOrderPill as PreOrderBadge } from "./section/PreOrderPill";

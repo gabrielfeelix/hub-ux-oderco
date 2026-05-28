@@ -4,3 +4,5 @@ export { SectionContainer } from "./SectionContainer";
 export { CTAButton, ctaVariants } from "./CTAButton";
 export { DiscountBadge } from "./DiscountBadge";
 export { BrindePill } from "./BrindePill";
+export { PreOrderPill } from "./PreOrderPill";
+export { Tag } from "./Tag";

@@ -1,9 +1,12 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type Size = "sm" | "lg";
 
 type DiscountBadgeProps = {
-  percent: number;
+  /** When set, renders "-X%". Ignored if `children` is provided. */
+  percent?: number;
+  /** Override label (e.g. custom badge string from product data). */
+  children?: ReactNode;
   size?: Size;
   className?: string;
   style?: CSSProperties;
@@ -33,13 +36,13 @@ const RECIPES: Record<Size, CSSProperties> = {
   },
 };
 
-export function DiscountBadge({ percent, size = "lg", className = "", style }: DiscountBadgeProps) {
+export function DiscountBadge({ percent, children, size = "lg", className = "", style }: DiscountBadgeProps) {
   return (
     <span
       className={`inline-flex items-center text-white ${className}`}
       style={{ ...RECIPES[size], ...style }}
     >
-      -{percent}%
+      {children ?? (percent !== undefined ? `-${percent}%` : null)}
     </span>
   );
 }

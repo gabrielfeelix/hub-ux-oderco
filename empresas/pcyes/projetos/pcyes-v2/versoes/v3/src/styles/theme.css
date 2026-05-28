@@ -136,6 +136,7 @@
   --shadow-discount-badge: 0 12px 28px -8px rgba(255,43,46,0.55);
   --shadow-discount-sm:    0 4px 14px -4px rgba(255,43,46,0.6);
   --shadow-preorder-cta:   0 14px 32px -8px rgba(249,115,22,0.55);
+  --shadow-preorder-pill:  0 6px 16px -4px rgba(249,115,22,0.6);
   --shadow-drawer-side:    -24px 0 60px -12px rgba(0, 0, 0, 0.55);
   --shadow-search-open:    0 10px 32px rgba(0, 0, 0, 0.55);
 }
@@ -395,6 +396,7 @@ input:-webkit-autofill:active {
   --shadow-discount-badge: var(--shadow-discount-badge);
   --shadow-discount-sm: var(--shadow-discount-sm);
   --shadow-preorder-cta: var(--shadow-preorder-cta);
+  --shadow-preorder-pill: var(--shadow-preorder-pill);
   --shadow-drawer-side: var(--shadow-drawer-side);
   --shadow-search-open: var(--shadow-search-open);
   --color-sidebar: var(--sidebar);

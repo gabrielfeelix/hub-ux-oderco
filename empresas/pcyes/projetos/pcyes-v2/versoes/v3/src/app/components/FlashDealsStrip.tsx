@@ -12,12 +12,11 @@ import {
   getVisibleCatalogProducts,
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
-import { PreOrderBadge } from "./PreOrderBanner";
 import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
 import { useFavorites } from "./FavoritesContext";
 import { CarouselDots } from "./CarouselDots";
-import { SectionHeader, CTAButton, DiscountBadge } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge, PreOrderPill } from "./section";
 
 const DEAL_IDS = [436, 72, 199, 329, 446, 433, 30, 295, 375];
 
@@ -154,7 +153,7 @@ function DealCard({ product, emphasize, onAdd }: DealCardProps) {
 
           {preOrderInfo && (
             <span className="absolute z-20" style={{ top: "14px", left: "14px" }}>
-              <PreOrderBadge info={preOrderInfo} />
+              <PreOrderPill info={preOrderInfo} />
             </span>
           )}
 

@@ -605,6 +605,8 @@ import { Eyebrow, SectionHeader, SectionContainer, CTAButton } from "./section";
 | `<CTAButton variant size block />` | `variant: buy/buy-sm/brand/brand-pill/preorder`, `size: sm/md/lg/xl` (h10/11/12/12), `block: bool` | CTAs principais (verde/vermelho/laranja) com hover scale + active scale |
 | `<DiscountBadge percent size />` | `percent: number`, `size: sm/lg` | Pill -X% sobre product card (lg) ou inline em ProductPage (sm) |
 | `<BrindePill>BRINDE</BrindePill>` | `children?`, `className?`, `style?` | Tag "BRINDE" em CartDrawer (rounded-pill, bg-primary/10) |
+| `<PreOrderPill info compact />` | `info: PreOrderInfo`, `compact?: bool` | Pré-venda pill (laranja gradient, Inter 9.5/900 ls 0.16em uppercase) |
+| `<Tag variant>texto</Tag>` | `variant: brand/neutral` | Tag/chip rounded-pill (Essentials section, feature tags) |
 
 Animação padrão (em `SectionHeader animated={true}`):
 - Eyebrow: `y: 16→0, opacity: 0→1, 0.5s, easing house`
@@ -929,3 +931,4 @@ Tokens `text-foreground/X` e `text-white/X` são re-escalados PARA CIMA em light
 | 2026-05-28 | **Primitivos de seção** — criados `<Eyebrow>` + `<SectionHeader>` + `<SectionContainer>` em `src/app/components/section/`. Migradas 6 seções (ProductShelf, DealsHighlight, FlashDealsStrip, DropDoDiaSection, CategoryShowcase, Newsletter). Net −125 linhas. |
 | 2026-05-28 | **CTAButton primitivo** — criado `<CTAButton>` em `src/app/components/section/CTAButton.tsx` com variants `buy/buy-sm/brand/brand-pill/preorder` × sizes `sm/md/lg/xl` + `block`. Migrados 6 CTAs (ProductShelf, FlashDealsStrip, DealsHighlight, DropDoDiaSection, Newsletter desktop+mobile, ProductPage desktop+mobile). Token novo `--shadow-preorder-cta`. |
 | 2026-05-28 | **Badges primitivos** — criados `<DiscountBadge percent size />` + `<BrindePill>`. Migrados 7 discount badges (ProductShelf, FlashDealsStrip, DealsHighlight, DropDoDiaSection, ProductsPage, ProductPage 2x) + 1 BrindePill (CartDrawer item). ProductCarousel skip (API discountBadge string). |
+| 2026-05-28 | **PreOrderPill + Tag primitives** — extraído `<PreOrderPill>` de `PreOrderBanner.tsx` pra `section/PreOrderPill.tsx` (re-export legacy mantido). DiscountBadge agora aceita `children` override (migrou ProductCarousel). Criado `<Tag variant="brand|neutral">` (migrado EssentialsSection). Token novo `--shadow-preorder-pill`. Total primitivos: 9. |

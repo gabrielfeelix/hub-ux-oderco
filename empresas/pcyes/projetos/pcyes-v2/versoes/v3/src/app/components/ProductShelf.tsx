@@ -15,9 +15,8 @@ import {
   getVisibleCatalogProducts,
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
-import { PreOrderBadge } from "./PreOrderBanner";
 import { CarouselDots } from "./CarouselDots";
-import { SectionHeader, CTAButton, DiscountBadge } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge, PreOrderPill } from "./section";
 
 interface ProductShelfProps {
   label: string;
@@ -138,7 +137,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
                 top: "12px",
               }}
             >
-              <PreOrderBadge info={preOrderInfo} />
+              <PreOrderPill info={preOrderInfo} />
             </span>
           )}
 
