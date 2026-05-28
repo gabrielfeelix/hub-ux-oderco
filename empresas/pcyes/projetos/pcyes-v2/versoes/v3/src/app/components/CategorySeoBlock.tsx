@@ -14,106 +14,106 @@ const SEO: Record<string, SeoEntry> = {
   default: {
     title: "Sobre os Produtos PCYES",
     paragraphs: [
-      "A PCYES desenvolve hardware e periféricos pensados para quem leva o gaming a sério. Aqui você encontra a linha completa de componentes, acessórios e setups montados para alta performance, com garantia oficial, suporte técnico nacional e envio para todo o Brasil.",
-      "Cada produto passa por controle de qualidade rigoroso e segue os padrões de durabilidade que fizeram a marca referência no mercado brasileiro de PC gamer — do entusiasta que monta sua primeira build ao competitivo que busca milisegundos de vantagem.",
+      "A PCYES fabrica componentes e periféricos gamer com presença consolidada nas principais lojas de tecnologia do Brasil. O catálogo da loja oficial PCYES reúne hardware, refrigeração, fontes, gabinetes, monitores, cadeiras e a linha completa de acessórios para PC gamer.",
+      "Todos os produtos PCYES contam com garantia de fábrica, nota fiscal, suporte técnico em português e envio para todo o território nacional. Compre direto da marca PCYES e tenha acesso a estoque atualizado, atendimento pós venda e mercadoria 100% original.",
     ],
   },
   "Periféricos": {
     title: "Sobre Periféricos Gamer PCYES",
     paragraphs: [
-      "Nossa linha de periféricos reúne teclados mecânicos, mouses com sensores de alta precisão, headsets imersivos e mouse pads projetados para gaming competitivo. Iluminação RGB personalizável, switches de alta performance e design ergonômico para longas sessões.",
-      "Todos os modelos contam com software dedicado para customização de macros, perfis de iluminação e mapeamento de teclas — pensados para entregar vantagem real em cada partida e refletir a identidade do seu setup.",
+      "A linha de periféricos gamer PCYES inclui teclados mecânicos, mouses gamer, headsets, mousepads e acessórios para setup. Os teclados PCYES utilizam switches mecânicos de alta durabilidade, iluminação RGB e layout ABNT2 nacional. Os mouses gamer PCYES contam com sensor óptico de alta precisão, taxa de polling configurável e botões programáveis para FPS, MOBA e MMO.",
+      "Todo periférico gamer PCYES sai de fábrica com software de personalização compatível com Windows, permitindo ajuste de macros, perfis de iluminação e mapeamento de teclas. Compre periférico gamer PCYES com garantia oficial de 12 meses, nota fiscal e frete para todo o Brasil.",
     ],
   },
   "Teclados": {
     title: "Sobre Teclados Gamer PCYES",
     paragraphs: [
-      "Explore nossa linha completa de teclados mecânicos e de membrana, projetados para oferecer precisão e durabilidade em cada clique. Nossos periféricos contam com iluminação RGB personalizável, switches de alta performance e design ergonômico para longas sessões de jogo.",
-      "Encontre o modelo ideal para seu setup — do compacto TKL ao full-size — com layouts ABNT2, anti-ghosting completo, N-key rollover e construção em alumínio escovado nos modelos premium.",
+      "O teclado gamer PCYES combina switches mecânicos, iluminação RGB e layout ABNT2 nacional. A linha de teclados gamer PCYES inclui modelos full size, TKL, 75%, 65% e 60%, em versões com fio e wireless. Cada teclado mecânico PCYES tem keycaps em ABS double shot, anti ghosting completo, N key rollover e cabo destacável USB C nos modelos premium.",
+      "O teclado gamer PCYES é compatível com Windows, macOS e Linux, e funciona em PCs gamer, notebooks e setups de streaming. Compre teclado mecânico PCYES na loja oficial, com garantia de 12 meses, suporte técnico em português e envio para todo o Brasil.",
     ],
   },
   "Mouses": {
     title: "Sobre Mouses Gamer PCYES",
     paragraphs: [
-      "Mouses gamer com sensores ópticos de alta precisão, taxa de polling configurável e botões programáveis para qualquer estilo de jogo — do FPS competitivo ao MMO. Construção leve, glide com pés de PTFE puro e cabo paracord nos modelos com fio.",
-      "Linha completa com versões wireless de baixíssima latência, ultraleves e modelos ambidestros, todos com software de personalização e suporte a múltiplos perfis de DPI.",
+      "O mouse gamer PCYES tem sensor óptico de alta precisão, taxa de resposta configurável e botões programáveis para diferentes estilos de jogo. A linha de mouse gamer PCYES inclui modelos com fio, sem fio 2.4 GHz, Bluetooth, ambidestros, ultraleves e versões com peso ajustável.",
+      "Cada mouse gamer PCYES acompanha software para configuração de perfis de DPI, ajuste de RGB e gravação de macros. Pés de PTFE, cabo paracord e construção em ABS premium garantem deslize suave e durabilidade. Compre mouse gamer PCYES com garantia oficial e entrega em todo o Brasil.",
     ],
   },
   "Headsets": {
     title: "Sobre Headsets Gamer PCYES",
     paragraphs: [
-      "Headsets gamer com áudio espacial, microfone com cancelamento de ruído e conforto para sessões prolongadas. Drivers de neodímio entregam resposta de graves precisa e definição clara nos médios — essencial para localizar inimigos em jogos competitivos.",
-      "Modelos com e sem fio compatíveis com PC, PS5, Xbox e Switch, com acolchoado em memory foam e estrutura ajustável para uso prolongado sem fadiga.",
+      "O headset gamer PCYES traz drivers de neodímio, áudio espacial e microfone com cancelamento de ruído para gameplay competitivo. A linha de headset gamer PCYES inclui modelos USB 7.1, P2 estéreo, wireless 2.4 GHz e Bluetooth 5.0, compatíveis com PC gamer, PS5, Xbox Series e Nintendo Switch.",
+      "Espuma memory foam, estrutura em metal reforçado e arco ajustável fazem do headset gamer PCYES uma escolha confortável para longas sessões de jogo ou de stream. Compre headset gamer PCYES com garantia oficial, nota fiscal e suporte técnico em português.",
     ],
   },
   "Refrigeração": {
     title: "Sobre Refrigeração PCYES",
     paragraphs: [
-      "Soluções térmicas para manter seu PC operando no pico de performance: water coolers AIO, air coolers, fans com PWM e pastas térmicas de alta condutividade. Compatibilidade ampla com sockets Intel e AMD modernos.",
-      "Nossa linha inclui radiadores de 120 a 360 mm, bombas silenciosas e iluminação ARGB sincronizável — refrigeração que protege o hardware e valoriza visualmente o setup.",
+      "A linha de refrigeração PCYES reúne water cooler AIO, cooler para processador, fans com PWM, pasta térmica e acessórios para gerenciamento térmico. Cada water cooler PCYES é compatível com soquetes Intel LGA 1700, 1200 e 115x, e AMD AM4, AM5 e TR4, com radiadores de 120 mm, 240 mm e 360 mm.",
+      "Os fans PCYES utilizam rolamentos hidrodinâmicos para operação silenciosa e iluminação ARGB sincronizável via Aura Sync, Mystic Light e RGB Fusion. A refrigeração PCYES atende desde builds de entrada até estações de overclock high end, com garantia oficial e envio para todo o Brasil.",
     ],
   },
   "Computadores": {
     title: "Sobre Computadores PCYES",
     paragraphs: [
-      "PCs gamer e mini PCs montados com componentes selecionados, prontos para rodar os títulos atuais em alta performance. Cada configuração passa por teste de estabilidade e burn-in antes do envio.",
-      "Opções para todos os perfis — do entrada acessível ao high-end com placa dedicada, refrigeração líquida e gabinete com vidro temperado — sempre com garantia de fábrica e suporte técnico PCYES.",
+      "O PC gamer PCYES já vem montado, com cabeamento organizado e teste de estabilidade antes do envio. A linha de computadores PCYES inclui PC gamer entrada, intermediário e high end, além de mini PCs para escritório e estação de trabalho. Cada PC gamer PCYES roda títulos atuais em 1080p, 1440p e 4K, com configurações que combinam processadores Intel Core e AMD Ryzen.",
+      "Compre PC gamer montado direto da loja oficial PCYES, com garantia de fábrica, nota fiscal e envio para todo o Brasil. Configurações personalizadas disponíveis sob consulta com a equipe técnica.",
     ],
   },
   "Hardware": {
     title: "Sobre Hardware PCYES",
     paragraphs: [
-      "Memórias RAM DDR4 e DDR5, placas-mãe e demais componentes para montar ou atualizar seu PC. Linha desenvolvida com chipsets de qualidade e dissipadores que garantem operação estável mesmo sob carga prolongada.",
-      "Modelos com overclock de fábrica, perfis XMP/EXPO e iluminação RGB para integração total com o ecossistema PCYES — base sólida para qualquer build moderna.",
+      "A linha de hardware PCYES traz memória RAM DDR4 e DDR5, placa mãe e demais componentes para montagem ou upgrade de PC gamer. As memórias RAM PCYES contam com perfis XMP 3.0 e EXPO, dissipador em alumínio escovado e iluminação RGB compatível com Aura Sync e Mystic Light.",
+      "Cada componente da linha de hardware PCYES é testado em fábrica e entregue com garantia oficial. Compre memória RAM PCYES, placa mãe PCYES e acessórios para PC gamer com frete e nota fiscal para todo o Brasil.",
     ],
   },
   "Fontes": {
     title: "Sobre Fontes PCYES",
     paragraphs: [
-      "Fontes ATX com certificação 80 Plus, proteções OVP/UVP/OCP/SCP e cabos sleeved para acabamento limpo no setup. Potências de 500 W a 1000 W+, atendendo desde builds de entrada até estações com GPU topo de linha.",
-      "Modelos modulares e semi-modulares com ventoinha silenciosa e garantia estendida — o coração elétrico do seu PC com a confiabilidade PCYES.",
+      "A fonte gamer PCYES atende builds de entrada, intermediárias e high end, com potências de 500 W, 600 W, 750 W, 850 W e 1000 W. Toda fonte PCYES é certificada 80 Plus, com proteções OVP, UVP, OCP, OPP e SCP, garantindo operação estável e segura sob carga máxima.",
+      "A linha de fonte PCYES inclui modelos modular, semi modular e cabeada, com ventoinha silenciosa de 120 mm ou 140 mm. Compre fonte de alimentação PCYES com garantia oficial estendida e envio para todo o Brasil.",
     ],
   },
   "SSD e HD": {
     title: "Sobre SSDs e HDs PCYES",
     paragraphs: [
-      "Armazenamento rápido e confiável: SSDs NVMe com leitura acima de 3.500 MB/s, SSDs SATA para upgrade de notebooks e HDs de alta capacidade para arquivo. Toda a linha com TBW estendido e firmware otimizado.",
-      "Ideal para reduzir tempo de carregamento em jogos, acelerar boot do sistema e ampliar a biblioteca sem comprometer performance.",
+      "O SSD PCYES oferece leitura acima de 3.500 MB/s nos modelos NVMe PCIe 3.0 e 4.0, ideal para reduzir tempo de boot, acelerar carregamento de jogos e ampliar a biblioteca Steam, Epic e Xbox PC. A linha de SSD PCYES inclui versões M.2 NVMe e SATA III 2.5 polegadas, com capacidades de 240 GB, 480 GB, 960 GB, 1 TB e 2 TB.",
+      "Cada SSD PCYES tem TBW estendido, firmware otimizado e garantia de 5 anos nos modelos premium. Compre SSD gamer PCYES e HD PCYES com nota fiscal, garantia oficial e envio para todo o Brasil.",
     ],
   },
   "Streaming": {
     title: "Sobre Equipamentos de Streaming PCYES",
     paragraphs: [
-      "Microfones condensadores, placas de captura e acessórios para criadores de conteúdo. Equipamento profissional com plug-and-play e qualidade broadcast para lives, podcasts e gravações.",
-      "Compatível com OBS, Streamlabs e principais plataformas — pronto para entregar áudio cristalino e vídeo em 1080p/4K sem latência perceptível.",
+      "A linha de equipamentos de streaming PCYES reúne microfone condensador, placa de captura, suporte de microfone e acessórios para criadores de conteúdo. O microfone PCYES funciona em modo plug and play via USB, compatível com OBS Studio, Streamlabs, Discord e principais plataformas de live streaming.",
+      "A placa de captura PCYES suporta captura em 1080p 60 fps e 4K 30 fps via HDMI, com baixa latência e compatibilidade com Windows e macOS. Compre equipamento de streaming PCYES com garantia oficial e entrega em todo o Brasil.",
     ],
   },
   "Monitores": {
     title: "Sobre Monitores Gamer PCYES",
     paragraphs: [
-      "Monitores gamer com altas taxas de atualização (144 Hz, 165 Hz, 240 Hz), tempo de resposta de 1 ms e tecnologias adaptativas como FreeSync. Painéis IPS, VA e curvos para imersão total.",
-      "Resoluções de Full HD a 4K, com ampla cobertura sRGB e suporte a HDR — visão competitiva e fidelidade cromática no mesmo painel.",
+      "O monitor gamer PCYES traz alta taxa de atualização (144 Hz, 165 Hz, 240 Hz), tempo de resposta de 1 ms e tecnologia FreeSync para gameplay sem tearing. A linha de monitor gamer PCYES inclui painéis IPS, VA e curvos, em tamanhos de 24, 27, 32 e 34 polegadas ultrawide.",
+      "As resoluções vão de Full HD a 4K UHD, com ampla cobertura sRGB e suporte a HDR nos modelos premium. Compre monitor gamer PCYES com garantia oficial, frete para todo o Brasil e suporte técnico em português.",
     ],
   },
   "Placas de Vídeo": {
     title: "Sobre Placas de Vídeo PCYES",
     paragraphs: [
-      "GPUs NVIDIA e AMD para gaming em alta resolução, criação de conteúdo e cargas de IA. Versões com refrigeração dupla ou tripla, backplate reforçada e boost clock de fábrica para máxima performance.",
-      "Estoque com modelos da geração atual e anterior, prontos para entrega — escolha a placa certa para 1080p, 1440p ou 4K com a tranquilidade do suporte PCYES.",
+      "A placa de vídeo PCYES atende gaming em 1080p, 1440p e 4K, edição de vídeo e cargas de inteligência artificial. A loja oficial PCYES vende placa de vídeo NVIDIA GeForce RTX e AMD Radeon, em versões com refrigeração dupla ou tripla, backplate em metal e boost clock de fábrica.",
+      "Compre placa de vídeo PCYES com garantia oficial, nota fiscal e envio para todo o Brasil. Estoque atualizado das gerações atual e anterior, com modelos de entrada, intermediários e high end para todos os perfis de PC gamer.",
     ],
   },
   "Gabinetes": {
     title: "Sobre Gabinetes Gamer PCYES",
     paragraphs: [
-      "Gabinetes com painel lateral em vidro temperado, airflow otimizado e suporte para water coolers de até 360 mm. Espaço interno generoso para builds modernas, com gerenciamento de cabos completo.",
-      "Modelos mid-tower e full-tower, com fans ARGB inclusos em várias versões — visual premium e fluxo de ar pensado para overclock estável.",
+      "O gabinete gamer PCYES traz painel lateral em vidro temperado, airflow otimizado e suporte para water cooler de até 360 mm. A linha de gabinete gamer PCYES inclui formatos mid tower e full tower, com compatibilidade ATX, micro ATX e mini ITX.",
+      "Cada gabinete gamer PCYES tem espaço para placa de vídeo de até 400 mm, gerenciamento de cabos completo e fans ARGB inclusos em vários modelos. Compre gabinete gamer PCYES com garantia oficial e envio para todo o Brasil.",
     ],
   },
   "Cadeiras": {
     title: "Sobre Cadeiras Gamer PCYES",
     paragraphs: [
-      "Cadeiras gamer e ergonômicas com encosto reclinável, apoio lombar ajustável e estofado em material premium. Estrutura em metal reforçado, base estrela em nylon resistente e rodízios silenciosos.",
-      "Opções para diferentes biotipos e estilos — do design esportivo ao office discreto — todas com apoio de braço 4D e altura regulável para ergonomia em longas jornadas.",
+      "A cadeira gamer PCYES tem encosto reclinável até 180 graus, apoio lombar ajustável e apoio de braço 4D para conforto em longas jornadas. A linha de cadeira gamer PCYES inclui modelos esportivos, cadeira office, cadeira ergonômica e versões com revestimento em couro sintético ou tecido respirável.",
+      "Estrutura em aço, pistão a gás classe 4 e base estrela em nylon reforçada fazem da cadeira gamer PCYES uma escolha durável para uso diário. Compre cadeira gamer PCYES com garantia oficial, montagem fácil e entrega em todo o Brasil.",
     ],
   },
 };
