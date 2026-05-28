@@ -340,6 +340,7 @@ export function ProductsPage() {
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const [selectedAttributes, setSelectedAttributes] = useState<Set<string>>(new Set());
   const [selectedBrands, setSelectedBrands] = useState<Set<string>>(new Set());
+  const [selectedSizes, setSelectedSizes] = useState<Set<string>>(new Set());
   const [selectedColors, setSelectedColors] = useState<Set<string>>(new Set());
   const [priceMin, setPriceMin] = useState(GLOBAL_MIN);
   const [priceMax, setPriceMax] = useState(GLOBAL_MAX);
@@ -359,7 +360,7 @@ export function ProductsPage() {
   const [selectedVariantIds, setSelectedVariantIds] = useState<Record<number, number>>({});
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    categories: true, brands: true, tags: true, price: true, color: true, rating: true, promo: true, attributes: true,
+    categories: true, brands: true, tags: true, price: true, color: true, rating: true, promo: true, attributes: true, sizes: true,
   });
 
   const { addItem } = useCart();
@@ -440,7 +441,7 @@ export function ProductsPage() {
   };
 
   const clearAll = () => {
-    setSelectedCategories(new Set()); setSelectedFeaturedCategories(new Set()); setSelectedSubcategories(new Set()); setSelectedTags(new Set()); setSelectedAttributes(new Set()); setSelectedBrands(new Set()); setSelectedColors(new Set());
+    setSelectedCategories(new Set()); setSelectedFeaturedCategories(new Set()); setSelectedSubcategories(new Set()); setSelectedTags(new Set()); setSelectedAttributes(new Set()); setSelectedBrands(new Set()); setSelectedSizes(new Set()); setSelectedColors(new Set());
     setPriceMin(GLOBAL_MIN); setPriceMax(GLOBAL_MAX); setOnlyDiscount(false); setSelectedDiscounts(new Set()); setSelectedRatings(new Set());
     setInStockOnly(false); setSearchQuery(""); setSelectedVariantIds({});
     const sp = new URLSearchParams(searchParams); sp.delete("category"); sp.delete("subcategory"); sp.delete("search"); setSearchParams(sp, { replace: true });
@@ -484,6 +485,16 @@ export function ProductsPage() {
       });
     }
     if (selectedBrands.size > 0) result = result.filter((p) => p.brand && selectedBrands.has(p.brand));
+    if (selectedSizes.size > 0) {
+      result = result.filter((p) => {
+        const haystack = [
+          ...(p.tags ?? []),
+          ...(p.features ?? []),
+          p.name,
+        ].join(" ").toLowerCase();
+        return [...selectedSizes].every((s) => haystack.includes(s.toLowerCase()));
+      });
+    }
     if (onlyDiscount) result = result.filter((p) => getDiscount(getColorMatchedProduct(p)) > 0);
     if (selectedDiscounts.size > 0) {
       const minSelected = Math.min(...selectedDiscounts);
@@ -501,7 +512,7 @@ export function ProductsPage() {
     if (inStockOnly) result = result.filter((p) => p.inStock !== false);
 
     return result;
-  }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories, selectedTags, selectedAttributes, selectedBrands, onlyDiscount, selectedDiscounts, selectedRatings, inStockOnly, searchQuery]);
+  }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories, selectedTags, selectedAttributes, selectedBrands, selectedSizes, onlyDiscount, selectedDiscounts, selectedRatings, inStockOnly, searchQuery]);
 
   const priceBounds = useMemo(() => {
     const productsForPrice = selectedColors.size > 0
@@ -524,7 +535,7 @@ export function ProductsPage() {
 
   const priceFilterActive = priceMin > priceBounds.min || priceMax < priceBounds.max;
 
-  const activeFilterCount = selectedCategories.size + selectedFeaturedCategories.size + selectedSubcategories.size + selectedTags.size + selectedAttributes.size + selectedBrands.size + selectedColors.size
+  const activeFilterCount = selectedCategories.size + selectedFeaturedCategories.size + selectedSubcategories.size + selectedTags.size + selectedAttributes.size + selectedBrands.size + selectedSizes.size + selectedColors.size
     + (priceFilterActive ? 1 : 0) + (onlyDiscount ? 1 : 0)
     + selectedDiscounts.size
     + selectedRatings.size + (searchQuery ? 1 : 0) + (inStockOnly ? 1 : 0);
@@ -565,14 +576,98 @@ export function ProductsPage() {
         seen.add(key);
         counts.set(trimmed, (counts.get(trimmed) ?? 0) + 1);
       });
+
+      if (p.category === "Cadeiras") {
+        const featureSeen = new Set<string>();
+        const addOnce = (label: string) => {
+          const k = label.toLowerCase();
+          if (featureSeen.has(k)) return;
+          featureSeen.add(k);
+          counts.set(label, (counts.get(label) ?? 0) + 1);
+        };
+        (p.features ?? []).forEach((feature) => {
+          const text = feature.toLowerCase();
+          const peso = text.match(/(\d{2,3})\s*kg/);
+          if (peso) addOnce(`Suporta ${peso[1]} kg`);
+          if (/bra[çc]o/.test(text)) {
+            const braco = text.match(/(\d)\s*d/);
+            if (braco) addOnce(`Apoio de braço ${braco[1]}D`);
+          }
+          if (/base.*nylon|nylon.*base/.test(text)) addOnce("Base em nylon");
+          if (/base.*alumínio|aluminio.*base/.test(text)) addOnce("Base em alumínio");
+          if (/base.*aço|aço.*base/.test(text)) addOnce("Base em aço");
+          const incl = text.match(/inclina[çc][ãa]o.*?(\d{2,3})/);
+          if (incl) addOnce(`Inclinação ${incl[1]}°`);
+          const classe = text.match(/classe\s*(\d)/);
+          if (classe) addOnce(`Pistão Classe ${classe[1]}`);
+          if (/tecido linho/.test(text)) addOnce("Tecido linho");
+          if (/couro sintético|couro/.test(text)) addOnce("Couro sintético");
+          if (/almofada lombar/.test(text)) addOnce("Almofada lombar");
+        });
+      }
     });
 
     return [...counts.entries()]
       .map(([label, count]) => ({ label, count }))
       .filter((entry) => entry.count >= 2)
       .sort((a, b) => b.count - a.count)
-      .slice(0, 18);
+      .slice(0, 24);
   }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories]);
+
+  const availableBrands = useMemo(() => {
+    const counts = new Map<string, number>();
+    productsBeforeColorFilter.forEach((p) => {
+      if (!p.brand) return;
+      counts.set(p.brand, (counts.get(p.brand) ?? 0) + 1);
+    });
+    return [...counts.entries()]
+      .map(([label, count]) => ({ label, count }))
+      .sort((a, b) => b.count - a.count);
+  }, [productsBeforeColorFilter]);
+
+  useEffect(() => {
+    const available = new Set(availableBrands.map((b) => b.label));
+    setSelectedBrands((prev) => {
+      const next = new Set([...prev].filter((b) => available.has(b)));
+      return next.size === prev.size ? prev : next;
+    });
+  }, [availableBrands]);
+
+  const availableSizes = useMemo(() => {
+    const SIZE_REGEXES: RegExp[] = [
+      /^\d{2,3}%(\s+\w+)?$/,
+      /^(TKL|Full Size|Compact|Mini)$/i,
+      /^(Mid Tower|Full Tower|Mini ITX|Micro ATX|ATX)$/i,
+      /^\d+"$/,
+      /^\d{1,3}\s*(polegadas?|metros?|m|cm|mm|kg|GB|TB|W)$/i,
+    ];
+    const counts = new Map<string, number>();
+    productsBeforeColorFilter.forEach((p) => {
+      const seen = new Set<string>();
+      (p.tags ?? []).forEach((tag) => {
+        const t = tag.trim();
+        if (!t || t.length > 22) return;
+        if (!SIZE_REGEXES.some((re) => re.test(t))) return;
+        const key = t.toLowerCase();
+        if (seen.has(key)) return;
+        seen.add(key);
+        counts.set(t, (counts.get(t) ?? 0) + 1);
+      });
+    });
+    return [...counts.entries()]
+      .filter(([, c]) => c >= 2)
+      .map(([label, count]) => ({ label, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 14);
+  }, [productsBeforeColorFilter]);
+
+  useEffect(() => {
+    const available = new Set(availableSizes.map((s) => s.label));
+    setSelectedSizes((prev) => {
+      const next = new Set([...prev].filter((s) => available.has(s)));
+      return next.size === prev.size ? prev : next;
+    });
+  }, [availableSizes]);
 
   useEffect(() => {
     const available = new Set(availableAttributes.map((a) => a.label));
@@ -649,6 +744,7 @@ export function ProductsPage() {
       {[...selectedFeaturedCategories].map((c) => <FilterPill key={c} label={c} onRemove={() => toggleFeaturedCategory(c)} />)}
       {[...selectedSubcategories].map((c) => <FilterPill key={c} label={c} onRemove={() => toggleSet(setSelectedSubcategories, c)} />)}
       {[...selectedBrands].map((b) => <FilterPill key={b} label={b} onRemove={() => toggleSet(setSelectedBrands, b)} />)}
+      {[...selectedSizes].map((s) => <FilterPill key={`size-${s}`} label={s} onRemove={() => toggleSet(setSelectedSizes, s)} />)}
       {[...selectedTags].map((t) => <FilterPill key={t} label={t} onRemove={() => toggleSet(setSelectedTags, t)} />)}
       {[...selectedAttributes].map((a) => <FilterPill key={`attr-${a}`} label={a} onRemove={() => toggleSet(setSelectedAttributes, a)} />)}
       {[...selectedColors].map((color) => <FilterPill key={color} label={color} onRemove={() => toggleColor(color)} />)}
@@ -738,6 +834,51 @@ export function ProductsPage() {
               </button>
             );
           })}
+        </FilterSection>
+      )}
+
+      {availableBrands.length > 0 && (
+        <FilterSection title="Marca" expanded={expandedSections.brands} onToggle={() => toggleSection("brands")}>
+          <div className="space-y-1 pt-1 max-h-[260px] overflow-y-auto pr-1" style={{ scrollbarWidth: "thin" }}>
+            {availableBrands.map(({ label, count }) => {
+              const active = selectedBrands.has(label);
+              return (
+                <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
+                  <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedBrands, label)} />
+                  <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+                    {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
+                  </span>
+                  <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                    {label}
+                  </span>
+                  <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>({count})</span>
+                </label>
+              );
+            })}
+          </div>
+        </FilterSection>
+      )}
+
+      {availableSizes.length > 0 && (
+        <FilterSection title="Tamanho" expanded={expandedSections.sizes} onToggle={() => toggleSection("sizes")}>
+          <div className="flex flex-wrap gap-2 pt-1">
+            {availableSizes.map(({ label, count }) => {
+              const active = selectedSizes.has(label);
+              return (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => toggleSet(setSelectedSizes, label)}
+                  className={`flex items-center gap-1.5 px-3 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/55 hover:border-foreground/25"}`}
+                  style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                  aria-pressed={active}
+                >
+                  {label}
+                  <span className="text-foreground/30" style={{ fontSize: "11px" }}>({count})</span>
+                </button>
+              );
+            })}
+          </div>
         </FilterSection>
       )}
 
@@ -1188,10 +1329,10 @@ export function ProductsPage() {
                             {/* Quick add — floating pill on hover */}
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
-                              className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-10 py-3 opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
-                              style={{ background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", color: "white", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 10px 26px -6px rgba(34,197,94,0.55)" }}
+                              className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-4 py-1.5 text-[11px] lg:bottom-4 lg:px-10 lg:py-3 lg:text-[13px] opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
+                              style={{ background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 6px 16px -4px rgba(34,197,94,0.45)" }}
                             >
-                              <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
+                              <span className="inline-flex items-center gap-1.5 lg:gap-2"><ShoppingBag size={12} strokeWidth={2} className="lg:hidden" /><ShoppingBag size={14} strokeWidth={2} className="hidden lg:block" /> Comprar</span>
                             </button>
                           </div>
 
