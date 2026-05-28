@@ -1299,7 +1299,7 @@ function MobilePurchaseFlow({
         <button
           onClick={onBuyNow}
           disabled={buyDisabled}
-          className="h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          className="h-12 w-full px-6 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           style={{
             background: isPreOrder
               ? "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
@@ -1314,9 +1314,9 @@ function MobilePurchaseFlow({
           }}
         >
           {isPreOrder ? (
-            <><Rocket size={15} strokeWidth={2.4} /> {preOrderSoldOut ? "Esgotado" : "Comprar agora"}</>
+            <><Rocket size={15} strokeWidth={2.4} className="flex-shrink-0" /> {preOrderSoldOut ? "Esgotado" : "Comprar agora"}</>
           ) : (
-            <><Zap size={15} strokeWidth={2.4} fill="currentColor" /> Comprar agora</>
+            <><Zap size={15} strokeWidth={2.4} fill="currentColor" className="flex-shrink-0" /> Comprar agora</>
           )}
         </button>
 
