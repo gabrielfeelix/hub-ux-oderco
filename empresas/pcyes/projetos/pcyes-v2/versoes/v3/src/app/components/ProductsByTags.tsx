@@ -3,10 +3,11 @@ import { Link } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ShoppingBag, Heart, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import { useCart } from "./CartContext";
 import { allProducts as catalogProducts, type Product } from "./productsData";
 import { findProductBySwatch, getPrimaryProductImage, getProductHoverMedia, getProductSwatches, getVisibleCatalogProducts } from "./productPresentation";
+import { QuickAddButton } from "./section";
 
 const tags = ["Todos", "Gaming", "Streaming", "Escritório", "RGB", "Wireless"];
 
@@ -169,14 +170,7 @@ export function ProductsByTags() {
 
                   {/* Quick add */}
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
-                    <button
-                      onClick={(e) => { e.preventDefault(); addItem(displayProduct); }}
-                      className="w-full py-2.5 text-white flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02]"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "var(--gradient-buy)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
-                    >
-                      <ShoppingBag size={13} strokeWidth={1.5} />
-                      Adicionar
-                    </button>
+                    <QuickAddButton onClick={(e) => { e.preventDefault(); addItem(displayProduct); }} />
                   </div>
 
                   {/* Tags */}

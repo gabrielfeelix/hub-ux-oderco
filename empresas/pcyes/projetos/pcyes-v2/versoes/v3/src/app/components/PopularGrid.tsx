@@ -3,10 +3,11 @@ import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ShoppingBag, Star, TrendingUp, ArrowRight, Heart } from "lucide-react";
+import { Star, TrendingUp, ArrowRight, Heart } from "lucide-react";
 import { useCart } from "./CartContext";
 import { useFavorites } from "./FavoritesContext";
 import { allProducts } from "./productsData";
+import { QuickAddButton } from "./section";
 
 export function PopularGrid() {
   const ref = useRef<HTMLDivElement>(null);
@@ -130,13 +131,10 @@ export function PopularGrid() {
 
                   {/* Quick add */}
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
-                    <button
+                    <QuickAddButton
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem(product); }}
-                      className="w-full py-2.5 text-white flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer hover:scale-[1.02]"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)", background: "var(--gradient-buy)", boxShadow: "0 8px 20px -6px rgba(34,197,94,0.55)" }}
-                    >
-                      <ShoppingBag size={13} strokeWidth={1.5} /> Adicionar <span className="hidden sm:inline">ao carrinho</span>
-                    </button>
+                      label={<>Adicionar <span className="hidden sm:inline">ao carrinho</span></>}
+                    />
                   </div>
                 </div>
               </Link>
