@@ -4,9 +4,6 @@ import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { Link } from "react-router";
 import { motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
-import { ImageWithFallback as _ImageWithFallback } from "./figma/ImageWithFallback";
-// _ImageWithFallback kept for back-compat if needed; the carousel now uses <picture>+<img> directly.
-void _ImageWithFallback;
 
 interface Slide {
   /** Desktop / default image. Used when `srcMobile` is absent or viewport is >= md. */
@@ -17,10 +14,16 @@ interface Slide {
   alt: string;
 }
 
+/**
+ * Each slide can also declare `srcMobile` for a vertically taller crop.
+ * Today we ship only desktop art; uncomment the mobile entries once the
+ * mobile-cropped files exist in /public/assets — otherwise <picture>
+ * would 404 on small viewports.
+ */
 const slides: Slide[] = [
-  { src: "/assets/banner-1.png", srcMobile: "/assets/banner-1-mobile.png", href: "/produtos", alt: "Nova Coleção Performance 2026" },
-  { src: "/assets/banner-2.png", srcMobile: "/assets/banner-2-mobile.png", href: "/produtos?category=Periféricos", alt: "Equipamentos para streamers" },
-  { src: "/assets/banner-3.png", srcMobile: "/assets/banner-3-mobile.png", href: "/monte-seu-pc", alt: "Builds prontas pra dominar" },
+  { src: "/assets/banner-1.png", href: "/produtos", alt: "Nova Coleção Performance 2026" },
+  { src: "/assets/banner-2.png", href: "/produtos?category=Periféricos", alt: "Equipamentos para streamers" },
+  { src: "/assets/banner-3.png", href: "/monte-seu-pc", alt: "Builds prontas pra dominar" },
 ];
 
 const SLIDE_DURATION = 6500;
@@ -121,12 +124,13 @@ export function HeroSection() {
       style={{ background: "#0a0a0a" }}
     >
       {/* Carousel track. Heights:
-            mobile:   clamp(380px, 90vw, 480px), capped to 70dvh so it never
-                      eats more than the viewport's safe area.
+            mobile:   clamp(460px, 115vw, 620px), capped to 78dvh so it never
+                      eats more than the viewport's safe area. Tall enough
+                      to read the artwork copy on phone portrait.
             desktop:  clamp(300px, 48vw, 600px), capped to 60dvh on shorter
                       notebooks so the TrustStrip stays in the first fold. */}
       <div className="relative">
-        <div className="overflow-hidden h-[min(clamp(380px,90vw,480px),70dvh)] md:h-[min(clamp(300px,48vw,600px),60dvh)]">
+        <div className="overflow-hidden h-[min(clamp(460px,115vw,620px),78dvh)] md:h-[min(clamp(300px,48vw,600px),60dvh)]">
           <motion.div
             className="flex h-full"
             style={{ gap: slideGap, paddingLeft: "0px", paddingRight: "0px" }}
