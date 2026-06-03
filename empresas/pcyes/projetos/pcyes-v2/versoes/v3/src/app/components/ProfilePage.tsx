@@ -6,8 +6,9 @@ import {
   Package, Heart, MapPin, User, CreditCard, HelpCircle, Shield, LogOut,
   ChevronRight, Truck, Check, Clock, X as XIcon, Star, ShoppingBag, Trash2,
   ArrowLeft, Copy, Receipt, Info, Share2, AlertCircle, PackageCheck,
-  LayoutDashboard, Sparkles
+  LayoutDashboard, Sparkles, LayoutGrid
 } from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { useAuth, type Order, type UserAddress, type UserCard } from "./AuthContext";
 import { AddressFormModal } from "./AddressFormModal";
 import { CardFormModal } from "./CardFormModal";
@@ -265,8 +266,7 @@ export function ProfilePage() {
             </div>
             <div className="h-8 w-px bg-foreground/10" />
             <div className="flex items-center gap-2 sm:gap-3 px-2.5 sm:px-3 py-1.5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.04) 100%)" : "linear-gradient(135deg, rgba(250,204,21,0.16) 0%, rgba(180,83,9,0.06) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
-              <PcyesCoin size={22} className="sm:hidden" />
-              <PcyesCoin size={28} className="hidden sm:block" />
+              <PcyesCoin size={28} />
               <div>
                 <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#facc15" }}>PCYES Points</p>
                 <p style={{ fontFamily: "var(--font-family-figtree)", fontWeight: 700, lineHeight: 1.1, color: "#facc15", textShadow: "0 0 18px rgba(250,204,21,0.35)", fontSize: "20px" }} className="sm:text-[24px]">
@@ -282,69 +282,132 @@ export function ProfilePage() {
         <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10">
           {/* Sidebar — vertical on desktop, horizontal scrollable tab bar on mobile */}
           <aside className="w-full lg:w-[230px] flex-shrink-0">
-            {/* Fade-right affordance wrapper (mobile only) */}
-            <div className="relative lg:contents">
-              <nav
-                className="profile-tabs flex flex-row gap-2 overflow-x-auto -mx-5 px-5 lg:mx-0 lg:px-0 lg:block lg:space-y-0.5 lg:overflow-visible"
-                style={{ scrollbarWidth: "none" }}
-              >
-                {TABS.map((tab) => (
-                  <button key={tab.key} onClick={() => setProfileTab(tab.key)}
-                    className={`relative flex-shrink-0 lg:flex-shrink
-                      flex flex-col items-center justify-center
-                      lg:flex-row lg:items-center lg:justify-start
-                      gap-0 lg:gap-3
-                      min-w-[72px] min-h-[60px] px-2 py-2
-                      lg:min-w-0 lg:min-h-0 lg:w-full lg:py-2.5 lg:px-3.5
-                      whitespace-nowrap lg:whitespace-normal
-                      transition-all duration-200 cursor-pointer
-                      ${activeTab === tab.key ? "text-primary" : "text-foreground/60 hover:text-foreground/88"}`}
-                    style={{
-                      borderRadius: "10px",
-                      background: activeTab === tab.key
-                        ? (isDark ? "linear-gradient(90deg, rgba(255,43,46,0.12) 0%, rgba(255,43,46,0.04) 100%)" : "linear-gradient(90deg, rgba(220,20,20,0.08) 0%, rgba(220,20,20,0.02) 100%)")
-                        : "transparent",
-                      fontFamily: "var(--font-family-inter)",
-                      fontWeight: activeTab === tab.key ? 600 : 500,
-                      boxShadow: activeTab === tab.key ? "inset 2px 0 0 var(--primary)" : "none",
-                    }}
-                  >
-                    <tab.icon size={18} className="lg:hidden mb-1 flex-shrink-0" />
-                    <tab.icon size={15} className="hidden lg:block flex-shrink-0" />
-                    {/* Mobile: short label below icon */}
-                    <span className="lg:hidden text-center leading-tight" style={{ fontSize: "10px" }}>{tab.short}</span>
-                    {/* Desktop: full label inline */}
-                    <span className="hidden lg:inline" style={{ fontSize: "13px" }}>{tab.label}</span>
-                  </button>
-                ))}
-                <div className="hidden lg:block h-px bg-foreground/8 my-3" />
-                {/* Logout — same compact tile treatment on mobile */}
-                <button onClick={logout}
-                  className="flex-shrink-0 lg:flex-shrink
+            {/* Mobile horizontal scroll: CSS mask handles the right-edge fade
+                so it follows the viewport regardless of container padding.
+                Desktop reverts to a vertical sidebar via `lg:` resets.    */}
+            <nav
+              className="profile-tabs flex flex-row gap-2 overflow-x-auto -mx-5 px-5 lg:mx-0 lg:px-0 lg:block lg:space-y-0.5 lg:overflow-visible [mask-image:linear-gradient(to_right,black_calc(100%-40px),transparent)] lg:[mask-image:none]"
+              style={{ scrollbarWidth: "none" }}
+              aria-label="Navegação do perfil"
+            >
+              {TABS.map((tab) => (
+                <button key={tab.key} onClick={() => setProfileTab(tab.key)}
+                  aria-current={activeTab === tab.key ? "page" : undefined}
+                  className={`relative flex-shrink-0 lg:flex-shrink
                     flex flex-col items-center justify-center
                     lg:flex-row lg:items-center lg:justify-start
                     gap-0 lg:gap-3
                     min-w-[72px] min-h-[60px] px-2 py-2
                     lg:min-w-0 lg:min-h-0 lg:w-full lg:py-2.5 lg:px-3.5
                     whitespace-nowrap lg:whitespace-normal
-                    text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
-                  style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontWeight: 500 }}
+                    transition-all duration-200 cursor-pointer
+                    ${activeTab === tab.key ? "text-primary" : "text-foreground/60 hover:text-foreground/88"}`}
+                  style={{
+                    borderRadius: "10px",
+                    background: activeTab === tab.key
+                      ? (isDark ? "linear-gradient(90deg, rgba(255,43,46,0.12) 0%, rgba(255,43,46,0.04) 100%)" : "linear-gradient(90deg, rgba(220,20,20,0.08) 0%, rgba(220,20,20,0.02) 100%)")
+                      : "transparent",
+                    fontFamily: "var(--font-family-inter)",
+                    fontWeight: activeTab === tab.key ? 600 : 500,
+                    // Active indicator stroke: top on mobile (horizontal tabs),
+                    // left on desktop (vertical sidebar).
+                    boxShadow: activeTab === tab.key
+                      ? "inset 0 2px 0 var(--primary)"
+                      : "none",
+                  }}
                 >
-                  <LogOut size={18} className="lg:hidden mb-1 flex-shrink-0" />
-                  <LogOut size={15} className="hidden lg:block flex-shrink-0" />
-                  <span className="lg:hidden text-center leading-tight" style={{ fontSize: "10px" }}>Sair</span>
-                  <span className="hidden lg:inline" style={{ fontSize: "13px" }}>Sair</span>
+                  <tab.icon size={18} aria-hidden="true" className="lg:hidden mb-1 flex-shrink-0" />
+                  <tab.icon size={15} aria-hidden="true" className="hidden lg:block flex-shrink-0" />
+                  {/* Mobile: short label below icon */}
+                  <span className="lg:hidden text-center leading-tight" style={{ fontSize: "10px" }}>{tab.short}</span>
+                  {/* Desktop: full label inline */}
+                  <span className="hidden lg:inline" style={{ fontSize: "13px" }}>{tab.label}</span>
                 </button>
-              </nav>
-              {/* Right-edge fade gradient — mobile only, hints scroll */}
-              <div
-                className="pointer-events-none absolute inset-y-0 right-0 w-10 lg:hidden"
-                style={{
-                  background: isDark
-                    ? "linear-gradient(to left, var(--background) 0%, transparent 100%)"
-                    : "linear-gradient(to left, var(--background) 0%, transparent 100%)",
-                }}
-              />
+              ))}
+              <div className="hidden lg:block h-px bg-foreground/8 my-3" />
+              {/* Logout — same compact tile treatment on mobile */}
+              <button onClick={logout}
+                aria-label="Sair da conta"
+                className="flex-shrink-0 lg:flex-shrink
+                  flex flex-col items-center justify-center
+                  lg:flex-row lg:items-center lg:justify-start
+                  gap-0 lg:gap-3
+                  min-w-[72px] min-h-[60px] px-2 py-2
+                  lg:min-w-0 lg:min-h-0 lg:w-full lg:py-2.5 lg:px-3.5
+                  whitespace-nowrap lg:whitespace-normal
+                  text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
+                style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontWeight: 500 }}
+              >
+                <LogOut size={18} aria-hidden="true" className="lg:hidden mb-1 flex-shrink-0" />
+                <LogOut size={15} aria-hidden="true" className="hidden lg:block flex-shrink-0" />
+                <span className="lg:hidden text-center leading-tight" style={{ fontSize: "10px" }}>Sair</span>
+                <span className="hidden lg:inline" style={{ fontSize: "13px" }}>Sair</span>
+              </button>
+            </nav>
+
+            {/* Mobile only: "Ver todas as abas" — opens a sheet with the
+                full tab grid so the user does not depend on horizontal
+                scroll discovery. */}
+            <div className="mt-3 flex justify-center lg:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="Ver todas as abas do perfil"
+                    className="inline-flex min-h-[40px] items-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.03] px-4 text-foreground/70 transition-colors hover:text-foreground hover:bg-foreground/[0.06] cursor-pointer"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500 }}
+                  >
+                    <LayoutGrid size={14} aria-hidden="true" />
+                    Ver todas as abas
+                  </button>
+                </SheetTrigger>
+                <SheetContent side="bottom" className="border-foreground/10 bg-background">
+                  <SheetHeader>
+                    <SheetTitle className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600 }}>
+                      Áreas do perfil
+                    </SheetTitle>
+                  </SheetHeader>
+                  <div className="mt-2 grid grid-cols-3 gap-3 p-4">
+                    {TABS.map((tab) => {
+                      const active = activeTab === tab.key;
+                      return (
+                        <button
+                          key={tab.key}
+                          type="button"
+                          onClick={() => {
+                            setProfileTab(tab.key);
+                            // Close sheet by emitting Escape (Radix listens).
+                            document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+                          }}
+                          aria-current={active ? "page" : undefined}
+                          className={`flex flex-col items-center justify-center gap-2 min-h-[88px] rounded-xl border transition-colors cursor-pointer ${
+                            active
+                              ? "border-primary/40 bg-primary/[0.08] text-primary"
+                              : "border-foreground/10 bg-foreground/[0.02] text-foreground/75 hover:border-foreground/20 hover:bg-foreground/[0.05]"
+                          }`}
+                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500 }}
+                        >
+                          <tab.icon size={20} aria-hidden="true" />
+                          <span className="text-center leading-tight">{tab.label}</span>
+                        </button>
+                      );
+                    })}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        logout();
+                        document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+                      }}
+                      aria-label="Sair da conta"
+                      className="flex flex-col items-center justify-center gap-2 min-h-[88px] rounded-xl border border-foreground/10 bg-foreground/[0.02] text-foreground/55 transition-colors hover:border-primary/30 hover:bg-primary/[0.05] hover:text-primary cursor-pointer"
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500 }}
+                    >
+                      <LogOut size={20} aria-hidden="true" />
+                      <span className="text-center leading-tight">Sair</span>
+                    </button>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </aside>
 
