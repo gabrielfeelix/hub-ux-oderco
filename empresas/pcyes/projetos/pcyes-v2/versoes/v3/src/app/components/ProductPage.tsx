@@ -2173,7 +2173,7 @@ export function ProductPage() {
     };
   }, [product?.id]);
 
-  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [id]);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [product?.id]);
 
   if (!product) {
     return (
