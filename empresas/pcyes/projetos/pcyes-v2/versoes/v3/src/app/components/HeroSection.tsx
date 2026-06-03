@@ -159,12 +159,12 @@ export function HeroSection() {
                   className="hero-card flex-shrink-0 relative h-full block cursor-grab active:cursor-grabbing"
                   style={{
                     width: "82%",
-                    borderRadius: "24px",
+                    borderRadius: "var(--radius-card-xl)",
                   }}
                 >
                   <div
                     className="relative h-full w-full overflow-hidden"
-                    style={{ borderRadius: "24px" }}
+                    style={{ borderRadius: "var(--radius-card-xl)" }}
                   >
                     {/* <picture> lets the browser pick the correct art per viewport.
                         Mobile crop (vertically taller) below 768px, desktop crop above. */}
@@ -188,7 +188,7 @@ export function HeroSection() {
                   <div
                     className="hero-card-stroke pointer-events-none absolute inset-0"
                     style={{
-                      borderRadius: "24px",
+                      borderRadius: "var(--radius-card-xl)",
                       padding: "2px",
                       WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
                       WebkitMaskComposite: "xor",

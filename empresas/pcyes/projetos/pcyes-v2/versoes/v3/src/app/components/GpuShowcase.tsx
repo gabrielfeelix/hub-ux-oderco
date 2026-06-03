@@ -428,7 +428,7 @@ export function GpuShowcase() {
                     className="relative h-24 w-24 flex-shrink-0 overflow-hidden md:h-20 md:w-20"
                     style={{
                       background: "rgba(0,0,0,0.4)",
-                      borderRadius: "14px",
+                      borderRadius: "var(--radius-card-sm)",
                       border: "1px solid rgba(var(--foreground-rgb), 0.05)",
                     }}
                   >

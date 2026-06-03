@@ -1574,7 +1574,7 @@ function UseTypeCard({
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-edge-subtle bg-[#0d0d0d] text-left transition-all duration-300 hover:-translate-y-1 hover:border-edge-strong"
+      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[var(--radius-card-lg)] border border-edge-subtle bg-[#0d0d0d] text-left transition-all duration-300 hover:-translate-y-1 hover:border-edge-strong"
       style={{
         boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)",
       }}
@@ -1678,7 +1678,7 @@ function GameTile({
       onClick={onClick}
       aria-pressed={selected}
       className={cn(
-        "group relative overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
+        "group relative overflow-hidden rounded-[var(--radius-card-sm)] border text-left transition-all cursor-pointer",
         selected
           ? "border-primary/60"
           : "border-edge-subtle hover:border-edge-strong",
@@ -1809,7 +1809,7 @@ function ProgramTile({
       onClick={onClick}
       aria-pressed={selected}
       className={cn(
-        "group relative overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
+        "group relative overflow-hidden rounded-[var(--radius-card-sm)] border text-left transition-all cursor-pointer",
         selected
           ? "border-primary/60"
           : "border-edge-subtle hover:border-edge-strong",
@@ -2172,7 +2172,7 @@ function QuizFlow({
             ) : (
               <ScrollArea
                 type="always"
-                className="quiz-scroll-area rounded-[8px]"
+                className="quiz-scroll-area rounded-[var(--radius-card)]"
               >
                 <div className="grid grid-cols-2 gap-3 pr-3 sm:grid-cols-3 lg:grid-cols-4">
                   {filteredGames.map((g) => (
@@ -2284,7 +2284,7 @@ function QuizFlow({
             </div>
             <ScrollArea
               type="always"
-              className="quiz-scroll-area rounded-[8px]"
+              className="quiz-scroll-area rounded-[var(--radius-card)]"
             >
               <div className="grid grid-cols-2 gap-3 pr-3 sm:grid-cols-3 lg:grid-cols-4">
                 {quizPrograms.map((p) => (
@@ -2521,10 +2521,10 @@ function PresetComponentsDrawer({
             {items.map((item, idx) => (
               <article
                 key={item.opt.id}
-                className="flex gap-3 rounded-[14px] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
+                className="flex gap-3 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
               >
                 <div
-                  className="h-[68px] w-[68px] shrink-0 overflow-hidden rounded-[10px] deal-image-bg"
+                  className="h-[68px] w-[68px] shrink-0 overflow-hidden rounded-[var(--radius-card-sm)] deal-image-bg"
                   aria-hidden="true"
                 >
                   {item.opt.image ? (
@@ -2674,7 +2674,7 @@ function PresetComponentsDrawer({
                     onApply();
                     onOpenChange(false);
                   }}
-                  className="h-11 w-full cursor-pointer rounded-[10px] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
+                  className="h-11 w-full cursor-pointer rounded-[var(--radius-card-sm)] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "11.5px",
@@ -2721,7 +2721,7 @@ function PresetCard({
     <>
       <article
         className={cn(
-          "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1",
+          "group relative flex flex-col overflow-hidden rounded-[var(--radius-card-lg)] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1",
           isRecommended ? "border-primary/55" : "border-edge-subtle hover:border-edge-strong",
         )}
         style={
@@ -2792,7 +2792,7 @@ function PresetCard({
                 style={{
                   background: "var(--gradient-discount)",
                   padding: "6px 10px",
-                  borderRadius: "10px",
+                  borderRadius: "var(--radius-card-sm)",
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "13px",
                   fontWeight: 900,
@@ -2841,7 +2841,7 @@ function PresetCard({
             {topSpecs.map((s) => (
               <li
                 key={s.label}
-                className="flex items-center gap-2.5 rounded-[10px] border border-edge-subtle bg-white/[0.015] px-2.5 py-2"
+                className="flex items-center gap-2.5 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-white/[0.015] px-2.5 py-2"
               >
                 <span
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white/[0.04] text-primary"
@@ -2951,7 +2951,7 @@ function PresetCard({
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
-            className="mt-3 flex min-h-[44px] w-full cursor-pointer items-center justify-between gap-2 rounded-[10px] border border-edge-subtle bg-white/[0.015] px-3 py-2.5 text-left transition-all hover:border-primary/40 hover:bg-primary/[0.04] md:min-h-0"
+            className="mt-3 flex min-h-[44px] w-full cursor-pointer items-center justify-between gap-2 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-white/[0.015] px-3 py-2.5 text-left transition-all hover:border-primary/40 hover:bg-primary/[0.04] md:min-h-0"
           >
             <span
               className="flex items-center gap-2 text-ink-strong"
@@ -3086,7 +3086,7 @@ function PresetCard({
             <button
               type="button"
               onClick={onApply}
-              className="mt-2 h-11 w-full cursor-pointer rounded-[10px] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
+              className="mt-2 h-11 w-full cursor-pointer rounded-[var(--radius-card-sm)] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "11.5px",
@@ -3143,7 +3143,7 @@ function PresetMiniCard({
             className="relative aspect-[4/3] overflow-hidden transition-all duration-300 neon-hover-red"
             style={{
               background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
-              borderRadius: "20px",
+              borderRadius: "var(--radius-card-lg)",
               border: isRecommended
                 ? "1.5px solid rgba(255,43,46,0.55)"
                 : "1px solid rgba(255,255,255,0.08)",
@@ -3156,7 +3156,7 @@ function PresetMiniCard({
               className="pointer-events-none absolute inset-0 z-[1]"
               style={{
                 background: `radial-gradient(circle at 30% 25%, ${preset.glow} 0%, transparent 55%)`,
-                borderRadius: "20px",
+                borderRadius: "var(--radius-card-lg)",
                 opacity: 0.4,
                 mixBlendMode: "screen",
               }}
@@ -3178,7 +3178,7 @@ function PresetMiniCard({
                 style={{
                   background: "var(--gradient-discount)",
                   padding: "6px 12px",
-                  borderRadius: "10px",
+                  borderRadius: "var(--radius-card-sm)",
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "15px",
                   fontWeight: 900,
@@ -3216,7 +3216,7 @@ function PresetMiniCard({
               style={{
                 background: "var(--gradient-buy)",
                 color: "white",
-                borderRadius: "9999px",
+                borderRadius: "var(--radius-pill)",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12px",
                 fontWeight: 700,
@@ -3631,7 +3631,7 @@ function PresetGallery({
 
       {visiblePresets.length === 0 ? (
         <div
-          className="mx-auto max-w-[420px] rounded-[16px] border border-edge-subtle bg-[#0f0f12] p-8 text-center"
+          className="mx-auto max-w-[420px] rounded-[var(--radius-card-md)] border border-edge-subtle bg-[#0f0f12] p-8 text-center"
         >
           <p
             className="text-zinc-300"
@@ -3720,7 +3720,7 @@ function PathCard({
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex flex-col overflow-hidden rounded-[24px] border border-edge bg-[#0f0f12] p-7 text-left transition-all duration-300 md:border-edge-subtle hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
+      className="group relative flex flex-col overflow-hidden rounded-[var(--radius-card-xl)] border border-edge bg-[#0f0f12] p-7 text-left transition-all duration-300 md:border-edge-subtle hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.35] transition-opacity duration-500 group-hover:opacity-100 md:opacity-0"
@@ -4128,7 +4128,7 @@ function ReviewScreen({
       </div>
 
       <div
-        className="mb-6 flex items-start gap-3 rounded-[14px] border border-blue-500/25 bg-blue-500/[0.06] px-4 py-3"
+        className="mb-6 flex items-start gap-3 rounded-[var(--radius-card-sm)] border border-blue-500/25 bg-blue-500/[0.06] px-4 py-3"
         role="note"
       >
         <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-300">
@@ -4166,7 +4166,7 @@ function ReviewScreen({
               {categoriesWithSelected.map((c) => (
                 <div
                   key={c.id}
-                  className="flex items-center gap-3 rounded-[14px] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
+                  className="flex items-center gap-3 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
                 >
                   <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-[#1a1a1f]">
                     {c.selectedOption?.image ? (
@@ -4327,13 +4327,13 @@ function ReviewScreen({
                   inputMode="numeric"
                   aria-label="CEP para cálculo de frete"
                   maxLength={9}
-                  className="flex-1 rounded-[10px] border border-edge bg-[#15151a] px-3 py-2.5 text-ink-strong placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
+                  className="flex-1 rounded-[var(--radius-card-sm)] border border-edge bg-[#15151a] px-3 py-2.5 text-ink-strong placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                 />
                 <button
                   type="button"
                   onClick={onCalcFreight}
-                  className="rounded-[10px] border border-edge bg-[#15151a] px-4 text-zinc-200 transition-all hover:border-edge-strong hover:bg-[#1c1c20] cursor-pointer"
+                  className="rounded-[var(--radius-card-sm)] border border-edge bg-[#15151a] px-4 text-zinc-200 transition-all hover:border-edge-strong hover:bg-[#1c1c20] cursor-pointer"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "12.5px",
@@ -4346,7 +4346,7 @@ function ReviewScreen({
               {freight && (
                 <div
                   className={cn(
-                    "mt-3 rounded-[10px] border p-3",
+                    "mt-3 rounded-[var(--radius-card-sm)] border p-3",
                     freight.free
                       ? "border-primary/30 bg-primary/[0.06]"
                       : "border-edge bg-[#15151a]",
@@ -4439,7 +4439,7 @@ function ReviewScreen({
                 <button
                   type="button"
                   onClick={onSave}
-                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
+                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "12px",
@@ -4451,7 +4451,7 @@ function ReviewScreen({
                 <button
                   type="button"
                   onClick={onShare}
-                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
+                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "12px",
@@ -4888,7 +4888,7 @@ function ProductTile({
         aria-label={`Selecionar ${option.name}${option.standard ? " (sugerida PCYES)" : ""}`}
         className={cn(
           baseBtnClass,
-          "flex w-full items-stretch overflow-hidden rounded-[14px] hover:-translate-y-0.5",
+          "flex w-full items-stretch overflow-hidden rounded-[var(--radius-card-sm)] hover:-translate-y-0.5",
           selected && "-translate-y-0.5",
         )}
         style={shadowStyle}
@@ -4999,7 +4999,7 @@ function ProductTile({
       aria-label={`Selecionar ${option.name}${option.standard ? " (sugerida PCYES)" : ""}`}
       className={cn(
         baseBtnClass,
-        "flex flex-col overflow-hidden rounded-[14px] hover:-translate-y-0.5",
+        "flex flex-col overflow-hidden rounded-[var(--radius-card-sm)] hover:-translate-y-0.5",
         selected && "-translate-y-0.5",
       )}
       style={shadowStyle}
@@ -5199,7 +5199,7 @@ function StepMessages({ messages }: { messages: StepMessage[] }) {
           <div
             key={i}
             role={m.tone === "warn" || m.tone === "error" ? "alert" : "status"}
-            className={cn("flex items-start gap-2.5 rounded-[10px] border p-2.5", tone.bg, tone.border)}
+            className={cn("flex items-start gap-2.5 rounded-[var(--radius-card-sm)] border p-2.5", tone.bg, tone.border)}
           >
             <span className={cn("mt-[1px] flex h-3.5 w-3.5 shrink-0 items-center justify-center", tone.icon)}>
               {m.tone === "success" ? (
@@ -5309,7 +5309,7 @@ function SelectedItemCard({
 
       {!isMulti && options.length > 0 && (
         <div className="px-5 py-4">
-          <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[14px] deal-image-bg">
+          <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[var(--radius-card-sm)] deal-image-bg">
             {options[0].image ? (
               <img
                 src={options[0].image}
@@ -5377,7 +5377,7 @@ function SelectedItemCard({
               className="flex items-center gap-3 rounded-card-sm border border-emerald-500/30 bg-emerald-500/[0.04] p-2.5"
               style={{ borderStyle: "dashed" }}
             >
-              <div className="h-12 w-12 shrink-0 overflow-hidden rounded-[8px] deal-image-bg">
+              <div className="h-12 w-12 shrink-0 overflow-hidden rounded-[var(--radius-card)] deal-image-bg">
                 {opt.image ? (
                   <img src={opt.image} alt="" className="h-full w-full object-contain p-1.5" />
                 ) : (
@@ -5466,7 +5466,7 @@ function SelectedItemCard({
           )}
 
           {options.length > 0 && (
-            <div className="mt-3 flex items-baseline justify-between rounded-[10px] border border-edge-subtle bg-white/[0.02] px-3 py-2">
+            <div className="mt-3 flex items-baseline justify-between rounded-[var(--radius-card-sm)] border border-edge-subtle bg-white/[0.02] px-3 py-2">
               <span
                 className="uppercase text-zinc-400"
                 style={{
@@ -5511,7 +5511,7 @@ function SelectedItemCard({
             type="button"
             onClick={onPrev}
             disabled={isFirst}
-            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-edge bg-white/[0.02] text-zinc-300 transition-all hover:border-edge-strong hover:bg-white/[0.06] hover:text-ink-strong disabled:cursor-not-allowed disabled:opacity-25"
+            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] border border-edge bg-white/[0.02] text-zinc-300 transition-all hover:border-edge-strong hover:bg-white/[0.06] hover:text-ink-strong disabled:cursor-not-allowed disabled:opacity-25"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}
           >
             <ArrowLeft size={12} /> Voltar
@@ -5520,7 +5520,7 @@ function SelectedItemCard({
             type="button"
             onClick={onNext}
             disabled={nextDisabled}
-            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] bg-primary text-ink-strong transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] bg-primary text-ink-strong transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
@@ -5602,7 +5602,7 @@ function ConfiguracaoSelecionadaCard({
               key={c.id}
               type="button"
               onClick={() => onEdit(c.id)}
-              className="group flex w-full cursor-pointer items-center gap-2.5 rounded-[10px] p-2 text-left transition-colors hover:bg-white/[0.04]"
+              className="group flex w-full cursor-pointer items-center gap-2.5 rounded-[var(--radius-card-sm)] p-2 text-left transition-colors hover:bg-white/[0.04]"
               aria-label={`Editar ${c.title}`}
             >
               <div className="h-9 w-9 shrink-0 overflow-hidden rounded-md bg-[#1a1a1f]">
@@ -6306,16 +6306,16 @@ export function MonteSeuPcPage() {
                               className="rounded-card-sm border border-edge bg-[#0f0f12] text-ink-strong shadow-2xl shadow-black/60"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                             >
-                              <SelectItem value="suggested" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
+                              <SelectItem value="suggested" className="rounded-[var(--radius-card)] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Sugerida primeiro
                               </SelectItem>
-                              <SelectItem value="price-asc" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
+                              <SelectItem value="price-asc" className="rounded-[var(--radius-card)] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Menor preço
                               </SelectItem>
-                              <SelectItem value="price-desc" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
+                              <SelectItem value="price-desc" className="rounded-[var(--radius-card)] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Maior preço
                               </SelectItem>
-                              <SelectItem value="name" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
+                              <SelectItem value="name" className="rounded-[var(--radius-card)] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Nome A-Z
                               </SelectItem>
                             </SelectContent>
@@ -6344,7 +6344,7 @@ export function MonteSeuPcPage() {
                               aria-pressed={viewMode === "grid"}
                               aria-label="Modo grade"
                               className={cn(
-                                "flex h-full w-11 cursor-pointer items-center justify-center rounded-[8px] transition-all sm:w-10",
+                                "flex h-full w-11 cursor-pointer items-center justify-center rounded-[var(--radius-card)] transition-all sm:w-10",
                                 viewMode === "grid"
                                   ? "bg-primary text-ink-strong"
                                   : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
@@ -6363,7 +6363,7 @@ export function MonteSeuPcPage() {
                               aria-pressed={viewMode === "list"}
                               aria-label="Modo lista"
                               className={cn(
-                                "flex h-full w-11 cursor-pointer items-center justify-center rounded-[8px] transition-all sm:w-10",
+                                "flex h-full w-11 cursor-pointer items-center justify-center rounded-[var(--radius-card)] transition-all sm:w-10",
                                 viewMode === "list"
                                   ? "bg-primary text-ink-strong"
                                   : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
@@ -6395,7 +6395,7 @@ export function MonteSeuPcPage() {
                           )}
                         >
                           {visibleOptions.length === 0 ? (
-                            <div className="rounded-[14px] border border-edge-subtle bg-[#0f0f12] px-6 py-12 text-center col-span-full">
+                            <div className="rounded-[var(--radius-card-sm)] border border-edge-subtle bg-[#0f0f12] px-6 py-12 text-center col-span-full">
                               <p
                                 className="text-ink-strong"
                                 style={{
@@ -6534,7 +6534,7 @@ export function MonteSeuPcPage() {
                       type="button"
                       onClick={() => setSummarySheetOpen(true)}
                       aria-label="Ver resumo da build"
-                      className="flex min-w-0 flex-1 cursor-pointer flex-col items-start rounded-[10px] px-1 py-0.5 text-left transition-colors hover:bg-white/[0.03]"
+                      className="flex min-w-0 flex-1 cursor-pointer flex-col items-start rounded-[var(--radius-card-sm)] px-1 py-0.5 text-left transition-colors hover:bg-white/[0.03]"
                     >
                       <span className="flex items-center gap-1">
                         <span

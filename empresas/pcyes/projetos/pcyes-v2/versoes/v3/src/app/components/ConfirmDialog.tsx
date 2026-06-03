@@ -35,7 +35,7 @@ export function ConfirmDialog({
         className="!max-w-[440px] !p-0 !gap-0 !border-0"
         style={{
           background: isDark ? "#161617" : "#ffffff",
-          borderRadius: "20px",
+          borderRadius: "var(--radius-card-lg)",
           overflow: "hidden",
           color: isDark ? "#fafafa" : "#0a0a0a",
         }}

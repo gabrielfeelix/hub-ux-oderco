@@ -103,7 +103,7 @@ export function DealsHighlight({
             style={{
               background:
                 "radial-gradient(circle at 25% 15%, rgba(255,90,80,0.35) 0%, transparent 55%), radial-gradient(circle at 80% 85%, rgba(225,6,0,0.4) 0%, transparent 55%), linear-gradient(135deg, #b00500 0%, #6e0200 50%, #2a0000 100%)",
-              borderRadius: "24px",
+              borderRadius: "var(--radius-card-xl)",
               border: "1.5px solid rgba(255, 90, 80, 0.45)",
               boxShadow:
                 "0 30px 80px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",

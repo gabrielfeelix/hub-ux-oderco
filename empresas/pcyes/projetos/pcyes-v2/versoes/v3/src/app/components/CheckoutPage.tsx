@@ -86,7 +86,7 @@ const inputClass =
   "w-full text-ink-strong placeholder:text-ink-subtle focus:outline-none transition-all";
 const inputStyle: React.CSSProperties = {
   padding: "12px 14px",
-  borderRadius: "10px",
+  borderRadius: "var(--radius-card-sm)",
   border: inputBorder,
   background: inputBg,
   fontFamily: "var(--font-family-inter)",
@@ -145,7 +145,7 @@ function PaymentOption({
       onClick={onClick}
       className="relative flex flex-col items-start gap-2 px-4 py-4 transition-all cursor-pointer text-left"
       style={{
-        borderRadius: "14px",
+        borderRadius: "var(--radius-card-sm)",
         background: active ? "rgba(var(--foreground-rgb), 0.06)" : "rgba(var(--foreground-rgb), 0.02)",
         border: active ? `1.5px solid ${accent}` : "1px solid rgba(var(--foreground-rgb), 0.08)",
         boxShadow: active ? `0 18px 40px -20px ${color ?? "rgba(225,6,0,0.5)"}, inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)` : "none",
@@ -163,7 +163,7 @@ function PaymentOption({
             className="inline-flex items-center"
             style={{
               padding: "3px 7px",
-              borderRadius: "6px",
+              borderRadius: "var(--radius-card)",
               background: "rgba(34,197,94,0.18)",
               color: "#22c55e",
               fontFamily: "var(--font-family-inter)",
@@ -188,7 +188,7 @@ function PaymentOption({
 function ReviewCard({ icon, label, onEdit, children }: { icon: React.ReactNode; label: string; onEdit: () => void; children: React.ReactNode }) {
   return (
     <div
-      className="rounded-[14px] p-4"
+      className="rounded-[var(--radius-card-sm)] p-4"
       style={{
         background: "rgba(var(--foreground-rgb), 0.02)",
         border: "1px solid rgba(var(--foreground-rgb), 0.06)",
@@ -647,7 +647,7 @@ export function CheckoutPage() {
             <div
               className="overflow-hidden p-6 md:p-8"
               style={{
-                borderRadius: "20px",
+                borderRadius: "var(--radius-card-lg)",
                 background: cardBg,
                 border: cardBorder,
                 boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
@@ -695,7 +695,7 @@ export function CheckoutPage() {
                 <div
                   className="flex h-[220px] w-[220px] flex-shrink-0 items-center justify-center"
                   style={{
-                    borderRadius: "16px",
+                    borderRadius: "var(--radius-card-md)",
                     background: "#fff",
                     border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                     padding: "12px",
@@ -717,7 +717,7 @@ export function CheckoutPage() {
                     PIX copia e cola
                   </p>
                   <div
-                    className="mb-3 break-all rounded-[10px] p-3 text-ink-muted"
+                    className="mb-3 break-all rounded-[var(--radius-card-sm)] p-3 text-ink-muted"
                     style={{
                       background: "rgba(var(--foreground-rgb), 0.03)",
                       border: "1px solid rgba(var(--foreground-rgb), 0.08)",
@@ -819,7 +819,7 @@ export function CheckoutPage() {
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="overflow-hidden p-6 md:p-7"
                 style={{
-                  borderRadius: "20px",
+                  borderRadius: "var(--radius-card-lg)",
                   background: cardBg,
                   border: cardBorder,
                   boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
@@ -857,7 +857,7 @@ export function CheckoutPage() {
                       initial={{ opacity: 0, x: -8 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.3 + i * 0.06 }}
-                      className="flex items-center gap-3 rounded-[14px] p-3"
+                      className="flex items-center gap-3 rounded-[var(--radius-card-sm)] p-3"
                       style={{
                         background: "rgba(var(--foreground-rgb), 0.02)",
                         border: "1px solid rgba(var(--foreground-rgb), 0.06)",
@@ -867,7 +867,7 @@ export function CheckoutPage() {
                         <div
                           className="h-full w-full overflow-hidden"
                           style={{
-                            borderRadius: "10px",
+                            borderRadius: "var(--radius-card-sm)",
                             background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                             border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                           }}
@@ -1044,7 +1044,7 @@ export function CheckoutPage() {
                   transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                   className="overflow-hidden p-6 md:p-8"
                   style={{
-                    borderRadius: "20px",
+                    borderRadius: "var(--radius-card-lg)",
                     background: cardBg,
                     border: cardBorder,
                     boxShadow: "var(--shadow-card-hairline)",
@@ -1245,7 +1245,7 @@ export function CheckoutPage() {
                               onClick={() => setSelectedShipping(opt.id)}
                               className="flex items-center gap-2.5 md:gap-4 p-4 text-left transition-all"
                               style={{
-                                borderRadius: "14px",
+                                borderRadius: "var(--radius-card-sm)",
                                 background: active ? "rgba(34,197,94,0.06)" : "rgba(var(--foreground-rgb), 0.02)",
                                 border: active ? "1.5px solid rgba(34,197,94,0.5)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                                 boxShadow: active ? "0 16px 36px -16px rgba(34,197,94,0.35)" : "none",
@@ -1271,7 +1271,7 @@ export function CheckoutPage() {
                                       className="inline-flex items-center text-ink-strong"
                                       style={{
                                         padding: "2px 8px",
-                                        borderRadius: "999px",
+                                        borderRadius: "var(--radius-pill)",
                                         background:
                                           opt.badge === "GRÁTIS"
                                             ? "var(--gradient-buy)"
@@ -1555,7 +1555,7 @@ export function CheckoutPage() {
                             className="overflow-hidden"
                           >
                             <div
-                              className="flex items-start gap-3 rounded-[14px] p-4"
+                              className="flex items-start gap-3 rounded-[var(--radius-card-sm)] p-4"
                               style={{
                                 background: "rgba(34,197,94,0.06)",
                                 border: "1px solid rgba(34,197,94,0.25)",
@@ -1636,7 +1636,7 @@ export function CheckoutPage() {
                         </ReviewCard>
 
                         <div
-                          className="rounded-[14px] p-4"
+                          className="rounded-[var(--radius-card-sm)] p-4"
                           style={{ background: "rgba(var(--foreground-rgb), 0.02)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
                         >
                           <p
@@ -1651,7 +1651,7 @@ export function CheckoutPage() {
                                 <div
                                   className="h-12 w-12 flex-shrink-0 overflow-hidden"
                                   style={{
-                                    borderRadius: "10px",
+                                    borderRadius: "var(--radius-card-sm)",
                                     background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                                     border: "1px solid rgba(var(--foreground-rgb), 0.06)",
                                   }}
@@ -1729,7 +1729,7 @@ export function CheckoutPage() {
               <div
                 className="overflow-hidden p-6"
                 style={{
-                  borderRadius: "20px",
+                  borderRadius: "var(--radius-card-lg)",
                   background: cardBg,
                   border: cardBorder,
                   boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
@@ -1749,7 +1749,7 @@ export function CheckoutPage() {
                         <div
                           className="h-full w-full overflow-hidden"
                           style={{
-                            borderRadius: "10px",
+                            borderRadius: "var(--radius-card-sm)",
                             background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                             border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                             boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
@@ -1839,7 +1839,7 @@ export function CheckoutPage() {
                             onChange={(e) => { setCoupon(e.target.value.toUpperCase()); setCouponError(""); }}
                             onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
                             aria-label="Código do cupom"
-                            className="flex-1 rounded-[10px] px-3 py-2 text-ink-strong placeholder:text-ink-subtle focus:outline-none"
+                            className="flex-1 rounded-[var(--radius-card-sm)] px-3 py-2 text-ink-strong placeholder:text-ink-subtle focus:outline-none"
                             style={{
                               background: "rgba(var(--foreground-rgb), 0.03)",
                               border: "1px solid rgba(var(--foreground-rgb), 0.1)",
@@ -1851,7 +1851,7 @@ export function CheckoutPage() {
                           <button
                             onClick={handleApplyCoupon}
                             disabled={!coupon.trim()}
-                            className="cursor-pointer rounded-[10px] px-4 py-2 min-h-[44px] md:min-h-0 text-ink-strong transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+                            className="cursor-pointer rounded-[var(--radius-card-sm)] px-4 py-2 min-h-[44px] md:min-h-0 text-ink-strong transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
                             style={{
                               background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
@@ -1960,7 +1960,7 @@ export function CheckoutPage() {
                 </div>
 
                 <div
-                  className="rounded-[14px] p-4"
+                  className="rounded-[var(--radius-card-sm)] p-4"
                   style={{ background: "rgba(var(--foreground-rgb), 0.03)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
                 >
                   <div className="flex items-baseline justify-between">
@@ -2118,7 +2118,7 @@ export function CheckoutPage() {
                     <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>Pagar com</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-12 items-center justify-center rounded-[6px]" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)" }}>
+                    <div className="flex h-9 w-12 items-center justify-center rounded-[var(--radius-card)]" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)" }}>
                       <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, color: "#fff" }}>VISA</span>
                     </div>
                     <div>
@@ -2192,7 +2192,7 @@ export function CheckoutPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 16 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[420px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[20px]"
+              className="w-full max-w-[420px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
               style={{
                 background: "#fff",
                 boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
@@ -2223,7 +2223,7 @@ export function CheckoutPage() {
 
               <div className="mt-4 mx-5 mb-5 rounded-card-sm border" style={{ borderColor: "#dadce0" }}>
                 <button className="flex w-full items-center gap-3 p-4 text-left">
-                  <div className="flex h-10 w-12 items-center justify-center rounded-[6px]" style={{ background: "#1a73e8" }}>
+                  <div className="flex h-10 w-12 items-center justify-center rounded-[var(--radius-card)]" style={{ background: "#1a73e8" }}>
                     <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, color: "#fff" }}>VISA</span>
                   </div>
                   <div className="flex-1">
@@ -2272,7 +2272,7 @@ export function CheckoutPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 16 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[440px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[20px]"
+              className="w-full max-w-[440px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
               style={{
                 background: "#fff",
                 boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
@@ -2314,7 +2314,7 @@ export function CheckoutPage() {
                     <Check size={18} strokeWidth={2.4} className="text-[#009ee3]" />
                   </button>
                   <button className="flex w-full items-center gap-3 rounded-card-sm border p-3.5 text-left transition-colors hover:bg-[#f5f5f5]" style={{ borderColor: "#dadce0" }}>
-                    <div className="flex h-9 w-12 items-center justify-center rounded-[6px]" style={{ background: "#eb001b" }}>
+                    <div className="flex h-9 w-12 items-center justify-center rounded-[var(--radius-card)]" style={{ background: "#eb001b" }}>
                       <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, color: "#fff" }}>MC</span>
                     </div>
                     <div className="flex-1">
@@ -2395,7 +2395,7 @@ function CardBrand({ digits }: { digits: string }) {
   const wrap = (children: React.ReactNode, bg: string) => (
     <span
       className="absolute right-2.5 top-1/2 -translate-y-1/2 inline-flex h-7 w-11 items-center justify-center overflow-hidden"
-      style={{ background: bg, borderRadius: "5px", boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.18), 0 4px 12px -4px rgba(0,0,0,0.5)" }}
+      style={{ background: bg, borderRadius: "var(--radius)", boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.18), 0 4px 12px -4px rgba(0,0,0,0.5)" }}
       aria-label={`Bandeira ${brand}`}
     >
       {children}
@@ -2483,7 +2483,7 @@ function NumberStepperRed({
     <div
       className="inline-flex items-stretch overflow-hidden"
       style={{
-        borderRadius: "10px",
+        borderRadius: "var(--radius-card-sm)",
         background: "rgba(0,0,0,0.3)",
         border: "1px solid rgba(250,204,21,0.35)",
       }}

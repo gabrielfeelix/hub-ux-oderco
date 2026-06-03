@@ -230,7 +230,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="relative h-2 w-full overflow-hidden"
             style={{
               background: "rgba(var(--foreground-rgb), 0.06)",
-              borderRadius: "999px",
+              borderRadius: "var(--radius-pill)",
             }}
           >
             <div
@@ -239,7 +239,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                 width: `${reservedPct}%`,
                 background:
                   "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
-                borderRadius: "999px",
+                borderRadius: "var(--radius-pill)",
                 boxShadow: "0 0 16px rgba(255,36,25,0.55)",
               }}
             />
@@ -263,7 +263,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           style={{
             background: "rgba(0,0,0,0.35)",
             border: "1px solid rgba(var(--foreground-rgb), 0.06)",
-            borderRadius: "14px",
+            borderRadius: "var(--radius-card-sm)",
           }}
         >
           <p

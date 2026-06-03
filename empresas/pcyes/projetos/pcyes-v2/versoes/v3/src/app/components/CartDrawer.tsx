@@ -167,8 +167,8 @@ export function CartDrawer() {
               <div className="flex items-center gap-3">
                 <ShoppingBag size={18} className="text-foreground" strokeWidth={1.5} />
                 <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>Carrinho</span>
-                <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}>{totalItems}</span>
-                <span className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/10 text-yellow-500/70" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 600 }}>
+                <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}>{totalItems}</span>
+                <span className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/10 text-yellow-500/70" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 600 }}>
                   <PcyesCoin size={14} />
                   {formatInt(USER_PCYES_POINTS)}
                 </span>
@@ -394,7 +394,7 @@ export function CartDrawer() {
                 <div>
                   <button onClick={() => setCouponOpen(!couponOpen)}
                     className={`flex items-center justify-between w-full py-2 px-3 cursor-pointer group transition-colors ${
-                      appliedCoupon ? "rounded-[10px] border border-green-500/20 bg-green-500/5" : ""
+                      appliedCoupon ? "rounded-[var(--radius-card-sm)] border border-green-500/20 bg-green-500/5" : ""
                     }`}
                   >
                     <div className="flex items-center gap-2">
@@ -533,7 +533,7 @@ export function CartDrawer() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 18, scale: 0.97 }}
                   transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex h-auto max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
+                  className="flex h-auto max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:max-h-[calc(100dvh-3rem)] md:rounded-[var(--radius-card-xl)]"
                   style={{
                     background: "var(--surface-2)",
                     border: "1px solid rgba(var(--foreground-rgb), 0.08)",
@@ -574,7 +574,7 @@ export function CartDrawer() {
                         aria-pressed={isSelected}
                         className="group relative flex flex-row overflow-hidden text-left transition-all duration-300 cursor-pointer md:block"
                         style={{
-                          borderRadius: "20px",
+                          borderRadius: "var(--radius-card-lg)",
                           background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                           border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                           boxShadow: isSelected
@@ -586,7 +586,7 @@ export function CartDrawer() {
                           className="pointer-events-none absolute inset-0"
                           style={{
                             background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.05) 0%, transparent 55%)",
-                            borderRadius: "20px",
+                            borderRadius: "var(--radius-card-lg)",
                           }}
                         />
                         <div

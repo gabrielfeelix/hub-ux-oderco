@@ -199,7 +199,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 style={{
                   background: "rgba(0,0,0,0.45)",
                   border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                  borderRadius: "10px",
+                  borderRadius: "var(--radius-card-sm)",
                 }}
               >
                 <span
@@ -254,7 +254,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
             </div>
             <div
               className="relative h-1.5 w-full overflow-hidden"
-              style={{ background: "rgba(var(--foreground-rgb), 0.06)", borderRadius: "999px" }}
+              style={{ background: "rgba(var(--foreground-rgb), 0.06)", borderRadius: "var(--radius-pill)" }}
             >
               <motion.div
                 initial={{ width: 0 }}
@@ -264,7 +264,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 className="absolute inset-y-0 left-0"
                 style={{
                   background: "linear-gradient(90deg, #ff2419 0%, #ff7a3d 100%)",
-                  borderRadius: "999px",
+                  borderRadius: "var(--radius-pill)",
                 }}
               />
             </div>
@@ -430,7 +430,7 @@ function HeroSection({
                 background: "rgba(20,5,7,0.85)",
                 backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255,36,25,0.25)",
-                borderRadius: "16px",
+                borderRadius: "var(--radius-card-md)",
                 padding: "14px 18px",
                 boxShadow: "0 20px 50px -16px rgba(225,6,0,0.4)",
                 maxWidth: "260px",
@@ -692,7 +692,7 @@ function FiltersBar({
             style={{
               background: "rgba(var(--foreground-rgb), 0.025)",
               border: "1px solid rgba(var(--foreground-rgb), 0.06)",
-              borderRadius: "10px",
+              borderRadius: "var(--radius-card-sm)",
             }}
           >
             <Search size={14} className="text-ink-subtle" strokeWidth={2} />
@@ -1037,7 +1037,7 @@ export function PreOrderPage() {
             style={{
               background: "rgba(var(--foreground-rgb), 0.015)",
               border: "1px dashed rgba(var(--foreground-rgb), 0.08)",
-              borderRadius: "20px",
+              borderRadius: "var(--radius-card-lg)",
             }}
           >
             <Search size={28} className="text-ink-subtle mb-5" strokeWidth={1.6} />

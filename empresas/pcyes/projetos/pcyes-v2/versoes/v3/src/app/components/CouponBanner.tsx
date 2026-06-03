@@ -21,7 +21,7 @@ export function CouponBanner() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="group relative flex w-full items-center justify-between gap-4 overflow-hidden rounded-[16px] px-5 py-4 md:px-7 md:py-5 cursor-pointer"
+          className="group relative flex w-full items-center justify-between gap-4 overflow-hidden rounded-[var(--radius-card-md)] px-5 py-4 md:px-7 md:py-5 cursor-pointer"
           style={{
             background:
               "linear-gradient(110deg, rgba(225,6,0,0.18) 0%, rgba(255,90,80,0.08) 50%, rgba(225,6,0,0.18) 100%)",

@@ -349,7 +349,7 @@ export function IntelligentDevices() {
                     style={{
                       background:
                         "linear-gradient(140deg, rgba(var(--foreground-rgb), 0.07) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
-                      borderRadius: "20px",
+                      borderRadius: "var(--radius-card-lg)",
                       border: "1px solid rgba(var(--foreground-rgb), 0.05)",
                     }}
                   >
@@ -358,7 +358,7 @@ export function IntelligentDevices() {
                       style={{
                         background:
                           "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-                        borderRadius: "20px",
+                        borderRadius: "var(--radius-card-lg)",
                       }}
                     />
                     <ImageWithFallback

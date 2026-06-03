@@ -126,7 +126,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
               key={`vthumb-${i}`}
               onClick={() => setActive(i)}
               className={`flex-shrink-0 w-[68px] h-[68px] xl:w-[78px] xl:h-[78px] overflow-hidden border transition-all cursor-pointer ${i === active ? "border-primary ring-1 ring-primary/35" : "border-foreground/10 hover:border-foreground/30"}`}
-              style={{ borderRadius: "8px", background: isDark ? "#2a2a2c" : "#ffffff" }}
+              style={{ borderRadius: "var(--radius-card)", background: isDark ? "#2a2a2c" : "#ffffff" }}
               aria-label={`Ver imagem ${i + 1}`}
             >
               <ImageWithFallback src={img} alt={`${name} ${i + 1}`} className="w-full h-full object-contain p-1.5" />
@@ -137,7 +137,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
       <div
         className="relative w-full max-w-full md:flex-1 aspect-square overflow-hidden group cursor-zoom-in"
         style={{
-          borderRadius: "20px",
+          borderRadius: "var(--radius-card-lg)",
           background: isDark
             ? "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)"
             : "linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.01) 100%)",
@@ -154,7 +154,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
           className="pointer-events-none absolute inset-0"
           style={{
             background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-            borderRadius: "20px",
+            borderRadius: "var(--radius-card-lg)",
           }}
         />
         <AnimatePresence mode="wait">
@@ -196,7 +196,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
         {images.length > 1 && (
           <span
             className="absolute bottom-3 right-3 px-2.5 py-1 bg-black/30 backdrop-blur-md text-ink opacity-0 group-hover:opacity-100 transition-opacity"
-            style={{ borderRadius: "100px", fontSize: "11px", fontFamily: "var(--font-family-inter)" }}
+            style={{ borderRadius: "var(--radius-pill)", fontSize: "11px", fontFamily: "var(--font-family-inter)" }}
           >
             {active + 1} / {images.length}
           </span>
@@ -326,7 +326,7 @@ function CountdownTimer() {
   const TimeBox = ({ value }: { value: string }) => (
     <span
       className="inline-flex items-center justify-center min-w-[26px] px-1.5 py-1 bg-foreground text-background font-bold tabular-nums"
-      style={{ borderRadius: "5px", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+      style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
     >
       {value}
     </span>
@@ -591,7 +591,7 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                     </div>
                     <span
                       className="px-2 py-0.5 bg-green-500/15 text-green-500 font-bold flex-shrink-0"
-                      style={{ borderRadius: "4px", fontSize: "10.5px", fontFamily: "var(--font-family-inter)" }}
+                      style={{ borderRadius: "var(--radius)", fontSize: "10.5px", fontFamily: "var(--font-family-inter)" }}
                     >
                       10% OFF
                     </span>
@@ -771,7 +771,7 @@ function StickyPriceCard({
         className="p-5 lg:p-6 relative overflow-hidden"
         data-purchase-card="product-page"
         style={{
-          borderRadius: "20px",
+          borderRadius: "var(--radius-card-lg)",
           background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
           border: "1px solid rgba(var(--foreground-rgb), 0.08)",
           boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
@@ -781,7 +781,7 @@ function StickyPriceCard({
           className="pointer-events-none absolute inset-0"
           style={{
             background: "radial-gradient(circle at 30% 0%, rgba(var(--foreground-rgb), 0.05) 0%, transparent 55%)",
-            borderRadius: "20px",
+            borderRadius: "var(--radius-card-lg)",
           }}
         />
         {/* Promo Timer */}
@@ -1183,14 +1183,14 @@ function MobilePurchaseFlow({
               </div>
               <div
                 className="relative h-2 w-full overflow-hidden"
-                style={{ background: "rgba(var(--foreground-rgb), 0.08)", borderRadius: "999px" }}
+                style={{ background: "rgba(var(--foreground-rgb), 0.08)", borderRadius: "var(--radius-pill)" }}
               >
                 <div
                   className="absolute inset-y-0 left-0"
                   style={{
                     width: `${reservedPct}%`,
                     background: "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
-                    borderRadius: "999px",
+                    borderRadius: "var(--radius-pill)",
                     boxShadow: "0 0 16px rgba(255,36,25,0.45)",
                   }}
                 />
@@ -1621,7 +1621,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     key={`${photo.review.id}-${photo.imageIndex}`}
                     onClick={() => openMedia(photo.reviewIndex, photo.imageIndex)}
                     className="group relative h-20 w-20 flex-shrink-0 overflow-hidden border border-foreground/8 bg-foreground/5 cursor-pointer"
-                    style={{ borderRadius: "8px" }}
+                    style={{ borderRadius: "var(--radius-card)" }}
                     aria-label={`Abrir foto da avaliação de ${photo.review.user}`}
                   >
                     <img
@@ -1814,7 +1814,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                         className={`h-14 w-14 flex-shrink-0 overflow-hidden border transition-all ${
                           index === selectedMedia.imageIndex ? "border-primary opacity-100" : "border-foreground/10 opacity-45 hover:opacity-80"
                         }`}
-                        style={{ borderRadius: "7px" }}
+                        style={{ borderRadius: "var(--radius-card)" }}
                       >
                         <img src={image} alt="" className="h-full w-full object-cover" />
                       </button>
@@ -1869,7 +1869,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 40, scale: 0.96 }}
                 transition={{ type: "spring", damping: 28, stiffness: 280 }}
-                className="pointer-events-auto w-full max-w-[500px] max-h-[90vh] overflow-y-auto bg-background border border-foreground/10 shadow-2xl p-6 rounded-t-[20px] md:rounded-[20px]"
+                className="pointer-events-auto w-full max-w-[500px] max-h-[90vh] overflow-y-auto bg-background border border-foreground/10 shadow-2xl p-6 rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600 }}>
@@ -1905,7 +1905,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                       onChange={(e) => setNewReviewText(e.target.value)}
                       placeholder="Conte-nos o que achou do produto..."
                       className="w-full h-32 border border-foreground/12 bg-transparent text-foreground placeholder-foreground/30 p-3 focus:border-primary/50 focus:outline-none transition-colors resize-none"
-                      style={{ borderRadius: "8px", fontSize: "14px" }}
+                      style={{ borderRadius: "var(--radius-card)", fontSize: "14px" }}
                     />
                   </div>
                   <button
@@ -1969,7 +1969,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
         <div
           className="overflow-hidden shadow-[0_22px_70px_rgba(0,0,0,0.24)]"
           style={{
-            borderRadius: "30px",
+            borderRadius: "var(--radius-card-xl)",
             background: "linear-gradient(180deg, #161617 0%, #131314 100%)",
             border: "1px solid rgba(var(--foreground-rgb), 0.06)",
           }}
@@ -1984,12 +1984,12 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             <p className="mx-auto mt-5 max-w-[820px] text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "17px", lineHeight: 1.65 }}>
               {lead}
             </p>
-            <div className="relative mt-9 flex min-h-[360px] items-center justify-center overflow-hidden p-8" style={{ borderRadius: "24px", ...productImageBg }}>
+            <div className="relative mt-9 flex min-h-[360px] items-center justify-center overflow-hidden p-8" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-                  borderRadius: "24px",
+                  borderRadius: "var(--radius-card-xl)",
                 }}
               />
               <ImageWithFallback src={primaryImage} alt={product.name} className="relative max-h-[340px] w-full object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.32)]" />
@@ -1998,7 +1998,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
 
           <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-              <article className="relative min-h-[360px] md:min-h-[540px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
+              <article className="relative min-h-[360px] md:min-h-[540px] overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
                 <ImageWithFallback src={secondaryImage} alt={`${product.name} em destaque`} className="absolute inset-0 h-full w-full object-cover opacity-90" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-7">
@@ -2012,7 +2012,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
               </article>
 
               <div className="grid gap-6">
-                <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
+                <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
                   <div className="relative z-10 max-w-full md:max-w-[58%] p-7">
                     <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
                       Design para o dia a dia
@@ -2025,7 +2025,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                   <div className="hidden md:block absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#161617] via-[#161617]/55 to-transparent pointer-events-none" />
                 </article>
 
-                <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
+                <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
                   <div className="relative z-10 max-w-full md:max-w-[58%] p-7">
                     <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
                       Pronto para acompanhar seu ritmo
@@ -2078,7 +2078,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           </section>
 
           <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
-            <article className="relative overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
+            <article className="relative overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
               <div className="relative z-10 w-full p-7 md:w-[62%] md:p-9">
                 <p className="mb-4 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
                   // RAIO-X DO PRODUTO
@@ -2427,7 +2427,7 @@ export function ProductPage() {
                 {product.badge && (
                   <span
                     className="px-2 py-0.5 bg-primary/12 text-primary font-bold"
-                    style={{ borderRadius: "4px", fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                    style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
                   >
                     {product.badge}
                   </span>
@@ -2653,7 +2653,7 @@ export function ProductPage() {
                         className="pointer-events-none absolute inset-0"
                         style={{
                           background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-                          borderRadius: "20px",
+                          borderRadius: "var(--radius-card-lg)",
                         }}
                       />
                       <ImageWithFallback
@@ -2669,7 +2669,7 @@ export function ProductPage() {
                             top: "12px",
                             left: "12px",
                             padding: "6px 12px",
-                            borderRadius: "10px",
+                            borderRadius: "var(--radius-card-sm)",
                             fontFamily: "var(--font-family-figtree)",
                             fontSize: "15px",
                             fontWeight: 900,

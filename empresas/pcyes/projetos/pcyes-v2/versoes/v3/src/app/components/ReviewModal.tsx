@@ -95,7 +95,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
         className="!max-w-[620px] !p-0 !gap-0 !border-0"
         style={{
           background: isDark ? "#161617" : "#ffffff",
-          borderRadius: "20px",
+          borderRadius: "var(--radius-card-lg)",
           overflow: "hidden",
           color: isDark ? "#fafafa" : "#0a0a0a",
         }}
@@ -126,7 +126,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                   const display = hover || rating;
                   return (
                     <div key={key} className="flex items-center gap-3 p-3" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                      <div className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                      <div className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                         <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -238,7 +238,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                   className="w-full focus:outline-none focus:border-primary/40 transition-all resize-none"
                   style={{
                     padding: "11px 13px",
-                    borderRadius: "10px",
+                    borderRadius: "var(--radius-card-sm)",
                     border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)",
                     background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)",
                     fontFamily: "var(--font-family-inter)",

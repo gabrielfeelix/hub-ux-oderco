@@ -301,7 +301,7 @@ function PriceRangeSlider({
             onChange={(e) => onMinChange(Math.max(minBound, Math.min(parseInt(e.target.value.replace(/\D/g, "")) || minBound, max)))}
             onBlur={onApply}
             className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
-            style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+            style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
           />
         </div>
         <div className="flex-1">
@@ -311,7 +311,7 @@ function PriceRangeSlider({
             onChange={(e) => onMaxChange(Math.min(maxBound, Math.max(parseInt(e.target.value.replace(/\D/g, "")) || maxBound, min)))}
             onBlur={onApply}
             className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
-            style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+            style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
           />
         </div>
       </div>
@@ -903,7 +903,7 @@ export function ProductsPage() {
               return (
                 <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
                   <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedBrands, label)} />
-                  <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+                  <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                     {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                   </span>
                   <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
@@ -928,7 +928,7 @@ export function ProductsPage() {
                   type="button"
                   onClick={() => toggleSet(setSelectedSizes, label)}
                   className={`flex items-center gap-1.5 px-3 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/55 hover:border-foreground/25"}`}
-                  style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                  style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
                   aria-pressed={active}
                 >
                   {label}
@@ -948,7 +948,7 @@ export function ProductsPage() {
               return (
                 <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
                   <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedAttributes, label)} />
-                  <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+                  <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                     {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                   </span>
                   <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
@@ -1014,7 +1014,7 @@ export function ProductsPage() {
       <FilterSection title="Promoção" expanded={expandedSections.promo} onToggle={() => toggleSection("promo")}>
         <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
           <input type="checkbox" className="hidden" checked={onlyDiscount} onChange={() => setOnlyDiscount(!onlyDiscount)} />
-          <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${onlyDiscount ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+          <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${onlyDiscount ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
             {onlyDiscount && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
           </span>
           <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>Em promoção</span>
@@ -1025,7 +1025,7 @@ export function ProductsPage() {
           return (
             <label key={pct} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
               <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedDiscounts, pct)} />
-              <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+              <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                 {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
               </span>
               <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>A partir de {pct}% OFF</span>
@@ -1044,7 +1044,7 @@ export function ProductsPage() {
               <button key={tag} onClick={() => toggleSet(setSelectedTags, tag)}
                 className={`flex items-center px-4 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/50 hover:border-foreground/25"
                   }`}
-                style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
               >{tag}</button>
             );
           })}
@@ -1058,7 +1058,7 @@ export function ProductsPage() {
           return (
             <label key={r} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
               <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedRatings, r)} />
-              <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+              <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                 {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
               </span>
               <div className="flex items-center gap-1.5">
@@ -1074,7 +1074,7 @@ export function ProductsPage() {
       <div>
         <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
           <input type="checkbox" className="hidden" checked={inStockOnly} onChange={() => setInStockOnly(!inStockOnly)} />
-          <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${inStockOnly ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "4px" }}>
+          <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${inStockOnly ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
             {inStockOnly && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
           </span>
           <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>Em estoque</span>
@@ -1237,7 +1237,7 @@ export function ProductsPage() {
                 <button
                   type="button"
                   onClick={() => setItemsPerPageDropdownOpen((prev) => !prev)}
-                  className={`relative inline-flex h-9 min-h-[44px] lg:min-h-0 min-w-[62px] items-center justify-between gap-2 rounded-[10px] border px-3 transition-all cursor-pointer ${
+                  className={`relative inline-flex h-9 min-h-[44px] lg:min-h-0 min-w-[62px] items-center justify-between gap-2 rounded-[var(--radius-card-sm)] border px-3 transition-all cursor-pointer ${
                     itemsPerPageDropdownOpen
                       ? "border-primary/50 bg-foreground/[0.06] text-foreground shadow-[0_0_0_1px_rgba(255,59,48,0.16)]"
                       : "border-foreground/10 bg-foreground/[0.03] text-foreground hover:border-foreground/20"
@@ -1257,7 +1257,7 @@ export function ProductsPage() {
                       exit={{ opacity: 0, y: -6, scale: 0.97 }}
                       transition={{ duration: 0.15 }}
                       className="absolute right-0 top-full z-30 mt-3 min-w-[120px] overflow-hidden border border-edge-subtle shadow-2xl"
-                      style={{ borderRadius: "14px", background: "var(--surface-1)" }}
+                      style={{ borderRadius: "var(--radius-card-sm)", background: "var(--surface-1)" }}
                     >
                       <div className="border-b border-edge-subtle px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-ink-subtle">
                         Itens por p&aacute;gina
@@ -1273,7 +1273,7 @@ export function ProductsPage() {
                                 setItemsPerPage(option);
                                 setItemsPerPageDropdownOpen(false);
                               }}
-                              className={`flex w-full items-center justify-between rounded-[10px] px-3 py-2.5 text-left transition-colors cursor-pointer ${
+                              className={`flex w-full items-center justify-between rounded-[var(--radius-card-sm)] px-3 py-2.5 text-left transition-colors cursor-pointer ${
                                 active
                                   ? "bg-primary text-ink-strong"
                                   : "text-ink hover:bg-white/[0.06] hover:text-ink-strong"
@@ -1362,7 +1362,7 @@ export function ProductsPage() {
                         >
                           <div className={`relative overflow-hidden mb-4 aspect-[5/6] transition-all duration-300 deal-card-img ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "var(--radius-card-lg)", background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)", border: "1px solid rgba(var(--foreground-rgb), 0.08)" }}>
                             {/* Inner shine */}
-                            <div className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "20px" }} />
+                            <div className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "var(--radius-card-lg)" }} />
                             <Link to={`/produto/${displayProduct.id}`} className="block h-full">
                               <div className="flex h-full w-full items-center justify-center p-4 sm:p-5 lg:p-6">
                                 <ImageWithFallback
@@ -1392,7 +1392,7 @@ export function ProductsPage() {
                               </div>
                             )}
                             {displayProduct.inStock === false && (
-                              <span className="absolute top-3 right-12 z-10 px-2.5 py-1 bg-foreground/80 text-background shadow-sm" style={{ borderRadius: "4px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "600" }}>
+                              <span className="absolute top-3 right-12 z-10 px-2.5 py-1 bg-foreground/80 text-background shadow-sm" style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "600" }}>
                                 Esgotado
                               </span>
                             )}
@@ -1522,7 +1522,7 @@ export function ProductsPage() {
                               <ImageWithFallback src={getPrimaryProductImage(displayProduct)} alt={displayProduct.name} loading="lazy" decoding="async" className="h-full w-full object-contain scale-[0.92] group-hover:scale-[0.97] transition-transform duration-700" />
                             </div>
                             {discount > 0 && (
-                              <span className="absolute top-2 left-2 px-2 py-1 bg-primary text-ink-strong" style={{ borderRadius: "4px", fontSize: "11px", fontWeight: "700" }}>{discount}% OFF</span>
+                              <span className="absolute top-2 left-2 px-2 py-1 bg-primary text-ink-strong" style={{ borderRadius: "var(--radius)", fontSize: "11px", fontWeight: "700" }}>{discount}% OFF</span>
                             )}
                           </Link>
                           <div className="flex-1 min-w-0">
@@ -1754,7 +1754,7 @@ export function ProductsPage() {
                         className="absolute top-4 left-4 z-20 px-3 py-1.5 text-ink-strong"
                         style={{
                           background: "var(--gradient-brand)",
-                          borderRadius: "999px",
+                          borderRadius: "var(--radius-pill)",
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "11px",
                           fontWeight: "700",
@@ -1871,7 +1871,7 @@ export function ProductsPage() {
                     style={{
                       background: "var(--gradient-buy)",
                       color: "white",
-                      borderRadius: "999px",
+                      borderRadius: "var(--radius-pill)",
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "13px",
                       fontWeight: 700,
@@ -1926,7 +1926,7 @@ function FilterPill({ label, onRemove }: { label: string; onRemove: () => void }
   return (
     <button onClick={onRemove}
       className="flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] lg:min-h-0 bg-foreground/[0.06] text-foreground/80 border border-foreground/10 hover:border-foreground/25 hover:bg-foreground/[0.08] transition-colors font-medium"
-      style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+      style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
       aria-label={`Remover filtro ${label}`}
     >
       {label} <X size={12} className="opacity-60" />

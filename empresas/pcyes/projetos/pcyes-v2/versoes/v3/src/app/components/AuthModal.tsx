@@ -90,7 +90,7 @@ export function AuthModal() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[71] flex items-center justify-center p-4"
           >
-            <div className="w-full max-w-[420px] overflow-hidden" style={{ borderRadius: "16px", background: isDark ? "#161617" : "white", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.08)" }}>
+            <div className="w-full max-w-[420px] overflow-hidden" style={{ borderRadius: "var(--radius-card-md)", background: isDark ? "#161617" : "white", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.08)" }}>
               {/* Header */}
               <div className="relative px-8 pt-8 pb-6 text-center">
                 <button onClick={() => { setAuthModalOpen(false); reset(); }}

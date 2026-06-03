@@ -239,7 +239,7 @@ export function ProfilePage() {
                   {user.name.charAt(0)}
                 </span>
               </div>
-              <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.06em", boxShadow: "0 4px 12px rgba(255,43,46,0.4)" }}>
+              <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.06em", boxShadow: "0 4px 12px rgba(255,43,46,0.4)" }}>
                 <Sparkles size={8} className="fill-white" /> Nv. {tier.current.level}
               </span>
             </div>
@@ -303,7 +303,7 @@ export function ProfilePage() {
                     transition-all duration-200 cursor-pointer
                     ${activeTab === tab.key ? "text-primary" : "text-foreground/60 hover:text-foreground/88"}`}
                   style={{
-                    borderRadius: "10px",
+                    borderRadius: "var(--radius-card-sm)",
                     background: activeTab === tab.key
                       ? (isDark ? "linear-gradient(90deg, rgba(255,43,46,0.12) 0%, rgba(255,43,46,0.04) 100%)" : "linear-gradient(90deg, rgba(220,20,20,0.08) 0%, rgba(220,20,20,0.02) 100%)")
                       : "transparent",
@@ -336,7 +336,7 @@ export function ProfilePage() {
                   lg:min-w-0 lg:min-h-0 lg:w-full lg:py-2.5 lg:px-3.5
                   whitespace-nowrap lg:whitespace-normal
                   text-foreground/50 hover:text-primary transition-all duration-200 cursor-pointer"
-                style={{ borderRadius: "10px", fontFamily: "var(--font-family-inter)", fontWeight: 500 }}
+                style={{ borderRadius: "var(--radius-card-sm)", fontFamily: "var(--font-family-inter)", fontWeight: 500 }}
               >
                 <LogOut size={18} aria-hidden="true" className="lg:hidden mb-1 flex-shrink-0" />
                 <LogOut size={15} aria-hidden="true" className="hidden lg:block flex-shrink-0" />
@@ -429,7 +429,7 @@ export function ProfilePage() {
                         <div
                           className="relative mb-4 p-5 flex items-center gap-4 overflow-hidden"
                           style={{
-                            borderRadius: "16px",
+                            borderRadius: "var(--radius-card-md)",
                             background: isDark
                               ? "linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(var(--foreground-rgb), 0.02) 60%)"
                               : "linear-gradient(135deg, rgba(34,197,94,0.05) 0%, rgba(0,0,0,0.015) 60%)",
@@ -450,7 +450,7 @@ export function ProfilePage() {
                               Que tal um upgrade no setup?
                             </p>
                           </div>
-                          <Link to="/produtos" className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                          <Link to="/produtos" className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
                             Explorar
                           </Link>
                         </div>
@@ -469,7 +469,7 @@ export function ProfilePage() {
                       <div
                         className="relative mb-4 overflow-hidden"
                         style={{
-                          borderRadius: "16px",
+                          borderRadius: "var(--radius-card-md)",
                           background: isDark
                             ? "rgba(var(--foreground-rgb), 0.02)"
                             : "rgba(0,0,0,0.015)",
@@ -490,7 +490,7 @@ export function ProfilePage() {
                               <button
                                 onClick={() => setProfileTab("orders")}
                                 className="inline-flex items-center min-h-[44px] md:min-h-0 cursor-pointer px-2 py-0.5 text-foreground/70 hover:text-foreground transition-colors gap-1"
-                                style={{ borderRadius: "100px", background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.06em" }}
+                                style={{ borderRadius: "var(--radius-pill)", background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.06em" }}
                               >
                                 +{otherActiveCount} {otherActiveCount === 1 ? "outro pedido" : "outros pedidos"} em rota
                               </button>
@@ -505,12 +505,12 @@ export function ProfilePage() {
                         <div className="flex items-center gap-3 px-5 pb-4">
                           <div className="flex items-center gap-1.5">
                             {nextOrder.items.slice(0, 3).map((item, i) => (
-                              <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/8" style={{ borderRadius: "10px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                              <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/8" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                                 <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                               </div>
                             ))}
                             {nextOrder.items.length > 3 && (
-                              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/60" style={{ borderRadius: "10px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-foreground/60" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
                                 +{nextOrder.items.length - 3}
                               </div>
                             )}
@@ -571,14 +571,14 @@ export function ProfilePage() {
                           <button
                             onClick={() => { setProfileTab("orders"); setSelectedOrderId(nextOrder.id); }}
                             className="flex-1 sm:flex-initial inline-flex items-center justify-center min-h-[44px] md:min-h-0 gap-1.5 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
-                            style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                            style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
                           >
                             <Truck size={13} /> Rastrear pedido
                           </button>
                           <button
                             onClick={() => setProfileTab("help")}
                             className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 gap-1.5 px-3 py-2 text-foreground/70 hover:text-foreground transition-all cursor-pointer"
-                            style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                            style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
                           >
                             <HelpCircle size={13} /> Ajuda
                           </button>
@@ -605,7 +605,7 @@ export function ProfilePage() {
                     const dynamicTier = getTier(effectiveOrders);
 
                     return (
-                  <div className="mb-3 overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                  <div className="mb-3 overflow-hidden" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     {/* Título da seção (contextualiza o card pra novos usuários) */}
                     <div className="flex items-center justify-between gap-3 px-5 pt-4 pb-3" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                       <div className="flex flex-wrap items-center gap-2">
@@ -626,7 +626,7 @@ export function ProfilePage() {
                         <div>
                           <div className="flex items-center gap-2">
                             <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600 }}>{dynamicTier.current.name}</span>
-                            <span className="px-2 py-0.5 text-ink-strong" style={{ borderRadius: "100px", background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.08em" }}>NV. {dynamicTier.current.level}</span>
+                            <span className="px-2 py-0.5 text-ink-strong" style={{ borderRadius: "var(--radius-pill)", background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.08em" }}>NV. {dynamicTier.current.level}</span>
                           </div>
                           <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
                             {dynamicTier.next
@@ -667,7 +667,7 @@ export function ProfilePage() {
                           {missionsPending.slice(0, 3).map((task, i) => (
                             <button key={i} onClick={task.action}
                               className="group/task cursor-pointer w-full flex items-center gap-3 px-3 py-2.5 min-h-[44px] md:min-h-0 transition-all hover:bg-white/[0.025]"
-                              style={{ borderRadius: "10px", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)", border: "1px solid rgba(56,189,248,0.10)" }}
+                              style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)", border: "1px solid rgba(56,189,248,0.10)" }}
                             >
                               <div className="w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors group-hover/task:border-sky-400" style={{ borderColor: "rgba(56,189,248,0.4)" }} />
                               <p className="text-foreground/80 flex-1 text-left" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 500 }}>{task.label}</p>
@@ -736,7 +736,7 @@ export function ProfilePage() {
                       onClick={() => setProfileTab("orders")}
                       className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                       style={{
-                        borderRadius: "14px",
+                        borderRadius: "var(--radius-card-sm)",
                         background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
                         border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                       }}
@@ -747,7 +747,7 @@ export function ProfilePage() {
                       </div>
                       <div className="flex items-center gap-2 mb-3">
                         {user.orders.slice(0, 4).flatMap((o) => o.items).slice(0, 4).map((item, i) => (
-                          <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                          <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                             <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                           </div>
                         ))}
@@ -761,7 +761,7 @@ export function ProfilePage() {
                       onClick={() => setProfileTab("favorites")}
                       className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                       style={{
-                        borderRadius: "14px",
+                        borderRadius: "var(--radius-card-sm)",
                         background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
                         border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                       }}
@@ -772,7 +772,7 @@ export function ProfilePage() {
                       </div>
                       <div className="flex items-center gap-2 mb-3 min-h-[48px]">
                         {favoriteProducts.slice(0, 4).map((p) => (
-                          <div key={p.id} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                          <div key={p.id} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                             <ImageWithFallback src={getPrimaryProductImage(p)} alt={p.name} className="w-full h-full object-cover" />
                           </div>
                         ))}
@@ -790,7 +790,7 @@ export function ProfilePage() {
                         onClick={() => setProfileTab("addresses")}
                         className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.025] profile-card"
                         style={{
-                          borderRadius: "14px",
+                          borderRadius: "var(--radius-card-sm)",
                           background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
                           border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                         }}
@@ -821,7 +821,7 @@ export function ProfilePage() {
                           onClick={() => setProfileTab("cards")}
                           className="group cursor-pointer text-left p-5 transition-all hover:bg-white/[0.01]"
                           style={{
-                            borderRadius: "14px",
+                            borderRadius: "var(--radius-card-sm)",
                             background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
                             border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                           }}
@@ -850,7 +850,7 @@ export function ProfilePage() {
                       <button onClick={() => setProfileTab("points")}
                         className="group cursor-pointer text-left p-5 transition-all relative overflow-hidden md:col-span-2"
                         style={{
-                          borderRadius: "14px",
+                          borderRadius: "var(--radius-card-sm)",
                           background: "linear-gradient(135deg, rgba(250,204,21,0.08) 0%, rgba(180,83,9,0.04) 50%, rgba(255,43,46,0.02) 100%)",
                           border: "1px solid rgba(250,204,21,0.28)",
                         }}
@@ -876,7 +876,7 @@ export function ProfilePage() {
                   </div>
 
                   {/* Atalhos rápidos */}
-                  <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(255,43,46,0.04)" : "rgba(220,20,20,0.03)", border: "1px solid rgba(255,43,46,0.12)" }}>
+                  <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between p-5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(255,43,46,0.04)" : "rgba(220,20,20,0.03)", border: "1px solid rgba(255,43,46,0.12)" }}>
                     <div className="flex items-center gap-3">
                       <Sparkles size={18} className="text-primary" />
                       <div>
@@ -888,7 +888,7 @@ export function ProfilePage() {
                         </p>
                       </div>
                     </div>
-                    <Link to="/produtos" className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>
+                    <Link to="/produtos" className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>
                       Ver produtos
                     </Link>
                   </div>
@@ -902,17 +902,17 @@ export function ProfilePage() {
                       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-5">
                         <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Meus Pedidos</h2>
                         <div className="flex flex-wrap gap-2">
-                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
-                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
-                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
+                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground hover:text-foreground transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Todos</button>
+                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Em andamento</button>
+                          <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-foreground/80 transition-colors text-[11px] cursor-pointer" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontWeight: 600 }}>Entregues</button>
                         </div>
                       </div>
                       {user.orders.length === 0 ? (
-                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <div className="text-center py-20 px-6" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                           <Package size={28} className="text-foreground/35 mx-auto mb-4" />
                           <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum pedido ainda</p>
                           <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Quando você fizer um pedido, ele aparece aqui.</p>
-                          <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>Explorar produtos</Link>
+                          <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>Explorar produtos</Link>
                         </div>
                       ) : (
                       <div className="space-y-3">
@@ -943,7 +943,7 @@ export function ProfilePage() {
                               onClick={() => setSelectedOrderId(order.id)}
                               className="group order-card cursor-pointer relative overflow-hidden"
                               style={{
-                                borderRadius: "14px",
+                                borderRadius: "var(--radius-card-sm)",
                                 background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)",
                                 border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)",
                               }}
@@ -965,7 +965,7 @@ export function ProfilePage() {
                                     {order.items.length} {order.items.length === 1 ? "item" : "itens"} · {paymentShort}
                                   </p>
                                 </div>
-                                <span className={`px-2.5 py-1 flex-shrink-0 ${s.bg} ${s.color}`} style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                                <span className={`px-2.5 py-1 flex-shrink-0 ${s.bg} ${s.color}`} style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>
                                   {s.label}
                                 </span>
                                 <div className="text-right flex-shrink-0">
@@ -976,16 +976,16 @@ export function ProfilePage() {
                               {/* Produto: thumb + nome inline */}
                               <div className="flex items-center gap-3 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                                 <div className="flex items-center gap-1.5 flex-shrink-0">
-                                  <div className="w-14 h-14 overflow-hidden border border-foreground/5" style={{ borderRadius: "10px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                  <div className="w-14 h-14 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                                     <ImageWithFallback src={firstItem.image} alt={firstItem.name} className="w-full h-full object-cover" />
                                   </div>
                                   {order.items.slice(1, 3).map((item, i) => (
-                                    <div key={i} className="w-10 h-10 overflow-hidden border border-foreground/5" style={{ borderRadius: "8px", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                    <div key={i} className="w-10 h-10 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
                                       <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                     </div>
                                   ))}
                                   {extraItems > 2 && (
-                                    <div className="w-10 h-10 flex items-center justify-center text-foreground/55" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                                    <div className="w-10 h-10 flex items-center justify-center text-foreground/55" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
                                       +{extraItems - 2}
                                     </div>
                                   )}
@@ -1015,18 +1015,18 @@ export function ProfilePage() {
                                     <>
                                       <button onClick={(e) => { e.stopPropagation(); addItem({ ...firstItem, id: firstItem.name, price: firstItem.price, originalPrice: firstItem.price, category: "", brand: "", description: "", rating: 5, reviews: 0, images: [firstItem.image] } as any); }}
                                         className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer"
-                                        style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                        style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                         <ShoppingBag size={12} /> Comprar de novo
                                       </button>
                                       {reviewedOrders.has(order.id) ? (
                                         <span className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-green-500"
-                                          style={{ borderRadius: "8px", background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.18)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                          style={{ borderRadius: "var(--radius-card)", background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.18)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                           <Check size={12} /> Avaliado
                                         </span>
                                       ) : (
                                         <button onClick={(e) => { e.stopPropagation(); setReviewOrderId(order.id); }}
                                           className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-yellow-400 transition-all cursor-pointer"
-                                          style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                          style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                           <Star size={12} /> Avaliar
                                         </button>
                                       )}
@@ -1035,21 +1035,21 @@ export function ProfilePage() {
                                   {isShipped && (
                                     <button onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
                                       className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-blue-400 hover:brightness-110 transition-all cursor-pointer"
-                                      style={{ borderRadius: "8px", background: "rgba(96,165,250,0.10)", border: "1px solid rgba(96,165,250,0.22)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                      style={{ borderRadius: "var(--radius-card)", background: "rgba(96,165,250,0.10)", border: "1px solid rgba(96,165,250,0.22)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                       <Truck size={12} /> Rastrear pedido
                                     </button>
                                   )}
                                   {isProcessing && (
                                     <button onClick={(e) => e.stopPropagation()}
                                       className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 text-red-400 hover:bg-red-500/10 transition-all cursor-pointer"
-                                      style={{ borderRadius: "8px", background: "rgba(239,68,68,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                      style={{ borderRadius: "var(--radius-card)", background: "rgba(239,68,68,0.06)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                       <XIcon size={12} /> Cancelar
                                     </button>
                                   )}
                                   {isCancelled && (
                                     <button onClick={(e) => e.stopPropagation()}
                                       className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 px-3 py-1.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer"
-                                      style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
+                                      style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>
                                       <ShoppingBag size={12} /> Comprar de novo
                                     </button>
                                   )}
@@ -1057,7 +1057,7 @@ export function ProfilePage() {
                                 <button
                                   onClick={(e) => { e.stopPropagation(); setSelectedOrderId(order.id); }}
                                   className="inline-flex items-center gap-1 min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-primary transition-all flex-shrink-0 cursor-pointer"
-                                  style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
+                                  style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
                                 >
                                   Ver detalhes <ChevronRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
                                 </button>
@@ -1087,7 +1087,7 @@ export function ProfilePage() {
                           <div>
                             <div className="flex flex-wrap items-center gap-3 mb-1">
                               <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(18px, 5vw, 24px)", fontWeight: "var(--font-weight-medium)" }}>Pedido {order.id}</h2>
-                              <span className={`flex items-center gap-1.5 px-3 py-1 ${s.bg} ${s.color}`} style={{ borderRadius: "100px", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}>
+                              <span className={`flex items-center gap-1.5 px-3 py-1 ${s.bg} ${s.color}`} style={{ borderRadius: "var(--radius-pill)", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}>
                                 {s.label}
                               </span>
                             </div>
@@ -1268,7 +1268,7 @@ export function ProfilePage() {
                     </div>
 
                     {/* Hero saldo */}
-                    <div className="relative mb-3 overflow-hidden p-6" style={{ borderRadius: "16px", background: "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.05) 50%, rgba(255,43,46,0.03) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
+                    <div className="relative mb-3 overflow-hidden p-6" style={{ borderRadius: "var(--radius-card-md)", background: "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.05) 50%, rgba(255,43,46,0.03) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
                       <div className="flex items-center gap-4 mb-4">
                         <PcyesCoin size={56} />
                         <div className="flex-1">
@@ -1283,7 +1283,7 @@ export function ProfilePage() {
                       </div>
 
                       {nextExpiring && daysToExpire > 0 && daysToExpire <= 60 && (
-                        <div className="flex items-center gap-2 p-3 mt-3" style={{ borderRadius: "10px", background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.22)" }}>
+                        <div className="flex items-center gap-2 p-3 mt-3" style={{ borderRadius: "var(--radius-card-sm)", background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.22)" }}>
                           <AlertCircle size={14} className="text-yellow-500 flex-shrink-0" />
                           <p className="text-yellow-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
                             {nextExpiring.amount} pts vencem em {daysToExpire} {daysToExpire === 1 ? "dia" : "dias"} · {new Date(nextExpiring.expiresAt!).toLocaleDateString("pt-BR")}
@@ -1294,19 +1294,19 @@ export function ProfilePage() {
 
                     {/* Stats grid */}
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
-                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                         <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Acumulado</p>
                         <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
                           {totalEarned} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
                         </p>
                       </div>
-                      <div className="p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                         <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Resgatado</p>
                         <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
                           {totalSpent} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
                         </p>
                       </div>
-                      <div className="p-4 col-span-2 md:col-span-1" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                      <div className="p-4 col-span-2 md:col-span-1" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                         <p className="text-foreground/55 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Próximo pedido pode usar até</p>
                         <p className="text-foreground flex items-baseline gap-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 600 }}>
                           {Math.min(user.pcyesPoints ?? 0, 480)} <span className="text-foreground/55" style={{ fontSize: "12px", fontWeight: 500 }}>pts</span>
@@ -1315,7 +1315,7 @@ export function ProfilePage() {
                     </div>
 
                     {/* Como funciona */}
-                    <div className="p-5 mb-3" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="p-5 mb-3" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <p className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Como ganhar mais</p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                         {[
@@ -1323,7 +1323,7 @@ export function ProfilePage() {
                           { icon: Star, title: "Avaliar produtos", desc: "+5 pts por avaliação" },
                           { icon: Share2, title: "Indicar amigos", desc: "+50 pts quando o amigo compra" },
                         ].map((item) => (
-                          <div key={item.title} className="flex items-start gap-2.5 p-3" style={{ borderRadius: "10px", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)" }}>
+                          <div key={item.title} className="flex items-start gap-2.5 p-3" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.01)" }}>
                             <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(250,204,21,0.12)" }}>
                               <item.icon size={13} style={{ color: "#facc15" }} />
                             </div>
@@ -1337,7 +1337,7 @@ export function ProfilePage() {
                     </div>
 
                     {/* Histórico */}
-                    <div className="overflow-hidden" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="overflow-hidden" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <div className="px-5 py-3 flex items-center justify-between" style={{ borderBottom: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                         <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Histórico</p>
                         <p className="text-foreground/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{history.length} {history.length === 1 ? "transação" : "transações"}</p>
@@ -1433,16 +1433,16 @@ export function ProfilePage() {
                   {favSubTab === "setups" && (
                     <div>
                       {savedBuilds.length === 0 ? (
-                        <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                        <div className="text-center py-20 px-6" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                           <Package size={28} className="text-foreground/30 mx-auto mb-4" />
                           <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum setup salvo ainda</p>
                           <p className="text-foreground/45 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Monte sua build e clique em "Salvar" pra guardar aqui.</p>
-                          <Link to="/monte-seu-pc" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>Montar PC</Link>
+                          <Link to="/monte-seu-pc" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>Montar PC</Link>
                         </div>
                       ) : (
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                           {savedBuilds.map((b) => (
-                            <div key={b.id} className="overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                            <div key={b.id} className="overflow-hidden transition-all" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                               <div className="flex items-start justify-between gap-3 border-b border-foreground/[0.06] p-4">
                                 <div className="min-w-0">
                                   <p className="uppercase text-foreground/40 mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px", letterSpacing: "0.18em", fontWeight: 700 }}>
@@ -1506,11 +1506,11 @@ export function ProfilePage() {
                   {favSubTab === "products" && (
                   <>
                   {favoriteProducts.length === 0 ? (
-                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <Heart size={28} className="text-foreground/30 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum favorito ainda</p>
                       <p className="text-foreground/45 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Clique no coração nos produtos pra salvá-los aqui.</p>
-                      <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>Ver produtos</Link>
+                      <Link to="/produtos" className="inline-block px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>Ver produtos</Link>
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -1518,7 +1518,7 @@ export function ProfilePage() {
                         const hasDiscount = !!product.oldPrice;
                         const inStock = product.inStock !== false;
                         return (
-                          <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                          <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                             <Link to={`/produto/${product.id}`} className="deal-card-img block relative aspect-square overflow-hidden transition-all duration-300" style={{
                               /* Visual match com ProductCard do ProductShelf: gradient + inner shine. */
                               background: isDark
@@ -1532,19 +1532,19 @@ export function ProfilePage() {
                               {/* Badges sobre imagem */}
                               <div className="absolute top-2 left-2 flex flex-col gap-1">
                                 {hasDiscount && (
-                                  <span className="px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.04em" }}>
+                                  <span className="px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.04em" }}>
                                     <Sparkles size={8} /> OFERTA
                                   </span>
                                 )}
                                 {!inStock && (
-                                  <span className="px-1.5 py-0.5 bg-foreground/70 text-background" style={{ borderRadius: "6px", fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.04em" }}>
+                                  <span className="px-1.5 py-0.5 bg-foreground/70 text-background" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.04em" }}>
                                     SEM ESTOQUE
                                   </span>
                                 )}
                               </div>
                               <button onClick={(e) => { e.preventDefault(); toggleFavorite(product.id); }}
                                 className="absolute top-2 right-2 w-11 h-11 md:w-7 md:h-7 flex items-center justify-center text-primary hover:bg-black/40 transition-all backdrop-blur-md cursor-pointer"
-                                style={{ borderRadius: "8px", background: "rgba(0,0,0,0.3)" }}
+                                style={{ borderRadius: "var(--radius-card)", background: "rgba(0,0,0,0.3)" }}
                               ><Heart size={12} className="fill-primary" /></button>
                             </Link>
                             <div className="p-3">
@@ -1573,7 +1573,7 @@ export function ProfilePage() {
                               <button onClick={() => addItem(product)}
                                 disabled={!inStock}
                                 className={`w-full min-h-[44px] md:min-h-0 py-1.5 inline-flex items-center justify-center gap-1.5 transition-all cursor-pointer ${inStock ? "bg-primary text-primary-foreground hover:brightness-110" : "bg-foreground/8 text-foreground/40 cursor-not-allowed"}`}
-                                style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
+                                style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
                               ><ShoppingBag size={11} /> {inStock ? "Comprar" : "Avisar quando voltar"}</button>
                             </div>
                           </div>
@@ -1590,19 +1590,19 @@ export function ProfilePage() {
                 <motion.div key="addresses" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
-                    <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.addresses.length === 0 ? (
-                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <MapPin size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum endereço cadastrado</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione um endereço pra receber seus pedidos.</p>
-                      <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar endereço</button>
+                      <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar endereço</button>
                     </div>
                   ) : (
                   <div className="space-y-2">
                     {user.addresses.map((a) => (
-                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: a.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: a.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
                         <div className="flex items-start gap-3 min-w-0 flex-1">
                           <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
                             <MapPin size={15} className="text-primary" />
@@ -1610,7 +1610,7 @@ export function ProfilePage() {
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2 mb-1 flex-wrap">
                               <span className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>{a.label}</span>
-                              {a.isDefault && <span className="px-2 py-0.5 bg-primary/12 text-primary flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><Check size={9} /> PADRÃO</span>}
+                              {a.isDefault && <span className="px-2 py-0.5 bg-primary/12 text-primary flex items-center gap-1" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><Check size={9} /> PADRÃO</span>}
                             </div>
                             <p className="text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.55" }}>
                               {a.street}, {a.number}{a.complement ? ` - ${a.complement}` : ""} · {a.neighborhood}<br />{a.city}/{a.state}
@@ -1622,9 +1622,9 @@ export function ProfilePage() {
                         </div>
                         <div className="flex flex-col gap-1.5 flex-shrink-0">
                           {!a.isDefault && (
-                            <button onClick={() => setDefaultAddress(a.id)} className="inline-flex items-center gap-1 min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                            <button onClick={() => setDefaultAddress(a.id)} className="inline-flex items-center gap-1 min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                           )}
-                          <button onClick={() => setAddressModal({ open: true, editing: a })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                          <button onClick={() => setAddressModal({ open: true, editing: a })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                           {user.addresses.length > 1 && (
                             <button onClick={() => askConfirm({
                               title: `Remover endereço "${a.label}"?`,
@@ -1632,7 +1632,7 @@ export function ProfilePage() {
                               confirmLabel: "Remover endereço",
                               destructive: true,
                               action: () => removeAddress(a.id),
-                            })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/55 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
+                            })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/55 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Remover</button>
                           )}
                         </div>
                       </div>
@@ -1663,7 +1663,7 @@ export function ProfilePage() {
                     const daysToBday = Math.ceil((thisBday.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
                     if (daysToBday > 30) return null;
                     return (
-                      <div className="flex items-center gap-3 p-4 mb-3" style={{ borderRadius: "14px", background: "linear-gradient(135deg, rgba(255,43,46,0.06) 0%, rgba(var(--foreground-rgb), 0.02) 60%)", border: "1px solid rgba(255,43,46,0.2)" }}>
+                      <div className="flex items-center gap-3 p-4 mb-3" style={{ borderRadius: "var(--radius-card-sm)", background: "linear-gradient(135deg, rgba(255,43,46,0.06) 0%, rgba(var(--foreground-rgb), 0.02) 60%)", border: "1px solid rgba(255,43,46,0.2)" }}>
                         <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
                           <Sparkles size={16} className="text-primary fill-primary/30" />
                         </div>
@@ -1677,11 +1677,11 @@ export function ProfilePage() {
                     );
                   })()}
 
-                  <div className="p-5" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                  <div className="p-5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome completo</label>
-                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="flex items-center gap-1 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -1689,15 +1689,15 @@ export function ProfilePage() {
                           <Check size={11} className="text-green-500" />
                           <span className="text-green-500" style={{ letterSpacing: "0.08em" }}>verificado</span>
                         </label>
-                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
-                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Data de nascimento</label>
-                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
+                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
                       </div>
                       <div className="md:col-span-2">
                         <label className="flex items-center gap-1.5 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -1705,15 +1705,15 @@ export function ProfilePage() {
                           <Shield size={11} className="text-foreground/45" />
                           <span className="text-foreground/45" style={{ letterSpacing: "0.06em" }}>não editável</span>
                         </label>
-                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-60 cursor-not-allowed profile-field" style={{ padding: "11px 13px", borderRadius: "10px", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.015)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <input value={user.cpf} disabled className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none transition-all opacity-60 cursor-not-allowed profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)", background: isDark ? "rgba(var(--foreground-rgb), 0.015)" : "rgba(0,0,0,0.015)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
                       </div>
                     </div>
                     <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2">
                       <button onClick={() => updateUser({ updatedAt: new Date().toISOString() })} className="w-full md:w-auto min-h-[44px] md:min-h-0 px-5 py-2.5 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
-                        style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                        style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                       >Salvar alterações</button>
                       <button className="w-full md:w-auto min-h-[44px] md:min-h-0 px-4 py-2.5 text-foreground/65 hover:text-foreground transition-all cursor-pointer"
-                        style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                        style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                       >Cancelar</button>
                     </div>
                   </div>
@@ -1724,14 +1724,14 @@ export function ProfilePage() {
                 <motion.div key="cards" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
-                    <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.cards.length === 0 ? (
-                    <div className="text-center py-20 px-6" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
+                    <div className="text-center py-20 px-6" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
                       <CreditCard size={28} className="text-foreground/35 mx-auto mb-4" />
                       <p className="text-foreground/55 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "var(--font-weight-medium)" }}>Nenhum cartão salvo</p>
                       <p className="text-foreground/40 mb-6" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>Adicione pra checkout mais rápido. Seus dados ficam criptografados.</p>
-                      <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar cartão</button>
+                      <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center justify-center min-h-[44px] md:min-h-0 px-4 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>+ Adicionar cartão</button>
                     </div>
                   ) : (
                   <div className="space-y-2">
@@ -1743,29 +1743,29 @@ export function ProfilePage() {
                       const isExpired = monthsLeft < 0;
                       const isExpiringSoon = !isExpired && monthsLeft <= 3;
                       return (
-                        <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
-                          <CardBrandLogo brand={c.brand} className="flex-shrink-0" style={{ width: "44px", height: "28px", borderRadius: "5px", overflow: "hidden", display: "block", objectFit: "cover" }} />
+                        <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                          <CardBrandLogo brand={c.brand} className="flex-shrink-0" style={{ width: "44px", height: "28px", borderRadius: "var(--radius)", overflow: "hidden", display: "block", objectFit: "cover" }} />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-0.5 flex-wrap">
                               <p className="text-foreground font-mono" style={{ fontSize: "13.5px", fontWeight: 600, letterSpacing: "0.05em" }}>•••• {c.last4}</p>
-                              {c.isDefault && <span className="px-2 py-0.5 bg-primary/12 text-primary flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><Check size={9} /> PADRÃO</span>}
-                              {isExpired && <span className="px-2 py-0.5 bg-red-500/15 text-red-400 flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><AlertCircle size={9} /> VENCIDO</span>}
-                              {isExpiringSoon && <span className="px-2 py-0.5 bg-yellow-500/15 text-yellow-500 flex items-center gap-1" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><AlertCircle size={9} /> VENCE EM BREVE</span>}
+                              {c.isDefault && <span className="px-2 py-0.5 bg-primary/12 text-primary flex items-center gap-1" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><Check size={9} /> PADRÃO</span>}
+                              {isExpired && <span className="px-2 py-0.5 bg-red-500/15 text-red-400 flex items-center gap-1" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><AlertCircle size={9} /> VENCIDO</span>}
+                              {isExpiringSoon && <span className="px-2 py-0.5 bg-yellow-500/15 text-yellow-500 flex items-center gap-1" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}><AlertCircle size={9} /> VENCE EM BREVE</span>}
                             </div>
                             <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>{c.name} · Validade {c.expiry}</p>
                           </div>
                           <div className="flex flex-col gap-1.5 flex-shrink-0">
                             {!c.isDefault && (
-                              <button onClick={() => setDefaultCard(c.id)} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
+                              <button onClick={() => setDefaultCard(c.id)} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>Tornar padrão</button>
                             )}
-                            <button onClick={() => setCardModal({ open: true, editing: c })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
+                            <button onClick={() => setCardModal({ open: true, editing: c })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Editar</button>
                             <button onClick={() => askConfirm({
                               title: `Remover cartão •••• ${c.last4}?`,
                               description: `${c.brand || "Cartão"} · ${c.name} · Validade ${c.expiry}. Você precisará adicioná-lo de novo se quiser usar.`,
                               confirmLabel: "Remover cartão",
                               destructive: true,
                               action: () => removeCard(c.id),
-                            })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "8px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
+                            })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/60 hover:text-red-400 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Remover</button>
                           </div>
                         </div>
                       );
@@ -1782,7 +1782,7 @@ export function ProfilePage() {
                   {/* Contato direto destaque */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
                     <a href="https://wa.me/5500000000000" target="_blank" rel="noreferrer" className="group cursor-pointer flex items-center gap-3 p-4 transition-all hover:bg-white/[0.025] profile-card"
-                      style={{ borderRadius: "14px", background: isDark ? "rgba(34,197,94,0.05)" : "rgba(34,197,94,0.04)", border: "1px solid rgba(34,197,94,0.18)" }}
+                      style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(34,197,94,0.05)" : "rgba(34,197,94,0.04)", border: "1px solid rgba(34,197,94,0.18)" }}
                     >
                       <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-green-500/12">
                         <Share2 size={15} className="text-green-500" />
@@ -1801,7 +1801,7 @@ export function ProfilePage() {
                       <ChevronRight size={16} className="text-foreground/35 group-hover:text-green-500 group-hover:translate-x-0.5 transition-all" />
                     </a>
                     <button className="group cursor-pointer flex items-center gap-3 p-4 transition-all hover:bg-white/[0.025] profile-card text-left"
-                      style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                      style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                     >
                       <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
                         <User size={15} className="text-primary" />
@@ -1822,7 +1822,7 @@ export function ProfilePage() {
                       { title: "E-mail", desc: "suporte@pcyes.com.br · resposta em até 24h", icon: Info },
                     ].map((item) => (
                       <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
-                        style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                        style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
                         <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
                           <item.icon size={15} className="text-primary" />
@@ -1843,18 +1843,18 @@ export function ProfilePage() {
                   <h2 className="text-foreground mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "var(--font-weight-medium)" }}>Privacidade e Segurança</h2>
 
                   {/* 2FA toggle destaque */}
-                  <div className="flex items-center gap-4 p-4 mb-3" style={{ borderRadius: "14px", background: isDark ? "rgba(34,197,94,0.04)" : "rgba(34,197,94,0.03)", border: "1px solid rgba(34,197,94,0.18)" }}>
+                  <div className="flex items-center gap-4 p-4 mb-3" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(34,197,94,0.04)" : "rgba(34,197,94,0.03)", border: "1px solid rgba(34,197,94,0.18)" }}>
                     <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-green-500/12">
                       <Shield size={15} className="text-green-500" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <p className="text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: "var(--font-weight-medium)" }}>Autenticação em 2 fatores</p>
-                        <span className="px-2 py-0.5 bg-yellow-500/15 text-yellow-500" style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>RECOMENDADO</span>
+                        <span className="px-2 py-0.5 bg-yellow-500/15 text-yellow-500" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em" }}>RECOMENDADO</span>
                       </div>
                       <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Adicione uma camada extra de segurança ao seu login</p>
                     </div>
-                    <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 bg-green-500 text-ink-strong hover:brightness-110 transition-all cursor-pointer flex-shrink-0" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Ativar</button>
+                    <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 bg-green-500 text-ink-strong hover:brightness-110 transition-all cursor-pointer flex-shrink-0" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Ativar</button>
                   </div>
 
                   <div className="space-y-2">
@@ -1866,7 +1866,7 @@ export function ProfilePage() {
                       { title: "Excluir minha conta", desc: "Solicite a remoção permanente dos seus dados", icon: XIcon, danger: true },
                     ].map((item) => (
                       <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
-                        style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
+                        style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
                         <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(255,43,46,0.08)" }}>
                           <item.icon size={15} className={item.danger ? "text-red-400" : "text-primary"} />

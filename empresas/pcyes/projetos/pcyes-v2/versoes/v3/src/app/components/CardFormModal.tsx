@@ -86,7 +86,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
 
   const inputStyle: React.CSSProperties = {
     padding: "11px 13px",
-    borderRadius: "10px",
+    borderRadius: "var(--radius-card-sm)",
     border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)",
     background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)",
     fontFamily: "var(--font-family-inter)",
@@ -113,7 +113,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
         className="!max-w-[560px] !p-0 !gap-0 !border-0"
         style={{
           background: isDark ? "#161617" : "#ffffff",
-          borderRadius: "20px",
+          borderRadius: "var(--radius-card-lg)",
           overflow: "hidden",
           color: isDark ? "#fafafa" : "#0a0a0a",
         }}

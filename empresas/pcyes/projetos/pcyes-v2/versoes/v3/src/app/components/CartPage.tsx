@@ -290,7 +290,7 @@ export function CartPage() {
             <div
               className="mb-6 flex flex-wrap items-center justify-between gap-3 overflow-hidden p-4 md:p-5"
               style={{
-                borderRadius: "16px",
+                borderRadius: "var(--radius-card-md)",
                 background: "linear-gradient(135deg, rgba(225,6,0,0.10) 0%, rgba(255,36,25,0.04) 100%)",
                 border: "1px solid rgba(225,6,0,0.32)",
                 boxShadow: "0 18px 38px -16px rgba(225,6,0,0.45)",
@@ -338,7 +338,7 @@ export function CartPage() {
             <div
               className="mb-6 flex flex-wrap items-center justify-between gap-3 overflow-hidden p-4 md:p-5"
               style={{
-                borderRadius: "16px",
+                borderRadius: "var(--radius-card-md)",
                 background: "linear-gradient(135deg, rgba(34,197,94,0.10) 0%, rgba(34,197,94,0.03) 100%)",
                 border: "1px solid rgba(34,197,94,0.3)",
               }}
@@ -373,7 +373,7 @@ export function CartPage() {
           {!giftUnlocked && (
             <div
               className="mb-6 overflow-hidden p-4 md:p-5"
-              style={{ borderRadius: "16px", background: cardBg, border: cardBorder }}
+              style={{ borderRadius: "var(--radius-card-md)", background: cardBg, border: cardBorder }}
             >
               <div className="flex items-center justify-between gap-3 mb-3">
                 <div className="flex items-center gap-2.5">
@@ -432,7 +432,7 @@ export function CartPage() {
                       <div
                         className="relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden md:h-[120px] md:w-[120px]"
                         style={{
-                          borderRadius: "14px",
+                          borderRadius: "var(--radius-card-sm)",
                           background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                           border: "1px solid rgba(var(--foreground-rgb), 0.06)",
                         }}
@@ -447,7 +447,7 @@ export function CartPage() {
                             className="absolute left-1.5 top-1.5 inline-flex items-center gap-1 text-ink-strong"
                             style={{
                               padding: "3px 7px",
-                              borderRadius: "8px",
+                              borderRadius: "var(--radius-card)",
                               background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
                               fontSize: "9px",
@@ -494,7 +494,7 @@ export function CartPage() {
                             <div
                               className="inline-flex items-center overflow-hidden"
                               style={{
-                                borderRadius: "10px",
+                                borderRadius: "var(--radius-card-sm)",
                                 border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                                 background: "rgba(var(--foreground-rgb), 0.03)",
                               }}
@@ -594,7 +594,7 @@ export function CartPage() {
               <div
                 className="relative overflow-hidden p-6"
                 style={{
-                  borderRadius: "20px",
+                  borderRadius: "var(--radius-card-lg)",
                   background: cardBg,
                   border: cardBorder,
                   boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
@@ -649,7 +649,7 @@ export function CartPage() {
                         className="w-full px-3.5 py-2.5 pr-9 text-ink-strong placeholder:text-ink-subtle focus:outline-none transition-all cart-field"
                         aria-label="CEP para cálculo de frete"
                         style={{
-                          borderRadius: "10px",
+                          borderRadius: "var(--radius-card-sm)",
                           border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                           background: "rgba(var(--foreground-rgb), 0.03)",
                           fontFamily: "var(--font-family-inter)",
@@ -675,7 +675,7 @@ export function CartPage() {
                               <button
                                 key={opt.id}
                                 onClick={() => setSelectedShipping(opt.id)}
-                                className="flex w-full items-center gap-2.5 rounded-[10px] px-3 py-2 text-left transition-colors min-h-[44px] md:min-h-0"
+                                className="flex w-full items-center gap-2.5 rounded-[var(--radius-card-sm)] px-3 py-2 text-left transition-colors min-h-[44px] md:min-h-0"
                                 style={{
                                   background: active ? "rgba(34,197,94,0.06)" : "rgba(var(--foreground-rgb), 0.02)",
                                   border: active ? "1.5px solid rgba(34,197,94,0.5)" : "1px solid rgba(var(--foreground-rgb), 0.06)",
@@ -763,7 +763,7 @@ export function CartPage() {
                           onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
                           className="flex-1 px-3.5 py-2.5 text-ink-strong placeholder:text-ink-subtle focus:outline-none transition-all cart-field"
                           style={{
-                            borderRadius: "10px",
+                            borderRadius: "var(--radius-card-sm)",
                             border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                             background: "rgba(var(--foreground-rgb), 0.03)",
                             fontFamily: "var(--font-family-inter)",
@@ -775,7 +775,7 @@ export function CartPage() {
                         <button
                           onClick={handleApplyCoupon}
                           disabled={!coupon.trim()}
-                          className="cursor-pointer rounded-[10px] px-4 py-2.5 text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-[44px] md:min-h-0"
+                          className="cursor-pointer rounded-[var(--radius-card-sm)] px-4 py-2.5 text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                           style={{
                             background: "var(--gradient-brand)",
                             fontFamily: "var(--font-family-inter)",
@@ -932,7 +932,7 @@ export function CartPage() {
                 </div>
 
                 {/* Total */}
-                <div className="mb-5 rounded-[14px] p-4" style={{ background: "rgba(var(--foreground-rgb), 0.03)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
+                <div className="mb-5 rounded-[var(--radius-card-sm)] p-4" style={{ background: "rgba(var(--foreground-rgb), 0.03)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
                   <div className="mb-1 flex items-baseline justify-between">
                     <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
                       Total
@@ -995,7 +995,7 @@ export function CartPage() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 18, scale: 0.97 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="flex h-auto max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
+              className="flex h-auto max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:max-h-[calc(100dvh-3rem)] md:rounded-[var(--radius-card-xl)]"
               style={{
                 background: "var(--surface-2)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.08)",
@@ -1040,7 +1040,7 @@ export function CartPage() {
                         aria-pressed={isSelected}
                         className="group relative flex flex-row cursor-pointer overflow-hidden text-left transition-all duration-300 md:block"
                         style={{
-                          borderRadius: "20px",
+                          borderRadius: "var(--radius-card-lg)",
                           background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                           border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                           boxShadow: isSelected
@@ -1241,7 +1241,7 @@ function NumberStepper({
     <div
       className="inline-flex items-stretch overflow-hidden"
       style={{
-        borderRadius: "10px",
+        borderRadius: "var(--radius-card-sm)",
         background: "rgba(0,0,0,0.3)",
         border: `1px solid ${accent === "#facc15" ? "rgba(250,204,21,0.35)" : accent === "var(--primary)" ? "rgba(255,36,25,0.35)" : "rgba(var(--foreground-rgb), 0.12)"}`,
       }}

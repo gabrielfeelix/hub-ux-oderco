@@ -738,8 +738,8 @@ export function Navbar() {
       </div>
     );
 
-    const elevatedCardClass = "group relative grid h-full min-h-[270px] grid-rows-[150px_auto] overflow-hidden rounded-[24px] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.12)]";
-    const layoutElevatedCardClass = "group relative grid h-full min-h-[290px] grid-rows-[170px_auto] overflow-hidden rounded-[24px] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.12)]";
+    const elevatedCardClass = "group relative grid h-full min-h-[270px] grid-rows-[150px_auto] overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.12)]";
+    const layoutElevatedCardClass = "group relative grid h-full min-h-[290px] grid-rows-[170px_auto] overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.12)]";
 
     const showcaseCard = (
       href: string,
@@ -762,7 +762,7 @@ export function Navbar() {
             {badge}
           </span>
         )}
-        <div className="relative flex h-full items-center justify-center overflow-hidden rounded-[20px] border border-foreground/8 bg-foreground/[0.04] px-4 py-5 transition-colors group-hover:bg-primary/[0.02]">
+        <div className="relative flex h-full items-center justify-center overflow-hidden rounded-[var(--radius-card-lg)] border border-foreground/8 bg-foreground/[0.04] px-4 py-5 transition-colors group-hover:bg-primary/[0.02]">
           <div className="absolute inset-4 rounded-full bg-primary/10 blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
           {visualSrc ? (
             <ImageWithFallback
@@ -866,7 +866,7 @@ export function Navbar() {
       meta?: string,
     ) => (
       <Link to={resolveMenuHref(href)} onClick={() => setActiveMega(null)} className={layoutElevatedCardClass}>
-        <div className="relative flex h-full items-center justify-center overflow-hidden rounded-[20px] border border-foreground/8 bg-foreground/[0.035] px-4 py-4 transition-colors group-hover:bg-primary/[0.02]">
+        <div className="relative flex h-full items-center justify-center overflow-hidden rounded-[var(--radius-card-lg)] border border-foreground/8 bg-foreground/[0.035] px-4 py-4 transition-colors group-hover:bg-primary/[0.02]">
           <div className="absolute inset-3 rounded-full bg-primary/10 blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
           {image ? (
             <ImageWithFallback
@@ -1042,7 +1042,7 @@ export function Navbar() {
             {panelHeader(panel.title, "Destacamos o universo da categoria com uma peça principal e um acesso mais elegante para continuar a navegação.")}
           </motion.div>
           <motion.div variants={itemVariants} className="flex-1">
-            <Link to={resolveMenuHref(panel.href)} onClick={() => setActiveMega(null)} className="group grid h-full min-h-[360px] grid-cols-1 gap-5 overflow-hidden rounded-[32px] border border-foreground/8 bg-linear-to-br from-foreground/[0.04] via-transparent to-primary/[0.06] p-6 transition-all duration-500 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.15)] xl:grid-cols-[1.1fr_1fr]">
+            <Link to={resolveMenuHref(panel.href)} onClick={() => setActiveMega(null)} className="group grid h-full min-h-[360px] grid-cols-1 gap-5 overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-br from-foreground/[0.04] via-transparent to-primary/[0.06] p-6 transition-all duration-500 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.15)] xl:grid-cols-[1.1fr_1fr]">
               <div className="flex h-full flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-4">
@@ -1068,7 +1068,7 @@ export function Navbar() {
                   <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
               </div>
-              <div className="relative flex min-h-[260px] items-center justify-center rounded-[28px] border border-foreground/8 bg-background/60 p-6 overflow-hidden">
+              <div className="relative flex min-h-[260px] items-center justify-center rounded-[var(--radius-card-xl)] border border-foreground/8 bg-background/60 p-6 overflow-hidden">
                 <div className="absolute inset-0 rounded-full bg-primary/10 blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
                 <ImageWithFallback src={panel.image} alt={panel.name} className="relative z-10 h-full max-h-[320px] w-auto max-w-[120%] object-contain drop-shadow-[0_28px_40px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:scale-[1.1] group-hover:-translate-x-2 group-hover:-translate-y-2" loading="eager" referrerPolicy="no-referrer" />
               </div>
@@ -1117,7 +1117,7 @@ export function Navbar() {
                 <motion.div
                   key={item.name}
                   variants={itemVariants}
-                  className="group rounded-[24px] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,43,46,0.05)] cursor-pointer"
+                  className="group rounded-[var(--radius-card-xl)] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,43,46,0.05)] cursor-pointer"
                 >
                   {innerCard}
                 </motion.div>
@@ -1126,14 +1126,14 @@ export function Navbar() {
                   key={item.name}
                   variants={itemVariants}
                   href={item.href}
-                  className="group rounded-[24px] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,43,46,0.1)]"
+                  className="group rounded-[var(--radius-card-xl)] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,43,46,0.1)]"
                 >
                   {innerCard}
                 </motion.a>
               )
             })}
             <motion.div variants={itemVariants}>
-              <Link to="/drivers-e-manuais" onClick={() => setActiveMega(null)} className="group flex h-full min-h-[140px] flex-col justify-center rounded-[24px] border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5">
+              <Link to="/drivers-e-manuais" onClick={() => setActiveMega(null)} className="group flex h-full min-h-[140px] flex-col justify-center rounded-[var(--radius-card-xl)] border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5">
                 <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.18em" }}>
                   CENTRAL DE SUPORTE
                 </p>
@@ -1175,7 +1175,7 @@ export function Navbar() {
                     ? "border-black/20 text-black"
                     : "border-edge-strong text-ink-strong"
                     }`}
-                    style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-micro)", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.08em" }}>PROMO</span>
+                    style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-micro)", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.08em" }}>PROMO</span>
                   <span className={`tracking-[0.12em] transition-colors duration-500 ${isDark
                     ? "text-black/70"
                     : "text-ink"
@@ -1231,7 +1231,7 @@ export function Navbar() {
 		                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
 		                  className="relative mx-2 min-w-0 flex-1"
 		                >
-		                  <div className="flex h-10 items-center overflow-hidden rounded-[8px] border border-edge bg-[#323232] shadow-sm backdrop-blur-xl">
+		                  <div className="flex h-10 items-center overflow-hidden rounded-[var(--radius-card)] border border-edge bg-[#323232] shadow-sm backdrop-blur-xl">
 		                    <Search size={16} className="ml-3 flex-shrink-0 text-ink-muted" strokeWidth={1.8} />
 		                    <input
 		                      value={searchQuery}
@@ -1270,9 +1270,9 @@ export function Navbar() {
 		                                key={product.id}
 		                                to={`/produto/${product.id}`}
 		                                onClick={() => setSearchQuery("")}
-		                                className="group flex items-center gap-3 rounded-[10px] p-2.5 transition-colors hover:bg-white/[0.06]"
+		                                className="group flex items-center gap-3 rounded-[var(--radius-card-sm)] p-2.5 transition-colors hover:bg-white/[0.06]"
 		                              >
-		                                <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-[8px] bg-white/[0.04]">
+		                                <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-[var(--radius-card)] bg-white/[0.04]">
 		                                  <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-cover" />
 		                                </div>
 		                                <div className="min-w-0 flex-1">
@@ -1459,7 +1459,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.14 }}
-                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[14px] border border-edge bg-[#0f0f10] shadow-2xl"
+                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[var(--radius-card-sm)] border border-edge bg-[#0f0f10] shadow-2xl"
                     >
                       {searchCategories.map((cat) => (
                         <button
@@ -1532,7 +1532,7 @@ export function Navbar() {
                                       className="relative aspect-square overflow-hidden transition-all"
                                       style={{
                                         background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
-                                        borderRadius: "16px",
+                                        borderRadius: "var(--radius-card-md)",
                                         border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                                         boxShadow: "var(--shadow-card-hairline)",
                                       }}
@@ -1698,7 +1698,7 @@ export function Navbar() {
                                     className="relative aspect-square overflow-hidden transition-all"
                                     style={{
                                       background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
-                                      borderRadius: "16px",
+                                      borderRadius: "var(--radius-card-md)",
                                       border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                                       boxShadow: "var(--shadow-card-hairline)",
                                     }}
@@ -2132,7 +2132,7 @@ export function Navbar() {
                           <button
                             key={r}
                             onClick={() => setSearchQuery(r)}
-                            className="flex w-full items-center gap-3 rounded-[8px] py-3 text-left text-ink-strong/48 transition-colors hover:bg-white/[0.035] hover:px-3 hover:text-ink-strong/76"
+                            className="flex w-full items-center gap-3 rounded-[var(--radius-card)] py-3 text-left text-ink-strong/48 transition-colors hover:bg-white/[0.035] hover:px-3 hover:text-ink-strong/76"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 650 }}
                           >
                             <Clock size={13} className="text-ink-strong/22" />
@@ -2160,7 +2160,7 @@ export function Navbar() {
                             onClick={() => setSearchOpen(false)}
                             className="group flex items-center gap-4 border-b border-edge-subtle py-3.5 transition-colors hover:border-primary/30 md:gap-5 md:py-4"
                           >
-                            <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-[10px] bg-white/[0.05] md:h-[76px] md:w-[76px]">
+                            <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-[var(--radius-card-sm)] bg-white/[0.05] md:h-[76px] md:w-[76px]">
                               <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-cover" />
                             </div>
                             <div className="min-w-0 flex-1">
@@ -2239,7 +2239,7 @@ export function Navbar() {
                         className="flex w-full items-center gap-4 border-b border-foreground/7 py-4 text-left"
                         onClick={() => setMobileMenuView("main")}
                       >
-                        <span className="flex h-8 w-10 items-center justify-center rounded-[6px] bg-foreground/[0.04] text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700 }}>
+                        <span className="flex h-8 w-10 items-center justify-center rounded-[var(--radius-card)] bg-foreground/[0.04] text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700 }}>
                           {region.flag}
                         </span>
                         <span className="text-foreground/76" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 500 }}>

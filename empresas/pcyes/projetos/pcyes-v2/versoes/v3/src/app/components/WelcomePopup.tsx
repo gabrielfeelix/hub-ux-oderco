@@ -45,7 +45,7 @@ export function WelcomePopup() {
           >
             <div
               className="relative w-full max-w-[920px] grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-card border border-border shadow-2xl"
-              style={{ borderRadius: "20px" }}
+              style={{ borderRadius: "var(--radius-card-lg)" }}
             >
               <button
                 onClick={dismiss}
@@ -118,12 +118,12 @@ export function WelcomePopup() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         className="w-full px-5 py-3.5 bg-background border border-border text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none transition-colors"
-                        style={{ borderRadius: "999px", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                        style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
                       />
                       <button
                         type="submit"
                         className="w-full py-4 bg-neutral-950 text-ink-strong hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-                        style={{ borderRadius: "999px", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 600, letterSpacing: "0.02em" }}
+                        style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 600, letterSpacing: "0.02em" }}
                       >
                         QUERO MEU DESCONTO <ArrowRight size={16} strokeWidth={2} />
                       </button>

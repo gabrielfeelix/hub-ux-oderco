@@ -112,7 +112,7 @@ export function PopularGrid() {
                   {/* Category */}
                   <span
                     className="absolute top-4 right-4 px-2.5 py-1 bg-black/25 backdrop-blur-sm text-ink"
-                    style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
+                    style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
                   >
                     {product.category}
                   </span>

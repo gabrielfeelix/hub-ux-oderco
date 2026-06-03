@@ -85,7 +85,7 @@ export function ProductsByTags() {
                   ? "bg-primary border-primary text-primary-foreground shadow-[0_0_25px_rgba(255,43,46,0.2)]"
                   : "border-border/15 text-foreground/40 hover:text-foreground hover:border-foreground/30"
                 }`}
-              style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+              style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
             >
               {tag}
             </button>
@@ -179,7 +179,7 @@ export function ProductsByTags() {
                       <span
                         key={t}
                         className="px-2 py-0.5 bg-black/30 backdrop-blur-sm text-ink"
-                        style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
+                        style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
                       >
                         {t}
                       </span>

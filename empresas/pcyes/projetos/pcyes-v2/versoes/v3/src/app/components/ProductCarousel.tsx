@@ -287,7 +287,7 @@ export function ProductCarousel({
                       {showNoveltyTag && (
                         <span
                           className="border border-edge bg-black/40 text-ink px-3 py-1 backdrop-blur-sm"
-                          style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.1em" }}
+                          style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.1em" }}
                         >
                           NOVIDADE
                         </span>

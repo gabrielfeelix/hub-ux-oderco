@@ -129,7 +129,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           key={t}
                           onClick={() => setQuery(t)}
                           className="px-4 py-2 bg-foreground/[0.03] border border-border/5 text-foreground/50 hover:text-foreground hover:border-border/20 transition-all duration-300"
-                          style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                          style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                         >
                           {t}
                         </button>

@@ -199,7 +199,7 @@ export function DriversManuaisPage() {
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Buscar por nome, modelo ou categoria…"
-                className="h-11 w-full rounded-[10px] border border-foreground/10 bg-white/[0.03] pl-10 pr-3 text-foreground transition-colors placeholder:text-foreground/40 focus:border-primary/50 focus:outline-none"
+                className="h-11 w-full rounded-[var(--radius-card-sm)] border border-foreground/10 bg-white/[0.03] pl-10 pr-3 text-foreground transition-colors placeholder:text-foreground/40 focus:border-primary/50 focus:outline-none"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
                 aria-label="Buscar driver ou manual"
               />
@@ -214,7 +214,7 @@ export function DriversManuaisPage() {
                 <span className="hidden sm:inline">Categoria:</span>
                 <Select value={category} onValueChange={setCategory}>
                   <SelectTrigger
-                    className="h-11 min-w-[170px] rounded-[10px] border-foreground/10 bg-white/[0.03] text-foreground"
+                    className="h-11 min-w-[170px] rounded-[var(--radius-card-sm)] border-foreground/10 bg-white/[0.03] text-foreground"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                   >
                     <SelectValue placeholder="Todas" />
@@ -240,7 +240,7 @@ export function DriversManuaisPage() {
                   onValueChange={(value) => setPageSize(Number(value) as PageSize)}
                 >
                   <SelectTrigger
-                    className="h-11 min-w-[78px] rounded-[10px] border-foreground/10 bg-white/[0.03] text-foreground"
+                    className="h-11 min-w-[78px] rounded-[var(--radius-card-sm)] border-foreground/10 bg-white/[0.03] text-foreground"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                   >
                     <SelectValue />
