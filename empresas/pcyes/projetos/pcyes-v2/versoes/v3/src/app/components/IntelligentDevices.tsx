@@ -1,8 +1,22 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { Headphones, Heart, Keyboard, Mouse, Monitor, ShoppingBag } from "lucide-react";
+import {
+  Armchair,
+  ChevronRight,
+  Cpu,
+  Fan,
+  Gamepad2,
+  HardDrive,
+  Headphones,
+  Heart,
+  Keyboard,
+  Monitor,
+  Mouse,
+  ShoppingBag,
+  Zap,
+} from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
 import { useFavorites } from "./FavoritesContext";
@@ -41,6 +55,42 @@ const CATEGORIES: CategoryDef[] = [
     href: "/produtos?category=Monitores",
     match: (p) => p.category === "Monitores" || /monitor/i.test(p.name),
   },
+  {
+    label: "Hardware",
+    Icon: Cpu,
+    href: "/produtos?category=Hardware",
+    match: (p) => p.category === "Hardware",
+  },
+  {
+    label: "Placas de Vídeo",
+    Icon: Zap,
+    href: "/produtos?category=Placas%20de%20V%C3%ADdeo",
+    match: (p) => p.category === "Placas de Vídeo",
+  },
+  {
+    label: "PC Gamer",
+    Icon: Gamepad2,
+    href: "/produtos?category=Computadores",
+    match: (p) => p.category === "Computadores",
+  },
+  {
+    label: "Cadeiras",
+    Icon: Armchair,
+    href: "/produtos?category=Cadeiras",
+    match: (p) => p.category === "Cadeiras",
+  },
+  {
+    label: "Coolers",
+    Icon: Fan,
+    href: "/produtos?category=Refrigera%C3%A7%C3%A3o",
+    match: (p) => p.category === "Refrigeração",
+  },
+  {
+    label: "SSD e HD",
+    Icon: HardDrive,
+    href: "/produtos?category=SSD%20e%20HD",
+    match: (p) => p.category === "SSD e HD",
+  },
 ];
 
 const GLITCH_WORDS = ["Gamers", "Streamers", "Escritório", "Performance"];
@@ -61,6 +111,7 @@ export function IntelligentDevices() {
   const [favoritedIds, setFavoritedIds] = useState<Set<number>>(new Set());
   const { addItem } = useCart();
   const { addFavorite } = useFavorites();
+  const railRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -71,10 +122,31 @@ export function IntelligentDevices() {
 
   const visibleCatalog = useMemo(() => getVisibleCatalogProducts(allProducts), []);
 
+  /**
+   * Drop categories whose catalog returns no products — the user shouldn't
+   * land on an empty grid. Filtering at runtime keeps CATEGORIES order while
+   * silently skipping ones that don't match the current dataset.
+   */
+  const activeCategories = useMemo(
+    () => CATEGORIES.filter((cat) => visibleCatalog.some(cat.match)),
+    [visibleCatalog],
+  );
+
+  const safeActiveCat = Math.min(activeCat, Math.max(0, activeCategories.length - 1));
+
   const products = useMemo(() => {
-    const cat = CATEGORIES[activeCat];
+    const cat = activeCategories[safeActiveCat];
+    if (!cat) return [];
     return visibleCatalog.filter(cat.match).slice(0, 5);
-  }, [visibleCatalog, activeCat]);
+  }, [visibleCatalog, activeCategories, safeActiveCat]);
+
+  const advanceRailMobile = () => {
+    const el = railRef.current;
+    if (!el) return;
+    const step = el.clientWidth * 0.75;
+    const nearEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
+    el.scrollTo({ left: nearEnd ? 0 : el.scrollLeft + step, behavior: "smooth" });
+  };
 
   return (
     <section
@@ -129,63 +201,142 @@ export function IntelligentDevices() {
           </h2>
         </div>
 
-        {/* Category circles */}
-        <div className="mb-14 flex flex-wrap items-start justify-center gap-4 md:gap-12">
-          {CATEGORIES.map((cat, i) => {
-            const isActive = i === activeCat;
-            return (
-              <button
-                key={cat.label}
-                onClick={() => setActiveCat(i)}
-                className="group flex flex-col items-center gap-3 focus:outline-none cursor-pointer"
-                aria-pressed={isActive}
-              >
-                <div
-                  className="flex h-20 w-20 items-center justify-center rounded-full transition-all duration-300 md:h-24 md:w-24"
-                  style={{
-                    background: isActive
-                      ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, transparent 100%)"
-                      : "rgba(var(--foreground-rgb), 0.04)",
-                    border: isActive
-                      ? "1.5px solid rgba(225, 6, 0, 0.7)"
-                      : "1px solid rgba(var(--foreground-rgb), 0.10)",
-                    boxShadow: isActive
-                      ? "0 0 0 5px rgba(225, 6, 0, 0.06), 0 0 28px -2px rgba(225, 6, 0, 0.55)"
-                      : "none",
-                    transform: isActive ? "scale(1.04)" : "scale(1)",
-                  }}
+        {/* Category circles
+            Mobile: horizontal scroll rail with mask-image fade + chevron
+                    button on the right to advance ~75% viewport.
+            md+:    original wrap layout. */}
+        <div className="mb-14">
+          {/* Mobile rail */}
+          <div className="md:hidden relative">
+            <div
+              ref={railRef}
+              className="flex items-start gap-5 overflow-x-auto -mx-5 px-5 pb-2 [mask-image:linear-gradient(to_right,black_calc(100%-56px),transparent)] snap-x snap-mandatory"
+              style={{ scrollbarWidth: "none" }}
+              role="tablist"
+              aria-label="Categorias inteligentes"
+            >
+              {activeCategories.map((cat, i) => {
+                const isActive = i === safeActiveCat;
+                return (
+                  <button
+                    key={cat.label}
+                    onClick={() => setActiveCat(i)}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls="intelligent-products"
+                    className="group flex flex-shrink-0 snap-start flex-col items-center gap-2 focus:outline-none cursor-pointer"
+                  >
+                    <div
+                      className="flex h-[72px] w-[72px] items-center justify-center rounded-full transition-all duration-300"
+                      style={{
+                        background: isActive
+                          ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, transparent 100%)"
+                          : "rgba(var(--foreground-rgb), 0.04)",
+                        border: isActive
+                          ? "1.5px solid rgba(225, 6, 0, 0.7)"
+                          : "1px solid rgba(var(--foreground-rgb), 0.10)",
+                        boxShadow: isActive
+                          ? "0 0 0 5px rgba(225, 6, 0, 0.06), 0 0 24px -2px rgba(225, 6, 0, 0.55)"
+                          : "none",
+                        transform: isActive ? "scale(1.04)" : "scale(1)",
+                      }}
+                    >
+                      <cat.Icon
+                        size={isActive ? 28 : 26}
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                        style={{
+                          color: isActive ? "#ff2419" : "rgba(var(--foreground-rgb), 0.6)",
+                          filter: isActive ? "drop-shadow(0 0 6px rgba(225, 6, 0, 0.5))" : "none",
+                          transition: "color 280ms ease",
+                        }}
+                      />
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-family-inter)",
+                        fontSize: "11.5px",
+                        fontWeight: isActive ? 700 : 500,
+                        color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.55)",
+                        letterSpacing: "0.02em",
+                        transition: "color 280ms ease, font-weight 280ms ease",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {cat.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            {/* Right chevron advances the rail by ~75% viewport. Wraps around at the end. */}
+            <button
+              type="button"
+              onClick={advanceRailMobile}
+              aria-label="Ver mais categorias"
+              className="absolute right-1 top-[28px] z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/55 text-white/75 backdrop-blur-md transition-colors hover:border-primary/50 hover:text-white hover:bg-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
+            >
+              <ChevronRight size={18} strokeWidth={2.2} aria-hidden="true" />
+            </button>
+          </div>
+
+          {/* Desktop / tablet layout */}
+          <div className="hidden md:flex flex-wrap items-start justify-center gap-12">
+            {activeCategories.map((cat, i) => {
+              const isActive = i === safeActiveCat;
+              return (
+                <button
+                  key={cat.label}
+                  onClick={() => setActiveCat(i)}
+                  className="group flex flex-col items-center gap-3 focus:outline-none cursor-pointer"
+                  aria-pressed={isActive}
                 >
-                  <cat.Icon
-                    size={isActive ? 34 : 30}
-                    strokeWidth={1.5}
+                  <div
+                    className="flex h-24 w-24 items-center justify-center rounded-full transition-all duration-300"
                     style={{
-                      color: isActive ? "#ff2419" : "rgba(var(--foreground-rgb), 0.6)",
-                      filter: isActive
-                        ? "drop-shadow(0 0 8px rgba(225, 6, 0, 0.5))"
+                      background: isActive
+                        ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, transparent 100%)"
+                        : "rgba(var(--foreground-rgb), 0.04)",
+                      border: isActive
+                        ? "1.5px solid rgba(225, 6, 0, 0.7)"
+                        : "1px solid rgba(var(--foreground-rgb), 0.10)",
+                      boxShadow: isActive
+                        ? "0 0 0 5px rgba(225, 6, 0, 0.06), 0 0 28px -2px rgba(225, 6, 0, 0.55)"
                         : "none",
-                      transition: "color 280ms ease",
+                      transform: isActive ? "scale(1.04)" : "scale(1)",
                     }}
-                  />
-                </div>
-                <span
-                  style={{
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "13px",
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.55)",
-                    letterSpacing: "0.02em",
-                    transition: "color 280ms ease, font-weight 280ms ease",
-                  }}
-                >
-                  {cat.label}
-                </span>
-              </button>
-            );
-          })}
+                  >
+                    <cat.Icon
+                      size={isActive ? 34 : 30}
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                      style={{
+                        color: isActive ? "#ff2419" : "rgba(var(--foreground-rgb), 0.6)",
+                        filter: isActive ? "drop-shadow(0 0 8px rgba(225, 6, 0, 0.5))" : "none",
+                        transition: "color 280ms ease",
+                      }}
+                    />
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-family-inter)",
+                      fontSize: "13px",
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.55)",
+                      letterSpacing: "0.02em",
+                      transition: "color 280ms ease, font-weight 280ms ease",
+                    }}
+                  >
+                    {cat.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Products row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
+        <div id="intelligent-products" className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-5" role="tabpanel">
           {products.map((product) => {
             const image = getPrimaryProductImage(product);
             const isFav = favoritedIds.has(product.id);

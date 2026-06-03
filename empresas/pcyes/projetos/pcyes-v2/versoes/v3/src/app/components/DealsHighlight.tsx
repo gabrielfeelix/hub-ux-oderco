@@ -85,18 +85,18 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
             <Heart size={13} strokeWidth={isFavorited ? 0 : 1.8} fill={isFavorited ? "#ff2419" : "none"} />
           </button>
 
-          {/* Quick add pill */}
+          {/* Quick add pill — compact on mobile, larger on hover for desktop. */}
           <CTAButton
             variant="buy-sm"
-            size="lg"
+            size="sm"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               onAdd(product);
             }}
-            className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
+            className="absolute bottom-2 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer md:h-12 md:px-10 md:text-[13px]"
           >
-            <ShoppingBag size={11} strokeWidth={2} /> Adicionar
+            <ShoppingBag size={11} strokeWidth={2} aria-hidden="true" /> Adicionar
           </CTAButton>
         </div>
 
