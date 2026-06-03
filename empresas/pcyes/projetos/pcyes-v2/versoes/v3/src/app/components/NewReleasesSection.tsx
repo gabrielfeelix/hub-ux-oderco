@@ -4,6 +4,7 @@ import { motion, useInView, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Clock, Flame, ShoppingBag, ArrowUpRight, Heart } from "lucide-react";
+import { CTAButton } from "./section";
 import { useCart } from "./CartContext";
 import { useFavorites } from "./FavoritesContext";
 
@@ -169,18 +170,19 @@ export function NewReleasesSection() {
                     )}
                   </div>
                   <div className="flex items-center gap-3">
-                    <button
+                    <CTAButton
                       onClick={() => addItem({ id: selected.id, name: selected.name, price: selected.price, image: selected.image })}
-                      className="flex items-center gap-2 px-6 py-3 text-white transition-all duration-300 cursor-pointer hover:scale-[1.02]"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)", background: "var(--gradient-buy)", boxShadow: "var(--shadow-buy-cta-sm)" }}
+                      variant="buy"
+                      size="md"
+                      className="cursor-pointer"
                     >
                       <ShoppingBag size={14} strokeWidth={1.5} />
                       Comprar
-                    </button>
+                    </CTAButton>
                     <Link
                       to={`/produto/${selected.id}`}
-                      className="flex items-center gap-2 px-5 py-3 border border-white/20 text-white/70 hover:text-white hover:border-white/50 transition-all duration-300"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+                      className="flex items-center gap-2 px-5 py-3 rounded-pill border border-white/20 text-white/70 hover:text-white hover:border-white/50 transition-all duration-300"
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
                     >
                       Ver produto
                       <ArrowUpRight size={13} />

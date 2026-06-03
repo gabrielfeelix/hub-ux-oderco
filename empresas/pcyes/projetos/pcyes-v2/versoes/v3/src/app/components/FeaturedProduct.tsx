@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { motion, useScroll, useTransform, useInView } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowRight, ArrowUpRight, ShoppingBag } from "lucide-react";
+import { CTAButton } from "./section";
 import { useCart } from "./CartContext";
 import { allProducts } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
@@ -176,18 +177,19 @@ export function FeaturedProduct({ label, title, description, image, imageAlt, re
               </p>
             )}
             <div className="flex items-center gap-3">
-              <button
-                className="group relative px-8 py-3.5 text-white overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(34,197,94,0.35)] flex items-center gap-2 cursor-pointer"
-                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)", background: "var(--gradient-buy)" }}
+              <CTAButton
+                variant="buy"
+                size="lg"
                 onClick={() => addItem({ id: activeProductId, name: activeProduct.title, price: activeProduct.price, image: activeProduct.image })}
+                className="cursor-pointer hover:shadow-[0_0_40px_rgba(34,197,94,0.35)]"
               >
-                <ShoppingBag size={14} strokeWidth={1.5} className="relative z-10" />
-                <span className="relative z-10">Comprar</span>
-              </button>
+                <ShoppingBag size={14} strokeWidth={1.5} />
+                Comprar
+              </CTAButton>
               <Link
                 to={activeProduct.productId ? `/produto/${activeProduct.productId}` : "/produtos"}
-                className="px-6 py-3.5 border border-foreground/15 text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-all duration-300"
-                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}
+                className="px-6 py-3.5 rounded-pill border border-foreground/15 text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-all duration-300"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}
               >
                 Ver produto
               </Link>
