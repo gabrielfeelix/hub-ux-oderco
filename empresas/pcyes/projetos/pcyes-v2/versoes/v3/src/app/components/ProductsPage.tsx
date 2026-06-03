@@ -382,9 +382,50 @@ export function ProductsPage() {
     const sq = searchParams.get("search");
     setSearchQuery(sq ?? "");
 
-    setPriceMin(GLOBAL_MIN);
-    setPriceMax(GLOBAL_MAX);
+    // Filtros adicionais via querystring (deeplink + share + back button friendly)
+    const pMin = Number(searchParams.get("precoMin"));
+    const pMax = Number(searchParams.get("precoMax"));
+    setPriceMin(Number.isFinite(pMin) && pMin > 0 ? pMin : GLOBAL_MIN);
+    setPriceMax(Number.isFinite(pMax) && pMax > 0 ? pMax : GLOBAL_MAX);
+
+    setOnlyDiscount(searchParams.get("promo") === "1");
+
+    const marcas = searchParams.get("marcas");
+    setSelectedBrands(marcas ? new Set(marcas.split(",").filter(Boolean)) : new Set());
+
+    const atributos = searchParams.get("atributos");
+    setSelectedAttributes(atributos ? new Set(atributos.split(",").filter(Boolean)) : new Set());
   }, [searchParams]);
+
+  /* ── Sync filter state -> URL querystring (B4) ──
+     Writes precoMin/precoMax/promo/marcas/atributos when active so URLs
+     are shareable + back/forward buttons restore filter state.
+     `replace: true` keeps history clean. */
+  useEffect(() => {
+    const sp = new URLSearchParams(searchParams);
+
+    if (priceMin > GLOBAL_MIN) sp.set("precoMin", String(priceMin));
+    else sp.delete("precoMin");
+
+    if (priceMax < GLOBAL_MAX) sp.set("precoMax", String(priceMax));
+    else sp.delete("precoMax");
+
+    if (onlyDiscount) sp.set("promo", "1");
+    else sp.delete("promo");
+
+    if (selectedBrands.size > 0) sp.set("marcas", [...selectedBrands].join(","));
+    else sp.delete("marcas");
+
+    if (selectedAttributes.size > 0) sp.set("atributos", [...selectedAttributes].join(","));
+    else sp.delete("atributos");
+
+    // Only call setSearchParams if anything actually changed to avoid loops.
+    const next = sp.toString();
+    const current = searchParams.toString();
+    if (next !== current) {
+      setSearchParams(sp, { replace: true });
+    }
+  }, [priceMin, priceMax, onlyDiscount, selectedBrands, selectedAttributes, searchParams, setSearchParams]);
 
   /* ── Scroll to top on category change ── */
   const mainRef = useRef<HTMLDivElement>(null);
@@ -1100,6 +1141,37 @@ export function ProductsPage() {
       {/* ── Main Content — Insider layout ── */}
       <div className="px-5 md:px-8 py-6">
         <div style={{ maxWidth: "1600px", margin: "0 auto" }}>
+          {/* ── Page H1 (E-EAT, first fold) ── */}
+          <header className="mb-6 md:mb-8">
+            <h1
+              className="text-foreground"
+              style={{
+                fontFamily: "var(--font-family-figtree)",
+                fontSize: "clamp(28px, 4vw, 44px)",
+                fontWeight: 700,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {initialSubcategory
+                ? `${initialSubcategory} ${activeCategoryLabel}`
+                : activeCategoryLabel || "Todos os produtos"}
+            </h1>
+            <p
+              className="mt-2 text-foreground/55"
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "14px",
+                lineHeight: 1.5,
+                maxWidth: "640px",
+              }}
+            >
+              {activeCategoryLabel
+                ? `Confira a linha completa de ${initialSubcategory ? `${initialSubcategory.toLowerCase()} ${activeCategoryLabel.toLowerCase()}` : activeCategoryLabel.toLowerCase()} PCYES. Garantia oficial, frete grátis acima de R$ 299, até 12x sem juros.`
+                : "Catálogo completo PCYES. Hardware, periféricos, setups gamer e mais."}
+            </p>
+          </header>
+
           {/* ── Top control bar — full width above sidebar+grid ── */}
           <div className="flex flex-col gap-4 mb-6 pb-4 border-b border-foreground/10 xl:flex-row xl:items-center xl:justify-between">
             <div className="flex min-w-0 flex-wrap items-center gap-4">
