@@ -142,6 +142,14 @@
   --shadow-preorder-pill:  0 6px 16px -4px rgba(249,115,22,0.6);
   --shadow-drawer-side:    -24px 0 60px -12px rgba(0, 0, 0, 0.55);
   --shadow-search-open:    0 10px 32px rgba(0, 0, 0, 0.55);
+
+  /* Top inner highlight used as a hairline on every dark card to lift it
+     from the surface. 43 inline copies of this recipe before tokenising. */
+  --shadow-card-hairline:  inset 0 1px 0 rgba(var(--foreground-rgb), 0.05);
+
+  /* Compact red glow used on the ranking medallion in shelves and on a
+     handful of brand circular badges. 5 inline copies before tokenising. */
+  --shadow-medallion:      0 6px 18px -4px rgba(225, 6, 0, 0.5);
 }
 
 /* Mobile: compress section spacing — desktop tokens leave ~256px dead space */
@@ -402,6 +410,8 @@ input:-webkit-autofill:active {
   --shadow-preorder-pill: var(--shadow-preorder-pill);
   --shadow-drawer-side: var(--shadow-drawer-side);
   --shadow-search-open: var(--shadow-search-open);
+  --shadow-card-hairline: var(--shadow-card-hairline);
+  --shadow-medallion: var(--shadow-medallion);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);

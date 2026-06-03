@@ -1524,7 +1524,7 @@ export function ProfilePage() {
                               background: isDark
                                 ? "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)"
                                 : "linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.01) 100%)",
-                              boxShadow: isDark ? "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)" : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.6)",
+                              boxShadow: isDark ? "var(--shadow-card-hairline)" : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.6)",
                             }}>
                               {isDark && (
                                 <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)" }} />

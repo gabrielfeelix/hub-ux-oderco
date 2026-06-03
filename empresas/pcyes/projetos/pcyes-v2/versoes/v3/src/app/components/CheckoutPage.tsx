@@ -1047,7 +1047,7 @@ export function CheckoutPage() {
                     borderRadius: "20px",
                     background: cardBg,
                     border: cardBorder,
-                    boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
+                    boxShadow: "var(--shadow-card-hairline)",
                   }}
                 >
                   {step === 0 && (

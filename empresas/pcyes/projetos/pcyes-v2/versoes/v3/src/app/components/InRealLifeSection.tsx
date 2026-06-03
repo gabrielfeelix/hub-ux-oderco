@@ -249,7 +249,7 @@ export function InRealLifeSection() {
               style={{
                 borderRadius: "20px",
                 border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
+                boxShadow: "var(--shadow-card-hairline)",
               }}
               onClick={() => { setSelectedPost(post); setHighlightedProduct(null); }}
             >

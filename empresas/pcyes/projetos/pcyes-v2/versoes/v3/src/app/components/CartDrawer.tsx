@@ -579,7 +579,7 @@ export function CartDrawer() {
                           border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                           boxShadow: isSelected
                             ? "0 24px 60px -20px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)"
-                            : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
+                            : "var(--shadow-card-hairline)",
                         }}
                       >
                         <div
@@ -598,7 +598,7 @@ export function CartDrawer() {
                             className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:left-4 md:top-4 md:h-9 md:w-9"
                             style={{
                               background: "var(--gradient-brand)",
-                              boxShadow: "0 6px 18px -4px rgba(225,6,0,0.5)",
+                              boxShadow: "var(--shadow-medallion)",
                             }}
                           >
                             <Gift size={12} strokeWidth={2.2} className="md:hidden" />
@@ -609,7 +609,7 @@ export function CartDrawer() {
                               className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:right-4 md:top-4 md:h-9 md:w-9"
                               style={{
                                 background: "var(--gradient-brand)",
-                                boxShadow: "0 6px 18px -4px rgba(225,6,0,0.5)",
+                                boxShadow: "var(--shadow-medallion)",
                               }}
                             >
                               <Check size={13} strokeWidth={2.4} className="md:hidden" />

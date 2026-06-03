@@ -86,7 +86,7 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
               "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
             borderRadius: "20px",
             border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-            boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
+            boxShadow: "var(--shadow-card-hairline)",
           }}
         >
           {/* Subtle inner shine */}

@@ -419,7 +419,7 @@ export function GpuShowcase() {
                   background:
                     "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                   border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)",
+                  boxShadow: "var(--shadow-card-hairline)",
                 }}
               >
                 <div className="flex flex-row items-center gap-4 md:contents">
