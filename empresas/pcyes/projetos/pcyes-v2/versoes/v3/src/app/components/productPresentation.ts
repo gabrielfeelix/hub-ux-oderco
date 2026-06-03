@@ -1,4 +1,5 @@
 import { allProducts, type Product } from "./productsData";
+import { getCategoryUrl } from "../lib/slug";
 
 export interface CatalogHrefParams {
   category?: string;
@@ -128,13 +129,30 @@ export function getVisibleCatalogProducts(catalog: Product[] = allProducts) {
   return catalog.filter(hasUsableProductImage);
 }
 
+/**
+ * Catalog URL builder (A1 stage 3).
+ *
+ * When a `category` is provided, emits the semantic slug form:
+ *   /perifericos/
+ *   /perifericos/mouses/
+ *   /perifericos/mouses/?search=razer
+ *
+ * When only `search` (or nothing) is provided, falls back to the
+ * legacy /produtos surface — there is no slug for "all products".
+ */
 export function getCatalogHref({ category, subcategory, search }: CatalogHrefParams) {
+  if (category) {
+    const path = getCategoryUrl(category, subcategory);
+    if (search) {
+      const sp = new URLSearchParams();
+      sp.set("search", search);
+      return `${path}?${sp.toString()}`;
+    }
+    return path;
+  }
+
   const params = new URLSearchParams();
-
-  if (category) params.set("category", category);
-  if (subcategory) params.set("subcategory", subcategory);
   if (search) params.set("search", search);
-
   const query = params.toString();
   return query ? `/produtos?${query}` : "/produtos";
 }
