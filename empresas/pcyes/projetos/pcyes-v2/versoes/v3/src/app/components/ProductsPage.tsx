@@ -998,7 +998,7 @@ export function ProductsPage() {
                   {active && (
                     <Check
                       size={14}
-                      className={isLight ? "text-black" : "text-white"}
+                      className={isLight ? "text-black" : "text-ink-strong"}
                       strokeWidth={3}
                     />
                   )}
@@ -1088,7 +1088,7 @@ export function ProductsPage() {
      ═══════════════════════════════════════════════════════ */
 
   return (
-    <div ref={mainRef} className="pt-[calc(56px+var(--announce-h))] md:pt-[calc(142px+var(--announce-h))] notebook:pt-[calc(92px+var(--announce-h))] min-h-dvh" style={{ background: "#0e0e0e" }}>
+    <div ref={mainRef} className="pt-[calc(56px+var(--announce-h))] md:pt-[calc(142px+var(--announce-h))] notebook:pt-[calc(92px+var(--announce-h))] min-h-dvh" style={{ background: "var(--surface-0)" }}>
       <SEO
         title={
           activeCategoryLabel
@@ -1256,10 +1256,10 @@ export function ProductsPage() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -6, scale: 0.97 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 top-full z-30 mt-3 min-w-[120px] overflow-hidden border border-white/8 shadow-2xl"
-                      style={{ borderRadius: "14px", background: "#151517" }}
+                      className="absolute right-0 top-full z-30 mt-3 min-w-[120px] overflow-hidden border border-edge-subtle shadow-2xl"
+                      style={{ borderRadius: "14px", background: "var(--surface-1)" }}
                     >
-                      <div className="border-b border-white/6 px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-white/35">
+                      <div className="border-b border-edge-subtle px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-ink-subtle">
                         Itens por p&aacute;gina
                       </div>
                       <div className="p-2">
@@ -1275,8 +1275,8 @@ export function ProductsPage() {
                               }}
                               className={`flex w-full items-center justify-between rounded-[10px] px-3 py-2.5 text-left transition-colors cursor-pointer ${
                                 active
-                                  ? "bg-primary text-white"
-                                  : "text-white/72 hover:bg-white/[0.06] hover:text-white"
+                                  ? "bg-primary text-ink-strong"
+                                  : "text-ink hover:bg-white/[0.06] hover:text-ink-strong"
                               }`}
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                               role="option"
@@ -1403,13 +1403,13 @@ export function ProductsPage() {
                                 className="w-11 h-11 lg:w-9 lg:h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50 hover:scale-105 cursor-pointer"
                                 aria-label={isFavorite(displayProduct.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
                               >
-                                <Heart size={16} className={isFavorite(displayProduct.id) ? "fill-red-500 text-red-500" : "text-white"} strokeWidth={2} />
+                                <Heart size={16} className={isFavorite(displayProduct.id) ? "fill-red-500 text-red-500" : "text-ink-strong"} strokeWidth={2} />
                               </button>
                               <button onClick={(e) => { e.preventDefault(); setQuickViewProduct(displayProduct); }}
                                 className="w-9 h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75 hover:bg-black/50 hover:scale-105 hidden lg:flex cursor-pointer"
                                 aria-label="Visualização Rápida"
                               >
-                                <Eye size={16} className="text-white" />
+                                <Eye size={16} className="text-ink-strong" />
                               </button>
                             </div>
 
@@ -1419,7 +1419,7 @@ export function ProductsPage() {
                                 {imgIdx > 0 && (
                                   <button
                                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setImageIdx(imageKey, imgIdx - 1, productImages.length); }}
-                                    className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 text-white hover:bg-black/50 z-10"
+                                    className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 text-ink-strong hover:bg-black/50 z-10"
                                     aria-label="Imagem anterior"
                                   >
                                     <ChevronLeft size={18} />
@@ -1428,7 +1428,7 @@ export function ProductsPage() {
                                 {imgIdx < productImages.length - 1 && (
                                   <button
                                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); setImageIdx(imageKey, imgIdx + 1, productImages.length); }}
-                                    className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 delay-75 text-white hover:bg-black/50 z-10"
+                                    className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 delay-75 text-ink-strong hover:bg-black/50 z-10"
                                     aria-label="Próxima imagem"
                                   >
                                     <ChevronRight size={18} />
@@ -1450,7 +1450,7 @@ export function ProductsPage() {
                           {/* Product info */}
                           <div className="mt-4 px-1">
                             <Link to={`/produto/${displayProduct.id}`}>
-                              <h3 className="line-clamp-2 md:line-clamp-1 text-white"
+                              <h3 className="line-clamp-2 md:line-clamp-1 text-ink-strong"
                                 style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600, lineHeight: 1.3, letterSpacing: "-0.01em" }}>
                                 {displayProduct.name}
                               </h3>
@@ -1488,7 +1488,7 @@ export function ProductsPage() {
                                   {displayProduct.oldPrice}
                                 </p>
                               )}
-                              <p className="text-white leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.015em" }}>
+                              <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.015em" }}>
                                 {displayProduct.price}
                               </p>
                               <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.6)" }}>
@@ -1522,7 +1522,7 @@ export function ProductsPage() {
                               <ImageWithFallback src={getPrimaryProductImage(displayProduct)} alt={displayProduct.name} loading="lazy" decoding="async" className="h-full w-full object-contain scale-[0.92] group-hover:scale-[0.97] transition-transform duration-700" />
                             </div>
                             {discount > 0 && (
-                              <span className="absolute top-2 left-2 px-2 py-1 bg-primary text-white" style={{ borderRadius: "4px", fontSize: "11px", fontWeight: "700" }}>{discount}% OFF</span>
+                              <span className="absolute top-2 left-2 px-2 py-1 bg-primary text-ink-strong" style={{ borderRadius: "4px", fontSize: "11px", fontWeight: "700" }}>{discount}% OFF</span>
                             )}
                           </Link>
                           <div className="flex-1 min-w-0">
@@ -1697,10 +1697,10 @@ export function ProductsPage() {
             <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 16 }}
               transition={{ type: "spring", damping: 26, stiffness: 320 }}
               className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[1040px] md:max-w-[95vw] md:max-h-[90vh] z-50 overflow-y-auto p-6 md:p-8 shadow-2xl"
-              style={{ background: "#0f0f10", borderRadius: "var(--radius-card-lg)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
+              style={{ background: "var(--surface-0)", borderRadius: "var(--radius-card-lg)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
             >
               <button onClick={() => setQuickViewProduct(null)}
-                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-white/55 hover:text-white hover:bg-white/8 transition-colors z-20 cursor-pointer"
+                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-ink-muted hover:text-ink-strong hover:bg-white/8 transition-colors z-20 cursor-pointer"
                 aria-label="Fechar"
               ><X size={20} /></button>
 
@@ -1751,7 +1751,7 @@ export function ProductsPage() {
                     />
                     {quickViewDiscount > 0 && (
                       <span
-                        className="absolute top-4 left-4 z-20 px-3 py-1.5 text-white"
+                        className="absolute top-4 left-4 z-20 px-3 py-1.5 text-ink-strong"
                         style={{
                           background: "var(--gradient-brand)",
                           borderRadius: "999px",
@@ -1773,18 +1773,18 @@ export function ProductsPage() {
                   <p className="uppercase mb-3 tracking-[0.18em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, color: "var(--primary)" }}>
                     {quickViewProduct.category}
                   </p>
-                  <h3 className="text-white mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(22px, 2.4vw, 30px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+                  <h3 className="text-ink-strong mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(22px, 2.4vw, 30px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
                     {quickViewProduct.name}
                   </h3>
 
                   <div className="flex items-center gap-2 mb-5">
                     <Star size={15} className="fill-yellow-400 text-yellow-400" />
-                    <span className="text-white/80 font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>{quickViewProduct.rating}</span>
-                    <span className="text-white/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>({quickViewProduct.reviews} avaliações)</span>
+                    <span className="text-ink font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>{quickViewProduct.rating}</span>
+                    <span className="text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>({quickViewProduct.reviews} avaliações)</span>
                   </div>
 
                   <div className="flex items-baseline gap-3 mb-4">
-                    <p className="text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "30px", fontWeight: 700, letterSpacing: "-0.01em" }}>
+                    <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "30px", fontWeight: 700, letterSpacing: "-0.01em" }}>
                       {quickViewProduct.price}
                     </p>
                     {quickViewProduct.oldPrice && (

@@ -178,14 +178,14 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
           <>
 	            <button
 	              onClick={(e) => { e.stopPropagation(); prev(); }}
-	              className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/85 hover:bg-black/45 hover:text-white md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
+	              className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-ink hover:bg-black/45 hover:text-ink-strong md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
 	              aria-label="Imagem anterior"
 	            >
               <ChevronLeft size={17} />
             </button>
 	            <button
 	              onClick={(e) => { e.stopPropagation(); next(); }}
-	              className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/85 hover:bg-black/45 hover:text-white md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
+	              className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-ink hover:bg-black/45 hover:text-ink-strong md:opacity-0 md:group-hover:opacity-100 transition-all duration-300"
 	              aria-label="Próxima imagem"
 	            >
               <ChevronRight size={17} />
@@ -195,7 +195,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
 
         {images.length > 1 && (
           <span
-            className="absolute bottom-3 right-3 px-2.5 py-1 bg-black/30 backdrop-blur-md text-white/75 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute bottom-3 right-3 px-2.5 py-1 bg-black/30 backdrop-blur-md text-ink opacity-0 group-hover:opacity-100 transition-opacity"
             style={{ borderRadius: "100px", fontSize: "11px", fontFamily: "var(--font-family-inter)" }}
           >
             {active + 1} / {images.length}
@@ -240,7 +240,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
             >
               <button
                 onClick={(e) => { e.stopPropagation(); setZoomed(false); }}
-                className="absolute right-4 top-[max(16px,env(safe-area-inset-top))] z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/80 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:right-6 md:top-6"
+                className="absolute right-4 top-[max(16px,env(safe-area-inset-top))] z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-ink backdrop-blur-md transition-colors hover:bg-white/16 hover:text-ink-strong md:right-6 md:top-6"
                 aria-label="Fechar imagem ampliada"
               >
                 <X size={18} />
@@ -250,14 +250,14 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
                 <>
                   <button
                     onClick={(e) => { e.stopPropagation(); prev(); }}
-                    className="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white/85 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:left-6 md:h-12 md:w-12"
+                    className="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-ink backdrop-blur-md transition-colors hover:bg-white/16 hover:text-ink-strong md:left-6 md:h-12 md:w-12"
                     aria-label="Imagem anterior"
                   >
                     <ChevronLeft size={22} />
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); next(); }}
-                    className="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white/85 backdrop-blur-md transition-colors hover:bg-white/16 hover:text-white md:right-6 md:h-12 md:w-12"
+                    className="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-ink backdrop-blur-md transition-colors hover:bg-white/16 hover:text-ink-strong md:right-6 md:h-12 md:w-12"
                     aria-label="Próxima imagem"
                   >
                     <ChevronRight size={22} />
@@ -280,7 +280,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
                       key={i}
                       onClick={(e) => { e.stopPropagation(); setActive(i); }}
                       className={`h-2.5 w-2.5 rounded-full border transition-all ${
-                        i === active ? "border-white bg-white" : "border-white/70 bg-transparent"
+                        i === active ? "border-white bg-white" : "border-edge-strong bg-transparent"
                       }`}
                       aria-label={`Ver imagem ${i + 1}`}
                       aria-current={i === active ? "true" : undefined}
@@ -1581,14 +1581,14 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -6, scale: 0.97 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute right-0 top-full z-30 mt-2 min-w-[180px] overflow-hidden rounded-card-sm border border-white/10 shadow-2xl"
-                        style={{ background: "#1f1c1c" }}
+                        className="absolute right-0 top-full z-30 mt-2 min-w-[180px] overflow-hidden rounded-card-sm border border-edge shadow-2xl"
+                        style={{ background: "var(--surface-2)" }}
                         role="listbox"
                       >
                         <button
                           onClick={() => { setActiveStarFilter(null); setReviewPage(1); setRatingDropdownOpen(false); }}
                           className={`flex w-full items-center justify-between px-4 py-2.5 text-left text-xs transition-colors ${
-                            activeStarFilter === null ? "bg-primary/15 text-primary" : "text-white/75 hover:bg-white/[0.06] hover:text-white"
+                            activeStarFilter === null ? "bg-primary/15 text-primary" : "text-ink hover:bg-white/[0.06] hover:text-ink-strong"
                           }`}
                         >
                           Todas
@@ -1599,7 +1599,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                             key={star}
                             onClick={() => { setActiveStarFilter(activeStarFilter === star ? null : star); setReviewPage(1); setRatingDropdownOpen(false); }}
                             className={`flex w-full items-center justify-between px-4 py-2.5 text-left text-xs transition-colors ${
-                              activeStarFilter === star ? "bg-primary/15 text-primary" : "text-white/75 hover:bg-white/[0.06] hover:text-white"
+                              activeStarFilter === star ? "bg-primary/15 text-primary" : "text-ink hover:bg-white/[0.06] hover:text-ink-strong"
                             }`}
                           >
                             <span className="inline-flex items-center gap-1.5">
@@ -1749,7 +1749,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               className="fixed inset-4 z-50 mx-auto flex max-w-[980px] items-start justify-center pointer-events-none md:inset-8 md:items-center md:overflow-hidden"
             >
               <div
-                className="grid w-full max-h-[calc(100vh-32px)] overflow-y-auto md:max-h-[88vh] md:overflow-hidden border border-white/10 shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
+                className="grid w-full max-h-[calc(100vh-32px)] overflow-y-auto md:max-h-[88vh] md:overflow-hidden border border-edge shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
                 style={{
                   borderRadius: "var(--radius-card-md)",
                   background: isDark ? "rgba(16,16,17,0.98)" : "rgba(var(--foreground-rgb), 0.98)",
@@ -1762,14 +1762,14 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     <>
                       <button
                         onClick={() => moveMedia(-1)}
-                        className="absolute left-4 top-1/2 flex h-11 w-11 md:h-10 md:w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md transition-colors hover:bg-black/55"
+                        className="absolute left-4 top-1/2 flex h-11 w-11 md:h-10 md:w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-ink-strong backdrop-blur-md transition-colors hover:bg-black/55"
                         aria-label="Foto anterior desta avaliação"
                       >
                         <ChevronLeft size={18} />
                       </button>
                       <button
                         onClick={() => moveMedia(1)}
-                        className="absolute right-4 top-1/2 flex h-11 w-11 md:h-10 md:w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md transition-colors hover:bg-black/55"
+                        className="absolute right-4 top-1/2 flex h-11 w-11 md:h-10 md:w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-ink-strong backdrop-blur-md transition-colors hover:bg-black/55"
                         aria-label="Próxima foto desta avaliação"
                       >
                         <ChevronRight size={18} />
@@ -1996,16 +1996,16 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             </div>
           </section>
 
-          <section className="border-t border-white/5 px-6 py-10 md:px-10">
+          <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
               <article className="relative min-h-[360px] md:min-h-[540px] overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
                 <ImageWithFallback src={secondaryImage} alt={`${product.name} em destaque`} className="absolute inset-0 h-full w-full object-cover opacity-90" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-7">
-                  <h3 className="max-w-[420px] text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3vw, 32px)", lineHeight: 1.08, fontWeight: 700, textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
+                  <h3 className="max-w-[420px] text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3vw, 32px)", lineHeight: 1.08, fontWeight: 700, textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
                     Construção pensada para performance
                   </h3>
-                  <p className="mt-3 max-w-[520px] text-white/85" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.65, textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}>
+                  <p className="mt-3 max-w-[520px] text-ink" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.65, textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}>
                     Produto pensado para setups exigentes, com materiais selecionados, visual limpo e desempenho consistente.
                   </p>
                 </div>
@@ -2041,7 +2041,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             </div>
           </section>
 
-          <section className="border-t border-white/5 px-6 py-10 md:px-10">
+          <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
             <div className="grid gap-7 md:grid-cols-2">
               {[primaryImage, secondaryImage].map((image, index) => (
                 <div key={`${image}-${index}`} className="relative aspect-[16/10] overflow-hidden" style={{ borderRadius: "var(--radius-card-lg)", ...productImageBg }}>
@@ -2058,14 +2058,14 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             </div>
           </section>
 
-          <section className="border-t border-white/5 px-6 py-10 md:px-10">
+          <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
             <p className="mb-3 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
               // EM VÍDEO
             </p>
             <h3 className="mb-6 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3.4vw, 32px)", lineHeight: 1.08, fontWeight: 700, letterSpacing: "-0.02em" }}>
               Veja {product.name.split(" ").slice(0, 4).join(" ")} em ação
             </h3>
-            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "var(--radius-card-lg)", background: "#0a0a0a", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
+            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "var(--radius-card-lg)", background: "var(--surface-0)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
               <iframe
                 className="absolute inset-0 h-full w-full"
                 src={`https://www.youtube.com/embed/${product.id % 2 === 0 ? "dQw4w9WgXcQ" : "M7lc1UVf-VE"}?rel=0&modestbranding=1`}
@@ -2077,7 +2077,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             </div>
           </section>
 
-          <section className="border-t border-white/5 px-6 py-10 md:px-10">
+          <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
             <article className="relative overflow-hidden" style={{ borderRadius: "24px", ...productImageBg }}>
               <div className="relative z-10 w-full p-7 md:w-[62%] md:p-9">
                 <p className="mb-4 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
@@ -2088,7 +2088,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                 </h3>
                 <dl className="mt-6 grid gap-3">
                   {specs.slice(0, 8).map((spec: { label: string; value: string }) => (
-                    <div key={spec.label} className="grid gap-2 border-b border-white/8 pb-3 sm:grid-cols-[170px_1fr]">
+                    <div key={spec.label} className="grid gap-2 border-b border-edge-subtle pb-3 sm:grid-cols-[170px_1fr]">
                       <dt className="text-foreground/48 tracking-[0.12em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 800 }}>
                         {spec.label}
                       </dt>
@@ -2663,7 +2663,7 @@ export function ProductPage() {
                       />
                       {rDiscount > 0 && (
                         <span
-                          className="absolute z-20 inline-flex items-center text-white"
+                          className="absolute z-20 inline-flex items-center text-ink-strong"
                           style={{
                             background: "var(--gradient-buy)",
                             top: "12px",
@@ -2698,7 +2698,7 @@ export function ProductPage() {
                     </div>
 
                     <div className="px-1">
-                      <h3 className="line-clamp-1 text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
+                      <h3 className="line-clamp-1 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
                         {rProduct.name}
                       </h3>
                       <div className="mt-3">
@@ -2707,7 +2707,7 @@ export function ProductPage() {
                             {rProduct.oldPrice}
                           </p>
                         )}
-                        <p className="text-white leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.015em" }}>
+                        <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.015em" }}>
                           {rProduct.price}
                         </p>
                         <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}>
@@ -2750,7 +2750,7 @@ export function ProductPage() {
           <button
             onClick={handleBuyNow}
             disabled={preOrderInfo ? (preOrderInfo.reservedUnits >= preOrderInfo.totalUnits) : (product.inStock === false)}
-            className="px-5 py-3 flex items-center gap-2 font-semibold transition-all cursor-pointer disabled:opacity-40 text-white"
+            className="px-5 py-3 flex items-center gap-2 font-semibold transition-all cursor-pointer disabled:opacity-40 text-ink-strong"
             style={{
               borderRadius: "var(--radius-button)",
               fontFamily: "var(--font-family-inter)",
