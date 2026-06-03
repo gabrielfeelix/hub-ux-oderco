@@ -1519,12 +1519,11 @@ export function ProfilePage() {
                         const inStock = product.inStock !== false;
                         return (
                           <div key={product.id} className="group overflow-hidden transition-all" style={{ borderRadius: "14px", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
-                            <Link to={`/produto/${product.id}`} className="block relative aspect-square overflow-hidden" style={{
+                            <Link to={`/produto/${product.id}`} className="deal-card-img block relative aspect-square overflow-hidden transition-all duration-300" style={{
                               /* Visual match com ProductCard do ProductShelf: gradient + inner shine. */
                               background: isDark
                                 ? "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)"
                                 : "linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.01) 100%)",
-                              boxShadow: isDark ? "var(--shadow-card-hairline)" : "inset 0 1px 0 rgba(var(--foreground-rgb), 0.6)",
                             }}>
                               {isDark && (
                                 <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)" }} />

@@ -80,7 +80,7 @@ export function PopularGrid() {
             >
               <Link to={`/produto/${product.id}`} className="block">
                 <div
-                  className="relative overflow-hidden aspect-square mb-4"
+                  className="deal-card-img relative overflow-hidden aspect-square mb-4 transition-all duration-300"
                   style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}
                 >
                   <ImageWithFallback

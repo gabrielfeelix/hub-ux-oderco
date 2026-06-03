@@ -2642,12 +2642,11 @@ export function ProductPage() {
                     onClick={() => { navigate(`/produto/${rProduct.id}`); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                   >
                     <div
-                      className="relative overflow-hidden aspect-[5/6] mb-4 transition-all duration-300"
+                      className="deal-card-img relative overflow-hidden aspect-[5/6] mb-4 transition-all duration-300"
                       style={{
-                        borderRadius: "20px",
+                        borderRadius: "var(--radius-card-lg)",
                         background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
                         border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                        boxShadow: "var(--shadow-card-hairline)",
                       }}
                     >
                       <div
