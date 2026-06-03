@@ -51,7 +51,6 @@ function EssentialCard({ product }: EssentialCardProps) {
         border: "1px solid rgba(var(--foreground-rgb), 0.08)",
         borderRadius: "var(--radius-card-lg)",
         minHeight: "460px",
-        boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 30px 60px -24px rgba(0,0,0,0.7)",
       }}
     >
       {/* Inner shine */}

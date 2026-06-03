@@ -345,7 +345,7 @@ export function IntelligentDevices() {
               <div key={product.id} className="group block">
                 <Link to={`/produto/${product.id}`} className="block">
                   <div
-                    className="relative aspect-square overflow-hidden transition-all duration-300"
+                    className="deal-card-img relative aspect-square overflow-hidden transition-all duration-300"
                     style={{
                       background:
                         "linear-gradient(140deg, rgba(var(--foreground-rgb), 0.07) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",

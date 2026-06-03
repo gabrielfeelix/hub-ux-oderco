@@ -82,13 +82,12 @@ export function DropDoDiaSection() {
                 className="flex"
               >
                 <div
-                  className="group relative flex w-full flex-col overflow-hidden"
+                  className="deal-card-img group relative flex w-full flex-col overflow-hidden"
                   style={{
                     borderRadius: "24px",
                     background:
                       "radial-gradient(circle at 18% 20%, rgba(255,90,80,0.18) 0%, transparent 55%), linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                     border: "1px solid rgba(255,90,80,0.25)",
-                    boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 24px 60px -24px rgba(0,0,0,0.5)",
                   }}
                 >
                   <Link to={`/produto/${product.id}`} className="block">

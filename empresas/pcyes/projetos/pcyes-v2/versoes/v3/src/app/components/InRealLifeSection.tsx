@@ -245,7 +245,7 @@ export function InRealLifeSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="flex-shrink-0 w-[240px] md:w-[300px] aspect-[3/4] relative group/card cursor-pointer overflow-hidden"
+              className="stroke-hover-red flex-shrink-0 w-[240px] md:w-[300px] aspect-[3/4] relative group/card cursor-pointer overflow-hidden"
               style={{
                 borderRadius: "20px",
                 border: "1px solid rgba(var(--foreground-rgb), 0.08)",
