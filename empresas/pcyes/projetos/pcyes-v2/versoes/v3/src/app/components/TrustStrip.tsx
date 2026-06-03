@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion, AnimatePresence } from "motion/react";
-import { Truck, CreditCard, ShieldCheck, RefreshCcw, type LucideIcon } from "lucide-react";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "motion/react";
+import { Truck, CreditCard, ShieldCheck, RefreshCcw, ChevronRight, type LucideIcon } from "lucide-react";
 
 type Feature = { icon: LucideIcon; title: string; desc: string };
 
@@ -11,8 +11,7 @@ const features: Feature[] = [
   { icon: RefreshCcw,   title: "Troca grátis",       desc: "7 dias para devolver" },
 ];
 
-const ROTATE_MS = 4500;
-// Pair features into two-item slides for the mobile carousel.
+// Pair features into two-item pages for the mobile next-page button.
 const mobilePages: Feature[][] = [features.slice(0, 2), features.slice(2, 4)];
 
 function FeatureCard({ f }: { f: Feature }) {
@@ -56,18 +55,9 @@ function FeatureCard({ f }: { f: Feature }) {
 export function TrustStrip() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.25 });
-  const prefersReducedMotion = useReducedMotion();
-
-  // Mobile carousel state — paged 2-by-2.
   const [page, setPage] = useState(0);
-  const [hasFocus, setHasFocus] = useState(false);
-  const isAutoplayDisabled = hasFocus || !!prefersReducedMotion;
 
-  useEffect(() => {
-    if (isAutoplayDisabled) return;
-    const id = setInterval(() => setPage((p) => (p + 1) % mobilePages.length), ROTATE_MS);
-    return () => clearInterval(id);
-  }, [isAutoplayDisabled]);
+  const advance = () => setPage((p) => (p + 1) % mobilePages.length);
 
   return (
     <section
@@ -75,60 +65,35 @@ export function TrustStrip() {
       className="border-y border-white/5 px-5 py-6 md:px-[72px] md:py-12"
       style={{ background: "#0a0a0a" }}
     >
-      {/* Mobile: paged carousel (2 cards per page, auto-rotate). */}
-      <div
-        className="md:hidden mx-auto max-w-[640px]"
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="Vantagens PCYES"
-        onFocus={() => setHasFocus(true)}
-        onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setHasFocus(false); }}
-        onMouseEnter={() => setHasFocus(true)}
-        onMouseLeave={() => setHasFocus(false)}
-      >
-        <div className="relative min-h-[120px]">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={page}
-              initial={{ opacity: 0, y: 8 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-2 gap-x-4 gap-y-5"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              {mobilePages[page].map((f) => (
-                <FeatureCard key={f.title} f={f} />
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Pagination dots */}
-        <div className="mt-5 flex items-center justify-center gap-2">
-          {mobilePages.map((_, i) => {
-            const active = i === page;
-            return (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setPage(i)}
-                aria-label={`Mostrar página ${i + 1} de ${mobilePages.length}`}
-                aria-current={active ? "true" : undefined}
-                className="inline-flex h-10 min-w-10 items-center justify-center px-1.5 focus-visible:outline-none cursor-pointer"
+      {/* Mobile: 2 cards visible, chevron-right advances to the next pair.
+          No auto-rotate, no dots — keeps the surface calm and the user
+          in control. */}
+      <div className="md:hidden mx-auto max-w-[640px]">
+        <div className="flex items-center gap-3">
+          <div className="relative min-h-[100px] flex-1 overflow-hidden">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={page}
+                initial={{ opacity: 0, x: 12 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                exit={{ opacity: 0, x: -12 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="grid grid-cols-2 gap-x-4 gap-y-5"
               >
-                <span
-                  className="block rounded-full transition-all duration-300"
-                  style={{
-                    height: "6px",
-                    width: active ? "28px" : "8px",
-                    background: active ? "var(--primary)" : "rgba(255,255,255,0.25)",
-                  }}
-                />
-              </button>
-            );
-          })}
+                {mobilePages[page].map((f) => (
+                  <FeatureCard key={f.title} f={f} />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <button
+            type="button"
+            onClick={advance}
+            aria-label="Ver próximas vantagens"
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] text-white/55 transition-colors hover:border-primary/40 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
+          >
+            <ChevronRight size={18} aria-hidden="true" />
+          </button>
         </div>
       </div>
 
