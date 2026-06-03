@@ -72,7 +72,7 @@ export function CouponBanner() {
               <span
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "13px",
+                  fontSize: "var(--text-sm)",
                   color: "rgba(var(--foreground-rgb), 0.75)",
                   lineHeight: 1.3,
                 }}
@@ -86,7 +86,7 @@ export function CouponBanner() {
             className="relative inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white/95 px-4 py-2 text-[#1a0000] transition-transform group-hover:scale-[1.04]"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12px",
+              fontSize: "var(--text-caption)",
               fontWeight: 800,
               letterSpacing: "0.08em",
               boxShadow: "0 8px 22px -8px rgba(0,0,0,0.5)",

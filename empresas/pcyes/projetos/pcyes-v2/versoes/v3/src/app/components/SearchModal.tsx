@@ -94,7 +94,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 onKeyDown={handleKeyDown}
                 placeholder="Buscar produtos, categorias..."
                 className="flex-1 bg-transparent text-foreground placeholder:text-foreground/20 outline-none"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "16px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)" }}
               />
               <div className="flex items-center gap-2">
                 {query && (
@@ -104,7 +104,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 )}
                 <kbd
                   className="hidden md:flex items-center px-2 py-0.5 bg-foreground/5 text-foreground/20"
-                  style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "10px" }}
+                  style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                 >
                   ESC
                 </kbd>
@@ -119,7 +119,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <div className="mb-6">
                     <div className="flex items-center gap-2 mb-4">
                       <TrendingUp size={12} className="text-primary" />
-                      <span className="text-foreground/30 tracking-wider" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}>
+                      <span className="text-foreground/30 tracking-wider" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>
                         TENDÊNCIAS
                       </span>
                     </div>
@@ -129,7 +129,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           key={t}
                           onClick={() => setQuery(t)}
                           className="px-4 py-2 bg-foreground/[0.03] border border-border/5 text-foreground/50 hover:text-foreground hover:border-border/20 transition-all duration-300"
-                          style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                          style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                         >
                           {t}
                         </button>
@@ -140,7 +140,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <div>
                     <div className="flex items-center gap-2 mb-4">
                       <Clock size={12} className="text-foreground/30" />
-                      <span className="text-foreground/30 tracking-wider" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}>
+                      <span className="text-foreground/30 tracking-wider" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>
                         RECENTES
                       </span>
                     </div>
@@ -149,7 +149,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         key={r}
                         onClick={() => setQuery(r)}
                         className="flex items-center gap-3 w-full px-3 py-2.5 text-foreground/40 hover:text-foreground hover:bg-foreground/[0.03] transition-all duration-200"
-                        style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                        style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                       >
                         <Clock size={13} className="text-foreground/15" />
                         {r}
@@ -159,7 +159,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 </div>
               ) : results.length > 0 ? (
                 <div className="p-3">
-                  <p className="px-3 py-2 text-foreground/20" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                  <p className="px-3 py-2 text-foreground/20" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                     {results.length} resultado{results.length !== 1 ? "s" : ""} encontrado{results.length !== 1 ? "s" : ""}
                   </p>
                   {results.map((product, i) => (
@@ -177,14 +177,14 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         <ImageWithFallback src={product.image} alt={product.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-foreground group-hover:text-primary transition-colors truncate" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>
+                        <p className="text-foreground group-hover:text-primary transition-colors truncate" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}>
                           {product.name}
                         </p>
-                        <p className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                        <p className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                           {product.category}
                         </p>
                       </div>
-                      <span className="text-foreground/40 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                      <span className="text-foreground/40 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                         {product.price}
                       </span>
                       <ArrowUpRight size={14} className="text-foreground/10 group-hover:text-foreground/40 transition-colors flex-shrink-0" />
@@ -193,10 +193,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 </div>
               ) : (
                 <div className="p-10 text-center">
-                  <p className="text-foreground/30 mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: "var(--font-weight-medium)" }}>
+                  <p className="text-foreground/30 mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: "var(--font-weight-medium)" }}>
                     Nenhum resultado
                   </p>
-                  <p className="text-foreground/15" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                  <p className="text-foreground/15" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                     Tente buscar por outro termo
                   </p>
                 </div>

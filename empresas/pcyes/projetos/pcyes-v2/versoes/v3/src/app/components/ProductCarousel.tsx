@@ -181,7 +181,7 @@ export function ProductCarousel({
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.15 }}
                 className="mt-4 max-w-[620px] text-foreground/35"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.6 }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}
               >
                 {subtitle}
               </motion.p>
@@ -193,7 +193,7 @@ export function ProductCarousel({
             transition={{ delay: 0.4 }}
             className="flex items-center gap-4"
           >
-            <p className="text-foreground/30 md:hidden" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+            <p className="text-foreground/30 md:hidden" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
               Arraste para navegar →
             </p>
           </motion.div>
@@ -287,7 +287,7 @@ export function ProductCarousel({
                       {showNoveltyTag && (
                         <span
                           className="border border-edge bg-black/40 text-ink px-3 py-1 backdrop-blur-sm"
-                          style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.1em" }}
+                          style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.1em" }}
                         >
                           NOVIDADE
                         </span>
@@ -345,7 +345,7 @@ export function ProductCarousel({
                   ) : null;
                 })()}
                 <Link to={`/produto/${(selectedVariants[key] ?? product).id}`}>
-                  <p className="text-foreground group-hover:text-primary transition-colors duration-300 mb-2 truncate" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: "var(--font-weight-medium)" }}>
+                  <p className="text-foreground group-hover:text-primary transition-colors duration-300 mb-2 truncate" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: "var(--font-weight-medium)" }}>
                     {(selectedVariants[key] ?? product).name}
                   </p>
                 </Link>
@@ -358,14 +358,14 @@ export function ProductCarousel({
                   return (
                     <>
                       {dp.oldPrice && (
-                        <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.38)" }}>
+                        <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.38)" }}>
                           {dp.oldPrice}
                         </p>
                       )}
-                      <p className="text-foreground leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.015em" }}>
+                      <p className="text-foreground leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 700, letterSpacing: "-0.015em" }}>
                         {dp.price}
                       </p>
-                      <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}>
+                      <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                         No PIX ou 10x de {installment}
                       </p>
                     </>

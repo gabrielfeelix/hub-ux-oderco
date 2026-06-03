@@ -6,7 +6,7 @@ type QuickAddButtonProps = ComponentProps<"button"> & { label?: ReactNode };
 const BASE_STYLE: CSSProperties = {
   borderRadius: "var(--radius-button)",
   fontFamily: "var(--font-family-inter)",
-  fontSize: "12px",
+  fontSize: "var(--text-caption)",
   fontWeight: "var(--font-weight-medium)",
   background: "var(--gradient-buy)",
   boxShadow: "var(--shadow-buy-cta-sm)",

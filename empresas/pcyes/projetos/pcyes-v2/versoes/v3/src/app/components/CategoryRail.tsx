@@ -131,7 +131,7 @@ export function CategoryRail() {
           <p
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.3em",
               color: "var(--primary)",
@@ -270,7 +270,7 @@ export function CategoryRail() {
             className="text-ink-strong transition-colors hover:text-[var(--primary)] cursor-pointer"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "15px",
+              fontSize: "var(--text-base)",
               fontWeight: 600,
               letterSpacing: "0.025em",
             }}

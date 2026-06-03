@@ -67,7 +67,7 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
               className="text-ink-strong tabular-nums"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
+                fontSize: "var(--text-base)",
                 fontWeight: 700,
                 letterSpacing: "0.02em",
               }}
@@ -77,7 +77,7 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
             <span
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 600,
                 color: "rgba(var(--foreground-rgb), 0.45)",
                 letterSpacing: "0.06em",

@@ -151,7 +151,7 @@ export function DealsHighlight({
                 <span
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 700,
                     letterSpacing: "0.14em",
                     color: "#fff",
@@ -179,7 +179,7 @@ export function DealsHighlight({
               <p
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "14px",
+                  fontSize: "var(--text-sm)",
                   color: "rgba(var(--foreground-rgb), 0.78)",
                   lineHeight: 1.55,
                   maxWidth: "280px",
@@ -218,7 +218,7 @@ export function DealsHighlight({
                     backdropFilter: "blur(8px)",
                     zIndex: 4,
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "13px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 800,
                     color: "#fff",
                     letterSpacing: "-0.02em",
@@ -231,7 +231,7 @@ export function DealsHighlight({
                 <p
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "22px",
+                    fontSize: "var(--text-xl)",
                     fontWeight: 800,
                     color: "#fff",
                     lineHeight: 1,
@@ -243,7 +243,7 @@ export function DealsHighlight({
                 <p
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10.5px",
+                    fontSize: "var(--text-caption)",
                     color: "rgba(var(--foreground-rgb), 0.7)",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
@@ -264,7 +264,7 @@ export function DealsHighlight({
                   background: "#ffffff",
                   color: "#1a0000",
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "13px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 800,
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",

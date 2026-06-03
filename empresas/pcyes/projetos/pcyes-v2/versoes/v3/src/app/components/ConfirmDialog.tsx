@@ -45,11 +45,11 @@ export function ConfirmDialog({
             <Icon size={20} style={{ color: accent }} />
           </div>
           <div className="flex-1 min-w-0 pt-0.5">
-            <DialogTitle style={{ fontFamily: "var(--font-family-figtree)", fontSize: "17px", fontWeight: 600, lineHeight: 1.3, color: isDark ? "#fafafa" : "#0a0a0a" }}>
+            <DialogTitle style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600, lineHeight: 1.3, color: isDark ? "#fafafa" : "#0a0a0a" }}>
               {title}
             </DialogTitle>
             {description && (
-              <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.5, marginTop: 6, color: isDark ? "rgba(var(--foreground-rgb), 0.6)" : "rgba(0,0,0,0.6)" }}>
+              <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.5, marginTop: 6, color: isDark ? "rgba(var(--foreground-rgb), 0.6)" : "rgba(0,0,0,0.6)" }}>
                 {description}
               </DialogDescription>
             )}
@@ -65,7 +65,7 @@ export function ConfirmDialog({
               borderRadius: 10,
               background: isDark ? "rgba(var(--foreground-rgb), 0.05)" : "rgba(0,0,0,0.04)",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               fontWeight: 600,
               color: isDark ? "rgba(var(--foreground-rgb), 0.85)" : "rgba(0,0,0,0.85)",
             }}
@@ -80,7 +80,7 @@ export function ConfirmDialog({
               borderRadius: 10,
               background: destructive ? "rgb(239,68,68)" : "var(--primary)",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               fontWeight: 700,
               color: "#ffffff",
             }}

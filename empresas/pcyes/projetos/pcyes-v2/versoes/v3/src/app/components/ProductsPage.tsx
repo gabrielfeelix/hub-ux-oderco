@@ -295,23 +295,23 @@ function PriceRangeSlider({
       {/* Min / Max inputs */}
       <div className="flex gap-3">
         <div className="flex-1">
-          <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.06em" }}>MÍN</label>
+          <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.06em" }}>MÍN</label>
           <input
             type="text" inputMode="numeric" value={formatBRL(safeMin)}
             onChange={(e) => onMinChange(Math.max(minBound, Math.min(parseInt(e.target.value.replace(/\D/g, "")) || minBound, max)))}
             onBlur={onApply}
             className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
-            style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+            style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
           />
         </div>
         <div className="flex-1">
-          <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.06em" }}>MÁX</label>
+          <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.06em" }}>MÁX</label>
           <input
             type="text" inputMode="numeric" value={formatBRL(safeMax)}
             onChange={(e) => onMaxChange(Math.min(maxBound, Math.max(parseInt(e.target.value.replace(/\D/g, "")) || maxBound, min)))}
             onBlur={onApply}
             className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
-            style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+            style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
           />
         </div>
       </div>
@@ -816,7 +816,7 @@ export function ProductsPage() {
       ))}
       {inStockOnly && <FilterPill label="Em estoque" onRemove={() => setInStockOnly(false)} />}
       {activeFilterCount > 0 && (
-        <button onClick={clearAll} className="inline-flex items-center text-foreground/50 hover:text-foreground underline px-2 py-1 min-h-[44px] lg:min-h-0 text-[12px] font-inter transition-colors">Limpar tudo</button>
+        <button onClick={clearAll} className="inline-flex items-center text-foreground/50 hover:text-foreground underline px-2 py-1 min-h-[44px] lg:min-h-0 text-[var(--text-caption)] font-inter transition-colors">Limpar tudo</button>
       )}
     </>
   );
@@ -851,19 +851,19 @@ export function ProductsPage() {
       {/* Categorias — hierarchical */}
       {isSubcategoryRoute ? (
         <div className="border-b border-foreground/5 pb-5">
-          <p className="text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em" }}>
+          <p className="text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.14em" }}>
             FAMÍLIA ATUAL
           </p>
-          <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600 }}>
+          <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600 }}>
             {initialSubcategory}
           </p>
-          <p className="mt-1 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+          <p className="mt-1 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
             Filtros limitados a {activeCategoryLabel} / {initialSubcategory}.
           </p>
           <Link
             to={getCatalogHref({ category: activeCategoryLabel })}
             className="mt-3 inline-flex text-primary transition-opacity hover:opacity-75"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
           >
             Ver {activeCategoryLabel}
           </Link>
@@ -882,11 +882,11 @@ export function ProductsPage() {
               >
                 <span
                   className={`transition-colors flex-1 ${isSelected ? "text-foreground font-medium" : "text-foreground/72 group-hover/item:text-foreground"}`}
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 >
                   {label}
                 </span>
-                <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                   ({catCount})
                 </span>
               </button>
@@ -906,10 +906,10 @@ export function ProductsPage() {
                   <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                     {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                   </span>
-                  <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                  <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                     {label}
                   </span>
-                  <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>({count})</span>
+                  <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>({count})</span>
                 </label>
               );
             })}
@@ -928,11 +928,11 @@ export function ProductsPage() {
                   type="button"
                   onClick={() => toggleSet(setSelectedSizes, label)}
                   className={`flex items-center gap-1.5 px-3 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/55 hover:border-foreground/25"}`}
-                  style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                  style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   aria-pressed={active}
                 >
                   {label}
-                  <span className="text-foreground/30" style={{ fontSize: "11px" }}>({count})</span>
+                  <span className="text-foreground/30" style={{ fontSize: "var(--text-caption)" }}>({count})</span>
                 </button>
               );
             })}
@@ -951,10 +951,10 @@ export function ProductsPage() {
                   <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                     {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
                   </span>
-                  <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                  <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1 truncate" title={label} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                     {label}
                   </span>
-                  <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>({count})</span>
+                  <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>({count})</span>
                 </label>
               );
             })}
@@ -1017,7 +1017,7 @@ export function ProductsPage() {
           <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${onlyDiscount ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
             {onlyDiscount && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
           </span>
-          <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>Em promoção</span>
+          <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Em promoção</span>
         </label>
         {[10, 20, 30, 40].map((pct) => {
           const count = productsBeforeColorFilter.filter((pr) => getDiscount(getColorMatchedProduct(pr)) >= pct).length;
@@ -1028,8 +1028,8 @@ export function ProductsPage() {
               <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                 {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
               </span>
-              <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>A partir de {pct}% OFF</span>
-              <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>({count})</span>
+              <span className="text-foreground/70 group-hover/item:text-foreground transition-colors flex-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>A partir de {pct}% OFF</span>
+              <span className="text-foreground/30 flex-shrink-0" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>({count})</span>
             </label>
           );
         })}
@@ -1044,7 +1044,7 @@ export function ProductsPage() {
               <button key={tag} onClick={() => toggleSet(setSelectedTags, tag)}
                 className={`flex items-center px-4 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/50 hover:border-foreground/25"
                   }`}
-                style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
               >{tag}</button>
             );
           })}
@@ -1063,7 +1063,7 @@ export function ProductsPage() {
               </span>
               <div className="flex items-center gap-1.5">
                 <Star size={14} className="fill-foreground text-foreground" />
-                <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>{r}</span>
+                <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>{r}</span>
               </div>
             </label>
           );
@@ -1077,7 +1077,7 @@ export function ProductsPage() {
           <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${inStockOnly ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
             {inStockOnly && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={isDark ? "#0a0a0a" : "#fff"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
           </span>
-          <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>Em estoque</span>
+          <span className="text-foreground/70 group-hover/item:text-foreground transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Em estoque</span>
         </label>
       </div>
     </div>
@@ -1127,24 +1127,24 @@ export function ProductsPage() {
       <nav aria-label="Breadcrumb" className="px-5 md:px-8 py-3" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <ol style={{ maxWidth: "1600px", margin: "0 auto" }} className="flex flex-wrap items-center gap-2">
           <li>
-            <Link to="/" className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Home</Link>
+            <Link to="/" className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Home</Link>
           </li>
           <li className="flex items-center gap-2">
-            <span className="text-foreground/20" style={{ fontSize: "12px" }}>›</span>
+            <span className="text-foreground/20" style={{ fontSize: "var(--text-caption)" }}>›</span>
             {activeCategoryLabel ? (
-              <Link to={getCatalogHref({ category: activeCategoryLabel })} className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+              <Link to={getCatalogHref({ category: activeCategoryLabel })} className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                 {activeCategoryLabel}
               </Link>
             ) : (
-              <span aria-current={initialSubcategory ? undefined : "page"} className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+              <span aria-current={initialSubcategory ? undefined : "page"} className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                 Produtos
               </span>
             )}
           </li>
           {initialSubcategory && (
             <li className="flex items-center gap-2">
-              <span className="text-foreground/20" style={{ fontSize: "12px" }}>›</span>
-              <span aria-current="page" className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+              <span className="text-foreground/20" style={{ fontSize: "var(--text-caption)" }}>›</span>
+              <span aria-current="page" className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                 {initialSubcategory}
               </span>
             </li>
@@ -1175,7 +1175,7 @@ export function ProductsPage() {
               className="mt-2 text-foreground/55"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "14px",
+                fontSize: "var(--text-sm)",
                 lineHeight: 1.5,
                 maxWidth: "640px",
               }}
@@ -1191,14 +1191,14 @@ export function ProductsPage() {
             <div className="flex min-w-0 flex-wrap items-center gap-4">
               <button onClick={() => setMobileFiltersOpen(true)}
                 className="lg:hidden flex items-center gap-2 px-4 py-2 min-h-[44px] border border-foreground/15 text-foreground/70 hover:text-foreground transition-colors"
-                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
               >
                 <SlidersHorizontal size={14} /> Filtros
                 {activeFilterCount > 0 && (
-                  <span className="ml-1 w-5 h-5 rounded-full bg-foreground text-background flex items-center justify-center font-bold" style={{ fontSize: "11px" }}>{activeFilterCount}</span>
+                  <span className="ml-1 w-5 h-5 rounded-full bg-foreground text-background flex items-center justify-center font-bold" style={{ fontSize: "var(--text-caption)" }}>{activeFilterCount}</span>
                 )}
               </button>
-              <span className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+              <span className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                 Mostrando <span className="text-foreground font-semibold">{filtered.length}</span> {filtered.length === 1 ? "produto" : "produtos"}
               </span>
             </div>
@@ -1208,7 +1208,7 @@ export function ProductsPage() {
               <div className="relative">
                 <button onClick={() => setSortDropdownOpen(!sortDropdownOpen)}
                   className="flex items-center gap-2 min-h-[44px] lg:min-h-0 text-foreground/50 hover:text-foreground/80 transition-colors"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 >
                   <ArrowUpDown size={14} />
                   {sortOptions.find((s) => s.value === sortBy)?.label}
@@ -1224,7 +1224,7 @@ export function ProductsPage() {
                         <button key={opt.value} onClick={() => { setSortBy(opt.value); setSortDropdownOpen(false); }}
                           className={`w-full text-left px-4 py-2.5 transition-colors ${sortBy === opt.value ? "text-foreground bg-foreground/[0.06]" : "text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03]"
                             }`}
-                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                         >{opt.label}</button>
                       ))}
                     </motion.div>
@@ -1232,7 +1232,7 @@ export function ProductsPage() {
                 </AnimatePresence>
               </div>
 
-              <div ref={itemsPerPageDropdownRef} className="relative flex items-center gap-2 text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>
+              <div ref={itemsPerPageDropdownRef} className="relative flex items-center gap-2 text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
                 <span>Mostrar:</span>
                 <button
                   type="button"
@@ -1259,7 +1259,7 @@ export function ProductsPage() {
                       className="absolute right-0 top-full z-30 mt-3 min-w-[120px] overflow-hidden border border-edge-subtle shadow-2xl"
                       style={{ borderRadius: "var(--radius-card-sm)", background: "var(--surface-1)" }}
                     >
-                      <div className="border-b border-edge-subtle px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-ink-subtle">
+                      <div className="border-b border-edge-subtle px-3 py-2 text-[var(--text-caption)] uppercase tracking-[0.14em] text-ink-subtle">
                         Itens por p&aacute;gina
                       </div>
                       <div className="p-2">
@@ -1278,7 +1278,7 @@ export function ProductsPage() {
                                   ? "bg-primary text-ink-strong"
                                   : "text-ink hover:bg-white/[0.06] hover:text-ink-strong"
                               }`}
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
                               role="option"
                               aria-selected={active}
                             >
@@ -1328,11 +1328,11 @@ export function ProductsPage() {
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-foreground/[0.05] flex items-center justify-center">
                     <ShoppingBag size={24} className="text-foreground/30" />
                   </div>
-                  <p className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: "var(--font-weight-medium)" }}>Nenhum produto encontrado</p>
-                  <p className="text-foreground/50 mb-8" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px" }}>Tente ajustar os filtros ou mudar os termos de busca.</p>
+                  <p className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: "var(--font-weight-medium)" }}>Nenhum produto encontrado</p>
+                  <p className="text-foreground/50 mb-8" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)" }}>Tente ajustar os filtros ou mudar os termos de busca.</p>
                   <button onClick={clearAll}
                     className="px-6 py-3 border border-foreground/15 text-foreground/70 hover:text-foreground hover:border-foreground/30 transition-all font-medium"
-                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                   >Limpar filtros</button>
                 </motion.div>
               ) : (
@@ -1386,13 +1386,13 @@ export function ProductsPage() {
                               <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full px-2.5 py-1 backdrop-blur-md"
                                 style={{ background: "rgba(0,0,0,0.55)", border: "1px solid rgba(var(--foreground-rgb), 0.1)" }}>
                                 <Star size={11} className="fill-yellow-400 text-yellow-400" />
-                                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 700, color: "rgba(var(--foreground-rgb), 0.95)" }}>
+                                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, color: "rgba(var(--foreground-rgb), 0.95)" }}>
                                   {displayProduct.rating.toFixed(1)}
                                 </span>
                               </div>
                             )}
                             {displayProduct.inStock === false && (
-                              <span className="absolute top-3 right-12 z-10 px-2.5 py-1 bg-foreground/80 text-background shadow-sm" style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "600" }}>
+                              <span className="absolute top-3 right-12 z-10 px-2.5 py-1 bg-foreground/80 text-background shadow-sm" style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600" }}>
                                 Esgotado
                               </span>
                             )}
@@ -1440,7 +1440,7 @@ export function ProductsPage() {
                             {/* Quick add — floating pill on hover */}
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
-                              className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-4 py-1.5 text-[11px] lg:bottom-4 lg:px-10 lg:py-3 lg:text-[13px] opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
+                              className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-4 py-1.5 text-[var(--text-caption)] lg:bottom-4 lg:px-10 lg:py-3 lg:text-[var(--text-sm)] opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
                               style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "var(--shadow-buy-cta-sm)" }}
                             >
                               <span className="inline-flex items-center gap-1.5 lg:gap-2"><ShoppingBag size={12} strokeWidth={2} className="lg:hidden" /><ShoppingBag size={14} strokeWidth={2} className="hidden lg:block" /> Comprar</span>
@@ -1451,7 +1451,7 @@ export function ProductsPage() {
                           <div className="mt-4 px-1">
                             <Link to={`/produto/${displayProduct.id}`}>
                               <h3 className="line-clamp-2 md:line-clamp-1 text-ink-strong"
-                                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600, lineHeight: 1.3, letterSpacing: "-0.01em" }}>
+                                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600, lineHeight: 1.3, letterSpacing: "-0.01em" }}>
                                 {displayProduct.name}
                               </h3>
                             </Link>
@@ -1484,14 +1484,14 @@ export function ProductsPage() {
                                 </div>
                               )}
                               {displayProduct.oldPrice && (
-                                <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "rgba(var(--foreground-rgb), 0.38)" }}>
+                                <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.38)" }}>
                                   {displayProduct.oldPrice}
                                 </p>
                               )}
-                              <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.015em" }}>
+                              <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: 700, letterSpacing: "-0.015em" }}>
                                 {displayProduct.price}
                               </p>
-                              <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.6)" }}>
+                              <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.6)" }}>
                                 No PIX ou 10x de {(() => {
                                   const inst = (displayProduct.priceNum / 10);
                                   return `R$ ${inst.toFixed(2).replace(".", ",")}`;
@@ -1522,13 +1522,13 @@ export function ProductsPage() {
                               <ImageWithFallback src={getPrimaryProductImage(displayProduct)} alt={displayProduct.name} loading="lazy" decoding="async" className="h-full w-full object-contain scale-[0.92] group-hover:scale-[0.97] transition-transform duration-700" />
                             </div>
                             {discount > 0 && (
-                              <span className="absolute top-2 left-2 px-2 py-1 bg-primary text-ink-strong" style={{ borderRadius: "var(--radius)", fontSize: "11px", fontWeight: "700" }}>{discount}% OFF</span>
+                              <span className="absolute top-2 left-2 px-2 py-1 bg-primary text-ink-strong" style={{ borderRadius: "var(--radius)", fontSize: "var(--text-caption)", fontWeight: "700" }}>{discount}% OFF</span>
                             )}
                           </Link>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="text-foreground/40 uppercase font-semibold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.05em" }}>{displayProduct.category}</span>
-                              {displayProduct.brand && <span className="text-foreground/30 font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>· {displayProduct.brand}</span>}
+                              <span className="text-foreground/40 uppercase font-semibold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.05em" }}>{displayProduct.category}</span>
+                              {displayProduct.brand && <span className="text-foreground/30 font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>· {displayProduct.brand}</span>}
                             </div>
                             <Link to={`/produto/${displayProduct.id}`}>
                               <p className="text-foreground group-hover:text-foreground/70 transition-colors mb-2 text-lg" style={{ fontFamily: "var(--font-family-figtree)", fontWeight: "var(--font-weight-medium)", lineHeight: 1.3 }}>
@@ -1551,7 +1551,7 @@ export function ProductsPage() {
                                 background: "var(--gradient-buy)",
                                 color: "white",
                                 fontFamily: "var(--font-family-inter)",
-                                fontSize: "13px",
+                                fontSize: "var(--text-sm)",
                                 fontWeight: 700,
                                 letterSpacing: "0.04em",
                                 boxShadow: "var(--shadow-buy-cta-sm)",
@@ -1588,7 +1588,7 @@ export function ProductsPage() {
                       const isEdge = page === 1 || page === pageCount;
                       if (!isNearCurrent && !isEdge) {
                         if (page === 2 || page === pageCount - 1) {
-                          return <span key={page} className="text-foreground/25 px-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>…</span>;
+                          return <span key={page} className="text-foreground/25 px-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>…</span>;
                         }
                         return null;
                       }
@@ -1597,7 +1597,7 @@ export function ProductsPage() {
                           key={page}
                           onClick={() => { setCurrentPage(page); mainRef.current?.scrollTo({ top: 0, behavior: "smooth" }); }}
                           className={`w-9 h-9 flex items-center justify-center border transition-all ${isCurrent ? "border-foreground bg-foreground text-background font-bold" : "border-foreground/10 text-foreground/60 hover:text-foreground hover:border-foreground/30"}`}
-                          style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                          style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                           aria-label={`Página ${page}`}
                           aria-current={isCurrent ? "page" : undefined}
                         >
@@ -1662,14 +1662,14 @@ export function ProductsPage() {
               style={{ background: isDark ? "#161617" : "#fff", borderRight: `1px solid ${isDark ? "rgba(var(--foreground-rgb), 0.06)" : "rgba(0,0,0,0.06)"}` }}
             >
               <div className="flex items-center justify-between mb-8">
-                <span className="text-foreground/70 tracking-[0.15em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-bold)" }}>FILTROS</span>
+                <span className="text-foreground/70 tracking-[0.15em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-bold)" }}>FILTROS</span>
                 <button onClick={() => setMobileFiltersOpen(false)} className="text-foreground/40 hover:text-foreground transition-colors p-2" aria-label="Fechar filtros"><X size={20} /></button>
               </div>
               {filterSidebar}
               <div className="sticky bottom-0 pt-4 mt-8 bg-inherit">
                 <button onClick={() => { applyFilters(); setMobileFiltersOpen(false); }}
                   className="w-full py-3.5 bg-foreground text-background font-bold flex items-center justify-center gap-2 transition-opacity hover:opacity-90 shadow-lg"
-                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", letterSpacing: "0.04em", textTransform: "uppercase" }}
+                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", letterSpacing: "0.04em", textTransform: "uppercase" }}
                 >
                   <Check size={16} /> Mostrar {filtered.length} resultado{filtered.length !== 1 ? "s" : ""}
                 </button>
@@ -1756,7 +1756,7 @@ export function ProductsPage() {
                           background: "var(--gradient-brand)",
                           borderRadius: "var(--radius-pill)",
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "11px",
+                          fontSize: "var(--text-caption)",
                           fontWeight: "700",
                           letterSpacing: "0.06em",
                           textTransform: "uppercase",
@@ -1770,7 +1770,7 @@ export function ProductsPage() {
 
                 {/* Right: info */}
                 <div className="flex flex-col">
-                  <p className="uppercase mb-3 tracking-[0.18em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, color: "var(--primary)" }}>
+                  <p className="uppercase mb-3 tracking-[0.18em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, color: "var(--primary)" }}>
                     {quickViewProduct.category}
                   </p>
                   <h3 className="text-ink-strong mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(22px, 2.4vw, 30px)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
@@ -1779,16 +1779,16 @@ export function ProductsPage() {
 
                   <div className="flex items-center gap-2 mb-5">
                     <Star size={15} className="fill-yellow-400 text-yellow-400" />
-                    <span className="text-ink font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>{quickViewProduct.rating}</span>
-                    <span className="text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>({quickViewProduct.reviews} avaliações)</span>
+                    <span className="text-ink font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>{quickViewProduct.rating}</span>
+                    <span className="text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>({quickViewProduct.reviews} avaliações)</span>
                   </div>
 
                   <div className="flex items-baseline gap-3 mb-4">
-                    <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "30px", fontWeight: 700, letterSpacing: "-0.01em" }}>
+                    <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-2xl)", fontWeight: 700, letterSpacing: "-0.01em" }}>
                       {quickViewProduct.price}
                     </p>
                     {quickViewProduct.oldPrice && (
-                      <p className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", color: "rgba(var(--foreground-rgb), 0.35)" }}>
+                      <p className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", color: "rgba(var(--foreground-rgb), 0.35)" }}>
                         {quickViewProduct.oldPrice}
                       </p>
                     )}
@@ -1803,7 +1803,7 @@ export function ProductsPage() {
                           <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${urgent ? "bg-[#ff2419]" : "bg-emerald-500"}`} />
                           <span className={`relative inline-flex h-2 w-2 rounded-full ${urgent ? "bg-[#ff2419]" : "bg-emerald-500"}`} />
                         </span>
-                        <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600, color: urgent ? "#ff5a52" : "rgba(var(--foreground-rgb), 0.85)" }}>
+                        <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, color: urgent ? "#ff5a52" : "rgba(var(--foreground-rgb), 0.85)" }}>
                           {urgent ? `Últimas ${stockLeft} unidades em estoque` : `${stockLeft} em estoque · envio em 24h`}
                         </span>
                       </div>
@@ -1812,7 +1812,7 @@ export function ProductsPage() {
 
                   {quickViewSwatches.length > 1 && (
                     <div className="mb-6">
-                      <p className="mb-2.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500, color: "rgba(var(--foreground-rgb), 0.6)" }}>
+                      <p className="mb-2.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 500, color: "rgba(var(--foreground-rgb), 0.6)" }}>
                         Cores:
                       </p>
                       <div className="flex items-center gap-2">
@@ -1840,7 +1840,7 @@ export function ProductsPage() {
 
                   {quickViewBullets.length > 0 && (
                     <div className="mb-6">
-                      <h4 className="font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.55)" }}>
+                      <h4 className="font-semibold mb-4 flex items-center gap-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                         <span className="w-1 h-1 rounded-full bg-primary" />
                         SOBRE O PRODUTO
                       </h4>
@@ -1856,7 +1856,7 @@ export function ProductsPage() {
                             <span className="flex-shrink-0 w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center mt-0.5">
                               <Check size={9} className="text-primary" strokeWidth={2.5} />
                             </span>
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.6", color: "rgba(var(--foreground-rgb), 0.7)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "1.6", color: "rgba(var(--foreground-rgb), 0.7)" }}>
                               {bullet}
                             </span>
                           </motion.li>
@@ -1873,7 +1873,7 @@ export function ProductsPage() {
                       color: "white",
                       borderRadius: "var(--radius-pill)",
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "13px",
+                      fontSize: "var(--text-sm)",
                       fontWeight: 700,
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
@@ -1908,7 +1908,7 @@ function FilterSection({ title, expanded = true, onToggle, children }: { title: 
   return (
     <div className="border-b border-foreground/5 py-4 last:border-0">
       <button onClick={toggle} className="flex items-center justify-between w-full mb-1 group outline-none" aria-expanded={open}>
-        <span className="text-foreground/80 tracking-[0.08em] font-bold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{title.toUpperCase()}</span>
+        <span className="text-foreground/80 tracking-[0.08em] font-bold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>{title.toUpperCase()}</span>
         <ChevronDown size={14} className={`text-foreground/40 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence initial={false}>
@@ -1926,7 +1926,7 @@ function FilterPill({ label, onRemove }: { label: string; onRemove: () => void }
   return (
     <button onClick={onRemove}
       className="flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] lg:min-h-0 bg-foreground/[0.06] text-foreground/80 border border-foreground/10 hover:border-foreground/25 hover:bg-foreground/[0.08] transition-colors font-medium"
-      style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+      style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
       aria-label={`Remover filtro ${label}`}
     >
       {label} <X size={12} className="opacity-60" />

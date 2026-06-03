@@ -631,7 +631,7 @@ export function Navbar() {
     : "text-ink-muted hover:text-ink-strong";
 
   const tooltipContentClass =
-    "!bg-[#1f1c1c] !rounded-md border border-edge-subtle px-2.5 py-1.5 text-[11px] font-medium tracking-normal text-ink shadow-md [&>span]:hidden";
+    "!bg-[#1f1c1c] !rounded-md border border-edge-subtle px-2.5 py-1.5 text-[var(--text-caption)] font-medium tracking-normal text-ink shadow-md [&>span]:hidden";
 
   const renderIcons = () => (
     <TooltipProvider delayDuration={200}>
@@ -653,7 +653,7 @@ export function Navbar() {
                 {favCount > 0 && (
                   <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
                     className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center"
-                    style={{ fontSize: "9px", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}
+                    style={{ fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}
                   ><span className="text-primary-foreground">{favCount}</span></motion.span>
                 )}
               </AnimatePresence>
@@ -679,7 +679,7 @@ export function Navbar() {
               <span className="absolute bottom-1.5 right-1.5 w-[9px] h-[9px] border-b border-r border-current opacity-30 group-hover:opacity-65 transition-opacity duration-200 pointer-events-none" />
               {isLoggedIn ? (
                 <span className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="text-primary" style={{ fontSize: "10px", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}>J</span>
+                  <span className="text-primary" style={{ fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}>J</span>
                 </span>
               ) : <User size={20} strokeWidth={1.5} />}
             </button>
@@ -695,7 +695,7 @@ export function Navbar() {
                 {totalItems > 0 && (
                   <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
                     className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center"
-                    style={{ fontSize: "9px", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}
+                    style={{ fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}
                   ><span className="text-primary-foreground">{totalItems}</span></motion.span>
                 )}
               </AnimatePresence>
@@ -714,14 +714,14 @@ export function Navbar() {
         <div>
           <div className="mb-2 flex items-center gap-2 text-primary/80">
             <Sparkles size={12} />
-            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "600", letterSpacing: "0.18em" }}>
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.18em" }}>
               ACESSO RÁPIDO
             </span>
           </div>
-          <h4 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: "600", lineHeight: 1 }}>
+          <h4 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: "600", lineHeight: 1 }}>
             {title}
           </h4>
-          <p className="mt-2 max-w-[560px] text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+          <p className="mt-2 max-w-[560px] text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
             {hint}
           </p>
         </div>
@@ -731,7 +731,7 @@ export function Navbar() {
           className="hidden xl:flex items-center gap-2 rounded-full border border-foreground/8 bg-foreground/[0.03] px-3 py-2 text-foreground/45 transition-colors hover:border-foreground/16 hover:text-foreground"
         >
           <X size={12} />
-          <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "600", letterSpacing: "0.14em" }}>
+          <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.14em" }}>
             FECHAR
           </span>
         </button>
@@ -758,7 +758,7 @@ export function Navbar() {
       <Link to={resolveMenuHref(href)} onClick={() => setActiveMega(null)} className={elevatedCardClass}>
         {badge && (
           <span className="absolute right-4 top-4 z-20 rounded-full bg-primary px-2.5 py-1 text-primary-foreground shadow-[0_0_15px_rgba(255,43,46,0.5)]"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: "700", letterSpacing: "0.08em" }}>
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.08em" }}>
             {badge}
           </span>
         )}
@@ -780,15 +780,15 @@ export function Navbar() {
         </div>
         <div className="flex h-full flex-col justify-end pt-4">
           {meta && (
-            <span className="mb-2 text-foreground/40 font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.05em" }}>
+            <span className="mb-2 text-foreground/40 font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.05em" }}>
               {meta}
             </span>
           )}
-          <p className="text-foreground transition-colors group-hover:text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "600", lineHeight: 1.05 }}>
+          <p className="text-foreground transition-colors group-hover:text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "600", lineHeight: 1.05 }}>
             {title}
           </p>
           {subtitle && (
-            <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+            <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
               {subtitle}
             </p>
           )}
@@ -812,10 +812,10 @@ export function Navbar() {
             {icon ?? <ArrowUpRight size={15} />}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-foreground/85 transition-colors group-hover:text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "600" }}>
+            <p className="text-foreground/85 transition-colors group-hover:text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "600" }}>
               {title}
             </p>
-            <p className="mt-1 text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", lineHeight: 1.45 }}>
+            <p className="mt-1 text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.45 }}>
               {subtitle}
             </p>
           </div>
@@ -847,10 +847,10 @@ export function Navbar() {
             {icon ? React.cloneElement(icon as React.ReactElement, { size: 18 }) : <ArrowUpRight size={22} />}
           </div>
           <div className="mt-2">
-            <p className="text-foreground/90 transition-colors group-hover:text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: "600" }}>
+            <p className="text-foreground/90 transition-colors group-hover:text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", fontWeight: "600" }}>
               {title}
             </p>
-            <p className="mt-1.5 text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+            <p className="mt-1.5 text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
               {subtitle}
             </p>
           </div>
@@ -884,14 +884,14 @@ export function Navbar() {
         </div>
         <div className="flex h-full flex-col justify-end pt-4">
           {meta && (
-            <span className="mb-2 text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "600", letterSpacing: "0.14em" }}>
+            <span className="mb-2 text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.14em" }}>
               {meta}
             </span>
           )}
-          <p className="text-foreground transition-colors group-hover:text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "600", lineHeight: 1.05 }}>
+          <p className="text-foreground transition-colors group-hover:text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "600", lineHeight: 1.05 }}>
             {title}
           </p>
-          <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+          <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
             {subtitle}
           </p>
         </div>
@@ -939,14 +939,14 @@ export function Navbar() {
                 onClick={() => setActiveMega(null)}
                 className="group flex h-full min-h-[90px] flex-col justify-center rounded-card-lg border border-primary/20 bg-primary/[0.05] px-5 py-4 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_8px_24px_rgba(255,43,46,0.12)] hover:-translate-y-0.5"
               >
-                <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.18em" }}>
+                <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.18em" }}>
                   EXPLORAR
                 </p>
-                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "600", lineHeight: 1.1 }}>
+                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "600", lineHeight: 1.1 }}>
                   Ver toda a coleção
                 </p>
                 <div className="mt-2 flex items-center gap-2 text-primary/80 group-hover:text-primary transition-colors">
-                  <span style={{ fontSize: "12px", fontWeight: "500" }}>Acessar catálogo</span>
+                  <span style={{ fontSize: "var(--text-caption)", fontWeight: "500" }}>Acessar catálogo</span>
                   <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </Link>
@@ -980,10 +980,10 @@ export function Navbar() {
                 </motion.div>
               ))}
               <motion.div variants={itemVariants} className="rounded-card-lg border border-dashed border-foreground/15 bg-transparent px-5 py-4 flex flex-col justify-center">
-                <p className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.16em" }}>
+                <p className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.16em" }}>
                   COMO ESCOLHER
                 </p>
-                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "600", lineHeight: 1.1 }}>
+                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "600", lineHeight: 1.1 }}>
                   Navegue pelo formato que combina com o seu setup
                 </p>
               </motion.div>
@@ -1015,17 +1015,17 @@ export function Navbar() {
                 onClick={() => setActiveMega(null)}
                 className="group flex h-full min-h-[110px] flex-col justify-center rounded-card-lg border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5"
               >
-                <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.18em" }}>
+                <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.18em" }}>
                   VER TUDO
                 </p>
-                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "21px", fontWeight: "600", lineHeight: 1.05 }}>
+                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "600", lineHeight: 1.05 }}>
                   Abrir categoria completa
                 </p>
-                <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+                <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
                   Continue a exploração com todos os filtros e produtos disponíveis.
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-primary group-hover:text-primary transition-colors">
-                  <span style={{ fontSize: "12px", fontWeight: "600" }}>Acessar</span>
+                  <span style={{ fontSize: "var(--text-caption)", fontWeight: "600" }}>Acessar</span>
                   <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </Link>
@@ -1050,19 +1050,19 @@ export function Navbar() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                     </span>
-                    <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.18em" }}>
+                    <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.18em" }}>
                       DESTAQUE ESPECIAL
                     </p>
                   </div>
-                  <p className="text-foreground transition-colors group-hover:text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "42px", fontWeight: "700", lineHeight: 0.95 }}>
+                  <p className="text-foreground transition-colors group-hover:text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-h3)", fontWeight: "700", lineHeight: 0.95 }}>
                     {panel.name}
                   </p>
-                  <p className="mt-5 max-w-[460px] text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", lineHeight: 1.6 }}>
+                  <p className="mt-5 max-w-[460px] text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", lineHeight: 1.6 }}>
                     {panel.desc}
                   </p>
                 </div>
                 <div className="flex items-center gap-2 text-primary mt-6">
-                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "700", letterSpacing: "0.12em" }}>
+                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "700", letterSpacing: "0.12em" }}>
                     EXPLORAR UNIVERSO
                   </span>
                   <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -1098,15 +1098,15 @@ export function Navbar() {
                         : <Download size={22} className="text-primary/75 group-hover:text-primary transition-colors" />
                       }
                     </div>
-                    <span className="px-2 py-0.5 rounded text-foreground/40 bg-foreground/5 border border-foreground/10" style={{ fontSize: "9px", fontWeight: "700", letterSpacing: "0.1em" }}>
+                    <span className="px-2 py-0.5 rounded text-foreground/40 bg-foreground/5 border border-foreground/10" style={{ fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.1em" }}>
                       {badgeText}
                     </span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-foreground/85 transition-colors group-hover:text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "16px", fontWeight: "600", lineHeight: 1.45 }}>
+                    <p className="text-foreground/85 transition-colors group-hover:text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", fontWeight: "600", lineHeight: 1.45 }}>
                       {item.name}
                     </p>
-                    <p className="mt-2 text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", lineHeight: 1.5 }}>
+                    <p className="mt-2 text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
                       {item.version} · {item.date}
                     </p>
                   </div>
@@ -1134,13 +1134,13 @@ export function Navbar() {
             })}
             <motion.div variants={itemVariants}>
               <Link to="/drivers-e-manuais" onClick={() => setActiveMega(null)} className="group flex h-full min-h-[140px] flex-col justify-center rounded-[var(--radius-card-xl)] border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5">
-                <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.18em" }}>
+                <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.18em" }}>
                   CENTRAL DE SUPORTE
                 </p>
-                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: "600", lineHeight: 1.1 }}>
+                <p className="mt-2 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "600", lineHeight: 1.1 }}>
                   Ver todos os downloads
                 </p>
-                <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+                <p className="mt-2 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}>
                   Acesse a biblioteca completa de drivers, manuais e utilitários.
                 </p>
               </Link>
@@ -1238,7 +1238,7 @@ export function Navbar() {
 		                      onChange={(e) => setSearchQuery(e.target.value)}
 		                      placeholder="Buscar"
 		                      className="h-full min-w-0 flex-1 bg-transparent px-2 text-ink-strong outline-none placeholder:text-ink-strong/48"
-		                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+		                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
 		                    />
 		                    {searchQuery && (
 		                      <button
@@ -1262,7 +1262,7 @@ export function Navbar() {
 		                      >
 		                        {searchResults.length > 0 ? (
 		                          <>
-		                            <p className="px-2 pb-2 pt-1 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700 }}>
+		                            <p className="px-2 pb-2 pt-1 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}>
 		                              {searchResults.length} resultado{searchResults.length !== 1 ? "s" : ""}
 		                            </p>
 		                            {searchResults.map((product) => (
@@ -1276,14 +1276,14 @@ export function Navbar() {
 		                                  <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-cover" />
 		                                </div>
 		                                <div className="min-w-0 flex-1">
-		                                  <p className="line-clamp-2 text-ink-strong/86 transition-colors group-hover:text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "13px", fontWeight: 600, lineHeight: 1.15 }}>
+		                                  <p className="line-clamp-2 text-ink-strong/86 transition-colors group-hover:text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-sm)", fontWeight: 600, lineHeight: 1.15 }}>
 		                                    {product.name}
 		                                  </p>
-		                                  <p className="mt-1 truncate text-ink-strong/36" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+		                                  <p className="mt-1 truncate text-ink-strong/36" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
 		                                    {product.category}
 		                                  </p>
 		                                </div>
-		                                <span className="flex-shrink-0 text-ink-strong/58" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}>
+		                                <span className="flex-shrink-0 text-ink-strong/58" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}>
 		                                  {product.price}
 		                                </span>
 		                              </Link>
@@ -1291,7 +1291,7 @@ export function Navbar() {
 		                          </>
 		                        ) : (
 		                          <div className="px-4 py-5 text-center">
-		                            <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+		                            <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
 		                              Nenhum produto encontrado
 		                            </p>
 		                          </div>
@@ -1339,7 +1339,7 @@ export function Navbar() {
 	                      animate={{ scale: 1 }}
 	                      exit={{ scale: 0 }}
 	                      className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1"
-	                      style={{ fontSize: "9px", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}
+	                      style={{ fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)", fontWeight: "var(--font-weight-medium)" }}
 	                    >
 	                      <span className="text-primary-foreground">{totalItems}</span>
 	                    </motion.span>
@@ -1386,7 +1386,7 @@ export function Navbar() {
                         setSearchCategoryOpen((p) => !p);
                       }}
                       className="flex h-full items-center gap-1.5 pl-5 pr-3 text-ink transition-colors hover:text-ink-strong"
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
                     >
                       <span className="hidden xl:inline">{searchCategory}</span>
                       <span className="xl:hidden">Categorias</span>
@@ -1402,7 +1402,7 @@ export function Navbar() {
                     onFocus={() => setSearchPanelOpen(true)}
                     placeholder="O que você está procurando?"
                     className="h-full min-w-0 flex-1 bg-transparent px-4 text-ink-strong outline-none placeholder:text-ink-subtle"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                   />
 
                   {searchQuery && (
@@ -1474,7 +1474,7 @@ export function Navbar() {
                               ? "bg-primary/15 text-ink-strong"
                               : "text-ink hover:bg-white/[0.06] hover:text-ink-strong"
                           }`}
-                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 500 }}
+                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 500 }}
                         >
                           {cat}
                           {searchCategory === cat && <span className="h-1.5 w-1.5 rounded-full bg-primary" />}
@@ -1506,7 +1506,7 @@ export function Navbar() {
                               className="mb-7 text-ink-strong"
                               style={{
                                 fontFamily: "var(--font-family-figtree)",
-                                fontSize: "20px",
+                                fontSize: "var(--text-lg)",
                                 fontWeight: 700,
                                 letterSpacing: "-0.015em",
                               }}
@@ -1543,7 +1543,7 @@ export function Navbar() {
                                           style={{
                                             background: "var(--primary)",
                                             fontFamily: "var(--font-family-inter)",
-                                            fontSize: "10px",
+                                            fontSize: "var(--text-caption)",
                                             fontWeight: 700,
                                             letterSpacing: "0.02em",
                                           }}
@@ -1561,7 +1561,7 @@ export function Navbar() {
                                       className="mt-4 line-clamp-2 text-ink transition-colors group-hover:text-ink-strong"
                                       style={{
                                         fontFamily: "var(--font-family-figtree)",
-                                        fontSize: "14px",
+                                        fontSize: "var(--text-sm)",
                                         fontWeight: 600,
                                         lineHeight: 1.3,
                                         letterSpacing: "-0.005em",
@@ -1574,7 +1574,7 @@ export function Navbar() {
                                         className={hasDiscount ? "" : "text-ink-strong"}
                                         style={{
                                           fontFamily: "var(--font-family-figtree)",
-                                          fontSize: "15px",
+                                          fontSize: "var(--text-base)",
                                           fontWeight: 700,
                                           letterSpacing: "-0.01em",
                                           color: hasDiscount ? "var(--primary)" : undefined,
@@ -1587,7 +1587,7 @@ export function Navbar() {
                                           className="line-through text-ink-subtle"
                                           style={{
                                             fontFamily: "var(--font-family-inter)",
-                                            fontSize: "11px",
+                                            fontSize: "var(--text-caption)",
                                           }}
                                         >
                                           {p.oldPrice}
@@ -1621,7 +1621,7 @@ export function Navbar() {
                               className="mb-6 text-ink-strong"
                               style={{
                                 fontFamily: "var(--font-family-figtree)",
-                                fontSize: "20px",
+                                fontSize: "var(--text-lg)",
                                 fontWeight: 700,
                                 letterSpacing: "-0.015em",
                               }}
@@ -1640,7 +1640,7 @@ export function Navbar() {
                                   className="group flex items-center justify-between py-2.5 text-left text-ink transition-colors hover:text-[var(--primary)]"
                                   style={{
                                     fontFamily: "var(--font-family-inter)",
-                                    fontSize: "14px",
+                                    fontSize: "var(--text-sm)",
                                     fontWeight: 500,
                                   }}
                                 >
@@ -1662,7 +1662,7 @@ export function Navbar() {
                               className="text-ink-strong"
                               style={{
                                 fontFamily: "var(--font-family-figtree)",
-                                fontSize: "20px",
+                                fontSize: "var(--text-lg)",
                                 fontWeight: 700,
                                 letterSpacing: "-0.015em",
                               }}
@@ -1671,7 +1671,7 @@ export function Navbar() {
                             </h4>
                             <span
                               className="text-ink-muted"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, letterSpacing: "0.1em" }}
                             >
                               {searchResults.length} {searchResults.length === 1 ? "PRODUTO" : "PRODUTOS"}
                             </span>
@@ -1709,7 +1709,7 @@ export function Navbar() {
                                         style={{
                                           background: "var(--primary)",
                                           fontFamily: "var(--font-family-inter)",
-                                          fontSize: "10px",
+                                          fontSize: "var(--text-caption)",
                                           fontWeight: 700,
                                           letterSpacing: "0.02em",
                                         }}
@@ -1727,7 +1727,7 @@ export function Navbar() {
                                     className="mt-4 line-clamp-2 text-ink transition-colors group-hover:text-ink-strong"
                                     style={{
                                       fontFamily: "var(--font-family-figtree)",
-                                      fontSize: "14px",
+                                      fontSize: "var(--text-sm)",
                                       fontWeight: 600,
                                       lineHeight: 1.3,
                                       letterSpacing: "-0.005em",
@@ -1739,7 +1739,7 @@ export function Navbar() {
                                     <span
                                       style={{
                                         fontFamily: "var(--font-family-figtree)",
-                                        fontSize: "15px",
+                                        fontSize: "var(--text-base)",
                                         fontWeight: 700,
                                         letterSpacing: "-0.01em",
                                         color: hasDiscount ? "var(--primary)" : "#fff",
@@ -1752,7 +1752,7 @@ export function Navbar() {
                                         className="line-through text-ink-subtle"
                                         style={{
                                           fontFamily: "var(--font-family-inter)",
-                                          fontSize: "11px",
+                                          fontSize: "var(--text-caption)",
                                         }}
                                       >
                                         {p.oldPrice}
@@ -1781,10 +1781,10 @@ export function Navbar() {
                         </div>
                       ) : (
                         <div className="px-10 py-16 text-center">
-                          <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600 }}>
+                          <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600 }}>
                             Nenhum produto encontrado
                           </p>
-                          <p className="mt-2 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                          <p className="mt-2 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                             Tente outro termo ou veja os produtos mais buscados
                           </p>
                         </div>
@@ -1826,7 +1826,7 @@ export function Navbar() {
                             animate={{ scale: 1 }}
                             exit={{ scale: 0 }}
                             className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-primary-foreground"
-                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 600 }}
+                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                           >
                             {favCount}
                           </motion.span>
@@ -1852,7 +1852,7 @@ export function Navbar() {
                       aria-label={isLoggedIn ? "Conta" : "Login"}
                     >
                       {isLoggedIn ? (
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20 text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}>J</span>
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20 text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}>J</span>
                       ) : (
                         <User size={20} strokeWidth={1.5} />
                       )}
@@ -1876,7 +1876,7 @@ export function Navbar() {
                             animate={{ scale: 1 }}
                             exit={{ scale: 0 }}
                             className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-primary-foreground"
-                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 600 }}
+                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                           >
                             {totalItems}
                           </motion.span>
@@ -1912,7 +1912,7 @@ export function Navbar() {
               }`;
               const customStyle: React.CSSProperties = {
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "14px",
+                fontSize: "var(--text-sm)",
                 fontWeight: isBuild ? 700 : 500,
               };
               if (isGreen) {
@@ -2004,7 +2004,7 @@ export function Navbar() {
                           </span>
                           <span
                             className="max-w-[130px] text-foreground/78 transition-colors group-hover:text-foreground"
-                            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600, lineHeight: 1.1 }}
+                            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600, lineHeight: 1.1 }}
                           >
                             {sub.label}
                           </span>
@@ -2073,7 +2073,7 @@ export function Navbar() {
                     <button
                       type="submit"
                       className="hidden rounded-full bg-primary px-5 py-2 text-ink-strong transition-opacity hover:opacity-90 md:block"
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 800 }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}
                     >
                       BUSCAR
                     </button>
@@ -2087,7 +2087,7 @@ export function Navbar() {
                     <section>
                       <div className="mb-4 flex items-center gap-2">
                         <TrendingUp size={13} className="text-primary" />
-                        <span className="tracking-[0.18em] text-ink-strong/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>TENDENCIAS</span>
+                        <span className="tracking-[0.18em] text-ink-strong/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>TENDENCIAS</span>
                       </div>
                       <div className="flex flex-wrap gap-2.5">
                         {trending.map((t) => (
@@ -2095,7 +2095,7 @@ export function Navbar() {
                             key={t}
                             onClick={() => setSearchQuery(t)}
                             className="rounded-full border border-edge-subtle bg-white/[0.055] px-4 py-2.5 text-ink-strong/64 transition-colors hover:border-primary/40 hover:bg-white/[0.08] hover:text-ink-strong"
-                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 650 }}
+                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 650 }}
                           >
                             {t}
                           </button>
@@ -2105,7 +2105,7 @@ export function Navbar() {
                       <div className="mt-9 border-t border-edge-subtle pt-7">
                         <div className="mb-4 flex items-center gap-2">
                           <Search size={13} className="text-ink-strong/28" />
-                          <span className="tracking-[0.18em] text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>ATALHOS</span>
+                          <span className="tracking-[0.18em] text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>ATALHOS</span>
                         </div>
                         {["Water coolers", "Gabinetes", "Perifericos", "Hardware"].map((item) => (
                           <Link
@@ -2113,7 +2113,7 @@ export function Navbar() {
                             to={`/produtos?search=${encodeURIComponent(item)}`}
                             onClick={() => setSearchOpen(false)}
                             className="group flex items-center justify-between border-b border-edge-subtle py-4 text-ink-strong/72 transition-colors hover:text-ink-strong"
-                            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600 }}
+                            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600 }}
                           >
                             <span>{item}</span>
                             <ArrowUpRight size={16} className="text-ink-strong/22 transition-colors group-hover:text-primary" />
@@ -2125,7 +2125,7 @@ export function Navbar() {
                     <section className="border-t border-edge-subtle pt-7 md:border-l md:border-t-0 md:pl-10 md:pt-0">
                       <div className="mb-4 flex items-center gap-2">
                         <Clock size={13} className="text-ink-strong/28" />
-                        <span className="tracking-[0.18em] text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>RECENTES</span>
+                        <span className="tracking-[0.18em] text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>RECENTES</span>
                       </div>
                       <div className="space-y-1">
                         {recent.map((r) => (
@@ -2133,7 +2133,7 @@ export function Navbar() {
                             key={r}
                             onClick={() => setSearchQuery(r)}
                             className="flex w-full items-center gap-3 rounded-[var(--radius-card)] py-3 text-left text-ink-strong/48 transition-colors hover:bg-white/[0.035] hover:px-3 hover:text-ink-strong/76"
-                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 650 }}
+                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", fontWeight: 650 }}
                           >
                             <Clock size={13} className="text-ink-strong/22" />
                             {r}
@@ -2144,7 +2144,7 @@ export function Navbar() {
                   </div>
                 ) : searchResults.length > 0 ? (
                   <div>
-                    <p className="mb-5 tracking-[0.16em] text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
+                    <p className="mb-5 tracking-[0.16em] text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
                       {searchResults.length} RESULTADO{searchResults.length !== 1 ? "S" : ""}
                     </p>
                     <div className="grid gap-2">
@@ -2167,11 +2167,11 @@ export function Navbar() {
                               <p className="line-clamp-2 text-ink-strong/88 transition-colors group-hover:text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(15px, 4vw, 19px)", fontWeight: 650, lineHeight: 1.15 }}>
                                 {product.name}
                               </p>
-                              <p className="mt-1 text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                              <p className="mt-1 text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                                 {product.category}
                               </p>
                             </div>
-                            <span className="hidden flex-shrink-0 text-ink-strong/58 md:block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 750 }}>
+                            <span className="hidden flex-shrink-0 text-ink-strong/58 md:block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 750 }}>
                               {product.price}
                             </span>
                             <ArrowUpRight size={16} className="flex-shrink-0 text-ink-strong/24 transition-colors group-hover:text-primary" />
@@ -2182,8 +2182,8 @@ export function Navbar() {
                   </div>
                 ) : (
                   <div className="border-t border-edge pt-9 text-left">
-                    <p className="text-ink-strong/76" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 650 }}>Nenhum resultado</p>
-                    <p className="mt-2 max-w-[420px] text-ink-strong/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.6 }}>Tente buscar por categoria, produto ou linha PCYES.</p>
+                    <p className="text-ink-strong/76" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: 650 }}>Nenhum resultado</p>
+                    <p className="mt-2 max-w-[420px] text-ink-strong/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}>Tente buscar por categoria, produto ou linha PCYES.</p>
                   </div>
                 )}
               </div>
@@ -2220,13 +2220,13 @@ export function Navbar() {
                     >
                       <ChevronLeft size={20} strokeWidth={1.6} />
                     </button>
-                    <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600 }}>
+                    <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600 }}>
                       Região e idioma
                     </p>
                   </div>
 
                   <div className="px-6 py-7">
-                    <p className="mb-5 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.55 }}>
+                    <p className="mb-5 text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.55 }}>
                       Escolha a loja mais próxima para ver disponibilidade, frete e atendimento local.
                     </p>
                     {[
@@ -2239,10 +2239,10 @@ export function Navbar() {
                         className="flex w-full items-center gap-4 border-b border-foreground/7 py-4 text-left"
                         onClick={() => setMobileMenuView("main")}
                       >
-                        <span className="flex h-8 w-10 items-center justify-center rounded-[var(--radius-card)] bg-foreground/[0.04] text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700 }}>
+                        <span className="flex h-8 w-10 items-center justify-center rounded-[var(--radius-card)] bg-foreground/[0.04] text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}>
                           {region.flag}
                         </span>
-                        <span className="text-foreground/76" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 500 }}>
+                        <span className="text-foreground/76" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", fontWeight: 500 }}>
                           {region.title} · <span className="text-foreground/42">{region.detail}</span>
                         </span>
                       </button>
@@ -2268,11 +2268,11 @@ export function Navbar() {
                       <ChevronLeft size={20} strokeWidth={1.6} />
                     </button>
                     <div className="flex min-w-0 items-center gap-1.5">
-                      <span className="flex-shrink-0 text-foreground/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                      <span className="flex-shrink-0 text-foreground/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                         Menu
                       </span>
                       <ChevronRight size={12} className="flex-shrink-0 text-foreground/25" />
-                      <span className="truncate text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600 }}>
+                      <span className="truncate text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600 }}>
                         {megaMenus[mobileActiveMega]?.title}
                       </span>
                     </div>
@@ -2293,7 +2293,7 @@ export function Navbar() {
                             onClick={() => { setMobileOpen(false); setMobileMenuView("main"); setMobileActiveMega(null); }}
                             className="flex min-h-[56px] w-full items-center justify-between border-b border-foreground/7 px-7 last:border-b-0"
                           >
-                            <span className="text-foreground/74" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 500 }}>
+                            <span className="text-foreground/74" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", fontWeight: 500 }}>
                               {sub.label}
                             </span>
                             <ChevronRight size={16} className="flex-shrink-0 text-foreground/28" strokeWidth={1.5} />
@@ -2307,7 +2307,7 @@ export function Navbar() {
                         to={resolveMenuHref(navItems.find((n) => n.mega === mobileActiveMega)?.href)}
                         onClick={() => { setMobileOpen(false); setMobileMenuView("main"); setMobileActiveMega(null); }}
                         className="flex items-center gap-1.5 text-primary transition-opacity hover:opacity-75"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
                       >
                         <span>Ver tudo em {megaMenus[mobileActiveMega]?.title}</span>
                         <ArrowUpRight size={13} />
@@ -2351,7 +2351,7 @@ export function Navbar() {
                         const isBuild = item.emphasis === "build";
                         const labelStyle: React.CSSProperties = {
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "15px",
+                          fontSize: "var(--text-base)",
                           fontWeight: isBuild ? 700 : 500,
                         };
                         if (isGreen) labelStyle.color = "#34d399";
@@ -2407,12 +2407,12 @@ export function Navbar() {
                             <span className="relative flex h-8 w-8 items-center justify-center text-foreground/45">
                               <Icon size={17} strokeWidth={1.45} />
                               {!!item.badge && item.badge > 0 && (
-                                <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-primary-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700 }}>
+                                <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-primary-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}>
                                   {item.badge}
                                 </span>
                               )}
                             </span>
-                            <span className="text-foreground/78" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 600 }}>
+                            <span className="text-foreground/78" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
                               {item.label}
                             </span>
                           </button>
@@ -2427,7 +2427,7 @@ export function Navbar() {
                       <span className="flex h-8 w-8 items-center justify-center text-foreground/45">
                         <Globe2 size={17} strokeWidth={1.45} />
                       </span>
-                      <span className="text-foreground/78" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 600 }}>
+                      <span className="text-foreground/78" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
                         Brasil · Português
                       </span>
                     </button>

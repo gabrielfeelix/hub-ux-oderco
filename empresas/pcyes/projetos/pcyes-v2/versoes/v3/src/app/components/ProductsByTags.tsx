@@ -44,7 +44,7 @@ export function ProductsByTags() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="text-primary tracking-[0.25em] mb-7"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "19.5px", fontWeight: "var(--font-weight-medium)" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "19.5px", fontWeight: "var(--font-weight-medium)" }}
           >
             CATÁLOGO
           </motion.p>
@@ -64,7 +64,7 @@ export function ProductsByTags() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-foreground/30 max-w-md mx-auto"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "16px", lineHeight: "28.8px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", lineHeight: "28.8px" }}
           >
             Filtre por interesse e encontre exatamente o que procura.
           </motion.p>
@@ -85,7 +85,7 @@ export function ProductsByTags() {
                   ? "bg-primary border-primary text-primary-foreground shadow-[0_0_25px_rgba(255,43,46,0.2)]"
                   : "border-border/15 text-foreground/40 hover:text-foreground hover:border-foreground/30"
                 }`}
-              style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+              style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}
             >
               {tag}
             </button>
@@ -179,7 +179,7 @@ export function ProductsByTags() {
                       <span
                         key={t}
                         className="px-2 py-0.5 bg-black/30 backdrop-blur-sm text-ink"
-                        style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
+                        style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.05em" }}
                       >
                         {t}
                       </span>
@@ -210,21 +210,21 @@ export function ProductsByTags() {
                   )}
                   <div className="flex items-center gap-1.5 mb-2">
                     <Star size={11} className="fill-primary text-primary" />
-                    <span className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                    <span className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                       {displayProduct.rating}
                     </span>
-                    <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                    <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                       ({displayProduct.reviews})
                     </span>
                   </div>
-                  <p className="text-foreground group-hover:text-primary transition-colors duration-300 mb-1.5 truncate" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: "var(--font-weight-medium)" }}>
+                  <p className="text-foreground group-hover:text-primary transition-colors duration-300 mb-1.5 truncate" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: "var(--font-weight-medium)" }}>
                     {displayProduct.name}
                   </p>
-                  <p className="text-foreground/90" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: "21px", fontWeight: "500" }}>
+                  <p className="text-foreground/90" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "21px", fontWeight: "500" }}>
                     {displayProduct.price}
                   </p>
                   {displayProduct.reviews > 150 && (
-                    <p className="text-foreground/25 mt-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px" }}>
+                    <p className="text-foreground/25 mt-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                       {displayProduct.reviews}+ vendidos
                     </p>
                   )}
@@ -247,7 +247,7 @@ export function ProductsByTags() {
           <Link
             to="/produtos"
             className="inline-block px-10 py-4 border border-border/15 text-foreground/50 hover:text-foreground hover:border-foreground/40 transition-all duration-500"
-            style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}
+            style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}
           >
             Ver todos os produtos
           </Link>

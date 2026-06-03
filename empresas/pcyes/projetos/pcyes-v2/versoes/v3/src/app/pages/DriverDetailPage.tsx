@@ -41,7 +41,7 @@ function DownloadCard({
           className="inline-flex items-center gap-1.5 rounded-full px-3 py-1"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "11px",
+            fontSize: "var(--text-caption)",
             fontWeight: 700,
             letterSpacing: "0.1em",
             ...(isPdf
@@ -62,7 +62,7 @@ function DownloadCard({
         </span>
         <span
           className="text-foreground/40"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
         >
           {file.sizeLabel}
         </span>
@@ -71,13 +71,13 @@ function DownloadCard({
       {/* Title + description */}
       <p
         className="mt-5 text-foreground"
-        style={{ fontFamily: "var(--font-family-figtree)", fontSize: "19px", fontWeight: 500, lineHeight: 1.25 }}
+        style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 500, lineHeight: 1.25 }}
       >
         {title}
       </p>
       <p
         className="mt-2 text-foreground/55"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", lineHeight: 1.55 }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.55 }}
       >
         {description}
       </p>
@@ -85,7 +85,7 @@ function DownloadCard({
       {/* Meta */}
       <p
         className="mt-4 text-foreground/40"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
       >
         Última atualização: {formatDatePtBR(file.updatedAt)}
       </p>
@@ -101,7 +101,7 @@ function DownloadCard({
         }`}
         style={{
           fontFamily: "var(--font-family-inter)",
-          fontSize: "13.5px",
+          fontSize: "var(--text-sm)",
           fontWeight: 700,
           letterSpacing: "0.02em",
           ...(kind === "driver"
@@ -141,7 +141,7 @@ function DriverNotFound() {
           </h1>
           <p
             className="mt-3 max-w-[440px] text-foreground/55"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", lineHeight: 1.6 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", lineHeight: 1.6 }}
           >
             Não localizamos drivers ou manuais para este produto. Ele pode ter sido movido ou o endereço está
             incorreto.
@@ -151,7 +151,7 @@ function DriverNotFound() {
             className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-ink-strong transition-transform hover:scale-[1.03]"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13.5px",
+              fontSize: "var(--text-sm)",
               fontWeight: 700,
               boxShadow: "0 12px 28px -10px rgba(255,43,46,0.55)",
             }}
@@ -189,7 +189,7 @@ export function DriverDetailPage() {
           <nav aria-label="breadcrumb">
             <ol
               className="flex flex-wrap items-center gap-2 text-foreground/40"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
             >
               <li>
                 <Link to="/" className="transition-colors hover:text-foreground/80">
@@ -249,7 +249,7 @@ export function DriverDetailPage() {
                   className="inline-flex w-fit items-center rounded-full bg-primary px-3 py-1 text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10px",
+                    fontSize: "var(--text-caption)",
                     letterSpacing: "0.16em",
                     fontWeight: 700,
                     textTransform: "uppercase",
@@ -260,7 +260,7 @@ export function DriverDetailPage() {
                 </span>
                 <span
                   className="text-foreground/35"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", letterSpacing: "0.05em" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.05em" }}
                 >
                   MODELO {entry.model}
                 </span>
@@ -281,7 +281,7 @@ export function DriverDetailPage() {
 
               <p
                 className="mt-4 text-foreground/60"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "15.5px", lineHeight: 1.6 }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", lineHeight: 1.6 }}
               >
                 {entry.shortDescription}
               </p>
@@ -293,7 +293,7 @@ export function DriverDetailPage() {
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-ink-strong transition-transform hover:scale-[1.03] active:scale-[0.98]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13.5px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 700,
                     letterSpacing: "0.02em",
                     boxShadow: "0 12px 28px -10px rgba(255,43,46,0.55)",
@@ -304,7 +304,7 @@ export function DriverDetailPage() {
                 <Link
                   to={`/produto/${entry.productId}`}
                   className="inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.04] px-6 py-3 text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/[0.07]"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
                 >
                   Página do Produto <ArrowUpRight size={15} />
                 </Link>
@@ -331,7 +331,7 @@ export function DriverDetailPage() {
             </h2>
             <p
               className="mt-3 max-w-[560px] text-foreground/55"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "14.5px", lineHeight: 1.6 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}
             >
               Baixe a versão mais recente do driver e o manual oficial deste produto. Recomendamos sempre
               instalar a última atualização disponível.
@@ -359,7 +359,7 @@ export function DriverDetailPage() {
               </div>
               <p
                 className="text-foreground/55"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", lineHeight: 1.6 }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}
               >
                 A PCYES recomenda manter drivers e firmware sempre atualizados para garantir desempenho,
                 estabilidade e compatibilidade com as últimas versões do seu sistema operacional. Baixe os

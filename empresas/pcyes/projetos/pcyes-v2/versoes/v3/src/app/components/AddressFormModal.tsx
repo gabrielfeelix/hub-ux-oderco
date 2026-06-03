@@ -64,10 +64,10 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
             <MapPin size={18} className="text-primary" />
           </div>
           <div className="flex-1 min-w-0">
-            <DialogTitle style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600, color: isDark ? "#fafafa" : "#0a0a0a" }}>
+            <DialogTitle style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600, color: isDark ? "#fafafa" : "#0a0a0a" }}>
               {initial ? "Editar endereço" : "Adicionar endereço"}
             </DialogTitle>
-            <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)" }}>
+            <DialogDescription style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: isDark ? "rgba(var(--foreground-rgb), 0.55)" : "rgba(0,0,0,0.55)" }}>
               Será usado nas suas compras e entregas.
             </DialogDescription>
           </div>
@@ -153,7 +153,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
               className="accent-primary"
               style={{ width: 16, height: 16 }}
             />
-            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: isDark ? "rgba(var(--foreground-rgb), 0.8)" : "rgba(0,0,0,0.8)" }}>
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: isDark ? "rgba(var(--foreground-rgb), 0.8)" : "rgba(0,0,0,0.8)" }}>
               Definir como endereço padrão
             </span>
           </label>
@@ -167,7 +167,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
                 borderRadius: 10,
                 background: isDark ? "rgba(var(--foreground-rgb), 0.05)" : "rgba(0,0,0,0.04)",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
+                fontSize: "var(--text-sm)",
                 fontWeight: 600,
                 color: isDark ? "rgba(var(--foreground-rgb), 0.85)" : "rgba(0,0,0,0.85)",
               }}
@@ -181,7 +181,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
               style={{
                 borderRadius: 10,
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
+                fontSize: "var(--text-sm)",
                 fontWeight: 700,
                 opacity: valid ? 1 : 0.5,
                 cursor: valid ? "pointer" : "not-allowed",

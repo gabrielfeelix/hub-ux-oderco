@@ -60,7 +60,7 @@ export function PopularGrid() {
             <Link
               to="/produtos"
               className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300"
-              style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+              style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}
             >
               Ver catálogo completo
               <ArrowRight size={14} />
@@ -94,7 +94,7 @@ export function PopularGrid() {
                   {i < 3 && (
                     <span
                       className="absolute top-4 left-4 w-7 h-7 bg-primary text-primary-foreground rounded-full flex items-center justify-center"
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}
                     >
                       {i + 1}
                     </span>
@@ -103,7 +103,7 @@ export function PopularGrid() {
                   {product.badge && (
                     <span
                       className={`absolute left-4 px-2.5 py-1 rounded-full ${i < 3 ? 'top-12' : 'top-4'} ${product.badge.toUpperCase().includes('BLUE') ? 'bg-blue-500 text-ink-strong' : product.badge.toUpperCase().includes('RED') ? 'bg-red-500 text-ink-strong' : product.badge.toUpperCase().includes('BROWN') ? 'bg-amber-700 text-ink-strong' : 'bg-primary text-primary-foreground'}`}
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.05em" }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.05em" }}
                     >
                       {product.badge}
                     </span>
@@ -112,7 +112,7 @@ export function PopularGrid() {
                   {/* Category */}
                   <span
                     className="absolute top-4 right-4 px-2.5 py-1 bg-black/25 backdrop-blur-sm text-ink"
-                    style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
+                    style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.05em" }}
                   >
                     {product.category}
                   </span>
@@ -142,28 +142,28 @@ export function PopularGrid() {
               <div className="px-0.5">
                 <div className="flex items-center gap-1.5 mb-1.5">
                   <Star size={11} className="fill-primary text-primary" />
-                  <span className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                  <span className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                     {product.rating}
                   </span>
-                  <span className="text-foreground/15" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                  <span className="text-foreground/15" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                     ({product.reviews})
                   </span>
                 </div>
                 <Link to={`/produto/${product.id}`}>
                   <p
                     className="text-foreground group-hover:text-primary transition-colors duration-300 mb-1 truncate"
-                    style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: "var(--font-weight-medium)" }}
+                    style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: "var(--font-weight-medium)" }}
                   >
                     {product.name}
                   </p>
                 </Link>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px" }}>
+                    <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)" }}>
                       {product.price}
                     </p>
                     {product.oldPrice && (
-                      <p className="text-foreground/25 line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                      <p className="text-foreground/25 line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                         {product.oldPrice}
                       </p>
                     )}
@@ -171,7 +171,7 @@ export function PopularGrid() {
                   <Link
                     to={`/produto/${product.id}`}
                     className="text-foreground/20 hover:text-primary transition-colors duration-300"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     Ver detalhes →
                   </Link>
@@ -194,7 +194,7 @@ export function PopularGrid() {
           <Link
             to="/produtos"
             className="inline-flex items-center gap-2 px-10 py-4 border border-foreground/15 text-foreground/50 hover:text-foreground hover:border-foreground/40 transition-all duration-500"
-            style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}
+            style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}
           >
             Explorar catálogo completo
             <ArrowRight size={14} />

@@ -13,7 +13,7 @@ const BASE_STYLE: CSSProperties = {
   border: "1px solid rgba(var(--foreground-rgb), 0.08)",
   background: "rgba(var(--foreground-rgb), 0.03)",
   fontFamily: "var(--font-family-inter)",
-  fontSize: "13px",
+  fontSize: "var(--text-sm)",
   fontWeight: 500,
   color: "rgb(var(--foreground-rgb))",
   width: "100%",

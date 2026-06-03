@@ -25,9 +25,9 @@ const ctaVariants = cva(
         brand: "[background-image:var(--gradient-brand)] tracking-[0.05em] uppercase",
       },
       size: {
-        sm: "h-10 px-6 text-[11px]",
-        md: "h-11 px-8 text-[12px]",
-        lg: "h-12 px-10 text-[14px]",
+        sm: "h-10 px-6 text-[var(--text-caption)]",
+        md: "h-11 px-8 text-[var(--text-caption)]",
+        lg: "h-12 px-10 text-[var(--text-sm)]",
       },
       block: {
         true: "w-full",

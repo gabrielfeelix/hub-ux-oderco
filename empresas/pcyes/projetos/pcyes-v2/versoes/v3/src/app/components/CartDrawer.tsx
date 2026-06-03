@@ -166,9 +166,9 @@ export function CartDrawer() {
             <div className="flex items-center justify-between border-b border-foreground/5 px-7 py-5">
               <div className="flex items-center gap-3">
                 <ShoppingBag size={18} className="text-foreground" strokeWidth={1.5} />
-                <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>Carrinho</span>
-                <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}>{totalItems}</span>
-                <span className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/10 text-yellow-500/70" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 600 }}>
+                <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "var(--font-weight-medium)" }}>Carrinho</span>
+                <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>{totalItems}</span>
+                <span className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/10 text-yellow-500/70" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
                   <PcyesCoin size={14} />
                   {formatInt(USER_PCYES_POINTS)}
                 </span>
@@ -192,10 +192,10 @@ export function CartDrawer() {
                           <Gift size={15} />
                         </div>
                         <div>
-                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: "600", lineHeight: 1.2 }}>
+                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: "600", lineHeight: 1.2 }}>
                             Ganhe um brinde a partir de {formatPrice(GIFT_THRESHOLD)}
                           </p>
-                          <p className="mt-1 text-foreground/42" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", lineHeight: 1.45 }}>
+                          <p className="mt-1 text-foreground/42" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.45 }}>
                             {giftUnlocked
                               ? giftItem
                                 ? "Seu brinde já foi selecionado e adicionado ao carrinho."
@@ -208,7 +208,7 @@ export function CartDrawer() {
                         <button
                           onClick={() => { setGiftDismissed(false); setGiftModalOpen(true); }}
                           className="text-primary hover:opacity-80 transition-opacity cursor-pointer"
-                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.08em" }}
+                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.08em" }}
                         >
                           {giftItem ? "TROCAR" : "ESCOLHER"}
                         </button>
@@ -225,14 +225,14 @@ export function CartDrawer() {
                         />
                       </div>
                       <div className="mt-1.5 flex items-center justify-between">
-                        <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "600", letterSpacing: "0.12em" }}>
+                        <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.12em" }}>
                           0
                         </span>
-                        <span className={`flex items-center gap-1.5 ${giftUnlocked ? "text-primary" : "text-foreground/35"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "700", letterSpacing: "0.12em" }}>
+                        <span className={`flex items-center gap-1.5 ${giftUnlocked ? "text-primary" : "text-foreground/35"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.12em" }}>
                           <Sparkles size={11} />
                           BRINDE
                         </span>
-                        <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "600", letterSpacing: "0.12em" }}>
+                        <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.12em" }}>
                           {formatPrice(GIFT_THRESHOLD)}
                         </span>
                       </div>
@@ -248,8 +248,8 @@ export function CartDrawer() {
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-foreground/5">
                     <ShoppingBag size={28} className="text-foreground/20" strokeWidth={1} />
                   </div>
-                  <p className="text-foreground/60 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "17px", fontWeight: "var(--font-weight-medium)" }}>Carrinho vazio</p>
-                  <p className="text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Adicione produtos para começar</p>
+                  <p className="text-foreground/60 mb-2" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: "var(--font-weight-medium)" }}>Carrinho vazio</p>
+                  <p className="text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Adicione produtos para começar</p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-4">
@@ -270,14 +270,14 @@ export function CartDrawer() {
                         <div className="flex min-w-0 flex-1 flex-col justify-between">
                           <div>
                             <div className="flex items-center gap-2">
-                              <p className="truncate text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}>{item.name}</p>
+                              <p className="truncate text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}>{item.name}</p>
                               {item.isGift && <BrindePill />}
                             </div>
                             <div className="flex items-center gap-2">
                               {item.isGift && item.originalPrice && (
-                                <p className="text-foreground/20 line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>{item.originalPrice}</p>
+                                <p className="text-foreground/20 line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>{item.originalPrice}</p>
                               )}
-                              <p className={item.isGift ? "text-primary" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: item.isGift ? "600" : "400" }}>
+                              <p className={item.isGift ? "text-primary" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: item.isGift ? "600" : "400" }}>
                                 {item.price}
                               </p>
                             </div>
@@ -286,7 +286,7 @@ export function CartDrawer() {
                             {item.isGift ? (
                               <div className="flex items-center gap-2 text-primary/80">
                                 <Gift size={13} />
-                                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "600", letterSpacing: "0.08em" }}>
+                                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.08em" }}>
                                   1 item gratuito
                                 </span>
                               </div>
@@ -317,17 +317,17 @@ export function CartDrawer() {
                       <div className="flex items-center gap-2 min-w-0">
                         <Truck size={12} className="text-primary flex-shrink-0" />
                         <div className="min-w-0">
-                          <p className="text-foreground/75 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                          <p className="text-foreground/75 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
                             {shippingOptions[selectedShipping].name} · {shippingOptions[selectedShipping].price === 0 ? "Grátis" : formatPrice(shippingOptions[selectedShipping].price)}
                           </p>
-                          <p className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
+                          <p className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                             CEP {cep} · {shippingOptions[selectedShipping].days}
                           </p>
                         </div>
                       </div>
                       <button onClick={() => setShippingOpen(true)}
                         className="flex-shrink-0 text-primary/85 hover:text-primary transition-colors cursor-pointer"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.02em" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.02em" }}
                       >
                         Alterar
                       </button>
@@ -338,7 +338,7 @@ export function CartDrawer() {
                     >
                       <div className="flex items-center gap-2">
                         <MapPin size={12} className="text-foreground/45" />
-                        <span className="text-foreground/65 group-hover:text-foreground/85 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                        <span className="text-foreground/65 group-hover:text-foreground/85 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
                           Calcular frete
                         </span>
                       </div>
@@ -354,10 +354,10 @@ export function CartDrawer() {
                               onChange={(e) => setCep(formatCep(e.target.value))}
                               onKeyDown={(e) => e.key === "Enter" && handleCepSearch()}
                               className="flex-1 px-3 py-2 border border-foreground/8 bg-foreground/[0.03] text-foreground placeholder:text-foreground/15 focus:border-foreground/20 focus:outline-none transition-colors"
-                              style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px" }} />
+                              style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }} />
                             <button onClick={handleCepSearch} disabled={loadingCep || cep.replace(/\D/g, "").length < 8}
                               className="px-3 py-2 text-foreground/30 hover:text-foreground/60 transition-all duration-300 disabled:opacity-20 cursor-pointer disabled:cursor-not-allowed"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                             >{loadingCep ? <Loader2 size={13} className="animate-spin" /> : "Calcular"}</button>
                           </div>
                           <AnimatePresence>
@@ -373,11 +373,11 @@ export function CartDrawer() {
                                     <div className="flex items-center gap-2">
                                       <Truck size={12} className={selectedShipping === idx ? "text-primary" : "text-foreground/25"} />
                                       <div className="text-left">
-                                        <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}>{opt.name}</p>
-                                        <p className="text-foreground/20" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px" }}>{opt.days}</p>
+                                        <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>{opt.name}</p>
+                                        <p className="text-foreground/20" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>{opt.days}</p>
                                       </div>
                                     </div>
-                                    <span className={opt.price === 0 ? "text-green-500" : "text-foreground/40"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-medium)" }}>
+                                    <span className={opt.price === 0 ? "text-green-500" : "text-foreground/40"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>
                                       {opt.price === 0 ? "Grátis" : formatPrice(opt.price)}
                                     </span>
                                   </button>
@@ -405,19 +405,19 @@ export function CartDrawer() {
                       )}
                       <span
                         className={appliedCoupon ? "text-green-400" : "text-foreground/65 group-hover:text-foreground/85 transition-colors"}
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: appliedCoupon ? 600 : 600 }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: appliedCoupon ? 600 : 600 }}
                       >
                         {appliedCoupon ? `Cupom ${appliedCoupon} aplicado` : "Cupom de desconto"}
                       </span>
                       {appliedCoupon && (
-                        <span className="text-green-500/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                        <span className="text-green-500/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
                           −{discountPct}%
                         </span>
                       )}
                     </div>
                     <span
                       className={appliedCoupon ? "text-green-500/70" : "text-foreground/35 group-hover:text-foreground/55 transition-colors"}
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                     >
                       {appliedCoupon ? "Alterar" : <ChevronDown size={11} className={`transition-transform duration-300 ${couponOpen ? "rotate-180" : ""}`} />}
                     </span>
@@ -430,8 +430,8 @@ export function CartDrawer() {
                             <div className="flex items-center justify-between px-3 py-2 border border-green-500/20 bg-green-500/5" style={{ borderRadius: "var(--radius-button)" }}>
                               <div className="flex items-center gap-2">
                                 <Check size={13} className="text-green-500" />
-                                <span className="text-green-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>{appliedCoupon}</span>
-                                <span className="text-green-500/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px" }}>(-{discountPct}%)</span>
+                                <span className="text-green-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>{appliedCoupon}</span>
+                                <span className="text-green-500/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>(-{discountPct}%)</span>
                               </div>
                               <button onClick={() => { setAppliedCoupon(null); setCoupon(""); }} aria-label="Remover cupom" className="text-foreground/30 hover:text-foreground transition-colors cursor-pointer"><X size={13} aria-hidden="true" /></button>
                             </div>
@@ -442,13 +442,13 @@ export function CartDrawer() {
                                   onChange={(e) => { setCoupon(e.target.value.toUpperCase()); setCouponError(""); }}
                                   onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
                                   className="flex-1 px-3 py-2 border border-foreground/8 bg-foreground/[0.03] text-foreground placeholder:text-foreground/15 focus:border-foreground/20 focus:outline-none transition-colors"
-                                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px" }} />
+                                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }} />
                                 <button onClick={handleApplyCoupon} disabled={!coupon.trim()}
                                   className="px-3 py-2 text-foreground/30 hover:text-foreground/60 transition-all duration-300 disabled:opacity-20 cursor-pointer disabled:cursor-not-allowed"
-                                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                                 >Aplicar</button>
                               </div>
-                              {couponError && <p className="text-primary mt-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px" }}>{couponError}</p>}
+                              {couponError && <p className="text-primary mt-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>{couponError}</p>}
                             </>
                           )}
                         </div>
@@ -461,19 +461,19 @@ export function CartDrawer() {
 
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Subtotal</span>
-                    <span className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>{formatPrice(subtotal)}</span>
+                    <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Subtotal</span>
+                    <span className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>{formatPrice(subtotal)}</span>
                   </div>
                   {discountValue > 0 && (
                     <div className="flex items-center justify-between">
-                      <span className="text-green-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Desconto ({discountPct}%)</span>
-                      <span className="text-green-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>-{formatPrice(discountValue)}</span>
+                      <span className="text-green-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>Desconto ({discountPct}%)</span>
+                      <span className="text-green-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>-{formatPrice(discountValue)}</span>
                     </div>
                   )}
                   {selectedShipping !== null && shippingOptions && (
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Frete</span>
-                      <span className={shippingCost === 0 ? "text-green-500" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                      <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>Frete</span>
+                      <span className={shippingCost === 0 ? "text-green-500" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                         {shippingCost === 0 ? "Grátis" : formatPrice(shippingCost)}
                       </span>
                     </div>
@@ -481,8 +481,8 @@ export function CartDrawer() {
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>Total</span>
-                  <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: "var(--font-weight-medium)" }}>{formatPrice(total)}</span>
+                  <span className="text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Total</span>
+                  <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: "var(--font-weight-medium)" }}>{formatPrice(total)}</span>
                 </div>
 
                 <button
@@ -490,7 +490,7 @@ export function CartDrawer() {
                   style={{
                     background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13.5px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 800,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -502,13 +502,13 @@ export function CartDrawer() {
                 <button
                   onClick={() => setIsOpen(false)}
                   className="w-full flex items-center justify-center border border-foreground/12 bg-transparent text-foreground/55 hover:text-foreground/85 hover:border-foreground/22 transition-colors cursor-pointer rounded-full"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, minHeight: "44px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600, minHeight: "44px" }}
                 >Continuar comprando</button>
                 <div className="flex items-center justify-center pt-1">
                   <button
                     onClick={() => clearCart()}
                     className="inline-flex items-center gap-1 text-foreground/30 hover:text-primary transition-colors cursor-pointer"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                     aria-label="Limpar carrinho"
                   >
                     <Trash2 size={12} strokeWidth={2} />
@@ -546,7 +546,7 @@ export function CartDrawer() {
                       <div>
                         <div className="mb-3 flex items-center gap-2 text-primary">
                           <Gift size={14} strokeWidth={2.2} />
-                          <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em" }}>
+                          <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.3em" }}>
                             // BRINDE DESBLOQUEADO
                           </span>
                         </div>
@@ -622,7 +622,7 @@ export function CartDrawer() {
                             {product.name}
                           </p>
                           <div className="mt-3 flex items-baseline gap-2 md:mt-4">
-                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.32)" }}>
+                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.32)" }}>
                               {product.price}
                             </span>
                             <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(16px, 4.6vw, 22px)", fontWeight: 700, color: "#22c55e", letterSpacing: "-0.015em" }}>
@@ -630,10 +630,10 @@ export function CartDrawer() {
                             </span>
                           </div>
                           <div className="mt-auto flex items-center justify-between pt-4 md:mt-4 md:pt-0">
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
                               PRESENTE PCYES
                             </span>
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(var(--foreground-rgb), 0.45)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(var(--foreground-rgb), 0.45)" }}>
                               {isSelected ? "SELECIONADO" : "SELECIONAR"}
                             </span>
                           </div>
@@ -648,7 +648,7 @@ export function CartDrawer() {
                     <button
                       onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); setSelectedGiftId(null); }}
                       className="inline-flex items-center cursor-pointer text-ink-muted transition-colors hover:text-ink min-h-[44px] px-3 md:min-h-0 md:px-0"
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.06em" }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, letterSpacing: "0.06em" }}
                     >
                       Agora não
                     </button>
@@ -659,7 +659,7 @@ export function CartDrawer() {
                       style={{
                         background: "var(--gradient-brand)",
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "13px",
+                        fontSize: "var(--text-sm)",
                         fontWeight: 700,
                         letterSpacing: "0.04em",
                         boxShadow: "var(--shadow-brand-cta)",

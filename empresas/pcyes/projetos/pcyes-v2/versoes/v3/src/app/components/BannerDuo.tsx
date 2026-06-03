@@ -70,7 +70,7 @@ export function BannerDuo() {
                   className="mb-3 inline-flex w-fit items-center rounded-full border border-edge-strong bg-black/30 px-3 py-1 text-ink backdrop-blur-sm"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 600,
                     letterSpacing: "0.22em",
                   }}
@@ -93,7 +93,7 @@ export function BannerDuo() {
                   className="mb-5 max-w-sm text-ink"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "14px",
+                    fontSize: "var(--text-sm)",
                     lineHeight: 1.5,
                   }}
                 >
@@ -103,7 +103,7 @@ export function BannerDuo() {
                   className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-black transition-all group-hover:bg-primary group-hover:text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 600,
                   }}
                 >

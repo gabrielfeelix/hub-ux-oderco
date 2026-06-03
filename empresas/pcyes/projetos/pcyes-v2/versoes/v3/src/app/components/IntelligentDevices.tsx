@@ -179,7 +179,7 @@ export function IntelligentDevices() {
             className="mb-4"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.3em",
               color: "var(--primary)",
@@ -256,7 +256,7 @@ export function IntelligentDevices() {
                     <span
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "11.5px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: isActive ? 700 : 500,
                         color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.55)",
                         letterSpacing: "0.02em",
@@ -321,7 +321,7 @@ export function IntelligentDevices() {
                   <span
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "13px",
+                      fontSize: "var(--text-sm)",
                       fontWeight: isActive ? 700 : 500,
                       color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.55)",
                       letterSpacing: "0.02em",
@@ -410,7 +410,7 @@ export function IntelligentDevices() {
                       className="line-clamp-1 text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
-                        fontSize: "14px",
+                        fontSize: "var(--text-sm)",
                         fontWeight: 600,
                         lineHeight: 1.25,
                         letterSpacing: "-0.01em",
@@ -422,7 +422,7 @@ export function IntelligentDevices() {
                       className="mt-2 text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
-                        fontSize: "16px",
+                        fontSize: "var(--text-base)",
                         fontWeight: 700,
                         letterSpacing: "-0.01em",
                       }}
@@ -445,7 +445,7 @@ export function IntelligentDevices() {
               border: "1px solid rgba(225, 6, 0, 0.5)",
               color: "rgba(255, 80, 70, 0.95)",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.14em",
               textTransform: "uppercase",

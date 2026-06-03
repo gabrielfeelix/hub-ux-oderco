@@ -100,7 +100,7 @@ export function AuthModal() {
                 <div className="mb-5">
                   <img src="https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png" alt="PCYES" className="h-[28px] w-auto mx-auto object-contain" />
                 </div>
-                <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>
+                <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                   {authModalTab === "login" ? "Bem-vindo de volta" : "Crie sua conta"}
                 </p>
               </div>
@@ -109,7 +109,7 @@ export function AuthModal() {
               <div className="px-8 space-y-2.5">
                 <button onClick={() => handleSocial("google")} disabled={!!socialLoading}
                   className={`w-full flex items-center justify-center gap-3 py-3 hover:bg-white/90 transition-all duration-300 cursor-pointer disabled:opacity-50 ${isDark ? "bg-white text-black" : "bg-white text-black border border-foreground/10"}`}
-                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}
                 >
                   {socialLoading === "google" ? <Loader2 size={16} className="animate-spin" /> : <GoogleIcon />}
                   Continuar com Google
@@ -118,14 +118,14 @@ export function AuthModal() {
                 <div className="grid grid-cols-2 gap-2.5">
                   <button onClick={() => handleSocial("apple")} disabled={!!socialLoading}
                     className={`flex items-center justify-center gap-2.5 py-3 transition-all duration-300 cursor-pointer disabled:opacity-50 ${isDark ? "bg-foreground/5 text-foreground/70 hover:bg-foreground/10" : "bg-foreground/5 text-foreground hover:bg-foreground/10 border border-foreground/10"}`}
-                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}
+                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}
                   >
                     {socialLoading === "apple" ? <Loader2 size={15} className="animate-spin" /> : <AppleIcon />}
                     Apple
                   </button>
                   <button onClick={() => handleSocial("discord")} disabled={!!socialLoading}
                     className={`flex items-center justify-center gap-2.5 py-3 transition-all duration-300 cursor-pointer disabled:opacity-50 ${isDark ? "bg-foreground/5 text-foreground/70 hover:bg-foreground/10" : "bg-foreground/5 text-foreground hover:bg-foreground/10 border border-foreground/10"}`}
-                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}
+                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}
                   >
                     {socialLoading === "discord" ? <Loader2 size={15} className="animate-spin" /> : <DiscordIcon />}
                     Discord
@@ -136,7 +136,7 @@ export function AuthModal() {
               {/* Divider */}
               <div className="px-8 py-5 flex items-center gap-4">
                 <div className="flex-1 h-px bg-foreground/5" />
-                <span className="text-foreground/20" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>ou</span>
+                <span className="text-foreground/20" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>ou</span>
                 <div className="flex-1 h-px bg-foreground/5" />
               </div>
 
@@ -147,20 +147,20 @@ export function AuthModal() {
                     <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-foreground/20" />
                     <input type="text" placeholder="Nome completo" value={name} onChange={(e) => setName(e.target.value)} required
                       className="w-full pl-10 pr-4 py-3 bg-foreground/[0.03] border border-foreground/8 text-foreground placeholder:text-foreground/20 focus:border-foreground/20 focus:outline-none transition-colors"
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }} />
+                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }} />
                   </div>
                 )}
                 <div className="relative">
                   <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-foreground/20" />
                   <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required
                     className="w-full pl-10 pr-4 py-3 bg-foreground/[0.03] border border-foreground/8 text-foreground placeholder:text-foreground/20 focus:border-foreground/20 focus:outline-none transition-colors"
-                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }} />
+                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }} />
                 </div>
                 <div className="relative">
                   <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-foreground/20" />
                   <input type={showPassword ? "text" : "password"} placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required
                     className="w-full pl-10 pr-10 py-3 bg-foreground/[0.03] border border-foreground/8 text-foreground placeholder:text-foreground/20 focus:border-foreground/20 focus:outline-none transition-colors"
-                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "13px" }} />
+                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }} />
                   <button type="button" onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3.5 top-1/2 -translate-y-1/2 text-foreground/20 hover:text-foreground/50 transition-colors cursor-pointer"
                   >{showPassword ? <EyeOff size={15} /> : <Eye size={15} />}</button>
@@ -169,21 +169,21 @@ export function AuthModal() {
                 {authModalTab === "login" && (
                   <div className="text-right">
                     <button type="button" className="text-foreground/30 hover:text-primary transition-colors cursor-pointer"
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                     >Esqueceu a senha?</button>
                   </div>
                 )}
 
                 <button type="submit" disabled={loading}
                   className="w-full py-3.5 bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: "var(--font-weight-medium)" }}
+                  style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}
                 >
                   {loading ? <Loader2 size={16} className="animate-spin" /> : (
                     <>{authModalTab === "login" ? "Entrar" : "Criar conta"}<ArrowRight size={15} /></>
                   )}
                 </button>
 
-                <p className="text-center pt-2 text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                <p className="text-center pt-2 text-foreground/30" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                   {authModalTab === "login" ? "Não tem conta? " : "Já tem conta? "}
                   <button type="button" onClick={() => { setAuthModalTab(authModalTab === "login" ? "register" : "login"); reset(); }}
                     className="text-primary hover:underline cursor-pointer"

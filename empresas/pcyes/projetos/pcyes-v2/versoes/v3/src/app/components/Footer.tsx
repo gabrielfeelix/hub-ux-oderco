@@ -129,13 +129,13 @@ export function Footer() {
             <Link to="/" className="hover:opacity-80 transition-opacity" aria-label="PCYES">
               <ImageWithFallback src={brandLogo} alt="PCYES" className="h-[34px] w-auto object-contain" />
             </Link>
-            <p className={`max-w-md text-[13px] ${isDark ? "text-foreground/50" : "text-foreground/60"}`} style={{ fontFamily: "var(--font-family-inter)", lineHeight: "1.6" }}>
+            <p className={`max-w-md text-[var(--text-sm)] ${isDark ? "text-foreground/50" : "text-foreground/60"}`} style={{ fontFamily: "var(--font-family-inter)", lineHeight: "1.6" }}>
               A PCYES nasceu para impulsionar a performance dos gamers e profissionais, entregando produtos de alta qualidade, tecnologia e design inovador para o seu setup.
             </p>
             <div className="pt-6">
               <ImageWithFallback src={paymentMethodsImage} alt="Formas de pagamento PCYES" className="h-auto w-[250px] max-w-full object-contain opacity-50 hover:opacity-80 transition-opacity" />
             </div>
-            <p className={isDark ? "text-foreground/30 mt-2" : "text-foreground/40 mt-2"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+            <p className={isDark ? "text-foreground/30 mt-2" : "text-foreground/40 mt-2"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
               &copy; {new Date().getFullYear()} Oderço Distribuidora | Todos os direitos reservados.
             </p>
           </div>
@@ -154,7 +154,7 @@ export function Footer() {
             <Link to="/" className="mb-5 block hover:opacity-80 transition-opacity" aria-label="PCYES">
               <ImageWithFallback src={brandLogo} alt="PCYES" className="h-[34px] w-auto object-contain" />
             </Link>
-            <p className="mb-4 text-foreground tracking-[0.04em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-bold)" }}>
+            <p className="mb-4 text-foreground tracking-[0.04em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-bold)" }}>
               NOSSA MISSÃO
             </p>
             <p className={`mb-8 max-w-[503px] text-sm pr-4 ${isDark ? "text-foreground/60" : "text-foreground/70"}`} style={{ fontFamily: "var(--font-family-inter)", lineHeight: "22.75px" }}>
@@ -179,13 +179,13 @@ export function Footer() {
             {columns.map((col) => (
               <div key={col.title}>
                 <p className={isDark ? "text-foreground mb-6 tracking-wide" : "text-foreground mb-6 tracking-wide"}
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-bold)", letterSpacing: "0.04em" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-bold)", letterSpacing: "0.04em" }}
                 >{col.title}</p>
                 <div className="flex flex-col gap-1 md:gap-4">
                   {col.links.map((link) => (
                     <Link key={link.label} to={link.href}
                       className={`flex items-center min-h-[44px] md:block md:min-h-0 ${isDark ? "text-foreground/60 hover:text-foreground transition-colors duration-300" : "text-foreground/70 hover:text-foreground transition-colors duration-300"}`}
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                     >{link.label}</Link>
                   ))}
                 </div>
@@ -196,7 +196,7 @@ export function Footer() {
           {/* Certificados */}
           <div>
             <p className={isDark ? "text-foreground mb-6 tracking-wide" : "text-foreground mb-6 tracking-wide"}
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-bold)", letterSpacing: "0.04em" }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-bold)", letterSpacing: "0.04em" }}
             >CERTIFICADOS</p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {certifications.map((cert) => {
@@ -243,10 +243,10 @@ export function Footer() {
         {/* Corporate Info */}
         <div className={`flex flex-col gap-10 pt-[33px] border-t md:grid md:grid-cols-3 md:items-center ${isDark ? "border-foreground/5" : "border-foreground/10"}`}>
           <div className="flex-1">
-            <p className={isDark ? "text-foreground/50 mb-1" : "text-foreground/80 mb-1"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-bold)" }}>
+            <p className={isDark ? "text-foreground/50 mb-1" : "text-foreground/80 mb-1"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-bold)" }}>
               Oderço Distribuidora de Eletrônicos LTDA - 09.301.845/0001-91
             </p>
-            <p className={isDark ? "text-foreground/40" : "text-foreground/60"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", lineHeight: "1.6" }}>
+            <p className={isDark ? "text-foreground/40" : "text-foreground/60"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: "1.6" }}>
               Av. Paranavaí, 1906 - Parque Industrial Bandeirantes, Maringá - PR, 87070-130
               <br/>
               &copy; {new Date().getFullYear()} Oderço Distribuidora | Todos os direitos reservados.
@@ -256,7 +256,7 @@ export function Footer() {
             <ImageWithFallback src={paymentMethodsImage} alt="Formas de pagamento PCYES" className="h-auto w-[373px] max-w-full object-contain" />
           </div>
           <div className="md:flex-1 md:text-right">
-            <p className={isDark ? "text-foreground/30" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: "var(--font-weight-bold)" }}>
+            <p className={isDark ? "text-foreground/30" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-bold)" }}>
               Desenvolvido por Oderço
             </p>
           </div>

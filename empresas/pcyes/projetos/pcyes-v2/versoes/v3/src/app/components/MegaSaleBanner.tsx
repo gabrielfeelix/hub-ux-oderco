@@ -91,7 +91,7 @@ export function MegaSaleBanner() {
                 <span
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 800,
                     letterSpacing: "0.18em",
                     color: "#fff",
@@ -127,7 +127,7 @@ export function MegaSaleBanner() {
                   style={{
                     color: "#1a0000",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 800,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -151,7 +151,7 @@ export function MegaSaleBanner() {
                     className="text-ink-strong tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "15px",
+                      fontSize: "var(--text-base)",
                       fontWeight: 800,
                       letterSpacing: "0.04em",
                     }}

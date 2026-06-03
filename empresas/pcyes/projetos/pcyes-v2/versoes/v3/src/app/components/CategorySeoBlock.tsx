@@ -276,7 +276,7 @@ export function CategorySeoBlock({
             className="mt-4 md:hidden inline-flex items-center gap-2 min-h-[44px] hover:underline transition-colors"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               fontWeight: 700,
               color: "#ff3b3e",
               letterSpacing: "0.02em",

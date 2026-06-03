@@ -196,7 +196,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
         {images.length > 1 && (
           <span
             className="absolute bottom-3 right-3 px-2.5 py-1 bg-black/30 backdrop-blur-md text-ink opacity-0 group-hover:opacity-100 transition-opacity"
-            style={{ borderRadius: "var(--radius-pill)", fontSize: "11px", fontFamily: "var(--font-family-inter)" }}
+            style={{ borderRadius: "var(--radius-pill)", fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)" }}
           >
             {active + 1} / {images.length}
           </span>
@@ -326,7 +326,7 @@ function CountdownTimer() {
   const TimeBox = ({ value }: { value: string }) => (
     <span
       className="inline-flex items-center justify-center min-w-[26px] px-1.5 py-1 bg-foreground text-background font-bold tabular-nums"
-      style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+      style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
     >
       {value}
     </span>
@@ -340,7 +340,7 @@ function CountdownTimer() {
       <Clock size={13} className="text-primary flex-shrink-0" strokeWidth={2} />
       <span
         className="text-foreground/65 font-medium flex-1 truncate"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
       >
         Oferta encerra em
       </span>
@@ -389,7 +389,7 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
         <MapPin size={13} className="text-foreground/40" strokeWidth={1.8} />
         <span
           className="text-foreground/60 font-semibold tracking-wide"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.08em" }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.08em" }}
         >
           CONSULTAR FRETE
         </span>
@@ -408,7 +408,7 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
             border: "1px solid rgba(var(--foreground-rgb), 0.10)",
             background: "rgba(var(--foreground-rgb), 0.04)",
             fontFamily: "var(--font-family-inter)",
-            fontSize: "14px",
+            fontSize: "var(--text-sm)",
             letterSpacing: "0.02em",
           }}
           onFocus={(e) => {
@@ -426,7 +426,7 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
           ) : digits.length === 8 && options ? (
             <Check size={15} className="text-green-500" />
           ) : (
-            <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+            <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
               {digits.length}/8
             </span>
           )}
@@ -440,7 +440,7 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
             className="text-foreground/40 mt-2"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
           >
             Digite os 8 dígitos para ver as opções
           </motion.p>
@@ -474,13 +474,13 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
                     <div className="min-w-0">
                       <p
                         className={`truncate ${opt.isFree ? "text-green-500 font-semibold" : "text-foreground/75 font-medium"}`}
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                       >
                         {opt.name}
                       </p>
                       <p
                         className="text-foreground/40"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                       >
                         {opt.days}
                       </p>
@@ -488,7 +488,7 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
                   </div>
                   <span
                     className={`flex-shrink-0 ml-3 ${opt.isFree ? "text-green-500 font-bold" : "text-foreground font-semibold"}`}
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                   >
                     {opt.price}
                   </span>
@@ -555,7 +555,7 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
               >
                 <h3
                   className="text-foreground"
-                  style={{ fontFamily: "var(--font-family-figtree)", fontSize: "17px", fontWeight: 500 }}
+                  style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 500 }}
                 >
                   Formas de pagamento
                 </h3>
@@ -578,20 +578,20 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                     <div className="flex-1">
                       <h4
                         className="text-foreground font-semibold"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                       >
                         PIX
                       </h4>
                       <p
                         className="text-foreground/45"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                       >
                         Aprovação imediata
                       </p>
                     </div>
                     <span
                       className="px-2 py-0.5 bg-green-500/15 text-green-500 font-bold flex-shrink-0"
-                      style={{ borderRadius: "var(--radius)", fontSize: "10.5px", fontFamily: "var(--font-family-inter)" }}
+                      style={{ borderRadius: "var(--radius)", fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)" }}
                     >
                       10% OFF
                     </span>
@@ -602,13 +602,13 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                   >
                     <span
                       className="text-foreground/60"
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                     >
                       Total à vista
                     </span>
                     <span
                       className="text-green-500"
-                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600 }}
+                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600 }}
                     >
                       {formatBRL(pixPrice)}
                     </span>
@@ -624,13 +624,13 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                     <div className="flex-1">
                       <h4
                         className="text-foreground font-semibold"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                       >
                         Cartão de crédito
                       </h4>
                       <p
                         className="text-foreground/45"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                       >
                         Visa · Master · Elo · Amex · Hipercard
                       </p>
@@ -649,13 +649,13 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                           >
                             <span
                               className="text-foreground/45 font-medium"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                             >
                               {inst.n}×
                             </span>
                             <span
                               className="text-foreground font-semibold tabular-nums"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                             >
                               {formatBRL(inst.value)}
                             </span>
@@ -670,13 +670,13 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                           >
                             <span
                               className="text-foreground/45 font-medium"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                             >
                               {inst.n}×
                             </span>
                             <span
                               className="text-foreground font-semibold tabular-nums"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                             >
                               {formatBRL(inst.value)}
                             </span>
@@ -687,7 +687,7 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                   </div>
                   <p
                     className="text-foreground/40 mt-2.5 flex items-center gap-1.5"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     <Info size={11} strokeWidth={1.8} />
                     Todas as parcelas sem juros
@@ -703,13 +703,13 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                     <div className="flex-1">
                       <h4
                         className="text-foreground font-semibold"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                       >
                         Boleto bancário
                       </h4>
                       <p
                         className="text-foreground/45"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                       >
                         Vencimento em 3 dias úteis
                       </p>
@@ -721,13 +721,13 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                   >
                     <span
                       className="text-foreground/60"
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                     >
                       Total
                     </span>
                     <span
                       className="text-foreground"
-                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 500 }}
+                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 500 }}
                     >
                       {formatBRL(priceNum)}
                     </span>
@@ -795,7 +795,7 @@ function StickyPriceCard({
             <div className="flex items-center gap-2 mb-1.5">
               <span
                 className="line-through leading-none"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.38)" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.38)" }}
               >
                 {product.oldPrice}
               </span>
@@ -819,7 +819,7 @@ function StickyPriceCard({
 
           <p
             className="text-foreground/55 mb-2.5"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
           >
             no <span className="text-green-500 font-semibold">PIX</span> com{" "}
             <span className="text-green-500 font-semibold">10% de desconto</span>
@@ -829,7 +829,7 @@ function StickyPriceCard({
 
           <p
             className="text-foreground/65"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", lineHeight: "1.55" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: "1.55" }}
           >
             ou <span className="text-foreground font-semibold">{product.price}</span> em até{" "}
             <span className="text-foreground font-semibold">12× {formatBRL(installment)}</span> sem juros
@@ -838,7 +838,7 @@ function StickyPriceCard({
           <button
             onClick={() => setPaymentOpen(true)}
             className="mt-2.5 inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors cursor-pointer group"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
           >
             Ver opções de pagamento
             <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -855,7 +855,7 @@ function StickyPriceCard({
           </span>
           <span
             className={inStock ? "text-[#4CAF50]" : "text-foreground/45"}
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
           >
             {inStock ? `${stockLabel} · envio em 24h` : "Sem estoque"}
           </span>
@@ -865,7 +865,7 @@ function StickyPriceCard({
         <div className="flex items-center justify-between mb-3">
           <span
             className="text-foreground/55 font-semibold tracking-wide"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.08em" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.08em" }}
           >
             QUANTIDADE
           </span>
@@ -943,7 +943,7 @@ function MobilePurchaseFlow({
                 background: "var(--gradient-preorder-orange)",
                 color: "#fff",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 900,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
@@ -957,7 +957,7 @@ function MobilePurchaseFlow({
               className="text-foreground/45"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 600,
                 lineHeight: 1.4,
               }}
@@ -974,25 +974,25 @@ function MobilePurchaseFlow({
             <div className="flex items-center gap-2">
               <span
                 className="text-foreground/35 line-through"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
               >
                 {product.oldPrice}
               </span>
-              {discount > 0 && <DiscountBadge percent={discount} size="sm" style={{ fontSize: "10.5px" }} />}
+              {discount > 0 && <DiscountBadge percent={discount} size="sm" style={{ fontSize: "var(--text-caption)" }} />}
             </div>
           ) : <span />}
 
           {isPreOrder ? (
             <span
               className="text-[#f97316]"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}
             >
               {preOrderSoldOut ? "Reservas esgotadas" : "Reserva garantida"}
             </span>
           ) : (
             <span
               className={inStock ? "text-green-500" : "text-foreground/45"}
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}
             >
               {inStock ? stockLabel : "Sem estoque"}
             </span>
@@ -1006,7 +1006,7 @@ function MobilePurchaseFlow({
                 className="text-foreground/45 mb-1"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   fontWeight: 700,
@@ -1029,7 +1029,7 @@ function MobilePurchaseFlow({
                 {preOrderInfo!.preOrderPrice && preOrderInfo!.preOrderPrice !== product.price && (
                   <span
                     className="line-through text-foreground/35"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                   >
                     {product.price}
                   </span>
@@ -1037,7 +1037,7 @@ function MobilePurchaseFlow({
               </div>
               <p
                 className="text-foreground/60 mt-1"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.55" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "1.55" }}
               >
                 Pagamento parcelado · sem cobrança até o envio
               </p>
@@ -1057,7 +1057,7 @@ function MobilePurchaseFlow({
               </p>
               <p
                 className="text-foreground/60"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.55" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "1.55" }}
               >
                 à vista no <span className="text-[#4CAF50] font-bold">PIX</span> com{" "}
                 <span className="text-[#4CAF50] font-bold">10% de desconto</span>
@@ -1069,7 +1069,7 @@ function MobilePurchaseFlow({
         {!isPreOrder && (
           <p
             className="text-foreground/68 mb-3"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: "1.6" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "1.6" }}
           >
             ou <span className="text-foreground font-bold">{product.price}</span> em até{" "}
             <span className="text-foreground font-bold">12x de {formatBRL(installment)}</span> sem juros no cartão
@@ -1080,7 +1080,7 @@ function MobilePurchaseFlow({
           <button
             onClick={() => setPaymentOpen(true)}
             className="mb-5 inline-flex items-center gap-1 text-foreground underline underline-offset-4 decoration-foreground/30 cursor-pointer"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}
           >
             Ver opções de pagamento
             <ArrowUpRight size={12} />
@@ -1094,7 +1094,7 @@ function MobilePurchaseFlow({
               className="text-foreground/45 mb-2"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10.5px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 700,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
@@ -1123,7 +1123,7 @@ function MobilePurchaseFlow({
                       className="text-foreground tabular-nums leading-none"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
-                        fontSize: "24px",
+                        fontSize: "var(--text-xl)",
                         fontWeight: 700,
                         letterSpacing: "-0.02em",
                       }}
@@ -1134,7 +1134,7 @@ function MobilePurchaseFlow({
                       className="text-foreground/40 mt-1"
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "9.5px",
+                        fontSize: "var(--text-caption)",
                         letterSpacing: "0.18em",
                         textTransform: "uppercase",
                         fontWeight: 700,
@@ -1152,7 +1152,7 @@ function MobilePurchaseFlow({
               <CalendarDays size={13} className="text-foreground/55" strokeWidth={2.2} />
               <span
                 className="text-foreground/65"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
               >
                 Entrega prevista:{" "}
                 <span className="text-foreground">{formatPreOrderDate(preOrderInfo!.releaseDate)}</span>
@@ -1166,7 +1166,7 @@ function MobilePurchaseFlow({
                   className="text-foreground/55"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10.5px",
+                    fontSize: "var(--text-caption)",
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
                     fontWeight: 700,
@@ -1176,7 +1176,7 @@ function MobilePurchaseFlow({
                 </span>
                 <span
                   className="text-foreground tabular-nums"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}
                 >
                   {preOrderInfo!.reservedUnits.toLocaleString("pt-BR")} / {preOrderInfo!.totalUnits.toLocaleString("pt-BR")}
                 </span>
@@ -1197,7 +1197,7 @@ function MobilePurchaseFlow({
               </div>
               <p
                 className="text-foreground/45 mt-1.5"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
               >
                 {remaining > 0
                   ? `Restam ${remaining.toLocaleString("pt-BR")} reservas`
@@ -1210,7 +1210,7 @@ function MobilePurchaseFlow({
         <div className="flex items-center justify-between mb-3">
           <span
             className="text-foreground/50 font-semibold tracking-wide"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.08em" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.08em" }}
           >
             QUANTIDADE
           </span>
@@ -1243,7 +1243,7 @@ function MobilePurchaseFlow({
             <ShieldCheck size={13} className="text-[#22c55e] mt-0.5 flex-shrink-0" strokeWidth={2.2} />
             <p
               className="text-foreground/55"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", lineHeight: 1.5 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}
             >
               Você pode cancelar a reserva a qualquer momento antes do envio.
               Cobrança só acontece no despacho do produto.
@@ -1287,7 +1287,7 @@ function AboutProduct({ product, onSeeDescription }: { product: any; onSeeDescri
     <section>
       <p
         className="text-primary font-bold tracking-wide mb-4"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.3em" }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.3em" }}
       >
         // SOBRE O PRODUTO
       </p>
@@ -1306,7 +1306,7 @@ function AboutProduct({ product, onSeeDescription }: { product: any; onSeeDescri
             </span>
             <span
               className="text-foreground/65 leading-relaxed"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", lineHeight: "1.65" }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "1.65" }}
             >
               {bullet}
             </span>
@@ -1317,7 +1317,7 @@ function AboutProduct({ product, onSeeDescription }: { product: any; onSeeDescri
       <button
         onClick={onSeeDescription}
         className="mt-4 inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors cursor-pointer group"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
       >
         Ver mais
         <ChevronRight size={13} className="rotate-90 transition-transform group-hover:translate-y-0.5" />
@@ -1486,12 +1486,12 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Summary */}
           <div className="w-full lg:w-[320px] flex-shrink-0">
-            <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: 600 }}>
+            <h2 className="text-foreground mb-6" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-2xl)", fontWeight: 600 }}>
               Avaliações de Clientes
             </h2>
 
             <div className="flex items-center gap-4 mb-8">
-              <span className="text-foreground" style={{ fontSize: "56px", fontWeight: 700, fontFamily: "var(--font-family-figtree)" }}>
+              <span className="text-foreground" style={{ fontSize: "var(--text-h2)", fontWeight: 700, fontFamily: "var(--font-family-figtree)" }}>
                 {product.rating.toFixed(1)}
               </span>
               <div>
@@ -1500,7 +1500,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     <Star key={i} size={16} className={i < Math.floor(product.rating) ? "fill-[#FFB800] text-[#FFB800]" : "text-foreground/12"} fill="currentColor" />
                   ))}
                 </div>
-                <p className="text-foreground/45" style={{ fontSize: "14px", fontFamily: "var(--font-family-inter)" }}>
+                <p className="text-foreground/45" style={{ fontSize: "var(--text-sm)", fontFamily: "var(--font-family-inter)" }}>
                   {product.reviews} avaliações
                 </p>
               </div>
@@ -1511,7 +1511,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                 const percentage = star === 5 ? 85 : star === 4 ? 12 : 1;
                 return (
                   <button key={star} onClick={() => { setActiveStarFilter(activeStarFilter === star ? null : star); setReviewPage(1); }} className={`flex w-full items-center gap-3 p-1.5 rounded transition-colors cursor-pointer ${activeStarFilter === star ? 'bg-primary/10' : 'hover:bg-foreground/5'}`}>
-                    <span className="text-foreground/45 min-w-[12px]" style={{ fontSize: "12px", fontWeight: 600 }}>{star}</span>
+                    <span className="text-foreground/45 min-w-[12px]" style={{ fontSize: "var(--text-caption)", fontWeight: 600 }}>{star}</span>
                     <div className="flex-1 h-1.5 bg-foreground/5 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
@@ -1520,13 +1520,13 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                         className="h-full bg-[#FFB800]"
                       />
                     </div>
-                    <span className="text-foreground/30 min-w-[32px] text-right" style={{ fontSize: "12px" }}>{percentage}%</span>
+                    <span className="text-foreground/30 min-w-[32px] text-right" style={{ fontSize: "var(--text-caption)" }}>{percentage}%</span>
                   </button>
                 );
               })}
             </div>
 
-            <button onClick={() => setReviewModalOpen(true)} className="w-full mt-10 py-3.5 border border-foreground/10 hover:border-foreground/25 text-foreground transition-all font-semibold cursor-pointer" style={{ borderRadius: "var(--radius-button)", fontSize: "14px" }}>
+            <button onClick={() => setReviewModalOpen(true)} className="w-full mt-10 py-3.5 border border-foreground/10 hover:border-foreground/25 text-foreground transition-all font-semibold cursor-pointer" style={{ borderRadius: "var(--radius-button)", fontSize: "var(--text-sm)" }}>
               Escrever uma avaliação
             </button>
           </div>
@@ -1647,7 +1647,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                       </div>
                       <div>
                         <div className="flex items-center gap-2 mb-0.5">
-                          <span className="text-foreground font-semibold" style={{ fontSize: "14px" }}>{rev.user}</span>
+                          <span className="text-foreground font-semibold" style={{ fontSize: "var(--text-sm)" }}>{rev.user}</span>
                           {rev.verified && <Check size={12} className="text-green-500" strokeWidth={3} />}
                         </div>
                         <div className="flex items-center gap-2">
@@ -1656,13 +1656,13 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                               <Star key={i} size={11} className={i < rev.rating ? "fill-[#FFB800] text-[#FFB800]" : "text-foreground/12"} fill="currentColor" />
                             ))}
                           </div>
-                          <span className="text-foreground/25" style={{ fontSize: "11px" }}>{rev.date}</span>
+                          <span className="text-foreground/25" style={{ fontSize: "var(--text-caption)" }}>{rev.date}</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-foreground/75 leading-relaxed mb-4" style={{ fontSize: "15px", fontFamily: "var(--font-family-inter)" }}>
+                  <p className="text-foreground/75 leading-relaxed mb-4" style={{ fontSize: "var(--text-base)", fontFamily: "var(--font-family-inter)" }}>
                     {rev.comment}
                   </p>
 
@@ -1681,7 +1681,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     </div>
                   )}
 
-                  <button className="inline-flex items-center gap-2 min-h-[44px] md:min-h-0 text-foreground/30 hover:text-foreground transition-colors" style={{ fontSize: "12px" }}>
+                  <button className="inline-flex items-center gap-2 min-h-[44px] md:min-h-0 text-foreground/30 hover:text-foreground transition-colors" style={{ fontSize: "var(--text-caption)" }}>
                     Útil? ({rev.likes})
                   </button>
                 </div>
@@ -1690,7 +1690,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
 
             {filteredReviews.length > reviewsPerPage && (
               <div className="mt-12 flex items-center justify-between gap-4">
-                <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                   Página {reviewPage} de {totalReviewPages}
                 </span>
                 <div className="flex items-center gap-2">
@@ -1698,7 +1698,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     onClick={() => goToReviewPage(Math.max(1, reviewPage - 1))}
                     disabled={reviewPage === 1}
                     className="h-11 md:h-9 px-4 border border-foreground/10 text-foreground/55 transition-colors hover:border-foreground/25 hover:text-foreground disabled:opacity-30 disabled:hover:border-foreground/10 disabled:hover:text-foreground/55 cursor-pointer disabled:cursor-not-allowed"
-                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}
                   >
                     Anterior
                   </button>
@@ -1711,7 +1711,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                           ? "bg-primary text-primary-foreground"
                           : "bg-foreground/5 text-foreground/45 hover:bg-foreground/10 hover:text-foreground"
                       }`}
-                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 800 }}
+                      style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}
                     >
                       {page}
                     </button>
@@ -1720,7 +1720,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     onClick={() => goToReviewPage(Math.min(totalReviewPages, reviewPage + 1))}
                     disabled={reviewPage === totalReviewPages}
                     className="h-11 md:h-9 px-4 border border-foreground/10 text-foreground/55 transition-colors hover:border-foreground/25 hover:text-foreground disabled:opacity-30 disabled:hover:border-foreground/10 disabled:hover:text-foreground/55 cursor-pointer disabled:cursor-not-allowed"
-                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}
+                    style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}
                   >
                     Próxima
                   </button>
@@ -1781,7 +1781,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                 <aside className="flex md:max-h-[88vh] flex-col p-5 md:p-6">
                   <div className="mb-5 flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-foreground font-semibold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>
+                      <p className="text-foreground font-semibold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                         {selectedReview.user}
                       </p>
                       <div className="mt-1 flex items-center gap-2">
@@ -1790,7 +1790,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                             <Star key={i} size={12} className={i < selectedReview.rating ? "fill-[#FFB800] text-[#FFB800]" : "text-foreground/12"} />
                           ))}
                         </div>
-                        <span className="text-foreground/30" style={{ fontSize: "11px" }}>{selectedReview.date}</span>
+                        <span className="text-foreground/30" style={{ fontSize: "var(--text-caption)" }}>{selectedReview.date}</span>
                       </div>
                     </div>
                     <button
@@ -1802,7 +1802,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     </button>
                   </div>
 
-                  <p className="text-foreground/70 leading-relaxed" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.7 }}>
+                  <p className="text-foreground/70 leading-relaxed" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.7 }}>
                     {selectedReview.comment}
                   </p>
 
@@ -1872,7 +1872,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                 className="pointer-events-auto w-full max-w-[500px] max-h-[90vh] overflow-y-auto bg-background border border-foreground/10 shadow-2xl p-6 rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
               >
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600 }}>
+                  <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600 }}>
                     Escrever Avaliação
                   </h3>
                   <button
@@ -1885,7 +1885,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-foreground/70 mb-2" style={{ fontSize: "14px", fontWeight: 500 }}>Nota</label>
+                    <label className="block text-foreground/70 mb-2" style={{ fontSize: "var(--text-sm)", fontWeight: 500 }}>Nota</label>
                     <div className="flex gap-2">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
@@ -1899,13 +1899,13 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                     </div>
                   </div>
                   <div>
-                    <label className="block text-foreground/70 mb-2" style={{ fontSize: "14px", fontWeight: 500 }}>Seu comentário</label>
+                    <label className="block text-foreground/70 mb-2" style={{ fontSize: "var(--text-sm)", fontWeight: 500 }}>Seu comentário</label>
                     <textarea
                       value={newReviewText}
                       onChange={(e) => setNewReviewText(e.target.value)}
                       placeholder="Conte-nos o que achou do produto..."
                       className="w-full h-32 border border-foreground/12 bg-transparent text-foreground placeholder-foreground/30 p-3 focus:border-primary/50 focus:outline-none transition-colors resize-none"
-                      style={{ borderRadius: "var(--radius-card)", fontSize: "14px" }}
+                      style={{ borderRadius: "var(--radius-card)", fontSize: "var(--text-sm)" }}
                     />
                   </div>
                   <button
@@ -1924,7 +1924,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                       setNewReviewText("");
                     }}
                     className="w-full mt-4 py-3 bg-primary text-primary-foreground font-semibold transition-all hover:bg-primary/90 cursor-pointer"
-                    style={{ borderRadius: "var(--radius-button)", fontSize: "14px" }}
+                    style={{ borderRadius: "var(--radius-button)", fontSize: "var(--text-sm)" }}
                   >
                     Enviar Avaliação
                   </button>
@@ -1975,13 +1975,13 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           }}
         >
           <section className="px-6 py-10 text-center md:px-10 md:py-14">
-            <p className="mb-4 text-primary tracking-[0.24em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 800 }}>
+            <p className="mb-4 text-primary tracking-[0.24em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
               // {product.category}
             </p>
             <h3 className="mx-auto max-w-[820px] text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 5vw, 52px)", lineHeight: 1.02, fontWeight: 700, letterSpacing: "-0.04em" }}>
               Sobre o produto
             </h3>
-            <p className="mx-auto mt-5 max-w-[820px] text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "17px", lineHeight: 1.65 }}>
+            <p className="mx-auto mt-5 max-w-[820px] text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", lineHeight: 1.65 }}>
               {lead}
             </p>
             <div className="relative mt-9 flex min-h-[360px] items-center justify-center overflow-hidden p-8" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
@@ -2005,7 +2005,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                   <h3 className="max-w-[420px] text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3vw, 32px)", lineHeight: 1.08, fontWeight: 700, textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
                     Construção pensada para performance
                   </h3>
-                  <p className="mt-3 max-w-[520px] text-ink" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.65, textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}>
+                  <p className="mt-3 max-w-[520px] text-ink" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.65, textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}>
                     Produto pensado para setups exigentes, com materiais selecionados, visual limpo e desempenho consistente.
                   </p>
                 </div>
@@ -2017,7 +2017,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                     <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
                       Design para o dia a dia
                     </h3>
-                    <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.6 }}>
+                    <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}>
                       Visual moderno, presença equilibrada e experiência consistente para trabalho, estudo ou gameplay.
                     </p>
                   </div>
@@ -2030,7 +2030,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                     <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
                       Pronto para acompanhar seu ritmo
                     </h3>
-                    <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.6 }}>
+                    <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}>
                       Recursos essenciais reunidos em um produto confiável, bonito e fácil de integrar ao seu setup.
                     </p>
                   </div>
@@ -2059,7 +2059,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           </section>
 
           <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
-            <p className="mb-3 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
+            <p className="mb-3 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
               // EM VÍDEO
             </p>
             <h3 className="mb-6 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3.4vw, 32px)", lineHeight: 1.08, fontWeight: 700, letterSpacing: "-0.02em" }}>
@@ -2080,7 +2080,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
             <article className="relative overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
               <div className="relative z-10 w-full p-7 md:w-[62%] md:p-9">
-                <p className="mb-4 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
+                <p className="mb-4 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
                   // RAIO-X DO PRODUTO
                 </p>
                 <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(28px, 4vw, 38px)", lineHeight: 1.08, fontWeight: 700 }}>
@@ -2089,10 +2089,10 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                 <dl className="mt-6 grid gap-3">
                   {specs.slice(0, 8).map((spec: { label: string; value: string }) => (
                     <div key={spec.label} className="grid gap-2 border-b border-edge-subtle pb-3 sm:grid-cols-[170px_1fr]">
-                      <dt className="text-foreground/48 tracking-[0.12em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 800 }}>
+                      <dt className="text-foreground/48 tracking-[0.12em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
                         {spec.label}
                       </dt>
-                      <dd className="text-foreground/85" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 600 }}>
+                      <dd className="text-foreground/85" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
                         {spec.value}
                       </dd>
                     </div>
@@ -2194,7 +2194,7 @@ export function ProductPage() {
       <div className="min-h-screen flex flex-col items-center justify-center gap-6">
         <p
           className="text-foreground/30"
-          style={{ fontFamily: "var(--font-family-figtree)", fontSize: "24px", fontWeight: "var(--font-weight-light)" }}
+          style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: "var(--font-weight-light)" }}
         >
           Produto não encontrado
         </p>
@@ -2204,7 +2204,7 @@ export function ProductPage() {
           style={{
             borderRadius: "var(--radius-button)",
             fontFamily: "var(--font-family-inter)",
-            fontSize: "13px",
+            fontSize: "var(--text-sm)",
             fontWeight: "var(--font-weight-medium)",
           }}
         >
@@ -2324,22 +2324,22 @@ export function ProductPage() {
             { label: productSubcategory, to: getCatalogHref({ category: product.category, subcategory: productSubcategory }) },
           ].map((crumb, i) => (
             <li key={crumb.label} className="flex items-center gap-1.5">
-              {i > 0 && <span className="text-foreground/15" style={{ fontSize: "10px" }}>›</span>}
+              {i > 0 && <span className="text-foreground/15" style={{ fontSize: "var(--text-caption)" }}>›</span>}
               <Link
                 to={crumb.to}
                 className="text-foreground/35 hover:text-foreground/65 transition-colors"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
               >
                 {crumb.label}
               </Link>
             </li>
           ))}
           <li className="flex items-center gap-1.5">
-            <span className="text-foreground/15" style={{ fontSize: "10px" }}>›</span>
+            <span className="text-foreground/15" style={{ fontSize: "var(--text-caption)" }}>›</span>
             <span
               aria-current="page"
               className="text-foreground/55 truncate max-w-[200px] md:max-w-[260px]"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
             >
               {product.name}
             </span>
@@ -2367,7 +2367,7 @@ export function ProductPage() {
             <div className="order-3 lg:hidden w-full">
               <p
                 className="text-foreground/55 mb-2.5 font-semibold tracking-wide"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.1em" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.1em" }}
               >
                 COR · <span className="text-foreground/40 font-medium tracking-normal normal-case">
                   {swatches.find((s) => s.productId === product.id)?.label}
@@ -2418,7 +2418,7 @@ export function ProductPage() {
                 {product.brand && (
                   <span
                     className="text-foreground/45 font-semibold tracking-widest uppercase"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", letterSpacing: "0.14em" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.14em" }}
                   >
                     {product.brand}
                   </span>
@@ -2427,7 +2427,7 @@ export function ProductPage() {
                 {product.badge && (
                   <span
                     className="px-2 py-0.5 bg-primary/12 text-primary font-bold"
-                    style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                    style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     {product.badge}
                   </span>
@@ -2487,7 +2487,7 @@ export function ProductPage() {
               </div>
               <span
                 className="inline-flex items-center min-h-[44px] md:min-h-0 text-foreground/70 font-semibold tabular-nums cursor-pointer hover:text-[#FFB800] transition-colors"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 onClick={scrollToReviews}
               >
                 {product.rating.toFixed(1)}
@@ -2495,7 +2495,7 @@ export function ProductPage() {
               <span className="text-foreground/15">·</span>
               <span
                 className="inline-flex items-center min-h-[44px] md:min-h-0 text-foreground/45 hover:text-foreground/65 cursor-pointer transition-colors"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                 onClick={scrollToReviews}
               >
                 {product.reviews} avaliações
@@ -2505,7 +2505,7 @@ export function ProductPage() {
                   <span className="text-foreground/15">·</span>
                   <span
                     className="text-foreground/30"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     SKU {product.sku}
                   </span>
@@ -2518,7 +2518,7 @@ export function ProductPage() {
               <div className="hidden lg:block mb-6">
                 <p
                   className="text-foreground/55 mb-2.5 font-semibold tracking-wide"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.1em" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.1em" }}
                 >
                   COR · <span className="text-foreground/40 font-medium tracking-normal normal-case">
                     {swatches.find((s) => s.productId === product.id)?.label}
@@ -2606,7 +2606,7 @@ export function ProductPage() {
               <div>
                 <p
                   className="mb-3 text-primary"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.3em" }}
                 >
                   // VOCÊ TAMBÉM VAI GOSTAR
                 </p>
@@ -2620,7 +2620,7 @@ export function ProductPage() {
               <Link
                 to={getCatalogHref({ category: product.category, subcategory: productSubcategory })}
                 className="hidden md:flex items-center gap-2 text-foreground/30 hover:text-foreground/60 transition-colors duration-300"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
               >
                 Ver todos <ArrowUpRight size={14} />
               </Link>
@@ -2671,7 +2671,7 @@ export function ProductPage() {
                             padding: "6px 12px",
                             borderRadius: "var(--radius-card-sm)",
                             fontFamily: "var(--font-family-figtree)",
-                            fontSize: "15px",
+                            fontSize: "var(--text-base)",
                             fontWeight: 900,
                             letterSpacing: "-0.02em",
                             boxShadow: "0 12px 28px -8px rgba(34,197,94,0.55)",
@@ -2687,7 +2687,7 @@ export function ProductPage() {
                           background: "var(--gradient-buy)",
                           color: "white",
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "13px",
+                          fontSize: "var(--text-sm)",
                           fontWeight: 700,
                           letterSpacing: "0.04em",
                           boxShadow: "var(--shadow-buy-cta-sm)",
@@ -2698,19 +2698,19 @@ export function ProductPage() {
                     </div>
 
                     <div className="px-1">
-                      <h3 className="line-clamp-1 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "15px", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
+                      <h3 className="line-clamp-1 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
                         {rProduct.name}
                       </h3>
                       <div className="mt-3">
                         {rProduct.oldPrice && (
-                          <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.38)" }}>
+                          <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.38)" }}>
                             {rProduct.oldPrice}
                           </p>
                         )}
-                        <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.015em" }}>
+                        <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 700, letterSpacing: "-0.015em" }}>
                           {rProduct.price}
                         </p>
-                        <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}>
+                        <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.55)" }}>
                           No PIX ou 10x de {rInstallment}
                         </p>
                       </div>
@@ -2736,7 +2736,7 @@ export function ProductPage() {
             <p className="text-foreground/45 text-xs truncate" style={{ fontFamily: "var(--font-family-inter)" }}>
               {product.name.split(" ").slice(0, 5).join(" ")}…
             </p>
-            <p className="text-foreground font-bold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px" }}>
+            <p className="text-foreground font-bold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)" }}>
               {preOrderInfo
                 ? (preOrderInfo.preOrderPrice ?? formatBRL(pixPrice))
                 : formatBRL(pixPrice)}{" "}
@@ -2754,7 +2754,7 @@ export function ProductPage() {
             style={{
               borderRadius: "var(--radius-button)",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               whiteSpace: "nowrap",
               background: preOrderInfo
                 ? "var(--gradient-preorder-orange)"

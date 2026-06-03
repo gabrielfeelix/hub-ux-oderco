@@ -194,7 +194,7 @@ export function CartPage() {
             </div>
             <p
               className="mb-3 text-primary"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em" }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.3em" }}
             >
               // CARRINHO VAZIO
             </p>
@@ -212,7 +212,7 @@ export function CartPage() {
             </h1>
             <p
               className="mb-8 max-w-md text-ink-muted"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", lineHeight: 1.5 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", lineHeight: 1.5 }}
             >
               Bora montar seu setup? Tem drop novo e promoções imperdíveis esperando.
             </p>
@@ -222,7 +222,7 @@ export function CartPage() {
               style={{
                 background: "var(--gradient-brand)",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "14px",
+                fontSize: "var(--text-sm)",
                 fontWeight: 700,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
@@ -247,7 +247,7 @@ export function CartPage() {
           <Link
             to="/produtos"
             className="mb-6 inline-flex items-center gap-1.5 text-ink-muted transition-colors hover:text-ink min-h-[44px] md:min-h-0"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
           >
             <ChevronLeft size={14} strokeWidth={2} />
             Continuar comprando
@@ -258,7 +258,7 @@ export function CartPage() {
             <div>
               <p
                 className="mb-2 text-primary"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.3em" }}
               >
                 // SEU CARRINHO
               </p>
@@ -278,7 +278,7 @@ export function CartPage() {
             <button
               onClick={clearCart}
               className="inline-flex items-center gap-1.5 cursor-pointer text-ink-subtle transition-colors hover:text-ink min-h-[44px] md:min-h-0"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
             >
               <Trash2 size={13} strokeWidth={2} />
               Limpar
@@ -307,10 +307,10 @@ export function CartPage() {
                   <Gift size={16} strokeWidth={2.2} />
                 </div>
                 <div>
-                  <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                  <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" }}>
                     Brinde desbloqueado
                   </p>
-                  <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>
+                  <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
                     Escolha um presente cortesia PCYES.
                   </p>
                 </div>
@@ -321,7 +321,7 @@ export function CartPage() {
                 style={{
                   background: "var(--gradient-brand)",
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "12px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 800,
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
@@ -351,10 +351,10 @@ export function CartPage() {
                   <Check size={16} strokeWidth={2.4} />
                 </div>
                 <div>
-                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: "#22c55e" }}>
+                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: "#22c55e" }}>
                     Brinde no carrinho
                   </p>
-                  <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>
+                  <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
                     {giftItem.name}
                   </p>
                 </div>
@@ -362,7 +362,7 @@ export function CartPage() {
               <button
                 onClick={() => { setGiftItem(null); setGiftDismissed(false); setGiftModalOpen(true); }}
                 className="inline-flex items-center cursor-pointer text-ink-muted transition-colors hover:text-ink-strong min-h-[44px] px-3 md:min-h-0 md:px-0"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
               >
                 Trocar
               </button>
@@ -386,7 +386,7 @@ export function CartPage() {
                   >
                     <Gift size={15} strokeWidth={2.2} />
                   </div>
-                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "rgba(var(--foreground-rgb), 0.78)" }}>
+                  <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.78)" }}>
                     Falta <span className="text-ink-strong font-bold">{formatBRL(GIFT_THRESHOLD - subtotal)}</span> pra desbloquear um brinde
                   </p>
                 </div>
@@ -450,7 +450,7 @@ export function CartPage() {
                               borderRadius: "var(--radius-card)",
                               background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
-                              fontSize: "9px",
+                              fontSize: "var(--text-caption)",
                               fontWeight: 800,
                               letterSpacing: "0.08em",
                               textTransform: "uppercase",
@@ -471,7 +471,7 @@ export function CartPage() {
                             className="text-ink-strong transition-colors hover:text-primary line-clamp-2"
                             style={{
                               fontFamily: "var(--font-family-figtree)",
-                              fontSize: "15px",
+                              fontSize: "var(--text-base)",
                               fontWeight: 600,
                               lineHeight: 1.25,
                               letterSpacing: "-0.01em",
@@ -508,7 +508,7 @@ export function CartPage() {
                               </button>
                               <span
                                 className="flex h-11 w-9 md:h-8 md:w-9 items-center justify-center text-ink-strong tabular-nums"
-                                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700 }}
+                                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 700 }}
                               >
                                 {item.quantity}
                               </span>
@@ -523,7 +523,7 @@ export function CartPage() {
                           ) : (
                             <span
                               className="text-ink-subtle"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                             >
                               Cortesia PCYES
                             </span>
@@ -538,7 +538,7 @@ export function CartPage() {
                                     className="line-through"
                                     style={{
                                       fontFamily: "var(--font-family-inter)",
-                                      fontSize: "12px",
+                                      fontSize: "var(--text-caption)",
                                       color: "rgba(var(--foreground-rgb), 0.3)",
                                     }}
                                   >
@@ -548,7 +548,7 @@ export function CartPage() {
                                 <p
                                   style={{
                                     fontFamily: "var(--font-family-figtree)",
-                                    fontSize: "18px",
+                                    fontSize: "var(--text-lg)",
                                     fontWeight: 800,
                                     color: "#22c55e",
                                     letterSpacing: "-0.015em",
@@ -563,7 +563,7 @@ export function CartPage() {
                                   className="text-ink-strong"
                                   style={{
                                     fontFamily: "var(--font-family-figtree)",
-                                    fontSize: "18px",
+                                    fontSize: "var(--text-lg)",
                                     fontWeight: 800,
                                     letterSpacing: "-0.015em",
                                   }}
@@ -573,7 +573,7 @@ export function CartPage() {
                                 {item.quantity > 1 && (
                                   <p
                                     className="text-ink-subtle"
-                                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                                   >
                                     {item.quantity}× {formatBRL(unit)}
                                   </p>
@@ -602,7 +602,7 @@ export function CartPage() {
               >
                 <p
                   className="mb-5 text-primary"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.3em" }}
                 >
                   // RESUMO DO PEDIDO
                 </p>
@@ -620,10 +620,10 @@ export function CartPage() {
                   >
                     <Truck size={15} strokeWidth={2.2} className="text-green-400 flex-shrink-0" />
                     <div>
-                      <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, color: "#22c55e", letterSpacing: "0.01em" }}>
+                      <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, color: "#22c55e", letterSpacing: "0.01em" }}>
                         Frete grátis desbloqueado
                       </p>
-                      <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", marginTop: "1px" }}>
+                      <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", marginTop: "1px" }}>
                         Calculado direto no checkout
                       </p>
                     </div>
@@ -634,7 +634,7 @@ export function CartPage() {
                       <Truck size={13} className="text-ink-muted" strokeWidth={2} />
                       <span
                         className="text-ink-muted tracking-wide"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}
                       >
                         Calcular frete
                       </span>
@@ -653,7 +653,7 @@ export function CartPage() {
                           border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                           background: "rgba(var(--foreground-rgb), 0.03)",
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "13px",
+                          fontSize: "var(--text-sm)",
                           fontWeight: 600,
                           letterSpacing: "0.02em",
                         }}
@@ -691,14 +691,14 @@ export function CartPage() {
                                   {active && <Check size={9} strokeWidth={3} className="text-ink-strong" />}
                                 </span>
                                 <div className="flex-1 min-w-0">
-                                  <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                                  <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
                                     {opt.label}
                                   </p>
-                                  <p className="text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
+                                  <p className="text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                                     {opt.eta}
                                   </p>
                                 </div>
-                                <p className="flex-shrink-0 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "13px", fontWeight: 800 }}>
+                                <p className="flex-shrink-0 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-sm)", fontWeight: 800 }}>
                                   {formatBRL(opt.price)}
                                 </p>
                               </button>
@@ -725,18 +725,18 @@ export function CartPage() {
                     )}
                     <span
                       className={appliedCoupon ? "text-green-400" : "text-ink-muted"}
-                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: appliedCoupon ? 700 : 600 }}
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: appliedCoupon ? 700 : 600 }}
                     >
                       {appliedCoupon ? `Cupom ${appliedCoupon} aplicado` : "Tenho um cupom"}
                     </span>
                     {appliedCoupon && (
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, color: "rgba(34,197,94,0.75)" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, color: "rgba(34,197,94,0.75)" }}>
                         −{discountPct}%
                       </span>
                     )}
                   </span>
                   <span
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, color: appliedCoupon ? "rgba(34,197,94,0.75)" : "rgba(var(--foreground-rgb), 0.4)" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, color: appliedCoupon ? "rgba(34,197,94,0.75)" : "rgba(var(--foreground-rgb), 0.4)" }}
                   >
                     {appliedCoupon ? "Alterar" : couponOpen ? "Fechar" : "Adicionar"}
                   </span>
@@ -767,7 +767,7 @@ export function CartPage() {
                             border: "1px solid rgba(var(--foreground-rgb), 0.1)",
                             background: "rgba(var(--foreground-rgb), 0.03)",
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "13px",
+                            fontSize: "var(--text-sm)",
                             fontWeight: 600,
                             letterSpacing: "0.02em",
                           }}
@@ -779,7 +779,7 @@ export function CartPage() {
                           style={{
                             background: "var(--gradient-brand)",
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "12px",
+                            fontSize: "var(--text-caption)",
                             fontWeight: 700,
                             letterSpacing: "0.06em",
                             textTransform: "uppercase",
@@ -792,7 +792,7 @@ export function CartPage() {
                       {couponError && (
                         <p
                           className="mb-3 text-primary"
-                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}
+                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                         >
                           {couponError}
                         </p>
@@ -816,17 +816,17 @@ export function CartPage() {
                   >
                     <span className="flex items-center gap-2">
                       <PcyesCoin size={20} />
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, color: pointsApplied ? "#facc15" : "rgba(var(--foreground-rgb), 0.78)" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, color: pointsApplied ? "#facc15" : "rgba(var(--foreground-rgb), 0.78)" }}>
                         PCYES Points
                       </span>
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, color: "rgba(var(--foreground-rgb), 0.4)" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, color: "rgba(var(--foreground-rgb), 0.4)" }}>
                         {userPoints} pts
                       </span>
                     </span>
                     <span
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "10.5px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: 800,
                         letterSpacing: "0.1em",
                         color: pointsApplied ? "#facc15" : "rgba(var(--foreground-rgb), 0.45)",
@@ -856,7 +856,7 @@ export function CartPage() {
                               accent="#facc15"
                               ariaLabel="Quantidade de pontos a usar"
                             />
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(var(--foreground-rgb), 0.5)", fontWeight: 600 }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.5)", fontWeight: 600 }}>
                               de {maxPointsRedeem} disponíveis
                             </span>
                           </div>
@@ -873,7 +873,7 @@ export function CartPage() {
                               accentColor: "#facc15",
                             }}
                           />
-                          <p className="mt-2 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                          <p className="mt-2 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                             Você vai economizar <span style={{ color: "#facc15", fontWeight: 800 }}>{formatBRL(pointsValue)}</span>
                           </p>
                         </div>
@@ -887,31 +887,31 @@ export function CartPage() {
                 {/* Totals */}
                 <div className="mb-5 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                       Subtotal
                     </span>
-                    <span className="text-ink" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>
+                    <span className="text-ink" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
                       {formatBRL(subtotal)}
                     </span>
                   </div>
                   {discountValue > 0 && (
                     <div className="flex items-center justify-between">
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "#22c55e", fontWeight: 600 }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "#22c55e", fontWeight: 600 }}>
                         Cupom {appliedCoupon}
                       </span>
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "#22c55e", fontWeight: 700 }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "#22c55e", fontWeight: 700 }}>
                         −{formatBRL(discountValue)}
                       </span>
                     </div>
                   )}
                   <div className="flex items-center justify-between">
-                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                       Frete
                     </span>
                     <span
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "13px",
+                        fontSize: "var(--text-sm)",
                         fontWeight: 700,
                         color: freeShipping || (selectedShipping && shippingPrice === 0) ? "#22c55e" : "rgba(var(--foreground-rgb), 0.85)",
                       }}
@@ -921,10 +921,10 @@ export function CartPage() {
                   </div>
                   {pointsValue > 0 && (
                     <div className="flex items-center justify-between">
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "#facc15", fontWeight: 600 }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "#facc15", fontWeight: 600 }}>
                         PCYES Points
                       </span>
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "#facc15", fontWeight: 700 }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "#facc15", fontWeight: 700 }}>
                         −{formatBRL(pointsValue)}
                       </span>
                     </div>
@@ -934,22 +934,22 @@ export function CartPage() {
                 {/* Total */}
                 <div className="mb-5 rounded-[var(--radius-card-sm)] p-4" style={{ background: "rgba(var(--foreground-rgb), 0.03)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
                   <div className="mb-1 flex items-baseline justify-between">
-                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}>
+                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
                       Total
                     </span>
-                    <span className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 800, letterSpacing: "-0.02em" }}>
+                    <span className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: 800, letterSpacing: "-0.02em" }}>
                       {formatBRL(total)}
                     </span>
                   </div>
                   <div className="mb-1 flex items-baseline justify-between">
-                    <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700, color: "#22c55e" }}>
+                    <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, color: "#22c55e" }}>
                       no PIX
                     </span>
-                    <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 800, color: "#22c55e", letterSpacing: "-0.02em" }}>
+                    <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 800, color: "#22c55e", letterSpacing: "-0.02em" }}>
                       {formatBRL(totalPix)}
                     </span>
                   </div>
-                  <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                  <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                     ou 10× de {formatBRL(total / 10)} sem juros
                   </p>
                 </div>
@@ -961,7 +961,7 @@ export function CartPage() {
                   style={{
                     background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "14px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 800,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -972,7 +972,7 @@ export function CartPage() {
                   Finalizar compra
                 </button>
 
-                <div className="flex items-center justify-center gap-1.5 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                <div className="flex items-center justify-center gap-1.5 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
                   <ShieldCheck size={12} strokeWidth={2} />
                   Compra 100% segura · criptografia SSL
                 </div>
@@ -1008,7 +1008,7 @@ export function CartPage() {
                   <div>
                     <div className="mb-3 flex items-center gap-2 text-primary">
                       <Gift size={14} strokeWidth={2.2} />
-                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.3em" }}>
+                      <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.3em" }}>
                         // BRINDE DESBLOQUEADO
                       </span>
                     </div>
@@ -1088,7 +1088,7 @@ export function CartPage() {
                             {product.name}
                           </p>
                           <div className="mt-3 flex items-baseline gap-2 md:mt-4">
-                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.32)" }}>
+                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.32)" }}>
                               {product.price}
                             </span>
                             <span
@@ -1098,10 +1098,10 @@ export function CartPage() {
                             </span>
                           </div>
                           <div className="mt-auto flex items-center justify-between pt-4 md:mt-4 md:pt-0">
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
                               PRESENTE PCYES
                             </span>
-                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(var(--foreground-rgb), 0.45)" }}>
+                            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(var(--foreground-rgb), 0.45)" }}>
                               {isSelected ? "SELECIONADO" : "SELECIONAR"}
                             </span>
                           </div>
@@ -1116,7 +1116,7 @@ export function CartPage() {
                 <button
                   onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); setSelectedGiftId(null); }}
                   className="inline-flex items-center cursor-pointer text-ink-muted transition-colors hover:text-ink min-h-[44px] px-3 md:min-h-0 md:px-0"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.06em" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, letterSpacing: "0.06em" }}
                 >
                   Agora não
                 </button>
@@ -1127,7 +1127,7 @@ export function CartPage() {
                   style={{
                     background: "var(--gradient-brand)",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 700,
                     letterSpacing: "0.04em",
                     boxShadow: "var(--shadow-brand-cta)",
@@ -1150,13 +1150,13 @@ export function CartPage() {
           <div className="flex-1 min-w-0">
             <p
               className="text-ink-muted"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}
             >
               Total
             </p>
             <p
               className="text-ink-strong"
-              style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+              style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}
             >
               {formatBRL(total)}
             </p>
@@ -1168,7 +1168,7 @@ export function CartPage() {
               minHeight: 46,
               background: "var(--gradient-buy)",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 800,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
@@ -1255,7 +1255,7 @@ function NumberStepper({
         className="w-14 bg-transparent px-2 py-1 text-center text-ink-strong focus:outline-none cart-field"
         style={{
           fontFamily: "var(--font-family-figtree)",
-          fontSize: "15px",
+          fontSize: "var(--text-base)",
           fontWeight: 800,
           letterSpacing: "-0.01em",
         }}

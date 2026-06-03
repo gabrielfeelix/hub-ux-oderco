@@ -39,10 +39,10 @@ export function CookieConsent() {
           >
             <Cookie size={20} className="text-foreground/35 flex-shrink-0 mt-0.5" />
             <div className="flex-1 min-w-0">
-              <p className="text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}>
+              <p className="text-foreground mb-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}>
                 Nós usamos cookies
               </p>
-              <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "1.6" }}>
+              <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: "1.6" }}>
                 Utilizamos cookies para melhorar sua experiência, personalizar conteúdo e analisar nosso tráfego. Ao continuar navegando, você concorda com nossa{" "}
                 <a href="#" className="text-primary/70 hover:text-primary underline transition-colors">Política de Privacidade</a>.
               </p>
@@ -50,11 +50,11 @@ export function CookieConsent() {
             <div className="flex items-center gap-2 flex-shrink-0">
               <button onClick={reject}
                 className="px-4 py-2 border text-foreground/60 hover:text-foreground border-foreground/15 hover:border-foreground/30 transition-all duration-300 cursor-pointer"
-                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
               >Rejeitar</button>
               <button onClick={accept}
                 className="px-5 py-2 bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 cursor-pointer"
-                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}
+                style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}
               >Aceitar</button>
               <button onClick={dismiss}
                 className="w-8 h-8 flex items-center justify-center text-foreground/30 hover:text-foreground/60 transition-colors cursor-pointer"

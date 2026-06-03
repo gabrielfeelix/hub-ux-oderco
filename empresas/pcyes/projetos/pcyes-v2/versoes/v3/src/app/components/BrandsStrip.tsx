@@ -30,7 +30,7 @@ export function BrandsStrip() {
           className="mb-6 text-center text-ink-subtle"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "11px",
+            fontSize: "var(--text-caption)",
             fontWeight: 500,
             letterSpacing: "0.28em",
           }}

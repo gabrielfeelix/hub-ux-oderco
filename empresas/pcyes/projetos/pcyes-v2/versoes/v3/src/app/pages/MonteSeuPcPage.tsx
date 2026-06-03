@@ -1511,7 +1511,7 @@ function QuizHeader({
           type="button"
           onClick={onBack}
           className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
         >
           <ArrowLeft size={13} /> Voltar
         </button>
@@ -1519,7 +1519,7 @@ function QuizHeader({
           className="uppercase text-zinc-500"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "10.5px",
+            fontSize: "var(--text-caption)",
             letterSpacing: "0.22em",
             fontWeight: 700,
           }}
@@ -1533,7 +1533,7 @@ function QuizHeader({
           className="mt-8 mb-2 uppercase text-primary"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "10.5px",
+            fontSize: "var(--text-caption)",
             letterSpacing: "0.28em",
             fontWeight: 700,
           }}
@@ -1555,7 +1555,7 @@ function QuizHeader({
       </h2>
       <p
         className="text-zinc-400"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.5 }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.5 }}
       >
         {subtitle}
       </p>
@@ -1607,7 +1607,7 @@ function UseTypeCard({
             className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-black/55 px-2.5 py-1 text-ink-strong backdrop-blur"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "9.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.18em",
               fontWeight: 700,
             }}
@@ -1636,7 +1636,7 @@ function UseTypeCard({
           className="text-zinc-400"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "13px",
+            fontSize: "var(--text-sm)",
             lineHeight: 1.55,
           }}
         >
@@ -1646,7 +1646,7 @@ function UseTypeCard({
           className="flex items-center gap-1.5 text-ink transition-colors group-hover:text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "12px",
+            fontSize: "var(--text-caption)",
             fontWeight: 700,
             letterSpacing: "0.02em",
           }}
@@ -1766,7 +1766,7 @@ function GameTile({
             className="mb-0.5 uppercase text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "9px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.2em",
               fontWeight: 700,
             }}
@@ -1777,7 +1777,7 @@ function GameTile({
             className="truncate text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "14px",
+              fontSize: "var(--text-sm)",
               fontWeight: 700,
               letterSpacing: "-0.01em",
               textShadow: "0 2px 8px rgba(0,0,0,0.6)",
@@ -1886,7 +1886,7 @@ function ProgramTile({
             className="mb-0.5 uppercase text-ink"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "9px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.2em",
               fontWeight: 700,
             }}
@@ -1897,7 +1897,7 @@ function ProgramTile({
             className="truncate text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "14px",
+              fontSize: "var(--text-sm)",
               fontWeight: 700,
               letterSpacing: "-0.01em",
               textShadow: "0 2px 8px rgba(0,0,0,0.6)",
@@ -1946,7 +1946,7 @@ function LevelCard({
           className="text-ink-strong"
           style={{
             fontFamily: "var(--font-family-figtree)",
-            fontSize: "16px",
+            fontSize: "var(--text-base)",
             fontWeight: 700,
             letterSpacing: "-0.01em",
           }}
@@ -1957,7 +1957,7 @@ function LevelCard({
           className="mt-0.5 text-zinc-400"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "12.5px",
+            fontSize: "var(--text-caption)",
             lineHeight: 1.5,
           }}
         >
@@ -2116,7 +2116,7 @@ function QuizFlow({
                   className="h-11 w-full rounded-card-sm border border-edge-subtle bg-[#0f0f12] pl-10 pr-10 text-ink-strong outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13.5px",
+                    fontSize: "var(--text-sm)",
                     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.02)",
                   }}
                 />
@@ -2135,7 +2135,7 @@ function QuizFlow({
                 className="text-zinc-500"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "12px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 500,
                 }}
               >
@@ -2156,7 +2156,7 @@ function QuizFlow({
                   className="text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "16px",
+                    fontSize: "var(--text-base)",
                     fontWeight: 700,
                   }}
                 >
@@ -2164,7 +2164,7 @@ function QuizFlow({
                 </p>
                 <p
                   className="text-zinc-400"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 >
                   Sem stress — pode pular essa etapa, a gente sugere por gênero.
                 </p>
@@ -2190,7 +2190,7 @@ function QuizFlow({
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
               <p
                 className="text-zinc-500"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
               >
                 {selectedGameCount === 0
                   ? "Nenhum jogo selecionado — pode pular se preferir"
@@ -2202,7 +2202,7 @@ function QuizFlow({
                 className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-ink-strong transition-all hover:brightness-110 cursor-pointer"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "13.5px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 700,
                   letterSpacing: "0.01em",
                   boxShadow: "0 12px 32px -8px rgba(255,43,46,0.55)",
@@ -2266,7 +2266,7 @@ function QuizFlow({
                 className="text-zinc-500"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "12px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 500,
                 }}
               >
@@ -2300,7 +2300,7 @@ function QuizFlow({
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
               <p
                 className="text-zinc-500"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
               >
                 {selectedProgramCount === 0
                   ? "Nenhum programa selecionado — pode pular se preferir"
@@ -2312,7 +2312,7 @@ function QuizFlow({
                 className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-ink-strong transition-all hover:brightness-110 cursor-pointer"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "13.5px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 700,
                   letterSpacing: "0.01em",
                   boxShadow: "0 12px 32px -8px rgba(255,43,46,0.55)",
@@ -2426,13 +2426,13 @@ function StarRating({ rating, reviews }: { rating: number; reviews: number }) {
       </div>
       <span
         className="tabular-nums text-ink-strong"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}
       >
         {rating.toFixed(1)}
       </span>
       <span
         className="text-zinc-500"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
       >
         ({reviews})
       </span>
@@ -2477,7 +2477,7 @@ function PresetComponentsDrawer({
               style={{
                 backgroundColor: preset.accent,
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.18em",
                 fontWeight: 700,
               }}
@@ -2488,7 +2488,7 @@ function PresetComponentsDrawer({
               className="uppercase text-zinc-500"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9.5px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.22em",
                 fontWeight: 700,
               }}
@@ -2500,7 +2500,7 @@ function PresetComponentsDrawer({
             className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "24px",
+              fontSize: "var(--text-xl)",
               fontWeight: 800,
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
@@ -2510,7 +2510,7 @@ function PresetComponentsDrawer({
           </SheetTitle>
           <SheetDescription
             className="text-zinc-400"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", lineHeight: 1.5 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}
           >
             Toda peça pode ser trocada na hora de personalizar.
           </SheetDescription>
@@ -2547,7 +2547,7 @@ function PresetComponentsDrawer({
                       className="uppercase text-zinc-500"
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "9px",
+                        fontSize: "var(--text-caption)",
                         letterSpacing: "0.2em",
                         fontWeight: 700,
                       }}
@@ -2559,7 +2559,7 @@ function PresetComponentsDrawer({
                     className="text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "13px",
+                      fontSize: "var(--text-sm)",
                       fontWeight: 700,
                       lineHeight: 1.25,
                       letterSpacing: "-0.005em",
@@ -2575,7 +2575,7 @@ function PresetComponentsDrawer({
                           className="rounded-full border border-edge-subtle bg-white/[0.02] px-1.5 py-0.5 text-zinc-300"
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "9.5px",
+                            fontSize: "var(--text-caption)",
                             fontWeight: 600,
                             letterSpacing: "0.02em",
                           }}
@@ -2589,7 +2589,7 @@ function PresetComponentsDrawer({
                     className="mt-0.5 tabular-nums text-primary"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "12.5px",
+                      fontSize: "var(--text-caption)",
                       fontWeight: 800,
                     }}
                   >
@@ -2607,7 +2607,7 @@ function PresetComponentsDrawer({
               className="uppercase text-zinc-500"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.2em",
                 fontWeight: 700,
               }}
@@ -2618,7 +2618,7 @@ function PresetComponentsDrawer({
               className="tabular-nums text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "20px",
+                fontSize: "var(--text-lg)",
                 fontWeight: 800,
                 letterSpacing: "-0.01em",
               }}
@@ -2629,7 +2629,7 @@ function PresetComponentsDrawer({
           <div className="flex items-baseline justify-between">
             <span
               className="text-zinc-300"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
             >
               Preço final do setup
             </span>
@@ -2637,7 +2637,7 @@ function PresetComponentsDrawer({
               className="tabular-nums text-primary"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "22px",
+                fontSize: "var(--text-xl)",
                 fontWeight: 800,
                 letterSpacing: "-0.01em",
               }}
@@ -2658,7 +2658,7 @@ function PresetComponentsDrawer({
                   style={{
                     background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13.5px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 700,
                     letterSpacing: "0.01em",
                     boxShadow: "0 12px 32px -8px rgba(34,197,94,0.55)",
@@ -2677,7 +2677,7 @@ function PresetComponentsDrawer({
                   className="h-11 w-full cursor-pointer rounded-[var(--radius-card-sm)] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "11.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 600,
                   }}
                 >
@@ -2763,7 +2763,7 @@ function PresetCard({
                   className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "9.5px",
+                    fontSize: "var(--text-caption)",
                     letterSpacing: "0.16em",
                     fontWeight: 700,
                     boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
@@ -2777,7 +2777,7 @@ function PresetCard({
                   className="inline-flex w-fit items-center rounded-full border border-edge bg-black/70 px-2.5 py-1 text-ink-strong backdrop-blur"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "9.5px",
+                    fontSize: "var(--text-caption)",
                     letterSpacing: "0.16em",
                     fontWeight: 700,
                   }}
@@ -2794,7 +2794,7 @@ function PresetCard({
                   padding: "6px 10px",
                   borderRadius: "var(--radius-card-sm)",
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "13px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 900,
                   letterSpacing: "-0.01em",
                   boxShadow: "var(--shadow-discount-badge)",
@@ -2810,7 +2810,7 @@ function PresetCard({
               className="mb-1 uppercase"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9.5px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.24em",
                 fontWeight: 700,
                 color: preset.accent,
@@ -2854,7 +2854,7 @@ function PresetCard({
                     className="uppercase text-zinc-500"
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "8.5px",
+                      fontSize: "var(--text-caption)",
                       letterSpacing: "0.2em",
                       fontWeight: 700,
                     }}
@@ -2865,7 +2865,7 @@ function PresetCard({
                     className="truncate text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "12px",
+                      fontSize: "var(--text-caption)",
                       fontWeight: 700,
                       letterSpacing: "-0.005em",
                       lineHeight: 1.2,
@@ -2889,7 +2889,7 @@ function PresetCard({
                 className="uppercase text-zinc-400"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "9px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.22em",
                   fontWeight: 700,
                 }}
@@ -2913,7 +2913,7 @@ function PresetCard({
                 <div key={s.label} className="flex items-center justify-between gap-2">
                   <span
                     className="truncate text-zinc-200"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 500 }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 500 }}
                   >
                     {s.label}
                   </span>
@@ -2922,7 +2922,7 @@ function PresetCard({
                       className="tabular-nums text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
-                        fontSize: "13.5px",
+                        fontSize: "var(--text-sm)",
                         fontWeight: 800,
                         letterSpacing: "-0.005em",
                       }}
@@ -2934,7 +2934,7 @@ function PresetCard({
                         className="rounded-sm bg-white/[0.06] px-1 py-0.5 text-zinc-400"
                         style={{
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "8.5px",
+                          fontSize: "var(--text-caption)",
                           fontWeight: 700,
                           letterSpacing: "0.04em",
                         }}
@@ -2955,7 +2955,7 @@ function PresetCard({
           >
             <span
               className="flex items-center gap-2 text-ink-strong"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
             >
               <Layers size={13} className="text-primary" />
               Ver {componentsCount} componentes
@@ -2968,7 +2968,7 @@ function PresetCard({
               {preset.oldPrice && (
                 <span
                   className="text-zinc-500 line-through tabular-nums"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                 >
                   {formatBRL(preset.oldPrice)}
                 </span>
@@ -2978,7 +2978,7 @@ function PresetCard({
                   className="rounded bg-green-500/15 px-1.5 py-0.5 text-green-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "9.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 700,
                     letterSpacing: "0.04em",
                   }}
@@ -2994,7 +2994,7 @@ function PresetCard({
                     className="text-green-300 tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "28px",
+                      fontSize: "var(--text-2xl)",
                       fontWeight: 800,
                       letterSpacing: "-0.025em",
                       lineHeight: 1,
@@ -3004,14 +3004,14 @@ function PresetCard({
                   </p>
                   <span
                     className="text-zinc-500"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     no PIX
                   </span>
                 </div>
                 <p
                   className="mt-1 text-zinc-400"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                 >
                   <span className="tabular-nums text-ink-strong" style={{ fontWeight: 600 }}>
                     {formatBRL(preset.price)}
@@ -3030,7 +3030,7 @@ function PresetCard({
                     className="text-ink-strong tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "28px",
+                      fontSize: "var(--text-2xl)",
                       fontWeight: 800,
                       letterSpacing: "-0.025em",
                       lineHeight: 1,
@@ -3040,14 +3040,14 @@ function PresetCard({
                   </p>
                   <span
                     className="text-zinc-500"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     à vista
                   </span>
                 </div>
                 <p
                   className="mt-1 text-zinc-400"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                 >
                   ou {preset.installments.count}x de{" "}
                   <span className="tabular-nums text-ink-strong" style={{ fontWeight: 600 }}>
@@ -3062,7 +3062,7 @@ function PresetCard({
               <span className="flex h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
               <span
                 className="text-zinc-300"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 500 }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 500 }}
               >
                 {preset.inStock ? "Em estoque" : "Sob encomenda"} · entrega {preset.deliveryDays}
               </span>
@@ -3075,7 +3075,7 @@ function PresetCard({
               style={{
                 background: "var(--gradient-buy)",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13.5px",
+                fontSize: "var(--text-sm)",
                 fontWeight: 700,
                 letterSpacing: "0.01em",
                 boxShadow: "0 12px 32px -8px rgba(34,197,94,0.55)",
@@ -3089,7 +3089,7 @@ function PresetCard({
               className="mt-2 h-11 w-full cursor-pointer rounded-[var(--radius-card-sm)] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11.5px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 600,
               }}
             >
@@ -3180,7 +3180,7 @@ function PresetMiniCard({
                   padding: "6px 12px",
                   borderRadius: "var(--radius-card-sm)",
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "15px",
+                  fontSize: "var(--text-base)",
                   fontWeight: 900,
                   letterSpacing: "-0.02em",
                   boxShadow: "var(--shadow-discount-badge)",
@@ -3195,7 +3195,7 @@ function PresetMiniCard({
                 className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "9px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.16em",
                   fontWeight: 700,
                   boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
@@ -3218,7 +3218,7 @@ function PresetMiniCard({
                 color: "white",
                 borderRadius: "var(--radius-pill)",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 700,
                 letterSpacing: "0.04em",
                 boxShadow: "var(--shadow-buy-cta-sm)",
@@ -3235,7 +3235,7 @@ function PresetMiniCard({
               className="mb-1 uppercase text-zinc-500"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.14em",
                 fontWeight: 600,
               }}
@@ -3246,7 +3246,7 @@ function PresetMiniCard({
               className="line-clamp-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
+                fontSize: "var(--text-base)",
                 fontWeight: 700,
                 lineHeight: 1.2,
                 letterSpacing: "-0.015em",
@@ -3264,7 +3264,7 @@ function PresetMiniCard({
                   className="line-through leading-none mb-0.5 tabular-nums"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "11px",
+                    fontSize: "var(--text-caption)",
                     color: "rgba(255,255,255,0.32)",
                   }}
                 >
@@ -3277,7 +3277,7 @@ function PresetMiniCard({
                     className="leading-none text-green-300 tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "18px",
+                      fontSize: "var(--text-lg)",
                       fontWeight: 800,
                       letterSpacing: "-0.015em",
                     }}
@@ -3285,14 +3285,14 @@ function PresetMiniCard({
                     {formatBRL(pixPrice)}{" "}
                     <span
                       className="text-zinc-500"
-                      style={{ fontSize: "10.5px", fontWeight: 600 }}
+                      style={{ fontSize: "var(--text-caption)", fontWeight: 600 }}
                     >
                       no PIX
                     </span>
                   </p>
                   <p
                     className="mt-1 leading-tight text-zinc-400"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     ou {preset.installments.count}x de R$ {installmentValue}
                   </p>
@@ -3303,7 +3303,7 @@ function PresetMiniCard({
                     className="leading-none text-ink-strong tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "18px",
+                      fontSize: "var(--text-lg)",
                       fontWeight: 800,
                       letterSpacing: "-0.015em",
                     }}
@@ -3312,7 +3312,7 @@ function PresetMiniCard({
                   </p>
                   <p
                     className="mt-1 leading-tight text-zinc-400"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     {preset.installments.count}x de R$ {installmentValue}
                   </p>
@@ -3401,7 +3401,7 @@ function PresetGallery({
             className="mb-3 uppercase text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.28em",
               fontWeight: 700,
             }}
@@ -3423,7 +3423,7 @@ function PresetGallery({
           </h2>
           <p
             className="mx-auto max-w-[560px] text-zinc-400"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.55 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.55 }}
           >
             {recommendedPreset.description}
           </p>
@@ -3445,7 +3445,7 @@ function PresetGallery({
                 className="mb-1 uppercase text-zinc-500"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.28em",
                   fontWeight: 700,
                 }}
@@ -3485,7 +3485,7 @@ function PresetGallery({
                 className="mb-1 uppercase text-zinc-500"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.28em",
                   fontWeight: 700,
                 }}
@@ -3536,7 +3536,7 @@ function PresetGallery({
           className="mb-3 uppercase text-zinc-500"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "10.5px",
+            fontSize: "var(--text-caption)",
             letterSpacing: "0.28em",
             fontWeight: 700,
           }}
@@ -3556,7 +3556,7 @@ function PresetGallery({
         </h2>
         <p
           className="mx-auto max-w-[520px] text-zinc-400"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "14.5px", lineHeight: 1.6 }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}
         >
           Builds montadas e testadas. Clique pra ver todas as peças e comprar com 1 clique.
         </p>
@@ -3585,7 +3585,7 @@ function PresetGallery({
                 )}
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "12px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 600,
                   boxShadow: active ? "0 0 0 1px rgba(255,43,46,0.15), 0 10px 28px -10px rgba(255,43,46,0.4)" : undefined,
                 }}
@@ -3598,7 +3598,7 @@ function PresetGallery({
                       active ? "text-primary" : "text-zinc-500",
                     )}
                     style={{
-                      fontSize: "9px",
+                      fontSize: "var(--text-caption)",
                       letterSpacing: "0.18em",
                       fontWeight: 700,
                     }}
@@ -3616,7 +3616,7 @@ function PresetGallery({
           <Select value={sort} onValueChange={(v) => setSort(v as PresetSort)}>
             <SelectTrigger
               className="h-11 w-[180px] rounded-full border-edge bg-white/[0.015] text-zinc-200 hover:border-edge-strong md:h-9"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
             >
               <SelectValue placeholder="Ordenar" />
             </SelectTrigger>
@@ -3637,7 +3637,7 @@ function PresetGallery({
             className="text-zinc-300"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "15px",
+              fontSize: "var(--text-base)",
               fontWeight: 600,
             }}
           >
@@ -3645,7 +3645,7 @@ function PresetGallery({
           </p>
           <p
             className="mt-1 text-zinc-500"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
           >
             Tente outra categoria ou veja todos os setups.
           </p>
@@ -3655,7 +3655,7 @@ function PresetGallery({
             className="mt-4 inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-primary px-4 text-ink-strong transition-all hover:brightness-110"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
             }}
           >
@@ -3690,7 +3690,7 @@ function TopBar() {
           className="flex h-9 items-center gap-1.5 rounded-full border border-edge bg-white/[0.02] px-4 text-zinc-300 transition-all hover:border-edge-strong hover:bg-white/[0.06] hover:text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "12.5px",
+            fontSize: "var(--text-caption)",
             fontWeight: 600,
           }}
         >
@@ -3731,7 +3731,7 @@ function PathCard({
           className="absolute right-5 top-5 rounded-full bg-primary px-2 py-0.5 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "9.5px",
+            fontSize: "var(--text-caption)",
             letterSpacing: "0.16em",
             fontWeight: 700,
             boxShadow: "0 6px 20px -4px rgba(255,43,46,0.6)",
@@ -3748,7 +3748,7 @@ function PathCard({
           className="mb-2 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-figtree)",
-            fontSize: "20px",
+            fontSize: "var(--text-lg)",
             fontWeight: 700,
             letterSpacing: "-0.015em",
           }}
@@ -3757,13 +3757,13 @@ function PathCard({
         </h3>
         <p
           className="mb-6 text-zinc-400"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", lineHeight: 1.6 }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}
         >
           {desc}
         </p>
         <div
           className="flex items-center gap-2 text-primary"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
         >
           {cta}
           <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -3819,7 +3819,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             className="mb-4 uppercase text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.3em",
               fontWeight: 700,
             }}
@@ -3860,7 +3860,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             className="mx-auto mt-6 max-w-[560px] text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "16px",
+              fontSize: "var(--text-base)",
               lineHeight: 1.6,
             }}
           >
@@ -4085,7 +4085,7 @@ function ReviewScreen({
         type="button"
         onClick={onEdit}
         className="mb-7 flex items-center gap-2 text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
       >
         <ArrowLeft size={14} /> Editar build
       </button>
@@ -4095,7 +4095,7 @@ function ReviewScreen({
           className="mb-3 uppercase text-zinc-500"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "10.5px",
+            fontSize: "var(--text-caption)",
             letterSpacing: "0.28em",
             fontWeight: 700,
           }}
@@ -4121,7 +4121,7 @@ function ReviewScreen({
         </div>
         <p
           className="mt-2 text-zinc-400"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
         >
           Confira sua configuração antes de comprar
         </p>
@@ -4132,13 +4132,13 @@ function ReviewScreen({
         role="note"
       >
         <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-300">
-          <span style={{ fontSize: "11px", fontWeight: 700 }}>i</span>
+          <span style={{ fontSize: "var(--text-caption)", fontWeight: 700 }}>i</span>
         </div>
         <p
           className="text-zinc-200"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "12.5px",
+            fontSize: "var(--text-caption)",
             lineHeight: 1.5,
           }}
         >
@@ -4156,7 +4156,7 @@ function ReviewScreen({
               className="mb-4 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
+                fontSize: "var(--text-base)",
                 fontWeight: 700,
               }}
             >
@@ -4186,7 +4186,7 @@ function ReviewScreen({
                       className="uppercase text-zinc-500"
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "9px",
+                        fontSize: "var(--text-caption)",
                         letterSpacing: "0.18em",
                         fontWeight: 700,
                       }}
@@ -4197,7 +4197,7 @@ function ReviewScreen({
                       className="mt-0.5 truncate text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
-                        fontSize: "12.5px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: 600,
                         lineHeight: 1.25,
                       }}
@@ -4208,7 +4208,7 @@ function ReviewScreen({
                       className="mt-0.5 text-primary tabular-nums"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
-                        fontSize: "12.5px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: 700,
                       }}
                     >
@@ -4225,7 +4225,7 @@ function ReviewScreen({
               className="mb-4 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "15px",
+                fontSize: "var(--text-base)",
                 fontWeight: 700,
               }}
             >
@@ -4251,7 +4251,7 @@ function ReviewScreen({
                       {c.severity === "ok" ? (
                         <Check size={13} className={tone.text} strokeWidth={3} />
                       ) : (
-                        <span className={cn("font-bold", tone.text)} style={{ fontSize: "13px" }}>!</span>
+                        <span className={cn("font-bold", tone.text)} style={{ fontSize: "var(--text-sm)" }}>!</span>
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -4259,7 +4259,7 @@ function ReviewScreen({
                         className="text-ink-strong"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
-                          fontSize: "13px",
+                          fontSize: "var(--text-sm)",
                           fontWeight: 600,
                         }}
                       >
@@ -4269,7 +4269,7 @@ function ReviewScreen({
                         className="mt-0.5 text-zinc-400"
                         style={{
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "11.5px",
+                          fontSize: "var(--text-caption)",
                           lineHeight: 1.5,
                         }}
                       >
@@ -4287,7 +4287,7 @@ function ReviewScreen({
                           )}
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "11px",
+                            fontSize: "var(--text-caption)",
                             fontWeight: 600,
                           }}
                         >
@@ -4310,7 +4310,7 @@ function ReviewScreen({
                 className="mb-2 block uppercase text-zinc-400"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.18em",
                   fontWeight: 700,
                 }}
@@ -4328,7 +4328,7 @@ function ReviewScreen({
                   aria-label="CEP para cálculo de frete"
                   maxLength={9}
                   className="flex-1 rounded-[var(--radius-card-sm)] border border-edge bg-[#15151a] px-3 py-2.5 text-ink-strong placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 />
                 <button
                   type="button"
@@ -4336,7 +4336,7 @@ function ReviewScreen({
                   className="rounded-[var(--radius-card-sm)] border border-edge bg-[#15151a] px-4 text-zinc-200 transition-all hover:border-edge-strong hover:bg-[#1c1c20] cursor-pointer"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "12.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 600,
                   }}
                 >
@@ -4356,7 +4356,7 @@ function ReviewScreen({
                     className="text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "13px",
+                      fontSize: "var(--text-sm)",
                       fontWeight: 600,
                     }}
                   >
@@ -4367,7 +4367,7 @@ function ReviewScreen({
                   </p>
                   <p
                     className="mt-0.5 text-zinc-400"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   >
                     Chega em até {freight.days} dia{freight.days > 1 ? "s" : ""} úteis
                   </p>
@@ -4377,15 +4377,15 @@ function ReviewScreen({
 
             <div className="p-5">
               <div className="mb-2 flex items-center justify-between text-zinc-400">
-                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Subtotal</span>
-                <span className="tabular-nums" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Subtotal</span>
+                <span className="tabular-nums" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                   {formatBRL(total)}
                 </span>
               </div>
               {freight && (
                 <div className="mb-3 flex items-center justify-between text-zinc-400">
-                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Frete</span>
-                  <span className="tabular-nums" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Frete</span>
+                  <span className="tabular-nums" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                     {freight.free ? "Grátis" : formatBRL(freight.value)}
                   </span>
                 </div>
@@ -4395,7 +4395,7 @@ function ReviewScreen({
                   className="text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "14px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 700,
                   }}
                 >
@@ -4405,7 +4405,7 @@ function ReviewScreen({
                   className="text-ink-strong tabular-nums"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "28px",
+                    fontSize: "var(--text-2xl)",
                     fontWeight: 700,
                     letterSpacing: "-0.02em",
                   }}
@@ -4415,7 +4415,7 @@ function ReviewScreen({
               </div>
               <p
                 className="mt-1 text-right text-zinc-400"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
               >
                 ou 10x de {formatBRL(finalTotal / 10)} sem juros
               </p>
@@ -4426,7 +4426,7 @@ function ReviewScreen({
                 className="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm bg-primary text-ink-strong transition-all hover:brightness-110"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "13.5px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 700,
                   letterSpacing: "0.01em",
                   boxShadow: "0 10px 28px -8px rgba(255,43,46,0.5)",
@@ -4442,7 +4442,7 @@ function ReviewScreen({
                   className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "12px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 600,
                   }}
                 >
@@ -4454,7 +4454,7 @@ function ReviewScreen({
                   className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "12px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 600,
                   }}
                 >
@@ -4466,7 +4466,7 @@ function ReviewScreen({
 
           <p
             className="mt-3 text-center text-zinc-500"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", lineHeight: 1.5 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.5 }}
           >
             Build validada pelo time PCYES. Garantia 12 meses.
           </p>
@@ -4495,7 +4495,7 @@ function HeroBuilderBanner({
             className="mb-3 inline-flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 600,
             }}
           >
@@ -4505,7 +4505,7 @@ function HeroBuilderBanner({
             className="mb-2 uppercase text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.3em",
               fontWeight: 700,
             }}
@@ -4531,7 +4531,7 @@ function HeroBuilderBanner({
               className="uppercase text-zinc-500"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.22em",
                 fontWeight: 700,
               }}
@@ -4542,7 +4542,7 @@ function HeroBuilderBanner({
               className="mt-0.5 text-ink-strong tabular-nums"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "20px",
+                fontSize: "var(--text-lg)",
                 fontWeight: 700,
                 letterSpacing: "-0.01em",
                 lineHeight: 1,
@@ -4640,7 +4640,7 @@ function HorizontalStepper({
                   )}
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "11.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: active ? 700 : 600,
                     lineHeight: 1.2,
                   }}
@@ -4696,7 +4696,7 @@ function MobileStepNav({
                 className="uppercase text-zinc-500"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.22em",
                   fontWeight: 700,
                 }}
@@ -4707,7 +4707,7 @@ function MobileStepNav({
                 className="truncate text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "15px",
+                  fontSize: "var(--text-base)",
                   fontWeight: 700,
                   lineHeight: 1.25,
                 }}
@@ -4719,7 +4719,7 @@ function MobileStepNav({
               className="flex shrink-0 items-center gap-1 text-zinc-400"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 600,
               }}
             >
@@ -4749,7 +4749,7 @@ function MobileStepNav({
               className="text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "16px",
+                fontSize: "var(--text-base)",
                 fontWeight: 700,
               }}
             >
@@ -4796,7 +4796,7 @@ function MobileStepNav({
                       )}
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "13.5px",
+                        fontSize: "var(--text-sm)",
                         fontWeight: active ? 700 : 600,
                         lineHeight: 1.3,
                       }}
@@ -4810,7 +4810,7 @@ function MobileStepNav({
                       )}
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "11.5px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: 500,
                         lineHeight: 1.3,
                       }}
@@ -4823,7 +4823,7 @@ function MobileStepNav({
                       className="shrink-0 rounded-full bg-primary/20 px-2 py-0.5 text-primary"
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "9.5px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: 700,
                         letterSpacing: "0.08em",
                       }}
@@ -4899,7 +4899,7 @@ function ProductTile({
               className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "8.5px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.14em",
                 fontWeight: 700,
                 boxShadow: "0 4px 12px -2px rgba(255,43,46,0.55)",
@@ -4931,7 +4931,7 @@ function ProductTile({
             className="line-clamp-2 text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "14px",
+              fontSize: "var(--text-sm)",
               fontWeight: 600,
               letterSpacing: "-0.005em",
               lineHeight: 1.3,
@@ -4947,7 +4947,7 @@ function ProductTile({
                   className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 500,
                   }}
                 >
@@ -4962,7 +4962,7 @@ function ProductTile({
                 className={cn("tabular-nums", selected ? "text-primary" : "text-ink-strong")}
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "20px",
+                  fontSize: "var(--text-lg)",
                   fontWeight: 700,
                   letterSpacing: "-0.005em",
                   lineHeight: 1,
@@ -4970,7 +4970,7 @@ function ProductTile({
               >
                 {formatBRL(option.price)}
               </p>
-              <p className="mt-1 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
+              <p className="mt-1 text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
                 10x de {formatBRL(option.price / 10)} sem juros
               </p>
             </div>
@@ -5009,7 +5009,7 @@ function ProductTile({
           className="absolute left-2.5 top-2.5 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "9px",
+            fontSize: "var(--text-caption)",
             letterSpacing: "0.14em",
             fontWeight: 700,
             boxShadow: "0 6px 18px -4px rgba(255,43,46,0.55)",
@@ -5045,7 +5045,7 @@ function ProductTile({
           className="line-clamp-2 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-figtree)",
-            fontSize: "12.5px",
+            fontSize: "var(--text-caption)",
             fontWeight: 600,
             letterSpacing: "-0.005em",
             lineHeight: 1.3,
@@ -5062,7 +5062,7 @@ function ProductTile({
                 className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "9.5px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 500,
                 }}
               >
@@ -5076,14 +5076,14 @@ function ProductTile({
             className={cn("tabular-nums", selected ? "text-primary" : "text-ink-strong")}
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "15px",
+              fontSize: "var(--text-base)",
               fontWeight: 700,
               letterSpacing: "-0.005em",
             }}
           >
             {formatBRL(option.price)}
           </span>
-          <span className="text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "9.5px" }}>
+          <span className="text-zinc-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
             10x {formatBRL(option.price / 10)}
           </span>
         </div>
@@ -5205,7 +5205,7 @@ function StepMessages({ messages }: { messages: StepMessage[] }) {
               {m.tone === "success" ? (
                 <Check size={11} strokeWidth={3} />
               ) : (
-                <span className="flex h-3 w-3 items-center justify-center rounded-full border-2 border-current text-[8px] font-bold">
+                <span className="flex h-3 w-3 items-center justify-center rounded-full border-2 border-current text-[var(--text-caption)] font-bold">
                   {m.tone === "warn" || m.tone === "error" ? "!" : "i"}
                 </span>
               )}
@@ -5214,7 +5214,7 @@ function StepMessages({ messages }: { messages: StepMessage[] }) {
               className={cn(tone.text)}
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11.5px",
+                fontSize: "var(--text-caption)",
                 lineHeight: 1.45,
                 fontWeight: 500,
               }}
@@ -5272,7 +5272,7 @@ function SelectedItemCard({
             className="uppercase text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.22em",
               fontWeight: 700,
             }}
@@ -5285,7 +5285,7 @@ function SelectedItemCard({
                 className="rounded-full bg-primary/15 px-2 py-0.5 text-primary tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 700,
                   letterSpacing: "0.04em",
                 }}
@@ -5297,7 +5297,7 @@ function SelectedItemCard({
               className="text-zinc-500"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10.5px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 500,
               }}
             >
@@ -5324,7 +5324,7 @@ function SelectedItemCard({
             className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "15px",
+              fontSize: "var(--text-base)",
               fontWeight: 700,
               letterSpacing: "-0.005em",
               lineHeight: 1.3,
@@ -5340,7 +5340,7 @@ function SelectedItemCard({
                   className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "10px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 500,
                   }}
                 >
@@ -5353,7 +5353,7 @@ function SelectedItemCard({
             className="mt-3 text-ink-strong tabular-nums"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "22px",
+              fontSize: "var(--text-xl)",
               fontWeight: 700,
               letterSpacing: "-0.015em",
             }}
@@ -5362,7 +5362,7 @@ function SelectedItemCard({
           </p>
           <p
             className="mt-0.5 text-zinc-500"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
           >
             em até 10x de {formatBRL(options[0].price / 10)} sem juros
           </p>
@@ -5391,7 +5391,7 @@ function SelectedItemCard({
                   className="uppercase text-zinc-500"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "9px",
+                    fontSize: "var(--text-caption)",
                     letterSpacing: "0.18em",
                     fontWeight: 700,
                   }}
@@ -5402,7 +5402,7 @@ function SelectedItemCard({
                   className="truncate text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "12px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 600,
                     lineHeight: 1.25,
                   }}
@@ -5413,7 +5413,7 @@ function SelectedItemCard({
                   className="mt-0.5 text-primary tabular-nums"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "12px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 700,
                   }}
                 >
@@ -5441,7 +5441,7 @@ function SelectedItemCard({
                 className="uppercase text-zinc-500"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.22em",
                   fontWeight: 700,
                 }}
@@ -5457,7 +5457,7 @@ function SelectedItemCard({
                 className="text-zinc-500"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "12.5px",
+                  fontSize: "var(--text-caption)",
                 }}
               >
                 Selecione um ou mais itens da lista
@@ -5471,7 +5471,7 @@ function SelectedItemCard({
                 className="uppercase text-zinc-400"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.18em",
                   fontWeight: 700,
                 }}
@@ -5482,7 +5482,7 @@ function SelectedItemCard({
                 className="text-ink-strong tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "16px",
+                  fontSize: "var(--text-base)",
                   fontWeight: 700,
                   letterSpacing: "-0.01em",
                 }}
@@ -5498,7 +5498,7 @@ function SelectedItemCard({
         <div className="px-5 py-6 text-center">
           <p
             className="text-zinc-500"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
           >
             Selecione uma opção da lista
           </p>
@@ -5512,7 +5512,7 @@ function SelectedItemCard({
             onClick={onPrev}
             disabled={isFirst}
             className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] border border-edge bg-white/[0.02] text-zinc-300 transition-all hover:border-edge-strong hover:bg-white/[0.06] hover:text-ink-strong disabled:cursor-not-allowed disabled:opacity-25"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
           >
             <ArrowLeft size={12} /> Voltar
           </button>
@@ -5523,7 +5523,7 @@ function SelectedItemCard({
             className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[var(--radius-card-sm)] bg-primary text-ink-strong transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 600,
               letterSpacing: "0.01em",
               boxShadow: nextDisabled ? "none" : "0 8px 24px -8px rgba(255,43,46,0.5)",
@@ -5563,7 +5563,7 @@ function ConfiguracaoSelecionadaCard({
             className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "14px",
+              fontSize: "var(--text-sm)",
               fontWeight: 700,
               letterSpacing: "-0.005em",
             }}
@@ -5574,7 +5574,7 @@ function ConfiguracaoSelecionadaCard({
             className="rounded-full bg-primary/[0.12] px-2 py-0.5 text-primary tabular-nums"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.04em",
             }}
@@ -5587,7 +5587,7 @@ function ConfiguracaoSelecionadaCard({
         <div className="px-5 py-6 text-center">
           <p
             className="text-zinc-500"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
           >
             Nenhum componente selecionado ainda.
             <br />
@@ -5617,7 +5617,7 @@ function ConfiguracaoSelecionadaCard({
                   className="uppercase text-zinc-500"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "9px",
+                    fontSize: "var(--text-caption)",
                     letterSpacing: "0.18em",
                     fontWeight: 700,
                     lineHeight: 1.2,
@@ -5629,7 +5629,7 @@ function ConfiguracaoSelecionadaCard({
                   className="mt-0.5 truncate text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "12px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 600,
                     lineHeight: 1.25,
                   }}
@@ -5639,7 +5639,7 @@ function ConfiguracaoSelecionadaCard({
               </div>
               <span
                 className="shrink-0 tabular-nums text-primary"
-                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "11.5px", fontWeight: 700 }}
+                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-caption)", fontWeight: 700 }}
               >
                 {formatBRL(c.selectedOption!.price)}
               </span>
@@ -5654,7 +5654,7 @@ function ConfiguracaoSelecionadaCard({
             className="uppercase text-zinc-500"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "9.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.2em",
               fontWeight: 700,
             }}
@@ -5665,7 +5665,7 @@ function ConfiguracaoSelecionadaCard({
             className="text-ink-strong tabular-nums"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "20px",
+              fontSize: "var(--text-lg)",
               fontWeight: 700,
               letterSpacing: "-0.015em",
             }}
@@ -5675,7 +5675,7 @@ function ConfiguracaoSelecionadaCard({
         </div>
         <p
           className="mt-0.5 text-right tabular-nums text-zinc-500"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
         >
           10x de {formatBRL(total / 10)} sem juros
         </p>
@@ -6204,7 +6204,7 @@ export function MonteSeuPcPage() {
                             className="mb-1 uppercase text-zinc-500"
                             style={{
                               fontFamily: "var(--font-family-inter)",
-                              fontSize: "10px",
+                              fontSize: "var(--text-caption)",
                               letterSpacing: "0.22em",
                               fontWeight: 700,
                             }}
@@ -6227,7 +6227,7 @@ export function MonteSeuPcPage() {
                             className="mt-1 text-zinc-400"
                             style={{
                               fontFamily: "var(--font-family-inter)",
-                              fontSize: "12.5px",
+                              fontSize: "var(--text-caption)",
                             }}
                           >
                             {visibleOptions.length} de {allCompat.length} compatíveis
@@ -6239,7 +6239,7 @@ export function MonteSeuPcPage() {
                         className="mb-3 text-zinc-400 lg:hidden"
                         style={{
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "12.5px",
+                          fontSize: "var(--text-caption)",
                         }}
                       >
                         {visibleOptions.length} de {allCompat.length} compatíveis
@@ -6253,7 +6253,7 @@ export function MonteSeuPcPage() {
                             htmlFor="step-search"
                             style={{
                               fontFamily: "var(--font-family-inter)",
-                              fontSize: "10px",
+                              fontSize: "var(--text-caption)",
                               letterSpacing: "0.18em",
                               fontWeight: 700,
                             }}
@@ -6268,7 +6268,7 @@ export function MonteSeuPcPage() {
                             placeholder="Busque por nome ou código"
                             aria-label={`Buscar em ${currentCategory.title}`}
                             className="msp-field h-11 w-full rounded-card-sm border border-edge bg-[#0f0f12] px-4 py-3 text-ink-strong placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] sm:h-auto"
-                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                           />
                           {stepSearch && (
                             <button
@@ -6287,7 +6287,7 @@ export function MonteSeuPcPage() {
                             htmlFor="step-sort"
                             style={{
                               fontFamily: "var(--font-family-inter)",
-                              fontSize: "10px",
+                              fontSize: "var(--text-caption)",
                               letterSpacing: "0.18em",
                               fontWeight: 700,
                             }}
@@ -6298,13 +6298,13 @@ export function MonteSeuPcPage() {
                             <SelectTrigger
                               id="step-sort"
                               className="w-full !h-auto rounded-card-sm border border-edge bg-[#0f0f12] px-4 py-3 text-ink-strong transition-all hover:bg-[#15151a] focus:border-primary/45 focus:bg-[#15151a] data-[state=open]:border-primary/45 data-[state=open]:bg-[#15151a] [&_svg]:text-zinc-500"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                             >
                               <SelectValue placeholder="Selecionar ordenação" />
                             </SelectTrigger>
                             <SelectContent
                               className="rounded-card-sm border border-edge bg-[#0f0f12] text-ink-strong shadow-2xl shadow-black/60"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
+                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                             >
                               <SelectItem value="suggested" className="rounded-[var(--radius-card)] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Sugerida primeiro
@@ -6326,7 +6326,7 @@ export function MonteSeuPcPage() {
                             className="mb-1.5 block uppercase text-zinc-400"
                             style={{
                               fontFamily: "var(--font-family-inter)",
-                              fontSize: "10px",
+                              fontSize: "var(--text-caption)",
                               letterSpacing: "0.18em",
                               fontWeight: 700,
                             }}
@@ -6400,7 +6400,7 @@ export function MonteSeuPcPage() {
                                 className="text-ink-strong"
                                 style={{
                                   fontFamily: "var(--font-family-figtree)",
-                                  fontSize: "15px",
+                                  fontSize: "var(--text-base)",
                                   fontWeight: 600,
                                 }}
                               >
@@ -6408,7 +6408,7 @@ export function MonteSeuPcPage() {
                               </p>
                               <p
                                 className="mt-1 text-zinc-500"
-                                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}
+                                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                               >
                                 Tente outro termo ou limpe a busca
                               </p>
@@ -6418,7 +6418,7 @@ export function MonteSeuPcPage() {
                                 className="mt-3 rounded-full border border-edge px-4 py-1.5 text-zinc-300 transition-colors hover:bg-white/[0.05] hover:text-ink-strong cursor-pointer"
                                 style={{
                                   fontFamily: "var(--font-family-inter)",
-                                  fontSize: "12px",
+                                  fontSize: "var(--text-caption)",
                                   fontWeight: 600,
                                 }}
                               >
@@ -6541,7 +6541,7 @@ export function MonteSeuPcPage() {
                           className="uppercase text-zinc-500"
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "9px",
+                            fontSize: "var(--text-caption)",
                             letterSpacing: "0.18em",
                             fontWeight: 700,
                           }}
@@ -6553,7 +6553,7 @@ export function MonteSeuPcPage() {
                           className="text-zinc-500"
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "9.5px",
+                            fontSize: "var(--text-caption)",
                             fontWeight: 600,
                           }}
                         >
@@ -6564,7 +6564,7 @@ export function MonteSeuPcPage() {
                         className="text-ink-strong tabular-nums"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
-                          fontSize: "18px",
+                          fontSize: "var(--text-lg)",
                           fontWeight: 700,
                           letterSpacing: "-0.015em",
                           lineHeight: 1.15,
@@ -6576,7 +6576,7 @@ export function MonteSeuPcPage() {
                         className="text-zinc-500 tabular-nums"
                         style={{
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "10px",
+                          fontSize: "var(--text-caption)",
                           fontWeight: 500,
                         }}
                       >
@@ -6591,7 +6591,7 @@ export function MonteSeuPcPage() {
                       className="flex h-11 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-card-sm bg-primary px-5 text-ink-strong transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "13.5px",
+                        fontSize: "var(--text-sm)",
                         fontWeight: 700,
                         letterSpacing: "0.01em",
                         boxShadow: !stepValid ? "none" : "0 8px 24px -8px rgba(255,43,46,0.5)",
@@ -6612,7 +6612,7 @@ export function MonteSeuPcPage() {
                           className="text-ink-strong"
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "16px",
+                            fontSize: "var(--text-base)",
                             fontWeight: 700,
                           }}
                         >

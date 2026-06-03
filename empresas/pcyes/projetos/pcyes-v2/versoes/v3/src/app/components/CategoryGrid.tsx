@@ -198,7 +198,7 @@ export function CategoryGrid() {
                       ? "border-primary/30 bg-primary text-ink-strong"
                       : "border-edge bg-transparent text-ink-muted hover:text-ink hover:border-edge-strong"
                   }`}
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "600", lineHeight: "19.5px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "600", lineHeight: "19.5px" }}
                 >
                   {audience}
                 </button>
@@ -232,12 +232,12 @@ export function CategoryGrid() {
                   <p className="text-ink-strong mb-1.5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 1.8vw, 20px)", fontWeight: "600", lineHeight: 1.05 }}>
                     {card.name}
                   </p>
-                  <p className="mb-3 max-w-[19ch] text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "8.4px", lineHeight: "13.02px" }}>
+                  <p className="mb-3 max-w-[19ch] text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: "13.02px" }}>
                     {card.caption}
                   </p>
                   <span
                     className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-ink group-hover:bg-white group-hover:text-black transition-all duration-500"
-                    style={{ borderRadius: "2.8px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "500", letterSpacing: "0.02em" }}
+                    style={{ borderRadius: "2.8px", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "500", letterSpacing: "0.02em" }}
                   >
                     Ver categoria
                     <ArrowUpRight size={11} />

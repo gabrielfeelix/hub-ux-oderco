@@ -141,7 +141,7 @@ export function GpuShowcase() {
             className="mb-3"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.3em",
               color: "var(--primary)",
@@ -167,7 +167,7 @@ export function GpuShowcase() {
             className="mx-auto mt-4"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "15px",
+              fontSize: "var(--text-base)",
               color: "rgba(var(--foreground-rgb), 0.55)",
               maxWidth: "560px",
               lineHeight: 1.5,
@@ -201,7 +201,7 @@ export function GpuShowcase() {
                     : "none",
                   color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.65)",
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "13px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: isActive ? 700 : 500,
                   letterSpacing: "0.02em",
                 }}
@@ -289,7 +289,7 @@ export function GpuShowcase() {
               }}
             >
               <span
-                className="text-[8.5px] md:text-[10.5px]"
+                className="text-[var(--text-caption)] md:text-[var(--text-caption)]"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontWeight: 500,
@@ -301,7 +301,7 @@ export function GpuShowcase() {
                 Geração anterior
               </span>
               <span
-                className="text-ink-strong text-[11px] md:text-[13px]"
+                className="text-ink-strong text-[var(--text-caption)] md:text-[var(--text-sm)]"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontWeight: 700,
@@ -322,7 +322,7 @@ export function GpuShowcase() {
               }}
             >
               <span
-                className="text-[8.5px] md:text-[10.5px]"
+                className="text-[var(--text-caption)] md:text-[var(--text-caption)]"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontWeight: 500,
@@ -334,7 +334,7 @@ export function GpuShowcase() {
                 Nova geração
               </span>
               <span
-                className="text-[11px] md:text-[13px]"
+                className="text-[var(--text-caption)] md:text-[var(--text-sm)]"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontWeight: 700,
@@ -356,7 +356,7 @@ export function GpuShowcase() {
               }}
             >
               <span
-                className="text-[9px] md:text-[11px] whitespace-normal md:whitespace-nowrap text-center block"
+                className="text-[var(--text-caption)] md:text-[var(--text-caption)] whitespace-normal md:whitespace-nowrap text-center block"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontWeight: 700,
@@ -443,7 +443,7 @@ export function GpuShowcase() {
                     <p
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "11px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: 600,
                         letterSpacing: "0.14em",
                         color: "rgba(var(--foreground-rgb), 0.45)",
@@ -469,7 +469,7 @@ export function GpuShowcase() {
                       className="mt-1 text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
-                        fontSize: "16px",
+                        fontSize: "var(--text-base)",
                         fontWeight: 700,
                       }}
                     >

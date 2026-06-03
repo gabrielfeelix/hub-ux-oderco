@@ -223,7 +223,7 @@ export function FaqPage() {
               className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9.5px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.2em",
                 fontWeight: 700,
                 boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
@@ -268,7 +268,7 @@ export function FaqPage() {
             className="mx-auto mt-5 max-w-[560px] text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "16px",
+              fontSize: "var(--text-base)",
               lineHeight: 1.6,
             }}
           >
@@ -297,7 +297,7 @@ export function FaqPage() {
                 className="h-12 w-full rounded-full border border-edge bg-white/[0.03] pl-11 pr-4 text-ink-strong placeholder:text-ink-subtle outline-none transition-colors focus:border-primary/50"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "15px",
+                  fontSize: "var(--text-base)",
                 }}
               />
             </div>
@@ -334,7 +334,7 @@ export function FaqPage() {
                     }
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "13.5px",
+                      fontSize: "var(--text-sm)",
                       fontWeight: 600,
                     }}
                   >
@@ -351,7 +351,7 @@ export function FaqPage() {
               className="mb-8 text-center text-foreground/60"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "14px",
+                fontSize: "var(--text-sm)",
               }}
             >
               {totalMatches === 0
@@ -379,7 +379,7 @@ export function FaqPage() {
                     className="mb-3 uppercase text-primary"
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "11px",
+                      fontSize: "var(--text-caption)",
                       letterSpacing: "0.22em",
                       fontWeight: 700,
                     }}
@@ -402,7 +402,7 @@ export function FaqPage() {
                         className="py-5 text-ink-strong hover:no-underline"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
-                          fontSize: "16px",
+                          fontSize: "var(--text-base)",
                           fontWeight: 600,
                           letterSpacing: "-0.01em",
                         }}
@@ -413,7 +413,7 @@ export function FaqPage() {
                         <p
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "15px",
+                            fontSize: "var(--text-base)",
                             lineHeight: 1.65,
                           }}
                         >
@@ -470,7 +470,7 @@ export function FaqPage() {
                 className="mx-auto mt-3 max-w-[440px] text-foreground/60"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "15px",
+                  fontSize: "var(--text-base)",
                   lineHeight: 1.6,
                 }}
               >
@@ -482,7 +482,7 @@ export function FaqPage() {
                 className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-ink-strong transition-all hover:brightness-110"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "14px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 600,
                   boxShadow: "0 12px 30px -10px rgba(255,43,46,0.55)",
                 }}

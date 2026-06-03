@@ -186,7 +186,7 @@ export function InRealLifeSection() {
             className="mb-3 text-primary"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.3em",
             }}
@@ -209,7 +209,7 @@ export function InRealLifeSection() {
             className="mt-3 max-w-xl"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "14px",
+              fontSize: "var(--text-sm)",
               color: "rgba(var(--foreground-rgb), 0.55)",
               lineHeight: 1.5,
             }}
@@ -271,7 +271,7 @@ export function InRealLifeSection() {
                       top: `${post.products[pi].y}%`,
                       transform: "translate(-50%, -50%)",
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "11px",
+                      fontSize: "var(--text-caption)",
                       fontWeight: "var(--font-weight-medium)",
                       color: "#000",
                     }}
@@ -285,7 +285,7 @@ export function InRealLifeSection() {
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-400">
                 <span
                   className="text-ink"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}
                 >
                   @{post.username}
                 </span>
@@ -384,7 +384,7 @@ export function InRealLifeSection() {
                 {/* Username */}
                 <span
                   className="text-foreground/40 mb-1"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                 >
                   @{selectedPost.username}
                 </span>
@@ -392,7 +392,7 @@ export function InRealLifeSection() {
                 {/* Section label */}
                 <span
                   className="text-foreground/20 block mb-6 tracking-wider"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)" }}
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}
                 >
                   PRODUTOS NA IMAGEM
                 </span>
@@ -417,7 +417,7 @@ export function InRealLifeSection() {
                       <div
                         className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-colors duration-300 ${highlightedProduct === pi ? "bg-primary text-ink-strong" : "bg-foreground/10 text-foreground/50"
                           }`}
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-semibold)" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-semibold)" }}
                       >
                         {pi + 1}
                       </div>
@@ -436,13 +436,13 @@ export function InRealLifeSection() {
                         <p
                           className={`truncate transition-colors duration-300 ${highlightedProduct === pi ? "text-foreground" : "text-foreground/80"
                             }`}
-                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
+                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}
                         >
                           {product.name}
                         </p>
                         <p
                           className="text-foreground/35"
-                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                         >
                           {product.price}
                         </p>
@@ -467,7 +467,7 @@ export function InRealLifeSection() {
                   style={{
                     borderRadius: "var(--radius-button)",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "12px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: "var(--font-weight-medium)",
                   }}
                 >

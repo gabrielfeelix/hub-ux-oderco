@@ -92,7 +92,7 @@ export function LegalPageLayout({
               className="inline-flex w-fit items-center rounded-full bg-primary px-2.5 py-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9.5px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.18em",
                 fontWeight: 700,
                 boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
@@ -102,7 +102,7 @@ export function LegalPageLayout({
             </span>
 
             <h1
-              className="mt-6 text-[34px] leading-[1.1] tracking-tight text-foreground md:text-[52px]"
+              className="mt-6 text-[var(--text-2xl)] leading-[1.1] tracking-tight text-foreground md:text-[52px]"
               style={{ fontFamily: "var(--font-family-figtree)", fontWeight: 500 }}
             >
               {title}
@@ -112,7 +112,7 @@ export function LegalPageLayout({
               className="mt-4 text-foreground/45"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
+                fontSize: "var(--text-sm)",
                 letterSpacing: "0.02em",
               }}
             >
@@ -123,7 +123,7 @@ export function LegalPageLayout({
               className="mt-5 text-foreground/65"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "16px",
+                fontSize: "var(--text-base)",
                 lineHeight: 1.65,
               }}
             >
@@ -142,7 +142,7 @@ export function LegalPageLayout({
               className="mb-4 text-foreground/35"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 700,
                 letterSpacing: "0.14em",
               }}
@@ -163,7 +163,7 @@ export function LegalPageLayout({
                       }`}
                       style={{
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "13.5px",
+                        fontSize: "var(--text-sm)",
                         fontWeight: isActive ? 600 : 400,
                       }}
                     >
@@ -188,7 +188,7 @@ export function LegalPageLayout({
                 className="scroll-mt-[140px] border-b border-foreground/10 py-10 first:pt-0 last:border-b-0"
               >
                 <h2
-                  className="text-[24px] leading-[1.25] text-foreground md:text-[28px]"
+                  className="text-[var(--text-xl)] leading-[1.25] text-foreground md:text-[var(--text-2xl)]"
                   style={{ fontFamily: "var(--font-family-figtree)", fontWeight: 500 }}
                 >
                   {section.heading}
@@ -204,7 +204,7 @@ export function LegalPageLayout({
                             className="flex gap-3 text-foreground/65"
                             style={{
                               fontFamily: "var(--font-family-inter)",
-                              fontSize: "15.5px",
+                              fontSize: "var(--text-base)",
                               lineHeight: 1.65,
                             }}
                           >
@@ -222,7 +222,7 @@ export function LegalPageLayout({
                         className="text-foreground/65"
                         style={{
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "15.5px",
+                          fontSize: "var(--text-base)",
                           lineHeight: 1.7,
                         }}
                       >

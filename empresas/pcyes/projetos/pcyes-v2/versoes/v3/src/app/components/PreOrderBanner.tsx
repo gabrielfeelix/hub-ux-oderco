@@ -82,7 +82,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
               background: "var(--gradient-preorder-red)",
               color: "#fff",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10px",
+              fontSize: "var(--text-caption)",
               fontWeight: 900,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
@@ -96,7 +96,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="inline-flex items-center gap-1 text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.16em",
               textTransform: "uppercase",
               fontWeight: 700,
@@ -112,7 +112,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           className="text-ink mb-4"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "13px",
+            fontSize: "var(--text-sm)",
             fontWeight: 600,
             lineHeight: 1.45,
           }}
@@ -131,7 +131,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="text-ink-muted mb-2"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
@@ -160,7 +160,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                     className="text-ink-strong tabular-nums leading-none"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "24px",
+                      fontSize: "var(--text-xl)",
                       fontWeight: 700,
                       letterSpacing: "-0.02em",
                     }}
@@ -171,7 +171,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                     className="text-ink-subtle mt-1"
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "9.5px",
+                      fontSize: "var(--text-caption)",
                       letterSpacing: "0.18em",
                       textTransform: "uppercase",
                       fontWeight: 700,
@@ -192,7 +192,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12px",
+              fontSize: "var(--text-caption)",
               fontWeight: 600,
             }}
           >
@@ -207,7 +207,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
               className="text-ink-muted"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10.5px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
                 fontWeight: 700,
@@ -219,7 +219,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
               className="text-ink-strong tabular-nums"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 700,
               }}
             >
@@ -248,7 +248,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="text-ink-muted mt-1.5"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
             }}
           >
             {remaining > 0
@@ -270,7 +270,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="text-ink-muted mb-1"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.16em",
               textTransform: "uppercase",
               fontWeight: 700,
@@ -283,7 +283,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
               className="text-ink-strong leading-none"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "28px",
+                fontSize: "var(--text-2xl)",
                 fontWeight: 600,
                 letterSpacing: "-0.02em",
               }}
@@ -295,7 +295,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                 className="line-through text-ink-subtle"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "12px",
+                  fontSize: "var(--text-caption)",
                 }}
               >
                 {productPrice}
@@ -306,7 +306,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="text-ink-muted mt-1"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11.5px",
+              fontSize: "var(--text-caption)",
             }}
           >
             Pagamento parcelado · sem cobrança até o envio
@@ -321,7 +321,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           style={{
             background: "var(--gradient-preorder-orange)",
             fontFamily: "var(--font-family-inter)",
-            fontSize: "14px",
+            fontSize: "var(--text-sm)",
             fontWeight: 700,
             letterSpacing: "0.04em",
             boxShadow: "0 18px 38px -10px rgba(249,115,22,0.65)",
@@ -338,7 +338,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             className="text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               lineHeight: 1.5,
             }}
           >

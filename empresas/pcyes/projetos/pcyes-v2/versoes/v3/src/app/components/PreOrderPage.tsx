@@ -114,7 +114,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
               background: "#ff2419",
               color: "#fff",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10px",
+              fontSize: "var(--text-caption)",
               fontWeight: 800,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
@@ -135,7 +135,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 border: "1px solid rgba(250,204,21,0.35)",
                 color: "#facc15",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "9.5px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 700,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
@@ -153,7 +153,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
             className="text-ink-subtle mb-2"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               fontWeight: 600,
@@ -165,7 +165,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
             className="text-ink-strong mb-3 line-clamp-2"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "22px",
+              fontSize: "var(--text-xl)",
               fontWeight: 600,
               letterSpacing: "-0.015em",
               lineHeight: 1.22,
@@ -178,7 +178,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
             className="text-ink-muted mb-5"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               lineHeight: 1.55,
             }}
           >
@@ -206,7 +206,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                   className="text-ink-strong tabular-nums"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "18px",
+                    fontSize: "var(--text-lg)",
                     fontWeight: 700,
                   }}
                 >
@@ -216,7 +216,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                   className="text-ink-subtle"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "9.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 700,
                   }}
                 >
@@ -233,7 +233,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 className="text-ink-muted"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   fontWeight: 700,
@@ -245,7 +245,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 className="text-ink-strong tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "11.5px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 700,
                 }}
               >
@@ -277,7 +277,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 className="text-ink-subtle mb-1"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "10.5px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   fontWeight: 600,
@@ -289,7 +289,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 className="text-ink-strong leading-none"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "26px",
+                  fontSize: "var(--text-xl)",
                   fontWeight: 600,
                   letterSpacing: "-0.025em",
                 }}
@@ -302,7 +302,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
               style={{
                 background: "#ff2419",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
+                fontSize: "var(--text-sm)",
                 fontWeight: 600,
                 letterSpacing: "0.02em",
                 boxShadow: "0 8px 22px -10px rgba(255,36,25,0.35)",
@@ -440,7 +440,7 @@ function HeroSection({
                 className="text-ink-muted mb-1"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "9.5px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.22em",
                   textTransform: "uppercase",
                   fontWeight: 700,
@@ -452,7 +452,7 @@ function HeroSection({
                 className="text-ink-strong mb-1.5 line-clamp-1"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "14px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 600,
                   letterSpacing: "-0.01em",
                 }}
@@ -463,7 +463,7 @@ function HeroSection({
                 className="text-[#ff7770]"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "16px",
+                  fontSize: "var(--text-base)",
                   fontWeight: 700,
                   letterSpacing: "-0.02em",
                 }}
@@ -491,16 +491,16 @@ function HeroSection({
             className="text-ink-subtle hover:text-ink transition-colors"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12px",
+              fontSize: "var(--text-caption)",
               fontWeight: 500,
             }}
           >
             Home
           </Link>
-          <span className="text-ink-subtle" style={{ fontSize: "10px" }}>/</span>
+          <span className="text-ink-subtle" style={{ fontSize: "var(--text-caption)" }}>/</span>
           <span
             className="text-ink-muted"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 500 }}
           >
             Pré-venda
           </span>
@@ -520,7 +520,7 @@ function HeroSection({
               border: "1px solid rgba(255,36,25,0.25)",
               color: "#ff7770",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 600,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
@@ -613,7 +613,7 @@ function HeroSection({
                 background: "rgba(var(--foreground-rgb), 0.02)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.07)",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 500,
                 backdropFilter: "blur(8px)",
               }}
@@ -703,7 +703,7 @@ function FiltersBar({
               className="preorder-field bg-transparent outline-none flex-1 text-ink-strong placeholder:text-ink-subtle"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
+                fontSize: "var(--text-sm)",
               }}
             />
             {search && (
@@ -732,7 +732,7 @@ function FiltersBar({
                       : "1px solid rgba(var(--foreground-rgb), 0.07)",
                     color: isActive ? "#fff" : "rgba(var(--foreground-rgb), 0.6)",
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "12.5px",
+                    fontSize: "var(--text-caption)",
                     fontWeight: 500,
                   }}
                 >
@@ -750,7 +750,7 @@ function FiltersBar({
               background: "rgba(var(--foreground-rgb), 0.025)",
               border: "1px solid rgba(var(--foreground-rgb), 0.07)",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 500,
             }}
           >
@@ -762,7 +762,7 @@ function FiltersBar({
                 style={{
                   background: "#ff2419",
                   color: "#fff",
-                  fontSize: "10px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 700,
                 }}
               >
@@ -783,7 +783,7 @@ function FiltersBar({
                 background: "rgba(var(--foreground-rgb), 0.025)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.07)",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12.5px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 500,
               }}
             >
@@ -807,7 +807,7 @@ function FiltersBar({
             className="text-ink-subtle mr-1"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               fontWeight: 600,
@@ -829,7 +829,7 @@ function FiltersBar({
                     : "1px solid rgba(var(--foreground-rgb), 0.05)",
                   color: isActive ? "#fff" : "rgba(var(--foreground-rgb), 0.5)",
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "11.5px",
+                  fontSize: "var(--text-caption)",
                   fontWeight: 500,
                 }}
               >
@@ -862,7 +862,7 @@ function FiltersBar({
                             : "1px solid rgba(var(--foreground-rgb), 0.06)",
                           color: isActive ? "#fff" : "rgba(var(--foreground-rgb), 0.55)",
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "11.5px",
+                          fontSize: "var(--text-caption)",
                           fontWeight: 500,
                         }}
                       >
@@ -881,7 +881,7 @@ function FiltersBar({
             className="inline-flex items-center gap-1.5 text-ink-muted tabular-nums"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 500,
             }}
           >
@@ -1008,7 +1008,7 @@ export function PreOrderPage() {
               className="text-ink-subtle mb-2"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
                 fontWeight: 600,
@@ -1045,7 +1045,7 @@ export function PreOrderPage() {
               className="text-ink-strong mb-2"
               style={{
                 fontFamily: "var(--font-family-figtree)",
-                fontSize: "20px",
+                fontSize: "var(--text-lg)",
                 fontWeight: 600,
                 letterSpacing: "-0.015em",
               }}
@@ -1056,7 +1056,7 @@ export function PreOrderPage() {
               className="text-ink-muted mb-6 max-w-[400px]"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13.5px",
+                fontSize: "var(--text-sm)",
                 lineHeight: 1.55,
               }}
             >
@@ -1069,7 +1069,7 @@ export function PreOrderPage() {
                 background: "#fff",
                 color: "#0a0a0c",
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12.5px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 600,
                 letterSpacing: "0.01em",
               }}

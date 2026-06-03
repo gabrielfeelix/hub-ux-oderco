@@ -13,7 +13,7 @@ export function Eyebrow({ children, icon, className = "", style }: EyebrowProps)
       className={`inline-flex items-center gap-2 text-primary ${className}`}
       style={{
         fontFamily: "var(--font-family-inter)",
-        fontSize: "11px",
+        fontSize: "var(--text-caption)",
         fontWeight: 700,
         letterSpacing: "0.3em",
         ...style,

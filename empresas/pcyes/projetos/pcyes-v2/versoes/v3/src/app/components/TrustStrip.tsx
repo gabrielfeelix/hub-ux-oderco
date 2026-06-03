@@ -41,7 +41,7 @@ function FeatureCard({ f }: { f: Feature }) {
           className="hidden md:block text-ink-muted"
           style={{
             fontFamily: "var(--font-family-inter)",
-            fontSize: "13px",
+            fontSize: "var(--text-sm)",
             lineHeight: 1.4,
           }}
         >

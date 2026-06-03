@@ -250,7 +250,7 @@ export function CategoryShowcase() {
                           "var(--gradient-brand)",
                         color: "white",
                         fontFamily: "var(--font-family-inter)",
-                        fontSize: "11px",
+                        fontSize: "var(--text-caption)",
                         fontWeight: 700,
                         letterSpacing: "0.06em",
                         textTransform: "uppercase",

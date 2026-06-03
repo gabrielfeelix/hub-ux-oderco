@@ -79,7 +79,7 @@ export function Newsletter() {
             className="mx-auto mb-10"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "15px",
+              fontSize: "var(--text-base)",
               lineHeight: 1.55,
               color: "rgba(var(--foreground-rgb), 0.55)",
               maxWidth: "440px",
@@ -117,7 +117,7 @@ export function Newsletter() {
                   className="text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "13.5px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 600,
                   }}
                 >
@@ -146,7 +146,7 @@ export function Newsletter() {
                     className="w-full bg-transparent text-ink-strong placeholder:text-ink-subtle outline-none rounded-full min-h-[44px] px-5"
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "14.5px",
+                      fontSize: "var(--text-sm)",
                       background: "rgba(var(--foreground-rgb), 0.04)",
                       border: "1px solid rgba(var(--foreground-rgb), 0.10)",
                       boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
@@ -175,7 +175,7 @@ export function Newsletter() {
                     className="flex-1 bg-transparent text-ink-strong placeholder:text-ink-subtle outline-none"
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "14.5px",
+                      fontSize: "var(--text-sm)",
                       paddingTop: "10px",
                       paddingBottom: "10px",
                     }}
@@ -189,7 +189,7 @@ export function Newsletter() {
                   className="mt-4"
                   style={{
                     fontFamily: "var(--font-family-inter)",
-                    fontSize: "11.5px",
+                    fontSize: "var(--text-caption)",
                     color: "rgba(var(--foreground-rgb), 0.35)",
                     letterSpacing: "0.01em",
                   }}

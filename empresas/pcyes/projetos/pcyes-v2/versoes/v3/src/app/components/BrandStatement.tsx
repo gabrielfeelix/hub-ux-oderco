@@ -35,7 +35,7 @@ export function BrandStatement() {
               className="text-primary tracking-[0.3em] mb-6"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
+                fontSize: "var(--text-caption)",
                 fontWeight: "var(--font-weight-medium)",
               }}
             >
@@ -89,7 +89,7 @@ export function BrandStatement() {
               className="text-ink-subtle"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "14px",
+                fontSize: "var(--text-sm)",
                 lineHeight: "1.75",
               }}
             >
@@ -100,7 +100,7 @@ export function BrandStatement() {
               className="inline-flex items-center gap-2 text-ink-muted hover:text-ink-strong border-b border-edge hover:border-edge-strong pb-1 transition-all duration-400 self-start"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
+                fontSize: "var(--text-sm)",
                 fontWeight: "var(--font-weight-medium)",
               }}
             >

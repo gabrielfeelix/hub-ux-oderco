@@ -239,7 +239,7 @@ export function BannerSection() {
               style={{
                 transform: `translateX(-${textShift * 0.1}vw)`,
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 700,
                 letterSpacing: "0.34em",
                 textShadow: "0 8px 28px rgba(0,0,0,0.28)",
@@ -288,7 +288,7 @@ export function BannerSection() {
             className="inline-flex items-center justify-center rounded-full border border-edge bg-white px-8 py-3.5 text-black shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all duration-500 hover:border-primary hover:bg-primary hover:text-ink-strong"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               fontWeight: 500,
               letterSpacing: "0.02em",
             }}

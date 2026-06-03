@@ -77,7 +77,7 @@ export function WorldSection() {
             className="text-foreground/35 max-w-lg mx-auto mb-8"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "16px",
+              fontSize: "var(--text-base)",
               lineHeight: "27.2px",
             }}
           >
@@ -89,7 +89,7 @@ export function WorldSection() {
             style={{
               borderRadius: "var(--radius-button)",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               fontWeight: "var(--font-weight-medium)",
             }}
           >
@@ -133,7 +133,7 @@ export function WorldSection() {
                     style={{
                       borderRadius: "var(--radius-button)",
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "12px",
+                      fontSize: "var(--text-caption)",
                       fontWeight: "var(--font-weight-medium)",
                     }}
                   >
@@ -148,7 +148,7 @@ export function WorldSection() {
                   className="text-foreground mb-2 group-hover:text-primary transition-colors duration-300"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "20px",
+                    fontSize: "var(--text-lg)",
                     fontWeight: "var(--font-weight-medium)",
                     lineHeight: "26px",
                   }}
@@ -160,7 +160,7 @@ export function WorldSection() {
                 className="text-foreground/30"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "14px",
+                  fontSize: "var(--text-sm)",
                   lineHeight: "23.8px",
                 }}
               >

@@ -12,7 +12,7 @@ export function BrindePill({ children = "BRINDE", className = "", style }: Brind
       className={`rounded-pill bg-primary/[0.10] px-2 py-0.5 text-primary ${className}`}
       style={{
         fontFamily: "var(--font-family-inter)",
-        fontSize: "9px",
+        fontSize: "var(--text-caption)",
         fontWeight: 700,
         letterSpacing: "0.08em",
         ...style,

@@ -100,7 +100,7 @@ function Badge({ children }: { children: React.ReactNode }) {
       className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-ink-strong uppercase"
       style={{
         fontFamily: INTER,
-        fontSize: "9.5px",
+        fontSize: "var(--text-caption)",
         letterSpacing: "0.22em",
         fontWeight: 700,
         boxShadow: "0 8px 26px -6px rgba(255,43,46,0.55)",
@@ -117,7 +117,7 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
       className="inline-flex w-fit items-center gap-2 uppercase text-primary"
       style={{
         fontFamily: INTER,
-        fontSize: "10.5px",
+        fontSize: "var(--text-caption)",
         letterSpacing: "0.28em",
         fontWeight: 700,
       }}
@@ -242,7 +242,7 @@ export function QuemSomosPage() {
                 className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-ink-strong transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                 style={{
                   fontFamily: INTER,
-                  fontSize: "14px",
+                  fontSize: "var(--text-sm)",
                   fontWeight: 700,
                   boxShadow: "0 16px 40px -12px rgba(255,43,46,0.6)",
                 }}
@@ -256,7 +256,7 @@ export function QuemSomosPage() {
               <Link
                 to="/monte-seu-pc"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-edge bg-white/[0.03] px-7 py-3.5 text-ink transition-colors duration-300 hover:border-edge-strong hover:text-ink-strong active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
-                style={{ fontFamily: INTER, fontSize: "14px", fontWeight: 700 }}
+                style={{ fontFamily: INTER, fontSize: "var(--text-sm)", fontWeight: 700 }}
               >
                 Montar meu PC
               </Link>
@@ -293,7 +293,7 @@ export function QuemSomosPage() {
               </h2>
               <div
                 className="mt-7 flex flex-col gap-5 text-ink-muted"
-                style={{ fontFamily: INTER, fontSize: "16px", lineHeight: 1.7 }}
+                style={{ fontFamily: INTER, fontSize: "var(--text-base)", lineHeight: 1.7 }}
               >
                 <p>
                   A marca PCYES nasceu da paixão de dois irmãos por videogames,
@@ -356,7 +356,7 @@ export function QuemSomosPage() {
                 className="mt-7 flex items-center gap-3 text-ink-muted"
                 style={{
                   fontFamily: INTER,
-                  fontSize: "12px",
+                  fontSize: "var(--text-caption)",
                   letterSpacing: "0.04em",
                 }}
               >
@@ -392,7 +392,7 @@ export function QuemSomosPage() {
             <SectionEyebrow>Em números</SectionEyebrow>
             <p
               className="mt-5 max-w-[52ch] text-ink-muted"
-              style={{ fontFamily: INTER, fontSize: "16px", lineHeight: 1.6 }}
+              style={{ fontFamily: INTER, fontSize: "var(--text-base)", lineHeight: 1.6 }}
             >
               Mais de uma década construindo uma marca de performance — e parte
               do{" "}
@@ -438,7 +438,7 @@ export function QuemSomosPage() {
                   className="relative mt-3 text-ink-muted"
                   style={{
                     fontFamily: INTER,
-                    fontSize: "14px",
+                    fontSize: "var(--text-sm)",
                     letterSpacing: "0.02em",
                   }}
                 >
@@ -509,7 +509,7 @@ export function QuemSomosPage() {
                     className="relative mt-6 text-ink-strong"
                     style={{
                       fontFamily: FIGTREE,
-                      fontSize: "24px",
+                      fontSize: "var(--text-xl)",
                       fontWeight: 700,
                       letterSpacing: "-0.02em",
                     }}
@@ -520,7 +520,7 @@ export function QuemSomosPage() {
                     className="relative mt-3 text-ink-muted"
                     style={{
                       fontFamily: INTER,
-                      fontSize: "15px",
+                      fontSize: "var(--text-base)",
                       lineHeight: 1.65,
                     }}
                   >
@@ -531,7 +531,7 @@ export function QuemSomosPage() {
                     className="relative mt-6 text-ink-subtle tabular-nums"
                     style={{
                       fontFamily: FIGTREE,
-                      fontSize: "13px",
+                      fontSize: "var(--text-sm)",
                       fontWeight: 700,
                       letterSpacing: "0.1em",
                     }}
@@ -701,7 +701,7 @@ export function QuemSomosPage() {
               </h2>
               <p
                 className="mt-5 max-w-[54ch] text-ink-muted"
-                style={{ fontFamily: INTER, fontSize: "16px", lineHeight: 1.65 }}
+                style={{ fontFamily: INTER, fontSize: "var(--text-base)", lineHeight: 1.65 }}
               >
                 Explore o portfólio completo PCYES ou monte a máquina perfeita
                 para o seu jeito de jogar, criar e produzir.
@@ -712,7 +712,7 @@ export function QuemSomosPage() {
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-ink-strong transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                   style={{
                     fontFamily: INTER,
-                    fontSize: "14px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 700,
                     boxShadow: "0 16px 40px -12px rgba(255,43,46,0.6)",
                   }}
@@ -728,7 +728,7 @@ export function QuemSomosPage() {
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-edge bg-white/[0.03] px-7 py-3.5 text-ink transition-colors duration-300 hover:border-edge-strong hover:text-ink-strong active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                   style={{
                     fontFamily: INTER,
-                    fontSize: "14px",
+                    fontSize: "var(--text-sm)",
                     fontWeight: 700,
                   }}
                 >
@@ -783,7 +783,7 @@ function MilestoneCard({
           className="tabular-nums text-primary"
           style={{
             fontFamily: FIGTREE,
-            fontSize: "28px",
+            fontSize: "var(--text-2xl)",
             fontWeight: 700,
             letterSpacing: "-0.03em",
           }}
@@ -796,7 +796,7 @@ function MilestoneCard({
         className="relative mt-3 text-ink-strong"
         style={{
           fontFamily: FIGTREE,
-          fontSize: "19px",
+          fontSize: "var(--text-lg)",
           fontWeight: 700,
           letterSpacing: "-0.02em",
         }}
@@ -805,7 +805,7 @@ function MilestoneCard({
       </h3>
       <p
         className="relative mt-2 text-ink-muted"
-        style={{ fontFamily: INTER, fontSize: "14px", lineHeight: 1.6 }}
+        style={{ fontFamily: INTER, fontSize: "var(--text-sm)", lineHeight: 1.6 }}
       >
         {milestone.desc}
       </p>

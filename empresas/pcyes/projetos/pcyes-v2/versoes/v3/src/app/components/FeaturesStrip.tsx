@@ -27,10 +27,10 @@ export function FeaturesStrip() {
             <div className="w-14 h-14 mx-auto mb-5 border border-edge rounded-full flex items-center justify-center transition-all duration-500 group-hover:border-primary/50">
               <f.icon size={20} strokeWidth={1} className="text-ink-subtle group-hover:text-primary transition-colors duration-500" />
             </div>
-            <p className="text-ink-strong mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", lineHeight: "24px", fontWeight: "var(--font-weight-medium)" }}>
+            <p className="text-ink-strong mb-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", lineHeight: "24px", fontWeight: "var(--font-weight-medium)" }}>
               {f.title}
             </p>
-            <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: "18px" }}>
+            <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: "18px" }}>
               {f.desc}
             </p>
           </motion.div>

@@ -57,7 +57,7 @@ function DriverCard({ entry, index }: { entry: DriverEntry; index: number }) {
             className="absolute left-3.5 top-3.5 inline-flex w-fit items-center rounded-full border border-edge bg-black/55 px-2.5 py-1 text-ink-strong backdrop-blur"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "9.5px",
+              fontSize: "var(--text-caption)",
               letterSpacing: "0.16em",
               fontWeight: 700,
               textTransform: "uppercase",
@@ -71,30 +71,30 @@ function DriverCard({ entry, index }: { entry: DriverEntry; index: number }) {
         <div className="flex flex-1 flex-col gap-3 p-5">
           <p
             className="text-foreground/35"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.06em" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.06em" }}
           >
             MODELO {entry.model}
           </p>
           <p
             className="line-clamp-2 text-foreground transition-colors group-hover:text-foreground/80"
-            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 500, lineHeight: 1.32 }}
+            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 500, lineHeight: 1.32 }}
           >
             {entry.name}
           </p>
 
           <div className="mt-auto flex items-center gap-3 pt-1 text-foreground/45">
-            <span className="inline-flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+            <span className="inline-flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
               <Download size={12} /> Driver
             </span>
             <span className="text-foreground/15">·</span>
-            <span className="inline-flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+            <span className="inline-flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
               <FileText size={12} /> Manual
             </span>
           </div>
 
           <span
             className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-foreground/[0.05] px-4 py-2.5 text-foreground transition-colors group-hover:bg-primary group-hover:text-ink-strong"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
           >
             Ver downloads <ArrowUpRight size={15} />
           </span>
@@ -152,7 +152,7 @@ export function DriversManuaisPage() {
               className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "10px",
+                fontSize: "var(--text-caption)",
                 letterSpacing: "0.18em",
                 fontWeight: 700,
                 boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
@@ -174,7 +174,7 @@ export function DriversManuaisPage() {
             </h1>
             <p
               className="mt-4 text-foreground/55"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "16px", lineHeight: 1.6 }}
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", lineHeight: 1.6 }}
             >
               Mantenha firmware, drivers e softwares dos seus produtos PCYES sempre atualizados. Encontre seu
               equipamento, baixe a versão mais recente e tenha o manual oficial sempre à mão.
@@ -200,7 +200,7 @@ export function DriversManuaisPage() {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Buscar por nome, modelo ou categoria…"
                 className="h-11 w-full rounded-[var(--radius-card-sm)] border border-foreground/10 bg-white/[0.03] pl-10 pr-3 text-foreground transition-colors placeholder:text-foreground/40 focus:border-primary/50 focus:outline-none"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 aria-label="Buscar driver ou manual"
               />
             </div>
@@ -209,13 +209,13 @@ export function DriversManuaisPage() {
             <div className="flex flex-wrap items-center gap-3">
               <div
                 className="flex items-center gap-2 text-foreground/55"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
               >
                 <span className="hidden sm:inline">Categoria:</span>
                 <Select value={category} onValueChange={setCategory}>
                   <SelectTrigger
                     className="h-11 min-w-[170px] rounded-[var(--radius-card-sm)] border-foreground/10 bg-white/[0.03] text-foreground"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                   >
                     <SelectValue placeholder="Todas" />
                   </SelectTrigger>
@@ -232,7 +232,7 @@ export function DriversManuaisPage() {
 
               <div
                 className="flex items-center gap-2 text-foreground/55"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
               >
                 <span className="hidden sm:inline">Exibir:</span>
                 <Select
@@ -241,7 +241,7 @@ export function DriversManuaisPage() {
                 >
                   <SelectTrigger
                     className="h-11 min-w-[78px] rounded-[var(--radius-card-sm)] border-foreground/10 bg-white/[0.03] text-foreground"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                   >
                     <SelectValue />
                   </SelectTrigger>
@@ -260,7 +260,7 @@ export function DriversManuaisPage() {
           {/* Result count */}
           <p
             className="mt-6 text-foreground/55"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
           >
             <span className="font-semibold text-foreground">{filtered.length}</span>{" "}
             {filtered.length === 1 ? "produto encontrado" : "produtos encontrados"}
@@ -280,13 +280,13 @@ export function DriversManuaisPage() {
               </div>
               <p
                 className="mt-5 text-foreground"
-                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 500 }}
+                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 500 }}
               >
                 Nenhum produto encontrado
               </p>
               <p
                 className="mt-2 max-w-[380px] text-foreground/50"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.5 }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.5 }}
               >
                 Tente outro termo de busca ou selecione uma categoria diferente.
               </p>
@@ -297,7 +297,7 @@ export function DriversManuaisPage() {
                   setCategory(ALL_CATEGORIES);
                 }}
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-foreground/[0.06] px-5 py-2.5 text-foreground transition-colors hover:bg-foreground/[0.1]"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
               >
                 Limpar filtros
               </button>
@@ -327,7 +327,7 @@ export function DriversManuaisPage() {
                       <span
                         key={page}
                         className="px-1 text-foreground/25"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
+                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                       >
                         …
                       </span>
@@ -345,7 +345,7 @@ export function DriversManuaisPage() {
                         ? "border-foreground bg-foreground font-bold text-background"
                         : "border-foreground/10 text-foreground/60 hover:border-foreground/30 hover:text-foreground"
                     }`}
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                     aria-label={`Página ${page}`}
                     aria-current={isCurrent ? "page" : undefined}
                   >

@@ -39,7 +39,7 @@ export function CategorySpotlight() {
               className="mb-3 text-primary"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 600,
                 letterSpacing: "0.25em",
               }}
@@ -87,7 +87,7 @@ export function CategorySpotlight() {
                     className="text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
-                      fontSize: "15px",
+                      fontSize: "var(--text-base)",
                       fontWeight: 600,
                       lineHeight: 1.1,
                     }}
@@ -98,7 +98,7 @@ export function CategorySpotlight() {
                     className="mt-2 inline-flex w-fit items-center gap-1 text-ink-muted transition-colors group-hover:text-primary"
                     style={{
                       fontFamily: "var(--font-family-inter)",
-                      fontSize: "11px",
+                      fontSize: "var(--text-caption)",
                       fontWeight: 500,
                     }}
                   >

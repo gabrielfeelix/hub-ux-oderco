@@ -97,7 +97,7 @@ function EssentialCard({ product }: EssentialCardProps) {
           <p
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "13px",
+              fontSize: "var(--text-sm)",
               lineHeight: 1.55,
               color: "rgba(var(--foreground-rgb), 0.55)",
             }}
@@ -111,7 +111,7 @@ function EssentialCard({ product }: EssentialCardProps) {
             <span
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 500,
                 color: "rgba(var(--foreground-rgb), 0.6)",
               }}
@@ -150,7 +150,7 @@ function EssentialCard({ product }: EssentialCardProps) {
             <span
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "12px",
+                fontSize: "var(--text-caption)",
                 fontWeight: 500,
                 color: "rgba(var(--foreground-rgb), 0.6)",
               }}
@@ -178,7 +178,7 @@ function EssentialCard({ product }: EssentialCardProps) {
             className="text-ink-strong whitespace-nowrap"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "22px",
+              fontSize: "var(--text-xl)",
               fontWeight: 700,
               letterSpacing: "-0.01em",
             }}
@@ -252,7 +252,7 @@ export function EssentialsSection() {
           <p
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "11px",
+              fontSize: "var(--text-caption)",
               fontWeight: 700,
               letterSpacing: "0.3em",
               color: "var(--primary)",

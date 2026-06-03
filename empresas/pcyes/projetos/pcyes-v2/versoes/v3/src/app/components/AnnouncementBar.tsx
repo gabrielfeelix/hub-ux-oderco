@@ -65,7 +65,7 @@ export function AnnouncementBar() {
           onClick={() => setIdx((i) => (i - 1 + MESSAGES.length) % MESSAGES.length)}
           className="hidden text-ink-muted transition-colors hover:text-ink-strong md:inline"
           aria-label="Anúncio anterior"
-          style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
         >
           ‹
         </button>
@@ -78,7 +78,7 @@ export function AnnouncementBar() {
               background: "linear-gradient(135deg, #facc15 0%, #f97316 100%)",
               color: "#0f0a02",
               fontFamily: "var(--font-family-inter)",
-              fontSize: "10px",
+              fontSize: "var(--text-caption)",
               fontWeight: 900,
               letterSpacing: "0.16em",
               textTransform: "uppercase",
@@ -94,7 +94,7 @@ export function AnnouncementBar() {
             className="line-clamp-1 text-center text-ink transition-opacity hover:text-ink-strong"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "12.5px",
+              fontSize: "var(--text-caption)",
               fontWeight: 600,
               letterSpacing: "0.02em",
               animation: "fadeSlide 0.45s ease",
@@ -109,7 +109,7 @@ export function AnnouncementBar() {
             onClick={() => setIdx((i) => (i + 1) % MESSAGES.length)}
             className="hidden text-ink-muted transition-colors hover:text-ink-strong md:inline"
             aria-label="Próximo anúncio"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
           >
             ›
           </button>

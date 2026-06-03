@@ -25,7 +25,7 @@ const RECIPES: Record<Variant, CSSProperties> = {
 export function Tag({ children, variant = "brand", className = "", style }: TagProps) {
   return (
     <span
-      className={`inline-flex items-center rounded-pill px-3 py-1.5 text-[11px] font-semibold ${className}`}
+      className={`inline-flex items-center rounded-pill px-3 py-1.5 text-[var(--text-caption)] font-semibold ${className}`}
       style={{
         fontFamily: "var(--font-family-inter)",
         ...RECIPES[variant],

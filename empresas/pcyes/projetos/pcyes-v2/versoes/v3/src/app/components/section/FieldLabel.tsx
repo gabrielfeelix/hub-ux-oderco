@@ -15,7 +15,7 @@ export function FieldLabel({ children, required, htmlFor, className = "", style 
       className={`block mb-1.5 ${className}`}
       style={{
         fontFamily: "var(--font-family-inter)",
-        fontSize: "10.5px",
+        fontSize: "var(--text-caption)",
         fontWeight: 700,
         letterSpacing: "0.14em",
         textTransform: "uppercase",
