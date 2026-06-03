@@ -3,7 +3,7 @@ import { CarouselDots } from "./CarouselDots";
 import { motion, useInView } from "motion/react";
 import { useTheme } from "./ThemeProvider";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Heart, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import { useCart } from "./CartContext";
 import { useFavorites } from "./FavoritesContext";
 import { useAuth } from "./AuthContext";
@@ -11,7 +11,7 @@ import { Link } from "react-router";
 import { allProducts, type Product } from "./productsData";
 import { findProductBySwatch, getPrimaryProductImage, getProductHoverMedia, getProductSwatches, getVisibleCatalogProducts } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
-import { PreOrderPill, DiscountBadge, QuickAddButton } from "./section";
+import { PreOrderPill, DiscountBadge, QuickAddButton, CarouselNavButton } from "./section";
 
 interface ProductCarouselProps {
   label?: string;
@@ -206,20 +206,18 @@ export function ProductCarousel({
         transition={{ duration: 0.8, delay: 0.3 }}
         className="relative"
       >
-        <button
+        <CarouselNavButton
+          direction="left"
           onClick={() => scroll("left")}
           aria-label="Anterior"
-          className="absolute left-0 top-[264px] z-30 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white/85 backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-white hover:scale-105 active:scale-95 cursor-pointer md:flex"
-        >
-          <ChevronLeft size={20} strokeWidth={2.2} />
-        </button>
-        <button
+          className="absolute left-0 top-[264px] -translate-x-1/2 -translate-y-1/2"
+        />
+        <CarouselNavButton
+          direction="right"
           onClick={() => scroll("right")}
           aria-label="Próximo"
-          className="absolute right-0 top-[264px] z-30 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white/85 backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-white hover:scale-105 active:scale-95 cursor-pointer md:flex"
-        >
-          <ChevronRight size={20} strokeWidth={2.2} />
-        </button>
+          className="absolute right-0 top-[264px] translate-x-1/2 -translate-y-1/2"
+        />
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto px-5 md:px-0 pb-4 scrollbar-hide snap-x md:snap-none"

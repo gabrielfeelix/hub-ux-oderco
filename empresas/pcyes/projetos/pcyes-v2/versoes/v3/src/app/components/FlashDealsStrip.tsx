@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
-import { ChevronLeft, ChevronRight, Flame, Heart, ShoppingBag, Timer } from "lucide-react";
+import { Flame, Heart, ShoppingBag, Timer } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
 import {
@@ -16,7 +16,7 @@ import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
 import { useFavorites } from "./FavoritesContext";
 import { CarouselDots } from "./CarouselDots";
-import { SectionHeader, CTAButton, DiscountBadge, PreOrderPill } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge, PreOrderPill, CarouselNavButton } from "./section";
 
 const DEAL_IDS = [436, 72, 199, 329, 446, 433, 30, 295, 375];
 
@@ -319,15 +319,14 @@ export function FlashDealsStrip() {
     el.scrollBy({ left: dir * (cardWidth + 24) * 2, behavior: "smooth" });
   };
 
-  const navBtn = (onClick: () => void, disabled: boolean, label: string, icon: React.ReactNode, side: "left" | "right") => (
-    <button
+  const navBtn = (onClick: () => void, disabled: boolean, label: string, side: "left" | "right") => (
+    <CarouselNavButton
+      direction={side}
       onClick={onClick}
       disabled={disabled}
-      className={`absolute top-[228px] z-30 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white/85 backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer md:flex ${side === "left" ? "left-0 -translate-x-1/2" : "right-0 translate-x-1/2"}`}
       aria-label={label}
-    >
-      {icon}
-    </button>
+      className={`absolute top-[228px] -translate-y-1/2 ${side === "left" ? "left-0 -translate-x-1/2" : "right-0 translate-x-1/2"}`}
+    />
   );
 
   return (
@@ -389,8 +388,8 @@ export function FlashDealsStrip() {
 
           <CarouselDots trackRef={scrollRef} className="mt-4" />
 
-          {navBtn(() => scrollByCards(-1), !canPrev, "Anterior", <ChevronLeft size={20} strokeWidth={2.2} />, "left")}
-          {navBtn(() => scrollByCards(1), !canNext, "Próximo", <ChevronRight size={20} strokeWidth={2.2} />, "right")}
+          {navBtn(() => scrollByCards(-1), !canPrev, "Anterior", "left")}
+          {navBtn(() => scrollByCards(1), !canNext, "Próximo", "right")}
         </div>
       </div>
     </section>

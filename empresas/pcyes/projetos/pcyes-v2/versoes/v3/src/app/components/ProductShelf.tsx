@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
-import { ChevronLeft, ChevronRight, Heart, ShoppingBag } from "lucide-react";
+import { Heart, ShoppingBag } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
 import { useFavorites } from "./FavoritesContext";
@@ -16,7 +16,7 @@ import {
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
 import { CarouselDots } from "./CarouselDots";
-import { SectionHeader, CTAButton, DiscountBadge, PreOrderPill } from "./section";
+import { SectionHeader, CTAButton, DiscountBadge, PreOrderPill, CarouselNavButton } from "./section";
 
 interface ProductShelfProps {
   label: string;
@@ -311,15 +311,14 @@ export function ProductShelf({
     el.scrollBy({ left: dir * cardWithGap * 2, behavior: "smooth" });
   };
 
-  const navBtn = (onClick: () => void, disabled: boolean, label: string, icon: React.ReactNode, side: "left" | "right") => (
-    <button
+  const navBtn = (onClick: () => void, disabled: boolean, label: string, side: "left" | "right") => (
+    <CarouselNavButton
+      direction={side}
       onClick={onClick}
       disabled={disabled}
-      className={`absolute top-[228px] z-30 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white/85 backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer md:flex ${side === "left" ? "left-0 -translate-x-1/2" : "right-0 translate-x-1/2"}`}
       aria-label={label}
-    >
-      {icon}
-    </button>
+      className={`absolute top-[228px] -translate-y-1/2 ${side === "left" ? "left-0 -translate-x-1/2" : "right-0 translate-x-1/2"}`}
+    />
   );
 
   return (
@@ -334,8 +333,8 @@ export function ProductShelf({
         </div>
 
         <div className="relative">
-          {navBtn(() => scrollByCards(-1), !canPrev, "Anterior", <ChevronLeft size={20} strokeWidth={2.2} />, "left")}
-          {navBtn(() => scrollByCards(1), !canNext, "Próximo", <ChevronRight size={20} strokeWidth={2.2} />, "right")}
+          {navBtn(() => scrollByCards(-1), !canPrev, "Anterior", "left")}
+          {navBtn(() => scrollByCards(1), !canNext, "Próximo", "right")}
           <div
             ref={scrollRef}
             className="shelf-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
