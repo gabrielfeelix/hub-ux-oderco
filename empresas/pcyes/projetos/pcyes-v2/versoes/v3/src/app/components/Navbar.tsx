@@ -631,7 +631,7 @@ export function Navbar() {
     : "text-ink-muted hover:text-ink-strong";
 
   const tooltipContentClass =
-    "!bg-[#1f1c1c] !rounded-md border border-edge-subtle px-2.5 py-1.5 text-[var(--text-caption)] font-medium tracking-normal text-ink shadow-md [&>span]:hidden";
+    "!bg-surface-1 !rounded-md border border-edge-subtle px-2.5 py-1.5 text-[var(--text-caption)] font-medium tracking-normal text-ink shadow-md [&>span]:hidden";
 
   const renderIcons = () => (
     <TooltipProvider delayDuration={200}>
@@ -1231,7 +1231,7 @@ export function Navbar() {
 		                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
 		                  className="relative mx-2 min-w-0 flex-1"
 		                >
-		                  <div className="flex h-10 items-center overflow-hidden rounded-[var(--radius-card)] border border-edge bg-[#323232] shadow-sm backdrop-blur-xl">
+		                  <div className="flex h-10 items-center overflow-hidden rounded-[var(--radius-card)] border border-edge bg-surface-3 shadow-sm backdrop-blur-xl">
 		                    <Search size={16} className="ml-3 flex-shrink-0 text-ink-muted" strokeWidth={1.8} />
 		                    <input
 		                      value={searchQuery}
@@ -1258,7 +1258,7 @@ export function Navbar() {
 		                        animate={{ opacity: 1, y: 0, scale: 1 }}
 		                        exit={{ opacity: 0, y: -6, scale: 0.985 }}
 		                        transition={{ duration: 0.16 }}
-		                        className="absolute -left-12 -right-12 top-[46px] z-[80] max-h-[58vh] overflow-y-auto rounded-card-sm border border-edge bg-[#121214]/98 p-2 shadow-2xl backdrop-blur-2xl"
+		                        className="absolute -left-12 -right-12 top-[46px] z-[80] max-h-[58vh] overflow-y-auto rounded-card-sm border border-edge bg-surface-0/98 p-2 shadow-2xl backdrop-blur-2xl"
 		                      >
 		                        {searchResults.length > 0 ? (
 		                          <>
@@ -1459,7 +1459,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.14 }}
-                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[var(--radius-card-sm)] border border-edge bg-[#0f0f10] shadow-2xl"
+                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[var(--radius-card-sm)] border border-edge bg-surface-0 shadow-2xl"
                     >
                       {searchCategories.map((cat) => (
                         <button
@@ -2027,7 +2027,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[90] overflow-y-auto bg-[#070708] text-ink-strong"
+            className="fixed inset-0 z-[90] overflow-y-auto bg-surface-0 text-ink-strong"
             onClick={() => setSearchOpen(false)}
           >
             <div

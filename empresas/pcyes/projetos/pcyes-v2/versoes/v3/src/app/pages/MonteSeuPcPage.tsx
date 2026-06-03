@@ -1574,7 +1574,7 @@ function UseTypeCard({
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[var(--radius-card-lg)] border border-edge-subtle bg-[#0d0d0d] text-left transition-all duration-300 hover:-translate-y-1 hover:border-edge-strong"
+      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[var(--radius-card-lg)] border border-edge-subtle bg-surface-0 text-left transition-all duration-300 hover:-translate-y-1 hover:border-edge-strong"
       style={{
         boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)",
       }}
@@ -1928,7 +1928,7 @@ function LevelCard({
     <button
       type="button"
       onClick={onClick}
-      className="group flex w-full cursor-pointer items-center gap-4 rounded-card-md border border-edge-subtle bg-[#0f0f12] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-edge-strong"
+      className="group flex w-full cursor-pointer items-center gap-4 rounded-card-md border border-edge-subtle bg-surface-0 p-5 text-left transition-all hover:-translate-y-0.5 hover:border-edge-strong"
       style={{ boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }}
     >
       <div
@@ -2113,7 +2113,7 @@ function QuizFlow({
                   onChange={(e) => setGameSearch(e.target.value)}
                   placeholder="Buscar jogo (ex: Valorant, RPG, FPS)"
                   aria-label="Buscar jogo"
-                  className="h-11 w-full rounded-card-sm border border-edge-subtle bg-[#0f0f12] pl-10 pr-10 text-ink-strong outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
+                  className="h-11 w-full rounded-card-sm border border-edge-subtle bg-surface-0 pl-10 pr-10 text-ink-strong outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "var(--text-sm)",
@@ -2151,7 +2151,7 @@ function QuizFlow({
             </div>
 
             {filteredGames.length === 0 ? (
-              <div className="flex flex-col items-center gap-2 rounded-card-md border border-edge-subtle bg-[#0d0d0d] px-6 py-14 text-center">
+              <div className="flex flex-col items-center gap-2 rounded-card-md border border-edge-subtle bg-surface-0 px-6 py-14 text-center">
                 <p
                   className="text-ink-strong"
                   style={{
@@ -2468,9 +2468,9 @@ function PresetComponentsDrawer({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
         side="right"
-        className="flex h-full w-full flex-col gap-0 border-l border-edge-subtle bg-[#0a0a0a] p-0 sm:max-w-[460px]"
+        className="flex h-full w-full flex-col gap-0 border-l border-edge-subtle bg-surface-0 p-0 sm:max-w-[460px]"
       >
-        <SheetHeader className="border-b border-edge-subtle bg-[#0d0d0d] p-5">
+        <SheetHeader className="border-b border-edge-subtle bg-surface-0 p-5">
           <div className="flex items-center gap-2">
             <span
               className="rounded-full px-2 py-0.5 uppercase text-ink-strong"
@@ -2521,7 +2521,7 @@ function PresetComponentsDrawer({
             {items.map((item, idx) => (
               <article
                 key={item.opt.id}
-                className="flex gap-3 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
+                className="flex gap-3 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-surface-0 p-3 transition-colors hover:border-edge"
               >
                 <div
                   className="h-[68px] w-[68px] shrink-0 overflow-hidden rounded-[var(--radius-card-sm)] deal-image-bg"
@@ -2601,7 +2601,7 @@ function PresetComponentsDrawer({
           </div>
         </ScrollArea>
 
-        <div className="border-t border-edge-subtle bg-[#0d0d0d] p-5">
+        <div className="border-t border-edge-subtle bg-surface-0 p-5">
           <div className="mb-3 flex items-baseline justify-between">
             <span
               className="uppercase text-zinc-500"
@@ -2721,7 +2721,7 @@ function PresetCard({
     <>
       <article
         className={cn(
-          "group relative flex flex-col overflow-hidden rounded-[var(--radius-card-lg)] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1",
+          "group relative flex flex-col overflow-hidden rounded-[var(--radius-card-lg)] border bg-surface-0 transition-all duration-300 hover:-translate-y-1",
           isRecommended ? "border-primary/55" : "border-edge-subtle hover:border-edge-strong",
         )}
         style={
@@ -3631,7 +3631,7 @@ function PresetGallery({
 
       {visiblePresets.length === 0 ? (
         <div
-          className="mx-auto max-w-[420px] rounded-[var(--radius-card-md)] border border-edge-subtle bg-[#0f0f12] p-8 text-center"
+          className="mx-auto max-w-[420px] rounded-[var(--radius-card-md)] border border-edge-subtle bg-surface-0 p-8 text-center"
         >
           <p
             className="text-zinc-300"
@@ -3680,7 +3680,7 @@ function PresetGallery({
 
 function TopBar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-edge-subtle bg-[#080808]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-edge-subtle bg-surface-0/95 backdrop-blur-xl">
       <div className="mx-auto flex h-[64px] max-w-[1520px] items-center justify-between gap-3 px-5 md:px-8">
         <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-80" aria-label="PCYES home">
           <img src={LOGO_URL} alt="PCYES" className="h-[24px] w-auto" />
@@ -3720,7 +3720,7 @@ function PathCard({
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex flex-col overflow-hidden rounded-[var(--radius-card-xl)] border border-edge bg-[#0f0f12] p-7 text-left transition-all duration-300 md:border-edge-subtle hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
+      className="group relative flex flex-col overflow-hidden rounded-[var(--radius-card-xl)] border border-edge bg-surface-0 p-7 text-left transition-all duration-300 md:border-edge-subtle hover:border-primary/45 hover:bg-surface-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.35] transition-opacity duration-500 group-hover:opacity-100 md:opacity-0"
@@ -4166,9 +4166,9 @@ function ReviewScreen({
               {categoriesWithSelected.map((c) => (
                 <div
                   key={c.id}
-                  className="flex items-center gap-3 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
+                  className="flex items-center gap-3 rounded-[var(--radius-card-sm)] border border-edge-subtle bg-surface-0 p-3 transition-colors hover:border-edge"
                 >
-                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-[#1a1a1f]">
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-surface-1">
                     {c.selectedOption?.image ? (
                       <img
                         src={c.selectedOption.image}
@@ -4220,7 +4220,7 @@ function ReviewScreen({
             </div>
           </section>
 
-          <section className="rounded-card-md border border-edge-subtle bg-[#0f0f12] p-5">
+          <section className="rounded-card-md border border-edge-subtle bg-surface-0 p-5">
             <h3
               className="mb-4 text-ink-strong"
               style={{
@@ -4303,7 +4303,7 @@ function ReviewScreen({
         </div>
 
         <div className="self-start lg:sticky lg:top-[100px]">
-          <div className="overflow-hidden rounded-card-md border border-edge-subtle bg-[#0f0f12]">
+          <div className="overflow-hidden rounded-card-md border border-edge-subtle bg-surface-0">
             <div className="border-b border-edge-subtle p-5">
               <label
                 htmlFor="cep-input"
@@ -4327,13 +4327,13 @@ function ReviewScreen({
                   inputMode="numeric"
                   aria-label="CEP para cálculo de frete"
                   maxLength={9}
-                  className="flex-1 rounded-[var(--radius-card-sm)] border border-edge bg-[#15151a] px-3 py-2.5 text-ink-strong placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
+                  className="flex-1 rounded-[var(--radius-card-sm)] border border-edge bg-surface-1 px-3 py-2.5 text-ink-strong placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 />
                 <button
                   type="button"
                   onClick={onCalcFreight}
-                  className="rounded-[var(--radius-card-sm)] border border-edge bg-[#15151a] px-4 text-zinc-200 transition-all hover:border-edge-strong hover:bg-[#1c1c20] cursor-pointer"
+                  className="rounded-[var(--radius-card-sm)] border border-edge bg-surface-1 px-4 text-zinc-200 transition-all hover:border-edge-strong hover:bg-surface-1 cursor-pointer"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "var(--text-caption)",
@@ -4349,7 +4349,7 @@ function ReviewScreen({
                     "mt-3 rounded-[var(--radius-card-sm)] border p-3",
                     freight.free
                       ? "border-primary/30 bg-primary/[0.06]"
-                      : "border-edge bg-[#15151a]",
+                      : "border-edge bg-surface-1",
                   )}
                 >
                   <p
@@ -4612,7 +4612,7 @@ function HorizontalStepper({
                       ? "bg-primary text-ink-strong"
                       : done
                         ? "bg-[#0d1f14] text-emerald-400"
-                        : "bg-[#16161a] text-zinc-500 group-hover:bg-[#1c1c20] group-hover:text-zinc-300",
+                        : "bg-surface-1 text-zinc-500 group-hover:bg-surface-1 group-hover:text-zinc-300",
                   )}
                   style={
                     active
@@ -4742,7 +4742,7 @@ function MobileStepNav({
         </div>
         <SheetContent
           side="bottom"
-          className="max-h-[80vh] gap-0 overflow-y-auto rounded-t-2xl border-edge-subtle bg-[#0d0d0d] p-0"
+          className="max-h-[80vh] gap-0 overflow-y-auto rounded-t-2xl border-edge-subtle bg-surface-0 p-0"
         >
           <SheetHeader className="border-b border-edge-subtle p-5">
             <SheetTitle
@@ -4783,7 +4783,7 @@ function MobileStepNav({
                         ? "bg-primary text-ink-strong"
                         : done
                           ? "bg-[#0d1f14] text-emerald-400"
-                          : "bg-[#16161a] text-zinc-500",
+                          : "bg-surface-1 text-zinc-500",
                     )}
                   >
                     {done && !active ? <Check size={15} strokeWidth={3} /> : c.icon}
@@ -4944,7 +4944,7 @@ function ProductTile({
               {option.highlights.slice(0, 4).map((h) => (
                 <span
                   key={h}
-                  className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                  className="rounded border border-edge-subtle bg-surface-1 px-1.5 py-0.5 text-zinc-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "var(--text-caption)",
@@ -5059,7 +5059,7 @@ function ProductTile({
             {option.highlights.slice(0, 2).map((h) => (
               <span
                 key={h}
-                className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                className="rounded border border-edge-subtle bg-surface-1 px-1.5 py-0.5 text-zinc-300"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "var(--text-caption)",
@@ -5337,7 +5337,7 @@ function SelectedItemCard({
               {options[0].highlights.slice(0, 3).map((h) => (
                 <span
                   key={h}
-                  className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                  className="rounded border border-edge-subtle bg-surface-1 px-1.5 py-0.5 text-zinc-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "var(--text-caption)",
@@ -5505,7 +5505,7 @@ function SelectedItemCard({
         </div>
       )}
 
-      <div className="border-t border-edge-subtle bg-[#0a0a0a] p-4">
+      <div className="border-t border-edge-subtle bg-surface-0 p-4">
         <div className="flex gap-2">
           <button
             type="button"
@@ -5605,7 +5605,7 @@ function ConfiguracaoSelecionadaCard({
               className="group flex w-full cursor-pointer items-center gap-2.5 rounded-[var(--radius-card-sm)] p-2 text-left transition-colors hover:bg-white/[0.04]"
               aria-label={`Editar ${c.title}`}
             >
-              <div className="h-9 w-9 shrink-0 overflow-hidden rounded-md bg-[#1a1a1f]">
+              <div className="h-9 w-9 shrink-0 overflow-hidden rounded-md bg-surface-1">
                 {c.selectedOption?.image ? (
                   <img src={c.selectedOption.image} alt="" className="h-full w-full object-cover" />
                 ) : (
@@ -5648,7 +5648,7 @@ function ConfiguracaoSelecionadaCard({
           </div>
         </ScrollArea>
       )}
-      <div className="border-t border-edge-subtle bg-[#0a0a0a] px-5 py-3.5">
+      <div className="border-t border-edge-subtle bg-surface-0 px-5 py-3.5">
         <div className="flex items-baseline justify-between">
           <span
             className="uppercase text-zinc-500"
@@ -6267,7 +6267,7 @@ export function MonteSeuPcPage() {
                             onChange={(e) => setStepSearch(e.target.value)}
                             placeholder="Busque por nome ou código"
                             aria-label={`Buscar em ${currentCategory.title}`}
-                            className="msp-field h-11 w-full rounded-card-sm border border-edge bg-[#0f0f12] px-4 py-3 text-ink-strong placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] sm:h-auto"
+                            className="msp-field h-11 w-full rounded-card-sm border border-edge bg-surface-0 px-4 py-3 text-ink-strong placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-surface-1 sm:h-auto"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                           />
                           {stepSearch && (
@@ -6297,13 +6297,13 @@ export function MonteSeuPcPage() {
                           <Select value={sortMode} onValueChange={(v) => setSortMode(v as SortMode)}>
                             <SelectTrigger
                               id="step-sort"
-                              className="w-full !h-auto rounded-card-sm border border-edge bg-[#0f0f12] px-4 py-3 text-ink-strong transition-all hover:bg-[#15151a] focus:border-primary/45 focus:bg-[#15151a] data-[state=open]:border-primary/45 data-[state=open]:bg-[#15151a] [&_svg]:text-zinc-500"
+                              className="w-full !h-auto rounded-card-sm border border-edge bg-surface-0 px-4 py-3 text-ink-strong transition-all hover:bg-surface-1 focus:border-primary/45 focus:bg-surface-1 data-[state=open]:border-primary/45 data-[state=open]:bg-surface-1 [&_svg]:text-zinc-500"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                             >
                               <SelectValue placeholder="Selecionar ordenação" />
                             </SelectTrigger>
                             <SelectContent
-                              className="rounded-card-sm border border-edge bg-[#0f0f12] text-ink-strong shadow-2xl shadow-black/60"
+                              className="rounded-card-sm border border-edge bg-surface-0 text-ink-strong shadow-2xl shadow-black/60"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                             >
                               <SelectItem value="suggested" className="rounded-[var(--radius-card)] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
@@ -6336,7 +6336,7 @@ export function MonteSeuPcPage() {
                           <div
                             role="group"
                             aria-label="Modo de exibição"
-                            className="flex h-11 items-center gap-0.5 rounded-card-sm border border-edge bg-[#0f0f12] p-1 sm:h-[46px]"
+                            className="flex h-11 items-center gap-0.5 rounded-card-sm border border-edge bg-surface-0 p-1 sm:h-[46px]"
                           >
                             <button
                               type="button"
@@ -6395,7 +6395,7 @@ export function MonteSeuPcPage() {
                           )}
                         >
                           {visibleOptions.length === 0 ? (
-                            <div className="rounded-[var(--radius-card-sm)] border border-edge-subtle bg-[#0f0f12] px-6 py-12 text-center col-span-full">
+                            <div className="rounded-[var(--radius-card-sm)] border border-edge-subtle bg-surface-0 px-6 py-12 text-center col-span-full">
                               <p
                                 className="text-ink-strong"
                                 style={{
@@ -6605,7 +6605,7 @@ export function MonteSeuPcPage() {
                   <Sheet open={summarySheetOpen} onOpenChange={setSummarySheetOpen}>
                     <SheetContent
                       side="bottom"
-                      className="max-h-[85vh] gap-0 overflow-y-auto rounded-t-2xl border-edge-subtle bg-[#0d0d0d] p-0 lg:hidden"
+                      className="max-h-[85vh] gap-0 overflow-y-auto rounded-t-2xl border-edge-subtle bg-surface-0 p-0 lg:hidden"
                     >
                       <SheetHeader className="border-b border-edge-subtle p-5">
                         <SheetTitle

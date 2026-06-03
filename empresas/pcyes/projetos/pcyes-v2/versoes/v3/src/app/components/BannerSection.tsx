@@ -176,7 +176,7 @@ export function BannerSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100dvh] bg-[#0f1011] overflow-x-hidden"
+      className="relative min-h-[100dvh] bg-surface-0 overflow-x-hidden"
     >
       <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
         {/* Background image — fades out as video expands */}

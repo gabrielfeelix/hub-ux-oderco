@@ -33,7 +33,7 @@ export function SectionHeader({
   align = "left",
   animated = true,
   className = "",
-  titleClassName = "text-white",
+  titleClassName = "text-ink-strong",
   titleStyle,
 }: SectionHeaderProps) {
   const { ref, isInView } = useScrollReveal();
