@@ -172,7 +172,7 @@ export function InRealLifeSection() {
   };
 
   return (
-    <section className="px-5 py-16 md:px-[72px] md:py-20" style={{ background: "#0e0e0e" }}>
+    <section className="px-5 py-16 md:px-[72px] md:py-20" style={{ background: "var(--surface-0)" }}>
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         {/* Header */}
         <motion.div
@@ -194,7 +194,7 @@ export function InRealLifeSection() {
             // PCYES IN REAL LIFE
           </p>
           <h2
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(28px, 3vw, 36px)",
@@ -222,13 +222,13 @@ export function InRealLifeSection() {
         <div className="relative group/carousel">
         <button
           onClick={() => scroll("left")}
-          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 cursor-pointer"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-edge flex items-center justify-center text-ink hover:text-ink-strong hover:bg-black/80 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 cursor-pointer"
         >
           <ChevronLeft size={18} />
         </button>
         <button
           onClick={() => scroll("right")}
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/80 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-edge flex items-center justify-center text-ink hover:text-ink-strong hover:bg-black/80 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 cursor-pointer"
         >
           <ChevronRight size={18} />
         </button>
@@ -284,7 +284,7 @@ export function InRealLifeSection() {
               {/* Username at bottom */}
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-400">
                 <span
-                  className="text-white/80"
+                  className="text-ink"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}
                 >
                   @{post.username}
@@ -312,7 +312,7 @@ export function InRealLifeSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
-              className={`${isDark ? "bg-[#1a1a1a]" : "bg-card"} max-w-[960px] w-full max-h-[90vh] overflow-hidden flex flex-col md:flex-row`}
+              className={`${isDark ? "bg-surface-1" : "bg-card"} max-w-[960px] w-full max-h-[90vh] overflow-hidden flex flex-col md:flex-row`}
               style={{ borderRadius: "var(--radius-card)" }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -415,7 +415,7 @@ export function InRealLifeSection() {
                     >
                       {/* Number badge */}
                       <div
-                        className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-colors duration-300 ${highlightedProduct === pi ? "bg-primary text-white" : "bg-foreground/10 text-foreground/50"
+                        className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-colors duration-300 ${highlightedProduct === pi ? "bg-primary text-ink-strong" : "bg-foreground/10 text-foreground/50"
                           }`}
                         style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-semibold)" }}
                       >

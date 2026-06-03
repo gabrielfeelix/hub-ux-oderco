@@ -122,7 +122,7 @@ export function GpuShowcase() {
       style={{
         paddingTop: "var(--space-section-lg)",
         paddingBottom: "var(--space-section-lg)",
-        background: "#080808",
+        background: "var(--surface-0)",
       }}
     >
       {/* Backdrop glow */}
@@ -150,7 +150,7 @@ export function GpuShowcase() {
             BEFORE / AFTER
           </p>
           <h2
-            className="text-white mx-auto"
+            className="text-ink-strong mx-auto"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(32px, 4.4vw, 56px)",
@@ -301,7 +301,7 @@ export function GpuShowcase() {
                 Geração anterior
               </span>
               <span
-                className="text-white text-[11px] md:text-[13px]"
+                className="text-ink-strong text-[11px] md:text-[13px]"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontWeight: 700,
@@ -454,7 +454,7 @@ export function GpuShowcase() {
                       Featured Build
                     </p>
                     <h3
-                      className="line-clamp-2 text-white md:line-clamp-1"
+                      className="line-clamp-2 text-ink-strong md:line-clamp-1"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
                         fontSize: "clamp(14px, 1.5vw, 16px)",
@@ -466,7 +466,7 @@ export function GpuShowcase() {
                       {active.newName} · {active.tagline}
                     </h3>
                     <p
-                      className="mt-1 text-white"
+                      className="mt-1 text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
                         fontSize: "16px",

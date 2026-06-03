@@ -155,7 +155,7 @@ export function IntelligentDevices() {
       style={{
         paddingTop: "var(--space-section-sm)",
         paddingBottom: "var(--space-section-lg)",
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
         overflow: "hidden",
       }}
     >
@@ -188,7 +188,7 @@ export function IntelligentDevices() {
             // BUILT FOR PERFORMANCE
           </p>
           <h2
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(32px, 4vw, 56px)",
@@ -275,7 +275,7 @@ export function IntelligentDevices() {
               type="button"
               onClick={advanceRailMobile}
               aria-label="Ver mais categorias"
-              className="absolute right-1 top-[28px] z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/55 text-white/75 backdrop-blur-md transition-colors hover:border-primary/50 hover:text-white hover:bg-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
+              className="absolute right-1 top-[28px] z-10 flex h-10 w-10 items-center justify-center rounded-full border border-edge bg-black/55 text-ink backdrop-blur-md transition-colors hover:border-primary/50 hover:text-ink-strong hover:bg-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
             >
               <ChevronRight size={18} strokeWidth={2.2} aria-hidden="true" />
             </button>
@@ -407,7 +407,7 @@ export function IntelligentDevices() {
                   </div>
                   <div className="mt-4 px-1">
                     <h3
-                      className="line-clamp-1 text-white"
+                      className="line-clamp-1 text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
                         fontSize: "14px",
@@ -419,7 +419,7 @@ export function IntelligentDevices() {
                       {product.name}
                     </h3>
                     <p
-                      className="mt-2 text-white"
+                      className="mt-2 text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
                         fontSize: "16px",

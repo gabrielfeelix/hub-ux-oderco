@@ -121,7 +121,7 @@ export function HeroSection() {
       onMouseEnter={() => setHasFocus(true)}
       onMouseLeave={() => setHasFocus(false)}
       className="relative overflow-x-hidden pb-4 md:pb-8 pt-[calc(80px+var(--announce-h))] md:pt-[calc(170px+var(--announce-h))] notebook:pt-[calc(108px+var(--announce-h))]"
-      style={{ background: "#0a0a0a" }}
+      style={{ background: "var(--surface-0)" }}
     >
       {/* Carousel track. Heights:
             mobile:   clamp(460px, 115vw, 620px), capped to 78dvh so it never
@@ -244,7 +244,7 @@ export function HeroSection() {
           onClick={() => setPaused((p) => !p)}
           aria-label={paused ? "Retomar carrossel" : "Pausar carrossel"}
           aria-pressed={paused}
-          className="mr-1 inline-flex h-11 w-11 items-center justify-center rounded-full text-white/55 transition-colors hover:text-white hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
+          className="mr-1 inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-muted transition-colors hover:text-ink-strong hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
         >
           {paused ? <Play size={15} aria-hidden="true" /> : <Pause size={15} aria-hidden="true" />}
         </button>
