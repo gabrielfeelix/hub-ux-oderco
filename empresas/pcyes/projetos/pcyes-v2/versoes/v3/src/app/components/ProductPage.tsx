@@ -24,7 +24,7 @@ import type { PreOrderInfo } from "./PreOrderData";
 import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
 import { CTAButton, DiscountBadge, QtyStepper } from "./section";
 import { SEO } from "./SEO";
-import { getProductSlug } from "../lib/slug";
+import { getProductSlug, getProductUrl } from "../lib/slug";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -2266,7 +2266,7 @@ export function ProductPage() {
       <SEO
         title={product.name}
         description={`Compre ${product.name} na PCYES. ${product.price ? `Por ${product.price}.` : ""} Frete grátis acima de R$ 299, até 12x sem juros.`}
-        canonicalPath={`/produto/${product.id}`}
+        canonicalPath={getProductUrl(product)}
         image={primaryImage}
         ogType="product"
         jsonLd={[
@@ -2286,7 +2286,7 @@ export function ProductPage() {
                 product.inStock === false
                   ? "https://schema.org/OutOfStock"
                   : "https://schema.org/InStock",
-              url: `https://pcyes.com.br/produto/${product.id}`,
+              url: `https://pcyes.com.br${getProductUrl(product)}`,
             },
           },
           {

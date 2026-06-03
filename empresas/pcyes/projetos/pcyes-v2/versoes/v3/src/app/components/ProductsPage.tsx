@@ -26,6 +26,7 @@ import {
 import { getPreOrderInfo } from "./PreOrderData";
 import { DiscountBadge, PreOrderPill } from "./section";
 import { SEO } from "./SEO";
+import { getCategoryUrl } from "../lib/slug";
 import { CategorySeoBlock } from "./CategorySeoBlock";
 
 const categoryMap: Record<string, string> = {
@@ -1103,9 +1104,7 @@ export function ProductsPage() {
         }
         canonicalPath={
           activeCategoryLabel
-            ? initialSubcategory
-              ? `/produtos?category=${encodeURIComponent(activeCategoryLabel)}&subcategory=${encodeURIComponent(initialSubcategory)}`
-              : `/produtos?category=${encodeURIComponent(activeCategoryLabel)}`
+            ? getCategoryUrl(activeCategoryLabel, initialSubcategory || undefined)
             : "/produtos"
         }
         ogType="website"
@@ -1116,7 +1115,7 @@ export function ProductsPage() {
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://pcyes.com.br/" },
             ...(activeCategoryLabel
-              ? [{ "@type": "ListItem", position: 2, name: activeCategoryLabel, item: `https://pcyes.com.br/produtos?category=${encodeURIComponent(activeCategoryLabel)}` }]
+              ? [{ "@type": "ListItem", position: 2, name: activeCategoryLabel, item: `https://pcyes.com.br${getCategoryUrl(activeCategoryLabel)}` }]
               : [{ "@type": "ListItem", position: 2, name: "Produtos", item: "https://pcyes.com.br/produtos" }]),
             ...(initialSubcategory
               ? [{ "@type": "ListItem", position: 3, name: initialSubcategory }]
