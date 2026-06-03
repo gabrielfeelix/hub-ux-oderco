@@ -486,7 +486,7 @@ export function CartDrawer() {
                 </div>
 
                 <button
-                  className="w-full py-4 rounded-full text-white transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-4 rounded-full text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
                   style={{
                     background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
@@ -535,13 +535,13 @@ export function CartDrawer() {
                   transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                   className="flex h-auto max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[28px] md:max-h-[calc(100dvh-3rem)] md:rounded-[24px]"
                   style={{
-                    background: "#1f1c1c",
+                    background: "var(--surface-2)",
                     border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                     boxShadow: "0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                   }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="border-b border-white/5 px-6 py-6 md:px-9 md:py-8">
+                  <div className="border-b border-edge-subtle px-6 py-6 md:px-9 md:py-8">
                     <div className="flex items-start justify-between gap-5">
                       <div>
                         <div className="mb-3 flex items-center gap-2 text-primary">
@@ -550,14 +550,14 @@ export function CartDrawer() {
                             // BRINDE DESBLOQUEADO
                           </span>
                         </div>
-                        <h3 className="text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 6vw, 32px)", fontWeight: 600, lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+                        <h3 className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 6vw, 32px)", fontWeight: 600, lineHeight: 1.05, letterSpacing: "-0.02em" }}>
                           Escolha seu presente
                         </h3>
-                        <p className="mt-3 max-w-[560px] text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "clamp(12px, 3.4vw, 14px)", lineHeight: 1.6 }}>
+                        <p className="mt-3 max-w-[560px] text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "clamp(12px, 3.4vw, 14px)", lineHeight: 1.6 }}>
                           Você atingiu {formatPrice(GIFT_THRESHOLD)}. Selecione um produto pra entrar no carrinho com selo de presente e valor zerado.
                         </p>
                       </div>
-                      <button onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); }} aria-label="Fechar oferta de brinde" className="flex h-11 w-11 md:h-10 md:w-10 items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:text-white hover:bg-white/[0.06] cursor-pointer flex-shrink-0">
+                      <button onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); }} aria-label="Fechar oferta de brinde" className="flex h-11 w-11 md:h-10 md:w-10 items-center justify-center rounded-full border border-edge text-ink-muted transition-colors hover:text-ink-strong hover:bg-white/[0.06] cursor-pointer flex-shrink-0">
                         <X size={16} />
                       </button>
                     </div>
@@ -590,12 +590,12 @@ export function CartDrawer() {
                           }}
                         />
                         <div
-                          className="relative h-[132px] w-[132px] flex-shrink-0 overflow-hidden border-r border-white/5 md:h-[210px] md:w-full md:border-r-0 md:border-b"
+                          className="relative h-[132px] w-[132px] flex-shrink-0 overflow-hidden border-r border-edge-subtle md:h-[210px] md:w-full md:border-r-0 md:border-b"
                           style={{ background: "radial-gradient(circle at top, rgba(225,6,0,0.12) 0%, transparent 60%)" }}
                         >
                           <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.04] md:p-6" />
                           <div
-                            className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:left-4 md:top-4 md:h-9 md:w-9"
+                            className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-ink-strong md:left-4 md:top-4 md:h-9 md:w-9"
                             style={{
                               background: "var(--gradient-brand)",
                               boxShadow: "var(--shadow-medallion)",
@@ -606,7 +606,7 @@ export function CartDrawer() {
                           </div>
                           {isSelected && (
                             <div
-                              className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white md:right-4 md:top-4 md:h-9 md:w-9"
+                              className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-ink-strong md:right-4 md:top-4 md:h-9 md:w-9"
                               style={{
                                 background: "var(--gradient-brand)",
                                 boxShadow: "var(--shadow-medallion)",
@@ -618,7 +618,7 @@ export function CartDrawer() {
                           )}
                         </div>
                         <div className="relative flex flex-1 flex-col px-4 py-4 md:px-5 md:py-5">
-                          <p className="line-clamp-2 text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(14px, 3.8vw, 17px)", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
+                          <p className="line-clamp-2 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(14px, 3.8vw, 17px)", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
                             {product.name}
                           </p>
                           <div className="mt-3 flex items-baseline gap-2 md:mt-4">
@@ -644,10 +644,10 @@ export function CartDrawer() {
                   </div>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-white/5 px-6 py-5 md:px-9 md:py-6">
+                  <div className="flex items-center justify-between border-t border-edge-subtle px-6 py-5 md:px-9 md:py-6">
                     <button
                       onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); setSelectedGiftId(null); }}
-                      className="inline-flex items-center cursor-pointer text-white/45 transition-colors hover:text-white/75 min-h-[44px] px-3 md:min-h-0 md:px-0"
+                      className="inline-flex items-center cursor-pointer text-ink-muted transition-colors hover:text-ink min-h-[44px] px-3 md:min-h-0 md:px-0"
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.06em" }}
                     >
                       Agora não
@@ -655,7 +655,7 @@ export function CartDrawer() {
                     <button
                       onClick={confirmGift}
                       disabled={!selectedGiftId}
-                      className="cursor-pointer rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-0"
+                      className="cursor-pointer rounded-full px-7 py-3 text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-0"
                       style={{
                         background: "var(--gradient-brand)",
                         fontFamily: "var(--font-family-inter)",

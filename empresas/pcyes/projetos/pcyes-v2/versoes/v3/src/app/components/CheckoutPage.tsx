@@ -83,7 +83,7 @@ type PaymentMethod = "pix" | "credit" | "apple" | "google" | "boleto" | "mercado
 type WalletSheet = "apple" | "google" | "mercadopago" | null;
 
 const inputClass =
-  "w-full text-white placeholder:text-white/25 focus:outline-none transition-all";
+  "w-full text-ink-strong placeholder:text-ink-subtle focus:outline-none transition-all";
 const inputStyle: React.CSSProperties = {
   padding: "12px 14px",
   borderRadius: "10px",
@@ -98,7 +98,7 @@ function Field({ label, children, required, className }: { label: string; childr
   return (
     <div className={className}>
       <label
-        className="mb-1.5 block text-white/55"
+        className="mb-1.5 block text-ink-muted"
         style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}
       >
         {label} {required && <span className="text-primary">*</span>}
@@ -195,7 +195,7 @@ function ReviewCard({ icon, label, onEdit, children }: { icon: React.ReactNode; 
       }}
     >
       <div className="mb-2 flex items-center justify-between gap-3">
-        <span className="inline-flex items-center gap-1.5 text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+        <span className="inline-flex items-center gap-1.5 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
           {icon}
           {label}
         </span>
@@ -296,7 +296,7 @@ function FakeQrCode() {
 function Line({ label, value, positive }: { label: string; value: string; positive?: boolean }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+      <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
         {label}
       </span>
       <span
@@ -572,7 +572,7 @@ export function CheckoutPage() {
   if (items.length === 0 && !orderConfirmed) {
     return (
       <>
-        <div className="pt-3 md:pt-[142px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 200px)" }}>
+        <div className="pt-3 md:pt-[142px]" style={{ background: "var(--surface-0)", minHeight: "calc(100vh - 200px)" }}>
           <div className="mx-auto flex max-w-[640px] flex-col items-center px-5 py-24 text-center">
             <p
               className="mb-3 text-primary"
@@ -581,7 +581,7 @@ export function CheckoutPage() {
               // CHECKOUT VAZIO
             </p>
             <h1
-              className="mb-6 text-white"
+              className="mb-6 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "clamp(28px, 4vw, 40px)",
@@ -593,7 +593,7 @@ export function CheckoutPage() {
             </h1>
             <Link
               to="/produtos"
-              className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-white transition-transform hover:scale-[1.03]"
+              className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-ink-strong transition-transform hover:scale-[1.03]"
               style={{
                 background: "var(--gradient-brand)",
                 fontFamily: "var(--font-family-inter)",
@@ -620,7 +620,7 @@ export function CheckoutPage() {
     const s = (pixTimer % 60).toString().padStart(2, "0");
     return (
       <>
-        <div className="pt-3 md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 120px)" }}>
+        <div className="pt-3 md:pt-[88px]" style={{ background: "var(--surface-0)", minHeight: "calc(100vh - 120px)" }}>
           <div className="mx-auto max-w-[720px] px-5 py-10 md:px-8">
             <p
               className="mb-3 text-primary"
@@ -629,7 +629,7 @@ export function CheckoutPage() {
               // PEDIDO #{Math.floor(Math.random() * 90000 + 10000)}
             </p>
             <h1
-              className="mb-2 text-white"
+              className="mb-2 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "clamp(28px, 3.5vw, 38px)",
@@ -640,7 +640,7 @@ export function CheckoutPage() {
             >
               Pague com PIX
             </h1>
-            <p className="mb-6 text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.55 }}>
+            <p className="mb-6 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.55 }}>
               Escaneie o QR Code ou copie o código. Liberação instantânea.
             </p>
 
@@ -677,7 +677,7 @@ export function CheckoutPage() {
               </div>
 
               {/* Timer */}
-              <div className="mb-6 inline-flex items-center gap-2 text-white/75">
+              <div className="mb-6 inline-flex items-center gap-2 text-ink">
                 <Clock size={15} strokeWidth={2.2} />
                 <span
                   className="tabular-nums"
@@ -685,7 +685,7 @@ export function CheckoutPage() {
                 >
                   {m}:{s}
                 </span>
-                <span className="text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
                   pra expirar
                 </span>
               </div>
@@ -706,18 +706,18 @@ export function CheckoutPage() {
 
                 {/* Right side */}
                 <div className="flex-1 min-w-0">
-                  <p className="mb-2 text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                  <p className="mb-2 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
                     Valor a pagar
                   </p>
                   <p className="mb-5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "32px", fontWeight: 800, color: "#22c55e", letterSpacing: "-0.025em", lineHeight: 1 }}>
                     {formatBRL(total)}
                   </p>
 
-                  <p className="mb-2 text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                  <p className="mb-2 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
                     PIX copia e cola
                   </p>
                   <div
-                    className="mb-3 break-all rounded-[10px] p-3 text-white/55"
+                    className="mb-3 break-all rounded-[10px] p-3 text-ink-muted"
                     style={{
                       background: "rgba(var(--foreground-rgb), 0.03)",
                       border: "1px solid rgba(var(--foreground-rgb), 0.08)",
@@ -731,7 +731,7 @@ export function CheckoutPage() {
                   <button
                     onClick={copyPix}
                     aria-label="Copiar código PIX"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-white transition-transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400/60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400/60"
                     style={{
                       background: pixCopied
                         ? "var(--gradient-buy)"
@@ -755,7 +755,7 @@ export function CheckoutPage() {
                 style={{ background: "rgba(var(--foreground-rgb), 0.02)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
               >
                 <ShieldCheck size={14} strokeWidth={2} className="mt-0.5 flex-shrink-0 text-green-500" />
-                <p className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.55 }}>
+                <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.55 }}>
                   Abra o app do seu banco, escolha PIX, escaneie o QR ou cole o código. A confirmação chega em segundos e atualizamos sua tela.
                 </p>
               </div>
@@ -771,14 +771,14 @@ export function CheckoutPage() {
     const snap = confirmedSnapshot;
     return (
       <>
-        <div className="pt-3 md:pt-[88px]" style={{ background: "#0e0e0e", minHeight: "calc(100vh - 200px)" }}>
+        <div className="pt-3 md:pt-[88px]" style={{ background: "var(--surface-0)", minHeight: "calc(100vh - 200px)" }}>
           <div className="mx-auto max-w-[720px] px-5 py-12 md:px-8">
             <div className="mb-10 flex flex-col items-center text-center">
               <motion.div
                 initial={{ scale: 0.4, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="mb-7 flex h-24 w-24 items-center justify-center rounded-full text-white"
+                className="mb-7 flex h-24 w-24 items-center justify-center rounded-full text-ink-strong"
                 style={{
                   background: "var(--gradient-buy)",
                   boxShadow: "0 30px 80px -16px rgba(34,197,94,0.55), 0 0 0 6px rgba(34,197,94,0.12)",
@@ -793,7 +793,7 @@ export function CheckoutPage() {
                 // GG PURCHASE · PEDIDO #{Math.floor(Math.random() * 90000 + 10000)}
               </p>
               <h1
-                className="mb-4 text-white"
+                className="mb-4 text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(32px, 4vw, 48px)",
@@ -805,7 +805,7 @@ export function CheckoutPage() {
                 Pedido confirmado!
               </h1>
               <p
-                className="max-w-md text-white/60"
+                className="max-w-md text-ink-muted"
                 style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", lineHeight: 1.55 }}
               >
                 Sua build tá a caminho. Os detalhes foram pro seu email.
@@ -876,7 +876,7 @@ export function CheckoutPage() {
                         </div>
                         {item.quantity > 1 && (
                           <span
-                            className="absolute -right-1.5 -top-1.5 z-10 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-white"
+                            className="absolute -right-1.5 -top-1.5 z-10 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-ink-strong"
                             style={{
                               background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
@@ -890,7 +890,7 @@ export function CheckoutPage() {
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="line-clamp-2 text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}>
+                        <p className="line-clamp-2 text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600, lineHeight: 1.3 }}>
                           {item.name}
                         </p>
                         <p
@@ -913,7 +913,7 @@ export function CheckoutPage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                    <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
                       {snap.paymentLabel}
                     </p>
                     <p className="mt-1" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: 800, color: "#22c55e", letterSpacing: "-0.02em" }}>
@@ -922,7 +922,7 @@ export function CheckoutPage() {
                   </div>
                   <Link
                     to="/"
-                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-white transition-transform hover:scale-[1.03]"
+                    className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-ink-strong transition-transform hover:scale-[1.03]"
                     style={{
                       background: "var(--gradient-brand)",
                       fontFamily: "var(--font-family-inter)",
@@ -948,11 +948,11 @@ export function CheckoutPage() {
 
   return (
     <>
-      <div className="pt-3 md:pt-[88px] pb-24 lg:pb-0" style={{ background: "#0e0e0e", minHeight: "100vh" }}>
+      <div className="pt-3 md:pt-[88px] pb-24 lg:pb-0" style={{ background: "var(--surface-0)", minHeight: "100vh" }}>
         <div className="mx-auto max-w-[1320px] px-5 py-4 md:px-8 md:py-6">
           <Link
             to="/carrinho"
-            className="mb-4 inline-flex items-center gap-1.5 text-white/45 transition-colors hover:text-white/75"
+            className="mb-4 inline-flex items-center gap-1.5 text-ink-muted transition-colors hover:text-ink"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
           >
             <ChevronLeft size={14} strokeWidth={2} />
@@ -967,7 +967,7 @@ export function CheckoutPage() {
               // CHECKOUT
             </p>
             <h1
-              className="text-white"
+              className="text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "clamp(26px, 3vw, 36px)",
@@ -1013,7 +1013,7 @@ export function CheckoutPage() {
                       {done ? <Check size={14} strokeWidth={2.6} /> : <Icon size={14} strokeWidth={2.2} />}
                     </div>
                     <span
-                      className={`hidden md:inline ${active ? "text-white" : done ? "text-white/70" : "text-white/35"}`}
+                      className={`hidden md:inline ${active ? "text-ink-strong" : done ? "text-ink" : "text-ink-subtle"}`}
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700, letterSpacing: "0.04em" }}
                     >
                       {s.label}
@@ -1026,7 +1026,7 @@ export function CheckoutPage() {
               })}
             </div>
             <p
-              className="md:hidden mt-2 text-white/45"
+              className="md:hidden mt-2 text-ink-muted"
               style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.04em" }}
             >
               Etapa {step + 1} de 4 · {STEPS[step].label}
@@ -1053,12 +1053,12 @@ export function CheckoutPage() {
                   {step === 0 && (
                     <>
                       <h2
-                        className="mb-2 text-white"
+                        className="mb-2 text-ink-strong"
                         style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.02em" }}
                       >
                         Endereço de entrega
                       </h2>
-                      <p className="mb-6 text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                      <p className="mb-6 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
                         Pra onde mandamos sua build?
                       </p>
 
@@ -1088,10 +1088,10 @@ export function CheckoutPage() {
                                     <span className="mt-0.5 flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(var(--foreground-rgb), 0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
                                     <div className="min-w-0 flex-1">
                                       <div className="flex items-center gap-2">
-                                        <span className="text-white truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>{a.label}</span>
+                                        <span className="text-ink-strong truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}>{a.label}</span>
                                         {a.isDefault && <span className="px-1.5 py-0.5 bg-primary/12 text-primary" style={{ borderRadius: 999, fontFamily: "var(--font-family-inter)", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
                                       </div>
-                                      <p className="text-white/55 truncate mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                                      <p className="text-ink-muted truncate mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
                                         {a.street}, {a.number} · {a.city}/{a.state}
                                       </p>
                                     </div>
@@ -1099,7 +1099,7 @@ export function CheckoutPage() {
                                       <button
                                         type="button"
                                         onClick={(e) => { e.stopPropagation(); setSelectedAddressId(null); }}
-                                        className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-white/70 hover:text-white transition-all cursor-pointer"
+                                        className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-ink hover:text-ink-strong transition-all cursor-pointer"
                                         style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
                                       >
                                         Editar
@@ -1145,7 +1145,7 @@ export function CheckoutPage() {
                               className={`${inputClass} checkout-field`}
                               style={inputStyle}
                             />
-                            {loadingCep && <Loader2 size={14} className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-white/60" />}
+                            {loadingCep && <Loader2 size={14} className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-ink-muted" />}
                           </div>
                         </Field>
                         <Field label="Destinatário" required>
@@ -1230,10 +1230,10 @@ export function CheckoutPage() {
 
                   {step === 1 && (
                     <>
-                      <h2 className="mb-2 text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+                      <h2 className="mb-2 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.02em" }}>
                         Como entregar?
                       </h2>
-                      <p className="mb-6 text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                      <p className="mb-6 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
                         Para {address.city || "—"}/{address.state || "—"}
                       </p>
                       <div className="flex flex-col gap-3">
@@ -1258,17 +1258,17 @@ export function CheckoutPage() {
                                   border: active ? "none" : "1.5px solid rgba(var(--foreground-rgb), 0.25)",
                                 }}
                               >
-                                {active && <Check size={11} strokeWidth={3} className="text-white" />}
+                                {active && <Check size={11} strokeWidth={3} className="text-ink-strong" />}
                               </div>
-                              <Truck size={18} strokeWidth={1.8} className={active ? "text-green-400" : "text-white/55"} />
+                              <Truck size={18} strokeWidth={1.8} className={active ? "text-green-400" : "text-ink-muted"} />
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-2">
-                                  <p className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 700 }}>
+                                  <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 700 }}>
                                     {opt.label}
                                   </p>
                                   {opt.badge && (
                                     <span
-                                      className="inline-flex items-center text-white"
+                                      className="inline-flex items-center text-ink-strong"
                                       style={{
                                         padding: "2px 8px",
                                         borderRadius: "999px",
@@ -1286,7 +1286,7 @@ export function CheckoutPage() {
                                     </span>
                                   )}
                                 </div>
-                                <p className="text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", marginTop: 2 }}>
+                                <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", marginTop: 2 }}>
                                   {opt.eta}
                                 </p>
                               </div>
@@ -1311,10 +1311,10 @@ export function CheckoutPage() {
 
                   {step === 2 && (
                     <>
-                      <h2 className="mb-2 text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+                      <h2 className="mb-2 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.02em" }}>
                         Como vai pagar?
                       </h2>
-                      <p className="mb-6 text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                      <p className="mb-6 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
                         Escolha um método. PIX dá 10% off automático.
                       </p>
 
@@ -1384,7 +1384,7 @@ export function CheckoutPage() {
                       <div className="mb-5 flex items-center gap-4">
                         <div className="h-px flex-1 bg-white/8" />
                         <span
-                          className="text-white/35"
+                          className="text-ink-subtle"
                           style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" }}
                         >
                           ou
@@ -1434,17 +1434,17 @@ export function CheckoutPage() {
                                         <span className="flex items-center justify-center shrink-0" style={{ width: 16, height: 16, borderRadius: 9999, border: sel ? "5px solid var(--primary)" : "1.5px solid rgba(var(--foreground-rgb), 0.4)", background: sel ? "var(--primary)" : "transparent", boxShadow: sel ? "inset 0 0 0 2px #161617" : "none" }} />
                                         <div className="min-w-0 flex-1">
                                           <div className="flex items-center gap-2">
-                                            <span className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{c.brand}</span>
+                                            <span className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{c.brand}</span>
                                             {c.isDefault && <span className="px-1.5 py-0.5 bg-primary/12 text-primary" style={{ borderRadius: 999, fontFamily: "var(--font-family-inter)", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.08em" }}>PADRÃO</span>}
                                           </div>
-                                          <p className="text-white/85 font-mono mt-0.5" style={{ fontSize: "12.5px", fontWeight: 600, letterSpacing: "0.05em" }}>•••• {c.last4}</p>
-                                          <p className="text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>Validade {c.expiry}</p>
+                                          <p className="text-ink font-mono mt-0.5" style={{ fontSize: "12.5px", fontWeight: 600, letterSpacing: "0.05em" }}>•••• {c.last4}</p>
+                                          <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>Validade {c.expiry}</p>
                                         </div>
                                         {sel && (
                                           <button
                                             type="button"
                                             onClick={(e) => { e.stopPropagation(); setSelectedCardId(null); }}
-                                            className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-white/70 hover:text-white transition-all cursor-pointer"
+                                            className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-ink hover:text-ink-strong transition-all cursor-pointer"
                                             style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 600 }}
                                           >
                                             Editar
@@ -1470,7 +1470,7 @@ export function CheckoutPage() {
                                   </button>
                                 </div>
                                 {selectedCardId && (
-                                  <p className="mt-3 text-white/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                                  <p className="mt-3 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
                                     CVV precisa ser digitado a cada compra por segurança.
                                   </p>
                                 )}
@@ -1536,7 +1536,7 @@ export function CheckoutPage() {
                                   style={inputStyle}
                                 >
                                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                                    <option key={n} value={n} style={{ background: "#1f1c1c" }}>
+                                    <option key={n} value={n} style={{ background: "var(--surface-2)" }}>
                                       {n}× {formatBRL(baseTotal / n)} sem juros
                                     </option>
                                   ))}
@@ -1566,7 +1566,7 @@ export function CheckoutPage() {
                                 <p className="text-green-300" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 700 }}>
                                   10% OFF automático no PIX
                                 </p>
-                                <p className="mt-1 text-white/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
+                                <p className="mt-1 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", lineHeight: 1.5 }}>
                                   Após finalizar, vamos gerar o QR Code pra pagamento instantâneo. Compensação em até 1 minuto.
                                 </p>
                               </div>
@@ -1576,7 +1576,7 @@ export function CheckoutPage() {
 
                         {(payment === "apple" || payment === "google") && (
                           <motion.div key="wallet" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            <p className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.5 }}>
+                            <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.5 }}>
                               Autenticação acontece direto no seu dispositivo. Toque em finalizar pra abrir o {payment === "apple" ? "Apple Pay" : "Google Pay"}.
                             </p>
                           </motion.div>
@@ -1584,7 +1584,7 @@ export function CheckoutPage() {
 
                         {payment === "boleto" && (
                           <motion.div key="boleto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            <p className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.5 }}>
+                            <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.5 }}>
                               Boleto gerado após confirmação. Vencimento em 3 dias úteis. Compensação em até 2 dias úteis após pagamento.
                             </p>
                           </motion.div>
@@ -1595,38 +1595,38 @@ export function CheckoutPage() {
 
                   {step === 3 && (
                     <>
-                      <h2 className="mb-2 text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+                      <h2 className="mb-2 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 700, letterSpacing: "-0.02em" }}>
                         Revisão final
                       </h2>
-                      <p className="mb-6 text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                      <p className="mb-6 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
                         Confirme se tá tudo certo antes de fechar.
                       </p>
 
                       <div className="space-y-4">
                         <ReviewCard icon={<MapPin size={14} strokeWidth={2} />} label="Endereço" onEdit={() => setStep(0)}>
-                          <p className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}>
+                          <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}>
                             {address.recipient}
                           </p>
-                          <p className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", lineHeight: 1.5 }}>
+                          <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", lineHeight: 1.5 }}>
                             {address.street}, {address.number}
                             {address.complement ? ` · ${address.complement}` : ""}
                           </p>
-                          <p className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>
+                          <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px" }}>
                             {address.district} · {address.city}/{address.state} · {address.zip}
                           </p>
                         </ReviewCard>
 
                         <ReviewCard icon={<Truck size={14} strokeWidth={2} />} label="Entrega" onEdit={() => setStep(1)}>
                           {shippingOptions.find((o) => o.id === selectedShipping) && (
-                            <p className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}>
+                            <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}>
                               {shippingOptions.find((o) => o.id === selectedShipping)!.label}{" "}
-                              <span className="text-white/55 font-normal">· {shippingOptions.find((o) => o.id === selectedShipping)!.eta}</span>
+                              <span className="text-ink-muted font-normal">· {shippingOptions.find((o) => o.id === selectedShipping)!.eta}</span>
                             </p>
                           )}
                         </ReviewCard>
 
                         <ReviewCard icon={<CreditCard size={14} strokeWidth={2} />} label="Pagamento" onEdit={() => setStep(2)}>
-                          <p className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}>
+                          <p className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}>
                             {payment === "pix" && "PIX · 10% OFF automático"}
                             {payment === "credit" && `Cartão de crédito · ${installments}× sem juros`}
                             {payment === "apple" && "Apple Pay"}
@@ -1640,7 +1640,7 @@ export function CheckoutPage() {
                           style={{ background: "rgba(var(--foreground-rgb), 0.02)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
                         >
                           <p
-                            className="mb-3 text-white/55"
+                            className="mb-3 text-ink-muted"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}
                           >
                             Itens ({items.length})
@@ -1659,10 +1659,10 @@ export function CheckoutPage() {
                                   <ImageWithFallback src={item.image} alt={item.name} className="h-full w-full object-contain p-1.5" />
                                 </div>
                                 <div className="min-w-0 flex-1">
-                                  <p className="line-clamp-1 text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}>
+                                  <p className="line-clamp-1 text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}>
                                     {item.name}
                                   </p>
-                                  <p className="text-white/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                                  <p className="text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
                                     {item.quantity}× {item.isGift ? "Brinde" : item.price}
                                   </p>
                                 </div>
@@ -1679,7 +1679,7 @@ export function CheckoutPage() {
               <div className="mt-6 flex items-center justify-between gap-3">
                 <button
                   onClick={() => (step === 0 ? navigate("/carrinho") : setStep((s) => (s - 1) as Step))}
-                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-3 min-h-[44px] md:min-h-0 text-white/60 transition-colors hover:bg-white/[0.05] hover:text-white"
+                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-3 min-h-[44px] md:min-h-0 text-ink-muted transition-colors hover:bg-white/[0.05] hover:text-ink-strong"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
                 >
                   <ChevronLeft size={14} strokeWidth={2.4} />
@@ -1690,7 +1690,7 @@ export function CheckoutPage() {
                   <button
                     onClick={() => setStep((s) => (s + 1) as Step)}
                     disabled={!canAdvance}
-                    className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-ink-strong transition-transform hover:scale-[1.03] active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:scale-100"
                     style={{
                       background: "var(--gradient-brand)",
                       fontFamily: "var(--font-family-inter)",
@@ -1707,7 +1707,7 @@ export function CheckoutPage() {
                 ) : (
                   <button
                     onClick={handleFinish}
-                    className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.97]"
+                    className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-ink-strong transition-transform hover:scale-[1.03] active:scale-[0.97]"
                     style={{
                       background: "var(--gradient-buy)",
                       fontFamily: "var(--font-family-inter)",
@@ -1760,7 +1760,7 @@ export function CheckoutPage() {
                         {item.quantity > 1 && (
                           <span
                             aria-label={`Quantidade ${item.quantity}`}
-                            className="absolute -right-1.5 -top-1.5 z-10 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-white"
+                            className="absolute -right-1.5 -top-1.5 z-10 flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-ink-strong"
                             style={{
                               background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
@@ -1774,7 +1774,7 @@ export function CheckoutPage() {
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="line-clamp-2 text-white/80" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, lineHeight: 1.3 }}>
+                        <p className="line-clamp-2 text-ink" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, lineHeight: 1.3 }}>
                           {item.name}
                         </p>
                         <p
@@ -1800,14 +1800,14 @@ export function CheckoutPage() {
                   <button
                     onClick={() => setCouponOpen((v) => !v)}
                     className={`flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-2.5 min-h-[44px] md:min-h-0 transition-colors ${
-                      appliedCoupon ? "rounded-card-sm border border-green-500/25 bg-green-500/[0.06]" : "rounded-card-sm border border-white/8 hover:border-white/14 hover:bg-white/[0.03]"
+                      appliedCoupon ? "rounded-card-sm border border-green-500/25 bg-green-500/[0.06]" : "rounded-card-sm border border-edge-subtle hover:border-edge hover:bg-white/[0.03]"
                     }`}
                     aria-expanded={couponOpen}
                   >
                     <span className="flex items-center gap-2">
-                      {appliedCoupon ? <Check size={13} className="text-green-500" strokeWidth={2.4} /> : <Ticket size={13} className="text-white/45" strokeWidth={2} />}
+                      {appliedCoupon ? <Check size={13} className="text-green-500" strokeWidth={2.4} /> : <Ticket size={13} className="text-ink-muted" strokeWidth={2} />}
                       <span
-                        className={appliedCoupon ? "text-green-400" : "text-white/65"}
+                        className={appliedCoupon ? "text-green-400" : "text-ink-muted"}
                         style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: appliedCoupon ? 700 : 600 }}
                       >
                         {appliedCoupon ? `${appliedCoupon} aplicado` : "Tenho um cupom"}
@@ -1839,7 +1839,7 @@ export function CheckoutPage() {
                             onChange={(e) => { setCoupon(e.target.value.toUpperCase()); setCouponError(""); }}
                             onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
                             aria-label="Código do cupom"
-                            className="flex-1 rounded-[10px] px-3 py-2 text-white placeholder:text-white/25 focus:outline-none"
+                            className="flex-1 rounded-[10px] px-3 py-2 text-ink-strong placeholder:text-ink-subtle focus:outline-none"
                             style={{
                               background: "rgba(var(--foreground-rgb), 0.03)",
                               border: "1px solid rgba(var(--foreground-rgb), 0.1)",
@@ -1851,7 +1851,7 @@ export function CheckoutPage() {
                           <button
                             onClick={handleApplyCoupon}
                             disabled={!coupon.trim()}
-                            className="cursor-pointer rounded-[10px] px-4 py-2 min-h-[44px] md:min-h-0 text-white transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+                            className="cursor-pointer rounded-[10px] px-4 py-2 min-h-[44px] md:min-h-0 text-ink-strong transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
                             style={{
                               background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
@@ -1880,7 +1880,7 @@ export function CheckoutPage() {
                   className={`mb-4 overflow-hidden rounded-card-sm transition-colors ${
                     pointsApplied
                       ? "border border-yellow-300/40 bg-yellow-300/[0.05]"
-                      : "border border-white/8 hover:border-yellow-300/35 hover:bg-yellow-300/[0.05]"
+                      : "border border-edge-subtle hover:border-yellow-300/35 hover:bg-yellow-300/[0.05]"
                   }`}
                 >
                   <button
@@ -1933,7 +1933,7 @@ export function CheckoutPage() {
                             className="w-full"
                             style={{ accentColor: "#facc15" }}
                           />
-                          <p className="mt-2 text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
+                          <p className="mt-2 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px" }}>
                             Economia: <span style={{ color: "#facc15", fontWeight: 800 }}>{formatBRL(pointsValue)}</span>
                           </p>
                         </div>
@@ -1964,7 +1964,7 @@ export function CheckoutPage() {
                   style={{ background: "rgba(var(--foreground-rgb), 0.03)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
                 >
                   <div className="flex items-baseline justify-between">
-                    <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
                       Total
                     </span>
                     <span
@@ -1980,20 +1980,20 @@ export function CheckoutPage() {
                     </span>
                   </div>
                   {payment !== "pix" && (
-                    <p className="mt-1 text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                    <p className="mt-1 text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
                       ou no PIX por {formatBRL(total - (subtotal - discountValue) * 0.1)}{" "}
                       <span className="text-green-400 font-bold">−10%</span>
                     </p>
                   )}
                 </div>
 
-                <div className="mt-5 flex flex-col gap-2 text-white/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
+                <div className="mt-5 flex flex-col gap-2 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 600 }}>
                   <span className="inline-flex items-center gap-1.5">
                     <ShieldCheck size={12} strokeWidth={2} className="text-green-500" />
                     Compra 100% segura · SSL
                   </span>
                   <span className="inline-flex items-center gap-1.5">
-                    <Truck size={12} strokeWidth={2} className="text-white/55" />
+                    <Truck size={12} strokeWidth={2} className="text-ink-muted" />
                     Frete grátis acima de R$ 299
                   </span>
                 </div>
@@ -2006,18 +2006,18 @@ export function CheckoutPage() {
       {/* Mobile fixed bottom action bar — total + step CTA. lg:hidden, abaixo dos modais (z-[120]). */}
       <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden">
         <div
-          className="flex items-center gap-3 border-t border-white/10 px-4 py-3"
+          className="flex items-center gap-3 border-t border-edge px-4 py-3"
           style={{ background: "rgba(14,14,14,0.95)", backdropFilter: "blur(20px)" }}
         >
           <div className="flex-1 min-w-0">
             <p
-              className="text-white/45"
+              className="text-ink-muted"
               style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" }}
             >
               Total
             </p>
             <p
-              className="text-white"
+              className="text-ink-strong"
               style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1 }}
             >
               {formatBRL(total)}
@@ -2027,7 +2027,7 @@ export function CheckoutPage() {
             <button
               onClick={() => setStep((s) => (s + 1) as Step)}
               disabled={!canAdvance}
-              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:active:scale-100"
+              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-ink-strong transition-transform active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:active:scale-100"
               style={{
                 minHeight: 46,
                 background: "var(--gradient-brand)",
@@ -2045,7 +2045,7 @@ export function CheckoutPage() {
           ) : (
             <button
               onClick={handleFinish}
-              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-white transition-transform active:scale-[0.97]"
+              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-ink-strong transition-transform active:scale-[0.97]"
               style={{
                 minHeight: 46,
                 background: "var(--gradient-buy)",
@@ -2093,14 +2093,14 @@ export function CheckoutPage() {
               }}
             >
               <div className="flex items-center justify-between px-5 pb-3 pt-4">
-                <span className="inline-flex items-center gap-1 text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "16px", fontWeight: 600 }}>
+                <span className="inline-flex items-center gap-1 text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "16px", fontWeight: 600 }}>
                   <Apple size={17} strokeWidth={1.8} fill="currentColor" />
                   <span className="font-light">Pay</span>
                 </span>
                 <button
                   onClick={() => !walletConfirming && setWalletSheet(null)}
                   aria-label="Fechar Apple Pay"
-                  className="flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full text-white/55 transition-colors hover:bg-white/[0.08] hover:text-white"
+                  className="flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-white/[0.08] hover:text-ink-strong"
                 >
                   <X size={16} />
                 </button>
@@ -2109,13 +2109,13 @@ export function CheckoutPage() {
 
               <div className="px-5 py-5">
                 <div className="mb-4 flex items-center justify-between">
-                  <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>PCYES Gamer</span>
+                  <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>PCYES Gamer</span>
                   <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.02em" }}>{formatBRL(total)}</span>
                 </div>
 
                 <div className="mb-3 rounded-card-sm p-3.5" style={{ background: "rgba(var(--foreground-rgb), 0.06)" }}>
                   <div className="mb-1 flex items-center justify-between">
-                    <span className="text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>Pagar com</span>
+                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>Pagar com</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex h-9 w-12 items-center justify-center rounded-[6px]" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)" }}>
@@ -2123,22 +2123,22 @@ export function CheckoutPage() {
                     </div>
                     <div>
                       <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 600 }}>Apple Card</p>
-                      <p className="text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>•••• 4231</p>
+                      <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>•••• 4231</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mb-3 flex items-center justify-between text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                <div className="mb-3 flex items-center justify-between text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
                   <span>Enviar para</span>
-                  <span className="text-white">{address.city || "Maringá"}, {address.state || "PR"}</span>
+                  <span className="text-ink-strong">{address.city || "Maringá"}, {address.state || "PR"}</span>
                 </div>
-                <div className="flex items-center justify-between text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                <div className="flex items-center justify-between text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
                   <span>Email</span>
-                  <span className="text-white">j****@icloud.com</span>
+                  <span className="text-ink-strong">j****@icloud.com</span>
                 </div>
               </div>
 
-              <div className="border-t border-white/8 px-5 py-5">
+              <div className="border-t border-edge-subtle px-5 py-5">
                 <div className="mb-3 flex flex-col items-center gap-2">
                   <motion.div
                     animate={walletConfirming ? { scale: [1, 1.18, 1] } : { scale: 1 }}
@@ -2149,10 +2149,10 @@ export function CheckoutPage() {
                     {walletConfirming ? (
                       <Loader2 size={22} className="animate-spin text-green-400" strokeWidth={2.4} />
                     ) : (
-                      <Fingerprint size={22} strokeWidth={1.6} className="text-white" />
+                      <Fingerprint size={22} strokeWidth={1.6} className="text-ink-strong" />
                     )}
                   </motion.div>
-                  <p className="text-center text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
+                  <p className="text-center text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
                     {walletConfirming ? "Autenticando..." : "Pressione 2× no botão lateral pra confirmar"}
                   </p>
                 </div>
@@ -2494,7 +2494,7 @@ function NumberStepperRed({
         value={value}
         onChange={(e) => onChange(clamp(Number(e.target.value.replace(/\D/g, "")) || 0))}
         aria-label="Quantidade de pontos"
-        className="w-14 bg-transparent px-2 py-1 text-center text-white focus:outline-none"
+        className="w-14 bg-transparent px-2 py-1 text-center text-ink-strong focus:outline-none"
         style={{
           fontFamily: "var(--font-family-figtree)",
           fontSize: "15px",

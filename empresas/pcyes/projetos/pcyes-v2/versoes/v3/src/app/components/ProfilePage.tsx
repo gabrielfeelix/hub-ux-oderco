@@ -59,7 +59,7 @@ function OrderStatusTimeline({ status }: { status: Order["status"] }) {
         return (
           <div key={step.key} className="flex flex-col items-center flex-1 relative z-10">
             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 mb-2.5 ${
-              isActive ? (isCancelled ? "bg-red-500 text-white" : "bg-primary text-white shadow-lg shadow-primary/20") 
+              isActive ? (isCancelled ? "bg-red-500 text-ink-strong" : "bg-primary text-ink-strong shadow-lg shadow-primary/20") 
               : "bg-foreground/5 text-foreground/35"
             }`}>
               <step.icon size={18} className={isCurrent ? "animate-pulse" : ""} />
@@ -539,7 +539,7 @@ export function ProfilePage() {
                               return (
                                 <div key={stg.key} className="flex flex-col items-center flex-1 relative z-10">
                                   <div className={`relative w-6 h-6 rounded-full flex items-center justify-center transition-all duration-500 mb-1.5 ${
-                                    isActive ? "bg-primary text-white" : "bg-foreground/8 text-foreground/30"
+                                    isActive ? "bg-primary text-ink-strong" : "bg-foreground/8 text-foreground/30"
                                   }`}>
                                     <stg.icon size={11} />
                                     {isCurrent && (
@@ -626,7 +626,7 @@ export function ProfilePage() {
                         <div>
                           <div className="flex items-center gap-2">
                             <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 600 }}>{dynamicTier.current.name}</span>
-                            <span className="px-2 py-0.5 text-white" style={{ borderRadius: "100px", background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.08em" }}>NV. {dynamicTier.current.level}</span>
+                            <span className="px-2 py-0.5 text-ink-strong" style={{ borderRadius: "100px", background: "linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%)", fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: 800, letterSpacing: "0.08em" }}>NV. {dynamicTier.current.level}</span>
                           </div>
                           <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}>
                             {dynamicTier.next
@@ -1854,7 +1854,7 @@ export function ProfilePage() {
                       </div>
                       <p className="text-foreground/60 mt-0.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>Adicione uma camada extra de segurança ao seu login</p>
                     </div>
-                    <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 bg-green-500 text-white hover:brightness-110 transition-all cursor-pointer flex-shrink-0" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Ativar</button>
+                    <button className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 bg-green-500 text-ink-strong hover:brightness-110 transition-all cursor-pointer flex-shrink-0" style={{ borderRadius: "8px", fontFamily: "var(--font-family-inter)", fontSize: "11.5px", fontWeight: 600 }}>Ativar</button>
                   </div>
 
                   <div className="space-y-2">
