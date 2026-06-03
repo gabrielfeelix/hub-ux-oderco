@@ -204,7 +204,7 @@ export function ProfilePage() {
 
   if (!isLoggedIn || !user) {
     return (
-      <div className="pt-[96px] md:pt-[190px] min-h-screen flex items-center justify-center px-8">
+      <div className="pt-[calc(56px+var(--announce-h))] md:pt-[calc(150px+var(--announce-h))] min-h-screen flex items-center justify-center px-8">
         <div className="text-center max-w-md">
           <User size={40} className="text-foreground/30 mx-auto mb-6" />
           <h2 className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "28px", fontWeight: "var(--font-weight-light)" }}>
@@ -228,7 +228,7 @@ export function ProfilePage() {
   const tier = getTier(user.orders.length);
 
   return (
-    <div className="pt-[96px] md:pt-[190px]">
+    <div className="pt-[calc(56px+var(--announce-h))] md:pt-[calc(150px+var(--announce-h))]">
       {/* Header */}
       <div className="px-5 md:px-8 pt-9 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-8 md:gap-8">

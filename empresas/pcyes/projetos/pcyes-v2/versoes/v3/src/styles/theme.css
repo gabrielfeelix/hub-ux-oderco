@@ -68,6 +68,11 @@
   --space-section-md: 88px;
   --space-section-lg: 128px;
   --space-section-xl: 168px;
+  /* AnnouncementBar height (set/updated by AnnouncementBar.tsx).
+     Pages that sit below the fixed header should clear by combining
+     a base navbar offset with this variable, so dismissing the bar
+     reflows the layout cleanly instead of leaving a 40px gap. */
+  --announce-h: 40px;
 
   /* ===================================================================
      CARD RADIUS FAMILY

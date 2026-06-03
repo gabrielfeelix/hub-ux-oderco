@@ -1088,7 +1088,7 @@ export function ProductsPage() {
      ═══════════════════════════════════════════════════════ */
 
   return (
-    <div ref={mainRef} className="pt-[96px] md:pt-[182px] notebook:pt-[132px] min-h-dvh" style={{ background: "#0e0e0e" }}>
+    <div ref={mainRef} className="pt-[calc(56px+var(--announce-h))] md:pt-[calc(142px+var(--announce-h))] notebook:pt-[calc(92px+var(--announce-h))] min-h-dvh" style={{ background: "#0e0e0e" }}>
       <SEO
         title={
           activeCategoryLabel

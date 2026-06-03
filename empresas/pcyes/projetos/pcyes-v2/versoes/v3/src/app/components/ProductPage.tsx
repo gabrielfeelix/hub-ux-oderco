@@ -2276,7 +2276,7 @@ export function ProductPage() {
   const liked = isFavorite(product.id);
 
   return (
-    <div className="pt-[96px] lg:pt-[220px] notebook:pt-[160px]">
+    <div className="pt-[calc(56px+var(--announce-h))] lg:pt-[calc(180px+var(--announce-h))] notebook:pt-[calc(120px+var(--announce-h))]">
       <SEO
         title={product.name}
         description={`Compre ${product.name} na PCYES. ${product.price ? `Por ${product.price}.` : ""} Frete grátis acima de R$ 299, até 12x sem juros.`}

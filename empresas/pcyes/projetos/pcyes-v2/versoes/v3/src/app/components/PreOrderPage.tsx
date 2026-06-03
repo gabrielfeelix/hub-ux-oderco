@@ -984,7 +984,7 @@ export function PreOrderPage() {
   };
 
   return (
-    <div className="pt-[120px] md:pt-[150px] min-h-screen bg-background">
+    <div className="pt-[calc(80px+var(--announce-h))] md:pt-[calc(110px+var(--announce-h))] min-h-screen bg-background">
       <HeroSection featured={featured} />
 
       <FiltersBar
