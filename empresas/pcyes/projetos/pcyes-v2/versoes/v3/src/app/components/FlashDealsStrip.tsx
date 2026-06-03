@@ -64,7 +64,7 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
         {units.map((u, i) => (
           <span key={u.label} className="flex items-center gap-2">
             <span
-              className="text-white tabular-nums"
+              className="text-ink-strong tabular-nums"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "15px",
@@ -156,7 +156,7 @@ export function FlashDealsStrip() {
       style={{
         paddingTop: "var(--space-section-sm)",
         paddingBottom: "var(--space-section-md)",
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
       }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>

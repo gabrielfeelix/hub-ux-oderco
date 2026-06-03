@@ -64,7 +64,7 @@ export function DealsHighlight({
       style={{
         paddingTop: "var(--space-section-md)",
         paddingBottom: "var(--space-section-lg)",
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
       }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
@@ -147,7 +147,7 @@ export function DealsHighlight({
                   backdropFilter: "blur(8px)",
                 }}
               >
-                <Zap size={11} strokeWidth={2.4} className="text-white" />
+                <Zap size={11} strokeWidth={2.4} className="text-ink-strong" />
                 <span
                   style={{
                     fontFamily: "var(--font-family-inter)",
@@ -163,7 +163,7 @@ export function DealsHighlight({
               </div>
 
               <h3
-                className="text-white mb-4"
+                className="text-ink-strong mb-4"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(30px, 2.8vw, 42px)",

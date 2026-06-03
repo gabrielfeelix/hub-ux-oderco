@@ -37,7 +37,7 @@ export function DropDoDiaSection() {
   if (picks.length === 0) return null;
 
   return (
-    <section className="px-5 py-14 md:px-[72px] md:py-16" style={{ background: "#0a0a0a" }}>
+    <section className="px-5 py-14 md:px-[72px] md:py-16" style={{ background: "var(--surface-0)" }}>
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-8 flex items-end justify-between gap-4">
           <SectionHeader
@@ -106,7 +106,7 @@ export function DropDoDiaSection() {
                         />
                       )}
                       <span
-                        className="absolute z-20 inline-flex items-center gap-1 text-white"
+                        className="absolute z-20 inline-flex items-center gap-1 text-ink-strong"
                         style={{
                           top: "16px",
                           right: "16px",
@@ -131,7 +131,7 @@ export function DropDoDiaSection() {
                   <div className="flex flex-1 flex-col px-6 pb-6 pt-2">
                     <Link to={`/produto/${product.id}`} className="block">
                       <h3
-                        className="line-clamp-2 text-white"
+                        className="line-clamp-2 text-ink-strong"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
                           fontSize: "17px",
@@ -159,7 +159,7 @@ export function DropDoDiaSection() {
                         </p>
                       )}
                       <p
-                        className="text-white"
+                        className="text-ink-strong"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
                           fontSize: "30px",

@@ -141,7 +141,7 @@ export function CategoryShowcase() {
       style={{
         paddingTop: "var(--space-section-sm)",
         paddingBottom: "var(--space-section-sm)",
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
         overflow: "hidden",
       }}
     >
@@ -218,7 +218,7 @@ export function CategoryShowcase() {
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-10">
                   <div className="max-w-[460px]">
                     <h3
-                      className="text-white mb-2"
+                      className="text-ink-strong mb-2"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
                         fontSize: "clamp(22px, 2.4vw, 34px)",

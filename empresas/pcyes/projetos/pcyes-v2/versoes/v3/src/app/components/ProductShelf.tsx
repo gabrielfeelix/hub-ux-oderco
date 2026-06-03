@@ -98,7 +98,7 @@ export function ProductShelf({
     <section
       ref={ref}
       className="px-5 py-16 md:px-[72px] md:py-20"
-      style={{ background: "#0e0e0e" }}
+      style={{ background: "var(--surface-0)" }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-10 flex items-end justify-between gap-6">

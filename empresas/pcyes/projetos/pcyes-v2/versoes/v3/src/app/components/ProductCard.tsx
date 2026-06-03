@@ -128,7 +128,7 @@ export function ProductCard({
 
         {rank !== undefined && (
           <span
-            className="absolute left-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full text-white"
+            className="absolute left-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full text-ink-strong"
             style={{
               background: "var(--gradient-brand)",
               fontFamily: "var(--font-family-figtree)",
@@ -193,7 +193,7 @@ export function ProductCard({
 
       <div className="mt-4 px-1">
         <h3
-          className={`${cfg.clamp} text-white`}
+          className={`${cfg.clamp} text-ink-strong`}
           style={{
             fontFamily: "var(--font-family-figtree)",
             fontSize: "15px",
@@ -219,7 +219,7 @@ export function ProductCard({
             </p>
           )}
           <p
-            className="text-white leading-none"
+            className="text-ink-strong leading-none"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "20px",
