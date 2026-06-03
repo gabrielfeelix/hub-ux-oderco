@@ -100,13 +100,12 @@ export function ProductCard({
   const well = (
     <>
       <div
-        className={`relative ${cfg.aspect} overflow-hidden transition-all duration-300 neon-hover-red`}
+        className={`deal-card-img relative ${cfg.aspect} overflow-hidden transition-all duration-300`}
         style={{
           background:
             "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
           borderRadius: "var(--radius-card-lg)",
           border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-          boxShadow: "var(--shadow-card-hairline)",
         }}
       >
         {/* Subtle inner shine */}
