@@ -7,15 +7,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 interface Slide {
+  /** Desktop / default image. Used when `srcMobile` is absent or viewport is >= md. */
   src: string;
+  /** Optional mobile-specific art. Use a vertically taller crop for mobile-first reading. */
+  srcMobile?: string;
   href: string;
   alt: string;
 }
 
 const slides: Slide[] = [
-  { src: "/assets/banner-1.png", href: "/produtos", alt: "Nova Coleção Performance 2026" },
-  { src: "/assets/banner-2.png", href: "/produtos?category=Periféricos", alt: "Equipamentos para streamers" },
-  { src: "/assets/banner-3.png", href: "/monte-seu-pc", alt: "Builds prontas pra dominar" },
+  { src: "/assets/banner-1.png", srcMobile: "/assets/banner-1-mobile.png", href: "/produtos", alt: "Nova Coleção Performance 2026" },
+  { src: "/assets/banner-2.png", srcMobile: "/assets/banner-2-mobile.png", href: "/produtos?category=Periféricos", alt: "Equipamentos para streamers" },
+  { src: "/assets/banner-3.png", srcMobile: "/assets/banner-3-mobile.png", href: "/monte-seu-pc", alt: "Builds prontas pra dominar" },
 ];
 
 const SLIDE_DURATION = 6500;
@@ -92,12 +95,12 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-x-hidden pb-4 md:pb-8 pt-[80px] md:pt-[210px]"
+      className="relative overflow-x-hidden pb-4 md:pb-8 pt-[120px] md:pt-[210px]"
       style={{ background: "#0a0a0a" }}
     >
-      {/* Carousel track */}
+      {/* Carousel track — taller on mobile (clamp 380->480 vs 48vw on desktop). */}
       <div className="relative">
-        <div className="overflow-hidden" style={{ height: "clamp(240px, 48vw, 600px)" }}>
+        <div className="overflow-hidden h-[clamp(380px,90vw,480px)] md:h-[clamp(300px,48vw,600px)]">
           <motion.div
             className="flex h-full"
             style={{ gap: slideGap, paddingLeft: "0px", paddingRight: "0px" }}
@@ -133,18 +136,23 @@ export function HeroSection() {
                     className="relative h-full w-full overflow-hidden"
                     style={{ borderRadius: "24px" }}
                   >
-                    <ImageWithFallback
-                      src={slide.src}
-                      alt={slide.alt}
-                      className="h-full w-full object-cover pointer-events-none select-none"
-                      draggable={false}
-                      style={{
-                        WebkitUserDrag: "none",
-                        objectPosition: "center 25%",
-                        filter: isActive ? "none" : "brightness(0.35) saturate(0.7)",
-                        transition: "filter 320ms ease",
-                      } as React.CSSProperties}
-                    />
+                    {/* <picture> lets the browser pick the correct art per viewport.
+                        Mobile crop (vertically taller) below 768px, desktop crop above. */}
+                    <picture>
+                      {slide.srcMobile && <source media="(max-width: 767px)" srcSet={slide.srcMobile} />}
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        draggable={false}
+                        className="h-full w-full object-cover pointer-events-none select-none"
+                        style={{
+                          WebkitUserDrag: "none",
+                          objectPosition: "center 25%",
+                          filter: isActive ? "none" : "brightness(0.35) saturate(0.7)",
+                          transition: "filter 320ms ease",
+                        } as React.CSSProperties}
+                      />
+                    </picture>
                   </div>
                   {/* Gradient stroke — gray default, red on hover */}
                   <div

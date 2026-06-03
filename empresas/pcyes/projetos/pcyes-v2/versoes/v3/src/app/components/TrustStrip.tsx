@@ -32,39 +32,39 @@ export function TrustStrip() {
   return (
     <section
       ref={ref}
-      className="border-y border-white/5 px-5 py-10 md:px-[72px] md:py-14"
+      className="border-y border-white/5 px-5 py-6 md:px-[72px] md:py-12"
       style={{ background: "#0a0a0a" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 min-[420px]:grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-4 md:gap-x-6 md:gap-y-8">
         {features.map((f, i) => (
           <motion.div
             key={f.title}
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.06 * i }}
-            className="group flex items-center gap-4"
+            className="group flex flex-col items-center justify-start gap-2 text-center md:flex-row md:items-center md:gap-4 md:text-left"
           >
-            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/10">
+            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/10 md:h-14 md:w-14">
               <f.icon
-                size={22}
                 strokeWidth={1.6}
-                className="text-white/55 transition-colors duration-300 group-hover:text-primary"
+                className="size-4 text-white/55 transition-colors duration-300 group-hover:text-primary md:size-[22px]"
               />
             </div>
             <div className="min-w-0">
               <p
-                className="text-white"
+                className="text-white leading-tight"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "16px",
+                  fontSize: "clamp(13px, 3.4vw, 16px)",
                   fontWeight: 600,
                   lineHeight: 1.2,
                 }}
               >
                 {f.title}
               </p>
+              {/* Description only shows from md up — keeps mobile compact while desktop keeps the E-EAT detail. */}
               <p
-                className="text-white/45"
+                className="hidden md:block text-white/45"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13px",
