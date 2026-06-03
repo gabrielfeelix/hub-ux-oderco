@@ -123,7 +123,7 @@ export function Footer() {
 
   if (isCheckout) {
     return (
-      <footer className={`${isDark ? "bg-[#040404]" : "bg-[#f5f5f5]"} border-t ${isDark ? "border-white/5" : "border-foreground/10"} text-foreground py-12 mt-auto`}>
+      <footer className={`${isDark ? "bg-surface-0" : "bg-[#f5f5f5]"} border-t ${isDark ? "border-edge-subtle" : "border-foreground/10"} text-foreground py-12 mt-auto`}>
         <div className="mx-auto max-w-5xl px-5 md:px-8">
           <div className="flex flex-col items-center justify-center gap-6 text-center">
             <Link to="/" className="hover:opacity-80 transition-opacity" aria-label="PCYES">
@@ -145,7 +145,7 @@ export function Footer() {
   }
 
   return (
-    <footer className={`${isDark ? "bg-[#040404]" : "bg-[#f5f5f5]"} border-t ${isDark ? "border-white/5" : "border-foreground/10"} text-foreground`}>
+    <footer className={`${isDark ? "bg-surface-0" : "bg-[#f5f5f5]"} border-t ${isDark ? "border-edge-subtle" : "border-foreground/10"} text-foreground`}>
       <div className="mx-auto max-w-[1434px] px-5 pt-[65px] pb-4 md:px-12 xl:px-0">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_400px] md:gap-8">
           

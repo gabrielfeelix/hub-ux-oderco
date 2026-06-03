@@ -19,15 +19,15 @@ export function BrandsStrip() {
   return (
     <section
       ref={ref}
-      className="border-y border-white/5 px-5 py-10 md:px-[72px]"
-      style={{ background: "#0a0a0a" }}
+      className="border-y border-edge-subtle px-5 py-10 md:px-[72px]"
+      style={{ background: "var(--surface-0)" }}
     >
       <div className="mx-auto max-w-[1760px]">
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-6 text-center text-white/35"
+          className="mb-6 text-center text-ink-subtle"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "11px",
@@ -44,7 +44,7 @@ export function BrandsStrip() {
               initial={{ opacity: 0, y: 12 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.06 * i }}
-              className="text-white/40 transition-colors hover:text-white/85 cursor-default"
+              className="text-ink-subtle transition-colors hover:text-ink cursor-default"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "clamp(16px, 1.6vw, 19px)",

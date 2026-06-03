@@ -17,16 +17,16 @@ const mobilePages: Feature[][] = [features.slice(0, 2), features.slice(2, 4)];
 function FeatureCard({ f }: { f: Feature }) {
   return (
     <div className="group flex flex-col items-center justify-start gap-2 text-center md:flex-row md:items-center md:gap-4 md:text-left">
-      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/10 md:h-14 md:w-14">
+      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-edge bg-surface-glass transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/10 md:h-14 md:w-14">
         <f.icon
           strokeWidth={1.6}
           aria-hidden="true"
-          className="size-4 text-white/55 transition-colors duration-300 group-hover:text-primary md:size-[22px]"
+          className="size-4 text-ink-muted transition-colors duration-300 group-hover:text-primary md:size-[22px]"
         />
       </div>
       <div className="min-w-0">
         <p
-          className="text-white leading-tight"
+          className="text-ink-strong leading-tight"
           style={{
             fontFamily: "var(--font-family-figtree)",
             fontSize: "clamp(13px, 3.4vw, 16px)",
@@ -38,7 +38,7 @@ function FeatureCard({ f }: { f: Feature }) {
         </p>
         {/* Description shows from md+ only — keeps mobile compact while desktop keeps the E-EAT detail. */}
         <p
-          className="hidden md:block text-white/45"
+          className="hidden md:block text-ink-muted"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "13px",
@@ -62,8 +62,8 @@ export function TrustStrip() {
   return (
     <section
       ref={ref}
-      className="border-y border-white/5 px-5 py-6 md:px-[72px] md:py-12"
-      style={{ background: "#0a0a0a" }}
+      className="border-y border-edge-subtle px-5 py-6 md:px-[72px] md:py-12"
+      style={{ background: "var(--surface-0)" }}
     >
       {/* Mobile: 2 cards visible, chevron-right advances to the next pair.
           No auto-rotate, no dots — keeps the surface calm and the user
@@ -90,7 +90,7 @@ export function TrustStrip() {
             type="button"
             onClick={advance}
             aria-label="Ver próximas vantagens"
-            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] text-white/55 transition-colors hover:border-primary/40 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-edge bg-surface-glass text-ink-muted transition-colors hover:border-primary/40 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
           >
             <ChevronRight size={18} aria-hidden="true" />
           </button>

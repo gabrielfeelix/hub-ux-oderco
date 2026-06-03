@@ -61,7 +61,7 @@ export function Newsletter() {
 
           {/* Headline */}
           <h2
-            className="text-white mb-4"
+            className="text-ink-strong mb-4"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(26px, 7vw, 52px)",
@@ -114,7 +114,7 @@ export function Newsletter() {
                   <Check size={11} strokeWidth={3} />
                 </span>
                 <span
-                  className="text-white"
+                  className="text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13.5px",
@@ -143,7 +143,7 @@ export function Newsletter() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="seu@email.com"
-                    className="w-full bg-transparent text-white placeholder:text-white/30 outline-none rounded-full min-h-[44px] px-5"
+                    className="w-full bg-transparent text-ink-strong placeholder:text-ink-subtle outline-none rounded-full min-h-[44px] px-5"
                     style={{
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "14.5px",
@@ -172,7 +172,7 @@ export function Newsletter() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="seu@email.com"
-                    className="flex-1 bg-transparent text-white placeholder:text-white/30 outline-none"
+                    className="flex-1 bg-transparent text-ink-strong placeholder:text-ink-subtle outline-none"
                     style={{
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "14.5px",
