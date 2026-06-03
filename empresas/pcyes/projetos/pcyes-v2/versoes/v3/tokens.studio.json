@@ -95,12 +95,15 @@
       "h2":      { "value": "48", "type": "fontSizes" },
       "h3":      { "value": "40", "type": "fontSizes" },
       "h4":      { "value": "32", "type": "fontSizes" },
+      "2xl":     { "value": "32", "type": "fontSizes" },
+      "xl":      { "value": "24", "type": "fontSizes" },
+      "lg":      { "value": "20", "type": "fontSizes" },
       "base":    { "value": "16", "type": "fontSizes" },
       "sm":      { "value": "14", "type": "fontSizes" },
-      "xs":      { "value": "13", "type": "fontSizes" },
-      "label":   { "value": "13", "type": "fontSizes" },
+      "xs":      { "value": "14", "type": "fontSizes" },
+      "label":   { "value": "14", "type": "fontSizes" },
       "caption": { "value": "12", "type": "fontSizes" },
-      "micro":   { "value": "11", "type": "fontSizes" }
+      "micro":   { "value": "12", "type": "fontSizes" }
     },
 
     "letterSpacing": {
@@ -379,7 +382,19 @@
       "muted-foreground":  { "value": "#646464", "type": "color" },
       "accent":            { "value": "{global.color.brand-red.base}", "type": "color" },
       "destructive":       { "value": "#dc3232", "type": "color" },
-      "border":            { "value": "#dcdcdc", "type": "color" }
+      "border":            { "value": "#dcdcdc", "type": "color" },
+      "surface-0":         { "value": "#fafafa", "type": "color" },
+      "surface-1":         { "value": "#ffffff", "type": "color" },
+      "surface-2":         { "value": "#f5f5f5", "type": "color" },
+      "surface-3":         { "value": "#e5e5e5", "type": "color" },
+      "surface-glass":     { "value": "rgba(0, 0, 0, 0.04)", "type": "color" },
+      "ink-strong":        { "value": "#161616", "type": "color" },
+      "ink":               { "value": "rgba(22, 22, 22, 0.95)", "type": "color" },
+      "ink-muted":         { "value": "rgba(22, 22, 22, 0.65)", "type": "color" },
+      "ink-subtle":        { "value": "rgba(22, 22, 22, 0.45)", "type": "color" },
+      "edge-subtle":       { "value": "rgba(0, 0, 0, 0.06)", "type": "color" },
+      "edge":              { "value": "rgba(0, 0, 0, 0.12)", "type": "color" },
+      "edge-strong":       { "value": "rgba(0, 0, 0, 0.22)", "type": "color" }
     }
   },
 
@@ -394,7 +409,19 @@
       "muted-foreground":  { "value": "#ffffff", "type": "color" },
       "accent":            { "value": "#ff5558", "type": "color" },
       "destructive":       { "value": "#f64c4c", "type": "color" },
-      "border":            { "value": "#808080", "type": "color" }
+      "border":            { "value": "#808080", "type": "color" },
+      "surface-0":         { "value": "#0a0a0a", "type": "color" },
+      "surface-1":         { "value": "#1a1a1a", "type": "color" },
+      "surface-2":         { "value": "#1f1c1c", "type": "color" },
+      "surface-3":         { "value": "#323232", "type": "color" },
+      "surface-glass":     { "value": "rgba(255, 255, 255, 0.05)", "type": "color" },
+      "ink-strong":        { "value": "#ffffff", "type": "color" },
+      "ink":               { "value": "rgba(255, 255, 255, 0.85)", "type": "color" },
+      "ink-muted":         { "value": "rgba(255, 255, 255, 0.55)", "type": "color" },
+      "ink-subtle":        { "value": "rgba(255, 255, 255, 0.35)", "type": "color" },
+      "edge-subtle":       { "value": "rgba(255, 255, 255, 0.06)", "type": "color" },
+      "edge":              { "value": "rgba(255, 255, 255, 0.12)", "type": "color" },
+      "edge-strong":       { "value": "rgba(255, 255, 255, 0.22)", "type": "color" }
     }
   }
 }
