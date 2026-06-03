@@ -32,21 +32,21 @@ export function TrustStrip() {
   return (
     <section
       ref={ref}
-      className="border-y border-white/5 px-5 py-8 md:px-[72px] md:py-10"
+      className="border-y border-white/5 px-5 py-10 md:px-[72px] md:py-14"
       style={{ background: "#0a0a0a" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 min-[420px]:grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 min-[420px]:grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
         {features.map((f, i) => (
           <motion.div
             key={f.title}
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.06 * i }}
-            className="group flex items-center gap-3"
+            className="group flex items-center gap-4"
           >
-            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/10">
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/10">
               <f.icon
-                size={18}
+                size={22}
                 strokeWidth={1.6}
                 className="text-white/55 transition-colors duration-300 group-hover:text-primary"
               />
@@ -56,7 +56,7 @@ export function TrustStrip() {
                 className="text-white"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
-                  fontSize: "13px",
+                  fontSize: "16px",
                   fontWeight: 600,
                   lineHeight: 1.2,
                 }}
@@ -67,8 +67,8 @@ export function TrustStrip() {
                 className="text-white/45"
                 style={{
                   fontFamily: "var(--font-family-inter)",
-                  fontSize: "11px",
-                  lineHeight: 1.35,
+                  fontSize: "13px",
+                  lineHeight: 1.4,
                 }}
               >
                 {f.desc}

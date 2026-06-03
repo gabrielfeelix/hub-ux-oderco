@@ -1283,12 +1283,12 @@ function AboutProduct({ product, onSeeDescription }: { product: any; onSeeDescri
 
   return (
     <section>
-      <h2
+      <p
         className="text-primary font-bold tracking-wide mb-4"
         style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.3em" }}
       >
         // SOBRE O PRODUTO
-      </h2>
+      </p>
 
       <ul key={product.id} className="space-y-3">
         {bullets.map((bullet, i) => (
@@ -1976,9 +1976,9 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             <p className="mb-4 text-primary tracking-[0.24em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 800 }}>
               // {product.category}
             </p>
-            <h2 className="mx-auto max-w-[820px] text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 5vw, 52px)", lineHeight: 1.02, fontWeight: 700, letterSpacing: "-0.04em" }}>
-              {product.name}
-            </h2>
+            <h3 className="mx-auto max-w-[820px] text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 5vw, 52px)", lineHeight: 1.02, fontWeight: 700, letterSpacing: "-0.04em" }}>
+              Sobre o produto
+            </h3>
             <p className="mx-auto mt-5 max-w-[820px] text-foreground/65" style={{ fontFamily: "var(--font-family-inter)", fontSize: "17px", lineHeight: 1.65 }}>
               {lead}
             </p>
@@ -2249,33 +2249,36 @@ export function ProductPage() {
   return (
     <div className="pt-[96px] lg:pt-[220px]">
       {/* Breadcrumb */}
-      <div className="hidden lg:block px-5 md:px-8 pt-1 pb-0 lg:pt-6 lg:pb-2">
-        <div className="max-w-[1760px] mx-auto hidden lg:flex items-center gap-1.5 flex-wrap">
+      <nav aria-label="Breadcrumb" className="px-5 md:px-8 pt-2 pb-2 lg:pt-6 lg:pb-2">
+        <ol className="max-w-[1760px] mx-auto flex items-center gap-1.5 flex-wrap">
           {[
             { label: "Home", to: "/" },
             { label: product.category, to: getCatalogHref({ category: product.category }) },
             { label: productSubcategory, to: getCatalogHref({ category: product.category, subcategory: productSubcategory }) },
           ].map((crumb, i) => (
-            <span key={crumb.label} className="flex items-center gap-1.5">
+            <li key={crumb.label} className="flex items-center gap-1.5">
               {i > 0 && <span className="text-foreground/15" style={{ fontSize: "10px" }}>›</span>}
               <Link
                 to={crumb.to}
                 className="text-foreground/35 hover:text-foreground/65 transition-colors"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
               >
                 {crumb.label}
               </Link>
-            </span>
+            </li>
           ))}
-          <span className="text-foreground/15" style={{ fontSize: "10px" }}>›</span>
-          <span
-            className="text-foreground/55 truncate max-w-[260px]"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}
-          >
-            {product.name}
-          </span>
-        </div>
-      </div>
+          <li className="flex items-center gap-1.5">
+            <span className="text-foreground/15" style={{ fontSize: "10px" }}>›</span>
+            <span
+              aria-current="page"
+              className="text-foreground/55 truncate max-w-[200px] md:max-w-[260px]"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
+            >
+              {product.name}
+            </span>
+          </li>
+        </ol>
+      </nav>
 
       {/* Main PDP */}
       <div className="px-5 md:px-8 pt-2 pb-24 lg:pt-6">

@@ -444,17 +444,26 @@ export function CheckoutPage() {
   };
 
   const handleCepLookup = async (zip: string) => {
-    if (zip.replace(/\D/g, "").length !== 8) return;
+    const digits = zip.replace(/\D/g, "");
+    if (digits.length !== 8) return;
     setLoadingCep(true);
-    await new Promise((r) => setTimeout(r, 600));
-    setAddress((a) => ({
-      ...a,
-      street: a.street || "Av. Pedro Taques",
-      district: a.district || "Zona 02",
-      city: a.city || "Maringá",
-      state: a.state || "PR",
-    }));
-    setLoadingCep(false);
+    try {
+      const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
+      const data = await res.json();
+      if (data && !data.erro) {
+        setAddress((a) => ({
+          ...a,
+          street: data.logradouro || a.street,
+          district: data.bairro || a.district,
+          city: data.localidade || a.city,
+          state: data.uf || a.state,
+        }));
+      }
+    } catch {
+      // Network error or invalid CEP — keep current field values
+    } finally {
+      setLoadingCep(false);
+    }
   };
 
   const paymentLabel = (() => {

@@ -92,12 +92,12 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-x-hidden pb-6 md:pb-8 pt-[112px] md:pt-[210px]"
+      className="relative overflow-x-hidden pb-4 md:pb-8 pt-[80px] md:pt-[210px]"
       style={{ background: "#0a0a0a" }}
     >
       {/* Carousel track */}
       <div className="relative">
-        <div className="overflow-hidden" style={{ height: "clamp(300px, 48vw, 600px)" }}>
+        <div className="overflow-hidden" style={{ height: "clamp(240px, 48vw, 600px)" }}>
           <motion.div
             className="flex h-full"
             style={{ gap: slideGap, paddingLeft: "0px", paddingRight: "0px" }}

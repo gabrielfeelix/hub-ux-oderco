@@ -1032,31 +1032,33 @@ export function ProductsPage() {
   return (
     <div ref={mainRef} className="pt-[96px] md:pt-[182px] min-h-screen" style={{ background: "#0e0e0e" }}>
       {/* ── Breadcrumb strip ── */}
-      <div className="px-5 md:px-8 py-3" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
-        <div style={{ maxWidth: "1600px", margin: "0 auto" }}>
-            <div className="flex flex-wrap items-center gap-2">
-              <Link to="/" className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Home</Link>
+      <nav aria-label="Breadcrumb" className="px-5 md:px-8 py-3" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
+        <ol style={{ maxWidth: "1600px", margin: "0 auto" }} className="flex flex-wrap items-center gap-2">
+          <li>
+            <Link to="/" className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>Home</Link>
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-foreground/20" style={{ fontSize: "12px" }}>›</span>
+            {activeCategoryLabel ? (
+              <Link to={getCatalogHref({ category: activeCategoryLabel })} className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                {activeCategoryLabel}
+              </Link>
+            ) : (
+              <span aria-current={initialSubcategory ? undefined : "page"} className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                Produtos
+              </span>
+            )}
+          </li>
+          {initialSubcategory && (
+            <li className="flex items-center gap-2">
               <span className="text-foreground/20" style={{ fontSize: "12px" }}>›</span>
-              {activeCategoryLabel ? (
-                <Link to={getCatalogHref({ category: activeCategoryLabel })} className="text-foreground/40 hover:text-foreground/80 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
-                  {activeCategoryLabel}
-                </Link>
-              ) : (
-                <span className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
-                  Produtos
-                </span>
-              )}
-              {initialSubcategory && (
-                <>
-                  <span className="text-foreground/20" style={{ fontSize: "12px" }}>›</span>
-                  <span className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
-                    {initialSubcategory}
-                  </span>
-                </>
-              )}
-            </div>
-        </div>
-      </div>
+              <span aria-current="page" className="text-foreground/70" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                {initialSubcategory}
+              </span>
+            </li>
+          )}
+        </ol>
+      </nav>
 
       {/* ── Main Content — Insider layout ── */}
       <div className="px-5 md:px-8 py-6">

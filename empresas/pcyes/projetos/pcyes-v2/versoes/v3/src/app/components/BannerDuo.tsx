@@ -65,7 +65,7 @@ export function BannerDuo() {
               <div className="absolute inset-0" style={{ background: banner.tint }} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
-              <div className="relative flex h-full flex-col justify-end p-7 md:p-8 lg:p-10">
+              <div className="relative flex h-full flex-col items-center justify-end p-6 text-center md:items-start md:p-8 md:text-left lg:p-10">
                 <span
                   className="mb-3 inline-flex w-fit items-center rounded-full border border-white/25 bg-black/30 px-3 py-1 text-white/90 backdrop-blur-sm"
                   style={{
@@ -81,7 +81,7 @@ export function BannerDuo() {
                   className="mb-2 max-w-md text-white"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
-                    fontSize: "clamp(28px, 3.5vw, 42px)",
+                    fontSize: "clamp(24px, 6vw, 42px)",
                     fontWeight: 600,
                     lineHeight: 1.05,
                     letterSpacing: "-0.02em",
