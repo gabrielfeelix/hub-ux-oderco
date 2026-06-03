@@ -212,7 +212,7 @@ export function CategoryGrid() {
             <Link
               key={`${activeAudience}-${card.name}`}
               to={card.href}
-              className={`group relative overflow-hidden cursor-pointer block ${card.span}`}
+              className={`stroke-hover-red group relative overflow-hidden cursor-pointer block ${card.span}`}
               style={{ borderRadius: "5.6px" }}
             >
               <motion.div

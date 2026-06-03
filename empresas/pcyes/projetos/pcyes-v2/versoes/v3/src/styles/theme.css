@@ -554,6 +554,14 @@ html {
 .neon-hover-red:hover { box-shadow: var(--shadow-neon-red); }
 .neon-hover-red:hover .neon-glow-deepen { box-shadow: var(--shadow-neon-glow-deepen); }
 
+/* V3 Stroke hover — afordancia de superficie "banner": contorno vermelho firme.
+   Duas linguagens de hover por tipo de superficie:
+     - cards de PRODUTO usam o halo (.deal-card-img: glow + profundidade)
+     - BANNERS / CATEGORIAS usam este stroke (.stroke-hover-red: contorno).
+   Reusa o token --shadow-category-active (ring vermelho + sombra).            */
+.stroke-hover-red { transition: box-shadow 320ms ease-out, border-color 320ms ease-out, transform 320ms ease-out; }
+.stroke-hover-red:hover { box-shadow: var(--shadow-category-active); }
+
 /* === Monte seu PC — Quiz scroll area: unbounded on mobile, capped on desktop === */
 .quiz-scroll-area { height: auto; max-height: none; }
 @media (min-width: 768px) { .quiz-scroll-area { height: min(420px, 55vh); } }
