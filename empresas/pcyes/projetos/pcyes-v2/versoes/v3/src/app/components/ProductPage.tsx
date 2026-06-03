@@ -23,6 +23,7 @@ import { getPreOrderInfo } from "./PreOrderData";
 import type { PreOrderInfo } from "./PreOrderData";
 import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
 import { CTAButton, DiscountBadge, QtyStepper } from "./section";
+import { SEO } from "./SEO";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -2248,6 +2249,44 @@ export function ProductPage() {
 
   return (
     <div className="pt-[96px] lg:pt-[220px]">
+      <SEO
+        title={product.name}
+        description={`Compre ${product.name} na PCYES. ${product.price ? `Por ${product.price}.` : ""} Frete grátis acima de R$ 299, até 12x sem juros.`}
+        canonicalPath={`/produto/${product.id}`}
+        image={primaryImage}
+        ogType="product"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.name,
+            image: primaryImage,
+            sku: product.sku ? String(product.sku) : undefined,
+            brand: { "@type": "Brand", name: "PCYES" },
+            category: product.category,
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "BRL",
+              price: product.priceNum,
+              availability:
+                product.inStock === false
+                  ? "https://schema.org/OutOfStock"
+                  : "https://schema.org/InStock",
+              url: `https://pcyes.com.br/produto/${product.id}`,
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://pcyes.com.br/" },
+              { "@type": "ListItem", position: 2, name: product.category, item: `https://pcyes.com.br${getCatalogHref({ category: product.category })}` },
+              { "@type": "ListItem", position: 3, name: productSubcategory, item: `https://pcyes.com.br${getCatalogHref({ category: product.category, subcategory: productSubcategory })}` },
+              { "@type": "ListItem", position: 4, name: product.name },
+            ],
+          },
+        ]}
+      />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="px-5 md:px-8 pt-2 pb-2 lg:pt-6 lg:pb-2">
         <ol className="max-w-[1760px] mx-auto flex items-center gap-1.5 flex-wrap">

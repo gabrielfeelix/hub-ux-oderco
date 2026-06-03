@@ -11,6 +11,7 @@ import { InRealLifeSection } from "./InRealLifeSection";
 import { TrustStrip } from "./TrustStrip";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
+import { SEO } from "./SEO";
 
 const bestSellerIds = [30, 446, 433, 217, 164, 84, 199, 125, 129, 72];
 const newArrivalIds = [466, 295, 130, 252, 375, 217];
@@ -19,6 +20,23 @@ const dealIds = [446, 433, 30, 217, 199, 27, 84, 164];
 export function HomePage() {
   return (
     <>
+      <SEO
+        title="Hardware, periféricos e setups gamer"
+        description="Loja oficial PCYES. Mouses, teclados, headsets, placas de vídeo, PCs gamer, monte seu setup. Frete grátis acima de R$ 299. Até 12x sem juros."
+        canonicalPath="/"
+        ogType="website"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "PCYES",
+          url: "https://pcyes.com.br",
+          logo: "https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png",
+          sameAs: [
+            "https://www.instagram.com/pcyesoficial",
+            "https://www.youtube.com/@pcyesoficial",
+          ],
+        }}
+      />
       {/* ── BLOCO 1: Hero ─────────────────────────────── */}
       <HeroSection />
 

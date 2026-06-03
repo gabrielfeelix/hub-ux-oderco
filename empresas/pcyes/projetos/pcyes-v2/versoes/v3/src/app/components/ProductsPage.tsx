@@ -24,6 +24,7 @@ import {
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
 import { DiscountBadge, PreOrderPill } from "./section";
+import { SEO } from "./SEO";
 import { CategorySeoBlock } from "./CategorySeoBlock";
 
 const categoryMap: Record<string, string> = {
@@ -1031,6 +1032,42 @@ export function ProductsPage() {
 
   return (
     <div ref={mainRef} className="pt-[96px] md:pt-[182px] min-h-screen" style={{ background: "#0e0e0e" }}>
+      <SEO
+        title={
+          activeCategoryLabel
+            ? initialSubcategory
+              ? `${initialSubcategory} ${activeCategoryLabel}`
+              : `${activeCategoryLabel}`
+            : "Produtos"
+        }
+        description={
+          activeCategoryLabel
+            ? `Veja todos os produtos da categoria ${activeCategoryLabel}${initialSubcategory ? ` / ${initialSubcategory}` : ""} na PCYES. Frete grátis acima de R$ 299, até 12x sem juros.`
+            : "Catálogo completo de produtos PCYES. Hardware, periféricos, setups gamer."
+        }
+        canonicalPath={
+          activeCategoryLabel
+            ? initialSubcategory
+              ? `/produtos?category=${encodeURIComponent(activeCategoryLabel)}&subcategory=${encodeURIComponent(initialSubcategory)}`
+              : `/produtos?category=${encodeURIComponent(activeCategoryLabel)}`
+            : "/produtos"
+        }
+        ogType="website"
+        robots={activeFilterCount > 0 ? "noindex" : "index"}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://pcyes.com.br/" },
+            ...(activeCategoryLabel
+              ? [{ "@type": "ListItem", position: 2, name: activeCategoryLabel, item: `https://pcyes.com.br/produtos?category=${encodeURIComponent(activeCategoryLabel)}` }]
+              : [{ "@type": "ListItem", position: 2, name: "Produtos", item: "https://pcyes.com.br/produtos" }]),
+            ...(initialSubcategory
+              ? [{ "@type": "ListItem", position: 3, name: initialSubcategory }]
+              : []),
+          ],
+        }}
+      />
       {/* ── Breadcrumb strip ── */}
       <nav aria-label="Breadcrumb" className="px-5 md:px-8 py-3" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
         <ol style={{ maxWidth: "1600px", margin: "0 auto" }} className="flex flex-wrap items-center gap-2">
