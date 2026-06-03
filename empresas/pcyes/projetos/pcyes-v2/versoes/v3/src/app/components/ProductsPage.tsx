@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from "react";
-import { Link, useSearchParams } from "react-router";
+import { Link, useSearchParams, useParams } from "react-router";
+import { getCategoryFromSlug } from "../lib/slug";
 import { motion, AnimatePresence } from "motion/react";
 import {
   SlidersHorizontal, ArrowUpDown, ChevronDown, Grid3X3, LayoutList,
@@ -323,8 +324,21 @@ function PriceRangeSlider({
 
 export function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get("category") || "";
-  const initialSubcategory = searchParams.get("subcategory") || "";
+  /**
+   * Supports both URL shapes:
+   *   /produtos?category=Periféricos&subcategory=Mouses  (legacy)
+   *   /perifericos/mouses/                               (semantic, A1)
+   * The slug route resolves through getCategoryFromSlug(); falls back
+   * to the title-cased slug when no explicit mapping exists.
+   */
+  const routeParams = useParams();
+  const slugCategory = routeParams.category
+    ? getCategoryFromSlug(routeParams.category) ?? routeParams.category
+    : "";
+  const slugSubcategory = routeParams.subcategory ?? "";
+
+  const initialCategory = slugCategory || searchParams.get("category") || "";
+  const initialSubcategory = slugSubcategory || searchParams.get("subcategory") || "";
   const initialSearch = searchParams.get("search") || "";
   const initialFeaturedCategory = initialCategory ? getFeaturedCategoryLabel(initialCategory) : "";
 
@@ -372,8 +386,9 @@ export function ProductsPage() {
   const isSubcategoryRoute = Boolean(activeCategoryLabel && initialSubcategory);
 
   useEffect(() => {
-    const cat = searchParams.get("category");
-    const subcat = searchParams.get("subcategory");
+    // Prefer slug route params; fall back to querystring (legacy).
+    const cat = slugCategory || searchParams.get("category") || "";
+    const subcat = slugSubcategory || searchParams.get("subcategory") || "";
     const featuredCat = cat ? getFeaturedCategoryLabel(cat) : "";
     setSelectedCategories(cat && !featuredCat ? new Set([categoryMap[cat] ?? cat]) : new Set());
     setSelectedFeaturedCategories(featuredCat ? new Set([featuredCat]) : new Set());
@@ -395,7 +410,7 @@ export function ProductsPage() {
 
     const atributos = searchParams.get("atributos");
     setSelectedAttributes(atributos ? new Set(atributos.split(",").filter(Boolean)) : new Set());
-  }, [searchParams]);
+  }, [searchParams, slugCategory, slugSubcategory]);
 
   /* ── Sync filter state -> URL querystring (B4) ──
      Writes precoMin/precoMax/promo/marcas/atributos when active so URLs

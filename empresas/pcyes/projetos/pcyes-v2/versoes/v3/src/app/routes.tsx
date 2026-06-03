@@ -53,6 +53,20 @@ export const router = createBrowserRouter([
       { path: "politica-de-privacidade", Component: PrivacyPage },
       { path: "politica-de-garantia", Component: WarrantyPage },
       { path: "termos-de-uso", Component: TermsPage },
+
+      /* ── Semantic URL routes (A1) ──
+         Order matters: static paths above are matched first by react-router.
+         Dynamic segments below resolve via getCategoryFromSlug() inside the
+         page component; unknown slugs render an empty result set.
+         Examples:
+           /perifericos                    -> ProductsPage (Periféricos)
+           /perifericos/mouses             -> ProductsPage (Periféricos / Mouses)
+           /perifericos/pcyes/mouse-vert   -> ProductPage  (no subcategory)
+           /perifericos/mouses/pcyes/mv01  -> ProductPage  (full slug path)  */
+      { path: ":category", Component: ProductsPage },
+      { path: ":category/:subcategory", Component: ProductsPage },
+      { path: ":category/:brand/:slug", Component: ProductPage },
+      { path: ":category/:subcategory/:brand/:slug", Component: ProductPage },
     ],
   },
 ], { basename });

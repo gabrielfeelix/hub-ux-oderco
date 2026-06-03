@@ -24,6 +24,7 @@ import type { PreOrderInfo } from "./PreOrderData";
 import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
 import { CTAButton, DiscountBadge, QtyStepper } from "./section";
 import { SEO } from "./SEO";
+import { getProductSlug } from "../lib/slug";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -2113,9 +2114,22 @@ function ProductStandardDescription({ product, images }: { product: any; images:
    ═══════════════════════════════════════════════════════ */
 
 export function ProductPage() {
-  const { id } = useParams();
+  /**
+   * Supports both legacy and semantic URLs:
+   *   /produto/:id                           (legacy id-based)
+   *   /:category/:brand/:slug                (slug, no subcategory)
+   *   /:category/:subcategory/:brand/:slug   (slug with subcategory)
+   * The slug-based lookups go through getProductSlug() to match the
+   * canonical form. If `id` is provided it wins; otherwise the slug is
+   * resolved against the catalog.
+   */
+  const params = useParams();
   const navigate = useNavigate();
-  const product = allProducts.find((p) => p.id === Number(id));
+  const product = params.id
+    ? allProducts.find((p) => p.id === Number(params.id))
+    : params.slug
+      ? allProducts.find((p) => getProductSlug(p) === params.slug)
+      : undefined;
   const { addItem } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { resolvedTheme } = useTheme();
