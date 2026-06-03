@@ -412,6 +412,19 @@ input:-webkit-autofill:active {
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* === Custom Tailwind variants ===
+   `notebook:` targets small laptops where the viewport is wide enough
+   to switch to the desktop layout, but the available height is short
+   (≈720-820px). Used to compress fixed header padding so the first
+   fold of the home, ProductsPage and ProductPage stays visible.
+   Usage: notebook:pt-[148px]. */
+@custom-variant notebook (@media (min-width: 1024px) and (max-height: 820px));
+
+/* `short:` is the more general "any viewport with limited height"
+   helper — useful for modals and hero overlays that should not lock
+   themselves to 100vh when the browser chrome is tall. */
+@custom-variant short (@media (max-height: 720px));
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -488,6 +501,22 @@ input:-webkit-autofill:active {
 
 html {
   font-size: var(--font-size);
+}
+
+/* === WCAG 2.3.3 — respect user motion preference ===
+   Animation-heavy carousels, scroll-reveal and hover effects opt out
+   when the OS reports reduce. We still keep functional transitions
+   (opacity, color) extremely short instead of zero so focus rings still
+   give feedback. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Hero carousel card — stroke gray default, brand-gradient on hover.

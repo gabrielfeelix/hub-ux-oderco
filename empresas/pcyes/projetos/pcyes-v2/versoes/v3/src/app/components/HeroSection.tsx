@@ -2,9 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { Link } from "react-router";
-import { motion } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { motion, useReducedMotion } from "motion/react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ImageWithFallback as _ImageWithFallback } from "./figma/ImageWithFallback";
+// _ImageWithFallback kept for back-compat if needed; the carousel now uses <picture>+<img> directly.
+void _ImageWithFallback;
 
 interface Slide {
   /** Desktop / default image. Used when `srcMobile` is absent or viewport is >= md. */
@@ -32,6 +34,12 @@ export function HeroSection() {
   const [skip, setSkip] = useState(false);
   const [progress, setProgress] = useState(0);
   const startTimeRef = useRef(Date.now());
+  // WCAG 2.2.2 Pause/Stop/Hide — user can pause the auto-advance carousel.
+  // Auto-pauses when reduced motion is set or when the carousel has focus.
+  const prefersReducedMotion = useReducedMotion();
+  const [paused, setPaused] = useState<boolean>(false);
+  const [hasFocus, setHasFocus] = useState<boolean>(false);
+  const isAutoplayDisabled = paused || hasFocus || !!prefersReducedMotion;
 
   const activeIdx = ((pos % N) + N) % N;
 
@@ -60,9 +68,13 @@ export function HeroSection() {
     [activeIdx],
   );
 
-  // Auto-advance timer with progress bar
+  // Auto-advance timer with progress bar (pauses on user request / focus / reduced motion).
   useEffect(() => {
-    startTimeRef.current = Date.now();
+    if (isAutoplayDisabled) {
+      // Freeze the progress bar where it sits.
+      return;
+    }
+    startTimeRef.current = Date.now() - progress * SLIDE_DURATION;
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTimeRef.current;
       const p = Math.min(elapsed / SLIDE_DURATION, 1);
@@ -70,7 +82,8 @@ export function HeroSection() {
       if (p >= 1) goNext();
     }, 50);
     return () => clearInterval(interval);
-  }, [pos, goNext]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pos, goNext, isAutoplayDisabled]);
 
   // Snap back from buffer edges (invisible)
   const handleSettled = () => {
@@ -95,12 +108,25 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative overflow-x-hidden pb-4 md:pb-8 pt-[120px] md:pt-[210px]"
+      aria-roledescription="carousel"
+      aria-label="Banners promocionais"
+      onFocus={() => setHasFocus(true)}
+      onBlur={(e) => {
+        // Only release when focus leaves the section entirely.
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setHasFocus(false);
+      }}
+      onMouseEnter={() => setHasFocus(true)}
+      onMouseLeave={() => setHasFocus(false)}
+      className="relative overflow-x-hidden pb-4 md:pb-8 pt-[120px] md:pt-[210px] notebook:pt-[148px]"
       style={{ background: "#0a0a0a" }}
     >
-      {/* Carousel track — taller on mobile (clamp 380->480 vs 48vw on desktop). */}
+      {/* Carousel track. Heights:
+            mobile:   clamp(380px, 90vw, 480px), capped to 70dvh so it never
+                      eats more than the viewport's safe area.
+            desktop:  clamp(300px, 48vw, 600px), capped to 60dvh on shorter
+                      notebooks so the TrustStrip stays in the first fold. */}
       <div className="relative">
-        <div className="overflow-hidden h-[clamp(380px,90vw,480px)] md:h-[clamp(300px,48vw,600px)]">
+        <div className="overflow-hidden h-[min(clamp(380px,90vw,480px),70dvh)] md:h-[min(clamp(300px,48vw,600px),60dvh)]">
           <motion.div
             className="flex h-full"
             style={{ gap: slideGap, paddingLeft: "0px", paddingRight: "0px" }}
@@ -207,8 +233,17 @@ export function HeroSection() {
         </button>
       </div>
 
-      {/* Dots BELOW the carousel */}
+      {/* Dots BELOW the carousel + WCAG 2.2.2 pause toggle */}
       <div className="mt-7 flex items-center justify-center gap-2">
+        <button
+          type="button"
+          onClick={() => setPaused((p) => !p)}
+          aria-label={paused ? "Retomar carrossel" : "Pausar carrossel"}
+          aria-pressed={paused}
+          className="mr-1 inline-flex h-11 w-11 items-center justify-center rounded-full text-white/55 transition-colors hover:text-white hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
+        >
+          {paused ? <Play size={15} aria-hidden="true" /> : <Pause size={15} aria-hidden="true" />}
+        </button>
         {slides.map((_, i) => {
           const isActive = i === activeIdx;
           return (

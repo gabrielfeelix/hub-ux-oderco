@@ -173,8 +173,12 @@ export function CartDrawer() {
                   {formatInt(USER_PCYES_POINTS)}
                 </span>
               </div>
-              <button onClick={() => setIsOpen(false)} className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5 cursor-pointer">
-                <X size={18} />
+              <button
+                onClick={() => setIsOpen(false)}
+                aria-label="Fechar carrinho"
+                className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5 cursor-pointer"
+              >
+                <X size={18} aria-hidden="true" />
               </button>
             </div>
 
@@ -293,7 +297,7 @@ export function CartDrawer() {
                                 onChange={(next) => updateQuantity(item.cartKey, next)}
                               />
                             )}
-                            <button onClick={() => item.isGift ? setGiftItem(null) : removeItem(item.cartKey)} className="text-foreground/20 hover:text-primary transition-colors cursor-pointer">
+                            <button onClick={() => item.isGift ? setGiftItem(null) : removeItem(item.cartKey)} aria-label={item.isGift ? "Remover brinde" : `Remover ${item.name}`} className="text-foreground/20 hover:text-primary transition-colors cursor-pointer">
                               <Trash2 size={14} />
                             </button>
                           </div>
@@ -429,7 +433,7 @@ export function CartDrawer() {
                                 <span className="text-green-400" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: "var(--font-weight-medium)" }}>{appliedCoupon}</span>
                                 <span className="text-green-500/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px" }}>(-{discountPct}%)</span>
                               </div>
-                              <button onClick={() => { setAppliedCoupon(null); setCoupon(""); }} className="text-foreground/30 hover:text-foreground transition-colors cursor-pointer"><X size={13} /></button>
+                              <button onClick={() => { setAppliedCoupon(null); setCoupon(""); }} aria-label="Remover cupom" className="text-foreground/30 hover:text-foreground transition-colors cursor-pointer"><X size={13} aria-hidden="true" /></button>
                             </div>
                           ) : (
                             <>
@@ -553,7 +557,7 @@ export function CartDrawer() {
                           Você atingiu {formatPrice(GIFT_THRESHOLD)}. Selecione um produto pra entrar no carrinho com selo de presente e valor zerado.
                         </p>
                       </div>
-                      <button onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); }} className="flex h-11 w-11 md:h-10 md:w-10 items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:text-white hover:bg-white/[0.06] cursor-pointer flex-shrink-0">
+                      <button onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); }} aria-label="Fechar oferta de brinde" className="flex h-11 w-11 md:h-10 md:w-10 items-center justify-center rounded-full border border-white/10 text-white/55 transition-colors hover:text-white hover:bg-white/[0.06] cursor-pointer flex-shrink-0">
                         <X size={16} />
                       </button>
                     </div>

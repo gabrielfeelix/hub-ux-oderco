@@ -638,8 +638,8 @@ export function Navbar() {
       <div className="flex items-center gap-1">
         <Tooltip>
           <TooltipTrigger asChild>
-            <button onClick={() => setSearchOpen(!searchOpen)} className={`relative w-10 h-10 items-center justify-center transition-colors cursor-pointer ${!showExpanded ? "flex lg:hidden" : "flex"} ${iconColor}`}>
-              <Search size={20} strokeWidth={1.5} />
+            <button onClick={() => setSearchOpen(!searchOpen)} aria-label="Abrir busca" className={`relative w-10 h-10 items-center justify-center transition-colors cursor-pointer ${!showExpanded ? "flex lg:hidden" : "flex"} ${iconColor}`}>
+              <Search size={20} strokeWidth={1.5} aria-hidden="true" />
             </button>
           </TooltipTrigger>
           <TooltipContent sideOffset={6} className={tooltipContentClass}>Buscar</TooltipContent>
@@ -647,8 +647,8 @@ export function Navbar() {
 
         <Tooltip>
           <TooltipTrigger asChild>
-            <button onClick={() => navigate("/perfil?tab=favorites")} className={`relative w-10 h-10 flex items-center justify-center transition-colors cursor-pointer ${iconColor}`}>
-              <Heart size={20} strokeWidth={1.5} />
+            <button onClick={() => navigate("/perfil?tab=favorites")} aria-label={`Favoritos${favCount > 0 ? ` (${favCount})` : ""}`} className={`relative w-10 h-10 flex items-center justify-center transition-colors cursor-pointer ${iconColor}`}>
+              <Heart size={20} strokeWidth={1.5} aria-hidden="true" />
               <AnimatePresence>
                 {favCount > 0 && (
                   <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
@@ -671,7 +671,7 @@ export function Navbar() {
 
         <Tooltip>
           <TooltipTrigger asChild>
-            <button onClick={handleUserClick} className={`relative w-10 h-10 flex items-center justify-center transition-colors cursor-pointer group ${iconColor}`}>
+            <button onClick={handleUserClick} aria-label={isLoggedIn ? "Minha conta" : "Entrar"} className={`relative w-10 h-10 flex items-center justify-center transition-colors cursor-pointer group ${iconColor}`}>
               {/* Gamer scan-frame corners */}
               <span className="absolute top-1.5 left-1.5 w-[9px] h-[9px] border-t border-l border-current opacity-30 group-hover:opacity-65 transition-opacity duration-200 pointer-events-none" />
               <span className="absolute top-1.5 right-1.5 w-[9px] h-[9px] border-t border-r border-current opacity-30 group-hover:opacity-65 transition-opacity duration-200 pointer-events-none" />
@@ -689,8 +689,8 @@ export function Navbar() {
 
         <Tooltip>
           <TooltipTrigger asChild>
-            <button onClick={() => setCartOpen(true)} className={`relative w-10 h-10 flex items-center justify-center transition-colors cursor-pointer ${iconColor}`}>
-              <ShoppingBag size={20} strokeWidth={1.5} />
+            <button onClick={() => setCartOpen(true)} aria-label={`Carrinho${totalItems > 0 ? ` (${totalItems} ${totalItems === 1 ? "item" : "itens"})` : ""}`} className={`relative w-10 h-10 flex items-center justify-center transition-colors cursor-pointer ${iconColor}`}>
+              <ShoppingBag size={20} strokeWidth={1.5} aria-hidden="true" />
               <AnimatePresence>
                 {totalItems > 0 && (
                   <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}

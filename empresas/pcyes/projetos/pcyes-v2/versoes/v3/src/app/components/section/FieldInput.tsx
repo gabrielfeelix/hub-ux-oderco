@@ -1,6 +1,11 @@
 import { forwardRef, type ComponentProps, type CSSProperties } from "react";
 
-type FieldInputProps = ComponentProps<"input">;
+type FieldInputProps = ComponentProps<"input"> & {
+  /** When true, exposes aria-required + the native required attribute. */
+  required?: boolean;
+  /** When true, exposes aria-invalid="true" and renders a red border. */
+  invalid?: boolean;
+};
 
 const BASE_STYLE: CSSProperties = {
   padding: "11px 13px",
@@ -16,8 +21,22 @@ const BASE_STYLE: CSSProperties = {
 };
 
 export const FieldInput = forwardRef<HTMLInputElement, FieldInputProps>(function FieldInput(
-  { style, className = "", ...props },
+  { style, className = "", required, invalid, ...props },
   ref,
 ) {
-  return <input ref={ref} {...props} className={className} style={{ ...BASE_STYLE, ...style }} />;
+  return (
+    <input
+      ref={ref}
+      {...props}
+      required={required}
+      aria-required={required || undefined}
+      aria-invalid={invalid || undefined}
+      className={className}
+      style={{
+        ...BASE_STYLE,
+        ...(invalid ? { borderColor: "var(--destructive)" } : {}),
+        ...style,
+      }}
+    />
+  );
 });
