@@ -115,7 +115,7 @@ export function DropDoDiaSection() {
                           border: "1px solid rgba(255,90,80,0.5)",
                           backdropFilter: "blur(6px)",
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "10.5px",
+                          fontSize: "var(--text-caption)",
                           fontWeight: 800,
                           letterSpacing: "0.12em",
                           textTransform: "uppercase",
@@ -133,7 +133,7 @@ export function DropDoDiaSection() {
                         className="line-clamp-2 text-ink-strong"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
-                          fontSize: "17px",
+                          fontSize: "var(--text-base)",
                           fontWeight: 700,
                           lineHeight: 1.18,
                           letterSpacing: "-0.015em",
@@ -150,7 +150,7 @@ export function DropDoDiaSection() {
                           className="line-through leading-none mb-1"
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "13px",
+                            fontSize: "var(--text-sm)",
                             color: "rgba(var(--foreground-rgb), 0.38)",
                           }}
                         >
@@ -161,7 +161,7 @@ export function DropDoDiaSection() {
                         className="text-ink-strong"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
-                          fontSize: "30px",
+                          fontSize: "var(--text-2xl)",
                           fontWeight: 800,
                           lineHeight: 1,
                           letterSpacing: "-0.025em",
@@ -171,7 +171,7 @@ export function DropDoDiaSection() {
                         <span
                           style={{
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "12px",
+                            fontSize: "var(--text-caption)",
                             fontWeight: 700,
                             color: "rgba(var(--foreground-rgb), 0.55)",
                             letterSpacing: "0.04em",
@@ -184,7 +184,7 @@ export function DropDoDiaSection() {
                         className="mt-1"
                         style={{
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "12.5px",
+                          fontSize: "var(--text-caption)",
                           color: "rgba(var(--foreground-rgb), 0.55)",
                         }}
                       >
@@ -197,7 +197,7 @@ export function DropDoDiaSection() {
                             background: "rgba(34,197,94,0.12)",
                             border: "1px solid rgba(34,197,94,0.3)",
                             fontFamily: "var(--font-family-inter)",
-                            fontSize: "11.5px",
+                            fontSize: "var(--text-caption)",
                             fontWeight: 700,
                             color: "#22c55e",
                             letterSpacing: "0.02em",

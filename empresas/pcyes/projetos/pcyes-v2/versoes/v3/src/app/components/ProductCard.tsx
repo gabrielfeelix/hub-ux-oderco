@@ -132,7 +132,7 @@ export function ProductCard({
             style={{
               background: "var(--gradient-brand)",
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "15px",
+              fontSize: "var(--text-base)",
               fontWeight: 800,
               letterSpacing: "-0.02em",
               boxShadow:
@@ -196,7 +196,7 @@ export function ProductCard({
           className={`${cfg.clamp} text-ink-strong`}
           style={{
             fontFamily: "var(--font-family-figtree)",
-            fontSize: "15px",
+            fontSize: "var(--text-base)",
             fontWeight: 600,
             lineHeight: 1.25,
             letterSpacing: "-0.01em",
@@ -211,7 +211,7 @@ export function ProductCard({
               className="line-through leading-none mb-1"
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "13px",
+                fontSize: "var(--text-sm)",
                 color: "rgba(var(--foreground-rgb), 0.38)",
               }}
             >
@@ -222,7 +222,7 @@ export function ProductCard({
             className="text-ink-strong leading-none"
             style={{
               fontFamily: "var(--font-family-figtree)",
-              fontSize: "20px",
+              fontSize: "var(--text-lg)",
               fontWeight: 700,
               letterSpacing: "-0.015em",
             }}
@@ -231,7 +231,7 @@ export function ProductCard({
           </p>
           <p
             className="mt-1.5 leading-tight"
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "rgba(var(--foreground-rgb), 0.55)" }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.55)" }}
           >
             No PIX ou 10x de R$ {(product.priceNum / 10).toFixed(2).replace(".", ",")}
           </p>
@@ -281,7 +281,7 @@ export function ProductCard({
             <span
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "11px",
+                fontSize: "var(--text-caption)",
                 color: "rgba(var(--foreground-rgb), 0.45)",
               }}
             >

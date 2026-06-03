@@ -45,16 +45,22 @@
   --sidebar-border: rgba(220, 220, 220, 1.00);
   --sidebar-ring: rgba(220, 20, 20, 1.00);
   /* Typography variables for different text sizes */
+  /* Rampa tipografica — grid 4px no ritmo (line-height), font-size em rampa limpa.
+     UI: caption 12 / sm 14 / base 16. Heading: lg 20 / xl 24 / 2xl=h4 32 / h3 40 / h2 48.
+     Valores impares (10.5/11.5/12.5/13.5) e 9/10/13/15 foram absorvidos no vizinho. */
   --text-h1: 80px;
   --text-h2: 48px;
   --text-h3: 40px;
   --text-h4: 32px;
+  --text-2xl: 32px;
+  --text-xl: 24px;
+  --text-lg: 20px;
   --text-base: 16px;
   --text-sm: 14px;
-  --text-xs: 13px;
-  --text-label: 13px;
+  --text-xs: 14px;
+  --text-label: 14px;
   --text-caption: 12px;
-  --text-micro: 11px;
+  --text-micro: 12px;
   /* Font weight variables */
   --font-weight-light: 300;
   --font-weight-normal: 400;
