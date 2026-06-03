@@ -876,7 +876,7 @@ function StickyPriceCard({
         <div className="relative flex flex-col gap-2 mb-5">
           <CTAButton
             variant="buy"
-            size="xl"
+            size="lg"
             block
             onClick={onBuyNow}
             disabled={!inStock}
@@ -1225,7 +1225,7 @@ function MobilePurchaseFlow({
 
         <CTAButton
           variant={isPreOrder ? "preorder" : "buy"}
-          size="xl"
+          size="lg"
           block
           onClick={onBuyNow}
           disabled={buyDisabled}

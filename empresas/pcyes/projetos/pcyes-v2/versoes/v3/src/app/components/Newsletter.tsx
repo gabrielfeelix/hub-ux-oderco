@@ -152,7 +152,7 @@ export function Newsletter() {
                       boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                     }}
                   />
-                  <CTAButton type="submit" variant="brand-pill" size="md" block className="min-h-[44px] cursor-pointer">
+                  <CTAButton type="submit" variant="brand" size="md" block className="min-h-[44px] cursor-pointer">
                     Assinar <ArrowRight size={13} strokeWidth={2.4} />
                   </CTAButton>
                 </div>
@@ -180,7 +180,7 @@ export function Newsletter() {
                       paddingBottom: "10px",
                     }}
                   />
-                  <CTAButton type="submit" variant="brand-pill" size="md" className="flex-shrink-0 cursor-pointer">
+                  <CTAButton type="submit" variant="brand" size="md" className="flex-shrink-0 cursor-pointer">
                     Assinar <ArrowRight size={13} strokeWidth={2.4} />
                   </CTAButton>
                 </div>

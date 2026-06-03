@@ -87,7 +87,7 @@ function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
 
           {/* Quick add pill — compact on mobile, larger on hover for desktop. */}
           <CTAButton
-            variant="buy-sm"
+            variant="buy"
             size="sm"
             onClick={(e) => {
               e.preventDefault();

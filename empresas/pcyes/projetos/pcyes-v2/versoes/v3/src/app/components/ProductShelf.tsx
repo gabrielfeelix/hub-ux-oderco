@@ -160,14 +160,14 @@ function ProductCard({ product, rank, emphasizeDiscount, onAdd, onFavorite }: Ca
 
           {/* Quick add — floating pill */}
           <CTAButton
-            variant="buy-sm"
+            variant="buy"
             size="lg"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               onAdd(product);
             }}
-            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
+            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer shadow-[var(--shadow-buy-cta-sm)]"
           >
             <ShoppingBag size={14} strokeWidth={2} /> Comprar
           </CTAButton>
