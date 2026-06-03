@@ -2175,6 +2175,20 @@ export function ProductPage() {
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [product?.id]);
 
+  /* A1 stage 5 — redirect legacy /produto/:id URL to the semantic slug
+     form once the product is resolved. Uses navigate(..., { replace }) so
+     the back button skips the legacy URL. Server-side 301 will be added
+     to vercel.json in a follow-up; for now this gives bookmarks and
+     external links a graceful upgrade. */
+  useEffect(() => {
+    if (!product) return;
+    if (!params.id) return; // already on the canonical route
+    const canonical = getProductUrl(product);
+    if (window.location.pathname !== canonical) {
+      navigate(canonical, { replace: true });
+    }
+  }, [product, params.id, navigate]);
+
   if (!product) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-6">
@@ -2267,14 +2281,14 @@ export function ProductPage() {
         title={product.name}
         description={`Compre ${product.name} na PCYES. ${product.price ? `Por ${product.price}.` : ""} Frete grátis acima de R$ 299, até 12x sem juros.`}
         canonicalPath={getProductUrl(product)}
-        image={primaryImage}
+        image={getPrimaryProductImage(product)}
         ogType="product"
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "Product",
             name: product.name,
-            image: primaryImage,
+            image: getPrimaryProductImage(product),
             sku: product.sku ? String(product.sku) : undefined,
             brand: { "@type": "Brand", name: "PCYES" },
             category: product.category,
