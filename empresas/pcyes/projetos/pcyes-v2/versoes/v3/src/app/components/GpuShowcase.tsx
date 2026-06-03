@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, GripVertical } from "lucide-react";
+import { CTAButton } from "./section";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
 import { getPrimaryProductImage } from "./productPresentation";
@@ -477,21 +478,16 @@ export function GpuShowcase() {
                   </div>
                 </div>
 
-                <Link
+                <CTAButton
+                  as="link"
                   to={`/produto/${product.id}`}
-                  className="inline-flex w-full flex-shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full py-3 transition-transform hover:scale-[1.02] active:scale-[0.98] md:w-auto md:px-10"
-                  style={{
-                    background: "var(--gradient-buy)",
-                    color: "#ffffff",
-                    fontFamily: "var(--font-family-inter)",
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    letterSpacing: "0.04em",
-                    boxShadow: "var(--shadow-buy-cta-sm)",
-                  }}
+                  variant="buy"
+                  size="md"
+                  block
+                  className="flex-shrink-0 md:w-auto"
                 >
                   Comprar <ArrowRight size={15} strokeWidth={2.4} />
-                </Link>
+                </CTAButton>
               </div>
             </motion.div>
           </AnimatePresence>

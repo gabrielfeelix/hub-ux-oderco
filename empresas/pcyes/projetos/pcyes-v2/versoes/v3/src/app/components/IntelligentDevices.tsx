@@ -17,6 +17,7 @@ import {
   ShoppingBag,
   Zap,
 } from "lucide-react";
+import { CTAButton } from "./section";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
 import { useFavorites } from "./FavoritesContext";
@@ -391,25 +392,18 @@ export function IntelligentDevices() {
                     </button>
 
                     {/* Quick add — floating pill */}
-                    <button
+                    <CTAButton
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
                         addItem({ id: product.id, name: product.name, price: product.price, image });
                       }}
-                      className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 whitespace-nowrap rounded-full px-5 py-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
-                      style={{
-                        background: "var(--gradient-buy)",
-                        color: "white",
-                        fontFamily: "var(--font-family-inter)",
-                        fontSize: "11px",
-                        fontWeight: 700,
-                        letterSpacing: "0.04em",
-                        boxShadow: "var(--shadow-buy-cta-sm)",
-                      }}
+                      variant="buy"
+                      size="sm"
+                      className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer"
                     >
-                      <span className="inline-flex items-center gap-1.5"><ShoppingBag size={12} strokeWidth={2} /> Comprar</span>
-                    </button>
+                      <ShoppingBag size={12} strokeWidth={2} /> Comprar
+                    </CTAButton>
                   </div>
                   <div className="mt-4 px-1">
                     <h3

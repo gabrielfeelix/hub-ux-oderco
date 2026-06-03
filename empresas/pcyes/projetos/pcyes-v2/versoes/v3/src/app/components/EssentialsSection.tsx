@@ -7,7 +7,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
 import { allProducts, type Product } from "./productsData";
 import { getPrimaryProductImage, getProductSwatches } from "./productPresentation";
-import { Tag } from "./section";
+import { Tag, CTAButton } from "./section";
 
 const ESSENTIAL_IDS = [128, 173, 72, 436, 329] as const;
 
@@ -187,22 +187,14 @@ function EssentialCard({ product }: EssentialCardProps) {
             {product.price}
           </span>
 
-          <button
+          <CTAButton
             onClick={handleAdd}
-            className="whitespace-nowrap rounded-full px-7 py-2.5 min-h-[44px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
-            style={{
-              background:
-                "var(--gradient-buy)",
-              color: "white",
-              fontFamily: "var(--font-family-inter)",
-              fontSize: "12px",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              boxShadow: "var(--shadow-buy-cta-sm)",
-            }}
+            variant="buy"
+            size="md"
+            className="min-h-[44px] cursor-pointer"
           >
             Comprar
-          </button>
+          </CTAButton>
         </div>
       </div>
     </article>
