@@ -487,7 +487,7 @@ export function GpuShowcase() {
                     fontSize: "13px",
                     fontWeight: 700,
                     letterSpacing: "0.04em",
-                    boxShadow: "0 10px 28px -8px rgba(34,197,94,0.55)",
+                    boxShadow: "var(--shadow-buy-cta-sm)",
                   }}
                 >
                   Comprar <ArrowRight size={15} strokeWidth={2.4} />

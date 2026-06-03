@@ -1441,7 +1441,7 @@ export function ProductsPage() {
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
                               className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-4 py-1.5 text-[11px] lg:bottom-4 lg:px-10 lg:py-3 lg:text-[13px] opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
-                              style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "0 6px 16px -4px rgba(34,197,94,0.45)" }}
+                              style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "var(--shadow-buy-cta-sm)" }}
                             >
                               <span className="inline-flex items-center gap-1.5 lg:gap-2"><ShoppingBag size={12} strokeWidth={2} className="lg:hidden" /><ShoppingBag size={14} strokeWidth={2} className="hidden lg:block" /> Comprar</span>
                             </button>
@@ -1877,7 +1877,7 @@ export function ProductsPage() {
                       fontWeight: 700,
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
-                      boxShadow: "0 12px 32px -10px rgba(34,197,94,0.55)",
+                      boxShadow: "var(--shadow-buy-cta)",
                     }}
                   >
                     <ShoppingBag size={16} strokeWidth={2} /> Comprar

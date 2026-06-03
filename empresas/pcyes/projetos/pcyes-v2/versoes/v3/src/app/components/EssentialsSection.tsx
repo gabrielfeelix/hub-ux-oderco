@@ -198,7 +198,7 @@ function EssentialCard({ product }: EssentialCardProps) {
               fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "0.04em",
-              boxShadow: "0 8px 22px -8px rgba(34,197,94,0.55)",
+              boxShadow: "var(--shadow-buy-cta-sm)",
             }}
           >
             Comprar
