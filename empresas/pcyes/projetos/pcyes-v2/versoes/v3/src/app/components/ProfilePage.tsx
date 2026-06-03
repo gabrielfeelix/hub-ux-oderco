@@ -11,6 +11,7 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { useAuth, type Order, type UserAddress, type UserCard } from "./AuthContext";
 import { AddressFormModal } from "./AddressFormModal";
+import { FieldInput } from "./section";
 import { CardFormModal } from "./CardFormModal";
 import { useFavorites } from "./FavoritesContext";
 import { useCart } from "./CartContext";
@@ -1681,7 +1682,7 @@ export function ProfilePage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Nome completo</label>
-                        <input value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <FieldInput required value={user.name} onChange={(e) => updateUser({ name: e.target.value })} className="profile-field placeholder:text-foreground/40 focus:border-primary/40 transition-all" />
                       </div>
                       <div>
                         <label className="flex items-center gap-1 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -1689,15 +1690,15 @@ export function ProfilePage() {
                           <Check size={11} className="text-green-500" />
                           <span className="text-green-500" style={{ letterSpacing: "0.08em" }}>verificado</span>
                         </label>
-                        <input value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <FieldInput required type="email" value={user.email} onChange={(e) => updateUser({ email: e.target.value })} className="profile-field placeholder:text-foreground/40 focus:border-primary/40 transition-all" />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Telefone</label>
-                        <input value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500 }} />
+                        <FieldInput type="tel" value={user.phone} onChange={(e) => updateUser({ phone: e.target.value })} className="profile-field placeholder:text-foreground/40 focus:border-primary/40 transition-all" />
                       </div>
                       <div>
                         <label className="block text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Data de nascimento</label>
-                        <input type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 transition-all profile-field" style={{ padding: "11px 13px", borderRadius: "var(--radius-card-sm)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.08)" : "1px solid rgba(0,0,0,0.08)", background: isDark ? "rgba(var(--foreground-rgb), 0.03)" : "rgba(0,0,0,0.02)", fontFamily: "var(--font-family-inter)", fontSize: "13.5px", fontWeight: 500, colorScheme: isDark ? "dark" : "light" }} />
+                        <FieldInput type="date" value={user.birthday || ""} onChange={(e) => updateUser({ birthday: e.target.value })} className="profile-field placeholder:text-foreground/40 focus:border-primary/40 transition-all" style={{ colorScheme: isDark ? "dark" : "light" }} />
                       </div>
                       <div className="md:col-span-2">
                         <label className="flex items-center gap-1.5 text-foreground/60 mb-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>

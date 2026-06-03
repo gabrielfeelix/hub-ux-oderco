@@ -15,7 +15,7 @@ type DiscountBadgeProps = {
 const RECIPES: Record<Size, CSSProperties> = {
   lg: {
     padding: "6px 12px",
-    borderRadius: "10px",
+    borderRadius: "var(--radius-card-sm)",
     background: "var(--gradient-discount)",
     fontFamily: "var(--font-family-figtree)",
     fontSize: "15px",

@@ -9,7 +9,7 @@ type FieldInputProps = ComponentProps<"input"> & {
 
 const BASE_STYLE: CSSProperties = {
   padding: "11px 13px",
-  borderRadius: "10px",
+  borderRadius: "var(--radius-card-sm)",
   border: "1px solid rgba(var(--foreground-rgb), 0.08)",
   background: "rgba(var(--foreground-rgb), 0.03)",
   fontFamily: "var(--font-family-inter)",
