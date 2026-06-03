@@ -259,7 +259,7 @@ export function CartDrawer() {
                         className={`flex gap-4 p-3.5 border ${lastAdded?.cartKey === item.cartKey ? "border-primary/30 bg-primary/5" : item.isGift ? "border-primary/20 bg-primary/[0.04]" : "border-foreground/5 bg-foreground/[0.02]"} transition-colors duration-700`}
                         style={{ borderRadius: "var(--radius-card)" }}
                       >
-                        <div className="w-[75px] h-[75px] flex-shrink-0 overflow-hidden relative" style={{ borderRadius: "var(--radius)", background: isDark ? "#1e1e20" : "#f5f5f5" }}>
+                        <div className="w-[75px] h-[75px] flex-shrink-0 overflow-hidden relative" style={{ borderRadius: "var(--radius)", background: "var(--surface-1)" }}>
                           <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                           {item.isGift && (
                             <div className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">

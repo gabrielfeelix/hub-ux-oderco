@@ -53,7 +53,7 @@ export function AddressFormModal({ open, onClose, initial, onSubmit }: Props) {
       <DialogContent
         className="!max-w-[560px] !p-0 !gap-0 !border-0"
         style={{
-          background: isDark ? "#161617" : "#ffffff",
+          background: "var(--surface-1)",
           borderRadius: "var(--radius-card-lg)",
           overflow: "hidden",
           color: isDark ? "#fafafa" : "#0a0a0a",

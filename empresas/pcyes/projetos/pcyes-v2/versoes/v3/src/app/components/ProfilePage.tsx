@@ -231,7 +231,7 @@ export function ProfilePage() {
   return (
     <div className="pt-[calc(56px+var(--announce-h))] md:pt-[calc(150px+var(--announce-h))]">
       {/* Header */}
-      <div className="px-5 md:px-8 pt-9 pb-8" style={{ background: isDark ? "#161617" : "#f5f5f7" }}>
+      <div className="px-5 md:px-8 pt-9 pb-8" style={{ background: "var(--surface-1)" }}>
         <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-8 md:gap-8">
           <div className="flex items-center gap-5">
             <div className="relative flex-shrink-0">
@@ -506,7 +506,7 @@ export function ProfilePage() {
                         <div className="flex items-center gap-3 px-5 pb-4">
                           <div className="flex items-center gap-1.5">
                             {nextOrder.items.slice(0, 3).map((item, i) => (
-                              <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/8" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                              <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/8" style={{ borderRadius: "var(--radius-card-sm)", background: "var(--surface-1)" }}>
                                 <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                               </div>
                             ))}
@@ -748,7 +748,7 @@ export function ProfilePage() {
                       </div>
                       <div className="flex items-center gap-2 mb-3">
                         {user.orders.slice(0, 4).flatMap((o) => o.items).slice(0, 4).map((item, i) => (
-                          <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                          <div key={i} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: "var(--surface-1)" }}>
                             <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                           </div>
                         ))}
@@ -773,7 +773,7 @@ export function ProfilePage() {
                       </div>
                       <div className="flex items-center gap-2 mb-3 min-h-[48px]">
                         {favoriteProducts.slice(0, 4).map((p) => (
-                          <div key={p.id} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                          <div key={p.id} className="w-12 h-12 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: "var(--surface-1)" }}>
                             <ImageWithFallback src={getPrimaryProductImage(p)} alt={p.name} className="w-full h-full object-cover" />
                           </div>
                         ))}
@@ -977,11 +977,11 @@ export function ProfilePage() {
                               {/* Produto: thumb + nome inline */}
                               <div className="flex items-center gap-3 px-4 py-3" style={{ borderTop: isDark ? "1px solid rgba(var(--foreground-rgb), 0.04)" : "1px solid rgba(0,0,0,0.04)" }}>
                                 <div className="flex items-center gap-1.5 flex-shrink-0">
-                                  <div className="w-14 h-14 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                  <div className="w-14 h-14 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card-sm)", background: "var(--surface-1)" }}>
                                     <ImageWithFallback src={firstItem.image} alt={firstItem.name} className="w-full h-full object-cover" />
                                   </div>
                                   {order.items.slice(1, 3).map((item, i) => (
-                                    <div key={i} className="w-10 h-10 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                    <div key={i} className="w-10 h-10 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius-card)", background: "var(--surface-1)" }}>
                                       <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                     </div>
                                   ))}
@@ -1166,7 +1166,7 @@ export function ProfilePage() {
                               <div className="divide-y divide-foreground/5">
                                 {order.items.map((item, i) => (
                                   <div key={i} className="p-6 flex items-center gap-4">
-                                    <div className="w-20 h-20 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius)", background: isDark ? "#1a1a1c" : "#f5f5f5" }}>
+                                    <div className="w-20 h-20 flex-shrink-0 overflow-hidden border border-foreground/5" style={{ borderRadius: "var(--radius)", background: "var(--surface-1)" }}>
                                       <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                     </div>
                                     <div className="flex-1 min-w-0">

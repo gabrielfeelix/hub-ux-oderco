@@ -126,7 +126,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
               key={`vthumb-${i}`}
               onClick={() => setActive(i)}
               className={`flex-shrink-0 w-[68px] h-[68px] xl:w-[78px] xl:h-[78px] overflow-hidden border transition-all cursor-pointer ${i === active ? "border-primary ring-1 ring-primary/35" : "border-foreground/10 hover:border-foreground/30"}`}
-              style={{ borderRadius: "var(--radius-card)", background: isDark ? "#2a2a2c" : "#ffffff" }}
+              style={{ borderRadius: "var(--radius-card)", background: "var(--surface-3)" }}
               aria-label={`Ver imagem ${i + 1}`}
             >
               <ImageWithFallback src={img} alt={`${name} ${i + 1}`} className="w-full h-full object-contain p-1.5" />
