@@ -79,7 +79,7 @@ function EssentialCard({ product }: EssentialCardProps) {
         <div className="flex flex-col gap-2">
           <Link
             to={productHref}
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(20px, 1.9vw, 24px)",
@@ -175,7 +175,7 @@ function EssentialCard({ product }: EssentialCardProps) {
           }}
         >
           <span
-            className="text-white whitespace-nowrap"
+            className="text-ink-strong whitespace-nowrap"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "22px",
@@ -262,7 +262,7 @@ export function EssentialsSection() {
             // ITENS EM DESTAQUE
           </p>
           <h2
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(28px, 3.4vw, 44px)",
@@ -281,7 +281,7 @@ export function EssentialsSection() {
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
             aria-label="Anterior"
-            className="absolute left-3 md:left-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white/85 backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
+            className="absolute left-3 md:left-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-edge bg-black/60 text-ink backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-ink-strong hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
           >
             <ChevronLeft size={18} strokeWidth={2.2} />
           </button>
@@ -290,7 +290,7 @@ export function EssentialsSection() {
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
             aria-label="Próximo"
-            className="absolute right-3 md:right-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white/85 backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
+            className="absolute right-3 md:right-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-edge bg-black/60 text-ink backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-ink-strong hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
           >
             <ChevronRight size={18} strokeWidth={2.2} />
           </button>

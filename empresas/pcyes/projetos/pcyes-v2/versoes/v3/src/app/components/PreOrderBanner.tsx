@@ -93,7 +93,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             Pré-venda
           </span>
           <span
-            className="inline-flex items-center gap-1 text-white/55"
+            className="inline-flex items-center gap-1 text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "10.5px",
@@ -109,7 +109,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
 
         {/* highlight line */}
         <p
-          className="text-white/80 mb-4"
+          className="text-ink mb-4"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "13px",
@@ -128,7 +128,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
         {/* countdown */}
         <div className="mb-4">
           <p
-            className="text-white/45 mb-2"
+            className="text-ink-muted mb-2"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "10.5px",
@@ -157,7 +157,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                   }}
                 >
                   <span
-                    className="text-white tabular-nums leading-none"
+                    className="text-ink-strong tabular-nums leading-none"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "24px",
@@ -168,7 +168,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
                     {pad(unit.v)}
                   </span>
                   <span
-                    className="text-white/40 mt-1"
+                    className="text-ink-subtle mt-1"
                     style={{
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "9.5px",
@@ -187,16 +187,16 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
 
         {/* release date */}
         <div className="flex items-center gap-2 mb-4">
-          <CalendarDays size={13} className="text-white/55" strokeWidth={2.2} />
+          <CalendarDays size={13} className="text-ink-muted" strokeWidth={2.2} />
           <span
-            className="text-white/65"
+            className="text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12px",
               fontWeight: 600,
             }}
           >
-            Entrega prevista: <span className="text-white">{formatReleaseDate(info.releaseDate)}</span>
+            Entrega prevista: <span className="text-ink-strong">{formatReleaseDate(info.releaseDate)}</span>
           </span>
         </div>
 
@@ -204,7 +204,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
         <div className="mb-5">
           <div className="flex items-center justify-between mb-1.5">
             <span
-              className="text-white/55"
+              className="text-ink-muted"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "10.5px",
@@ -216,7 +216,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
               // RESERVAS
             </span>
             <span
-              className="text-white tabular-nums"
+              className="text-ink-strong tabular-nums"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "12px",
@@ -245,7 +245,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             />
           </div>
           <p
-            className="text-white/45 mt-1.5"
+            className="text-ink-muted mt-1.5"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "11px",
@@ -267,7 +267,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           }}
         >
           <p
-            className="text-white/45 mb-1"
+            className="text-ink-muted mb-1"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "10.5px",
@@ -280,7 +280,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
           </p>
           <div className="flex items-baseline gap-2">
             <span
-              className="text-white leading-none"
+              className="text-ink-strong leading-none"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "28px",
@@ -292,7 +292,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             </span>
             {info.preOrderPrice && (
               <span
-                className="line-through text-white/35"
+                className="line-through text-ink-subtle"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "12px",
@@ -303,7 +303,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
             )}
           </div>
           <p
-            className="text-white/55 mt-1"
+            className="text-ink-muted mt-1"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "11.5px",
@@ -317,7 +317,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
         <button
           onClick={onReserve}
           disabled={remaining <= 0}
-          className="w-full h-12 flex items-center justify-center gap-2 text-white rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full h-12 flex items-center justify-center gap-2 text-ink-strong rounded-full transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           style={{
             background: "var(--gradient-preorder-orange)",
             fontFamily: "var(--font-family-inter)",
@@ -335,7 +335,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
         <div className="mt-4 flex items-start gap-2">
           <ShieldCheck size={13} className="text-[#22c55e] mt-0.5 flex-shrink-0" strokeWidth={2.2} />
           <p
-            className="text-white/55"
+            className="text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "11px",

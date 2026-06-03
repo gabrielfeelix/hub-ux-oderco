@@ -150,7 +150,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
         {/* details */}
         <div className="p-5 md:p-7 flex flex-col">
           <p
-            className="text-white/40 mb-2"
+            className="text-ink-subtle mb-2"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "10.5px",
@@ -162,7 +162,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
             {product.category}
           </p>
           <h3
-            className="text-white mb-3 line-clamp-2"
+            className="text-ink-strong mb-3 line-clamp-2"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "22px",
@@ -175,7 +175,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           </h3>
 
           <p
-            className="text-white/55 mb-5"
+            className="text-ink-muted mb-5"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "13px",
@@ -203,7 +203,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 }}
               >
                 <span
-                  className="text-white tabular-nums"
+                  className="text-ink-strong tabular-nums"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
                     fontSize: "18px",
@@ -213,7 +213,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                   {pad(unit.v)}
                 </span>
                 <span
-                  className="text-white/40"
+                  className="text-ink-subtle"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "9.5px",
@@ -230,7 +230,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           <div className="mb-4">
             <div className="flex items-center justify-between mb-1.5">
               <span
-                className="text-white/55"
+                className="text-ink-muted"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "10px",
@@ -242,7 +242,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 Reservas
               </span>
               <span
-                className="text-white tabular-nums"
+                className="text-ink-strong tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "11.5px",
@@ -274,7 +274,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           <div className="flex flex-col items-stretch gap-3 mt-auto pt-1 md:flex-row md:items-end md:justify-between">
             <div>
               <p
-                className="text-white/40 mb-1"
+                className="text-ink-subtle mb-1"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "10.5px",
@@ -286,7 +286,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 {isImminent ? "Em breve" : "Entrega"} · {formatReleaseDate(info.releaseDate)}
               </p>
               <p
-                className="text-white leading-none"
+                className="text-ink-strong leading-none"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "26px",
@@ -298,7 +298,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
               </p>
             </div>
             <span
-              className="inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-full text-white transition-all duration-300 group-hover:translate-x-0.5 w-full md:w-auto md:justify-start"
+              className="inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-full text-ink-strong transition-all duration-300 group-hover:translate-x-0.5 w-full md:w-auto md:justify-start"
               style={{
                 background: "#ff2419",
                 fontFamily: "var(--font-family-inter)",
@@ -437,7 +437,7 @@ function HeroSection({
               }}
             >
               <p
-                className="text-white/45 mb-1"
+                className="text-ink-muted mb-1"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "9.5px",
@@ -449,7 +449,7 @@ function HeroSection({
                 Destaque · {featured.category}
               </p>
               <p
-                className="text-white mb-1.5 line-clamp-1"
+                className="text-ink-strong mb-1.5 line-clamp-1"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "14px",
@@ -488,7 +488,7 @@ function HeroSection({
         >
           <Link
             to="/"
-            className="text-white/35 hover:text-white/70 transition-colors"
+            className="text-ink-subtle hover:text-ink transition-colors"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12px",
@@ -497,9 +497,9 @@ function HeroSection({
           >
             Home
           </Link>
-          <span className="text-white/15" style={{ fontSize: "10px" }}>/</span>
+          <span className="text-ink-subtle" style={{ fontSize: "10px" }}>/</span>
           <span
-            className="text-white/65"
+            className="text-ink-muted"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500 }}
           >
             Pré-venda
@@ -582,7 +582,7 @@ function HeroSection({
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white/55 max-w-[580px] mb-12"
+          className="text-ink-muted max-w-[580px] mb-12"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "clamp(15px, 1.15vw, 17px)",
@@ -608,7 +608,7 @@ function HeroSection({
           ].map((f) => (
             <span
               key={f.label}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-white/75 transition-all hover:text-white hover:bg-white/[0.04]"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-ink transition-all hover:text-ink-strong hover:bg-white/[0.04]"
               style={{
                 background: "rgba(var(--foreground-rgb), 0.02)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.07)",
@@ -618,7 +618,7 @@ function HeroSection({
                 backdropFilter: "blur(8px)",
               }}
             >
-              <span className="text-white/45">
+              <span className="text-ink-muted">
                 <f.icon size={13} strokeWidth={2} />
               </span>
               {f.label}
@@ -688,19 +688,19 @@ function FiltersBar({
         <div className="flex items-center gap-2.5 flex-wrap">
           {/* search */}
           <div
-            className="flex items-center gap-2.5 px-4 h-11 md:h-10 w-full md:w-auto md:flex-1 md:min-w-[200px] md:max-w-[320px] transition-colors focus-within:border-white/20"
+            className="flex items-center gap-2.5 px-4 h-11 md:h-10 w-full md:w-auto md:flex-1 md:min-w-[200px] md:max-w-[320px] transition-colors focus-within:border-edge-strong"
             style={{
               background: "rgba(var(--foreground-rgb), 0.025)",
               border: "1px solid rgba(var(--foreground-rgb), 0.06)",
               borderRadius: "10px",
             }}
           >
-            <Search size={14} className="text-white/40" strokeWidth={2} />
+            <Search size={14} className="text-ink-subtle" strokeWidth={2} />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar lançamento..."
-              className="preorder-field bg-transparent outline-none flex-1 text-white placeholder:text-white/30"
+              className="preorder-field bg-transparent outline-none flex-1 text-ink-strong placeholder:text-ink-subtle"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13px",
@@ -709,7 +709,7 @@ function FiltersBar({
             {search && (
               <button
                 onClick={() => setSearch("")}
-                className="flex items-center justify-center h-11 w-11 md:h-auto md:w-auto text-white/35 hover:text-white cursor-pointer"
+                className="flex items-center justify-center h-11 w-11 md:h-auto md:w-auto text-ink-subtle hover:text-ink-strong cursor-pointer"
               >
                 <X size={13} strokeWidth={2.2} />
               </button>
@@ -745,7 +745,7 @@ function FiltersBar({
           {/* mobile filter toggle */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="md:hidden inline-flex items-center gap-2 h-11 md:h-10 px-3.5 rounded-full text-white/75 cursor-pointer"
+            className="md:hidden inline-flex items-center gap-2 h-11 md:h-10 px-3.5 rounded-full text-ink cursor-pointer"
             style={{
               background: "rgba(var(--foreground-rgb), 0.025)",
               border: "1px solid rgba(var(--foreground-rgb), 0.07)",
@@ -778,7 +778,7 @@ function FiltersBar({
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="preorder-field appearance-none h-11 md:h-10 pl-9 pr-9 rounded-full text-white/75 cursor-pointer hover:text-white transition-colors"
+              className="preorder-field appearance-none h-11 md:h-10 pl-9 pr-9 rounded-full text-ink cursor-pointer hover:text-ink-strong transition-colors"
               style={{
                 background: "rgba(var(--foreground-rgb), 0.025)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.07)",
@@ -796,7 +796,7 @@ function FiltersBar({
             <ArrowDownUp
               size={13}
               strokeWidth={2}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white/45 pointer-events-none"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted pointer-events-none"
             />
           </div>
         </div>
@@ -804,7 +804,7 @@ function FiltersBar({
         {/* secondary row: delivery + count */}
         <div className="mt-2.5 flex items-center gap-2 flex-wrap">
           <span
-            className="text-white/35 mr-1"
+            className="text-ink-subtle mr-1"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "10.5px",
@@ -847,7 +847,7 @@ function FiltersBar({
                 transition={{ duration: 0.3 }}
                 className="md:hidden w-full overflow-hidden"
               >
-                <div className="flex items-center gap-2 flex-wrap mt-2 pt-2 border-t border-white/5">
+                <div className="flex items-center gap-2 flex-wrap mt-2 pt-2 border-t border-edge-subtle">
                   {["all", ...categories].map((cat) => {
                     const isActive = cat === activeCategory;
                     return (
@@ -878,14 +878,14 @@ function FiltersBar({
           <div className="flex-1" />
 
           <span
-            className="inline-flex items-center gap-1.5 text-white/45 tabular-nums"
+            className="inline-flex items-center gap-1.5 text-ink-muted tabular-nums"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "11.5px",
               fontWeight: 500,
             }}
           >
-            <TrendingUp size={11} strokeWidth={2} className="text-white/35" />
+            <TrendingUp size={11} strokeWidth={2} className="text-ink-subtle" />
             {resultCount} {resultCount === 1 ? "produto" : "produtos"}
           </span>
         </div>
@@ -1005,7 +1005,7 @@ export function PreOrderPage() {
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
             <p
-              className="text-white/40 mb-2"
+              className="text-ink-subtle mb-2"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "11px",
@@ -1017,7 +1017,7 @@ export function PreOrderPage() {
               Catálogo
             </p>
             <h2
-              className="text-white"
+              className="text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "clamp(24px, 2.6vw, 34px)",
@@ -1040,9 +1040,9 @@ export function PreOrderPage() {
               borderRadius: "20px",
             }}
           >
-            <Search size={28} className="text-white/30 mb-5" strokeWidth={1.6} />
+            <Search size={28} className="text-ink-subtle mb-5" strokeWidth={1.6} />
             <h3
-              className="text-white mb-2"
+              className="text-ink-strong mb-2"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "20px",
@@ -1053,7 +1053,7 @@ export function PreOrderPage() {
               Nenhum lançamento encontrado
             </h3>
             <p
-              className="text-white/50 mb-6 max-w-[400px]"
+              className="text-ink-muted mb-6 max-w-[400px]"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13.5px",
@@ -1064,7 +1064,7 @@ export function PreOrderPage() {
             </p>
             <button
               onClick={clearFilters}
-              className="px-5 h-11 md:h-10 rounded-full text-white cursor-pointer transition-colors hover:bg-white/95"
+              className="px-5 h-11 md:h-10 rounded-full text-ink-strong cursor-pointer transition-colors hover:bg-white/95"
               style={{
                 background: "#fff",
                 color: "#0a0a0c",

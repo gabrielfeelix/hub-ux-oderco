@@ -68,7 +68,7 @@ export function FeaturedProduct({ label, title, description, image, imageAlt, re
           <button
             type="button"
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveIndex((index) => Math.max(0, index - 1)); }}
-            className="absolute left-0 top-1/2 z-30 hidden h-[52px] w-[52px] -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#1d1d1d]/85 text-white/80 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:text-white md:flex"
+            className="absolute left-0 top-1/2 z-30 hidden h-[52px] w-[52px] -translate-y-1/2 items-center justify-center rounded-full border border-edge bg-[#1d1d1d]/85 text-ink shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-all duration-300 hover:border-edge-strong hover:text-ink-strong md:flex"
             aria-label="Lançamento anterior"
           >
             <ArrowRight size={20} strokeWidth={1.6} className="rotate-180" />
@@ -78,7 +78,7 @@ export function FeaturedProduct({ label, title, description, image, imageAlt, re
           <button
             type="button"
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveIndex((index) => Math.min(carouselItems.length - 1, index + 1)); }}
-            className="absolute right-0 top-1/2 z-30 hidden h-[52px] w-[52px] -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#1d1d1d]/85 text-white/80 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:text-white md:flex"
+            className="absolute right-0 top-1/2 z-30 hidden h-[52px] w-[52px] -translate-y-1/2 items-center justify-center rounded-full border border-edge bg-[#1d1d1d]/85 text-ink shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-all duration-300 hover:border-edge-strong hover:text-ink-strong md:flex"
             aria-label="Próximo lançamento"
           >
             <ArrowRight size={20} strokeWidth={1.6} />
@@ -153,7 +153,7 @@ export function FeaturedProduct({ label, title, description, image, imageAlt, re
               {activeSpecs.map((spec) => (
                 <span
                   key={spec}
-                  className="px-4 py-1.5 border border-white/15 text-foreground/40"
+                  className="px-4 py-1.5 border border-edge text-foreground/40"
                   style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                 >
                   {spec}

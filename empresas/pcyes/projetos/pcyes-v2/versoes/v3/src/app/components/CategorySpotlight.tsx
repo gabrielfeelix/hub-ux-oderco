@@ -50,7 +50,7 @@ export function CategorySpotlight() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="text-white"
+              className="text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "clamp(28px, 3vw, 36px)",
@@ -84,7 +84,7 @@ export function CategorySpotlight() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5 transition-all group-hover:from-black/90" />
                 <div className="relative flex h-full flex-col justify-end p-4">
                   <p
-                    className="text-white"
+                    className="text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "15px",
@@ -95,7 +95,7 @@ export function CategorySpotlight() {
                     {card.name}
                   </p>
                   <span
-                    className="mt-2 inline-flex w-fit items-center gap-1 text-white/65 transition-colors group-hover:text-primary"
+                    className="mt-2 inline-flex w-fit items-center gap-1 text-ink-muted transition-colors group-hover:text-primary"
                     style={{
                       fontFamily: "var(--font-family-inter)",
                       fontSize: "11px",

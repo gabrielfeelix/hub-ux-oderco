@@ -195,8 +195,8 @@ export function CategoryGrid() {
                   onMouseEnter={() => setActiveAudience(audience)}
                   className={`cursor-pointer rounded-full border px-[17px] py-[9px] transition-all duration-300 ${
                     active
-                      ? "border-primary/30 bg-primary text-white"
-                      : "border-white/10 bg-transparent text-white/45 hover:text-white/75 hover:border-white/20"
+                      ? "border-primary/30 bg-primary text-ink-strong"
+                      : "border-edge bg-transparent text-ink-muted hover:text-ink hover:border-edge-strong"
                   }`}
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "600", lineHeight: "19.5px" }}
                 >
@@ -229,14 +229,14 @@ export function CategoryGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/14 to-transparent group-hover:from-black/85 transition-all duration-500" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-[16.8px]">
-                  <p className="text-white mb-1.5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 1.8vw, 20px)", fontWeight: "600", lineHeight: 1.05 }}>
+                  <p className="text-ink-strong mb-1.5" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 1.8vw, 20px)", fontWeight: "600", lineHeight: 1.05 }}>
                     {card.name}
                   </p>
-                  <p className="mb-3 max-w-[19ch] text-white/55" style={{ fontFamily: "var(--font-family-inter)", fontSize: "8.4px", lineHeight: "13.02px" }}>
+                  <p className="mb-3 max-w-[19ch] text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "8.4px", lineHeight: "13.02px" }}>
                     {card.caption}
                   </p>
                   <span
-                    className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-white/80 group-hover:bg-white group-hover:text-black transition-all duration-500"
+                    className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-ink group-hover:bg-white group-hover:text-black transition-all duration-500"
                     style={{ borderRadius: "2.8px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "500", letterSpacing: "0.02em" }}
                   >
                     Ver categoria

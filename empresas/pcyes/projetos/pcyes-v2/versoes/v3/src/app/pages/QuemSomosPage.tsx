@@ -97,7 +97,7 @@ const milestones: Milestone[] = [
 function Badge({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-white uppercase"
+      className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-ink-strong uppercase"
       style={{
         fontFamily: INTER,
         fontSize: "9.5px",
@@ -190,7 +190,7 @@ export function QuemSomosPage() {
             <motion.h1
               variants={reveal}
               custom={1}
-              className="mt-8 max-w-[16ch] text-white"
+              className="mt-8 max-w-[16ch] text-ink-strong"
               style={{
                 fontFamily: FIGTREE,
                 fontSize: "clamp(34px, 6.4vw, 92px)",
@@ -220,7 +220,7 @@ export function QuemSomosPage() {
             <motion.p
               variants={reveal}
               custom={2}
-              className="mt-7 max-w-[58ch] text-white/60"
+              className="mt-7 max-w-[58ch] text-ink-muted"
               style={{
                 fontFamily: INTER,
                 fontSize: "clamp(15px, 1.5vw, 18px)",
@@ -239,7 +239,7 @@ export function QuemSomosPage() {
             >
               <Link
                 to="/produtos"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-white transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-ink-strong transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                 style={{
                   fontFamily: INTER,
                   fontSize: "14px",
@@ -255,7 +255,7 @@ export function QuemSomosPage() {
               </Link>
               <Link
                 to="/monte-seu-pc"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-white/90 transition-colors duration-300 hover:border-white/30 hover:text-white active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-edge bg-white/[0.03] px-7 py-3.5 text-ink transition-colors duration-300 hover:border-edge-strong hover:text-ink-strong active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                 style={{ fontFamily: INTER, fontSize: "14px", fontWeight: 700 }}
               >
                 Montar meu PC
@@ -280,7 +280,7 @@ export function QuemSomosPage() {
             >
               <SectionEyebrow>Nossa história</SectionEyebrow>
               <h2
-                className="mt-6 max-w-[16ch] text-white"
+                className="mt-6 max-w-[16ch] text-ink-strong"
                 style={{
                   fontFamily: FIGTREE,
                   fontSize: "clamp(32px, 4vw, 56px)",
@@ -292,7 +292,7 @@ export function QuemSomosPage() {
                 Feita no Brasil, pensada para o mundo.
               </h2>
               <div
-                className="mt-7 flex flex-col gap-5 text-white/60"
+                className="mt-7 flex flex-col gap-5 text-ink-muted"
                 style={{ fontFamily: INTER, fontSize: "16px", lineHeight: 1.7 }}
               >
                 <p>
@@ -317,7 +317,7 @@ export function QuemSomosPage() {
               whileInView="show"
               viewport={viewportOnce}
               custom={1}
-              className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 md:p-12"
+              className="relative overflow-hidden rounded-2xl border border-edge bg-white/[0.03] p-8 md:p-12"
             >
               <div
                 aria-hidden
@@ -340,7 +340,7 @@ export function QuemSomosPage() {
                 &ldquo;
               </span>
               <blockquote
-                className="relative mt-2 text-white"
+                className="relative mt-2 text-ink-strong"
                 style={{
                   fontFamily: FIGTREE,
                   fontSize: "clamp(22px, 2.4vw, 30px)",
@@ -353,7 +353,7 @@ export function QuemSomosPage() {
                 performance — para quem joga, cria e exige o máximo.
               </blockquote>
               <figcaption
-                className="mt-7 flex items-center gap-3 text-white/45"
+                className="mt-7 flex items-center gap-3 text-ink-muted"
                 style={{
                   fontFamily: INTER,
                   fontSize: "12px",
@@ -370,7 +370,7 @@ export function QuemSomosPage() {
 
       {/* ============================== STATS ============================== */}
       <section
-        className="relative overflow-hidden border-y border-white/10"
+        className="relative overflow-hidden border-y border-edge"
         style={{ background: "#0a0a0a" }}
       >
         <div
@@ -391,12 +391,12 @@ export function QuemSomosPage() {
           >
             <SectionEyebrow>Em números</SectionEyebrow>
             <p
-              className="mt-5 max-w-[52ch] text-white/60"
+              className="mt-5 max-w-[52ch] text-ink-muted"
               style={{ fontFamily: INTER, fontSize: "16px", lineHeight: 1.6 }}
             >
               Mais de uma década construindo uma marca de performance — e parte
               do{" "}
-              <span className="text-white/90" style={{ fontWeight: 600 }}>
+              <span className="text-ink" style={{ fontWeight: 600 }}>
                 Grupo Oderço
               </span>
               , uma das maiores estruturas de tecnologia do país.
@@ -412,7 +412,7 @@ export function QuemSomosPage() {
                 whileInView="show"
                 viewport={viewportOnce}
                 custom={i}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center transition-colors duration-300 hover:border-primary/40 md:p-10"
+                className="group relative overflow-hidden rounded-2xl border border-edge bg-white/[0.03] p-8 text-center transition-colors duration-300 hover:border-primary/40 md:p-10"
               >
                 <div
                   aria-hidden
@@ -423,7 +423,7 @@ export function QuemSomosPage() {
                   }}
                 />
                 <div
-                  className="relative tabular-nums text-white"
+                  className="relative tabular-nums text-ink-strong"
                   style={{
                     fontFamily: FIGTREE,
                     fontSize: "clamp(40px, 6vw, 76px)",
@@ -435,7 +435,7 @@ export function QuemSomosPage() {
                   {stat.value}
                 </div>
                 <p
-                  className="relative mt-3 text-white/55"
+                  className="relative mt-3 text-ink-muted"
                   style={{
                     fontFamily: INTER,
                     fontSize: "14px",
@@ -465,7 +465,7 @@ export function QuemSomosPage() {
           >
             <SectionEyebrow>No que acreditamos</SectionEyebrow>
             <h2
-              className="mt-6 text-white"
+              className="mt-6 text-ink-strong"
               style={{
                 fontFamily: FIGTREE,
                 fontSize: "clamp(32px, 4vw, 56px)",
@@ -489,7 +489,7 @@ export function QuemSomosPage() {
                   whileInView="show"
                   viewport={viewportOnce}
                   custom={i}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 md:p-10"
+                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-edge bg-white/[0.03] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 md:p-10"
                 >
                   <div
                     aria-hidden
@@ -506,7 +506,7 @@ export function QuemSomosPage() {
                     <Icon size={22} strokeWidth={1.8} />
                   </span>
                   <h3
-                    className="relative mt-6 text-white"
+                    className="relative mt-6 text-ink-strong"
                     style={{
                       fontFamily: FIGTREE,
                       fontSize: "24px",
@@ -517,7 +517,7 @@ export function QuemSomosPage() {
                     {value.title}
                   </h3>
                   <p
-                    className="relative mt-3 text-white/55"
+                    className="relative mt-3 text-ink-muted"
                     style={{
                       fontFamily: INTER,
                       fontSize: "15px",
@@ -528,7 +528,7 @@ export function QuemSomosPage() {
                   </p>
                   <span
                     aria-hidden
-                    className="relative mt-6 text-white/15 tabular-nums"
+                    className="relative mt-6 text-ink-subtle tabular-nums"
                     style={{
                       fontFamily: FIGTREE,
                       fontSize: "13px",
@@ -547,7 +547,7 @@ export function QuemSomosPage() {
 
       {/* ============================== TIMELINE ============================== */}
       <section
-        className="relative overflow-hidden border-y border-white/10"
+        className="relative overflow-hidden border-y border-edge"
         style={{ background: "#0a0a0a" }}
       >
         <div
@@ -568,7 +568,7 @@ export function QuemSomosPage() {
           >
             <SectionEyebrow>Linha do tempo</SectionEyebrow>
             <h2
-              className="mt-6 text-white"
+              className="mt-6 text-ink-strong"
               style={{
                 fontFamily: FIGTREE,
                 fontSize: "clamp(32px, 4vw, 56px)",
@@ -661,7 +661,7 @@ export function QuemSomosPage() {
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
-            className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-7 py-16 text-center md:px-16 md:py-24"
+            className="relative overflow-hidden rounded-2xl border border-edge bg-white/[0.03] px-7 py-16 text-center md:px-16 md:py-24"
           >
             <div
               aria-hidden
@@ -688,7 +688,7 @@ export function QuemSomosPage() {
                 <Flag size={22} strokeWidth={1.8} />
               </span>
               <h2
-                className="mt-7 max-w-[20ch] text-white"
+                className="mt-7 max-w-[20ch] text-ink-strong"
                 style={{
                   fontFamily: FIGTREE,
                   fontSize: "clamp(30px, 4vw, 54px)",
@@ -700,7 +700,7 @@ export function QuemSomosPage() {
                 Pronto para dar power up no seu game?
               </h2>
               <p
-                className="mt-5 max-w-[54ch] text-white/60"
+                className="mt-5 max-w-[54ch] text-ink-muted"
                 style={{ fontFamily: INTER, fontSize: "16px", lineHeight: 1.65 }}
               >
                 Explore o portfólio completo PCYES ou monte a máquina perfeita
@@ -709,7 +709,7 @@ export function QuemSomosPage() {
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   to="/produtos"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-white transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-ink-strong transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                   style={{
                     fontFamily: INTER,
                     fontSize: "14px",
@@ -725,7 +725,7 @@ export function QuemSomosPage() {
                 </Link>
                 <Link
                   to="/monte-seu-pc"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-white/90 transition-colors duration-300 hover:border-white/30 hover:text-white active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-edge bg-white/[0.03] px-7 py-3.5 text-ink transition-colors duration-300 hover:border-edge-strong hover:text-ink-strong active:scale-[0.98] min-h-[44px] md:w-auto md:justify-start"
                   style={{
                     fontFamily: INTER,
                     fontSize: "14px",
@@ -758,7 +758,7 @@ function MilestoneCard({
   return (
     <div
       className={
-        "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 md:p-7 " +
+        "group relative overflow-hidden rounded-2xl border border-edge bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 md:p-7 " +
         (align === "right" ? "md:text-right" : "")
       }
     >
@@ -793,7 +793,7 @@ function MilestoneCard({
         <span className="h-px w-7 bg-primary/40" />
       </span>
       <h3
-        className="relative mt-3 text-white"
+        className="relative mt-3 text-ink-strong"
         style={{
           fontFamily: FIGTREE,
           fontSize: "19px",
@@ -804,7 +804,7 @@ function MilestoneCard({
         {milestone.title}
       </h3>
       <p
-        className="relative mt-2 text-white/55"
+        className="relative mt-2 text-ink-muted"
         style={{ fontFamily: INTER, fontSize: "14px", lineHeight: 1.6 }}
       >
         {milestone.desc}

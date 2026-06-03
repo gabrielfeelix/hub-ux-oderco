@@ -50,7 +50,7 @@ export function WelcomePopup() {
               <button
                 onClick={dismiss}
                 aria-label="Fechar"
-                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center bg-black/30 text-white hover:bg-black/55 backdrop-blur-md transition-all cursor-pointer"
+                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center bg-black/30 text-ink-strong hover:bg-black/55 backdrop-blur-md transition-all cursor-pointer"
               >
                 <X size={18} strokeWidth={1.8} />
               </button>
@@ -79,13 +79,13 @@ export function WelcomePopup() {
                 <div className="relative z-10 flex flex-col items-center px-10 text-center">
                   <img src={PCYES_LOGO} alt="PCYES" className="w-[220px] mb-8 drop-shadow-[0_8px_24px_rgba(225,6,0,0.45)]" />
                   <p
-                    className="text-white/90 leading-snug"
+                    className="text-ink leading-snug"
                     style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: 700, letterSpacing: "-0.02em" }}
                   >
                     Built for<br />Performance
                   </p>
                   <p
-                    className="mt-4 text-white/55 max-w-[260px]"
+                    className="mt-4 text-ink-muted max-w-[260px]"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", lineHeight: 1.55 }}
                   >
                     Hardware, periféricos e setups feitos pra quem joga, edita e cria sem trava.
@@ -122,7 +122,7 @@ export function WelcomePopup() {
                       />
                       <button
                         type="submit"
-                        className="w-full py-4 bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                        className="w-full py-4 bg-neutral-950 text-ink-strong hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                         style={{ borderRadius: "999px", fontFamily: "var(--font-family-inter)", fontSize: "14px", fontWeight: 600, letterSpacing: "0.02em" }}
                       >
                         QUERO MEU DESCONTO <ArrowRight size={16} strokeWidth={2} />

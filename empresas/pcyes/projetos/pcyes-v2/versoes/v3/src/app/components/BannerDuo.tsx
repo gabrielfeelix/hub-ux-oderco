@@ -67,7 +67,7 @@ export function BannerDuo() {
 
               <div className="relative flex h-full flex-col items-center justify-end p-6 text-center md:items-start md:p-8 md:text-left lg:p-10">
                 <span
-                  className="mb-3 inline-flex w-fit items-center rounded-full border border-white/25 bg-black/30 px-3 py-1 text-white/90 backdrop-blur-sm"
+                  className="mb-3 inline-flex w-fit items-center rounded-full border border-edge-strong bg-black/30 px-3 py-1 text-ink backdrop-blur-sm"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "10px",
@@ -78,7 +78,7 @@ export function BannerDuo() {
                   {banner.eyebrow}
                 </span>
                 <h3
-                  className="mb-2 max-w-md text-white"
+                  className="mb-2 max-w-md text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
                     fontSize: "clamp(24px, 6vw, 42px)",
@@ -90,7 +90,7 @@ export function BannerDuo() {
                   {banner.title}
                 </h3>
                 <p
-                  className="mb-5 max-w-sm text-white/75"
+                  className="mb-5 max-w-sm text-ink"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "14px",
@@ -100,7 +100,7 @@ export function BannerDuo() {
                   {banner.description}
                 </p>
                 <span
-                  className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-black transition-all group-hover:bg-primary group-hover:text-white"
+                  className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-black transition-all group-hover:bg-primary group-hover:text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13px",

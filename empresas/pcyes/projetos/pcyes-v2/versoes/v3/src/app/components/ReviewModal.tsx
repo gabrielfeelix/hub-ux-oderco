@@ -178,7 +178,7 @@ export function ReviewModal({ open, onClose, orderId, items, onSubmit }: Props) 
                         <>
                           <video src={m.url} className="w-full h-full object-cover" muted />
                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ background: "rgba(0,0,0,0.35)" }}>
-                            <Play size={18} className="text-white fill-white" />
+                            <Play size={18} className="text-ink-strong fill-white" />
                           </div>
                         </>
                       )}

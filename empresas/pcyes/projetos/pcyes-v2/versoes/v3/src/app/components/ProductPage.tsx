@@ -280,7 +280,7 @@ function ProductGallery({ images, name, isDark }: { images: string[]; name: stri
                       key={i}
                       onClick={(e) => { e.stopPropagation(); setActive(i); }}
                       className={`h-2.5 w-2.5 rounded-full border transition-all ${
-                        i === active ? "border-white bg-white" : "border-edge-strong bg-transparent"
+                        i === active ? "border-edge bg-white" : "border-edge-strong bg-transparent"
                       }`}
                       aria-label={`Ver imagem ${i + 1}`}
                       aria-current={i === active ? "true" : undefined}

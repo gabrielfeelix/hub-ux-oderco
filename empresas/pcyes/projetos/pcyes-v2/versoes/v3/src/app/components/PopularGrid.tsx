@@ -102,7 +102,7 @@ export function PopularGrid() {
 
                   {product.badge && (
                     <span
-                      className={`absolute left-4 px-2.5 py-1 rounded-full ${i < 3 ? 'top-12' : 'top-4'} ${product.badge.toUpperCase().includes('BLUE') ? 'bg-blue-500 text-white' : product.badge.toUpperCase().includes('RED') ? 'bg-red-500 text-white' : product.badge.toUpperCase().includes('BROWN') ? 'bg-amber-700 text-white' : 'bg-primary text-primary-foreground'}`}
+                      className={`absolute left-4 px-2.5 py-1 rounded-full ${i < 3 ? 'top-12' : 'top-4'} ${product.badge.toUpperCase().includes('BLUE') ? 'bg-blue-500 text-ink-strong' : product.badge.toUpperCase().includes('RED') ? 'bg-red-500 text-ink-strong' : product.badge.toUpperCase().includes('BROWN') ? 'bg-amber-700 text-ink-strong' : 'bg-primary text-primary-foreground'}`}
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.05em" }}
                     >
                       {product.badge}
@@ -111,7 +111,7 @@ export function PopularGrid() {
 
                   {/* Category */}
                   <span
-                    className="absolute top-4 right-4 px-2.5 py-1 bg-black/25 backdrop-blur-sm text-white/70"
+                    className="absolute top-4 right-4 px-2.5 py-1 bg-black/25 backdrop-blur-sm text-ink"
                     style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
                   >
                     {product.category}
@@ -124,7 +124,7 @@ export function PopularGrid() {
                   >
                     <Heart
                       size={14}
-                      className={favorites.has(product.id) ? "fill-primary text-primary" : "text-white/80"}
+                      className={favorites.has(product.id) ? "fill-primary text-primary" : "text-ink"}
                       strokeWidth={1.5}
                     />
                   </button>

@@ -129,7 +129,7 @@ export function WorldSection() {
                 {/* CTA at bottom on hover */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                   <span
-                    className="inline-block px-5 py-2 bg-white/10 backdrop-blur-md text-white/90 border border-white/15"
+                    className="inline-block px-5 py-2 bg-white/10 backdrop-blur-md text-ink border border-edge"
                     style={{
                       borderRadius: "var(--radius-button)",
                       fontFamily: "var(--font-family-inter)",

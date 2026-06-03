@@ -1510,7 +1510,7 @@ function QuizHeader({
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+          className="inline-flex items-center gap-1.5 min-h-[44px] md:min-h-0 text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer"
           style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
         >
           <ArrowLeft size={13} /> Voltar
@@ -1542,7 +1542,7 @@ function QuizHeader({
         </p>
       )}
       <h2
-        className={cn("text-white", eyebrow ? "mb-1" : "mt-8 mb-1")}
+        className={cn("text-ink-strong", eyebrow ? "mb-1" : "mt-8 mb-1")}
         style={{
           fontFamily: "var(--font-family-figtree)",
           fontSize: "clamp(26px, 3.4vw, 34px)",
@@ -1574,7 +1574,7 @@ function UseTypeCard({
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#0d0d0d] text-left transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.22]"
+      className="group relative flex w-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-edge-subtle bg-[#0d0d0d] text-left transition-all duration-300 hover:-translate-y-1 hover:border-edge-strong"
       style={{
         boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)",
       }}
@@ -1604,7 +1604,7 @@ function UseTypeCard({
         />
         <div className="absolute inset-x-4 top-4 flex items-center justify-between">
           <span
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/55 px-2.5 py-1 text-white backdrop-blur"
+            className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-black/55 px-2.5 py-1 text-ink-strong backdrop-blur"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "9.5px",
@@ -1618,7 +1618,7 @@ function UseTypeCard({
         </div>
         <div className="absolute inset-x-5 bottom-5">
           <h3
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(22px, 2.4vw, 28px)",
@@ -1643,7 +1643,7 @@ function UseTypeCard({
           {card.desc}
         </p>
         <div
-          className="flex items-center gap-1.5 text-white/80 transition-colors group-hover:text-white"
+          className="flex items-center gap-1.5 text-ink transition-colors group-hover:text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "12px",
@@ -1681,7 +1681,7 @@ function GameTile({
         "group relative overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
         selected
           ? "border-primary/60"
-          : "border-white/[0.08] hover:border-white/[0.22]",
+          : "border-edge-subtle hover:border-edge-strong",
       )}
       style={
         selected
@@ -1754,8 +1754,8 @@ function GameTile({
             className={cn(
               "flex h-7 w-7 items-center justify-center rounded-full border-2 transition-all",
               selected
-                ? "border-primary bg-primary text-white"
-                : "border-white/30 bg-black/50 backdrop-blur text-transparent",
+                ? "border-primary bg-primary text-ink-strong"
+                : "border-edge-strong bg-black/50 backdrop-blur text-transparent",
             )}
           >
             <Check size={14} strokeWidth={3} />
@@ -1763,7 +1763,7 @@ function GameTile({
         </div>
         <div className="absolute inset-x-3 bottom-2.5">
           <p
-            className="mb-0.5 uppercase text-white/65"
+            className="mb-0.5 uppercase text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "9px",
@@ -1774,7 +1774,7 @@ function GameTile({
             {game.tag}
           </p>
           <h4
-            className="truncate text-white"
+            className="truncate text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "14px",
@@ -1812,7 +1812,7 @@ function ProgramTile({
         "group relative overflow-hidden rounded-[14px] border text-left transition-all cursor-pointer",
         selected
           ? "border-primary/60"
-          : "border-white/[0.08] hover:border-white/[0.22]",
+          : "border-edge-subtle hover:border-edge-strong",
       )}
       style={
         selected
@@ -1874,8 +1874,8 @@ function ProgramTile({
             className={cn(
               "flex h-7 w-7 items-center justify-center rounded-full border-2 transition-all",
               selected
-                ? "border-primary bg-primary text-white"
-                : "border-white/30 bg-black/40 backdrop-blur text-transparent",
+                ? "border-primary bg-primary text-ink-strong"
+                : "border-edge-strong bg-black/40 backdrop-blur text-transparent",
             )}
           >
             <Check size={14} strokeWidth={3} />
@@ -1883,7 +1883,7 @@ function ProgramTile({
         </div>
         <div className="absolute inset-x-3 bottom-2.5">
           <p
-            className="mb-0.5 uppercase text-white/70"
+            className="mb-0.5 uppercase text-ink"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "9px",
@@ -1894,7 +1894,7 @@ function ProgramTile({
             {program.category}
           </p>
           <h4
-            className="truncate text-white"
+            className="truncate text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "14px",
@@ -1928,7 +1928,7 @@ function LevelCard({
     <button
       type="button"
       onClick={onClick}
-      className="group flex w-full cursor-pointer items-center gap-4 rounded-card-md border border-white/[0.08] bg-[#0f0f12] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-white/[0.22]"
+      className="group flex w-full cursor-pointer items-center gap-4 rounded-card-md border border-edge-subtle bg-[#0f0f12] p-5 text-left transition-all hover:-translate-y-0.5 hover:border-edge-strong"
       style={{ boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }}
     >
       <div
@@ -1943,7 +1943,7 @@ function LevelCard({
       </div>
       <div className="min-w-0 flex-1">
         <p
-          className="text-white"
+          className="text-ink-strong"
           style={{
             fontFamily: "var(--font-family-figtree)",
             fontSize: "16px",
@@ -2113,7 +2113,7 @@ function QuizFlow({
                   onChange={(e) => setGameSearch(e.target.value)}
                   placeholder="Buscar jogo (ex: Valorant, RPG, FPS)"
                   aria-label="Buscar jogo"
-                  className="h-11 w-full rounded-card-sm border border-white/[0.08] bg-[#0f0f12] pl-10 pr-10 text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
+                  className="h-11 w-full rounded-card-sm border border-edge-subtle bg-[#0f0f12] pl-10 pr-10 text-ink-strong outline-none transition-colors placeholder:text-zinc-500 focus:border-primary/55"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13.5px",
@@ -2125,7 +2125,7 @@ function QuizFlow({
                     type="button"
                     onClick={() => setGameSearch("")}
                     aria-label="Limpar busca"
-                    className="absolute right-2 top-1/2 flex h-11 w-11 md:h-7 md:w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/[0.05] hover:text-white"
+                    className="absolute right-2 top-1/2 flex h-11 w-11 md:h-7 md:w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/[0.05] hover:text-ink-strong"
                   >
                     <X size={13} />
                   </button>
@@ -2140,7 +2140,7 @@ function QuizFlow({
                 }}
               >
                 {selectedGameCount > 0 ? (
-                  <span className="text-white">
+                  <span className="text-ink-strong">
                     {selectedGameCount}{" "}
                     {selectedGameCount === 1 ? "jogo selecionado" : "jogos selecionados"}
                   </span>
@@ -2151,9 +2151,9 @@ function QuizFlow({
             </div>
 
             {filteredGames.length === 0 ? (
-              <div className="flex flex-col items-center gap-2 rounded-card-md border border-white/[0.06] bg-[#0d0d0d] px-6 py-14 text-center">
+              <div className="flex flex-col items-center gap-2 rounded-card-md border border-edge-subtle bg-[#0d0d0d] px-6 py-14 text-center">
                 <p
-                  className="text-white"
+                  className="text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
                     fontSize: "16px",
@@ -2199,7 +2199,7 @@ function QuizFlow({
               <button
                 type="button"
                 onClick={continueFromGames}
-                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
+                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-ink-strong transition-all hover:brightness-110 cursor-pointer"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13.5px",
@@ -2271,7 +2271,7 @@ function QuizFlow({
                 }}
               >
                 {selectedProgramCount > 0 ? (
-                  <span className="text-white">
+                  <span className="text-ink-strong">
                     {selectedProgramCount}{" "}
                     {selectedProgramCount === 1
                       ? "programa selecionado"
@@ -2309,7 +2309,7 @@ function QuizFlow({
               <button
                 type="button"
                 onClick={continueFromPrograms}
-                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-white transition-all hover:brightness-110 cursor-pointer"
+                className="inline-flex h-11 items-center justify-center gap-1.5 rounded-card-sm bg-primary px-6 text-ink-strong transition-all hover:brightness-110 cursor-pointer"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13.5px",
@@ -2425,7 +2425,7 @@ function StarRating({ rating, reviews }: { rating: number; reviews: number }) {
         ))}
       </div>
       <span
-        className="tabular-nums text-white"
+        className="tabular-nums text-ink-strong"
         style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}
       >
         {rating.toFixed(1)}
@@ -2468,12 +2468,12 @@ function PresetComponentsDrawer({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
         side="right"
-        className="flex h-full w-full flex-col gap-0 border-l border-white/[0.08] bg-[#0a0a0a] p-0 sm:max-w-[460px]"
+        className="flex h-full w-full flex-col gap-0 border-l border-edge-subtle bg-[#0a0a0a] p-0 sm:max-w-[460px]"
       >
-        <SheetHeader className="border-b border-white/[0.06] bg-[#0d0d0d] p-5">
+        <SheetHeader className="border-b border-edge-subtle bg-[#0d0d0d] p-5">
           <div className="flex items-center gap-2">
             <span
-              className="rounded-full px-2 py-0.5 uppercase text-white"
+              className="rounded-full px-2 py-0.5 uppercase text-ink-strong"
               style={{
                 backgroundColor: preset.accent,
                 fontFamily: "var(--font-family-inter)",
@@ -2497,7 +2497,7 @@ function PresetComponentsDrawer({
             </span>
           </div>
           <SheetTitle
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "24px",
@@ -2521,7 +2521,7 @@ function PresetComponentsDrawer({
             {items.map((item, idx) => (
               <article
                 key={item.opt.id}
-                className="flex gap-3 rounded-[14px] border border-white/[0.06] bg-[#0f0f12] p-3 transition-colors hover:border-white/[0.16]"
+                className="flex gap-3 rounded-[14px] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
               >
                 <div
                   className="h-[68px] w-[68px] shrink-0 overflow-hidden rounded-[10px] deal-image-bg"
@@ -2556,7 +2556,7 @@ function PresetComponentsDrawer({
                     </p>
                   </div>
                   <p
-                    className="text-white"
+                    className="text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "13px",
@@ -2572,7 +2572,7 @@ function PresetComponentsDrawer({
                       {item.opt.highlights.slice(0, 3).map((h) => (
                         <span
                           key={h}
-                          className="rounded-full border border-white/[0.08] bg-white/[0.02] px-1.5 py-0.5 text-zinc-300"
+                          className="rounded-full border border-edge-subtle bg-white/[0.02] px-1.5 py-0.5 text-zinc-300"
                           style={{
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "9.5px",
@@ -2601,7 +2601,7 @@ function PresetComponentsDrawer({
           </div>
         </ScrollArea>
 
-        <div className="border-t border-white/[0.06] bg-[#0d0d0d] p-5">
+        <div className="border-t border-edge-subtle bg-[#0d0d0d] p-5">
           <div className="mb-3 flex items-baseline justify-between">
             <span
               className="uppercase text-zinc-500"
@@ -2615,7 +2615,7 @@ function PresetComponentsDrawer({
               Soma dos componentes
             </span>
             <span
-              className="tabular-nums text-white"
+              className="tabular-nums text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "20px",
@@ -2654,7 +2654,7 @@ function PresetComponentsDrawer({
                     onBuy();
                     onOpenChange(false);
                   }}
-                  className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                  className="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm text-ink-strong transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
                   style={{
                     background: "var(--gradient-buy)",
                     fontFamily: "var(--font-family-inter)",
@@ -2674,7 +2674,7 @@ function PresetComponentsDrawer({
                     onApply();
                     onOpenChange(false);
                   }}
-                  className="h-11 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200 md:h-9"
+                  className="h-11 w-full cursor-pointer rounded-[10px] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "11.5px",
@@ -2722,7 +2722,7 @@ function PresetCard({
       <article
         className={cn(
           "group relative flex flex-col overflow-hidden rounded-[20px] border bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1",
-          isRecommended ? "border-primary/55" : "border-white/[0.08] hover:border-white/[0.22]",
+          isRecommended ? "border-primary/55" : "border-edge-subtle hover:border-edge-strong",
         )}
         style={
           isRecommended
@@ -2760,7 +2760,7 @@ function PresetCard({
             <div className="flex flex-col gap-1.5">
               {isRecommended && (
                 <span
-                  className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+                  className="inline-flex w-fit items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "9.5px",
@@ -2774,7 +2774,7 @@ function PresetCard({
               )}
               {preset.badge && !isRecommended && (
                 <span
-                  className="inline-flex w-fit items-center rounded-full border border-white/15 bg-black/70 px-2.5 py-1 text-white backdrop-blur"
+                  className="inline-flex w-fit items-center rounded-full border border-edge bg-black/70 px-2.5 py-1 text-ink-strong backdrop-blur"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "9.5px",
@@ -2788,7 +2788,7 @@ function PresetCard({
             </div>
             {discount > 0 && (
               <span
-                className="inline-flex shrink-0 items-center text-white tabular-nums"
+                className="inline-flex shrink-0 items-center text-ink-strong tabular-nums"
                 style={{
                   background: "var(--gradient-discount)",
                   padding: "6px 10px",
@@ -2820,7 +2820,7 @@ function PresetCard({
               {preset.tagline}
             </p>
             <h3
-              className="mb-2 text-white"
+              className="mb-2 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "clamp(22px, 2vw, 28px)",
@@ -2841,7 +2841,7 @@ function PresetCard({
             {topSpecs.map((s) => (
               <li
                 key={s.label}
-                className="flex items-center gap-2.5 rounded-[10px] border border-white/[0.05] bg-white/[0.015] px-2.5 py-2"
+                className="flex items-center gap-2.5 rounded-[10px] border border-edge-subtle bg-white/[0.015] px-2.5 py-2"
               >
                 <span
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white/[0.04] text-primary"
@@ -2862,7 +2862,7 @@ function PresetCard({
                     {s.label}
                   </p>
                   <p
-                    className="truncate text-white"
+                    className="truncate text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "12px",
@@ -2879,7 +2879,7 @@ function PresetCard({
           </ul>
 
           <div
-            className="mt-3 rounded-card-sm border border-white/[0.06] p-3"
+            className="mt-3 rounded-card-sm border border-edge-subtle p-3"
             style={{
               background: `linear-gradient(135deg, ${preset.accent}14 0%, rgba(255,255,255,0.015) 100%)`,
             }}
@@ -2919,7 +2919,7 @@ function PresetCard({
                   </span>
                   <div className="flex items-baseline gap-1.5 shrink-0">
                     <span
-                      className="tabular-nums text-white"
+                      className="tabular-nums text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
                         fontSize: "13.5px",
@@ -2951,10 +2951,10 @@ function PresetCard({
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
-            className="mt-3 flex min-h-[44px] w-full cursor-pointer items-center justify-between gap-2 rounded-[10px] border border-white/[0.08] bg-white/[0.015] px-3 py-2.5 text-left transition-all hover:border-primary/40 hover:bg-primary/[0.04] md:min-h-0"
+            className="mt-3 flex min-h-[44px] w-full cursor-pointer items-center justify-between gap-2 rounded-[10px] border border-edge-subtle bg-white/[0.015] px-3 py-2.5 text-left transition-all hover:border-primary/40 hover:bg-primary/[0.04] md:min-h-0"
           >
             <span
-              className="flex items-center gap-2 text-white"
+              className="flex items-center gap-2 text-ink-strong"
               style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
             >
               <Layers size={13} className="text-primary" />
@@ -2963,7 +2963,7 @@ function PresetCard({
             <ArrowRight size={13} className="text-zinc-500" />
           </button>
 
-          <div className="mt-4 border-t border-white/[0.06] pt-4">
+          <div className="mt-4 border-t border-edge-subtle pt-4">
             <div className="mb-1 flex items-center gap-2">
               {preset.oldPrice && (
                 <span
@@ -3013,11 +3013,11 @@ function PresetCard({
                   className="mt-1 text-zinc-400"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
                 >
-                  <span className="tabular-nums text-white" style={{ fontWeight: 600 }}>
+                  <span className="tabular-nums text-ink-strong" style={{ fontWeight: 600 }}>
                     {formatBRL(preset.price)}
                   </span>{" "}
                   em {preset.installments.count}x de{" "}
-                  <span className="tabular-nums text-white" style={{ fontWeight: 600 }}>
+                  <span className="tabular-nums text-ink-strong" style={{ fontWeight: 600 }}>
                     {formatBRL(preset.installments.value)}
                   </span>{" "}
                   sem juros
@@ -3027,7 +3027,7 @@ function PresetCard({
               <>
                 <div className="flex items-baseline gap-2">
                   <p
-                    className="text-white tabular-nums"
+                    className="text-ink-strong tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "28px",
@@ -3050,7 +3050,7 @@ function PresetCard({
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "11.5px" }}
                 >
                   ou {preset.installments.count}x de{" "}
-                  <span className="tabular-nums text-white" style={{ fontWeight: 600 }}>
+                  <span className="tabular-nums text-ink-strong" style={{ fontWeight: 600 }}>
                     {formatBRL(preset.installments.value)}
                   </span>{" "}
                   sem juros
@@ -3071,7 +3071,7 @@ function PresetCard({
             <button
               type="button"
               onClick={onBuy}
-              className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm text-white transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
+              className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm text-ink-strong transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99]"
               style={{
                 background: "var(--gradient-buy)",
                 fontFamily: "var(--font-family-inter)",
@@ -3086,7 +3086,7 @@ function PresetCard({
             <button
               type="button"
               onClick={onApply}
-              className="mt-2 h-11 w-full cursor-pointer rounded-[10px] border border-white/[0.1] bg-transparent text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-200 md:h-9"
+              className="mt-2 h-11 w-full cursor-pointer rounded-[10px] border border-edge bg-transparent text-zinc-400 transition-colors hover:border-edge-strong hover:text-zinc-200 md:h-9"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "11.5px",
@@ -3174,7 +3174,7 @@ function PresetMiniCard({
 
             {discount > 0 && (
               <span
-                className="absolute left-3 top-3 z-20 inline-flex items-center text-white tabular-nums"
+                className="absolute left-3 top-3 z-20 inline-flex items-center text-ink-strong tabular-nums"
                 style={{
                   background: "var(--gradient-discount)",
                   padding: "6px 12px",
@@ -3192,7 +3192,7 @@ function PresetMiniCard({
 
             {isRecommended && (
               <span
-                className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-white"
+                className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "9px",
@@ -3243,7 +3243,7 @@ function PresetMiniCard({
               {preset.tagline}
             </p>
             <h3
-              className="line-clamp-1 text-white"
+              className="line-clamp-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "15px",
@@ -3300,7 +3300,7 @@ function PresetMiniCard({
               ) : (
                 <>
                   <p
-                    className="leading-none text-white tabular-nums"
+                    className="leading-none text-ink-strong tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "18px",
@@ -3390,7 +3390,7 @@ function PresetGallery({
         <button
           type="button"
           onClick={onBack}
-          className="mb-8 flex h-11 items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white cursor-pointer md:h-9"
+          className="mb-8 flex h-11 items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer md:h-9"
           style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600 }}
         >
           <ArrowLeft size={14} /> Voltar
@@ -3409,7 +3409,7 @@ function PresetGallery({
             // O setup escolhido pra você é
           </p>
           <h2
-            className="mb-3 text-white"
+            className="mb-3 text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(36px, 5.5vw, 64px)",
@@ -3453,7 +3453,7 @@ function PresetGallery({
                 // Mais ou menos potência
               </p>
               <h3
-                className="text-white"
+                className="text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(20px, 2.4vw, 26px)",
@@ -3493,7 +3493,7 @@ function PresetGallery({
                 // Pra outros perfis
               </p>
               <h3
-                className="text-white"
+                className="text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(20px, 2.4vw, 26px)",
@@ -3526,7 +3526,7 @@ function PresetGallery({
       <button
         type="button"
         onClick={onBack}
-        className="mb-8 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white cursor-pointer"
+        className="mb-8 flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer"
         style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600 }}
       >
         <ArrowLeft size={14} /> Voltar
@@ -3544,7 +3544,7 @@ function PresetGallery({
           // Builds prontas
         </p>
         <h2
-          className="mb-3 text-white"
+          className="mb-3 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-figtree)",
             fontSize: "clamp(28px, 4vw, 42px)",
@@ -3580,8 +3580,8 @@ function PresetGallery({
                 className={cn(
                   "group inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-full border px-3.5 py-2 transition-all md:min-h-0",
                   active
-                    ? "border-primary/60 bg-primary/[0.1] text-white"
-                    : "border-white/[0.08] bg-white/[0.015] text-zinc-300 hover:border-white/25 hover:bg-white/[0.05] hover:text-white",
+                    ? "border-primary/60 bg-primary/[0.1] text-ink-strong"
+                    : "border-edge-subtle bg-white/[0.015] text-zinc-300 hover:border-edge-strong hover:bg-white/[0.05] hover:text-ink-strong",
                 )}
                 style={{
                   fontFamily: "var(--font-family-inter)",
@@ -3615,7 +3615,7 @@ function PresetGallery({
           <ArrowUpDown size={13} className="text-zinc-500" />
           <Select value={sort} onValueChange={(v) => setSort(v as PresetSort)}>
             <SelectTrigger
-              className="h-11 w-[180px] rounded-full border-white/[0.1] bg-white/[0.015] text-zinc-200 hover:border-white/25 md:h-9"
+              className="h-11 w-[180px] rounded-full border-edge bg-white/[0.015] text-zinc-200 hover:border-edge-strong md:h-9"
               style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600 }}
             >
               <SelectValue placeholder="Ordenar" />
@@ -3631,7 +3631,7 @@ function PresetGallery({
 
       {visiblePresets.length === 0 ? (
         <div
-          className="mx-auto max-w-[420px] rounded-[16px] border border-white/[0.08] bg-[#0f0f12] p-8 text-center"
+          className="mx-auto max-w-[420px] rounded-[16px] border border-edge-subtle bg-[#0f0f12] p-8 text-center"
         >
           <p
             className="text-zinc-300"
@@ -3652,7 +3652,7 @@ function PresetGallery({
           <button
             type="button"
             onClick={() => setFilter("all")}
-            className="mt-4 inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-primary px-4 text-white transition-all hover:brightness-110"
+            className="mt-4 inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-primary px-4 text-ink-strong transition-all hover:brightness-110"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
@@ -3680,14 +3680,14 @@ function PresetGallery({
 
 function TopBar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-edge-subtle bg-[#080808]/95 backdrop-blur-xl">
       <div className="mx-auto flex h-[64px] max-w-[1520px] items-center justify-between gap-3 px-5 md:px-8">
         <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-80" aria-label="PCYES home">
           <img src={LOGO_URL} alt="PCYES" className="h-[24px] w-auto" />
         </Link>
         <Link
           to="/"
-          className="flex h-9 items-center gap-1.5 rounded-full border border-white/[0.1] bg-white/[0.02] px-4 text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
+          className="flex h-9 items-center gap-1.5 rounded-full border border-edge bg-white/[0.02] px-4 text-zinc-300 transition-all hover:border-edge-strong hover:bg-white/[0.06] hover:text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "12.5px",
@@ -3720,7 +3720,7 @@ function PathCard({
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex flex-col overflow-hidden rounded-[24px] border border-white/[0.16] bg-[#0f0f12] p-7 text-left transition-all duration-300 md:border-white/[0.08] hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
+      className="group relative flex flex-col overflow-hidden rounded-[24px] border border-edge bg-[#0f0f12] p-7 text-left transition-all duration-300 md:border-edge-subtle hover:border-primary/45 hover:bg-[#15151a] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.35] transition-opacity duration-500 group-hover:opacity-100 md:opacity-0"
@@ -3728,7 +3728,7 @@ function PathCard({
       />
       {badge && (
         <span
-          className="absolute right-5 top-5 rounded-full bg-primary px-2 py-0.5 text-white"
+          className="absolute right-5 top-5 rounded-full bg-primary px-2 py-0.5 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "9.5px",
@@ -3745,7 +3745,7 @@ function PathCard({
           {icon}
         </div>
         <h3
-          className="mb-2 text-white"
+          className="mb-2 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-figtree)",
             fontSize: "20px",
@@ -3777,7 +3777,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
   return (
     <div className="relative">
       <div
-        className="relative overflow-hidden border-b border-white/[0.05]"
+        className="relative overflow-hidden border-b border-edge-subtle"
         style={{ background: "#0a0a0a" }}
       >
         <div
@@ -3830,7 +3830,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(30px, 6vw, 68px)",
@@ -3857,7 +3857,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mx-auto mt-6 max-w-[560px] text-white/55"
+            className="mx-auto mt-6 max-w-[560px] text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "16px",
@@ -4084,7 +4084,7 @@ function ReviewScreen({
       <button
         type="button"
         onClick={onEdit}
-        className="mb-7 flex items-center gap-2 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+        className="mb-7 flex items-center gap-2 text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer"
         style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
       >
         <ArrowLeft size={14} /> Editar build
@@ -4109,7 +4109,7 @@ function ReviewScreen({
             placeholder="Minha build PCYES"
             aria-label="Nome da build"
             maxLength={50}
-            className="border-none bg-transparent text-center text-white outline-none focus:ring-0"
+            className="border-none bg-transparent text-center text-ink-strong outline-none focus:ring-0"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(28px, 4vw, 40px)",
@@ -4153,7 +4153,7 @@ function ReviewScreen({
         <div className="space-y-5">
           <section>
             <h3
-              className="mb-4 text-white"
+              className="mb-4 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "15px",
@@ -4166,7 +4166,7 @@ function ReviewScreen({
               {categoriesWithSelected.map((c) => (
                 <div
                   key={c.id}
-                  className="flex items-center gap-3 rounded-[14px] border border-white/[0.08] bg-[#0f0f12] p-3 transition-colors hover:border-white/[0.18]"
+                  className="flex items-center gap-3 rounded-[14px] border border-edge-subtle bg-[#0f0f12] p-3 transition-colors hover:border-edge"
                 >
                   <div className="h-14 w-14 shrink-0 overflow-hidden rounded-md bg-[#1a1a1f]">
                     {c.selectedOption?.image ? (
@@ -4194,7 +4194,7 @@ function ReviewScreen({
                       {c.title}
                     </p>
                     <p
-                      className="mt-0.5 truncate text-white"
+                      className="mt-0.5 truncate text-ink-strong"
                       style={{
                         fontFamily: "var(--font-family-figtree)",
                         fontSize: "12.5px",
@@ -4220,9 +4220,9 @@ function ReviewScreen({
             </div>
           </section>
 
-          <section className="rounded-card-md border border-white/[0.08] bg-[#0f0f12] p-5">
+          <section className="rounded-card-md border border-edge-subtle bg-[#0f0f12] p-5">
             <h3
-              className="mb-4 text-white"
+              className="mb-4 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "15px",
@@ -4256,7 +4256,7 @@ function ReviewScreen({
                     </div>
                     <div className="min-w-0 flex-1">
                       <p
-                        className="text-white"
+                        className="text-ink-strong"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
                           fontSize: "13px",
@@ -4303,8 +4303,8 @@ function ReviewScreen({
         </div>
 
         <div className="self-start lg:sticky lg:top-[100px]">
-          <div className="overflow-hidden rounded-card-md border border-white/[0.08] bg-[#0f0f12]">
-            <div className="border-b border-white/[0.06] p-5">
+          <div className="overflow-hidden rounded-card-md border border-edge-subtle bg-[#0f0f12]">
+            <div className="border-b border-edge-subtle p-5">
               <label
                 htmlFor="cep-input"
                 className="mb-2 block uppercase text-zinc-400"
@@ -4327,13 +4327,13 @@ function ReviewScreen({
                   inputMode="numeric"
                   aria-label="CEP para cálculo de frete"
                   maxLength={9}
-                  className="flex-1 rounded-[10px] border border-white/[0.1] bg-[#15151a] px-3 py-2.5 text-white placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
+                  className="flex-1 rounded-[10px] border border-edge bg-[#15151a] px-3 py-2.5 text-ink-strong placeholder:text-zinc-500 outline-none transition-colors focus:border-primary/45"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
                 />
                 <button
                   type="button"
                   onClick={onCalcFreight}
-                  className="rounded-[10px] border border-white/[0.12] bg-[#15151a] px-4 text-zinc-200 transition-all hover:border-white/30 hover:bg-[#1c1c20] cursor-pointer"
+                  className="rounded-[10px] border border-edge bg-[#15151a] px-4 text-zinc-200 transition-all hover:border-edge-strong hover:bg-[#1c1c20] cursor-pointer"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "12.5px",
@@ -4349,11 +4349,11 @@ function ReviewScreen({
                     "mt-3 rounded-[10px] border p-3",
                     freight.free
                       ? "border-primary/30 bg-primary/[0.06]"
-                      : "border-white/[0.1] bg-[#15151a]",
+                      : "border-edge bg-[#15151a]",
                   )}
                 >
                   <p
-                    className="text-white"
+                    className="text-ink-strong"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "13px",
@@ -4390,9 +4390,9 @@ function ReviewScreen({
                   </span>
                 </div>
               )}
-              <div className="flex items-baseline justify-between border-t border-white/[0.06] pt-4">
+              <div className="flex items-baseline justify-between border-t border-edge-subtle pt-4">
                 <span
-                  className="text-white"
+                  className="text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
                     fontSize: "14px",
@@ -4402,7 +4402,7 @@ function ReviewScreen({
                   Total
                 </span>
                 <span
-                  className="text-white tabular-nums"
+                  className="text-ink-strong tabular-nums"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
                     fontSize: "28px",
@@ -4423,7 +4423,7 @@ function ReviewScreen({
               <button
                 type="button"
                 onClick={onBuy}
-                className="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm bg-primary text-white transition-all hover:brightness-110"
+                className="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-card-sm bg-primary text-ink-strong transition-all hover:brightness-110"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "13.5px",
@@ -4439,7 +4439,7 @@ function ReviewScreen({
                 <button
                   type="button"
                   onClick={onSave}
-                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-white/[0.12] bg-white/[0.02] text-zinc-200 transition-all hover:border-white/30 hover:bg-white/[0.05]"
+                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "12px",
@@ -4451,7 +4451,7 @@ function ReviewScreen({
                 <button
                   type="button"
                   onClick={onShare}
-                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-white/[0.12] bg-white/[0.02] text-zinc-200 transition-all hover:border-white/30 hover:bg-white/[0.05]"
+                  className="flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-edge bg-white/[0.02] text-zinc-200 transition-all hover:border-edge-strong hover:bg-white/[0.05]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "12px",
@@ -4486,13 +4486,13 @@ function HeroBuilderBanner({
   onBack: () => void;
 }) {
   return (
-    <div className="border-b border-white/[0.05]">
+    <div className="border-b border-edge-subtle">
       <div className="mx-auto flex max-w-[1520px] items-end justify-between gap-6 px-6 py-7 md:px-8 md:py-9">
         <div className="min-w-0">
           <button
             type="button"
             onClick={onBack}
-            className="mb-3 inline-flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-white cursor-pointer"
+            className="mb-3 inline-flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-ink-strong cursor-pointer"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
@@ -4513,7 +4513,7 @@ function HeroBuilderBanner({
             // MONTE SEU PC
           </p>
           <h1
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(26px, 3.2vw, 38px)",
@@ -4539,7 +4539,7 @@ function HeroBuilderBanner({
               Progresso
             </p>
             <p
-              className="mt-0.5 text-white tabular-nums"
+              className="mt-0.5 text-ink-strong tabular-nums"
               style={{
                 fontFamily: "var(--font-family-figtree)",
                 fontSize: "20px",
@@ -4572,7 +4572,7 @@ function HorizontalStepper({
   const currentIdx = categories.findIndex((c) => c.id === currentId);
   return (
     <div
-      className="border-b border-white/[0.05] backdrop-blur-xl"
+      className="border-b border-edge-subtle backdrop-blur-xl"
       style={{
         background:
           "linear-gradient(180deg, rgba(15,15,18,0.85) 0%, rgba(10,10,12,0.9) 100%)",
@@ -4609,7 +4609,7 @@ function HorizontalStepper({
                   className={cn(
                     "relative flex h-[40px] w-[40px] items-center justify-center rounded-full transition-all",
                     active
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-ink-strong"
                       : done
                         ? "bg-[#0d1f14] text-emerald-400"
                         : "bg-[#16161a] text-zinc-500 group-hover:bg-[#1c1c20] group-hover:text-zinc-300",
@@ -4676,7 +4676,7 @@ function MobileStepNav({
   const progress = categories.length > 0 ? (completedIds.length / categories.length) * 100 : 0;
 
   return (
-    <div className="border-b border-white/[0.05] backdrop-blur-xl lg:hidden">
+    <div className="border-b border-edge-subtle backdrop-blur-xl lg:hidden">
       <Sheet open={open} onOpenChange={onOpenChange}>
         <SheetTrigger asChild>
           <button
@@ -4688,7 +4688,7 @@ function MobileStepNav({
             }}
             aria-label="Abrir etapas da montagem"
           >
-            <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-primary text-white [&>svg]:size-[16px]">
+            <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-primary text-ink-strong [&>svg]:size-[16px]">
               {current?.icon}
             </div>
             <div className="min-w-0 flex-1">
@@ -4704,7 +4704,7 @@ function MobileStepNav({
                 Etapa {currentIdx + 1} de {categories.length}
               </p>
               <p
-                className="truncate text-white"
+                className="truncate text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "15px",
@@ -4742,11 +4742,11 @@ function MobileStepNav({
         </div>
         <SheetContent
           side="bottom"
-          className="max-h-[80vh] gap-0 overflow-y-auto rounded-t-2xl border-white/[0.08] bg-[#0d0d0d] p-0"
+          className="max-h-[80vh] gap-0 overflow-y-auto rounded-t-2xl border-edge-subtle bg-[#0d0d0d] p-0"
         >
-          <SheetHeader className="border-b border-white/[0.06] p-5">
+          <SheetHeader className="border-b border-edge-subtle p-5">
             <SheetTitle
-              className="text-white"
+              className="text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "16px",
@@ -4773,14 +4773,14 @@ function MobileStepNav({
                     "flex min-h-[44px] w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors",
                     active
                       ? "border-primary/50 bg-primary/[0.12]"
-                      : "border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05]",
+                      : "border-edge-subtle bg-white/[0.02] hover:bg-white/[0.05]",
                   )}
                 >
                   <div
                     className={cn(
                       "flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full transition-colors [&>svg]:size-[15px]",
                       active
-                        ? "bg-primary text-white"
+                        ? "bg-primary text-ink-strong"
                         : done
                           ? "bg-[#0d1f14] text-emerald-400"
                           : "bg-[#16161a] text-zinc-500",
@@ -4792,7 +4792,7 @@ function MobileStepNav({
                     <p
                       className={cn(
                         "truncate",
-                        active ? "text-white" : done ? "text-emerald-300" : "text-zinc-200",
+                        active ? "text-ink-strong" : done ? "text-emerald-300" : "text-zinc-200",
                       )}
                       style={{
                         fontFamily: "var(--font-family-inter)",
@@ -4867,7 +4867,7 @@ function ProductTile({
     disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer",
     selected
       ? "border-primary bg-gradient-to-br from-primary/[0.08] to-primary/[0.02]"
-      : "border-white/[0.08] bg-gradient-to-br from-[#15151a] to-[#0f0f12] hover:border-white/[0.22] hover:from-[#1a1a20] hover:to-[#15151a]",
+      : "border-edge-subtle bg-gradient-to-br from-[#15151a] to-[#0f0f12] hover:border-edge-strong hover:from-[#1a1a20] hover:to-[#15151a]",
   );
   const shadowStyle = selected
     ? {
@@ -4896,7 +4896,7 @@ function ProductTile({
         <div className="relative aspect-square w-[148px] shrink-0 overflow-hidden deal-image-bg">
           {option.standard && (
             <span
-              className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-white"
+              className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "8.5px",
@@ -4928,7 +4928,7 @@ function ProductTile({
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-2 p-4">
           <p
-            className="line-clamp-2 text-white"
+            className="line-clamp-2 text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "14px",
@@ -4944,7 +4944,7 @@ function ProductTile({
               {option.highlights.slice(0, 4).map((h) => (
                 <span
                   key={h}
-                  className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                  className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "10px",
@@ -4959,7 +4959,7 @@ function ProductTile({
           <div className="mt-auto flex items-end justify-between pt-1">
             <div>
               <p
-                className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
+                className={cn("tabular-nums", selected ? "text-primary" : "text-ink-strong")}
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "20px",
@@ -4978,11 +4978,11 @@ function ProductTile({
               className={cn(
                 "flex h-7 w-7 items-center justify-center border-2 transition-all",
                 multiSelect ? "rounded-md" : "rounded-full",
-                selected ? "border-primary bg-primary" : "border-white/25 group-hover:border-primary/60",
+                selected ? "border-primary bg-primary" : "border-edge-strong group-hover:border-primary/60",
               )}
               aria-hidden="true"
             >
-              {selected && multiSelect && <Check size={14} className="text-white" strokeWidth={3} />}
+              {selected && multiSelect && <Check size={14} className="text-ink-strong" strokeWidth={3} />}
               {selected && !multiSelect && <span className="h-2.5 w-2.5 rounded-full bg-white" />}
             </div>
           </div>
@@ -5006,7 +5006,7 @@ function ProductTile({
     >
       {option.standard && (
         <span
-          className="absolute left-2.5 top-2.5 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 text-white"
+          className="absolute left-2.5 top-2.5 z-10 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-inter)",
             fontSize: "9px",
@@ -5022,11 +5022,11 @@ function ProductTile({
         className={cn(
           "absolute right-2.5 top-2.5 z-10 flex h-[22px] w-[22px] items-center justify-center border-2 transition-all",
           multiSelect ? "rounded-md" : "rounded-full",
-          selected ? "border-primary bg-primary" : "border-white/30 bg-black/30 backdrop-blur-sm group-hover:border-primary/60",
+          selected ? "border-primary bg-primary" : "border-edge-strong bg-black/30 backdrop-blur-sm group-hover:border-primary/60",
         )}
         aria-hidden="true"
       >
-        {selected && multiSelect && <Check size={11} className="text-white" strokeWidth={3} />}
+        {selected && multiSelect && <Check size={11} className="text-ink-strong" strokeWidth={3} />}
         {selected && !multiSelect && <span className="h-2 w-2 rounded-full bg-white" />}
       </div>
       <div className="relative aspect-[4/3] w-full overflow-hidden deal-image-bg">
@@ -5040,9 +5040,9 @@ function ProductTile({
           <div className="flex h-full w-full items-center justify-center text-zinc-500">{category.icon}</div>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-1.5 border-t border-white/[0.05] p-3">
+      <div className="flex flex-1 flex-col gap-1.5 border-t border-edge-subtle p-3">
         <p
-          className="line-clamp-2 text-white"
+          className="line-clamp-2 text-ink-strong"
           style={{
             fontFamily: "var(--font-family-figtree)",
             fontSize: "12.5px",
@@ -5059,7 +5059,7 @@ function ProductTile({
             {option.highlights.slice(0, 2).map((h) => (
               <span
                 key={h}
-                className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "9.5px",
@@ -5073,7 +5073,7 @@ function ProductTile({
         )}
         <div className="mt-auto flex items-baseline justify-between pt-1">
           <span
-            className={cn("tabular-nums", selected ? "text-primary" : "text-white")}
+            className={cn("tabular-nums", selected ? "text-primary" : "text-ink-strong")}
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "15px",
@@ -5260,13 +5260,13 @@ function SelectedItemCard({
 
   return (
     <div
-      className="overflow-hidden rounded-card-md border border-white/[0.08] bg-gradient-to-b from-[#15151a] to-[#0d0d0d]"
+      className="overflow-hidden rounded-card-md border border-edge-subtle bg-gradient-to-b from-[#15151a] to-[#0d0d0d]"
       style={{
         boxShadow:
           "0 16px 40px -16px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)",
       }}
     >
-      <div className="border-b border-white/[0.06] bg-gradient-to-b from-primary/[0.06] to-transparent px-5 pt-4 pb-3">
+      <div className="border-b border-edge-subtle bg-gradient-to-b from-primary/[0.06] to-transparent px-5 pt-4 pb-3">
         <div className="flex items-center justify-between gap-2">
           <p
             className="uppercase text-primary"
@@ -5321,7 +5321,7 @@ function SelectedItemCard({
             )}
           </div>
           <p
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "15px",
@@ -5337,7 +5337,7 @@ function SelectedItemCard({
               {options[0].highlights.slice(0, 3).map((h) => (
                 <span
                   key={h}
-                  className="rounded border border-white/[0.08] bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
+                  className="rounded border border-edge-subtle bg-[#1a1a1f] px-1.5 py-0.5 text-zinc-300"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "10px",
@@ -5350,7 +5350,7 @@ function SelectedItemCard({
             </div>
           )}
           <p
-            className="mt-3 text-white tabular-nums"
+            className="mt-3 text-ink-strong tabular-nums"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "22px",
@@ -5399,7 +5399,7 @@ function SelectedItemCard({
                   Slot {String(idx + 1).padStart(2, "0")}
                 </p>
                 <p
-                  className="truncate text-white"
+                  className="truncate text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
                     fontSize: "12px",
@@ -5434,7 +5434,7 @@ function SelectedItemCard({
           {Array.from({ length: emptySlots }).map((_, idx) => (
             <div
               key={`empty-${idx}`}
-              className="flex items-center justify-center rounded-card-sm border border-white/[0.1] bg-white/[0.01] p-3"
+              className="flex items-center justify-center rounded-card-sm border border-edge bg-white/[0.01] p-3"
               style={{ borderStyle: "dashed", minHeight: "60px" }}
             >
               <p
@@ -5452,7 +5452,7 @@ function SelectedItemCard({
           ))}
 
           {options.length === 0 && emptySlots === 0 && (
-            <div className="rounded-card-sm border border-white/[0.08] bg-white/[0.01] p-6 text-center">
+            <div className="rounded-card-sm border border-edge-subtle bg-white/[0.01] p-6 text-center">
               <p
                 className="text-zinc-500"
                 style={{
@@ -5466,7 +5466,7 @@ function SelectedItemCard({
           )}
 
           {options.length > 0 && (
-            <div className="mt-3 flex items-baseline justify-between rounded-[10px] border border-white/[0.06] bg-white/[0.02] px-3 py-2">
+            <div className="mt-3 flex items-baseline justify-between rounded-[10px] border border-edge-subtle bg-white/[0.02] px-3 py-2">
               <span
                 className="uppercase text-zinc-400"
                 style={{
@@ -5479,7 +5479,7 @@ function SelectedItemCard({
                 Total {category?.title}
               </span>
               <span
-                className="text-white tabular-nums"
+                className="text-ink-strong tabular-nums"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "16px",
@@ -5505,13 +5505,13 @@ function SelectedItemCard({
         </div>
       )}
 
-      <div className="border-t border-white/[0.06] bg-[#0a0a0a] p-4">
+      <div className="border-t border-edge-subtle bg-[#0a0a0a] p-4">
         <div className="flex gap-2">
           <button
             type="button"
             onClick={onPrev}
             disabled={isFirst}
-            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-white/[0.1] bg-white/[0.02] text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white disabled:cursor-not-allowed disabled:opacity-25"
+            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-edge bg-white/[0.02] text-zinc-300 transition-all hover:border-edge-strong hover:bg-white/[0.06] hover:text-ink-strong disabled:cursor-not-allowed disabled:opacity-25"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600 }}
           >
             <ArrowLeft size={12} /> Voltar
@@ -5520,7 +5520,7 @@ function SelectedItemCard({
             type="button"
             onClick={onNext}
             disabled={nextDisabled}
-            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] bg-primary text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+            className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-[10px] bg-primary text-ink-strong transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
@@ -5551,16 +5551,16 @@ function ConfiguracaoSelecionadaCard({
   const filled = categories.filter((c) => c.selectedOption);
   return (
     <div
-      className="overflow-hidden rounded-card-md border border-white/[0.08] bg-gradient-to-b from-[#13131a] to-[#0d0d0d]"
+      className="overflow-hidden rounded-card-md border border-edge-subtle bg-gradient-to-b from-[#13131a] to-[#0d0d0d]"
       style={{
         boxShadow:
           "0 16px 40px -16px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)",
       }}
     >
-      <div className="border-b border-white/[0.06] px-5 pt-4 pb-3">
+      <div className="border-b border-edge-subtle px-5 pt-4 pb-3">
         <div className="flex items-baseline justify-between">
           <p
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "14px",
@@ -5626,7 +5626,7 @@ function ConfiguracaoSelecionadaCard({
                   {c.title}
                 </p>
                 <p
-                  className="mt-0.5 truncate text-white"
+                  className="mt-0.5 truncate text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-figtree)",
                     fontSize: "12px",
@@ -5648,7 +5648,7 @@ function ConfiguracaoSelecionadaCard({
           </div>
         </ScrollArea>
       )}
-      <div className="border-t border-white/[0.06] bg-[#0a0a0a] px-5 py-3.5">
+      <div className="border-t border-edge-subtle bg-[#0a0a0a] px-5 py-3.5">
         <div className="flex items-baseline justify-between">
           <span
             className="uppercase text-zinc-500"
@@ -5662,7 +5662,7 @@ function ConfiguracaoSelecionadaCard({
             Total parcial
           </span>
           <span
-            className="text-white tabular-nums"
+            className="text-ink-strong tabular-nums"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "20px",
@@ -6212,7 +6212,7 @@ export function MonteSeuPcPage() {
                             Etapa {currentIdx + 1} / {categories.length}
                           </p>
                           <h2
-                            className="text-white"
+                            className="text-ink-strong"
                             style={{
                               fontFamily: "var(--font-family-figtree)",
                               fontSize: "clamp(20px, 5vw, 26px)",
@@ -6267,7 +6267,7 @@ export function MonteSeuPcPage() {
                             onChange={(e) => setStepSearch(e.target.value)}
                             placeholder="Busque por nome ou código"
                             aria-label={`Buscar em ${currentCategory.title}`}
-                            className="msp-field h-11 w-full rounded-card-sm border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] sm:h-auto"
+                            className="msp-field h-11 w-full rounded-card-sm border border-edge bg-[#0f0f12] px-4 py-3 text-ink-strong placeholder:text-zinc-500 outline-none transition-all focus:border-primary/45 focus:bg-[#15151a] sm:h-auto"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                           />
                           {stepSearch && (
@@ -6275,7 +6275,7 @@ export function MonteSeuPcPage() {
                               type="button"
                               onClick={() => setStepSearch("")}
                               aria-label="Limpar busca"
-                              className="absolute right-2 top-[28px] flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/10 hover:text-white sm:right-3 sm:top-[34px] sm:h-6 sm:w-6 md:h-6 md:w-6"
+                              className="absolute right-2 top-[28px] flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/10 hover:text-ink-strong sm:right-3 sm:top-[34px] sm:h-6 sm:w-6 md:h-6 md:w-6"
                             >
                               <X size={12} />
                             </button>
@@ -6297,25 +6297,25 @@ export function MonteSeuPcPage() {
                           <Select value={sortMode} onValueChange={(v) => setSortMode(v as SortMode)}>
                             <SelectTrigger
                               id="step-sort"
-                              className="w-full !h-auto rounded-card-sm border border-white/[0.1] bg-[#0f0f12] px-4 py-3 text-white transition-all hover:bg-[#15151a] focus:border-primary/45 focus:bg-[#15151a] data-[state=open]:border-primary/45 data-[state=open]:bg-[#15151a] [&_svg]:text-zinc-500"
+                              className="w-full !h-auto rounded-card-sm border border-edge bg-[#0f0f12] px-4 py-3 text-ink-strong transition-all hover:bg-[#15151a] focus:border-primary/45 focus:bg-[#15151a] data-[state=open]:border-primary/45 data-[state=open]:bg-[#15151a] [&_svg]:text-zinc-500"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                             >
                               <SelectValue placeholder="Selecionar ordenação" />
                             </SelectTrigger>
                             <SelectContent
-                              className="rounded-card-sm border border-white/[0.1] bg-[#0f0f12] text-white shadow-2xl shadow-black/60"
+                              className="rounded-card-sm border border-edge bg-[#0f0f12] text-ink-strong shadow-2xl shadow-black/60"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px" }}
                             >
-                              <SelectItem value="suggested" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                              <SelectItem value="suggested" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Sugerida primeiro
                               </SelectItem>
-                              <SelectItem value="price-asc" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                              <SelectItem value="price-asc" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Menor preço
                               </SelectItem>
-                              <SelectItem value="price-desc" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                              <SelectItem value="price-desc" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Maior preço
                               </SelectItem>
-                              <SelectItem value="name" className="rounded-[8px] focus:bg-primary/15 focus:text-white data-[state=checked]:text-primary">
+                              <SelectItem value="name" className="rounded-[8px] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">
                                 Nome A-Z
                               </SelectItem>
                             </SelectContent>
@@ -6336,7 +6336,7 @@ export function MonteSeuPcPage() {
                           <div
                             role="group"
                             aria-label="Modo de exibição"
-                            className="flex h-11 items-center gap-0.5 rounded-card-sm border border-white/[0.1] bg-[#0f0f12] p-1 sm:h-[46px]"
+                            className="flex h-11 items-center gap-0.5 rounded-card-sm border border-edge bg-[#0f0f12] p-1 sm:h-[46px]"
                           >
                             <button
                               type="button"
@@ -6346,7 +6346,7 @@ export function MonteSeuPcPage() {
                               className={cn(
                                 "flex h-full w-11 cursor-pointer items-center justify-center rounded-[8px] transition-all sm:w-10",
                                 viewMode === "grid"
-                                  ? "bg-primary text-white"
+                                  ? "bg-primary text-ink-strong"
                                   : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
                               )}
                               style={
@@ -6365,7 +6365,7 @@ export function MonteSeuPcPage() {
                               className={cn(
                                 "flex h-full w-11 cursor-pointer items-center justify-center rounded-[8px] transition-all sm:w-10",
                                 viewMode === "list"
-                                  ? "bg-primary text-white"
+                                  ? "bg-primary text-ink-strong"
                                   : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-200",
                               )}
                               style={
@@ -6395,9 +6395,9 @@ export function MonteSeuPcPage() {
                           )}
                         >
                           {visibleOptions.length === 0 ? (
-                            <div className="rounded-[14px] border border-white/[0.06] bg-[#0f0f12] px-6 py-12 text-center col-span-full">
+                            <div className="rounded-[14px] border border-edge-subtle bg-[#0f0f12] px-6 py-12 text-center col-span-full">
                               <p
-                                className="text-white"
+                                className="text-ink-strong"
                                 style={{
                                   fontFamily: "var(--font-family-figtree)",
                                   fontSize: "15px",
@@ -6415,7 +6415,7 @@ export function MonteSeuPcPage() {
                               <button
                                 type="button"
                                 onClick={() => setStepSearch("")}
-                                className="mt-3 rounded-full border border-white/15 px-4 py-1.5 text-zinc-300 transition-colors hover:bg-white/[0.05] hover:text-white cursor-pointer"
+                                className="mt-3 rounded-full border border-edge px-4 py-1.5 text-zinc-300 transition-colors hover:bg-white/[0.05] hover:text-ink-strong cursor-pointer"
                                 style={{
                                   fontFamily: "var(--font-family-inter)",
                                   fontSize: "12px",
@@ -6512,7 +6512,7 @@ export function MonteSeuPcPage() {
 
                   {/* Mobile fixed action bar */}
                   <div
-                    className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-3 border-t border-white/10 px-4 py-3 lg:hidden"
+                    className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-3 border-t border-edge px-4 py-3 lg:hidden"
                     style={{
                       background: "rgba(14,14,14,0.96)",
                       backdropFilter: "blur(20px)",
@@ -6525,7 +6525,7 @@ export function MonteSeuPcPage() {
                       onClick={goPrev}
                       disabled={isFirst}
                       aria-label="Voltar etapa"
-                      className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-card-sm border border-white/[0.1] bg-white/[0.02] text-zinc-300 transition-all hover:border-white/25 hover:bg-white/[0.06] hover:text-white disabled:cursor-not-allowed disabled:opacity-25"
+                      className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-card-sm border border-edge bg-white/[0.02] text-zinc-300 transition-all hover:border-edge-strong hover:bg-white/[0.06] hover:text-ink-strong disabled:cursor-not-allowed disabled:opacity-25"
                     >
                       <ChevronLeft size={18} />
                     </button>
@@ -6561,7 +6561,7 @@ export function MonteSeuPcPage() {
                         </span>
                       </span>
                       <span
-                        className="text-white tabular-nums"
+                        className="text-ink-strong tabular-nums"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
                           fontSize: "18px",
@@ -6588,7 +6588,7 @@ export function MonteSeuPcPage() {
                       type="button"
                       onClick={goNext}
                       disabled={!stepValid}
-                      className="flex h-11 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-card-sm bg-primary px-5 text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+                      className="flex h-11 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-card-sm bg-primary px-5 text-ink-strong transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
                       style={{
                         fontFamily: "var(--font-family-inter)",
                         fontSize: "13.5px",
@@ -6605,11 +6605,11 @@ export function MonteSeuPcPage() {
                   <Sheet open={summarySheetOpen} onOpenChange={setSummarySheetOpen}>
                     <SheetContent
                       side="bottom"
-                      className="max-h-[85vh] gap-0 overflow-y-auto rounded-t-2xl border-white/[0.08] bg-[#0d0d0d] p-0 lg:hidden"
+                      className="max-h-[85vh] gap-0 overflow-y-auto rounded-t-2xl border-edge-subtle bg-[#0d0d0d] p-0 lg:hidden"
                     >
-                      <SheetHeader className="border-b border-white/[0.06] p-5">
+                      <SheetHeader className="border-b border-edge-subtle p-5">
                         <SheetTitle
-                          className="text-white"
+                          className="text-ink-strong"
                           style={{
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "16px",

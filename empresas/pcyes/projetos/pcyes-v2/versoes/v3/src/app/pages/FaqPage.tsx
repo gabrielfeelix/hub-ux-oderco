@@ -184,7 +184,7 @@ export function FaqPage() {
     <>
       {/* ── Hero ── */}
       <section
-        className="relative overflow-hidden border-b border-white/[0.05] pt-[152px] md:pt-[182px]"
+        className="relative overflow-hidden border-b border-edge-subtle pt-[152px] md:pt-[182px]"
         style={{ background: "#0a0a0a" }}
       >
         <div
@@ -220,7 +220,7 @@ export function FaqPage() {
             className="mb-5 flex justify-center"
           >
             <span
-              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-white"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "9.5px",
@@ -237,7 +237,7 @@ export function FaqPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(38px, 6vw, 64px)",
@@ -265,7 +265,7 @@ export function FaqPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mx-auto mt-5 max-w-[560px] text-white/55"
+            className="mx-auto mt-5 max-w-[560px] text-ink-muted"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "16px",
@@ -285,7 +285,7 @@ export function FaqPage() {
           >
             <div className="relative">
               <Search
-                className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/40"
+                className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-subtle"
                 size={18}
               />
               <input
@@ -294,7 +294,7 @@ export function FaqPage() {
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Buscar uma dúvida..."
                 aria-label="Buscar nas perguntas frequentes"
-                className="h-12 w-full rounded-full border border-white/10 bg-white/[0.03] pl-11 pr-4 text-white placeholder:text-white/40 outline-none transition-colors focus:border-primary/50"
+                className="h-12 w-full rounded-full border border-edge bg-white/[0.03] pl-11 pr-4 text-ink-strong placeholder:text-ink-subtle outline-none transition-colors focus:border-primary/50"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "15px",
@@ -329,8 +329,8 @@ export function FaqPage() {
                     className={
                       "cursor-pointer rounded-full border px-4 py-2 transition-all " +
                       (isActive
-                        ? "border-primary/60 bg-primary/[0.1] text-white"
-                        : "border-white/10 bg-white/[0.03] text-foreground/60 hover:border-white/25 hover:text-white")
+                        ? "border-primary/60 bg-primary/[0.1] text-ink-strong"
+                        : "border-edge bg-white/[0.03] text-foreground/60 hover:border-edge-strong hover:text-ink-strong")
                     }
                     style={{
                       fontFamily: "var(--font-family-inter)",
@@ -399,7 +399,7 @@ export function FaqPage() {
                       className="border-foreground/10 px-5"
                     >
                       <AccordionTrigger
-                        className="py-5 text-white hover:no-underline"
+                        className="py-5 text-ink-strong hover:no-underline"
                         style={{
                           fontFamily: "var(--font-family-figtree)",
                           fontSize: "16px",
@@ -455,7 +455,7 @@ export function FaqPage() {
                 </span>
               </div>
               <h2
-                className="text-white"
+                className="text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(24px, 3vw, 30px)",
@@ -479,7 +479,7 @@ export function FaqPage() {
               </p>
               <Link
                 to="/fale-conosco"
-                className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-white transition-all hover:brightness-110"
+                className="mt-7 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-ink-strong transition-all hover:brightness-110"
                 style={{
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "14px",

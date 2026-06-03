@@ -129,7 +129,7 @@ export function NewReleasesSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                 <button
-                  className="absolute top-6 right-6 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white/70 hover:text-white hover:bg-black/50 transition-all duration-300 cursor-pointer z-10"
+                  className="absolute top-6 right-6 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-ink hover:text-ink-strong hover:bg-black/50 transition-all duration-300 cursor-pointer z-10"
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); isFavorite(selected.id) ? removeFavorite(selected.id) : addFavorite({ id: selected.id, name: selected.name, price: selected.price, image: selected.image }); }}
                 >
                   <Heart size={16} strokeWidth={1.5} className={isFavorite(selected.id) ? "fill-primary text-primary" : ""} />
@@ -144,7 +144,7 @@ export function NewReleasesSection() {
                     {selected.tag.toUpperCase()}
                   </span>
                   <span
-                    className="flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-sm text-white/70"
+                    className="flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-sm text-ink"
                     style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px" }}
                   >
                     <Clock size={10} /> {selected.daysAgo} dias atrás
@@ -153,18 +153,18 @@ export function NewReleasesSection() {
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-                  <p className="text-white/40 tracking-wide mb-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+                  <p className="text-ink-subtle tracking-wide mb-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
                     {selected.category.toUpperCase()}
                   </p>
-                  <h3 className="text-white mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(28px, 3vw, 40px)", fontWeight: "var(--font-weight-medium)" }}>
+                  <h3 className="text-ink-strong mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(28px, 3vw, 40px)", fontWeight: "var(--font-weight-medium)" }}>
                     {selected.name}
                   </h3>
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="text-white" style={{ fontFamily: "var(--font-family-inter)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>
+                    <span className="text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontSize: "18px", fontWeight: "var(--font-weight-medium)" }}>
                       {selected.price}
                     </span>
                     {selected.oldPrice && (
-                      <span className="text-white/30 line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>
+                      <span className="text-ink-subtle line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}>
                         {selected.oldPrice}
                       </span>
                     )}
@@ -181,7 +181,7 @@ export function NewReleasesSection() {
                     </CTAButton>
                     <Link
                       to={`/produto/${selected.id}`}
-                      className="flex items-center gap-2 px-5 py-3 rounded-pill border border-white/20 text-white/70 hover:text-white hover:border-white/50 transition-all duration-300"
+                      className="flex items-center gap-2 px-5 py-3 rounded-pill border border-edge-strong text-ink hover:text-ink-strong hover:border-edge-subtle0 transition-all duration-300"
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: "var(--font-weight-medium)" }}
                     >
                       Ver produto
@@ -241,13 +241,13 @@ export function NewReleasesSection() {
                     </span>
                     <button
                       onClick={(e) => { e.stopPropagation(); addItem({ id: item.id, name: item.name, price: item.price, image: item.image }); }}
-                      className="w-8 h-8 rounded-full bg-foreground/5 hover:bg-primary text-foreground/30 hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer opacity-0 group-hover:opacity-100"
+                      className="w-8 h-8 rounded-full bg-foreground/5 hover:bg-primary text-foreground/30 hover:text-ink-strong flex items-center justify-center transition-all duration-300 cursor-pointer opacity-0 group-hover:opacity-100"
                     >
                       <ShoppingBag size={12} strokeWidth={1.5} />
                     </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); addFavorite({ id: item.id, name: item.name, price: item.price, image: item.image }); }}
-                      className="w-8 h-8 rounded-full bg-foreground/5 hover:bg-primary text-foreground/30 hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer opacity-0 group-hover:opacity-100"
+                      className="w-8 h-8 rounded-full bg-foreground/5 hover:bg-primary text-foreground/30 hover:text-ink-strong flex items-center justify-center transition-all duration-300 cursor-pointer opacity-0 group-hover:opacity-100"
                     >
                       <Heart size={12} strokeWidth={1.5} />
                     </button>

@@ -109,7 +109,7 @@ export function CategoryRail() {
   const navBtn = (onClick: () => void, label: string, icon: React.ReactNode) => (
     <button
       onClick={onClick}
-      className="w-11 h-11 flex items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-white/70 transition-all hover:border-[var(--primary)]/70 hover:text-white hover:bg-[var(--primary)]/10 hover:scale-105 active:scale-95 flex-shrink-0 cursor-pointer"
+      className="w-11 h-11 flex items-center justify-center rounded-full border border-edge bg-white/[0.04] text-ink transition-all hover:border-[var(--primary)]/70 hover:text-ink-strong hover:bg-[var(--primary)]/10 hover:scale-105 active:scale-95 flex-shrink-0 cursor-pointer"
       aria-label={label}
     >
       {icon}
@@ -141,7 +141,7 @@ export function CategoryRail() {
             CATEGORIAS
           </p>
           <h3
-            className="text-white"
+            className="text-ink-strong"
             style={{
               fontFamily: "var(--font-family-figtree)",
               fontSize: "clamp(26px, 2.6vw, 34px)",
@@ -267,7 +267,7 @@ export function CategoryRail() {
         <div className="flex justify-center mt-7">
           <Link
             to={items[realActive].href}
-            className="text-white transition-colors hover:text-[var(--primary)] cursor-pointer"
+            className="text-ink-strong transition-colors hover:text-[var(--primary)] cursor-pointer"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "15px",

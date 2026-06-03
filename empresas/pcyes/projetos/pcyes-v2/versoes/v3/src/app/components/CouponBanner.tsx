@@ -49,7 +49,7 @@ export function CouponBanner() {
 
           <div className="relative flex items-center gap-3 md:gap-4">
             <div
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-white"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-ink-strong"
               style={{
                 background: "var(--gradient-brand)",
                 boxShadow: "0 8px 24px -6px rgba(225,6,0,0.6)",
@@ -59,7 +59,7 @@ export function CouponBanner() {
             </div>
             <div className="flex flex-col md:flex-row md:items-baseline md:gap-3 text-left">
               <span
-                className="text-white"
+                className="text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(14px, 2.4vw, 18px)",

@@ -89,7 +89,7 @@ export function LegalPageLayout({
             className="max-w-3xl"
           >
             <span
-              className="inline-flex w-fit items-center rounded-full bg-primary px-2.5 py-1 text-white"
+              className="inline-flex w-fit items-center rounded-full bg-primary px-2.5 py-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "9.5px",

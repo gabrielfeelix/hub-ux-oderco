@@ -286,7 +286,7 @@ export function ProductCarousel({
                       {discountBadge && <DiscountBadge>{discountBadge}</DiscountBadge>}
                       {showNoveltyTag && (
                         <span
-                          className="border border-white/12 bg-black/40 text-white/90 px-3 py-1 backdrop-blur-sm"
+                          className="border border-edge bg-black/40 text-ink px-3 py-1 backdrop-blur-sm"
                           style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.1em" }}
                         >
                           NOVIDADE
@@ -302,7 +302,7 @@ export function ProductCarousel({
                   {isLoggedIn && (
                     <div className="absolute top-4 right-4 opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button
-                        className="w-11 h-11 md:w-9 md:h-9 bg-black/35 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center text-white/85 hover:text-white hover:bg-black/50 transition-all duration-300"
+                        className="w-11 h-11 md:w-9 md:h-9 bg-black/35 backdrop-blur-sm border border-edge rounded-full flex items-center justify-center text-ink hover:text-ink-strong hover:bg-black/50 transition-all duration-300"
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); addFavorite({ id: displayProduct.id, name: displayProduct.name, price: displayProduct.price, image: getPrimaryProductImage(displayProduct) }); }}
                         aria-label="Favoritar"
                       >

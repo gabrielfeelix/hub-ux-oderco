@@ -96,7 +96,7 @@ function DownloadCard({
         onClick={() => setDownloaded(true)}
         className={`mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 transition-all hover:scale-[1.02] active:scale-[0.98] ${
           kind === "driver"
-            ? "bg-primary text-white"
+            ? "bg-primary text-ink-strong"
             : "border border-foreground/15 bg-foreground/[0.04] text-foreground hover:border-foreground/30"
         }`}
         style={{
@@ -148,7 +148,7 @@ function DriverNotFound() {
           </p>
           <Link
             to="/drivers-e-manuais"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-white transition-transform hover:scale-[1.03]"
+            className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-ink-strong transition-transform hover:scale-[1.03]"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "13.5px",
@@ -246,7 +246,7 @@ export function DriverDetailPage() {
             >
               <div className="flex items-center gap-3">
                 <span
-                  className="inline-flex w-fit items-center rounded-full bg-primary px-3 py-1 text-white"
+                  className="inline-flex w-fit items-center rounded-full bg-primary px-3 py-1 text-ink-strong"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "10px",
@@ -290,7 +290,7 @@ export function DriverDetailPage() {
                 <button
                   type="button"
                   onClick={scrollToDownloads}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-ink-strong transition-transform hover:scale-[1.03] active:scale-[0.98]"
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "13.5px",

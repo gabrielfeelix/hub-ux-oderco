@@ -248,7 +248,7 @@ export function BannerSection() {
               MONTE SEU SETUP
             </p>
             <h2
-              className="text-white"
+              className="text-ink-strong"
               style={{
                 transform: `translateX(-${textShift}px)`,
                 fontFamily: "var(--font-family-figtree)",
@@ -261,7 +261,7 @@ export function BannerSection() {
               SETUP
             </h2>
             <h2
-              className="text-white"
+              className="text-ink-strong"
               style={{
                 transform: `translateX(${textShift}px)`,
                 fontFamily: "var(--font-family-figtree)",
@@ -285,7 +285,7 @@ export function BannerSection() {
         >
           <Link
             to="/monte-seu-pc"
-            className="inline-flex items-center justify-center rounded-full border border-white/18 bg-white px-8 py-3.5 text-black shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all duration-500 hover:border-primary hover:bg-primary hover:text-white"
+            className="inline-flex items-center justify-center rounded-full border border-edge bg-white px-8 py-3.5 text-black shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all duration-500 hover:border-primary hover:bg-primary hover:text-ink-strong"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "13px",

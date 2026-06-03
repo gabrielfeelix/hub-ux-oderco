@@ -163,7 +163,7 @@ export function ProductsByTags() {
                   >
                     <Heart
                       size={14}
-                      className={likedIds.has(product.id) ? "fill-primary text-primary" : "text-white/80"}
+                      className={likedIds.has(product.id) ? "fill-primary text-primary" : "text-ink"}
                       strokeWidth={1.5}
                     />
                   </button>
@@ -178,7 +178,7 @@ export function ProductsByTags() {
                     {product.tags.slice(0, 2).map((t) => (
                       <span
                         key={t}
-                        className="px-2 py-0.5 bg-black/30 backdrop-blur-sm text-white/80"
+                        className="px-2 py-0.5 bg-black/30 backdrop-blur-sm text-ink"
                         style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.05em" }}
                       >
                         {t}

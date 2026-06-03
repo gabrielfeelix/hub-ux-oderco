@@ -47,7 +47,7 @@ export function BrandStatement() {
                 initial={{ y: 120 }}
                 animate={isInView ? { y: 0 } : {}}
                 transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-white"
+                className="text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(42px, 8vw, 108px)",
@@ -64,7 +64,7 @@ export function BrandStatement() {
                 initial={{ y: 120 }}
                 animate={isInView ? { y: 0 } : {}}
                 transition={{ duration: 0.9, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                className="text-white/30"
+                className="text-ink-subtle"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(42px, 8vw, 108px)",
@@ -86,7 +86,7 @@ export function BrandStatement() {
             className="md:max-w-[280px] flex flex-col gap-8"
           >
             <p
-              className="text-white/30"
+              className="text-ink-subtle"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "14px",
@@ -97,7 +97,7 @@ export function BrandStatement() {
             </p>
             <Link
               to="/produtos"
-              className="inline-flex items-center gap-2 text-white/60 hover:text-white border-b border-white/15 hover:border-white/40 pb-1 transition-all duration-400 self-start"
+              className="inline-flex items-center gap-2 text-ink-muted hover:text-ink-strong border-b border-edge hover:border-edge-strong pb-1 transition-all duration-400 self-start"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "13px",

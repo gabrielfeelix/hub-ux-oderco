@@ -621,17 +621,17 @@ export function Navbar() {
 
   // Nav bar background is hardcoded #000000 — keep text/icons white in both themes
   const iconColor = showExpanded
-    ? (promoHovered ? "text-white/80 hover:text-white" : "text-white/70 hover:text-white")
-    : "text-white/62 hover:text-white";
+    ? (promoHovered ? "text-ink hover:text-ink-strong" : "text-ink hover:text-ink-strong")
+    : "text-ink-strong/62 hover:text-ink-strong";
   const navTextColor = showExpanded
-    ? (promoHovered ? "text-white/90 hover:text-white" : "text-white/75 hover:text-white")
-    : "text-white/45 hover:text-white";
+    ? (promoHovered ? "text-ink hover:text-ink-strong" : "text-ink hover:text-ink-strong")
+    : "text-ink-muted hover:text-ink-strong";
   const categoryLinkColor = showExpanded
-    ? "text-white/75 hover:text-white"
-    : "text-white/45 hover:text-white";
+    ? "text-ink hover:text-ink-strong"
+    : "text-ink-muted hover:text-ink-strong";
 
   const tooltipContentClass =
-    "!bg-[#1f1c1c] !rounded-md border border-white/8 px-2.5 py-1.5 text-[11px] font-medium tracking-normal text-white/90 shadow-md [&>span]:hidden";
+    "!bg-[#1f1c1c] !rounded-md border border-edge-subtle px-2.5 py-1.5 text-[11px] font-medium tracking-normal text-ink shadow-md [&>span]:hidden";
 
   const renderIcons = () => (
     <TooltipProvider delayDuration={200}>
@@ -808,7 +808,7 @@ export function Navbar() {
         className="group flex h-full rounded-card-lg border border-foreground/8 bg-foreground/[0.03] px-4 py-4 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,43,46,0.08)]"
       >
         <div className="flex items-start gap-3 w-full">
-          <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-2xl border border-foreground/8 bg-background/70 text-primary/75 transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+          <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-2xl border border-foreground/8 bg-background/70 text-primary/75 transition-colors duration-300 group-hover:bg-primary group-hover:text-ink-strong">
             {icon ?? <ArrowUpRight size={15} />}
           </div>
           <div className="min-w-0 flex-1">
@@ -843,7 +843,7 @@ export function Navbar() {
           {icon}
         </div>
         <div className="relative z-10 flex flex-col items-start gap-3 flex-1">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-foreground/8 bg-background/70 text-primary/80 transition-all duration-500 group-hover:bg-primary group-hover:text-white group-hover:scale-110">
+          <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-foreground/8 bg-background/70 text-primary/80 transition-all duration-500 group-hover:bg-primary group-hover:text-ink-strong group-hover:scale-110">
             {icon ? React.cloneElement(icon as React.ReactElement, { size: 18 }) : <ArrowUpRight size={22} />}
           </div>
           <div className="mt-2">
@@ -1173,17 +1173,17 @@ export function Navbar() {
                 <div className="flex items-center gap-3">
                   <span className={`px-2 py-0.5 border transition-colors duration-500 ${isDark
                     ? "border-black/20 text-black"
-                    : "border-white/20 text-white"
+                    : "border-edge-strong text-ink-strong"
                     }`}
                     style={{ borderRadius: "100px", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-micro)", fontWeight: "var(--font-weight-medium)", letterSpacing: "0.08em" }}>PROMO</span>
                   <span className={`tracking-[0.12em] transition-colors duration-500 ${isDark
                     ? "text-black/70"
-                    : "text-white/70"
+                    : "text-ink"
                     }`}
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-micro)" }}>PROMO DO DIA: FRETE GRÁTIS</span>
                   <span className={`tracking-[0.12em] transition-colors duration-500 ${isDark
                     ? "text-black/70"
-                    : "text-white/70"
+                    : "text-ink"
                     }`}
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-micro)" }}>
                     {countdown.h.toString().padStart(2, "0")}:{countdown.m.toString().padStart(2, "0")}:{countdown.s.toString().padStart(2, "0")}
@@ -1192,7 +1192,7 @@ export function Navbar() {
                 <button onClick={(e) => { e.stopPropagation(); setPromoDismissed(true); }}
                   className={`absolute right-4 top-1/2 -translate-y-1/2 transition-colors duration-300 cursor-pointer ${isDark
                     ? "text-black/40 hover:text-black/60"
-                    : "text-white/40 hover:text-white/60"
+                    : "text-ink-subtle hover:text-ink-muted"
                     }`}
                 ><X size={12} /></button>
               </div>
@@ -1231,20 +1231,20 @@ export function Navbar() {
 		                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
 		                  className="relative mx-2 min-w-0 flex-1"
 		                >
-		                  <div className="flex h-10 items-center overflow-hidden rounded-[8px] border border-white/10 bg-[#323232] shadow-sm backdrop-blur-xl">
-		                    <Search size={16} className="ml-3 flex-shrink-0 text-white/55" strokeWidth={1.8} />
+		                  <div className="flex h-10 items-center overflow-hidden rounded-[8px] border border-edge bg-[#323232] shadow-sm backdrop-blur-xl">
+		                    <Search size={16} className="ml-3 flex-shrink-0 text-ink-muted" strokeWidth={1.8} />
 		                    <input
 		                      value={searchQuery}
 		                      onChange={(e) => setSearchQuery(e.target.value)}
 		                      placeholder="Buscar"
-		                      className="h-full min-w-0 flex-1 bg-transparent px-2 text-white outline-none placeholder:text-white/48"
+		                      className="h-full min-w-0 flex-1 bg-transparent px-2 text-ink-strong outline-none placeholder:text-ink-strong/48"
 		                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}
 		                    />
 		                    {searchQuery && (
 		                      <button
 		                        type="button"
 		                        onClick={() => setSearchQuery("")}
-		                        className="flex h-full w-8 items-center justify-center text-white/55"
+		                        className="flex h-full w-8 items-center justify-center text-ink-muted"
 		                        aria-label="Limpar busca"
 		                      >
 		                        <X size={13} />
@@ -1258,11 +1258,11 @@ export function Navbar() {
 		                        animate={{ opacity: 1, y: 0, scale: 1 }}
 		                        exit={{ opacity: 0, y: -6, scale: 0.985 }}
 		                        transition={{ duration: 0.16 }}
-		                        className="absolute -left-12 -right-12 top-[46px] z-[80] max-h-[58vh] overflow-y-auto rounded-card-sm border border-white/10 bg-[#121214]/98 p-2 shadow-2xl backdrop-blur-2xl"
+		                        className="absolute -left-12 -right-12 top-[46px] z-[80] max-h-[58vh] overflow-y-auto rounded-card-sm border border-edge bg-[#121214]/98 p-2 shadow-2xl backdrop-blur-2xl"
 		                      >
 		                        {searchResults.length > 0 ? (
 		                          <>
-		                            <p className="px-2 pb-2 pt-1 text-white/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700 }}>
+		                            <p className="px-2 pb-2 pt-1 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 700 }}>
 		                              {searchResults.length} resultado{searchResults.length !== 1 ? "s" : ""}
 		                            </p>
 		                            {searchResults.map((product) => (
@@ -1276,14 +1276,14 @@ export function Navbar() {
 		                                  <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-cover" />
 		                                </div>
 		                                <div className="min-w-0 flex-1">
-		                                  <p className="line-clamp-2 text-white/86 transition-colors group-hover:text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "13px", fontWeight: 600, lineHeight: 1.15 }}>
+		                                  <p className="line-clamp-2 text-ink-strong/86 transition-colors group-hover:text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "13px", fontWeight: 600, lineHeight: 1.15 }}>
 		                                    {product.name}
 		                                  </p>
-		                                  <p className="mt-1 truncate text-white/36" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
+		                                  <p className="mt-1 truncate text-ink-strong/36" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}>
 		                                    {product.category}
 		                                  </p>
 		                                </div>
-		                                <span className="flex-shrink-0 text-white/58" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}>
+		                                <span className="flex-shrink-0 text-ink-strong/58" style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", fontWeight: 700 }}>
 		                                  {product.price}
 		                                </span>
 		                              </Link>
@@ -1291,7 +1291,7 @@ export function Navbar() {
 		                          </>
 		                        ) : (
 		                          <div className="px-4 py-5 text-center">
-		                            <p className="text-white/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+		                            <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
 		                              Nenhum produto encontrado
 		                            </p>
 		                          </div>
@@ -1385,7 +1385,7 @@ export function Navbar() {
                         e.stopPropagation();
                         setSearchCategoryOpen((p) => !p);
                       }}
-                      className="flex h-full items-center gap-1.5 pl-5 pr-3 text-white/85 transition-colors hover:text-white"
+                      className="flex h-full items-center gap-1.5 pl-5 pr-3 text-ink transition-colors hover:text-ink-strong"
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
                     >
                       <span className="hidden xl:inline">{searchCategory}</span>
@@ -1401,7 +1401,7 @@ export function Navbar() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setSearchPanelOpen(true)}
                     placeholder="O que você está procurando?"
-                    className="h-full min-w-0 flex-1 bg-transparent px-4 text-white outline-none placeholder:text-white/40"
+                    className="h-full min-w-0 flex-1 bg-transparent px-4 text-ink-strong outline-none placeholder:text-ink-subtle"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px" }}
                   />
 
@@ -1409,7 +1409,7 @@ export function Navbar() {
                     <button
                       type="button"
                       onClick={() => setSearchQuery("")}
-                      className="flex h-full w-9 items-center justify-center text-white/40 transition-colors hover:text-white/70"
+                      className="flex h-full w-9 items-center justify-center text-ink-subtle transition-colors hover:text-ink"
                       aria-label="Limpar busca"
                     >
                       <X size={14} />
@@ -1419,7 +1419,7 @@ export function Navbar() {
                   <button
                     type="submit"
                     className={`flex h-full w-12 items-center justify-center transition-colors ${
-                      searchPanelOpen ? "text-white" : "text-white/70 hover:text-white"
+                      searchPanelOpen ? "text-ink-strong" : "text-ink hover:text-ink-strong"
                     }`}
                     aria-label="Buscar"
                   >
@@ -1459,7 +1459,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.14 }}
-                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[14px] border border-white/10 bg-[#0f0f10] shadow-2xl"
+                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[14px] border border-edge bg-[#0f0f10] shadow-2xl"
                     >
                       {searchCategories.map((cat) => (
                         <button
@@ -1471,8 +1471,8 @@ export function Navbar() {
                           }}
                           className={`flex w-full items-center justify-between px-4 py-2.5 text-left transition-colors ${
                             searchCategory === cat
-                              ? "bg-primary/15 text-white"
-                              : "text-white/70 hover:bg-white/[0.06] hover:text-white"
+                              ? "bg-primary/15 text-ink-strong"
+                              : "text-ink hover:bg-white/[0.06] hover:text-ink-strong"
                           }`}
                           style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 500 }}
                         >
@@ -1501,9 +1501,9 @@ export function Navbar() {
                       {searchQuery.trim().length === 0 ? (
                         <div className="grid grid-cols-[1fr_260px] gap-0">
                           {/* Left: produtos */}
-                          <div className="border-r border-white/[0.08] px-10 py-9">
+                          <div className="border-r border-edge-subtle px-10 py-9">
                             <h4
-                              className="mb-7 text-white"
+                              className="mb-7 text-ink-strong"
                               style={{
                                 fontFamily: "var(--font-family-figtree)",
                                 fontSize: "20px",
@@ -1539,7 +1539,7 @@ export function Navbar() {
                                     >
                                       {discount > 0 && (
                                         <span
-                                          className="absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-white"
+                                          className="absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-ink-strong"
                                           style={{
                                             background: "var(--primary)",
                                             fontFamily: "var(--font-family-inter)",
@@ -1558,7 +1558,7 @@ export function Navbar() {
                                       />
                                     </div>
                                     <p
-                                      className="mt-4 line-clamp-2 text-white/85 transition-colors group-hover:text-white"
+                                      className="mt-4 line-clamp-2 text-ink transition-colors group-hover:text-ink-strong"
                                       style={{
                                         fontFamily: "var(--font-family-figtree)",
                                         fontSize: "14px",
@@ -1571,7 +1571,7 @@ export function Navbar() {
                                     </p>
                                     <div className="mt-2 flex items-baseline gap-1.5">
                                       <span
-                                        className={hasDiscount ? "" : "text-white"}
+                                        className={hasDiscount ? "" : "text-ink-strong"}
                                         style={{
                                           fontFamily: "var(--font-family-figtree)",
                                           fontSize: "15px",
@@ -1584,7 +1584,7 @@ export function Navbar() {
                                       </span>
                                       {hasDiscount && p.oldPrice && (
                                         <span
-                                          className="line-through text-white/35"
+                                          className="line-through text-ink-subtle"
                                           style={{
                                             fontFamily: "var(--font-family-inter)",
                                             fontSize: "11px",
@@ -1618,7 +1618,7 @@ export function Navbar() {
                           {/* Right: keywords */}
                           <div className="px-7 py-9">
                             <h4
-                              className="mb-6 text-white"
+                              className="mb-6 text-ink-strong"
                               style={{
                                 fontFamily: "var(--font-family-figtree)",
                                 fontSize: "20px",
@@ -1637,7 +1637,7 @@ export function Navbar() {
                                     setSearchPanelOpen(false);
                                     setSearchQuery("");
                                   }}
-                                  className="group flex items-center justify-between py-2.5 text-left text-white/70 transition-colors hover:text-[var(--primary)]"
+                                  className="group flex items-center justify-between py-2.5 text-left text-ink transition-colors hover:text-[var(--primary)]"
                                   style={{
                                     fontFamily: "var(--font-family-inter)",
                                     fontSize: "14px",
@@ -1648,7 +1648,7 @@ export function Navbar() {
                                   <ArrowUpRight
                                     size={14}
                                     strokeWidth={1.8}
-                                    className="text-white/25 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--primary)]"
+                                    className="text-ink-subtle transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--primary)]"
                                   />
                                 </Link>
                               ))}
@@ -1659,7 +1659,7 @@ export function Navbar() {
                         <div className="px-10 py-9">
                           <div className="mb-7 flex items-baseline justify-between">
                             <h4
-                              className="text-white"
+                              className="text-ink-strong"
                               style={{
                                 fontFamily: "var(--font-family-figtree)",
                                 fontSize: "20px",
@@ -1670,7 +1670,7 @@ export function Navbar() {
                               Resultados para "{searchQuery}"
                             </h4>
                             <span
-                              className="text-white/50"
+                              className="text-ink-muted"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em" }}
                             >
                               {searchResults.length} {searchResults.length === 1 ? "PRODUTO" : "PRODUTOS"}
@@ -1705,7 +1705,7 @@ export function Navbar() {
                                   >
                                     {discount > 0 && (
                                       <span
-                                        className="absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-white"
+                                        className="absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-ink-strong"
                                         style={{
                                           background: "var(--primary)",
                                           fontFamily: "var(--font-family-inter)",
@@ -1724,7 +1724,7 @@ export function Navbar() {
                                     />
                                   </div>
                                   <p
-                                    className="mt-4 line-clamp-2 text-white/85 transition-colors group-hover:text-white"
+                                    className="mt-4 line-clamp-2 text-ink transition-colors group-hover:text-ink-strong"
                                     style={{
                                       fontFamily: "var(--font-family-figtree)",
                                       fontSize: "14px",
@@ -1749,7 +1749,7 @@ export function Navbar() {
                                     </span>
                                     {hasDiscount && p.oldPrice && (
                                       <span
-                                        className="line-through text-white/35"
+                                        className="line-through text-ink-subtle"
                                         style={{
                                           fontFamily: "var(--font-family-inter)",
                                           fontSize: "11px",
@@ -1781,10 +1781,10 @@ export function Navbar() {
                         </div>
                       ) : (
                         <div className="px-10 py-16 text-center">
-                          <p className="text-white/65" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600 }}>
+                          <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600 }}>
                             Nenhum produto encontrado
                           </p>
-                          <p className="mt-2 text-white/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
+                          <p className="mt-2 text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px" }}>
                             Tente outro termo ou veja os produtos mais buscados
                           </p>
                         </div>
@@ -2027,7 +2027,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[90] overflow-y-auto bg-[#070708] text-white"
+            className="fixed inset-0 z-[90] overflow-y-auto bg-[#070708] text-ink-strong"
             onClick={() => setSearchOpen(false)}
           >
             <div
@@ -2038,7 +2038,7 @@ export function Navbar() {
               <div className="flex h-12 items-center justify-between md:h-14">
                 <button
                   onClick={() => setSearchOpen(false)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-white/55 transition-colors hover:bg-white/[0.05] hover:text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-white/[0.05] hover:text-ink-strong"
                   aria-label="Fechar busca"
                 >
                   <X size={21} strokeWidth={1.6} />
@@ -2050,21 +2050,21 @@ export function Navbar() {
               </div>
 
               <form onSubmit={handleSearchSubmit} className="mt-8 w-full md:mt-14">
-                <div className="mx-auto flex w-full max-w-[920px] items-center gap-3 border-b border-white/18 pb-3 md:gap-5 md:pb-5">
-                  <Search size={22} className="flex-shrink-0 text-white/45 md:h-7 md:w-7" strokeWidth={1.45} />
+                <div className="mx-auto flex w-full max-w-[920px] items-center gap-3 border-b border-edge pb-3 md:gap-5 md:pb-5">
+                  <Search size={22} className="flex-shrink-0 text-ink-muted md:h-7 md:w-7" strokeWidth={1.45} />
                   <input
                     ref={searchInputRef}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Buscar produtos, categorias..."
-                    className="min-w-0 flex-1 bg-transparent text-white outline-none placeholder:text-white/34"
+                    className="min-w-0 flex-1 bg-transparent text-ink-strong outline-none placeholder:text-ink-strong/34"
                     style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 7vw, 46px)", fontWeight: 500, lineHeight: 1.05 }}
                   />
                   {searchQuery ? (
                     <button
                       type="button"
                       onClick={() => setSearchQuery("")}
-                      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-white/55 transition-colors hover:bg-white/[0.09] hover:text-white"
+                      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-ink-muted transition-colors hover:bg-white/[0.09] hover:text-ink-strong"
                       aria-label="Limpar busca"
                     >
                       <X size={16} />
@@ -2072,7 +2072,7 @@ export function Navbar() {
                   ) : (
                     <button
                       type="submit"
-                      className="hidden rounded-full bg-primary px-5 py-2 text-white transition-opacity hover:opacity-90 md:block"
+                      className="hidden rounded-full bg-primary px-5 py-2 text-ink-strong transition-opacity hover:opacity-90 md:block"
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 800 }}
                     >
                       BUSCAR
@@ -2087,14 +2087,14 @@ export function Navbar() {
                     <section>
                       <div className="mb-4 flex items-center gap-2">
                         <TrendingUp size={13} className="text-primary" />
-                        <span className="tracking-[0.18em] text-white/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>TENDENCIAS</span>
+                        <span className="tracking-[0.18em] text-ink-strong/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>TENDENCIAS</span>
                       </div>
                       <div className="flex flex-wrap gap-2.5">
                         {trending.map((t) => (
                           <button
                             key={t}
                             onClick={() => setSearchQuery(t)}
-                            className="rounded-full border border-white/8 bg-white/[0.055] px-4 py-2.5 text-white/64 transition-colors hover:border-primary/40 hover:bg-white/[0.08] hover:text-white"
+                            className="rounded-full border border-edge-subtle bg-white/[0.055] px-4 py-2.5 text-ink-strong/64 transition-colors hover:border-primary/40 hover:bg-white/[0.08] hover:text-ink-strong"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 650 }}
                           >
                             {t}
@@ -2102,40 +2102,40 @@ export function Navbar() {
                         ))}
                       </div>
 
-                      <div className="mt-9 border-t border-white/8 pt-7">
+                      <div className="mt-9 border-t border-edge-subtle pt-7">
                         <div className="mb-4 flex items-center gap-2">
-                          <Search size={13} className="text-white/28" />
-                          <span className="tracking-[0.18em] text-white/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>ATALHOS</span>
+                          <Search size={13} className="text-ink-strong/28" />
+                          <span className="tracking-[0.18em] text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>ATALHOS</span>
                         </div>
                         {["Water coolers", "Gabinetes", "Perifericos", "Hardware"].map((item) => (
                           <Link
                             key={item}
                             to={`/produtos?search=${encodeURIComponent(item)}`}
                             onClick={() => setSearchOpen(false)}
-                            className="group flex items-center justify-between border-b border-white/7 py-4 text-white/72 transition-colors hover:text-white"
+                            className="group flex items-center justify-between border-b border-edge-subtle py-4 text-ink-strong/72 transition-colors hover:text-ink-strong"
                             style={{ fontFamily: "var(--font-family-figtree)", fontSize: "18px", fontWeight: 600 }}
                           >
                             <span>{item}</span>
-                            <ArrowUpRight size={16} className="text-white/22 transition-colors group-hover:text-primary" />
+                            <ArrowUpRight size={16} className="text-ink-strong/22 transition-colors group-hover:text-primary" />
                           </Link>
                         ))}
                       </div>
                     </section>
 
-                    <section className="border-t border-white/8 pt-7 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+                    <section className="border-t border-edge-subtle pt-7 md:border-l md:border-t-0 md:pl-10 md:pt-0">
                       <div className="mb-4 flex items-center gap-2">
-                        <Clock size={13} className="text-white/28" />
-                        <span className="tracking-[0.18em] text-white/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>RECENTES</span>
+                        <Clock size={13} className="text-ink-strong/28" />
+                        <span className="tracking-[0.18em] text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>RECENTES</span>
                       </div>
                       <div className="space-y-1">
                         {recent.map((r) => (
                           <button
                             key={r}
                             onClick={() => setSearchQuery(r)}
-                            className="flex w-full items-center gap-3 rounded-[8px] py-3 text-left text-white/48 transition-colors hover:bg-white/[0.035] hover:px-3 hover:text-white/76"
+                            className="flex w-full items-center gap-3 rounded-[8px] py-3 text-left text-ink-strong/48 transition-colors hover:bg-white/[0.035] hover:px-3 hover:text-ink-strong/76"
                             style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 650 }}
                           >
-                            <Clock size={13} className="text-white/22" />
+                            <Clock size={13} className="text-ink-strong/22" />
                             {r}
                           </button>
                         ))}
@@ -2144,7 +2144,7 @@ export function Navbar() {
                   </div>
                 ) : searchResults.length > 0 ? (
                   <div>
-                    <p className="mb-5 tracking-[0.16em] text-white/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
+                    <p className="mb-5 tracking-[0.16em] text-ink-subtle" style={{ fontFamily: "var(--font-family-inter)", fontSize: "10px", fontWeight: 800 }}>
                       {searchResults.length} RESULTADO{searchResults.length !== 1 ? "S" : ""}
                     </p>
                     <div className="grid gap-2">
@@ -2158,32 +2158,32 @@ export function Navbar() {
                           <Link
                             to={`/produto/${product.id}`}
                             onClick={() => setSearchOpen(false)}
-                            className="group flex items-center gap-4 border-b border-white/8 py-3.5 transition-colors hover:border-primary/30 md:gap-5 md:py-4"
+                            className="group flex items-center gap-4 border-b border-edge-subtle py-3.5 transition-colors hover:border-primary/30 md:gap-5 md:py-4"
                           >
                             <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-[10px] bg-white/[0.05] md:h-[76px] md:w-[76px]">
                               <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-cover" />
                             </div>
                             <div className="min-w-0 flex-1">
-                              <p className="line-clamp-2 text-white/88 transition-colors group-hover:text-white" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(15px, 4vw, 19px)", fontWeight: 650, lineHeight: 1.15 }}>
+                              <p className="line-clamp-2 text-ink-strong/88 transition-colors group-hover:text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(15px, 4vw, 19px)", fontWeight: 650, lineHeight: 1.15 }}>
                                 {product.name}
                               </p>
-                              <p className="mt-1 text-white/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
+                              <p className="mt-1 text-ink-strong/34" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px" }}>
                                 {product.category}
                               </p>
                             </div>
-                            <span className="hidden flex-shrink-0 text-white/58 md:block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 750 }}>
+                            <span className="hidden flex-shrink-0 text-ink-strong/58 md:block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 750 }}>
                               {product.price}
                             </span>
-                            <ArrowUpRight size={16} className="flex-shrink-0 text-white/24 transition-colors group-hover:text-primary" />
+                            <ArrowUpRight size={16} className="flex-shrink-0 text-ink-strong/24 transition-colors group-hover:text-primary" />
                           </Link>
                         </motion.div>
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <div className="border-t border-white/10 pt-9 text-left">
-                    <p className="text-white/76" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 650 }}>Nenhum resultado</p>
-                    <p className="mt-2 max-w-[420px] text-white/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.6 }}>Tente buscar por categoria, produto ou linha PCYES.</p>
+                  <div className="border-t border-edge pt-9 text-left">
+                    <p className="text-ink-strong/76" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "22px", fontWeight: 650 }}>Nenhum resultado</p>
+                    <p className="mt-2 max-w-[420px] text-ink-strong/38" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", lineHeight: 1.6 }}>Tente buscar por categoria, produto ou linha PCYES.</p>
                   </div>
                 )}
               </div>

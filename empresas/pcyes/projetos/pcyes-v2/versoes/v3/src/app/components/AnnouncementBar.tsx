@@ -63,7 +63,7 @@ export function AnnouncementBar() {
       <div className="relative mx-auto flex max-w-[1760px] items-center justify-between gap-3 px-5 py-[10px] md:px-8">
         <button
           onClick={() => setIdx((i) => (i - 1 + MESSAGES.length) % MESSAGES.length)}
-          className="hidden text-white/45 transition-colors hover:text-white md:inline"
+          className="hidden text-ink-muted transition-colors hover:text-ink-strong md:inline"
           aria-label="Anúncio anterior"
           style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
         >
@@ -91,7 +91,7 @@ export function AnnouncementBar() {
           <Link
             to="/produtos"
             key={idx}
-            className="line-clamp-1 text-center text-white/90 transition-opacity hover:text-white"
+            className="line-clamp-1 text-center text-ink transition-opacity hover:text-ink-strong"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "12.5px",
@@ -107,7 +107,7 @@ export function AnnouncementBar() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIdx((i) => (i + 1) % MESSAGES.length)}
-            className="hidden text-white/45 transition-colors hover:text-white md:inline"
+            className="hidden text-ink-muted transition-colors hover:text-ink-strong md:inline"
             aria-label="Próximo anúncio"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px" }}
           >
@@ -116,7 +116,7 @@ export function AnnouncementBar() {
           <button
             onClick={() => setDismissed(true)}
             aria-label="Fechar aviso"
-            className="flex h-5 w-5 items-center justify-center rounded-full text-white/45 transition-colors hover:bg-white/10 hover:text-white"
+            className="flex h-5 w-5 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-white/10 hover:text-ink-strong"
           >
             <X size={11} strokeWidth={2.2} />
           </button>

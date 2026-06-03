@@ -87,7 +87,7 @@ export function MegaSaleBanner() {
                   backdropFilter: "blur(6px)",
                 }}
               >
-                <Zap size={11} strokeWidth={2.4} className="text-white" />
+                <Zap size={11} strokeWidth={2.4} className="text-ink-strong" />
                 <span
                   style={{
                     fontFamily: "var(--font-family-inter)",
@@ -103,7 +103,7 @@ export function MegaSaleBanner() {
               </span>
 
               <h2
-                className="text-white"
+                className="text-ink-strong"
                 style={{
                   fontFamily: "var(--font-family-figtree)",
                   fontSize: "clamp(38px, 6vw, 76px)",
@@ -146,9 +146,9 @@ export function MegaSaleBanner() {
                     backdropFilter: "blur(6px)",
                   }}
                 >
-                  <Timer size={15} strokeWidth={2.4} className="text-white" />
+                  <Timer size={15} strokeWidth={2.4} className="text-ink-strong" />
                   <span
-                    className="text-white tabular-nums"
+                    className="text-ink-strong tabular-nums"
                     style={{
                       fontFamily: "var(--font-family-figtree)",
                       fontSize: "15px",

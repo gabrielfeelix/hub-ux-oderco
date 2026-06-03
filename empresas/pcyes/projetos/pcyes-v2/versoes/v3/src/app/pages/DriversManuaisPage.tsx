@@ -54,7 +54,7 @@ function DriverCard({ entry, index }: { entry: DriverEntry; index: number }) {
             className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.06]"
           />
           <span
-            className="absolute left-3.5 top-3.5 inline-flex w-fit items-center rounded-full border border-white/10 bg-black/55 px-2.5 py-1 text-white backdrop-blur"
+            className="absolute left-3.5 top-3.5 inline-flex w-fit items-center rounded-full border border-edge bg-black/55 px-2.5 py-1 text-ink-strong backdrop-blur"
             style={{
               fontFamily: "var(--font-family-inter)",
               fontSize: "9.5px",
@@ -93,7 +93,7 @@ function DriverCard({ entry, index }: { entry: DriverEntry; index: number }) {
           </div>
 
           <span
-            className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-foreground/[0.05] px-4 py-2.5 text-foreground transition-colors group-hover:bg-primary group-hover:text-white"
+            className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-foreground/[0.05] px-4 py-2.5 text-foreground transition-colors group-hover:bg-primary group-hover:text-ink-strong"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 600 }}
           >
             Ver downloads <ArrowUpRight size={15} />
@@ -149,7 +149,7 @@ export function DriversManuaisPage() {
             className="max-w-[640px]"
           >
             <span
-              className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-white"
+              className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-ink-strong"
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "10px",
