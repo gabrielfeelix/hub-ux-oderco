@@ -43,7 +43,7 @@ export function BannerDuo() {
     <section
       ref={ref}
       className="px-5 py-12 md:px-[72px] md:py-16"
-      style={{ background: "#0e0e0e" }}
+      style={{ background: "var(--surface-0)" }}
     >
       <div className="mx-auto grid max-w-[1760px] grid-cols-1 gap-5 md:grid-cols-2">
         {banners.map((banner, i) => (

@@ -26,7 +26,7 @@ export function Newsletter() {
       ref={ref}
       className="relative overflow-hidden px-5 md:px-[72px]"
       style={{
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
         paddingTop: "var(--space-section-lg)",
         paddingBottom: "var(--space-section-lg)",
       }}

@@ -34,7 +34,7 @@ export function MegaSaleBanner() {
   const time = useCountdown(target);
 
   return (
-    <section className="px-5 md:px-[72px]" style={{ background: "#0a0a0a", paddingTop: "20px", paddingBottom: "20px" }}>
+    <section className="px-5 md:px-[72px]" style={{ background: "var(--surface-0)", paddingTop: "20px", paddingBottom: "20px" }}>
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <motion.div
           initial={{ opacity: 0, y: 14 }}

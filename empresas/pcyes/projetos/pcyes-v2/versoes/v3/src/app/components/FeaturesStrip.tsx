@@ -14,7 +14,7 @@ export function FeaturesStrip() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="border-y border-black/8 px-5 py-[39px] md:px-[72.5px]" style={{ background: "#0e0e0e" }}>
+    <section ref={ref} className="border-y border-black/8 px-5 py-[39px] md:px-[72.5px]" style={{ background: "var(--surface-0)" }}>
       <div className="mx-auto flex min-h-[166px] max-w-[1760px] flex-wrap items-center justify-center gap-[64px] px-0 md:px-12">
         {features.map((f, i) => (
           <motion.div

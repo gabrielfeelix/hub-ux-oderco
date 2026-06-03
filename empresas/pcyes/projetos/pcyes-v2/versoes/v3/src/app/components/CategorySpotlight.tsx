@@ -27,7 +27,7 @@ export function CategorySpotlight() {
     <section
       ref={ref}
       className="px-5 py-16 md:px-[72px] md:py-20"
-      style={{ background: "#0e0e0e" }}
+      style={{ background: "var(--surface-0)" }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-8 flex flex-col items-start gap-3 md:flex-row md:items-end md:justify-between">

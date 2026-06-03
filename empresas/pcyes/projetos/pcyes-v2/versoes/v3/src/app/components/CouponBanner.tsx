@@ -14,7 +14,7 @@ export function CouponBanner() {
   };
 
   return (
-    <section className="px-5 md:px-[72px]" style={{ background: "#0e0e0e", paddingTop: "16px", paddingBottom: "16px" }}>
+    <section className="px-5 md:px-[72px]" style={{ background: "var(--surface-0)", paddingTop: "16px", paddingBottom: "16px" }}>
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <motion.button
           onClick={copy}

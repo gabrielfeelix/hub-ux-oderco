@@ -244,7 +244,7 @@ export function EssentialsSection() {
       style={{
         paddingTop: "var(--space-section-lg)",
         paddingBottom: "var(--space-section-sm)",
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
       }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>

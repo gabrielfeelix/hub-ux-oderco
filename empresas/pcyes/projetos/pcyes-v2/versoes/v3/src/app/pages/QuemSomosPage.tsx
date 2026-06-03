@@ -145,7 +145,7 @@ export function QuemSomosPage() {
       <section
         ref={heroRef}
         className="relative overflow-hidden pt-[96px] md:pt-[182px]"
-        style={{ background: "#0e0e0e" }}
+        style={{ background: "var(--surface-0)" }}
       >
         {/* atmospheric red radial mesh */}
         <motion.div
@@ -268,7 +268,7 @@ export function QuemSomosPage() {
       {/* ============================== STORY ============================== */}
       <section
         className="relative overflow-hidden"
-        style={{ background: "#0e0e0e" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div className="mx-auto max-w-[1434px] px-5 py-24 md:px-12 md:py-32">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
@@ -371,7 +371,7 @@ export function QuemSomosPage() {
       {/* ============================== STATS ============================== */}
       <section
         className="relative overflow-hidden border-y border-edge"
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div
           aria-hidden
@@ -453,7 +453,7 @@ export function QuemSomosPage() {
       {/* ============================== VALUES ============================== */}
       <section
         className="relative overflow-hidden"
-        style={{ background: "#0e0e0e" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div className="mx-auto max-w-[1434px] px-5 py-24 md:px-12 md:py-32">
           <motion.div
@@ -548,7 +548,7 @@ export function QuemSomosPage() {
       {/* ============================== TIMELINE ============================== */}
       <section
         className="relative overflow-hidden border-y border-edge"
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div
           aria-hidden
@@ -653,7 +653,7 @@ export function QuemSomosPage() {
       {/* ============================== CLOSING CTA ============================== */}
       <section
         className="relative overflow-hidden"
-        style={{ background: "#0e0e0e" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div className="mx-auto max-w-[1434px] px-5 py-24 md:px-12 md:py-32">
           <motion.div

@@ -3778,7 +3778,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
     <div className="relative">
       <div
         className="relative overflow-hidden border-b border-edge-subtle"
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div
           className="pointer-events-none absolute"

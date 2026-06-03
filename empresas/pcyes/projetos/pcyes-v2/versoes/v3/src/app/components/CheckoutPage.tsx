@@ -2086,7 +2086,7 @@ export function CheckoutPage() {
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-[480px] max-h-[90vh] overflow-y-auto"
               style={{
-                background: "#1d1d1f",
+                background: "var(--surface-1)",
                 color: "#fff",
                 borderRadius: "20px 20px 0 0",
                 boxShadow: "0 -40px 100px rgba(0,0,0,0.55)",

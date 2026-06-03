@@ -124,7 +124,7 @@ function DownloadCard({
 function DriverNotFound() {
   return (
     <>
-      <section className="pt-[152px] md:pt-[182px]" style={{ background: "#0e0e0e" }}>
+      <section className="pt-[152px] md:pt-[182px]" style={{ background: "var(--surface-0)" }}>
         <div className="mx-auto flex min-h-[52vh] max-w-[1434px] flex-col items-center justify-center px-5 py-24 text-center md:px-12">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-foreground/[0.05] text-foreground/40">
             <FileBox size={26} />
@@ -184,7 +184,7 @@ export function DriverDetailPage() {
   return (
     <>
       {/* ── Breadcrumb ── */}
-      <section className="pt-[152px] md:pt-[182px]" style={{ background: "#0e0e0e" }}>
+      <section className="pt-[152px] md:pt-[182px]" style={{ background: "var(--surface-0)" }}>
         <div className="mx-auto max-w-[1434px] px-5 md:px-12">
           <nav aria-label="breadcrumb">
             <ol
@@ -216,7 +216,7 @@ export function DriverDetailPage() {
       </section>
 
       {/* ── Split hero ── */}
-      <section style={{ background: "#0e0e0e" }}>
+      <section style={{ background: "var(--surface-0)" }}>
         <div className="mx-auto max-w-[1434px] px-5 py-10 md:px-12 md:py-14">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Image */}
@@ -315,7 +315,7 @@ export function DriverDetailPage() {
       </section>
 
       {/* ── Downloads ── */}
-      <section id={DOWNLOADS_ANCHOR} className="scroll-mt-[160px]" style={{ background: "#0e0e0e" }}>
+      <section id={DOWNLOADS_ANCHOR} className="scroll-mt-[160px]" style={{ background: "var(--surface-0)" }}>
         <div className="mx-auto max-w-[1434px] px-5 pb-16 md:px-12 md:pb-20">
           <div className="border-t border-foreground/10 pt-12">
             <h2

@@ -185,7 +185,7 @@ export function FaqPage() {
       {/* ── Hero ── */}
       <section
         className="relative overflow-hidden border-b border-edge-subtle pt-[152px] md:pt-[182px]"
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div
           className="pointer-events-none absolute"
@@ -308,7 +308,7 @@ export function FaqPage() {
       {/* ── Categories + Q&A ── */}
       <section
         className="relative pb-20 pt-12 md:pb-28 md:pt-16"
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "var(--surface-0)" }}
       >
         <div className="mx-auto max-w-3xl px-5 md:px-12">
           {/* Category pill toggle — hidden while searching */}

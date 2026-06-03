@@ -121,7 +121,7 @@ export function CategoryRail() {
       style={{
         paddingTop: "56px",
         paddingBottom: "56px",
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
       }}
     >
       <div className="mx-auto" style={{ maxWidth: "var(--container-max)" }}>

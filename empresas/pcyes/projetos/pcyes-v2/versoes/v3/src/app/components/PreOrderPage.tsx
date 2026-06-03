@@ -341,7 +341,7 @@ function HeroSection({
       className="relative overflow-hidden"
       style={{
         minHeight: "60vh",
-        background: "#0a0a0a",
+        background: "var(--surface-0)",
       }}
     >
       {/* subtle red glow top-right (PCYES identity) */}
@@ -788,7 +788,7 @@ function FiltersBar({
               }}
             >
               {(Object.keys(sortLabels) as SortKey[]).map((k) => (
-                <option key={k} value={k} style={{ background: "#0a0a0c", color: "#fff" }}>
+                <option key={k} value={k} style={{ background: "var(--surface-0)", color: "#fff" }}>
                   {sortLabels[k]}
                 </option>
               ))}

@@ -1370,7 +1370,7 @@ export function Navbar() {
                 <div
                   className="flex h-[40px] items-center overflow-hidden rounded-full border transition-all"
                   style={{
-                    background: "#1f1c1c",
+                    background: "var(--surface-2)",
                     borderColor: searchPanelOpen ? "rgba(var(--foreground-rgb), 0.35)" : "rgba(var(--foreground-rgb), 0.08)",
                     boxShadow: searchPanelOpen
                       ? "0 10px 32px rgba(0, 0, 0, 0.55)"
@@ -1494,7 +1494,7 @@ export function Navbar() {
                       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                       className="absolute left-1/2 top-[58px] z-[60] w-[min(1320px,calc(100vw-64px))] -translate-x-1/2 overflow-hidden rounded-card-lg shadow-[0_28px_80px_rgba(0,0,0,0.55)]"
                       style={{
-                        background: "#1f1c1c",
+                        background: "var(--surface-2)",
                         border: "1px solid rgba(var(--foreground-rgb), 0.08)",
                       }}
                     >

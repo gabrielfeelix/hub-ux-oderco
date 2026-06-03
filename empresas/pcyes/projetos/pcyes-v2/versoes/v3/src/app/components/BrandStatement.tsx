@@ -11,7 +11,7 @@ export function BrandStatement() {
     <section
       ref={ref}
       className="relative overflow-hidden"
-      style={{ background: "#0d0d0e" }}
+      style={{ background: "var(--surface-0)" }}
     >
       {/* Subtle red radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(255,43,46,0.07),transparent)]" />
