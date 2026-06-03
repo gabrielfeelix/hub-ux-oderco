@@ -242,9 +242,9 @@ export function ProductCarousel({
                 return (
               <Link to={`/produto/${displayProduct.id}`} className="block">
                 <div
-                  className="relative mb-4 aspect-[5/6] overflow-hidden"
+                  className="deal-card-img relative mb-4 aspect-[5/6] overflow-hidden transition-all duration-300"
                   style={{
-                    borderRadius: "var(--radius-card)",
+                    borderRadius: "var(--radius-card-lg)",
                     background: isDark
                       ? "linear-gradient(180deg, rgba(33,33,36,0.1) 0%, rgba(82,82,83,0.1) 100%)"
                       : "linear-gradient(180deg, rgba(var(--foreground-rgb), 1) 0%, rgba(242,242,242,1) 100%)",

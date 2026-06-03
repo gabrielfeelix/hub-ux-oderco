@@ -1360,7 +1360,7 @@ export function ProductsPage() {
                           transition={{ duration: 0.3, delay: Math.min(i * 0.025, 0.35) }}
                           className="group relative"
                         >
-                          <div className={`relative overflow-hidden mb-4 aspect-[5/6] transition-all neon-hover-red ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "20px", background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)", border: "1px solid rgba(var(--foreground-rgb), 0.08)", boxShadow: "var(--shadow-card-hairline)" }}>
+                          <div className={`relative overflow-hidden mb-4 aspect-[5/6] transition-all duration-300 deal-card-img ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "var(--radius-card-lg)", background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)", border: "1px solid rgba(var(--foreground-rgb), 0.08)" }}>
                             {/* Inner shine */}
                             <div className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "20px" }} />
                             <Link to={`/produto/${displayProduct.id}`} className="block h-full">

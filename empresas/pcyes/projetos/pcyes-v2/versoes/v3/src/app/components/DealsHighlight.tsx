@@ -13,6 +13,7 @@ import {
   getVisibleCatalogProducts,
 } from "./productPresentation";
 import { SectionHeader, CTAButton, DiscountBadge } from "./section";
+import { ProductCard } from "./ProductCard";
 
 interface DealsHighlightProps {
   label?: string;
@@ -20,128 +21,6 @@ interface DealsHighlightProps {
   productIds: number[];
 }
 
-interface SmallCardProps {
-  product: Product;
-  onAdd: (p: Product) => void;
-  onFavorite: (p: Product) => void;
-}
-
-function SmallProductCard({ product, onAdd, onFavorite }: SmallCardProps) {
-  const [isFavorited, setIsFavorited] = useState(false);
-  const image = getPrimaryProductImage(product);
-
-  const oldPriceNum = product.oldPriceNum ?? product.priceNum * 1.18;
-  const discount = oldPriceNum > product.priceNum
-    ? Math.round(((oldPriceNum - product.priceNum) / oldPriceNum) * 100)
-    : 0;
-
-  const installment = (product.priceNum / 10).toFixed(2).replace(".", ",");
-
-  return (
-    <div className="group">
-      <Link to={`/produto/${product.id}`} className="block">
-        <div
-          className="relative aspect-square overflow-hidden transition-all duration-300 neon-hover-red"
-          style={{
-            background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
-            borderRadius: "20px",
-            border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-            boxShadow: "var(--shadow-card-hairline)",
-          }}
-        >
-          <div
-            className="pointer-events-none absolute inset-0 z-[1]"
-            style={{
-              background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-              borderRadius: "20px",
-            }}
-          />
-
-          <ImageWithFallback
-            src={image}
-            alt={product.name}
-            className="absolute inset-0 h-full w-full object-contain p-3 md:p-6 transition-transform duration-500 group-hover:scale-[1.05]"
-          />
-
-          {/* Discount badge */}
-          {discount > 0 && <DiscountBadge percent={discount} className="absolute top-3 left-3 z-20" />}
-
-          {/* Favorite (hover) */}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setIsFavorited(!isFavorited);
-              onFavorite(product);
-            }}
-            className="absolute right-3 top-3 z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
-            style={{
-              background: isFavorited ? "rgba(225,6,0,0.2)" : "rgba(0,0,0,0.55)",
-              border: isFavorited ? "1px solid rgba(225,6,0,0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
-              color: isFavorited ? "#ff2419" : "rgba(var(--foreground-rgb), 0.85)",
-              backdropFilter: "blur(8px)",
-            }}
-            aria-label="Favoritar"
-          >
-            <Heart size={13} strokeWidth={isFavorited ? 0 : 1.8} fill={isFavorited ? "#ff2419" : "none"} />
-          </button>
-
-          {/* Quick add pill — compact on mobile, larger on hover for desktop. */}
-          <CTAButton
-            variant="buy"
-            size="sm"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              onAdd(product);
-            }}
-            className="absolute bottom-2 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer md:h-12 md:px-10 md:text-[13px]"
-          >
-            <ShoppingBag size={11} strokeWidth={2} aria-hidden="true" /> Adicionar
-          </CTAButton>
-        </div>
-
-        <div className="mt-3 px-1">
-          <h3
-            className="line-clamp-2 text-white"
-            style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "13px",
-              fontWeight: 600,
-              lineHeight: 1.3,
-              letterSpacing: "-0.01em",
-              minHeight: "34px",
-            }}
-          >
-            {product.name}
-          </h3>
-
-          <div className="mt-2">
-            {oldPriceNum > product.priceNum && (
-              <p
-                className="line-through leading-none mb-0.5"
-                style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(var(--foreground-rgb), 0.32)" }}
-              >
-                R$ {oldPriceNum.toFixed(2).replace(".", ",")}
-              </p>
-            )}
-            <p
-              className="text-white leading-none"
-              style={{ fontFamily: "var(--font-family-figtree)", fontSize: "16px", fontWeight: 700, letterSpacing: "-0.01em" }}
-            >
-              {product.price}
-            </p>
-            <p
-              className="mt-1 leading-tight"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", color: "rgba(var(--foreground-rgb), 0.5)" }}
-            >
-              10x de R$ {installment}
-            </p>
-          </div>
-        </div>
-      </Link>
-    </div>
-  );
-}
 
 export function DealsHighlight({
   label = "OFERTAS",
@@ -203,8 +82,10 @@ export function DealsHighlight({
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.05 * i }}
               >
-                <SmallProductCard
+                <ProductCard
                   product={product}
+                  variant="grid"
+                  favorite
                   onAdd={handleAdd}
                   onFavorite={handleFavorite}
                 />
