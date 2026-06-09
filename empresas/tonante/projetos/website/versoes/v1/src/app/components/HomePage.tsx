@@ -6,6 +6,7 @@ import { FlashDealsStrip } from "./FlashDealsStrip";
 import { ProductShelf } from "./ProductShelf";
 import { DealsHighlight } from "./DealsHighlight";
 import { TrustStrip } from "./TrustStrip";
+import { StoryBand } from "./StoryBand";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
 import { SEO } from "./SEO";
@@ -70,6 +71,9 @@ export function HomePage() {
 
       {/* Lançamentos */}
       <ProductShelf label="Lançamentos" title="Recém-chegados" productIds={newArrivalIds} />
+
+      {/* Herança 1954 */}
+      <StoryBand />
 
       {/* Institucional */}
       <Newsletter />
