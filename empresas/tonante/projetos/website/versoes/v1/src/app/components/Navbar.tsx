@@ -148,12 +148,21 @@ const megaMenus: Record<string, MegaMenu> = {
 
 interface NavItem { label: string; href?: string; mega?: string; emphasis?: "green" | "build" }
 
+// Mapa mega-key → categoria, p/ preencher os círculos do mega com fotos reais.
+const MEGA_CATEGORY: Record<string, string> = {
+  violoes: "Violões",
+  guitarras: "Guitarras",
+  acessorios: "Acessórios",
+};
+
 const navItems: NavItem[] = [
   { label: "Loja", href: "/produtos" },
   { label: "Violões", mega: "violoes", href: getCatalogHref({ category: "Violões" }) },
   { label: "Guitarras", mega: "guitarras", href: getCatalogHref({ category: "Guitarras" }) },
   { label: "Contrabaixos", href: getCatalogHref({ category: "Contrabaixos" }) },
   { label: "Acessórios", mega: "acessorios", href: getCatalogHref({ category: "Acessórios" }) },
+  { label: "Cordas & Encordoamentos", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+  { label: "Suportes", href: getCatalogHref({ category: "Suportes" }) },
 ];
 
 const trending = ["Violão Coral", "Guitarra Cecille", "Capotraste", "Afinador"];
@@ -1669,9 +1678,9 @@ export function Navbar() {
           <div
             className="hidden md:flex items-center justify-center gap-0 overflow-hidden transition-all duration-300"
             style={{
-              maxHeight: (showExpanded || desktopCatOpen) ? 48 : 0,
+              maxHeight: (showExpanded || desktopCatOpen) ? 50 : 0,
               opacity: searchPanelOpen ? 0 : ((showExpanded || desktopCatOpen) ? 1 : 0),
-              paddingBottom: (showExpanded || desktopCatOpen) ? 12 : 0,
+              paddingBottom: (showExpanded || desktopCatOpen) ? 14 : 0,
               pointerEvents: searchPanelOpen ? "none" : ((showExpanded || desktopCatOpen) ? "auto" : "none"),
             }}
           >
@@ -1754,8 +1763,14 @@ export function Navbar() {
               >
                 <div className="mx-auto max-w-[1180px] px-5 py-6 md:px-8">
                   <div className="flex items-start justify-center gap-5 overflow-x-auto pb-1 md:gap-7 xl:gap-9">
-                    {activeMegaData.subItems.map((sub) => {
-                      const image = getMegaCategoryImage(sub);
+                    {activeMegaData.subItems.map((sub, subIdx) => {
+                      const megaCat = MEGA_CATEGORY[activeMega ?? ""];
+                      const catPhotos = megaCat
+                        ? allProducts.filter((p) => p.category === megaCat && p.image?.startsWith("http"))
+                        : [];
+                      const image =
+                        getMegaCategoryImage(sub) ??
+                        catPhotos[subIdx % (catPhotos.length || 1)]?.image;
                       const href = resolveMenuHref(sub.href);
                       return (
                         <Link
@@ -1771,7 +1786,8 @@ export function Navbar() {
                               <ImageWithFallback
                                 src={image}
                                 alt={sub.label}
-                                className="relative z-10 h-[122%] w-[122%] object-contain drop-shadow-[0_22px_28px_rgba(0,0,0,0.22)] transition-transform duration-300 group-hover:scale-[1.05]"
+                                className="relative z-10 h-[112%] w-[112%] object-contain p-2 transition-transform duration-300 group-hover:scale-[1.05]"
+                                style={{ mixBlendMode: "multiply" }}
                               />
                             ) : (
                               <Grid2x2 size={34} className="relative z-10 text-foreground/35 transition-colors group-hover:text-primary" strokeWidth={1.5} />

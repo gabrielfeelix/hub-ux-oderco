@@ -16,7 +16,7 @@ import { cn } from "../ui/utils";
  * Onde um consumidor precisa de sombra fora do padrao do tamanho, sobrescreva via className.
  */
 const ctaVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-pill text-white whitespace-nowrap font-bold transition-transform disabled:pointer-events-none disabled:opacity-50 hover:scale-[1.02] active:scale-[0.97] outline-none focus-visible:ring-ring/50 focus-visible:ring-[3px] [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 rounded-pill text-[#fff] [&_svg]:text-[#fff] whitespace-nowrap font-bold transition-transform disabled:pointer-events-none disabled:opacity-50 hover:scale-[1.02] active:scale-[0.97] outline-none focus-visible:ring-ring/50 focus-visible:ring-[3px] [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {

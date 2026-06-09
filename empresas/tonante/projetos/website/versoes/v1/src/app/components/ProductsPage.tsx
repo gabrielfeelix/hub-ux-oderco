@@ -875,7 +875,7 @@ export function ProductsPage() {
         </FilterSection>
       )}
 
-      {availableBrands.length > 0 && (
+      {availableBrands.length > 1 && (
         <FilterSection title="Marca" expanded={expandedSections.brands} onToggle={() => toggleSection("brands")}>
           <div className="space-y-1 pt-1 max-h-[260px] overflow-y-auto pr-1" style={{ scrollbarWidth: "thin" }}>
             {availableBrands.map(({ label, count }) => {

@@ -123,12 +123,12 @@ export function AuthModal() {
                     {socialLoading === "apple" ? <Loader2 size={15} className="animate-spin" /> : <AppleIcon />}
                     Apple
                   </button>
-                  <button onClick={() => handleSocial("discord")} disabled={!!socialLoading}
+                  <button onClick={() => handleSocial("facebook")} disabled={!!socialLoading}
                     className={`flex items-center justify-center gap-2.5 py-3 transition-all duration-300 cursor-pointer disabled:opacity-50 ${isDark ? "bg-foreground/5 text-foreground/70 hover:bg-foreground/10" : "bg-foreground/5 text-foreground hover:bg-foreground/10 border border-foreground/10"}`}
                     style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}
                   >
-                    {socialLoading === "discord" ? <Loader2 size={15} className="animate-spin" /> : <DiscordIcon />}
-                    Discord
+                    {socialLoading === "facebook" ? <Loader2 size={15} className="animate-spin" /> : <FacebookIcon />}
+                    Facebook
                   </button>
                 </div>
               </div>
