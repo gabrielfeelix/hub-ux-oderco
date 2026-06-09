@@ -22,7 +22,7 @@ const banners: BannerCard[] = [
     cta: "Montar agora",
     href: "/monte-seu-pc",
     image: "/home/category-pc-gamer.png",
-    tint: "linear-gradient(115deg, rgba(220,20,20,0.7) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
+    tint: "linear-gradient(115deg, rgba(200, 120, 0,0.7) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
   },
   {
     eyebrow: "PERIFÉRICOS",

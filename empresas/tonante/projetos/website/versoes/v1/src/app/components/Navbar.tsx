@@ -515,8 +515,8 @@ export function Navbar() {
       </div>
     );
 
-    const elevatedCardClass = "group relative grid h-full min-h-[270px] grid-rows-[150px_auto] overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.12)]";
-    const layoutElevatedCardClass = "group relative grid h-full min-h-[290px] grid-rows-[170px_auto] overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.12)]";
+    const elevatedCardClass = "group relative grid h-full min-h-[270px] grid-rows-[150px_auto] overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(200, 120, 0,0.12)]";
+    const layoutElevatedCardClass = "group relative grid h-full min-h-[290px] grid-rows-[170px_auto] overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-b from-foreground/[0.05] to-transparent p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(200, 120, 0,0.12)]";
 
     const showcaseCard = (
       href: string,
@@ -534,7 +534,7 @@ export function Navbar() {
       return (
       <Link to={resolveMenuHref(href)} onClick={() => setActiveMega(null)} className={elevatedCardClass}>
         {badge && (
-          <span className="absolute right-4 top-4 z-20 rounded-full bg-primary px-2.5 py-1 text-primary-foreground shadow-[0_0_15px_rgba(255,43,46,0.5)]"
+          <span className="absolute right-4 top-4 z-20 rounded-full bg-primary px-2.5 py-1 text-primary-foreground shadow-[0_0_15px_rgba(200, 120, 0,0.5)]"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.08em" }}>
             {badge}
           </span>
@@ -582,7 +582,7 @@ export function Navbar() {
       <Link
         to={href}
         onClick={() => setActiveMega(null)}
-        className="group flex h-full rounded-card-lg border border-foreground/8 bg-foreground/[0.03] px-4 py-4 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,43,46,0.08)]"
+        className="group flex h-full rounded-card-lg border border-foreground/8 bg-foreground/[0.03] px-4 py-4 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(200, 120, 0,0.08)]"
       >
         <div className="flex items-start gap-3 w-full">
           <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-2xl border border-foreground/8 bg-background/70 text-primary/75 transition-colors duration-300 group-hover:bg-primary group-hover:text-ink-strong">
@@ -614,7 +614,7 @@ export function Navbar() {
       <Link
         to={href}
         onClick={() => setActiveMega(null)}
-        className="group relative overflow-hidden flex h-full flex-col rounded-card-lg border border-foreground/8 bg-foreground/[0.03] px-5 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(255,43,46,0.08)]"
+        className="group relative overflow-hidden flex h-full flex-col rounded-card-lg border border-foreground/8 bg-foreground/[0.03] px-5 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(200, 120, 0,0.08)]"
       >
         <div className="absolute -bottom-6 -right-6 text-foreground opacity-[0.03] transition-all duration-500 group-hover:text-primary group-hover:opacity-10 group-hover:scale-110 group-hover:-rotate-6">
           {icon}
@@ -714,7 +714,7 @@ export function Navbar() {
               <Link
                 to={resolveMenuHref(activeSubData?.href)}
                 onClick={() => setActiveMega(null)}
-                className="group flex h-full min-h-[90px] flex-col justify-center rounded-card-lg border border-primary/20 bg-primary/[0.05] px-5 py-4 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_8px_24px_rgba(255,43,46,0.12)] hover:-translate-y-0.5"
+                className="group flex h-full min-h-[90px] flex-col justify-center rounded-card-lg border border-primary/20 bg-primary/[0.05] px-5 py-4 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_8px_24px_rgba(200, 120, 0,0.12)] hover:-translate-y-0.5"
               >
                 <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.18em" }}>
                   EXPLORAR
@@ -790,7 +790,7 @@ export function Navbar() {
               <Link
                 to={resolveMenuHref(activeSubData?.href)}
                 onClick={() => setActiveMega(null)}
-                className="group flex h-full min-h-[110px] flex-col justify-center rounded-card-lg border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5"
+                className="group flex h-full min-h-[110px] flex-col justify-center rounded-card-lg border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(200, 120, 0,0.12)] hover:-translate-y-0.5"
               >
                 <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.18em" }}>
                   VER TUDO
@@ -819,7 +819,7 @@ export function Navbar() {
             {panelHeader(panel.title, "Destacamos o universo da categoria com uma peça principal e um acesso mais elegante para continuar a navegação.")}
           </motion.div>
           <motion.div variants={itemVariants} className="flex-1">
-            <Link to={resolveMenuHref(panel.href)} onClick={() => setActiveMega(null)} className="group grid h-full min-h-[360px] grid-cols-1 gap-5 overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-br from-foreground/[0.04] via-transparent to-primary/[0.06] p-6 transition-all duration-500 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(255,43,46,0.15)] xl:grid-cols-[1.1fr_1fr]">
+            <Link to={resolveMenuHref(panel.href)} onClick={() => setActiveMega(null)} className="group grid h-full min-h-[360px] grid-cols-1 gap-5 overflow-hidden rounded-[var(--radius-card-xl)] border border-foreground/8 bg-linear-to-br from-foreground/[0.04] via-transparent to-primary/[0.06] p-6 transition-all duration-500 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(200, 120, 0,0.15)] xl:grid-cols-[1.1fr_1fr]">
               <div className="flex h-full flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-4">
@@ -894,7 +894,7 @@ export function Navbar() {
                 <motion.div
                   key={item.name}
                   variants={itemVariants}
-                  className="group rounded-[var(--radius-card-xl)] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,43,46,0.05)] cursor-pointer"
+                  className="group rounded-[var(--radius-card-xl)] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(200, 120, 0,0.05)] cursor-pointer"
                 >
                   {innerCard}
                 </motion.div>
@@ -903,14 +903,14 @@ export function Navbar() {
                   key={item.name}
                   variants={itemVariants}
                   href={item.href}
-                  className="group rounded-[var(--radius-card-xl)] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,43,46,0.1)]"
+                  className="group rounded-[var(--radius-card-xl)] border border-foreground/8 bg-foreground/[0.03] px-6 py-5 transition-all duration-300 hover:border-primary/30 hover:bg-foreground/[0.05] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(200, 120, 0,0.1)]"
                 >
                   {innerCard}
                 </motion.a>
               )
             })}
             <motion.div variants={itemVariants}>
-              <Link to="/drivers-e-manuais" onClick={() => setActiveMega(null)} className="group flex h-full min-h-[140px] flex-col justify-center rounded-[var(--radius-card-xl)] border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(255,43,46,0.12)] hover:-translate-y-0.5">
+              <Link to="/drivers-e-manuais" onClick={() => setActiveMega(null)} className="group flex h-full min-h-[140px] flex-col justify-center rounded-[var(--radius-card-xl)] border border-primary/20 bg-primary/[0.05] px-6 py-5 transition-all duration-300 hover:bg-primary/[0.10] hover:shadow-[0_12px_32px_rgba(200, 120, 0,0.12)] hover:-translate-y-0.5">
                 <p className="text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.18em" }}>
                   CENTRAL DE SUPORTE
                 </p>
@@ -1696,7 +1696,7 @@ export function Navbar() {
                 customStyle.color = "#34d399";
               }
               if (isBuild) {
-                customStyle.color = "#ff2419";
+                customStyle.color = "#e08c12";
                 customStyle.letterSpacing = "0.02em";
               }
               const content = (
@@ -2133,7 +2133,7 @@ export function Navbar() {
                         };
                         if (isGreen) labelStyle.color = "#34d399";
                         if (isBuild) {
-                          labelStyle.color = "#ff2419";
+                          labelStyle.color = "#e08c12";
                           labelStyle.letterSpacing = "0.02em";
                         }
                         return (

@@ -78,7 +78,7 @@ export function LegalPageLayout({
           className="pointer-events-none absolute inset-x-0 top-0 h-[460px]"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,43,46,0.12) 0%, transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(200, 120, 0,0.12) 0%, transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-[1434px] px-5 pb-14 md:px-12 md:pb-20">
@@ -95,7 +95,7 @@ export function LegalPageLayout({
                 fontSize: "var(--text-caption)",
                 letterSpacing: "0.18em",
                 fontWeight: 700,
-                boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                boxShadow: "0 6px 22px -4px rgba(200, 120, 0,0.55)",
               }}
             >
               {badge}

@@ -272,8 +272,8 @@ export function HeroSection() {
                     className="absolute inset-y-0 left-0 rounded-full"
                     style={{
                       width: `${progress * 100}%`,
-                      background: "linear-gradient(90deg, var(--primary) 0%, #ff2419 100%)",
-                      boxShadow: "0 0 10px rgba(225,6,0,0.6)",
+                      background: "linear-gradient(90deg, var(--primary) 0%, #e08c12 100%)",
+                      boxShadow: "0 0 10px rgba(200, 120, 0,0.6)",
                       transition: "width 50ms linear",
                     }}
                   />

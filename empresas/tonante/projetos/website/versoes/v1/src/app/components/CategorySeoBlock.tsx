@@ -196,7 +196,7 @@ export function CategorySeoBlock({
         className="rounded-2xl border p-6 md:p-8"
         style={{
           background:
-            "linear-gradient(135deg, rgba(255,59,62,0.05) 0%, rgba(255,255,255,0.02) 60%)",
+            "linear-gradient(135deg, rgba(200, 120, 0,0.05) 0%, rgba(255,255,255,0.02) 60%)",
           borderColor: "rgba(255,255,255,0.08)",
           boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
         }}
@@ -208,7 +208,7 @@ export function CategorySeoBlock({
             fontFamily: "var(--font-family-figtree)",
             fontSize: "clamp(20px, 2.4vw, 28px)",
             fontWeight: 700,
-            color: "#ff3b3e",
+            color: "#c87800",
             letterSpacing: "-0.015em",
             lineHeight: 1.2,
           }}
@@ -278,7 +278,7 @@ export function CategorySeoBlock({
               fontFamily: "var(--font-family-inter)",
               fontSize: "var(--text-sm)",
               fontWeight: 700,
-              color: "#ff3b3e",
+              color: "#c87800",
               letterSpacing: "0.02em",
             }}
             aria-expanded={expanded}

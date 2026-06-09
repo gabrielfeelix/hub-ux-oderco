@@ -83,7 +83,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
       style={{
         borderRadius: "var(--radius-card-lg)",
         background: "linear-gradient(135deg, #120608 0%, #1a080b 50%, #120608 100%)",
-        border: "1px solid rgba(255,36,25,0.12)",
+        border: "1px solid rgba(200, 120, 0,0.12)",
         boxShadow: "0 20px 50px -20px rgba(0,0,0,0.55)",
         transition: "border-color 0.4s ease, box-shadow 0.4s ease",
       }}
@@ -93,7 +93,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
         className="pointer-events-none absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-50"
         style={{
           background:
-            "radial-gradient(circle at 85% 0%, rgba(255,36,25,0.10) 0%, transparent 50%)",
+            "radial-gradient(circle at 85% 0%, rgba(200, 120, 0,0.10) 0%, transparent 50%)",
         }}
       />
 
@@ -111,7 +111,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
           <span
             className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
             style={{
-              background: "#ff2419",
+              background: "#e08c12",
               color: "#fff",
               fontFamily: "var(--font-family-inter)",
               fontSize: "var(--text-caption)",
@@ -263,7 +263,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-y-0 left-0"
                 style={{
-                  background: "linear-gradient(90deg, #ff2419 0%, #ff7a3d 100%)",
+                  background: "linear-gradient(90deg, #e08c12 0%, #ff7a3d 100%)",
                   borderRadius: "var(--radius-pill)",
                 }}
               />
@@ -300,12 +300,12 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
             <span
               className="inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-full text-ink-strong transition-all duration-300 group-hover:translate-x-0.5 w-full md:w-auto md:justify-start"
               style={{
-                background: "#ff2419",
+                background: "#e08c12",
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "var(--text-sm)",
                 fontWeight: 600,
                 letterSpacing: "0.02em",
-                boxShadow: "0 8px 22px -10px rgba(255,36,25,0.35)",
+                boxShadow: "0 8px 22px -10px rgba(200, 120, 0,0.35)",
               }}
             >
               Reservar
@@ -357,7 +357,7 @@ function HeroSection({
             width: "70%",
             height: "90%",
             background:
-              "radial-gradient(circle, rgba(225,6,0,0.09) 0%, rgba(225,6,0,0.025) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(200, 120, 0,0.09) 0%, rgba(200, 120, 0,0.025) 40%, transparent 70%)",
             filter: "blur(90px)",
           }}
         />
@@ -369,7 +369,7 @@ function HeroSection({
             width: "45%",
             height: "55%",
             background:
-              "radial-gradient(circle, rgba(255,36,25,0.04) 0%, transparent 65%)",
+              "radial-gradient(circle, rgba(200, 120, 0,0.04) 0%, transparent 65%)",
             filter: "blur(100px)",
           }}
         />
@@ -398,7 +398,7 @@ function HeroSection({
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(circle at 50% 65%, rgba(225,6,0,0.07) 0%, rgba(225,6,0,0.02) 40%, transparent 70%)",
+                "radial-gradient(circle at 50% 65%, rgba(200, 120, 0,0.07) 0%, rgba(200, 120, 0,0.02) 40%, transparent 70%)",
               filter: "blur(60px)",
               transform: "scale(1.1)",
             }}
@@ -429,10 +429,10 @@ function HeroSection({
               style={{
                 background: "rgba(20,5,7,0.85)",
                 backdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,36,25,0.25)",
+                border: "1px solid rgba(200, 120, 0,0.25)",
                 borderRadius: "var(--radius-card-md)",
                 padding: "14px 18px",
-                boxShadow: "0 20px 50px -16px rgba(225,6,0,0.4)",
+                boxShadow: "0 20px 50px -16px rgba(200, 120, 0,0.4)",
                 maxWidth: "260px",
               }}
             >
@@ -516,8 +516,8 @@ function HeroSection({
           <span
             className="relative inline-flex items-center gap-2 rounded-full px-3 py-1.5"
             style={{
-              background: "rgba(255,36,25,0.08)",
-              border: "1px solid rgba(255,36,25,0.25)",
+              background: "rgba(200, 120, 0,0.08)",
+              border: "1px solid rgba(200, 120, 0,0.25)",
               color: "#ff7770",
               fontFamily: "var(--font-family-inter)",
               fontSize: "var(--text-caption)",
@@ -530,15 +530,15 @@ function HeroSection({
             <span className="relative flex h-1.5 w-1.5">
               <span
                 className="absolute inset-0 rounded-full animate-ping"
-                style={{ background: "#ff2419", animationDuration: "2.4s", opacity: 0.7 }}
+                style={{ background: "#e08c12", animationDuration: "2.4s", opacity: 0.7 }}
               />
               <span
                 className="relative rounded-full"
                 style={{
                   width: "6px",
                   height: "6px",
-                  background: "#ff2419",
-                  boxShadow: "0 0 8px rgba(255,36,25,0.9)",
+                  background: "#e08c12",
+                  boxShadow: "0 0 8px rgba(200, 120, 0,0.9)",
                 }}
               />
             </span>
@@ -760,7 +760,7 @@ function FiltersBar({
               <span
                 className="inline-flex items-center justify-center w-5 h-5 rounded-full"
                 style={{
-                  background: "#ff2419",
+                  background: "#e08c12",
                   color: "#fff",
                   fontSize: "var(--text-caption)",
                   fontWeight: 700,

@@ -235,12 +235,12 @@ export function ProfilePage() {
         <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row md:items-center gap-8 md:gap-8">
           <div className="flex items-center gap-5">
             <div className="relative flex-shrink-0">
-              <div className="w-[78px] h-[78px] rounded-full bg-primary/10 flex items-center justify-center border border-primary/20" style={{ boxShadow: "0 0 0 4px rgba(255,43,46,0.04)" }}>
+              <div className="w-[78px] h-[78px] rounded-full bg-primary/10 flex items-center justify-center border border-primary/20" style={{ boxShadow: "0 0 0 4px rgba(200, 120, 0,0.04)" }}>
                 <span className="text-primary" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-2xl)", fontWeight: 600 }}>
                   {user.name.charAt(0)}
                 </span>
               </div>
-              <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800, letterSpacing: "0.06em", boxShadow: "0 4px 12px rgba(255,43,46,0.4)" }}>
+              <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-primary text-primary-foreground flex items-center gap-0.5" style={{ borderRadius: "var(--radius-card)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800, letterSpacing: "0.06em", boxShadow: "0 4px 12px rgba(200, 120, 0,0.4)" }}>
                 <Sparkles size={8} className="fill-white" /> Nv. {tier.current.level}
               </span>
             </div>
@@ -306,7 +306,7 @@ export function ProfilePage() {
                   style={{
                     borderRadius: "var(--radius-card-sm)",
                     background: activeTab === tab.key
-                      ? (isDark ? "linear-gradient(90deg, rgba(255,43,46,0.12) 0%, rgba(255,43,46,0.04) 100%)" : "linear-gradient(90deg, rgba(220,20,20,0.08) 0%, rgba(220,20,20,0.02) 100%)")
+                      ? (isDark ? "linear-gradient(90deg, rgba(200, 120, 0,0.12) 0%, rgba(200, 120, 0,0.04) 100%)" : "linear-gradient(90deg, rgba(200, 120, 0,0.08) 0%, rgba(200, 120, 0,0.02) 100%)")
                       : "transparent",
                     fontFamily: "var(--font-family-inter)",
                     fontWeight: activeTab === tab.key ? 600 : 500,
@@ -852,7 +852,7 @@ export function ProfilePage() {
                         className="group cursor-pointer text-left p-5 transition-all relative overflow-hidden md:col-span-2"
                         style={{
                           borderRadius: "var(--radius-card-sm)",
-                          background: "linear-gradient(135deg, rgba(250,204,21,0.08) 0%, rgba(180,83,9,0.04) 50%, rgba(255,43,46,0.02) 100%)",
+                          background: "linear-gradient(135deg, rgba(250,204,21,0.08) 0%, rgba(180,83,9,0.04) 50%, rgba(200, 120, 0,0.02) 100%)",
                           border: "1px solid rgba(250,204,21,0.28)",
                         }}
                       >
@@ -877,7 +877,7 @@ export function ProfilePage() {
                   </div>
 
                   {/* Atalhos rápidos */}
-                  <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between p-5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(255,43,46,0.04)" : "rgba(220,20,20,0.03)", border: "1px solid rgba(255,43,46,0.12)" }}>
+                  <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between p-5" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(200, 120, 0,0.04)" : "rgba(200, 120, 0,0.03)", border: "1px solid rgba(200, 120, 0,0.12)" }}>
                     <div className="flex items-center gap-3">
                       <Sparkles size={18} className="text-primary" />
                       <div>
@@ -1269,7 +1269,7 @@ export function ProfilePage() {
                     </div>
 
                     {/* Hero saldo */}
-                    <div className="relative mb-3 overflow-hidden p-6" style={{ borderRadius: "var(--radius-card-md)", background: "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.05) 50%, rgba(255,43,46,0.03) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
+                    <div className="relative mb-3 overflow-hidden p-6" style={{ borderRadius: "var(--radius-card-md)", background: "linear-gradient(135deg, rgba(250,204,21,0.10) 0%, rgba(180,83,9,0.05) 50%, rgba(200, 120, 0,0.03) 100%)", border: "1px solid rgba(250,204,21,0.28)" }}>
                       <div className="flex items-center gap-4 mb-4">
                         <PcyesCoin size={56} />
                         <div className="flex-1">
@@ -1591,7 +1591,7 @@ export function ProfilePage() {
                 <motion.div key="addresses" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "var(--font-weight-medium)" }}>Endereços</h2>
-                    <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setAddressModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(200, 120, 0,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.addresses.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
@@ -1603,9 +1603,9 @@ export function ProfilePage() {
                   ) : (
                   <div className="space-y-2">
                     {user.addresses.map((a) => (
-                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: a.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                      <div key={a.id} className="flex items-start justify-between gap-4 p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: a.isDefault ? "1px solid rgba(200, 120, 0,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
                         <div className="flex items-start gap-3 min-w-0 flex-1">
-                          <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
+                          <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(200, 120, 0,0.08)" }}>
                             <MapPin size={15} className="text-primary" />
                           </div>
                           <div className="min-w-0 flex-1">
@@ -1623,7 +1623,7 @@ export function ProfilePage() {
                         </div>
                         <div className="flex flex-col gap-1.5 flex-shrink-0">
                           {!a.isDefault && (
-                            <button onClick={() => setDefaultAddress(a.id)} className="inline-flex items-center gap-1 min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>Tornar padrão</button>
+                            <button onClick={() => setDefaultAddress(a.id)} className="inline-flex items-center gap-1 min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(200, 120, 0,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>Tornar padrão</button>
                           )}
                           <button onClick={() => setAddressModal({ open: true, editing: a })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>Editar</button>
                           {user.addresses.length > 1 && (
@@ -1664,7 +1664,7 @@ export function ProfilePage() {
                     const daysToBday = Math.ceil((thisBday.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
                     if (daysToBday > 30) return null;
                     return (
-                      <div className="flex items-center gap-3 p-4 mb-3" style={{ borderRadius: "var(--radius-card-sm)", background: "linear-gradient(135deg, rgba(255,43,46,0.06) 0%, rgba(var(--foreground-rgb), 0.02) 60%)", border: "1px solid rgba(255,43,46,0.2)" }}>
+                      <div className="flex items-center gap-3 p-4 mb-3" style={{ borderRadius: "var(--radius-card-sm)", background: "linear-gradient(135deg, rgba(200, 120, 0,0.06) 0%, rgba(var(--foreground-rgb), 0.02) 60%)", border: "1px solid rgba(200, 120, 0,0.2)" }}>
                         <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
                           <Sparkles size={16} className="text-primary fill-primary/30" />
                         </div>
@@ -1725,7 +1725,7 @@ export function ProfilePage() {
                 <motion.div key="cards" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
                   <div className="flex items-center justify-between mb-5">
                     <h2 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "var(--font-weight-medium)" }}>Cartões salvos</h2>
-                    <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>+ Adicionar</button>
+                    <button onClick={() => setCardModal({ open: true, editing: null })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3.5 py-1.5 text-primary hover:brightness-110 transition-all cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(200, 120, 0,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>+ Adicionar</button>
                   </div>
                   {user.cards.length === 0 ? (
                     <div className="text-center py-20 px-6" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}>
@@ -1744,7 +1744,7 @@ export function ProfilePage() {
                       const isExpired = monthsLeft < 0;
                       const isExpiringSoon = !isExpired && monthsLeft <= 3;
                       return (
-                        <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(255,43,46,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
+                        <div key={c.id} className="flex items-center gap-4 p-4" style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: c.isDefault ? "1px solid rgba(200, 120, 0,0.25)" : (isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)") }}>
                           <CardBrandLogo brand={c.brand} className="flex-shrink-0" style={{ width: "44px", height: "28px", borderRadius: "var(--radius)", overflow: "hidden", display: "block", objectFit: "cover" }} />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-0.5 flex-wrap">
@@ -1757,7 +1757,7 @@ export function ProfilePage() {
                           </div>
                           <div className="flex flex-col gap-1.5 flex-shrink-0">
                             {!c.isDefault && (
-                              <button onClick={() => setDefaultCard(c.id)} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(255,43,46,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>Tornar padrão</button>
+                              <button onClick={() => setDefaultCard(c.id)} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-primary hover:brightness-110 transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: "rgba(200, 120, 0,0.08)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>Tornar padrão</button>
                             )}
                             <button onClick={() => setCardModal({ open: true, editing: c })} className="inline-flex items-center min-h-[44px] md:min-h-0 px-3 py-1.5 text-foreground/70 hover:text-foreground transition-colors cursor-pointer" style={{ borderRadius: "var(--radius-card)", background: isDark ? "rgba(var(--foreground-rgb), 0.04)" : "rgba(0,0,0,0.04)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>Editar</button>
                             <button onClick={() => askConfirm({
@@ -1804,7 +1804,7 @@ export function ProfilePage() {
                     <button className="group cursor-pointer flex items-center gap-3 p-4 transition-all hover:bg-white/[0.025] profile-card text-left"
                       style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                     >
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
+                      <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(200, 120, 0,0.08)" }}>
                         <User size={15} className="text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1825,7 +1825,7 @@ export function ProfilePage() {
                       <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
                         style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
-                        <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,43,46,0.08)" }}>
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(200, 120, 0,0.08)" }}>
                           <item.icon size={15} className="text-primary" />
                         </div>
                         <div className="text-left flex-1">
@@ -1869,7 +1869,7 @@ export function ProfilePage() {
                       <button key={item.title} className="group cursor-pointer w-full flex items-center gap-4 p-4 transition-all hover:bg-white/[0.025] profile-card"
                         style={{ borderRadius: "var(--radius-card-sm)", background: isDark ? "rgba(var(--foreground-rgb), 0.02)" : "rgba(0,0,0,0.015)", border: isDark ? "1px solid rgba(var(--foreground-rgb), 0.06)" : "1px solid rgba(0,0,0,0.06)" }}
                       >
-                        <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(255,43,46,0.08)" }}>
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: item.danger ? "rgba(239,68,68,0.08)" : "rgba(200, 120, 0,0.08)" }}>
                           <item.icon size={15} className={item.danger ? "text-red-400" : "text-primary"} />
                         </div>
                         <div className="text-left flex-1">

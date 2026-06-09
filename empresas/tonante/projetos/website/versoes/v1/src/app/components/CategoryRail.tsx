@@ -217,19 +217,19 @@ export function CategoryRail() {
                         alignItems: "center",
                         justifyContent: "center",
                         background: isActive
-                          ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, rgba(225, 6, 0, 0) 100%)"
+                          ? "radial-gradient(circle at 50% 50%, rgba(200, 120, 0, 0.22) 0%, rgba(200, 120, 0, 0.05) 70%, rgba(200, 120, 0, 0) 100%)"
                           : isHovered
-                          ? "rgba(225, 6, 0, 0.08)"
+                          ? "rgba(200, 120, 0, 0.08)"
                           : "rgba(var(--foreground-rgb), 0.04)",
                         border: isActive
-                          ? "1.5px solid rgba(225, 6, 0, 0.85)"
+                          ? "1.5px solid rgba(200, 120, 0, 0.85)"
                           : isHovered
-                          ? "1px solid rgba(225, 6, 0, 0.5)"
+                          ? "1px solid rgba(200, 120, 0, 0.5)"
                           : "1px solid rgba(var(--foreground-rgb), 0.10)",
                         boxShadow: isActive
-                          ? "0 0 0 6px rgba(225, 6, 0, 0.08), 0 0 28px -2px rgba(225, 6, 0, 0.55)"
+                          ? "0 0 0 6px rgba(200, 120, 0, 0.08), 0 0 28px -2px rgba(200, 120, 0, 0.55)"
                           : isHovered
-                          ? "0 0 18px -4px rgba(225, 6, 0, 0.4)"
+                          ? "0 0 18px -4px rgba(200, 120, 0, 0.4)"
                           : "none",
                         transform: isHovered ? "scale(1.06)" : "scale(1)",
                         transition: "background 280ms ease, border-color 280ms ease, box-shadow 280ms ease, transform 280ms ease",
@@ -241,14 +241,14 @@ export function CategoryRail() {
                           strokeWidth={isActive ? 1.4 : 1.5}
                           style={{
                             color: isActive
-                              ? "#ff2419"
+                              ? "#e08c12"
                               : isHovered
-                              ? "rgba(255, 90, 80, 0.95)"
+                              ? "rgba(200, 120, 0, 0.95)"
                               : "rgba(var(--foreground-rgb), 0.78)",
                             transition: "color 260ms ease",
                             flexShrink: 0,
                             filter: isActive
-                              ? "drop-shadow(0 0 6px rgba(225, 6, 0, 0.4))"
+                              ? "drop-shadow(0 0 6px rgba(200, 120, 0, 0.4))"
                               : "none",
                           }}
                         />

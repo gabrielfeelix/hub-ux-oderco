@@ -46,9 +46,9 @@ function DownloadCard({
             letterSpacing: "0.1em",
             ...(isPdf
               ? {
-                  background: "rgba(255,43,46,0.14)",
+                  background: "rgba(200, 120, 0,0.14)",
                   color: "var(--primary)",
-                  border: "1px solid rgba(255,43,46,0.32)",
+                  border: "1px solid rgba(200, 120, 0,0.32)",
                 }
               : {
                   background: "rgba(var(--foreground-rgb), 0.07)",
@@ -105,7 +105,7 @@ function DownloadCard({
           fontWeight: 700,
           letterSpacing: "0.02em",
           ...(kind === "driver"
-            ? { boxShadow: "0 12px 28px -10px rgba(255,43,46,0.55)" }
+            ? { boxShadow: "0 12px 28px -10px rgba(200, 120, 0,0.55)" }
             : {}),
         }}
         aria-label={`Baixar ${title}`}
@@ -153,7 +153,7 @@ function DriverNotFound() {
               fontFamily: "var(--font-family-inter)",
               fontSize: "var(--text-sm)",
               fontWeight: 700,
-              boxShadow: "0 12px 28px -10px rgba(255,43,46,0.55)",
+              boxShadow: "0 12px 28px -10px rgba(200, 120, 0,0.55)",
             }}
           >
             <ArrowLeft size={15} /> Voltar para Drivers e Manuais
@@ -253,7 +253,7 @@ export function DriverDetailPage() {
                     letterSpacing: "0.16em",
                     fontWeight: 700,
                     textTransform: "uppercase",
-                    boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                    boxShadow: "0 6px 22px -4px rgba(200, 120, 0,0.55)",
                   }}
                 >
                   {entry.category}
@@ -296,7 +296,7 @@ export function DriverDetailPage() {
                     fontSize: "var(--text-sm)",
                     fontWeight: 700,
                     letterSpacing: "0.02em",
-                    boxShadow: "0 12px 28px -10px rgba(255,43,46,0.55)",
+                    boxShadow: "0 12px 28px -10px rgba(200, 120, 0,0.55)",
                   }}
                 >
                   <Download size={15} /> Ver downloads

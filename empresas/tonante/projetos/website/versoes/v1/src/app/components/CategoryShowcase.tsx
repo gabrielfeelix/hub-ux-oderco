@@ -181,7 +181,7 @@ export function CategoryShowcase() {
                   borderRadius: "var(--radius-card-xl)",
                   border: "1px solid transparent",
                   boxShadow:
-                    "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 18px -6px rgba(255,36,25,0.2), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
+                    "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 18px -6px rgba(200, 120, 0,0.2), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
                   transition: "border-color 320ms ease, box-shadow 320ms ease",
                 }}
               >
@@ -191,7 +191,7 @@ export function CategoryShowcase() {
                     borderRadius: "var(--radius-card-xl)",
                     padding: "1px",
                     background:
-                      "linear-gradient(135deg, rgba(255,36,25,0.45) 0%, rgba(255,36,25,0.05) 45%, rgba(255,36,25,0.35) 100%)",
+                      "linear-gradient(135deg, rgba(200, 120, 0,0.45) 0%, rgba(200, 120, 0,0.05) 45%, rgba(200, 120, 0,0.35) 100%)",
                     WebkitMask:
                       "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
                     WebkitMaskComposite: "xor",
@@ -254,7 +254,7 @@ export function CategoryShowcase() {
                         fontWeight: 700,
                         letterSpacing: "0.06em",
                         textTransform: "uppercase",
-                        boxShadow: "0 14px 32px -10px rgba(225,6,0,0.6)",
+                        boxShadow: "0 14px 32px -10px rgba(200, 120, 0,0.6)",
                       }}
                     >
                       {cat.cta} <ArrowRight size={13} strokeWidth={2.4} />

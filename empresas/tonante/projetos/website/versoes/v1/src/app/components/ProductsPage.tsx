@@ -1003,7 +1003,7 @@ export function ProductsPage() {
                   style={{
                     backgroundColor: color,
                     borderColor: active ? "var(--primary)" : (isLight ? "rgba(0,0,0,0.14)" : "rgba(var(--foreground-rgb), 0.16)"),
-                    boxShadow: active ? "0 8px 20px rgba(255,43,46,0.26)" : "0 1px 2px rgba(0,0,0,0.08)",
+                    boxShadow: active ? "0 8px 20px rgba(200, 120, 0,0.26)" : "0 1px 2px rgba(0,0,0,0.08)",
                   }}
                 >
                   {active && (
@@ -1250,7 +1250,7 @@ export function ProductsPage() {
                   onClick={() => setItemsPerPageDropdownOpen((prev) => !prev)}
                   className={`relative inline-flex h-9 min-h-[44px] lg:min-h-0 min-w-[62px] items-center justify-between gap-2 rounded-[var(--radius-card-sm)] border px-3 transition-all cursor-pointer ${
                     itemsPerPageDropdownOpen
-                      ? "border-primary/50 bg-foreground/[0.06] text-foreground shadow-[0_0_0_1px_rgba(255,59,48,0.16)]"
+                      ? "border-primary/50 bg-foreground/[0.06] text-foreground shadow-[0_0_0_1px_rgba(200, 120, 0,0.16)]"
                       : "border-foreground/10 bg-foreground/[0.03] text-foreground hover:border-foreground/20"
                   }`}
                   aria-haspopup="listbox"
@@ -1486,8 +1486,8 @@ export function ProductsPage() {
                                         className="h-3 w-3 rounded-full block transition-all hover:scale-110"
                                         style={{
                                           backgroundColor: sw.color,
-                                          border: sw.productId === displayProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
-                                          boxShadow: sw.productId === displayProduct.id ? "0 0 8px rgba(225,6,0,0.5)" : "none",
+                                          border: sw.productId === displayProduct.id ? "2px solid rgba(200, 120, 0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
+                                          boxShadow: sw.productId === displayProduct.id ? "0 0 8px rgba(200, 120, 0,0.5)" : "none",
                                         }}
                                       />
                                     </button>
@@ -1753,7 +1753,7 @@ export function ProductsPage() {
                             borderRadius: "var(--radius-card-sm)",
                             background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
                             border: idx === quickViewImageIndex
-                              ? "2px solid rgba(225,6,0,0.85)"
+                              ? "2px solid rgba(200, 120, 0,0.85)"
                               : "1px solid rgba(var(--foreground-rgb), 0.06)",
                           }}
                           aria-label={`Imagem ${idx + 1}`}
@@ -1835,8 +1835,8 @@ export function ProductsPage() {
                     return (
                       <div className="mb-5 flex items-center gap-2">
                         <span className={`relative flex h-2 w-2`}>
-                          <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${urgent ? "bg-[#ff2419]" : "bg-emerald-500"}`} />
-                          <span className={`relative inline-flex h-2 w-2 rounded-full ${urgent ? "bg-[#ff2419]" : "bg-emerald-500"}`} />
+                          <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${urgent ? "bg-[#e08c12]" : "bg-emerald-500"}`} />
+                          <span className={`relative inline-flex h-2 w-2 rounded-full ${urgent ? "bg-[#e08c12]" : "bg-emerald-500"}`} />
                         </span>
                         <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, color: urgent ? "#ff5a52" : "rgba(var(--foreground-rgb), 0.85)" }}>
                           {urgent ? `Últimas ${stockLeft} unidades em estoque` : `${stockLeft} em estoque · envio em 24h`}
@@ -1863,8 +1863,8 @@ export function ProductsPage() {
                             className="h-4 w-4 rounded-full cursor-pointer transition-all hover:scale-110"
                             style={{
                               backgroundColor: sw.color,
-                              border: sw.productId === quickViewProduct.id ? "2px solid rgba(225,6,0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.22)",
-                              boxShadow: sw.productId === quickViewProduct.id ? "0 0 10px rgba(225,6,0,0.5)" : "none",
+                              border: sw.productId === quickViewProduct.id ? "2px solid rgba(200, 120, 0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.22)",
+                              boxShadow: sw.productId === quickViewProduct.id ? "0 0 10px rgba(200, 120, 0,0.5)" : "none",
                             }}
                             title={sw.label}
                           />

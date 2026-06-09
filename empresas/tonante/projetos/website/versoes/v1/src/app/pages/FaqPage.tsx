@@ -195,7 +195,7 @@ export function FaqPage() {
             width: "65%",
             height: "120%",
             background:
-              "radial-gradient(circle, rgba(225,6,0,0.09) 0%, rgba(225,6,0,0.025) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(200, 120, 0,0.09) 0%, rgba(200, 120, 0,0.025) 40%, transparent 70%)",
             filter: "blur(90px)",
           }}
         />
@@ -207,7 +207,7 @@ export function FaqPage() {
             width: "45%",
             height: "70%",
             background:
-              "radial-gradient(circle, rgba(255,36,25,0.04) 0%, transparent 65%)",
+              "radial-gradient(circle, rgba(200, 120, 0,0.04) 0%, transparent 65%)",
             filter: "blur(100px)",
           }}
         />
@@ -226,7 +226,7 @@ export function FaqPage() {
                 fontSize: "var(--text-caption)",
                 letterSpacing: "0.2em",
                 fontWeight: 700,
-                boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                boxShadow: "0 6px 22px -4px rgba(200, 120, 0,0.55)",
               }}
             >
               <LifeBuoy size={11} /> CENTRAL DE AJUDA
@@ -444,7 +444,7 @@ export function FaqPage() {
                 height: "180%",
                 transform: "translateX(-50%)",
                 background:
-                  "radial-gradient(circle, rgba(255,43,46,0.12) 0%, transparent 65%)",
+                  "radial-gradient(circle, rgba(200, 120, 0,0.12) 0%, transparent 65%)",
                 filter: "blur(70px)",
               }}
             />
@@ -484,7 +484,7 @@ export function FaqPage() {
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "var(--text-sm)",
                   fontWeight: 600,
-                  boxShadow: "0 12px 30px -10px rgba(255,43,46,0.55)",
+                  boxShadow: "0 12px 30px -10px rgba(200, 120, 0,0.55)",
                 }}
               >
                 Fale Conosco

@@ -103,7 +103,7 @@ function Badge({ children }: { children: React.ReactNode }) {
         fontSize: "var(--text-caption)",
         letterSpacing: "0.22em",
         fontWeight: 700,
-        boxShadow: "0 8px 26px -6px rgba(255,43,46,0.55)",
+        boxShadow: "0 8px 26px -6px rgba(200, 120, 0,0.55)",
       }}
     >
       {children}
@@ -155,7 +155,7 @@ export function QuemSomosPage() {
             y: heroGlowY,
             opacity: heroFade,
             background:
-              "radial-gradient(620px 420px at 78% 12%, rgba(255,43,46,0.22), transparent 70%), radial-gradient(560px 480px at 12% 88%, rgba(255,43,46,0.10), transparent 72%)",
+              "radial-gradient(620px 420px at 78% 12%, rgba(200, 120, 0,0.22), transparent 70%), radial-gradient(560px 480px at 12% 88%, rgba(200, 120, 0,0.10), transparent 72%)",
           }}
         />
         <div
@@ -204,11 +204,11 @@ export function QuemSomosPage() {
                 <span
                   style={{
                     background:
-                      "linear-gradient(120deg, #ff2b2e 0%, #ff5558 55%, #ff2b2e 100%)",
+                      "linear-gradient(120deg, #c87800 0%, #e08c12 55%, #c87800 100%)",
                     WebkitBackgroundClip: "text",
                     backgroundClip: "text",
                     color: "transparent",
-                    textShadow: "0 0 60px rgba(255,43,46,0.45)",
+                    textShadow: "0 0 60px rgba(200, 120, 0,0.45)",
                   }}
                 >
                   power up
@@ -244,7 +244,7 @@ export function QuemSomosPage() {
                   fontFamily: INTER,
                   fontSize: "var(--text-sm)",
                   fontWeight: 700,
-                  boxShadow: "0 16px 40px -12px rgba(255,43,46,0.6)",
+                  boxShadow: "0 16px 40px -12px rgba(200, 120, 0,0.6)",
                 }}
               >
                 Conhecer a loja
@@ -324,7 +324,7 @@ export function QuemSomosPage() {
                 className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(255,43,46,0.28), transparent 70%)",
+                    "radial-gradient(circle, rgba(200, 120, 0,0.28), transparent 70%)",
                 }}
               />
               <span
@@ -378,7 +378,7 @@ export function QuemSomosPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(700px 360px at 50% 0%, rgba(255,43,46,0.12), transparent 70%)",
+              "radial-gradient(700px 360px at 50% 0%, rgba(200, 120, 0,0.12), transparent 70%)",
           }}
         />
         <div className="relative mx-auto max-w-[1434px] px-5 py-20 md:px-12 md:py-24">
@@ -419,7 +419,7 @@ export function QuemSomosPage() {
                   className="pointer-events-none absolute inset-x-0 -bottom-12 h-32 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
                     background:
-                      "radial-gradient(circle at 50% 100%, rgba(255,43,46,0.3), transparent 70%)",
+                      "radial-gradient(circle at 50% 100%, rgba(200, 120, 0,0.3), transparent 70%)",
                   }}
                 />
                 <div
@@ -496,12 +496,12 @@ export function QuemSomosPage() {
                     className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                     style={{
                       background:
-                        "radial-gradient(circle, rgba(255,43,46,0.22), transparent 70%)",
+                        "radial-gradient(circle, rgba(200, 120, 0,0.22), transparent 70%)",
                     }}
                   />
                   <span
                     className="relative flex h-12 w-12 items-center justify-center rounded-xl border border-primary/25 text-primary"
-                    style={{ background: "rgba(255,43,46,0.10)" }}
+                    style={{ background: "rgba(200, 120, 0,0.10)" }}
                   >
                     <Icon size={22} strokeWidth={1.8} />
                   </span>
@@ -555,7 +555,7 @@ export function QuemSomosPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(640px 420px at 85% 10%, rgba(255,43,46,0.10), transparent 72%)",
+              "radial-gradient(640px 420px at 85% 10%, rgba(200, 120, 0,0.10), transparent 72%)",
           }}
         />
         <div className="relative mx-auto max-w-[1434px] px-5 py-24 md:px-12 md:py-32">
@@ -588,7 +588,7 @@ export function QuemSomosPage() {
               className="absolute left-[13px] top-2 bottom-2 w-px md:left-1/2 md:-translate-x-1/2"
               style={{
                 background:
-                  "linear-gradient(to bottom, transparent, rgba(255,43,46,0.5) 12%, rgba(255,43,46,0.5) 88%, transparent)",
+                  "linear-gradient(to bottom, transparent, rgba(200, 120, 0,0.5) 12%, rgba(200, 120, 0,0.5) 88%, transparent)",
               }}
             />
 
@@ -625,14 +625,14 @@ export function QuemSomosPage() {
                           className="absolute inset-0 rounded-full"
                           style={{
                             background:
-                              "radial-gradient(circle, rgba(255,43,46,0.35), transparent 70%)",
+                              "radial-gradient(circle, rgba(200, 120, 0,0.35), transparent 70%)",
                           }}
                         />
                         <span
                           className="relative flex h-3.5 w-3.5 items-center justify-center rounded-full bg-primary"
                           style={{
                             boxShadow:
-                              "0 0 0 4px rgba(255,43,46,0.18), 0 0 18px rgba(255,43,46,0.55)",
+                              "0 0 0 4px rgba(200, 120, 0,0.18), 0 0 18px rgba(200, 120, 0,0.55)",
                           }}
                         />
                       </span>
@@ -668,7 +668,7 @@ export function QuemSomosPage() {
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(560px 320px at 50% 0%, rgba(255,43,46,0.22), transparent 72%)",
+                  "radial-gradient(560px 320px at 50% 0%, rgba(200, 120, 0,0.22), transparent 72%)",
               }}
             />
             <div
@@ -676,14 +676,14 @@ export function QuemSomosPage() {
               className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
               style={{
                 background:
-                  "linear-gradient(to right, transparent, rgba(255,43,46,0.6), transparent)",
+                  "linear-gradient(to right, transparent, rgba(200, 120, 0,0.6), transparent)",
               }}
             />
 
             <div className="relative flex flex-col items-center">
               <span
                 className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary/25 text-primary"
-                style={{ background: "rgba(255,43,46,0.10)" }}
+                style={{ background: "rgba(200, 120, 0,0.10)" }}
               >
                 <Flag size={22} strokeWidth={1.8} />
               </span>
@@ -714,7 +714,7 @@ export function QuemSomosPage() {
                     fontFamily: INTER,
                     fontSize: "var(--text-sm)",
                     fontWeight: 700,
-                    boxShadow: "0 16px 40px -12px rgba(255,43,46,0.6)",
+                    boxShadow: "0 16px 40px -12px rgba(200, 120, 0,0.6)",
                   }}
                 >
                   Explorar a loja
@@ -770,7 +770,7 @@ function MilestoneCard({
         }
         style={{
           background:
-            "radial-gradient(circle, rgba(255,43,46,0.20), transparent 70%)",
+            "radial-gradient(circle, rgba(200, 120, 0,0.20), transparent 70%)",
         }}
       />
       <span

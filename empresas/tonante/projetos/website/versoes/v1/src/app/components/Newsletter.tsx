@@ -36,7 +36,7 @@ export function Newsletter() {
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(700px 400px at 50% 50%, rgba(225, 6, 0, 0.10) 0%, transparent 60%)",
+            "radial-gradient(700px 400px at 50% 50%, rgba(200, 120, 0, 0.10) 0%, transparent 60%)",
         }}
       />
       {/* Faint grid texture */}
@@ -99,9 +99,9 @@ export function Newsletter() {
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5"
                 style={{
-                  background: "linear-gradient(135deg, rgba(225, 6, 0, 0.12) 0%, rgba(225, 6, 0, 0.04) 100%)",
-                  border: "1px solid rgba(225, 6, 0, 0.4)",
-                  boxShadow: "0 0 0 4px rgba(225, 6, 0, 0.04), 0 12px 28px -8px rgba(225, 6, 0, 0.35)",
+                  background: "linear-gradient(135deg, rgba(200, 120, 0, 0.12) 0%, rgba(200, 120, 0, 0.04) 100%)",
+                  border: "1px solid rgba(200, 120, 0, 0.4)",
+                  boxShadow: "0 0 0 4px rgba(200, 120, 0, 0.04), 0 12px 28px -8px rgba(200, 120, 0, 0.35)",
                 }}
               >
                 <span

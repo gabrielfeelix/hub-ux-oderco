@@ -576,9 +576,9 @@ export function CartDrawer() {
                         style={{
                           borderRadius: "var(--radius-card-lg)",
                           background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
-                          border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
+                          border: isSelected ? "1.5px solid rgba(200, 120, 0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                           boxShadow: isSelected
-                            ? "0 24px 60px -20px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)"
+                            ? "0 24px 60px -20px rgba(200, 120, 0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)"
                             : "var(--shadow-card-hairline)",
                         }}
                       >
@@ -591,7 +591,7 @@ export function CartDrawer() {
                         />
                         <div
                           className="relative h-[132px] w-[132px] flex-shrink-0 overflow-hidden border-r border-edge-subtle md:h-[210px] md:w-full md:border-r-0 md:border-b"
-                          style={{ background: "radial-gradient(circle at top, rgba(225,6,0,0.12) 0%, transparent 60%)" }}
+                          style={{ background: "radial-gradient(circle at top, rgba(200, 120, 0,0.12) 0%, transparent 60%)" }}
                         >
                           <ImageWithFallback src={getPrimaryProductImage(product)} alt={product.name} className="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-[1.04] md:p-6" />
                           <div

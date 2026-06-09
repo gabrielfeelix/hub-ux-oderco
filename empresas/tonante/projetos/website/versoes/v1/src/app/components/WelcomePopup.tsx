@@ -60,7 +60,7 @@ export function WelcomePopup() {
                 className="relative hidden md:flex items-center justify-center min-h-[480px] overflow-hidden"
                 style={{
                   background:
-                    "radial-gradient(circle at 28% 22%, rgba(255, 48, 48, 0.55) 0%, transparent 55%), radial-gradient(circle at 75% 78%, rgba(225, 6, 0, 0.4) 0%, transparent 50%), linear-gradient(135deg, #1d0404 0%, #0a0a0a 60%, #000 100%)",
+                    "radial-gradient(circle at 28% 22%, rgba(200, 120, 0, 0.55) 0%, transparent 55%), radial-gradient(circle at 75% 78%, rgba(200, 120, 0, 0.4) 0%, transparent 50%), linear-gradient(135deg, #1d0404 0%, #0a0a0a 60%, #000 100%)",
                 }}
               >
                 <div
@@ -72,9 +72,9 @@ export function WelcomePopup() {
                   }}
                 />
                 <div className="pointer-events-none absolute -top-24 -left-24 w-[280px] h-[280px] rounded-full blur-3xl"
-                  style={{ background: "radial-gradient(circle, rgba(255, 48, 48, 0.35) 0%, transparent 70%)" }} />
+                  style={{ background: "radial-gradient(circle, rgba(200, 120, 0, 0.35) 0%, transparent 70%)" }} />
                 <div className="pointer-events-none absolute -bottom-32 -right-20 w-[320px] h-[320px] rounded-full blur-3xl"
-                  style={{ background: "radial-gradient(circle, rgba(225, 6, 0, 0.3) 0%, transparent 70%)" }} />
+                  style={{ background: "radial-gradient(circle, rgba(200, 120, 0, 0.3) 0%, transparent 70%)" }} />
 
                 <div className="relative z-10 flex flex-col items-center px-10 text-center">
                   <img src={PCYES_LOGO} alt="Tonante" className="w-[220px] mb-8 drop-shadow-[0_8px_24px_rgba(200,120,0,0.45)]" />

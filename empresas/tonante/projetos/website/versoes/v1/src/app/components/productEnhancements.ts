@@ -45,7 +45,7 @@ export function getSocialProof(p: Product): SocialProof | null {
     const watching = ((p.id * 7) % 18) + 3;
     return { icon: "eye", text: `${watching} olhando agora`, color: "#22c55e" };
   }
-  return { icon: "zap", text: "Vendendo rápido", color: "#ff2419" };
+  return { icon: "zap", text: "Vendendo rápido", color: "#e08c12" };
 }
 
 /** Low stock if hash low. */
@@ -70,7 +70,7 @@ export function getDiscountHeat(discount: number): "cold" | "warm" | "hot" | "fi
 
 export function getDiscountBg(discount: number): string {
   const h = getDiscountHeat(discount);
-  if (h === "fire") return "linear-gradient(135deg, #ff2419 0%, #ff7a45 100%)";
+  if (h === "fire") return "linear-gradient(135deg, #e08c12 0%, #ff7a45 100%)";
   if (h === "hot") return "linear-gradient(135deg, #f97316 0%, #facc15 100%)";
   if (h === "warm") return "linear-gradient(135deg, #34d399 0%, #10b981 100%)";
   return "linear-gradient(135deg, #34d399 0%, #10b981 100%)";
@@ -78,7 +78,7 @@ export function getDiscountBg(discount: number): string {
 
 export function getDiscountGlow(discount: number): string {
   const h = getDiscountHeat(discount);
-  if (h === "fire") return "0 6px 22px -4px rgba(255,36,25,0.7)";
+  if (h === "fire") return "0 6px 22px -4px rgba(200, 120, 0,0.7)";
   if (h === "hot") return "0 6px 22px -4px rgba(249,115,22,0.6)";
   return "0 6px 18px -4px rgba(16,185,129,0.55)";
 }

@@ -82,7 +82,7 @@ export function ProductsByTags() {
               key={tag}
               onClick={() => setActiveTag(tag)}
               className={`relative px-[25px] py-[11px] transition-all duration-400 border ${activeTag === tag
-                  ? "bg-primary border-primary text-primary-foreground shadow-[0_0_25px_rgba(255,43,46,0.2)]"
+                  ? "bg-primary border-primary text-primary-foreground shadow-[0_0_25px_rgba(200, 120, 0,0.2)]"
                   : "border-border/15 text-foreground/40 hover:text-foreground hover:border-foreground/30"
                 }`}
               style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)" }}

@@ -291,9 +291,9 @@ export function CartPage() {
               className="mb-6 flex flex-wrap items-center justify-between gap-3 overflow-hidden p-4 md:p-5"
               style={{
                 borderRadius: "var(--radius-card-md)",
-                background: "linear-gradient(135deg, rgba(225,6,0,0.10) 0%, rgba(255,36,25,0.04) 100%)",
-                border: "1px solid rgba(225,6,0,0.32)",
-                boxShadow: "0 18px 38px -16px rgba(225,6,0,0.45)",
+                background: "linear-gradient(135deg, rgba(200, 120, 0,0.10) 0%, rgba(200, 120, 0,0.04) 100%)",
+                border: "1px solid rgba(200, 120, 0,0.32)",
+                boxShadow: "0 18px 38px -16px rgba(200, 120, 0,0.45)",
               }}
             >
               <div className="flex items-center gap-3">
@@ -301,7 +301,7 @@ export function CartPage() {
                   className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-ink-strong"
                   style={{
                     background: "var(--gradient-brand)",
-                    boxShadow: "0 8px 20px -4px rgba(225,6,0,0.55)",
+                    boxShadow: "0 8px 20px -4px rgba(200, 120, 0,0.55)",
                   }}
                 >
                   <Gift size={16} strokeWidth={2.2} />
@@ -325,7 +325,7 @@ export function CartPage() {
                   fontWeight: 800,
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
-                  boxShadow: "0 12px 26px -10px rgba(225,6,0,0.6)",
+                  boxShadow: "0 12px 26px -10px rgba(200, 120, 0,0.6)",
                 }}
               >
                 <Gift size={13} strokeWidth={2.4} />
@@ -454,7 +454,7 @@ export function CartPage() {
                               fontWeight: 800,
                               letterSpacing: "0.08em",
                               textTransform: "uppercase",
-                              boxShadow: "0 4px 12px -2px rgba(225,6,0,0.5)",
+                              boxShadow: "0 4px 12px -2px rgba(200, 120, 0,0.5)",
                             }}
                           >
                             <Gift size={9} strokeWidth={2.4} />
@@ -1042,15 +1042,15 @@ export function CartPage() {
                         style={{
                           borderRadius: "var(--radius-card-lg)",
                           background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
-                          border: isSelected ? "1.5px solid rgba(225,6,0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
+                          border: isSelected ? "1.5px solid rgba(200, 120, 0,0.7)" : "1px solid rgba(var(--foreground-rgb), 0.08)",
                           boxShadow: isSelected
-                            ? "0 24px 60px -20px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)"
+                            ? "0 24px 60px -20px rgba(200, 120, 0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.05)"
                             : "var(--shadow-card-hairline)",
                         }}
                       >
                         <div
                           className="relative h-[132px] w-[132px] flex-shrink-0 overflow-hidden border-r border-edge-subtle md:h-[210px] md:w-full md:border-r-0 md:border-b"
-                          style={{ background: "radial-gradient(circle at top, rgba(225,6,0,0.12) 0%, transparent 60%)" }}
+                          style={{ background: "radial-gradient(circle at top, rgba(200, 120, 0,0.12) 0%, transparent 60%)" }}
                         >
                           <ImageWithFallback
                             src={getPrimaryProductImage(product)}
@@ -1243,7 +1243,7 @@ function NumberStepper({
       style={{
         borderRadius: "var(--radius-card-sm)",
         background: "rgba(0,0,0,0.3)",
-        border: `1px solid ${accent === "#facc15" ? "rgba(250,204,21,0.35)" : accent === "var(--primary)" ? "rgba(255,36,25,0.35)" : "rgba(var(--foreground-rgb), 0.12)"}`,
+        border: `1px solid ${accent === "#facc15" ? "rgba(250,204,21,0.35)" : accent === "var(--primary)" ? "rgba(200, 120, 0,0.35)" : "rgba(var(--foreground-rgb), 0.12)"}`,
       }}
     >
       <input

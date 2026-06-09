@@ -38,7 +38,7 @@ function DriverCard({ entry, index }: { entry: DriverEntry; index: number }) {
     >
       <Link
         to={`/drivers-e-manuais/${entry.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_50px_-28px_rgba(255,43,46,0.45)]"
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_50px_-28px_rgba(200, 120, 0,0.45)]"
       >
         {/* Image */}
         <div
@@ -155,7 +155,7 @@ export function DriversManuaisPage() {
                 fontSize: "var(--text-caption)",
                 letterSpacing: "0.18em",
                 fontWeight: 700,
-                boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                boxShadow: "0 6px 22px -4px rgba(200, 120, 0,0.55)",
               }}
             >
               <Download size={11} /> DOWNLOADS

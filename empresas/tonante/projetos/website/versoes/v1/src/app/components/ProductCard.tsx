@@ -136,7 +136,7 @@ export function ProductCard({
               fontWeight: 800,
               letterSpacing: "-0.02em",
               boxShadow:
-                "0 6px 18px -4px rgba(225,6,0,0.55), inset 0 1px 0 rgba(var(--foreground-rgb), 0.18)",
+                "0 6px 18px -4px rgba(200, 120, 0,0.55), inset 0 1px 0 rgba(var(--foreground-rgb), 0.18)",
             }}
           >
             {rank}
@@ -162,16 +162,16 @@ export function ProductCard({
             onClick={handleFavorite}
             className="absolute right-3 top-3 z-20 flex h-9 w-9 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
             style={{
-              background: isFavorited ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
+              background: isFavorited ? "rgba(200, 120, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
               border: isFavorited
-                ? "1px solid rgba(225, 6, 0, 0.8)"
+                ? "1px solid rgba(200, 120, 0, 0.8)"
                 : "1px solid rgba(var(--foreground-rgb), 0.15)",
-              color: isFavorited ? "#ff2419" : "rgba(var(--foreground-rgb), 0.85)",
+              color: isFavorited ? "#e08c12" : "rgba(var(--foreground-rgb), 0.85)",
               backdropFilter: "blur(8px)",
             }}
             aria-label="Favoritar"
           >
-            <Heart size={13} strokeWidth={isFavorited ? 0 : 1.8} fill={isFavorited ? "#ff2419" : "none"} />
+            <Heart size={13} strokeWidth={isFavorited ? 0 : 1.8} fill={isFavorited ? "#e08c12" : "none"} />
           </button>
         )}
 
@@ -270,9 +270,9 @@ export function ProductCard({
                   background: s.color,
                   border:
                     selectedSwatchId === s.productId
-                      ? "2px solid rgba(225, 6, 0, 0.9)"
+                      ? "2px solid rgba(200, 120, 0, 0.9)"
                       : "1px solid rgba(var(--foreground-rgb), 0.18)",
-                  boxShadow: selectedSwatchId === s.productId ? "0 0 8px rgba(225, 6, 0, 0.5)" : "none",
+                  boxShadow: selectedSwatchId === s.productId ? "0 0 8px rgba(200, 120, 0, 0.5)" : "none",
                 }}
               />
             </button>

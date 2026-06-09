@@ -957,8 +957,8 @@ const useTypeCards: UseTypeCardData[] = [
     desc: "Esports, AAA ou casual — vamos ver quais jogos você curte e te entregar FPS de verdade.",
     image: "/home/category-pc-gamer.png",
     icon: <Gamepad2 className="h-5 w-5" />,
-    accent: "#ff2b2e",
-    glow: "rgba(255,43,46,0.4)",
+    accent: "#c87800",
+    glow: "rgba(200, 120, 0,0.4)",
   },
   {
     id: "creating",
@@ -1055,8 +1055,8 @@ const presets: Preset[] = [
     oldPrice: 8299,
     pixDiscount: 12,
     installments: { count: 10, value: 749.9 },
-    accent: "#ff2b2e",
-    glow: "rgba(255,43,46,0.45)",
+    accent: "#c87800",
+    glow: "rgba(200, 120, 0,0.45)",
     icon: <Zap className="h-5 w-5" />,
     badge: "MAIS PEDIDA",
     heroImage: "/setups/setup-strike.png",
@@ -1388,7 +1388,7 @@ const gamingLevelCards: GamingLevelCard[] = [
     title: "Competitivo",
     desc: "FPS alto importa. 144Hz+, monitor rápido, ranked sério.",
     icon: <Zap className="h-4 w-4" />,
-    accent: "#ff2b2e",
+    accent: "#c87800",
   },
   {
     id: "pro",
@@ -1481,8 +1481,8 @@ function QuizProgressBar({ current, total }: { current: number; total: number })
         animate={{ width: `${progress}%` }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
-          boxShadow: "0 0 12px rgba(255,43,46,0.55)",
+          background: "linear-gradient(90deg, rgba(200, 120, 0,0.4) 0%, rgba(200, 120, 0,1) 100%)",
+          boxShadow: "0 0 12px rgba(200, 120, 0,0.55)",
         }}
       />
     </div>
@@ -1685,7 +1685,7 @@ function GameTile({
       )}
       style={
         selected
-          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 18px 40px -18px rgba(255,43,46,0.4)" }
+          ? { boxShadow: "0 0 0 1px rgba(200, 120, 0,0.25), 0 18px 40px -18px rgba(200, 120, 0,0.4)" }
           : { boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }
       }
     >
@@ -1745,7 +1745,7 @@ function GameTile({
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(255,43,46,0.18) 0%, transparent 60%)",
+                "linear-gradient(180deg, rgba(200, 120, 0,0.18) 0%, transparent 60%)",
             }}
           />
         )}
@@ -1816,7 +1816,7 @@ function ProgramTile({
       )}
       style={
         selected
-          ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 18px 40px -18px rgba(255,43,46,0.4)" }
+          ? { boxShadow: "0 0 0 1px rgba(200, 120, 0,0.25), 0 18px 40px -18px rgba(200, 120, 0,0.4)" }
           : { boxShadow: "0 8px 24px -12px rgba(0,0,0,0.5)" }
       }
     >
@@ -1840,7 +1840,7 @@ function ProgramTile({
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(255,43,46,0.18) 0%, transparent 60%)",
+                "linear-gradient(180deg, rgba(200, 120, 0,0.18) 0%, transparent 60%)",
             }}
           />
         )}
@@ -2205,7 +2205,7 @@ function QuizFlow({
                   fontSize: "var(--text-sm)",
                   fontWeight: 700,
                   letterSpacing: "0.01em",
-                  boxShadow: "0 12px 32px -8px rgba(255,43,46,0.55)",
+                  boxShadow: "0 12px 32px -8px rgba(200, 120, 0,0.55)",
                 }}
               >
                 Continuar <ArrowRight size={14} />
@@ -2315,7 +2315,7 @@ function QuizFlow({
                   fontSize: "var(--text-sm)",
                   fontWeight: 700,
                   letterSpacing: "0.01em",
-                  boxShadow: "0 12px 32px -8px rgba(255,43,46,0.55)",
+                  boxShadow: "0 12px 32px -8px rgba(200, 120, 0,0.55)",
                 }}
               >
                 Continuar <ArrowRight size={14} />
@@ -2726,7 +2726,7 @@ function PresetCard({
         )}
         style={
           isRecommended
-            ? { boxShadow: "0 0 0 1px rgba(255,43,46,0.25), 0 30px 70px -28px rgba(255,43,46,0.4)" }
+            ? { boxShadow: "0 0 0 1px rgba(200, 120, 0,0.25), 0 30px 70px -28px rgba(200, 120, 0,0.4)" }
             : { boxShadow: "0 16px 40px -18px rgba(0,0,0,0.55)" }
         }
       >
@@ -2766,7 +2766,7 @@ function PresetCard({
                     fontSize: "var(--text-caption)",
                     letterSpacing: "0.16em",
                     fontWeight: 700,
-                    boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                    boxShadow: "0 6px 22px -4px rgba(200, 120, 0,0.55)",
                   }}
                 >
                   <Sparkles size={9} /> SUGERIDA PRA VOCÊ
@@ -3145,10 +3145,10 @@ function PresetMiniCard({
               background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 100%)",
               borderRadius: "var(--radius-card-lg)",
               border: isRecommended
-                ? "1.5px solid rgba(255,43,46,0.55)"
+                ? "1.5px solid rgba(200, 120, 0,0.55)"
                 : "1px solid rgba(255,255,255,0.08)",
               boxShadow: isRecommended
-                ? "0 0 0 1px rgba(255,43,46,0.18), 0 22px 50px -22px rgba(255,43,46,0.35)"
+                ? "0 0 0 1px rgba(200, 120, 0,0.18), 0 22px 50px -22px rgba(200, 120, 0,0.35)"
                 : "inset 0 1px 0 rgba(255,255,255,0.05)",
             }}
           >
@@ -3198,7 +3198,7 @@ function PresetMiniCard({
                   fontSize: "var(--text-caption)",
                   letterSpacing: "0.16em",
                   fontWeight: 700,
-                  boxShadow: "0 6px 22px -4px rgba(255,43,46,0.55)",
+                  boxShadow: "0 6px 22px -4px rgba(200, 120, 0,0.55)",
                 }}
               >
                 <Sparkles size={9} /> PRA VOCÊ
@@ -3587,7 +3587,7 @@ function PresetGallery({
                   fontFamily: "var(--font-family-inter)",
                   fontSize: "var(--text-caption)",
                   fontWeight: 600,
-                  boxShadow: active ? "0 0 0 1px rgba(255,43,46,0.15), 0 10px 28px -10px rgba(255,43,46,0.4)" : undefined,
+                  boxShadow: active ? "0 0 0 1px rgba(200, 120, 0,0.15), 0 10px 28px -10px rgba(200, 120, 0,0.4)" : undefined,
                 }}
               >
                 {c.label}
@@ -3724,7 +3724,7 @@ function PathCard({
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.35] transition-opacity duration-500 group-hover:opacity-100 md:opacity-0"
-        style={{ background: "radial-gradient(circle at 50% 0%, rgba(255,43,46,0.18), transparent 60%)" }}
+        style={{ background: "radial-gradient(circle at 50% 0%, rgba(200, 120, 0,0.18), transparent 60%)" }}
       />
       {badge && (
         <span
@@ -3734,7 +3734,7 @@ function PathCard({
             fontSize: "var(--text-caption)",
             letterSpacing: "0.16em",
             fontWeight: 700,
-            boxShadow: "0 6px 20px -4px rgba(255,43,46,0.6)",
+            boxShadow: "0 6px 20px -4px rgba(200, 120, 0,0.6)",
           }}
         >
           {badge}
@@ -3788,7 +3788,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             width: "65%",
             height: "120%",
             background:
-              "radial-gradient(circle, rgba(225,6,0,0.09) 0%, rgba(225,6,0,0.025) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(200, 120, 0,0.09) 0%, rgba(200, 120, 0,0.025) 40%, transparent 70%)",
             filter: "blur(90px)",
           }}
         />
@@ -3800,7 +3800,7 @@ function WelcomeScreen({ onPath }: { onPath: (p: "builder" | "quiz" | "presets")
             width: "45%",
             height: "70%",
             background:
-              "radial-gradient(circle, rgba(255,36,25,0.04) 0%, transparent 65%)",
+              "radial-gradient(circle, rgba(200, 120, 0,0.04) 0%, transparent 65%)",
             filter: "blur(100px)",
           }}
         />
@@ -4429,7 +4429,7 @@ function ReviewScreen({
                   fontSize: "var(--text-sm)",
                   fontWeight: 700,
                   letterSpacing: "0.01em",
-                  boxShadow: "0 10px 28px -8px rgba(255,43,46,0.5)",
+                  boxShadow: "0 10px 28px -8px rgba(200, 120, 0,0.5)",
                 }}
               >
                 <ShoppingCart size={14} /> Comprar agora
@@ -4618,7 +4618,7 @@ function HorizontalStepper({
                     active
                       ? {
                           boxShadow:
-                            "0 0 0 5px #0a0a0c, 0 0 0 7px rgba(255,43,46,0.45), 0 0 20px -2px rgba(255,43,46,0.5)",
+                            "0 0 0 5px #0a0a0c, 0 0 0 7px rgba(200, 120, 0,0.45), 0 0 20px -2px rgba(200, 120, 0,0.5)",
                         }
                       : done
                         ? { boxShadow: "0 0 0 5px #0a0a0c, 0 0 0 6px rgba(52,211,153,0.35)" }
@@ -4735,8 +4735,8 @@ function MobileStepNav({
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              background: "linear-gradient(90deg, rgba(255,43,46,0.4) 0%, rgba(255,43,46,1) 100%)",
-              boxShadow: "0 0 12px rgba(255,43,46,0.55)",
+              background: "linear-gradient(90deg, rgba(200, 120, 0,0.4) 0%, rgba(200, 120, 0,1) 100%)",
+              boxShadow: "0 0 12px rgba(200, 120, 0,0.55)",
             }}
           />
         </div>
@@ -4872,7 +4872,7 @@ function ProductTile({
   const shadowStyle = selected
     ? {
         boxShadow:
-          "0 0 0 1px rgba(255,43,46,0.4), 0 18px 50px -22px rgba(255,43,46,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
+          "0 0 0 1px rgba(200, 120, 0,0.4), 0 18px 50px -22px rgba(200, 120, 0,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
       }
     : {
         boxShadow:
@@ -4902,7 +4902,7 @@ function ProductTile({
                 fontSize: "var(--text-caption)",
                 letterSpacing: "0.14em",
                 fontWeight: 700,
-                boxShadow: "0 4px 12px -2px rgba(255,43,46,0.55)",
+                boxShadow: "0 4px 12px -2px rgba(200, 120, 0,0.55)",
               }}
             >
               <Sparkles size={8} /> SUGERIDA
@@ -5012,7 +5012,7 @@ function ProductTile({
             fontSize: "var(--text-caption)",
             letterSpacing: "0.14em",
             fontWeight: 700,
-            boxShadow: "0 6px 18px -4px rgba(255,43,46,0.55)",
+            boxShadow: "0 6px 18px -4px rgba(200, 120, 0,0.55)",
           }}
         >
           <Sparkles size={8} /> SUGERIDA
@@ -5526,7 +5526,7 @@ function SelectedItemCard({
               fontSize: "var(--text-caption)",
               fontWeight: 600,
               letterSpacing: "0.01em",
-              boxShadow: nextDisabled ? "none" : "0 8px 24px -8px rgba(255,43,46,0.5)",
+              boxShadow: nextDisabled ? "none" : "0 8px 24px -8px rgba(200, 120, 0,0.5)",
             }}
           >
             {isLast ? "Revisar" : "Avançar"} <ArrowRight size={12} />
@@ -6022,7 +6022,7 @@ export function MonteSeuPcPage() {
       className="relative min-h-screen text-[#f5f5f5]"
       style={{
         background:
-          "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,43,46,0.07) 0%, transparent 55%), radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255,43,46,0.04) 0%, transparent 60%), linear-gradient(180deg, #0a0a0c 0%, #080808 40%, #0a0a0c 100%)",
+          "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200, 120, 0,0.07) 0%, transparent 55%), radial-gradient(ellipse 60% 40% at 50% 100%, rgba(200, 120, 0,0.04) 0%, transparent 60%), linear-gradient(180deg, #0a0a0c 0%, #080808 40%, #0a0a0c 100%)",
       }}
     >
       <div
@@ -6351,7 +6351,7 @@ export function MonteSeuPcPage() {
                               )}
                               style={
                                 viewMode === "grid"
-                                  ? { boxShadow: "0 4px 12px -4px rgba(255,43,46,0.55)" }
+                                  ? { boxShadow: "0 4px 12px -4px rgba(200, 120, 0,0.55)" }
                                   : undefined
                               }
                             >
@@ -6370,7 +6370,7 @@ export function MonteSeuPcPage() {
                               )}
                               style={
                                 viewMode === "list"
-                                  ? { boxShadow: "0 4px 12px -4px rgba(255,43,46,0.55)" }
+                                  ? { boxShadow: "0 4px 12px -4px rgba(200, 120, 0,0.55)" }
                                   : undefined
                               }
                             >
@@ -6594,7 +6594,7 @@ export function MonteSeuPcPage() {
                         fontSize: "var(--text-sm)",
                         fontWeight: 700,
                         letterSpacing: "0.01em",
-                        boxShadow: !stepValid ? "none" : "0 8px 24px -8px rgba(255,43,46,0.5)",
+                        boxShadow: !stepValid ? "none" : "0 8px 24px -8px rgba(200, 120, 0,0.5)",
                       }}
                     >
                       {isLast ? "Revisar" : "Avançar"} <ArrowRight size={14} />

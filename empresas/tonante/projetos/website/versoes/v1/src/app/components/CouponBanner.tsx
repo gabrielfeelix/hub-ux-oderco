@@ -24,9 +24,9 @@ export function CouponBanner() {
           className="group relative flex w-full items-center justify-between gap-4 overflow-hidden rounded-[var(--radius-card-md)] px-5 py-4 md:px-7 md:py-5 cursor-pointer"
           style={{
             background:
-              "linear-gradient(110deg, rgba(225,6,0,0.18) 0%, rgba(255,90,80,0.08) 50%, rgba(225,6,0,0.18) 100%)",
-            border: "1px solid rgba(255,90,80,0.35)",
-            boxShadow: "0 14px 40px -16px rgba(225,6,0,0.45), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
+              "linear-gradient(110deg, rgba(200, 120, 0,0.18) 0%, rgba(200, 120, 0,0.08) 50%, rgba(200, 120, 0,0.18) 100%)",
+            border: "1px solid rgba(200, 120, 0,0.35)",
+            boxShadow: "0 14px 40px -16px rgba(200, 120, 0,0.45), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
           }}
         >
           <div
@@ -52,7 +52,7 @@ export function CouponBanner() {
               className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-ink-strong"
               style={{
                 background: "var(--gradient-brand)",
-                boxShadow: "0 8px 24px -6px rgba(225,6,0,0.6)",
+                boxShadow: "0 8px 24px -6px rgba(200, 120, 0,0.6)",
               }}
             >
               <Ticket size={18} strokeWidth={2.2} />

@@ -1189,9 +1189,9 @@ function MobilePurchaseFlow({
                   className="absolute inset-y-0 left-0"
                   style={{
                     width: `${reservedPct}%`,
-                    background: "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
+                    background: "linear-gradient(90deg, #e08c12 0%, #facc15 100%)",
                     borderRadius: "var(--radius-pill)",
-                    boxShadow: "0 0 16px rgba(255,36,25,0.45)",
+                    boxShadow: "0 0 16px rgba(200, 120, 0,0.45)",
                   }}
                 />
               </div>

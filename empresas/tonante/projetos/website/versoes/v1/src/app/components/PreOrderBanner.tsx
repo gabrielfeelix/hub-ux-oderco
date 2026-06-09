@@ -51,9 +51,9 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
         borderRadius: variant === "hero" ? "24px" : "20px",
         background:
           "linear-gradient(135deg, #1a0608 0%, #2a0a0d 45%, #1a0608 100%)",
-        border: "1px solid rgba(255,36,25,0.28)",
+        border: "1px solid rgba(200, 120, 0,0.28)",
         boxShadow:
-          "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 30px 80px -24px rgba(255,36,25,0.45)",
+          "inset 0 1px 0 rgba(var(--foreground-rgb), 0.06), 0 30px 80px -24px rgba(200, 120, 0,0.45)",
       }}
     >
       {/* radial glow */}
@@ -61,7 +61,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 30% 0%, rgba(255,36,25,0.20) 0%, transparent 55%), radial-gradient(circle at 80% 100%, rgba(255,200,90,0.10) 0%, transparent 50%)",
+            "radial-gradient(circle at 30% 0%, rgba(200, 120, 0,0.20) 0%, transparent 55%), radial-gradient(circle at 80% 100%, rgba(255,200,90,0.10) 0%, transparent 50%)",
         }}
       />
       {/* starfield */}
@@ -86,7 +86,7 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
               fontWeight: 900,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              boxShadow: "0 6px 16px -4px rgba(255,36,25,0.6)",
+              boxShadow: "0 6px 16px -4px rgba(200, 120, 0,0.6)",
             }}
           >
             <Rocket size={11} strokeWidth={2.6} />
@@ -238,9 +238,9 @@ export function PreOrderBanner({ info, productPrice, onReserve, variant = "card"
               style={{
                 width: `${reservedPct}%`,
                 background:
-                  "linear-gradient(90deg, #ff2419 0%, #facc15 100%)",
+                  "linear-gradient(90deg, #e08c12 0%, #facc15 100%)",
                 borderRadius: "var(--radius-pill)",
-                boxShadow: "0 0 16px rgba(255,36,25,0.55)",
+                boxShadow: "0 0 16px rgba(200, 120, 0,0.55)",
               }}
             />
           </div>

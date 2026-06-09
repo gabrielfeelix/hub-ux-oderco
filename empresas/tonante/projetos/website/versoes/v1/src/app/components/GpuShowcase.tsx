@@ -60,8 +60,8 @@ const COMPARISONS: Comparison[] = [
 
 const BEFORE_FILTER = "blur(8px)";
 const AFTER_FILTER = "saturate(1.15) contrast(1.05)";
-const ACCENT = "#ff2419";
-const ACCENT_GLOW = "rgba(225, 6, 0, 0.55)";
+const ACCENT = "#e08c12";
+const ACCENT_GLOW = "rgba(200, 120, 0, 0.55)";
 const ACCENT_BG = "var(--gradient-brand)";
 
 export function GpuShowcase() {
@@ -130,7 +130,7 @@ export function GpuShowcase() {
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(800px 500px at 50% 0%, rgba(225, 6, 0, 0.12) 0%, transparent 60%), radial-gradient(600px 400px at 50% 100%, rgba(225, 6, 0, 0.08) 0%, transparent 60%)",
+            "radial-gradient(800px 500px at 50% 0%, rgba(200, 120, 0, 0.12) 0%, transparent 60%), radial-gradient(600px 400px at 50% 100%, rgba(200, 120, 0, 0.08) 0%, transparent 60%)",
         }}
       />
 
@@ -191,13 +191,13 @@ export function GpuShowcase() {
                 className="relative rounded-full px-5 py-2.5 min-h-[44px] transition-all duration-300 cursor-pointer"
                 style={{
                   background: isActive
-                    ? "linear-gradient(135deg, rgba(225,6,0,0.18) 0%, rgba(225,6,0,0.06) 100%)"
+                    ? "linear-gradient(135deg, rgba(200, 120, 0,0.18) 0%, rgba(200, 120, 0,0.06) 100%)"
                     : "rgba(var(--foreground-rgb), 0.04)",
                   border: isActive
-                    ? "1px solid rgba(225,6,0,0.65)"
+                    ? "1px solid rgba(200, 120, 0,0.65)"
                     : "1px solid rgba(var(--foreground-rgb), 0.10)",
                   boxShadow: isActive
-                    ? "0 0 0 4px rgba(225,6,0,0.06), 0 8px 24px -8px rgba(225,6,0,0.5)"
+                    ? "0 0 0 4px rgba(200, 120, 0,0.06), 0 8px 24px -8px rgba(200, 120, 0,0.5)"
                     : "none",
                   color: isActive ? "#ffffff" : "rgba(var(--foreground-rgb), 0.65)",
                   fontFamily: "var(--font-family-inter)",
@@ -271,7 +271,7 @@ export function GpuShowcase() {
                   className="pointer-events-none absolute inset-0"
                   style={{
                     background:
-                      "radial-gradient(circle at 50% 50%, rgba(225,6,0,0.08) 0%, transparent 60%)",
+                      "radial-gradient(circle at 50% 50%, rgba(200, 120, 0,0.08) 0%, transparent 60%)",
                     mixBlendMode: "screen",
                   }}
                 />
@@ -317,8 +317,8 @@ export function GpuShowcase() {
               className="inline-flex items-center gap-1.5 md:gap-2 rounded-full px-2.5 md:px-3.5 py-1.5 md:py-2 backdrop-blur-md"
               style={{
                 background: "rgba(20, 20, 22, 0.7)",
-                border: "1px solid rgba(225, 6, 0, 0.45)",
-                boxShadow: "0 0 24px -6px rgba(225, 6, 0, 0.5)",
+                border: "1px solid rgba(200, 120, 0, 0.45)",
+                boxShadow: "0 0 24px -6px rgba(200, 120, 0, 0.5)",
               }}
             >
               <span
@@ -394,7 +394,7 @@ export function GpuShowcase() {
             style={{
               left: `${pos}%`,
               background: ACCENT_BG,
-              boxShadow: `0 0 0 6px rgba(225, 6, 0, 0.18), 0 14px 32px -8px ${ACCENT_GLOW}`,
+              boxShadow: `0 0 0 6px rgba(200, 120, 0, 0.18), 0 14px 32px -8px ${ACCENT_GLOW}`,
               cursor: "ew-resize",
             }}
             aria-label="Arrastar para comparar"

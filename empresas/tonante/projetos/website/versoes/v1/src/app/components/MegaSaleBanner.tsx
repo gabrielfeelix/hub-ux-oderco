@@ -40,14 +40,15 @@ export function MegaSaleBanner() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          data-keep-dark
           className="relative overflow-hidden"
           style={{
             borderRadius: "var(--radius-card-xl)",
             background:
-              "radial-gradient(circle at 18% 20%, rgba(255,90,80,0.4) 0%, transparent 55%), radial-gradient(circle at 85% 80%, rgba(225,6,0,0.45) 0%, transparent 55%), linear-gradient(135deg, #b00500 0%, #6e0200 50%, #2a0000 100%)",
-            border: "1.5px solid rgba(255,90,80,0.45)",
+              "radial-gradient(circle at 18% 20%, rgba(200, 120, 0,0.4) 0%, transparent 55%), radial-gradient(circle at 85% 80%, rgba(200, 120, 0,0.45) 0%, transparent 55%), linear-gradient(135deg, #2a1d0e 0%, #1a1108 50%, #0d0904 100%)",
+            border: "1.5px solid rgba(200, 120, 0,0.45)",
             boxShadow:
-              "0 36px 100px -32px rgba(0,0,0,0.7), 0 0 60px -12px rgba(225,6,0,0.45), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",
+              "0 36px 100px -32px rgba(0,0,0,0.7), 0 0 60px -12px rgba(200, 120, 0,0.45), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",
             minHeight: "320px",
           }}
         >

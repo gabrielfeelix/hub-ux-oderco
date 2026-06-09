@@ -86,8 +86,8 @@ export function DropDoDiaSection() {
                   style={{
                     borderRadius: "var(--radius-card-xl)",
                     background:
-                      "radial-gradient(circle at 18% 20%, rgba(255,90,80,0.18) 0%, transparent 55%), linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
-                    border: "1px solid rgba(255,90,80,0.25)",
+                      "radial-gradient(circle at 18% 20%, rgba(200, 120, 0,0.18) 0%, transparent 55%), linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
+                    border: "1px solid rgba(200, 120, 0,0.25)",
                   }}
                 >
                   <Link to={`/produto/${product.id}`} className="block">
@@ -112,7 +112,7 @@ export function DropDoDiaSection() {
                           padding: "5px 10px",
                           borderRadius: "var(--radius-pill)",
                           background: "rgba(0,0,0,0.55)",
-                          border: "1px solid rgba(255,90,80,0.5)",
+                          border: "1px solid rgba(200, 120, 0,0.5)",
                           backdropFilter: "blur(6px)",
                           fontFamily: "var(--font-family-inter)",
                           fontSize: "var(--text-caption)",

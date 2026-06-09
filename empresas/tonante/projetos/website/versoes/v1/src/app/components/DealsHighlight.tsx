@@ -102,11 +102,11 @@ export function DealsHighlight({
             className="relative overflow-hidden flex flex-col justify-between p-7 md:p-9"
             style={{
               background:
-                "radial-gradient(circle at 25% 15%, rgba(255,90,80,0.35) 0%, transparent 55%), radial-gradient(circle at 80% 85%, rgba(225,6,0,0.4) 0%, transparent 55%), linear-gradient(135deg, #b00500 0%, #6e0200 50%, #2a0000 100%)",
+                "radial-gradient(circle at 25% 15%, rgba(200, 120, 0,0.35) 0%, transparent 55%), radial-gradient(circle at 80% 85%, rgba(200, 120, 0,0.4) 0%, transparent 55%), linear-gradient(135deg, #2a1d0e 0%, #1a1108 50%, #0d0904 100%)",
               borderRadius: "var(--radius-card-xl)",
-              border: "1.5px solid rgba(255, 90, 80, 0.45)",
+              border: "1.5px solid rgba(200, 120, 0, 0.45)",
               boxShadow:
-                "0 30px 80px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(225,6,0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",
+                "0 30px 80px -20px rgba(0,0,0,0.8), 0 0 50px -10px rgba(200, 120, 0,0.35), inset 0 1px 0 rgba(var(--foreground-rgb), 0.12)",
               minHeight: "clamp(320px, 70vw, 460px)",
             }}
           >

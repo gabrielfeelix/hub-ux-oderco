@@ -164,7 +164,7 @@ export function IntelligentDevices() {
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            "linear-gradient(0deg, transparent 24%, rgba(225, 6, 0, 0.4) 25%, rgba(225, 6, 0, 0.4) 26%, transparent 27%, transparent 74%, rgba(225, 6, 0, 0.4) 75%, rgba(225, 6, 0, 0.4) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(225, 6, 0, 0.4) 25%, rgba(225, 6, 0, 0.4) 26%, transparent 27%, transparent 74%, rgba(225, 6, 0, 0.4) 75%, rgba(225, 6, 0, 0.4) 76%, transparent 77%, transparent)",
+            "linear-gradient(0deg, transparent 24%, rgba(200, 120, 0, 0.4) 25%, rgba(200, 120, 0, 0.4) 26%, transparent 27%, transparent 74%, rgba(200, 120, 0, 0.4) 75%, rgba(200, 120, 0, 0.4) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(200, 120, 0, 0.4) 25%, rgba(200, 120, 0, 0.4) 26%, transparent 27%, transparent 74%, rgba(200, 120, 0, 0.4) 75%, rgba(200, 120, 0, 0.4) 76%, transparent 77%, transparent)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -231,13 +231,13 @@ export function IntelligentDevices() {
                       className="flex h-[72px] w-[72px] items-center justify-center rounded-full transition-all duration-300"
                       style={{
                         background: isActive
-                          ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, transparent 100%)"
+                          ? "radial-gradient(circle at 50% 50%, rgba(200, 120, 0, 0.22) 0%, rgba(200, 120, 0, 0.05) 70%, transparent 100%)"
                           : "rgba(var(--foreground-rgb), 0.04)",
                         border: isActive
-                          ? "1.5px solid rgba(225, 6, 0, 0.7)"
+                          ? "1.5px solid rgba(200, 120, 0, 0.7)"
                           : "1px solid rgba(var(--foreground-rgb), 0.10)",
                         boxShadow: isActive
-                          ? "0 0 0 5px rgba(225, 6, 0, 0.06), 0 0 24px -2px rgba(225, 6, 0, 0.55)"
+                          ? "0 0 0 5px rgba(200, 120, 0, 0.06), 0 0 24px -2px rgba(200, 120, 0, 0.55)"
                           : "none",
                         transform: isActive ? "scale(1.04)" : "scale(1)",
                       }}
@@ -247,8 +247,8 @@ export function IntelligentDevices() {
                         strokeWidth={1.5}
                         aria-hidden="true"
                         style={{
-                          color: isActive ? "#ff2419" : "rgba(var(--foreground-rgb), 0.6)",
-                          filter: isActive ? "drop-shadow(0 0 6px rgba(225, 6, 0, 0.5))" : "none",
+                          color: isActive ? "#e08c12" : "rgba(var(--foreground-rgb), 0.6)",
+                          filter: isActive ? "drop-shadow(0 0 6px rgba(200, 120, 0, 0.5))" : "none",
                           transition: "color 280ms ease",
                         }}
                       />
@@ -296,13 +296,13 @@ export function IntelligentDevices() {
                     className="flex h-24 w-24 items-center justify-center rounded-full transition-all duration-300"
                     style={{
                       background: isActive
-                        ? "radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.22) 0%, rgba(225, 6, 0, 0.05) 70%, transparent 100%)"
+                        ? "radial-gradient(circle at 50% 50%, rgba(200, 120, 0, 0.22) 0%, rgba(200, 120, 0, 0.05) 70%, transparent 100%)"
                         : "rgba(var(--foreground-rgb), 0.04)",
                       border: isActive
-                        ? "1.5px solid rgba(225, 6, 0, 0.7)"
+                        ? "1.5px solid rgba(200, 120, 0, 0.7)"
                         : "1px solid rgba(var(--foreground-rgb), 0.10)",
                       boxShadow: isActive
-                        ? "0 0 0 5px rgba(225, 6, 0, 0.06), 0 0 28px -2px rgba(225, 6, 0, 0.55)"
+                        ? "0 0 0 5px rgba(200, 120, 0, 0.06), 0 0 28px -2px rgba(200, 120, 0, 0.55)"
                         : "none",
                       transform: isActive ? "scale(1.04)" : "scale(1)",
                     }}
@@ -312,8 +312,8 @@ export function IntelligentDevices() {
                       strokeWidth={1.5}
                       aria-hidden="true"
                       style={{
-                        color: isActive ? "#ff2419" : "rgba(var(--foreground-rgb), 0.6)",
-                        filter: isActive ? "drop-shadow(0 0 8px rgba(225, 6, 0, 0.5))" : "none",
+                        color: isActive ? "#e08c12" : "rgba(var(--foreground-rgb), 0.6)",
+                        filter: isActive ? "drop-shadow(0 0 8px rgba(200, 120, 0, 0.5))" : "none",
                         transition: "color 280ms ease",
                       }}
                     />
@@ -381,14 +381,14 @@ export function IntelligentDevices() {
                       }}
                       className="absolute right-3 top-3 z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
                       style={{
-                        background: isFav ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
-                        border: isFav ? "1px solid rgba(225, 6, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
-                        color: isFav ? "#ff2419" : "rgba(var(--foreground-rgb), 0.85)",
+                        background: isFav ? "rgba(200, 120, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
+                        border: isFav ? "1px solid rgba(200, 120, 0, 0.8)" : "1px solid rgba(var(--foreground-rgb), 0.15)",
+                        color: isFav ? "#e08c12" : "rgba(var(--foreground-rgb), 0.85)",
                         backdropFilter: "blur(8px)",
                       }}
                       aria-label="Favoritar"
                     >
-                      <Heart size={13} strokeWidth={isFav ? 0 : 1.8} fill={isFav ? "#ff2419" : "none"} />
+                      <Heart size={13} strokeWidth={isFav ? 0 : 1.8} fill={isFav ? "#e08c12" : "none"} />
                     </button>
 
                     {/* Quick add — floating pill */}
@@ -442,8 +442,8 @@ export function IntelligentDevices() {
             to={CATEGORIES[activeCat].href}
             className="inline-flex items-center gap-2 rounded-full border px-6 py-2.5 min-h-[44px] transition-all hover:scale-[1.03] cursor-pointer"
             style={{
-              border: "1px solid rgba(225, 6, 0, 0.5)",
-              color: "rgba(255, 80, 70, 0.95)",
+              border: "1px solid rgba(200, 120, 0, 0.5)",
+              color: "rgba(200, 120, 0, 0.95)",
               fontFamily: "var(--font-family-inter)",
               fontSize: "var(--text-caption)",
               fontWeight: 700,

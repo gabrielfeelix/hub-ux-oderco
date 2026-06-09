@@ -132,10 +132,10 @@ function EssentialCard({ product }: EssentialCardProps) {
                   style={{
                     background: s.color,
                     border: selectedSwatchId === s.productId
-                      ? "2px solid rgba(225, 6, 0, 0.9)"
+                      ? "2px solid rgba(200, 120, 0, 0.9)"
                       : "1px solid rgba(var(--foreground-rgb), 0.22)",
                     boxShadow: selectedSwatchId === s.productId
-                      ? "0 0 10px rgba(225, 6, 0, 0.5)"
+                      ? "0 0 10px rgba(200, 120, 0, 0.5)"
                       : "none",
                   }}
                 />

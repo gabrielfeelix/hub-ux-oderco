@@ -55,8 +55,8 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
       className="inline-flex items-center gap-3 rounded-full px-4 py-2.5"
       style={{
         background: "rgba(0, 0, 0, 0.6)",
-        border: "1px solid rgba(225, 6, 0, 0.5)",
-        boxShadow: "0 0 28px -4px rgba(225, 6, 0, 0.55), inset 0 0 0 1px rgba(225, 6, 0, 0.08)",
+        border: "1px solid rgba(200, 120, 0, 0.5)",
+        boxShadow: "0 0 28px -4px rgba(200, 120, 0, 0.55), inset 0 0 0 1px rgba(200, 120, 0, 0.08)",
       }}
     >
       <Timer size={18} strokeWidth={2.2} style={{ color: "var(--primary)" }} />
