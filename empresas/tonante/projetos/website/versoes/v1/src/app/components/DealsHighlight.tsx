@@ -158,7 +158,7 @@ export function DealsHighlight({
                     textTransform: "uppercase",
                   }}
                 >
-                  // CATÁLOGO
+                  Catálogo
                 </span>
               </div>
 
@@ -185,7 +185,7 @@ export function DealsHighlight({
                   maxWidth: "280px",
                 }}
               >
-                Descontos imperdíveis em hardware, periféricos e setup gamer. Ofertas atualizadas todo dia.
+                Descontos de verdade em violões, guitarras, contrabaixos e acessórios. Ofertas atualizadas todo dia.
               </p>
             </div>
 
