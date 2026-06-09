@@ -1958,8 +1958,8 @@ function ProductStandardDescription({ product, images }: { product: any; images:
     `${product.name} foi desenvolvido para entregar desempenho, acabamento e confiabilidade no uso diário.`;
 
   const productImageBg = {
-    background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
-    border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+    background: "linear-gradient(160deg, #faf7f0, #efe9dc)",
+    border: "1px solid #e4dccc",
     boxShadow: "var(--shadow-card-hairline)",
   } as const;
 
@@ -1967,16 +1967,17 @@ function ProductStandardDescription({ product, images }: { product: any; images:
     <section className="pb-20 border-t border-foreground/5">
       <div className="mx-auto mt-10 max-w-[1120px]">
         <div
-          className="overflow-hidden shadow-[0_22px_70px_rgba(0,0,0,0.24)]"
+          className="overflow-hidden"
           style={{
             borderRadius: "var(--radius-card-xl)",
-            background: "linear-gradient(180deg, #161617 0%, #131314 100%)",
-            border: "1px solid rgba(var(--foreground-rgb), 0.06)",
+            background: "var(--surface-1)",
+            border: "1px solid #e4dccc",
+            boxShadow: "var(--shadow-card)",
           }}
         >
           <section className="px-6 py-10 text-center md:px-10 md:py-14">
-            <p className="mb-4 text-primary tracking-[0.24em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
-              // {product.category}
+            <p className="label mb-4" style={{ color: "var(--amber-deep)" }}>
+              {product.category}
             </p>
             <h3 className="mx-auto max-w-[820px] text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 5vw, 52px)", lineHeight: 1.02, fontWeight: 700, letterSpacing: "-0.04em" }}>
               Sobre o produto
@@ -1992,7 +1993,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
                   borderRadius: "var(--radius-card-xl)",
                 }}
               />
-              <ImageWithFallback src={primaryImage} alt={product.name} className="relative max-h-[340px] w-full object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.32)]" />
+              <ImageWithFallback src={primaryImage} alt={product.name} className="relative max-h-[340px] w-full object-contain" style={{ mixBlendMode: "multiply" }} />
             </div>
           </section>
 

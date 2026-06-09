@@ -1780,18 +1780,24 @@ export function Navbar() {
                           onMouseEnter={() => setActiveSubItem(sub.label)}
                           className="group flex min-w-[122px] flex-col items-center gap-3 pt-2 text-center outline-none"
                         >
-                          <span className="relative flex h-[118px] w-[118px] items-center justify-center overflow-visible transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.03]">
-                            <span className={`absolute inset-[8px] rounded-full ${isDark ? "bg-white/[0.055]" : "bg-black/[0.045]"}`} />
-                            {image ? (
-                              <ImageWithFallback
-                                src={image}
-                                alt={sub.label}
-                                className="relative z-10 h-[112%] w-[112%] object-contain p-2 transition-transform duration-300 group-hover:scale-[1.05]"
-                                style={{ mixBlendMode: "multiply" }}
-                              />
-                            ) : (
-                              <Grid2x2 size={34} className="relative z-10 text-foreground/35 transition-colors group-hover:text-primary" strokeWidth={1.5} />
-                            )}
+                          <span className="relative flex h-[118px] w-[118px] items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
+                            <span
+                              className="relative h-[102px] w-[102px] overflow-hidden rounded-full"
+                              style={{ background: "rgba(26,23,20,0.045)" }}
+                            >
+                              {image ? (
+                                <ImageWithFallback
+                                  src={image}
+                                  alt={sub.label}
+                                  className="absolute inset-0 h-full w-full object-contain p-3 transition-transform duration-300 group-hover:scale-[1.12]"
+                                  style={{ mixBlendMode: "multiply" }}
+                                />
+                              ) : (
+                                <span className="absolute inset-0 grid place-items-center">
+                                  <Grid2x2 size={34} className="text-foreground/35 transition-colors group-hover:text-primary" strokeWidth={1.5} />
+                                </span>
+                              )}
+                            </span>
                           </span>
                           <span
                             className="max-w-[130px] text-foreground/78 transition-colors group-hover:text-foreground"

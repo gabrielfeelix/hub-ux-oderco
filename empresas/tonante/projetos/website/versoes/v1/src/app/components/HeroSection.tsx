@@ -166,24 +166,16 @@ export function HeroSection() {
         {/* palco */}
         <div className="relative overflow-hidden" style={{ height: "clamp(360px, 40vw, 540px)", borderRadius: "var(--radius-card-xl)" }}>
           {slides.map((s, i) => {
-            let off = i - idx;
-            if (off > n / 2) off -= n;
-            if (off < -n / 2) off += n;
-            const isActive = off === 0;
+            const isActive = i === idx;
             return (
               <div
                 key={i}
-                className="absolute"
+                className="absolute inset-0"
                 style={{
-                  top: 8,
-                  bottom: 8,
-                  left: "8%",
-                  width: "84%",
-                  transform: `translateX(${off * 80}%) scale(${isActive ? 1 : 0.9})`,
-                  opacity: Math.abs(off) > 1 ? 0 : isActive ? 1 : 0.5,
-                  transition: "transform .6s cubic-bezier(.22,1,.36,1), opacity .5s ease",
+                  opacity: isActive ? 1 : 0,
+                  transition: "opacity .6s ease",
                   pointerEvents: isActive ? "auto" : "none",
-                  zIndex: isActive ? 3 : 1,
+                  zIndex: isActive ? 2 : 1,
                 }}
               >
                 <BannerSlide s={s} active={isActive} />
@@ -195,16 +187,16 @@ export function HeroSection() {
         <button
           onClick={() => goTo(idx - 1)}
           aria-label="Anterior"
-          className="absolute top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full md:flex"
-          style={{ left: "calc(8% - 22px)", background: "var(--surface-1)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
+          className="absolute left-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full md:flex"
+          style={{ background: "var(--surface-1)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
         >
           <ChevronLeft size={22} />
         </button>
         <button
           onClick={() => goTo(idx + 1)}
           aria-label="Próximo"
-          className="absolute top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full md:flex"
-          style={{ right: "calc(8% - 22px)", background: "var(--surface-1)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
+          className="absolute right-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full md:flex"
+          style={{ background: "var(--surface-1)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
         >
           <ChevronRight size={22} />
         </button>
