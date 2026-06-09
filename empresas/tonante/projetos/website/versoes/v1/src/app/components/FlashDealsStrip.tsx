@@ -166,7 +166,7 @@ export function FlashDealsStrip() {
         {/* Header */}
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
-            eyebrow="// PROMOÇÕES DA SEMANA"
+            eyebrow="PROMOÇÕES DA SEMANA"
             eyebrowIcon={<Flame size={13} strokeWidth={2.2} />}
             title="Os deals que estão dominando"
             size="md"

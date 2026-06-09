@@ -1145,13 +1145,11 @@ export function Navbar() {
                 className="relative w-full"
               >
                 <div
-                  className="flex h-[40px] items-center overflow-hidden rounded-full border transition-all"
+                  className="flex h-[44px] items-center overflow-hidden rounded-full border-[1.5px] transition-all"
                   style={{
-                    background: "var(--surface-2)",
-                    borderColor: searchPanelOpen ? "rgba(var(--foreground-rgb), 0.35)" : "rgba(var(--foreground-rgb), 0.08)",
-                    boxShadow: searchPanelOpen
-                      ? "0 10px 32px rgba(0, 0, 0, 0.55)"
-                      : "0 4px 16px rgba(0, 0, 0, 0.4)",
+                    background: "var(--surface-1)",
+                    borderColor: searchPanelOpen ? "var(--primary)" : "#d6cbb5",
+                    boxShadow: "none",
                   }}
                 >
                   {/* All categories dropdown */}
@@ -1169,7 +1167,7 @@ export function Navbar() {
                       <span className="xl:hidden">Categorias</span>
                       <ChevronDown size={14} strokeWidth={2} className={`transition-transform duration-200 ${searchCategoryOpen ? "rotate-180" : ""}`} />
                     </button>
-                    <span className="absolute right-0 top-1/2 h-5 w-px -translate-y-1/2 bg-white/15" />
+                    <span className="absolute right-0 top-1/2 h-5 w-px -translate-y-1/2" style={{ background: "rgba(26,23,20,0.12)" }} />
                   </div>
 
                   <input

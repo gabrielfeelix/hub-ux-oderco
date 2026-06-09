@@ -11,8 +11,6 @@ import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPres
 import { getPixPrice, formatBRL } from "./productEnhancements";
 import { SectionHeader, CTAButton, DiscountBadge } from "./section";
 
-const DROP_IDS = [446, 433, 30];
-
 function withGuaranteedDiscount(p: Product): Product {
   if (p.oldPriceNum && p.oldPriceNum > p.priceNum) return p;
   const pct = 15 + (p.id % 10);
@@ -26,12 +24,14 @@ function withGuaranteedDiscount(p: Product): Product {
 
 export function DropDoDiaSection() {
   const { addItem } = useCart();
+  // 3 maiores descontos do catálogo (antes eram IDs fixos do PCYES).
   const picks = useMemo(() => {
     const visible = getVisibleCatalogProducts(allProducts);
-    return DROP_IDS
-      .map((id) => visible.find((p) => p.id === id))
-      .filter(Boolean)
-      .map(withGuaranteedDiscount) as Product[];
+    return [...visible]
+      .filter((p) => p.oldPriceNum && p.oldPriceNum > p.priceNum)
+      .sort((a, b) => (b.oldPriceNum! - b.priceNum) - (a.oldPriceNum! - a.priceNum))
+      .slice(0, 3)
+      .map(withGuaranteedDiscount);
   }, []);
 
   if (picks.length === 0) return null;
@@ -41,7 +41,7 @@ export function DropDoDiaSection() {
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-8 flex items-end justify-between gap-4">
           <SectionHeader
-            eyebrow="// DROP DO DIA"
+            eyebrow="DROP DO DIA"
             eyebrowIcon={<Flame size={12} strokeWidth={2.4} />}
             title="3 deals selecionados só pra hoje"
             size="md"
@@ -85,17 +85,22 @@ export function DropDoDiaSection() {
                   className="deal-card-img group relative flex w-full flex-col overflow-hidden"
                   style={{
                     borderRadius: "var(--radius-card-xl)",
-                    background:
-                      "radial-gradient(circle at 18% 20%, rgba(200, 120, 0,0.18) 0%, transparent 55%), linear-gradient(135deg, rgba(var(--foreground-rgb), 0.08) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
-                    border: "1px solid rgba(200, 120, 0,0.25)",
+                    background: "var(--surface-1)",
+                    border: "1px solid #e4dccc",
                   }}
                 >
                   <Link to={`/produto/${product.id}`} className="block">
-                    <div className="relative h-[260px] overflow-hidden md:h-[280px]">
+                    <div
+                      className="relative m-3 h-[240px] overflow-hidden rounded-[14px] md:h-[260px]"
+                      style={{
+                        background: "linear-gradient(160deg, #faf7f0, #efe9dc)",
+                        boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.05)",
+                      }}
+                    >
                       <ImageWithFallback
                         src={getPrimaryProductImage(product)}
                         alt={product.name}
-                        className="absolute inset-0 h-full w-full object-contain p-4 md:p-8 transition-transform duration-500 group-hover:scale-[1.05]"
+                        className="absolute inset-0 h-full w-full object-contain p-[7%] transition-transform duration-500 group-hover:scale-[1.05]"
                       />
                       {discount > 0 && (
                         <DiscountBadge
@@ -105,23 +110,23 @@ export function DropDoDiaSection() {
                         />
                       )}
                       <span
-                        className="absolute z-20 inline-flex items-center gap-1 text-ink-strong"
+                        className="absolute z-20 inline-flex items-center gap-1.5"
                         style={{
                           top: "16px",
                           right: "16px",
-                          padding: "5px 10px",
+                          padding: "5px 11px",
                           borderRadius: "var(--radius-pill)",
-                          background: "rgba(0,0,0,0.55)",
-                          border: "1px solid rgba(200, 120, 0,0.5)",
-                          backdropFilter: "blur(6px)",
+                          background: "rgba(255,253,248,0.92)",
+                          border: "1px solid rgba(200, 120, 0,0.35)",
+                          color: "var(--amber-deep)",
                           fontFamily: "var(--font-family-inter)",
-                          fontSize: "var(--text-caption)",
-                          fontWeight: 800,
-                          letterSpacing: "0.12em",
+                          fontSize: "10px",
+                          fontWeight: 700,
+                          letterSpacing: "0.14em",
                           textTransform: "uppercase",
                         }}
                       >
-                        <Flame size={11} strokeWidth={2.4} className="text-primary" />
+                        <Flame size={11} strokeWidth={2.4} style={{ color: "var(--amber)" }} />
                         Prêmio do dia
                       </span>
                     </div>
@@ -162,9 +167,9 @@ export function DropDoDiaSection() {
                         style={{
                           fontFamily: "var(--font-family-figtree)",
                           fontSize: "var(--text-2xl)",
-                          fontWeight: 800,
+                          fontWeight: 600,
                           lineHeight: 1,
-                          letterSpacing: "-0.025em",
+                          letterSpacing: "-0.02em",
                         }}
                       >
                         {formatBRL(pix)}{" "}
@@ -194,16 +199,16 @@ export function DropDoDiaSection() {
                         <p
                           className="mt-2 inline-flex items-center gap-1.5 rounded-md px-2 py-1"
                           style={{
-                            background: "rgba(34,197,94,0.12)",
-                            border: "1px solid rgba(34,197,94,0.3)",
+                            background: "rgba(200,120,0,0.10)",
+                            border: "1px solid rgba(200,120,0,0.28)",
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "var(--text-caption)",
                             fontWeight: 700,
-                            color: "#22c55e",
+                            color: "var(--amber-deep)",
                             letterSpacing: "0.02em",
                           }}
                         >
-                          ↓ Economize {formatBRL(economy)}
+                          Economize {formatBRL(economy)}
                         </p>
                       )}
                     </div>
