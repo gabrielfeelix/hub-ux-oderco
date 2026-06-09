@@ -1364,13 +1364,13 @@ export function ProductsPage() {
                             {/* Inner shine */}
                             <div className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "var(--radius-card-lg)" }} />
                             <Link to={`/produto/${displayProduct.id}`} className="block h-full">
-                              <div className="flex h-full w-full items-center justify-center p-4 sm:p-5 lg:p-6">
+                              <div className="flex h-full w-full items-center justify-center p-2 sm:p-5 lg:p-6">
                                 <ImageWithFallback
                                   src={productImages[imgIdx]}
                                   alt={displayProduct.name}
                                   loading="lazy"
                                   decoding="async"
-                                  className="h-full w-full object-contain scale-[0.92] group-hover:scale-[0.97] transition-transform duration-500 ease-out"
+                                  className="h-full w-full object-contain scale-100 sm:scale-[0.92] group-hover:scale-[0.97] transition-transform duration-500 ease-out"
                                 />
                               </div>
                             </Link>
@@ -1400,7 +1400,7 @@ export function ProductsPage() {
                             {/* Favorite + Quick View — top-right */}
                             <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
                               <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(displayProduct.id); }}
-                                className="w-11 h-11 lg:w-9 lg:h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50 hover:scale-105 cursor-pointer"
+                                className="w-9 h-9 lg:w-9 lg:h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50 hover:scale-105 cursor-pointer"
                                 aria-label={isFavorite(displayProduct.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
                               >
                                 <Heart size={16} className={isFavorite(displayProduct.id) ? "fill-red-500 text-red-500" : "text-ink-strong"} strokeWidth={2} />
@@ -1437,13 +1437,13 @@ export function ProductsPage() {
                               </>
                             )}
 
-                            {/* Quick add — floating pill on hover */}
+                            {/* Quick add — floating pill on hover (desktop only) */}
                             <button
                               onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
-                              className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 translate-y-0 lg:translate-y-2 whitespace-nowrap rounded-full px-4 py-1.5 text-[var(--text-caption)] lg:bottom-4 lg:px-10 lg:py-3 lg:text-[var(--text-sm)] opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
+                              className="hidden lg:flex absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 text-[var(--text-sm)] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
                               style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "var(--shadow-buy-cta-sm)" }}
                             >
-                              <span className="inline-flex items-center gap-1.5 lg:gap-2"><ShoppingBag size={12} strokeWidth={2} className="lg:hidden" /><ShoppingBag size={14} strokeWidth={2} className="hidden lg:block" /> Comprar</span>
+                              <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
                             </button>
                           </div>
 
@@ -1498,6 +1498,16 @@ export function ProductsPage() {
                                 })()}
                               </p>
                             </div>
+
+                            {/* Mobile buy button — below info so the image stays clean.
+                                Desktop uses the floating hover pill above instead. */}
+                            <button
+                              onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
+                              className="lg:hidden mt-3 flex w-full items-center justify-center gap-2 rounded-full py-2.5 cursor-pointer"
+                              style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "var(--shadow-buy-cta-sm)" }}
+                            >
+                              <ShoppingBag size={15} strokeWidth={2} /> Comprar
+                            </button>
                           </div>
                         </motion.div>
                       );
