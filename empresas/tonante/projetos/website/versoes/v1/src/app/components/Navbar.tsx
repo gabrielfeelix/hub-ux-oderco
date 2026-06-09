@@ -396,7 +396,7 @@ export function Navbar() {
     navigate(`/produtos?search=${encodeURIComponent(value)}`);
   };
 
-  // Nav bar background is hardcoded #000000 — keep text/icons white in both themes
+  // Header Tonante é creme (light-only) — texto/ícones usam tokens ink (escuros).
   const iconColor = showExpanded
     ? (promoHovered ? "text-ink hover:text-ink-strong" : "text-ink hover:text-ink-strong")
     : "text-ink-strong/62 hover:text-ink-strong";
@@ -980,8 +980,8 @@ export function Navbar() {
         {/* Main nav */}
         <nav className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{
-            backgroundColor: "#000000",
-            borderBottom: "1px solid rgba(var(--foreground-rgb), 0.06)",
+            backgroundColor: "#f6f2e9",
+            borderBottom: "1px solid rgba(var(--foreground-rgb), 0.10)",
           }}
 	        >
 	          {/* Mobile header */}
