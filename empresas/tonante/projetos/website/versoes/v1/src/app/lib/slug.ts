@@ -21,17 +21,12 @@ export function slugify(text: string): string {
 
 /** Explicit category -> slug map. Keeps slugs short and stable across renames. */
 export const CATEGORY_TO_SLUG: Record<string, string> = {
-  "Periféricos":      "perifericos",
-  "Refrigeração":     "refrigeracao",
-  "Computadores":     "computadores",
-  "Hardware":         "hardware",
-  "Fontes":           "fontes",
-  "SSD e HD":         "ssd-e-hd",
-  "Streaming":        "streaming",
-  "Monitores":        "monitores",
-  "Placas de Vídeo":  "placas-de-video",
-  "Gabinetes":        "gabinetes",
-  "Cadeiras":         "cadeiras",
+  "Violões":                  "violoes",
+  "Guitarras":                "guitarras",
+  "Contrabaixos":             "contrabaixos",
+  "Acessórios":               "acessorios",
+  "Cordas & Encordoamentos":  "cordas-encordoamentos",
+  "Suportes":                 "suportes",
 };
 
 /** Reverse map: slug -> original category label (for routing). */
@@ -54,7 +49,7 @@ export function getSubcategorySlug(subcategory: string): string {
 
 /** Brand slug. Defaults to slugified brand name; falls back to "pcyes". */
 export function getBrandSlug(brand?: string): string {
-  return slugify(brand && brand.trim() ? brand : "pcyes");
+  return slugify(brand && brand.trim() ? brand : "tonante");
 }
 
 /**
