@@ -64,14 +64,14 @@ export function TrustStrip() {
     if (prefersReducedMotion) return;
     const id = setInterval(() => {
       setPage((p) => (p + 1) % mobilePages.length);
-    }, 2000);
+    }, 4000);
     return () => clearInterval(id);
   }, [prefersReducedMotion]);
 
   return (
     <section
       ref={ref}
-      className="border-y border-edge-subtle px-5 py-6 md:px-[72px] md:py-12"
+      className="border-y border-edge-subtle px-5 py-6 md:px-[72px] md:pt-7 md:pb-12"
       style={{ background: "var(--surface-0)" }}
     >
       {/* Mobile: 2 cards visible, auto-rotating between the two pairs every 2s.
