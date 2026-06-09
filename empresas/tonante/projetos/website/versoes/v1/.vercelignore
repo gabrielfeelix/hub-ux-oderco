@@ -1,0 +1,6 @@
+node_modules
+dist
+_ref
+*.csv
+*.csv:Zone.Identifier
+.git
