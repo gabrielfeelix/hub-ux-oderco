@@ -29,14 +29,14 @@ type ProductCardVariant = "shelf" | "grid";
 const VARIANT = {
   shelf: {
     aspect: "aspect-[5/6]",
-    pad: "p-4 md:p-8",
+    pad: "p-2 md:p-8",
     clamp: "line-clamp-1",
     quickAddSize: "lg" as const,
     quickAddLabel: "Comprar",
   },
   grid: {
     aspect: "aspect-square",
-    pad: "p-3 md:p-6",
+    pad: "p-2 md:p-6",
     clamp: "line-clamp-2",
     quickAddSize: "sm" as const,
     quickAddLabel: "Adicionar",
@@ -160,7 +160,7 @@ export function ProductCard({
         {favorite && isLoggedIn && (
           <button
             onClick={handleFavorite}
-            className="absolute right-3 top-3 z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
+            className="absolute right-3 top-3 z-20 flex h-9 w-9 md:h-8 md:w-8 items-center justify-center rounded-full border opacity-100 md:opacity-0 transition-all duration-200 md:group-hover:opacity-100 cursor-pointer"
             style={{
               background: isFavorited ? "rgba(225, 6, 0, 0.2)" : "rgba(0, 0, 0, 0.55)",
               border: isFavorited
@@ -184,7 +184,7 @@ export function ProductCard({
               e.stopPropagation();
               onAdd(product);
             }}
-            className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 md:translate-y-2 opacity-100 md:opacity-0 transition-all duration-300 md:group-hover:translate-y-0 md:group-hover:opacity-100 cursor-pointer shadow-[var(--shadow-buy-cta-sm)]"
+            className="hidden md:inline-flex absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer shadow-[var(--shadow-buy-cta-sm)]"
           >
             <ShoppingBag size={14} strokeWidth={2} /> {cfg.quickAddLabel}
           </CTAButton>
@@ -289,6 +289,24 @@ export function ProductCard({
             </span>
           )}
         </div>
+      )}
+
+      {/* Mobile buy button — below info so the image stays clean.
+          Desktop uses the floating hover pill inside the image instead. */}
+      {onAdd && (
+        <CTAButton
+          variant="buy"
+          size="sm"
+          block
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onAdd(product);
+          }}
+          className="md:hidden mt-3"
+        >
+          <ShoppingBag size={14} strokeWidth={2} /> {cfg.quickAddLabel}
+        </CTAButton>
       )}
     </div>
   );
