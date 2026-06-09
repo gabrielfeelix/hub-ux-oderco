@@ -7,6 +7,7 @@ import { ProductShelf } from "./ProductShelf";
 import { DealsHighlight } from "./DealsHighlight";
 import { TrustStrip } from "./TrustStrip";
 import { StoryBand } from "./StoryBand";
+import { Pillars } from "./Pillars";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
 import { SEO } from "./SEO";
@@ -74,6 +75,9 @@ export function HomePage() {
 
       {/* Herança 1954 */}
       <StoryBand />
+
+      {/* Pilares de marca */}
+      <Pillars />
 
       {/* Institucional */}
       <Newsletter />
