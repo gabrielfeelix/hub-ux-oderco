@@ -21,11 +21,20 @@ const CATS: Cat[] = [
   { label: "Suportes", blurb: "Seu instrumento sempre seguro." },
 ];
 
-const meta = (label: string) => {
-  const inCat = allProducts.filter((p) => p.category === label);
-  const photo = inCat.find((p) => p.image?.startsWith("http"))?.image ?? "";
-  return { count: inCat.length, photo };
+// Fotos de banco (Unsplash) por categoria — lifestyle profissional.
+const IMG: Record<string, string> = {
+  "Violões": "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1200&q=85&auto=format&fit=crop",
+  "Guitarras": "https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=1200&q=85&auto=format&fit=crop",
+  "Contrabaixos": "https://images.unsplash.com/photo-1564264764238-7e04d6b46f9c?w=1200&q=85&auto=format&fit=crop",
+  "Acessórios": "https://images.unsplash.com/photo-1648828714555-ac6529ff120c?w=1200&q=85&auto=format&fit=crop",
+  "Cordas & Encordoamentos": "https://images.unsplash.com/photo-1522008224169-e5992bed5fae?w=1200&q=85&auto=format&fit=crop",
+  "Suportes": "https://images.unsplash.com/photo-1550985616-10810253b84d?w=1200&q=85&auto=format&fit=crop",
 };
+
+const meta = (label: string) => ({
+  count: allProducts.filter((p) => p.category === label).length,
+  photo: IMG[label] ?? "",
+});
 
 function CategoryCard({ cat, big }: { cat: Cat; big?: boolean }) {
   const [hover, setHover] = useState(false);
@@ -59,7 +68,7 @@ function CategoryCard({ cat, big }: { cat: Cat; big?: boolean }) {
         className="pointer-events-none absolute inset-0"
         style={{
           background: photo
-            ? "linear-gradient(180deg, rgba(20,16,12,.15) 0%, rgba(20,16,12,.40) 45%, rgba(20,16,12,.85) 100%)"
+            ? "linear-gradient(180deg, rgba(20,16,12,0) 42%, rgba(20,16,12,.32) 72%, rgba(20,16,12,.74) 100%)"
             : "transparent",
         }}
       />
