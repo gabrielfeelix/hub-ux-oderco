@@ -5,10 +5,10 @@ import { Truck, CreditCard, ShieldCheck, RefreshCcw, type LucideIcon } from "luc
 type Feature = { icon: LucideIcon; title: string; desc: string };
 
 const features: Feature[] = [
-  { icon: Truck,        title: "Frete grátis",       desc: "Acima de R$ 299 pra todo Brasil" },
-  { icon: CreditCard,   title: "Até 12x sem juros",  desc: "Em todos os cartões" },
-  { icon: ShieldCheck,  title: "Compra 100% segura", desc: "Pagamento criptografado" },
-  { icon: RefreshCcw,   title: "Troca grátis",       desc: "7 dias para devolver" },
+  { icon: Truck,        title: "Frete grátis",      desc: "Acima de R$ 299 pra todo o Brasil" },
+  { icon: CreditCard,   title: "Até 12x sem juros", desc: "Em todos os cartões" },
+  { icon: ShieldCheck,  title: "Garantia Tonante",  desc: "2 anos em todo instrumento" },
+  { icon: RefreshCcw,   title: "Troca fácil",       desc: "Até 30 dias pra devolver" },
 ];
 
 // Pair features into two-item pages for the mobile next-page button.
