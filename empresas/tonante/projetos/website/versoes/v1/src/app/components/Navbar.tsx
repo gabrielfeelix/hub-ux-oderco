@@ -14,7 +14,8 @@ import { allProducts, type Product } from "./productsData";
 import { ThemeToggle } from "./ThemeToggle";
 import { getCatalogHref, getPrimaryProductImage, getProductSubcategory, getProductSwatches, getVisibleCatalogProducts } from "./productPresentation";
 
-const PCYES_LOGO = "https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png";
+// Header ainda usa surface escura (reskin p/ creme = Fase 3) → wordmark branco.
+const TONANTE_LOGO = "/brand/tonante-wordmark-white.png";
 
 // ─── Mega Menu Data ──────────────────────────────────────────────────────────
 
@@ -1310,7 +1311,7 @@ export function Navbar() {
 	                  className="pointer-events-none absolute left-1/2 top-1/2 w-[150px] -translate-x-1/2 -translate-y-1/2"
 	                >
 	                  <Link to="/" className="pointer-events-auto block">
-	                    <img src={PCYES_LOGO} alt="PCYES" className="mx-auto h-[30px] w-auto object-contain" />
+	                    <img src={TONANTE_LOGO} alt="Tonante" className="mx-auto h-[30px] w-auto object-contain" />
 	                  </Link>
 	                </motion.div>
 	              )}
@@ -1357,7 +1358,7 @@ export function Navbar() {
             {/* Left: logo */}
             <div className="flex items-center flex-shrink-0">
               <Link to="/" className="flex-shrink-0">
-                <img src={PCYES_LOGO} alt="PCYES" className="h-[34px] w-auto object-contain" />
+                <img src={TONANTE_LOGO} alt="Tonante" className="h-[34px] w-auto object-contain" />
               </Link>
             </div>
 
@@ -2044,7 +2045,7 @@ export function Navbar() {
                   <X size={21} strokeWidth={1.6} />
                 </button>
                 <Link to="/" onClick={() => setSearchOpen(false)} className="absolute left-1/2 block -translate-x-1/2">
-                  <img src={PCYES_LOGO} alt="PCYES" className="h-[25px] w-auto object-contain md:h-[32px]" />
+                  <img src={TONANTE_LOGO} alt="Tonante" className="h-[25px] w-auto object-contain md:h-[32px]" />
                 </Link>
                 <span className="h-10 w-10" aria-hidden="true" />
               </div>
@@ -2333,7 +2334,7 @@ export function Navbar() {
                       <X size={20} strokeWidth={1.55} />
                     </button>
                     <Link to="/" onClick={() => setMobileOpen(false)} className="absolute left-1/2 -translate-x-1/2">
-                      <img src={PCYES_LOGO} alt="PCYES" className="h-[26px] w-auto object-contain" />
+                      <img src={TONANTE_LOGO} alt="Tonante" className="h-[26px] w-auto object-contain" />
                     </Link>
                     <button
                       onClick={() => { setMobileOpen(false); setSearchOpen(true); }}

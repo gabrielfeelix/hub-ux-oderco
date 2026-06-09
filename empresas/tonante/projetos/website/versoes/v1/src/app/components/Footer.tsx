@@ -28,7 +28,7 @@ const columns = [
   },
 ];
 
-const brandLogo = "https://www.pcyes.com.br/media/logo/stores/1/logo-default.png";
+const brandLogo = "/brand/tonante-wordmark-white.png";
 const paymentMethodsImage = "https://www.pcyes.com.br/media/.renditions/wysiwyg/pagamentos.png";
 
 const socialLinks = [

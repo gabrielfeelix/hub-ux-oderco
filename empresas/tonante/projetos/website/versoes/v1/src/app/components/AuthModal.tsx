@@ -98,7 +98,7 @@ export function AuthModal() {
                 ><X size={16} /></button>
 
                 <div className="mb-5">
-                  <img src="https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png" alt="PCYES" className="h-[28px] w-auto mx-auto object-contain" />
+                  <img src="/brand/tonante-wordmark-dark.png" alt="Tonante" className="h-[28px] w-auto mx-auto object-contain" />
                 </div>
                 <p className="text-foreground/40" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
                   {authModalTab === "login" ? "Bem-vindo de volta" : "Crie sua conta"}

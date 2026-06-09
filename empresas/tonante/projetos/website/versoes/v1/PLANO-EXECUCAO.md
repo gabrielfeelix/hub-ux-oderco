@@ -61,10 +61,13 @@ radius: 8/12/18/999 · sombras suaves (sem halo neon)
 - [x] **Build OK** (vite, 2184 módulos). Typecheck: só erros pré-existentes do PCYES (não bloqueiam).
 - [ ] (próximas fases) Regenerar `tokens.json`; reescrever `design.md` → DS Tonante; reskin Navbar/header (hoje ainda dark, fora do light-scope).
 
-### Fase 2 — Assets de marca
-- [ ] Copiar logos (`assets/logos/` + `uploads/LOGO_*`) → `public/brand/`. Fotos reais de produto (`uploads/*`) → `public/products/`.
-- [ ] Ajustar `prototypePublicRoots` no `vite.config.ts` (add `brand`, `products`).
-- [ ] Favicon + wiring de logo em Navbar/Footer/WelcomePopup.
+### Fase 2 — Assets de marca ✅ CONCLUÍDA
+- [x] Logos (`_ref/assets/logos/` 6 arquivos) → `public/brand/`.
+- [x] `prototypePublicRoots` += `brand`, `products` no `vite.config.ts`.
+- [x] Favicon `/brand/tonante-symbol-amber.png` (index.html).
+- [x] Wiring de logo: Navbar (wordmark branco, header dark até Fase 3), Footer (branco, stage dark), AuthModal (dark, card claro), WelcomePopup (âmbar + shadow âmbar).
+- [x] Build OK; assets no dist.
+- Nota: fotos de produto são CDN (`cdn.oderco.com.br`) — remotas, tratadas na Fase 4 (dados). Sem cópia local.
 
 ### Fase 3 — Chrome & tom de voz (componentes compartilhados)
 - [ ] `Navbar`: mega-menu PCYES → categorias Tonante (Violões/Guitarras/Contrabaixos/Acessórios/Cordas/Suportes). Logo script. Eyebrow `// CÓDIGO` → label editorial (uppercase, tracking).

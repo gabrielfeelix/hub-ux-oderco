@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ArrowRight, Check, Facebook, Instagram, Youtube, Twitter } from "lucide-react";
 
-const PCYES_LOGO = "https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png";
+const PCYES_LOGO = "/brand/tonante-wordmark-amber.png";
 
 export function WelcomePopup() {
   const [mounted, setMounted] = useState(false);
@@ -77,7 +77,7 @@ export function WelcomePopup() {
                   style={{ background: "radial-gradient(circle, rgba(225, 6, 0, 0.3) 0%, transparent 70%)" }} />
 
                 <div className="relative z-10 flex flex-col items-center px-10 text-center">
-                  <img src={PCYES_LOGO} alt="PCYES" className="w-[220px] mb-8 drop-shadow-[0_8px_24px_rgba(225,6,0,0.45)]" />
+                  <img src={PCYES_LOGO} alt="Tonante" className="w-[220px] mb-8 drop-shadow-[0_8px_24px_rgba(200,120,0,0.45)]" />
                   <p
                     className="text-ink leading-snug"
                     style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: 700, letterSpacing: "-0.02em" }}
