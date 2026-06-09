@@ -106,7 +106,7 @@ Definidas em `src/app/routes.tsx`. Principais: `/` (home),
 
 ## Deploy
 
-Vercel — `vercel --prod` a partir da raiz do monorepo `hub-ux-oderco`.
+Vercel — `vercel --prod` a partir da raiz do monorepo `ux-prototipos`.
 Subpastas de `public/` precisam estar listadas em
 `prototypePublicRoots` no `vite.config.ts`, senão dão 404.
 

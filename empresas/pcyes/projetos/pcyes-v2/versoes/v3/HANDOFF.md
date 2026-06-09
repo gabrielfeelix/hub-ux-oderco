@@ -9,12 +9,12 @@ Read this before doing anything. It compresses ~12h of context so you can pick u
 Prototype of the new **PCYES storefront** (Brazilian gamer hardware brand). Lives at:
 
 ```
-/home/gabrielbarbosa/dev/hub-ux-oderco/empresas/pcyes/projetos/pcyes-v2/versoes/v3/
+/home/gabrielbarbosa/dev/ux-prototipos/empresas/pcyes/projetos/pcyes-v2/versoes/v3/
 ```
 
 Stack: Vite + React 18 + react-router v6 + Tailwind 4 + motion/react + shadcn/ui + react-helmet-async.
 
-Mounted inside a Next.js monorepo at the root `hub-ux-oderco/`. Vercel deploy is from the **monorepo root**, but the v3 lives in a sub-path served as prototype. Production alias:
+Mounted inside a Next.js monorepo at the root `ux-prototipos/`. Vercel deploy is from the **monorepo root**, but the v3 lives in a sub-path served as prototype. Production alias:
 
 ```
 https://ux-oderco.vercel.app
@@ -23,11 +23,11 @@ https://ux-oderco.vercel.app
 Deploy command from monorepo root:
 
 ```bash
-cd /home/gabrielbarbosa/dev/hub-ux-oderco
+cd /home/gabrielbarbosa/dev/ux-prototipos
 vercel --prod
 ```
 
-User memory rule (saved in CLAUDE.md): `vercel --prod` from `hub-ux-oderco` root. `public/` subfolders must be in vite `prototypePublicRoots` or 404.
+User memory rule (saved in CLAUDE.md): `vercel --prod` from `ux-prototipos` root. `public/` subfolders must be in vite `prototypePublicRoots` or 404.
 
 ---
 

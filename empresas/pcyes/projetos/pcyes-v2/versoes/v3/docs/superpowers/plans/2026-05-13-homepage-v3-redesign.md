@@ -13,7 +13,7 @@
 2. `npm run dev` + abrir browser → verificar componente isolado (página/playground) ou homepage inteira na fase final
 3. Commit atômico com mensagem convencional (`feat(pcyes-v3):`, `refactor(pcyes-v3):`, `chore(pcyes-v3):`)
 
-**Convenções de path:** Todas as paths relativas a `/home/gabrielbarbosa/dev/hub-ux-oderco/empresas/pcyes/projetos/pcyes-v2/versoes/v3/` (raiz do v3). Quando o plano disser `src/app/components/X.tsx`, leia como `versoes/v3/src/app/components/X.tsx`.
+**Convenções de path:** Todas as paths relativas a `/home/gabrielbarbosa/dev/ux-prototipos/empresas/pcyes/projetos/pcyes-v2/versoes/v3/` (raiz do v3). Quando o plano disser `src/app/components/X.tsx`, leia como `versoes/v3/src/app/components/X.tsx`.
 
 ---
 
