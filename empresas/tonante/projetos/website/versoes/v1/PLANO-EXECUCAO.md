@@ -54,12 +54,12 @@ radius: 8/12/18/999 · sombras suaves (sem halo neon)
 - [x] `npm install` (232 pkgs) + `npm run dev` → Vite 6 HTTP 200, main.tsx compila. Baseline OK.
 - [ ] (pendente) `.env.local` próprio; `vercel.json`/docker → domínio Tonante. *(adiado — não bloqueia)*
 
-### Fase 1 — Fundação de marca (tokens) ★ coração
-- [ ] Reescrever `src/styles/theme.css`: cores (vermelho→âmbar, dark-bg→creme), **inverter p/ light-default** (dark = opt-in), tipografia, radius próprio, sombras suaves, gradientes (vermelho→âmbar/madeira). Remover quirks gamer (glitch, HUD, neon-hover) → adicionar grain + respiro editorial.
-- [ ] `src/styles/fonts.css`: Figtree/Inter → Bodoni Moda + Hanken Grotesk.
-- [ ] Regenerar `tokens.json` / `tokens.studio.json`.
-- [ ] Reescrever `design.md` → bíblia DS Tonante.
-- [ ] **Checkpoint visual:** home PCYES re-tematizada já deve "sentir" Tonante só por tokens.
+### Fase 1 — Fundação de marca (tokens) ★ coração ✅ CONCLUÍDA
+- [x] Reescrever `src/styles/theme.css`: cores vermelho→âmbar `#C87800`, bg→creme `#F6F2E9`, ink `#1A1714`; **light-only** (removido bloco `.dark`); radius próprio (8/12/18/22); sombras premium suaves (sem halo neon); gradientes âmbar. Removido glitch keyframes/quirks gamer; adicionado `.grain` editorial. Override layer retonado p/ paleta Tonante (creme/ink) + sempre-ativo.
+- [x] `src/styles/fonts.css`: Figtree/Inter → **Bodoni Moda** (display) + **Hanken Grotesk** (corpo). Vars `--font-family-figtree/inter` mantidas (apontam p/ novas fontes).
+- [x] `ThemeProvider.tsx` travado em light (sem toggle/localStorage). `index.html` `class="light"`.
+- [x] **Build OK** (vite, 2184 módulos). Typecheck: só erros pré-existentes do PCYES (não bloqueiam).
+- [ ] (próximas fases) Regenerar `tokens.json`; reescrever `design.md` → DS Tonante; reskin Navbar/header (hoje ainda dark, fora do light-scope).
 
 ### Fase 2 — Assets de marca
 - [ ] Copiar logos (`assets/logos/` + `uploads/LOGO_*`) → `public/brand/`. Fotos reais de produto (`uploads/*`) → `public/products/`.

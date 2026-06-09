@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, type ReactNode } from "react";
 
 type Theme = "dark" | "light";
 
@@ -9,8 +9,8 @@ interface ThemeProviderState {
 }
 
 const initialState: ThemeProviderState = {
-  theme: "dark",
-  resolvedTheme: "dark",
+  theme: "light",
+  resolvedTheme: "light",
   setTheme: () => null,
 };
 
@@ -21,35 +21,20 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    // Read synchronously on mount to avoid FOUC
-    try {
-      const stored = localStorage.getItem("pcyes-theme");
-      if (stored === "light" || stored === "dark") {
-        return stored as Theme;
-      }
-    } catch {}
-    return "dark"; // default theme
-  });
+  // Tonante é light-only: o tema fica travado em "light" — sem toggle, sem
+  // leitura de preferência salva. A arquitetura de tema é mantida (herdada do
+  // template PCYES) só para não quebrar quem consome useTheme().
+  const theme: Theme = "light";
 
-  const setTheme = (newTheme: Theme) => {
-    try {
-      localStorage.setItem("pcyes-theme", newTheme);
-    } catch {}
-    setThemeState(newTheme);
+  const setTheme = (_newTheme: Theme) => {
+    /* no-op — Tonante não alterna tema */
   };
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-    
-    // Sync for ThemeToggleBridge features
-    try {
-      localStorage.setItem("v2-theme", theme);
-      window.postMessage({ type: "theme-change", theme }, "*");
-    } catch {}
-  }, [theme]);
+    root.classList.remove("dark");
+    root.classList.add("light");
+  }, []);
 
   return (
     <ThemeProviderContext.Provider value={{ theme, resolvedTheme: theme, setTheme }}>
