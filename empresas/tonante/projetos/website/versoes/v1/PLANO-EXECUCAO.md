@@ -77,7 +77,14 @@ radius: 8/12/18/999 · sombras suaves (sem halo neon)
 - [x] Build OK.
 - [ ] (Fase 5 polish) WelcomePopup copy "Built for Performance"; imagem de pagamentos PCYES; "//" eyebrows nos callers de conteúdo.
 
-### Fase 4 — Modelo de catálogo
+### Fase 4 — Modelo de catálogo ✅ CONCLUÍDA (core)
+- [x] Gerador `scripts/gen-tonante-catalog.mjs`: lê `_ref/src/catalog_data.js` (REAL: imagens CDN + HTML esteira + ficha), `_ref/src/data.js` (22 curados), `produtos_tonante_com_imagens.csv` (imagens principais) → `productsData.ts` no contrato `Product`.
+- [x] 21 produtos, 6 categorias Tonante, 45 tags, brand "Tonante". 15 c/ foto real (CDN oderco), 6 violões c/ placeholder SVG (tom de madeira).
+- [x] htmlDescription: blocos reais da esteira onde existe; mesmo padrão gerado p/ os sem esteira. specs de instrumento via ficha real/specsFor. seoSlug, priceNum, oldPrice, badges.
+- [x] Build OK. URLs de categoria via fallback `slugify` (mapa limpo = Fase 6).
+- [ ] (follow-up) escalar p/ catálogo completo quando houver preços reais; color swatches/slug-map Tonante (Fase 6); PreOrderData/driversData PCYES (Fase 5/8).
+
+### Fase 4 (legado — descrição original)
 - [ ] Mapear `claude-design/src/data.js` (TONANTE_DATA) + `catalog_data.js` (CSV real) → interface `Product` do v3.
   - `price`(num) → `price`(str "R$ X,XX") + `priceNum`; `cat`→`category`; gerar `subcategory`, `specs[]`, `features[]`, `images[]`, `seoSlug`; manter `tone` p/ placeholder, `form`/`attrs`.
 - [ ] Specs de instrumento: tampo, madeira (fundo/laterais), escala, captação, nº cordas, acabamento.
