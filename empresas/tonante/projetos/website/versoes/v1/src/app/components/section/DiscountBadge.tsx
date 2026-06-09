@@ -13,25 +13,25 @@ type DiscountBadgeProps = {
 };
 
 const RECIPES: Record<Size, CSSProperties> = {
+  // Ref claude-design: brick red #b3361f, sans (Hanken) 700, pill. Sem Bodoni
+  // pesado (esmagava o "-13%") e sem tracking negativo.
   lg: {
-    padding: "6px 12px",
-    borderRadius: "var(--radius-card-sm)",
-    background: "var(--gradient-discount)",
-    fontFamily: "var(--font-family-figtree)",
-    fontSize: "var(--text-base)",
-    fontWeight: 900,
-    letterSpacing: "-0.02em",
-    boxShadow: "var(--shadow-discount-badge)",
+    padding: "5px 11px",
+    borderRadius: "var(--radius-pill)",
+    background: "#b3361f",
+    fontFamily: "var(--font-family-inter)",
+    fontSize: "13px",
+    fontWeight: 700,
+    lineHeight: 1,
+    boxShadow: "var(--shadow-discount-sm)",
   },
   sm: {
-    padding: "2px 6px",
-    borderRadius: "var(--radius-md)",
-    background: "var(--gradient-discount)",
+    padding: "3px 8px",
+    borderRadius: "var(--radius-pill)",
+    background: "#b3361f",
     fontFamily: "var(--font-family-inter)",
     fontSize: "var(--text-caption)",
-    fontWeight: 800,
-    letterSpacing: "-0.01em",
-    boxShadow: "var(--shadow-discount-sm)",
+    fontWeight: 700,
     lineHeight: 1,
   },
 };

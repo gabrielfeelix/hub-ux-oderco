@@ -1111,7 +1111,7 @@ export function ProductsPage() {
         description={
           activeCategoryLabel
             ? `Veja todos os produtos da categoria ${activeCategoryLabel}${initialSubcategory ? ` / ${initialSubcategory}` : ""} na PCYES. Frete grátis acima de R$ 299, até 12x sem juros.`
-            : "Catálogo completo de produtos PCYES. Hardware, periféricos, setups gamer."
+            : "Tudo que conecta gente à música, num só lugar — com garantia oficial e frete grátis acima de R$ 299."
         }
         canonicalPath={
           activeCategoryLabel
@@ -1193,7 +1193,7 @@ export function ProductsPage() {
             >
               {activeCategoryLabel
                 ? `Confira a linha completa de ${initialSubcategory ? `${initialSubcategory.toLowerCase()} ${activeCategoryLabel.toLowerCase()}` : activeCategoryLabel.toLowerCase()} PCYES. Garantia oficial, frete grátis acima de R$ 299, até 12x sem juros.`
-                : "Catálogo completo PCYES. Hardware, periféricos, setups gamer e mais."}
+                : "Tudo que conecta gente à música, num só lugar — com garantia oficial e frete grátis acima de R$ 299."}
             </p>
           </header>
 

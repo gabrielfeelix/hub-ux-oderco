@@ -27,6 +27,13 @@
   --secondary-foreground: rgba(26, 23, 20, 1.00);
   --muted: rgba(131, 119, 103, 1.00);
   --muted-foreground: rgba(107, 95, 81, 1.00);
+
+  /* Aliases de marca (do protótipo _ref) — usados pelos componentes portados. */
+  --amber: #c87800;
+  --amber-bright: #e08c12;
+  --amber-deep: #a05f00;
+  --ink-soft: #4f463c;
+  --faint: #a89c8b;
   --accent: rgba(200, 120, 0, 1.00);
   --accent-foreground: rgba(255, 255, 255, 1.00);
   --destructive: rgba(179, 38, 30, 1.00);
@@ -442,6 +449,26 @@ html {
 }
 
 ::selection { background: var(--primary); color: #fff; }
+
+/* Helpers tipográficos do protótipo de marca (_ref) — usados pelos componentes
+   portados (cards, seções). */
+.display {
+  font-family: var(--font-family-figtree); /* Bodoni Moda */
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+}
+.serif { font-family: var(--font-family-figtree); }
+.label {
+  font-family: var(--font-family-inter); /* Hanken Grotesk */
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
 
 /* === WCAG 2.3.3 — respeita preferência de movimento === */
 @media (prefers-reduced-motion: reduce) {
