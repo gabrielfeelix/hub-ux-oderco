@@ -189,7 +189,7 @@ export function PopularGrid() {
           className="text-center mt-20"
         >
           <p className="text-foreground/20 mb-5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>
-            Mais de 200 produtos disponíveis no catálogo PCYES
+            {allProducts.length} instrumentos no catálogo Tonante
           </p>
           <Link
             to="/produtos"

@@ -224,7 +224,7 @@ export function DealsHighlight({
                     letterSpacing: "-0.02em",
                   }}
                 >
-                  +200
+                  {allProducts.filter((p) => p.oldPriceNum).length}
                 </div>
               </div>
               <div>
@@ -238,7 +238,7 @@ export function DealsHighlight({
                     letterSpacing: "-0.025em",
                   }}
                 >
-                  +200 itens
+                  {allProducts.filter((p) => p.oldPriceNum).length} itens
                 </p>
                 <p
                   style={{
