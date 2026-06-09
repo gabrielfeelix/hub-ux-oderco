@@ -35,56 +35,24 @@ const categoryMap: Record<string, string> = {
   "Coolers": "Refrigeração",
   "Linha BrTT": "Periféricos",
 };
-const allTags = productTags.filter((tag) => ["Gaming", "RGB", "Wireless", "Streaming", "Escritório"].includes(tag));
-const featuredCategoryFilters = [
-  {
-    label: "Fone de Ouvido",
-    matches: (product: Product) => {
-      const name = product.name.toLowerCase();
-      return name.includes("fone de ouvido") || name.includes("headphone") || name.includes("fone ");
-    },
-  },
-  {
-    label: "Headset",
-    matches: (product: Product) => {
-      const name = product.name.toLowerCase();
-      return name.includes("headset") || getProductSubcategory(product) === "Headsets";
-    },
-  },
-  {
-    label: "Mouse",
-    matches: (product: Product) => {
-      const name = product.name.toLowerCase();
-      return name.includes("mouse") || getProductSubcategory(product) === "Mouses";
-    },
-  },
-  {
-    label: "Teclado",
-    matches: (product: Product) => {
-      const name = product.name.toLowerCase();
-      return name.includes("teclado") || name.includes("keyboard") || getProductSubcategory(product) === "Teclados";
-    },
-  },
-] satisfies Array<{ label: string; matches: (product: Product) => boolean }>;
-const featuredCategoryRoutes: Record<string, { category: string; subcategory: string }> = {
-  "Fone de Ouvido": { category: "Periféricos", subcategory: "Headsets" },
-  "Headset": { category: "Periféricos", subcategory: "Headsets" },
-  "Mouse": { category: "Periféricos", subcategory: "Mouses" },
-  "Teclado": { category: "Periféricos", subcategory: "Teclados" },
-};
+// Tags em destaque Tonante (chips "Destaques").
+const allTags = productTags.filter((tag) =>
+  ["Nylon", "Aço", "Eletroacústico", "Acústico", "Humbucker", "Single-coil", "6 cordas", "4 cordas", "Capotraste", "Afinador", "Palheta"].includes(tag),
+);
+// Chips de categoria em destaque — vazio na Tonante (as 6 categorias já estão na sidebar).
+const featuredCategoryFilters: Array<{ label: string; matches: (product: Product) => boolean }> = [];
+const featuredCategoryRoutes: Record<string, { category: string; subcategory: string }> = {};
+// Acabamentos/tons de instrumento (filtro de cor).
 const colorFilters = [
-  { label: "Cinza", color: "#5a5a5a" },
-  { label: "Lilás", color: "#c7a1d9" },
-  { label: "Preto", color: "#09090b" },
-  { label: "Vermelho", color: "#d6181f" },
-  { label: "Verde", color: "#17823b" },
-  { label: "Azul", color: "#1438a6" },
-  { label: "Branco", color: "#f8f8f7" },
+  { label: "Natural", color: "#c9a06a" },
+  { label: "Spruce", color: "#d2a86a" },
+  { label: "Mogno", color: "#6e4220" },
+  { label: "Sunburst", color: "#b5793c" },
+  { label: "Preto", color: "#1a1714" },
+  { label: "Branco", color: "#f5f0e6" },
+  { label: "Cherry", color: "#7e3a24" },
+  { label: "Azul", color: "#3f6e8c" },
   { label: "Prata", color: "#bcbcbc" },
-  { label: "Amarelo", color: "#ffef2d" },
-  { label: "Laranja", color: "#ff9900" },
-  { label: "Rosa", color: "#ff79a8" },
-  { label: "Marrom", color: "#8b5a2b" },
 ];
 function normalizeFilterKey(value: string) {
   return value
