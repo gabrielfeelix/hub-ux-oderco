@@ -156,7 +156,7 @@ export function HeroSection() {
                   key={i}
                   to={slide.href}
                   draggable={false}
-                  className="hero-card flex-shrink-0 relative h-full block cursor-grab active:cursor-grabbing"
+                  className={`hero-card flex-shrink-0 relative h-full block cursor-grab active:cursor-grabbing ${isActive ? "hero-card--active" : ""}`}
                   style={{
                     width: "82%",
                     borderRadius: "var(--radius-card-xl)",

@@ -597,6 +597,13 @@ html {
 .hero-card:hover .hero-card-stroke { background: var(--gradient-hero-stroke-hover); }
 .hero-card:hover { box-shadow: var(--shadow-hero-card-hover); }
 
+/* Mobile has no hover — the centered (active) banner always wears the
+   hover aspect (red stroke + glow) as it lands in the middle.            */
+@media (max-width: 767px) {
+  .hero-card--active .hero-card-stroke { background: var(--gradient-hero-stroke-hover); }
+  .hero-card--active { box-shadow: var(--shadow-hero-card-hover); }
+}
+
 /* Category showcase active card hover — see --shadow-category-active.  */
 .category-active:hover {
   border-color: rgba(225, 6, 0, 0.55) !important;
