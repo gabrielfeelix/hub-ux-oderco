@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, type CSSProperties, type ReactNode } from "react";
-import { Link } from "react-router";
-import { Heart, Eye, ShoppingBag, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { createPortal } from "react-dom";
+import { Link, useNavigate } from "react-router";
+import { Heart, Eye, ShoppingBag, Star, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
 import { getProductSwatches } from "./productPresentation";
@@ -51,6 +52,8 @@ export function ProductCard({
   const [isFavorited, setIsFavorited] = useState(false);
   const [selectedSwatchId, setSelectedSwatchId] = useState<number | null>(null);
   const [imgIdx, setImgIdx] = useState(0);
+  const [quickOpen, setQuickOpen] = useState(false);
+  const navigate = useNavigate();
 
   const swatchList = swatches ? getProductSwatches(product) : [];
   const selectedProduct = selectedSwatchId
@@ -154,14 +157,19 @@ export function ProductCard({
               >
                 <Heart size={16} strokeWidth={1.8} fill={isFavorited ? "#b3361f" : "none"} />
               </button>
-              <Link
-                to={href}
-                aria-label="Ver produto"
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setQuickOpen(true);
+                }}
+                aria-label="Espiar produto"
                 className="flex h-9 w-9 items-center justify-center rounded-full shadow-[0_2px_8px_rgba(26,23,20,0.12)] cursor-pointer"
                 style={{ background: "rgba(255,255,255,0.92)", color: "#1a1714" }}
               >
                 <Eye size={16} strokeWidth={1.8} />
-              </Link>
+              </button>
             </div>
 
             {/* setas de imagem (hover, se >1) */}
@@ -351,6 +359,110 @@ export function ProductCard({
         >
           <ShoppingBag size={15} strokeWidth={2} /> Comprar
         </button>
+      )}
+
+      {/* Quick view (espiar) — portal no body p/ escapar do transform/overflow do card */}
+      {quickOpen && createPortal(
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          style={{ background: "rgba(26,23,20,0.55)", backdropFilter: "blur(4px)" }}
+          onClick={() => setQuickOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative grid w-full max-w-3xl grid-cols-1 overflow-hidden md:grid-cols-2"
+            style={{ background: "var(--surface-1)", borderRadius: "var(--radius-card-xl)", boxShadow: "var(--shadow-float)" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setQuickOpen(false)}
+              aria-label="Fechar"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full cursor-pointer"
+              style={{ background: "rgba(255,255,255,0.92)", color: "#1a1714", boxShadow: "0 2px 8px rgba(26,23,20,0.12)" }}
+            >
+              <X size={17} />
+            </button>
+
+            {/* imagem */}
+            <div className="relative aspect-square md:aspect-auto" style={{ background: "linear-gradient(160deg, #faf7f0, #efe9dc)" }}>
+              <ImageWithFallback src={image} alt={product.name} className="absolute inset-0 h-full w-full object-contain p-8" style={{ mixBlendMode: "multiply" }} />
+              {discount > 0 && (
+                <span className="absolute left-5 top-5">
+                  <DiscountBadge percent={discount} />
+                </span>
+              )}
+            </div>
+
+            {/* info */}
+            <div className="flex flex-col gap-3 p-6 md:p-8">
+              <span className="label" style={{ fontSize: "10px", color: "var(--amber-deep)" }}>
+                {eyebrow}
+              </span>
+              <h3 style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: 700, lineHeight: 1.05, color: "var(--ink-strong)" }}>
+                {product.name}
+              </h3>
+              <span className="flex items-center gap-1.5">
+                <span className="flex" style={{ color: "var(--amber)" }}>
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <Star key={i} size={14} strokeWidth={1.5} fill={product.rating - i >= 0.5 ? "var(--amber)" : "none"} stroke={product.rating - i >= 0.5 ? "var(--amber)" : "rgba(26,23,20,0.3)"} />
+                  ))}
+                </span>
+                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: "var(--muted)" }}>
+                  {product.rating.toFixed(1)} · {product.reviews} avaliações
+                </span>
+              </span>
+              {product.description && (
+                <p className="line-clamp-4" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "var(--ink-soft)", lineHeight: 1.55 }}>
+                  {product.description}
+                </p>
+              )}
+              <div className="mt-auto pt-2">
+                <div className="flex flex-wrap items-baseline gap-2">
+                  {oldPriceNum > product.priceNum && (
+                    <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "var(--faint)" }}>
+                      {product.oldPrice ?? fmtBRL(oldPriceNum)}
+                    </span>
+                  )}
+                  <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "30px", fontWeight: 600, letterSpacing: "-0.02em", color: discount > 0 ? "var(--amber-deep)" : "var(--ink-strong)" }}>
+                    {product.price}
+                  </span>
+                </div>
+                <div style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "var(--ink-soft)", marginTop: 3 }}>
+                  No PIX <strong style={{ color: "var(--amber-deep)" }}>{fmtBRL(pix)}</strong> · ou {installments}x de {fmtBRL(product.priceNum / installments)}
+                </div>
+              </div>
+              <div className="mt-3 flex flex-col gap-2.5">
+                {onAdd && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onAdd(product);
+                      setQuickOpen(false);
+                    }}
+                    className="flex items-center justify-center gap-2 rounded-pill cursor-pointer"
+                    style={{ background: "var(--primary)", color: "#fff", padding: "14px 22px", fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "15px", boxShadow: "var(--shadow-buy-cta-sm)" }}
+                  >
+                    <ShoppingBag size={17} strokeWidth={2} /> Adicionar à sacola
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuickOpen(false);
+                    navigate(href);
+                  }}
+                  className="rounded-pill cursor-pointer"
+                  style={{ background: "transparent", color: "var(--ink-strong)", padding: "12px 22px", border: "1.5px solid #d6cbb5", fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "14.5px" }}
+                >
+                  Ver página completa
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>,
+        document.body,
       )}
     </article>
   );

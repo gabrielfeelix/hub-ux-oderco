@@ -1,19 +1,37 @@
 import { Instagram } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-// RealMusicians — "Tonante por aí" (porta _ref/src/home_sections.jsx).
-// Cards UGC com tons quentes + símbolo + handle. Placeholder até entrarem fotos reais.
-const shots: { h: number; tone: [string, string]; handle: string }[] = [
-  { h: 360, tone: ["#b5793c", "#6e4220"], handle: "@joaoviolao" },
-  { h: 300, tone: ["#7e3a24", "#3e160e"], handle: "@bandadaesquina" },
-  { h: 400, tone: ["#3a352f", "#16130f"], handle: "@luiza.strings" },
-  { h: 320, tone: ["#a8772f", "#6a4516"], handle: "@studio.norte" },
-  { h: 370, tone: ["#d2a86a", "#9a6a33"], handle: "@pedro.live" },
+// RealMusicians — "Tonante por aí": fotos de músicos (banco de imagens, cara de
+// IG), cards do mesmo tamanho rolando lentamente em marquee infinito.
+type Shot = { photo: string; handle: string };
+const u = (id: string) => `https://images.unsplash.com/${id}?w=600&q=80&auto=format&fit=crop`;
+
+const SHOTS: Shot[] = [
+  { photo: u("photo-1575395861912-72095f32b495"), handle: "@joaoviolao" },
+  { photo: u("photo-1584402617825-1a58712ae0b0"), handle: "@bandadaesquina" },
+  { photo: u("photo-1706664771939-8e34bcd218c8"), handle: "@luiza.strings" },
+  { photo: u("photo-1749720773756-d3462e733167"), handle: "@studio.norte" },
+  { photo: u("photo-1505841993706-c8d90b412bc4"), handle: "@pedro.live" },
 ];
 
-export function RealMusicians() {
+function Card({ s }: { s: Shot }) {
   return (
-    <section className="px-5 md:px-[72px]" style={{ background: "var(--surface-0)", paddingTop: "var(--space-section-md)" }}>
-      <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
+    <div className="relative flex-shrink-0 overflow-hidden" style={{ width: 280, height: 360, borderRadius: "var(--radius-card-lg)" }}>
+      <ImageWithFallback src={s.photo} alt={s.handle} className="absolute inset-0 h-full w-full object-cover" />
+      <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 45%, rgba(0,0,0,.62) 100%)" }} />
+      <div className="absolute bottom-3.5 left-4 z-[2] flex items-center gap-2" style={{ color: "#fff" }}>
+        <Instagram size={16} strokeWidth={1.8} />
+        <span style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "13.5px" }}>{s.handle}</span>
+      </div>
+    </div>
+  );
+}
+
+export function RealMusicians() {
+  const loop = [...SHOTS, ...SHOTS];
+  return (
+    <section style={{ background: "var(--surface-0)", paddingTop: "var(--space-section-md)", overflow: "hidden" }}>
+      <div className="mx-auto w-full px-5 md:px-[72px]" style={{ maxWidth: "1600px" }}>
         <div className="mb-8">
           <p className="label" style={{ color: "var(--amber-deep)", marginBottom: 12 }}>
             Tonante por aí
@@ -22,28 +40,23 @@ export function RealMusicians() {
             Músicos de verdade, palcos de verdade
           </h2>
         </div>
+      </div>
 
-        <div className="no-bar -mx-1 flex items-end gap-4 overflow-x-auto px-1 pb-2">
-          {shots.map((s, i) => (
-            <div
-              key={i}
-              data-keep-dark
-              className="grain relative overflow-hidden"
-              style={{ flex: "0 0 280px", height: s.h, borderRadius: "var(--radius-card-lg)", background: `radial-gradient(120% 120% at 40% 20%, ${s.tone[0]}, ${s.tone[1]})` }}
-            >
-              <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(0,0,0,.5))" }} />
-              <img src="/brand/tonante-symbol-white.png" alt="" aria-hidden="true" className="pointer-events-none absolute select-none" style={{ left: "50%", top: "44%", transform: "translate(-50%,-50%)", width: "44%", opacity: 0.8 }} />
-              <div className="absolute bottom-3.5 left-4 z-[2] flex items-center gap-2" style={{ color: "#fff" }}>
-                <Instagram size={16} strokeWidth={1.8} />
-                <span style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "13.5px" }}>{s.handle}</span>
-              </div>
-              <span className="label absolute right-3.5 top-3.5 z-[2]" style={{ color: "rgba(255,255,255,.7)", fontSize: "8.5px" }}>
-                Foto real aqui
-              </span>
-            </div>
+      {/* marquee */}
+      <div className="tonante-marquee" style={{ overflow: "hidden", maskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)" }}>
+        <div className="tonante-marquee-track flex gap-5" style={{ width: "max-content" }}>
+          {loop.map((s, i) => (
+            <Card key={i} s={s} />
           ))}
         </div>
       </div>
+
+      <style>{`
+        .tonante-marquee-track { animation: tonante-marquee 38s linear infinite; }
+        .tonante-marquee:hover .tonante-marquee-track { animation-play-state: paused; }
+        @keyframes tonante-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) { .tonante-marquee-track { animation: none; } }
+      `}</style>
     </section>
   );
 }
