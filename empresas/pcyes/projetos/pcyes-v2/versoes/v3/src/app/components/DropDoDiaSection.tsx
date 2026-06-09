@@ -37,7 +37,7 @@ export function DropDoDiaSection() {
   if (picks.length === 0) return null;
 
   return (
-    <section className="px-5 py-14 md:px-[72px] md:py-16" style={{ background: "var(--surface-0)" }}>
+    <section className="px-5 pt-7 pb-14 md:px-[72px] md:py-16" style={{ background: "var(--surface-0)" }}>
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-8 flex items-end justify-between gap-4">
           <SectionHeader

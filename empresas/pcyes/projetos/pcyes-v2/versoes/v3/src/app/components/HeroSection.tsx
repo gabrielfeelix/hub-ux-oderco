@@ -206,7 +206,7 @@ export function HeroSection() {
         <button
           onClick={goPrev}
           aria-label="Anterior"
-          className="absolute top-1/2 z-20 hidden md:flex h-12 w-12 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
+          className="absolute top-1/2 z-20 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
           style={{
             left: "9%",
             transform: "translate(-50%, -50%)",
@@ -217,12 +217,13 @@ export function HeroSection() {
             boxShadow: "0 10px 28px -8px rgba(0,0,0,0.6)",
           }}
         >
-          <ChevronLeft size={20} strokeWidth={2.2} />
+          <ChevronLeft size={18} strokeWidth={2.2} className="md:hidden" />
+          <ChevronLeft size={20} strokeWidth={2.2} className="hidden md:block" />
         </button>
         <button
           onClick={goNext}
           aria-label="Próximo"
-          className="absolute top-1/2 z-20 hidden md:flex h-12 w-12 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
+          className="absolute top-1/2 z-20 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer"
           style={{
             right: "9%",
             transform: "translate(50%, -50%)",
@@ -233,12 +234,13 @@ export function HeroSection() {
             boxShadow: "0 10px 28px -8px rgba(0,0,0,0.6)",
           }}
         >
-          <ChevronRight size={20} strokeWidth={2.2} />
+          <ChevronRight size={18} strokeWidth={2.2} className="md:hidden" />
+          <ChevronRight size={20} strokeWidth={2.2} className="hidden md:block" />
         </button>
       </div>
 
       {/* Dots BELOW the carousel + WCAG 2.2.2 pause toggle */}
-      <div className="mt-7 flex items-center justify-center gap-2">
+      <div className="mt-4 md:mt-7 flex items-center justify-center gap-2">
         <button
           type="button"
           onClick={() => setPaused((p) => !p)}

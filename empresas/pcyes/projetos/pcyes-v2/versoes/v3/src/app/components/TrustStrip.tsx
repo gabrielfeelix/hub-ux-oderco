@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
-import { Truck, CreditCard, ShieldCheck, RefreshCcw, ChevronRight, type LucideIcon } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion, AnimatePresence } from "motion/react";
+import { Truck, CreditCard, ShieldCheck, RefreshCcw, type LucideIcon } from "lucide-react";
 
 type Feature = { icon: LucideIcon; title: string; desc: string };
 
@@ -55,9 +55,18 @@ function FeatureCard({ f }: { f: Feature }) {
 export function TrustStrip() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.25 });
+  const prefersReducedMotion = useReducedMotion();
   const [page, setPage] = useState(0);
 
-  const advance = () => setPage((p) => (p + 1) % mobilePages.length);
+  // Mobile: auto-rotate the two pages every 2s. No arrow, no timer/dots —
+  // the strip just cycles on its own. Honors reduced-motion (freezes).
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const id = setInterval(() => {
+      setPage((p) => (p + 1) % mobilePages.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, [prefersReducedMotion]);
 
   return (
     <section
@@ -65,35 +74,24 @@ export function TrustStrip() {
       className="border-y border-edge-subtle px-5 py-6 md:px-[72px] md:py-12"
       style={{ background: "var(--surface-0)" }}
     >
-      {/* Mobile: 2 cards visible, chevron-right advances to the next pair.
-          No auto-rotate, no dots — keeps the surface calm and the user
-          in control. */}
+      {/* Mobile: 2 cards visible, auto-rotating between the two pairs every 2s.
+          No arrow, no dots, no timer — the surface cycles on its own. */}
       <div className="md:hidden mx-auto max-w-[640px]">
-        <div className="flex items-center gap-3">
-          <div className="relative min-h-[100px] flex-1 overflow-hidden">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={page}
-                initial={{ opacity: 0, x: 12 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                exit={{ opacity: 0, x: -12 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="grid grid-cols-2 gap-x-4 gap-y-5"
-              >
-                {mobilePages[page].map((f) => (
-                  <FeatureCard key={f.title} f={f} />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-          <button
-            type="button"
-            onClick={advance}
-            aria-label="Ver próximas vantagens"
-            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-edge bg-surface-glass text-ink-muted transition-colors hover:border-primary/40 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 cursor-pointer"
-          >
-            <ChevronRight size={18} aria-hidden="true" />
-          </button>
+        <div className="relative min-h-[88px] overflow-hidden">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={page}
+              initial={{ opacity: 0, x: 12 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-2 gap-x-4 gap-y-5"
+            >
+              {mobilePages[page].map((f) => (
+                <FeatureCard key={f.title} f={f} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
