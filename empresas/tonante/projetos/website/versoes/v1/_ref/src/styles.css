@@ -1,0 +1,124 @@
+/* ===========================================================
+   TONANTE — tokens & base
+   Marca: preto #000 + âmbar #C87800 · Bodoni + sans · desde 1954
+   =========================================================== */
+:root {
+  /* brand */
+  --amber: #c87800;          /* cor oficial Tonante */
+  --amber-bright: #e08c12;
+  --amber-deep: #a05f00;
+  --ink: #1a1714;            /* preto quente */
+  --ink-soft: #4f463c;
+  --muted: #837767;
+  --faint: #a89c8b;
+
+  /* light surfaces (default) */
+  --paper: #f6f2e9;          /* fundo creme quente */
+  --paper-2: #efe9dc;        /* bloco levemente mais escuro */
+  --surface: #fffdf8;        /* cartões */
+  --hairline: #e4dccc;
+  --hairline-strong: #d6cbb5;
+
+  /* dark stage (hero cinematográfico / footer) */
+  --stage: #16130f;
+  --stage-2: #211c16;
+  --stage-line: #38302608;
+
+  --accent: var(--amber);
+  --accent-deep: var(--amber-deep);
+
+  /* type */
+  --display: "Bodoni Moda", "Times New Roman", serif;
+  --sans: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --type-scale: 1;
+
+  /* radius */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-pill: 999px;
+
+  /* shadow (suave, premium) */
+  --sh-card: 0 1px 2px rgba(26,23,20,.04), 0 8px 28px -16px rgba(26,23,20,.22);
+  --sh-float: 0 30px 70px -30px rgba(26,23,20,.45);
+  --sh-pop: 0 24px 60px -20px rgba(26,23,20,.40);
+
+  --maxw: 1280px;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+
+/* DARK theme (opt-in via Tweaks) */
+[data-theme="dark"] {
+  --paper: #16130f;
+  --paper-2: #1d1813;
+  --surface: #211c16;
+  --ink: #f4eee3;
+  --ink-soft: #cdc2b1;
+  --muted: #a99c89;
+  --faint: #7d7060;
+  --hairline: #322a20;
+  --hairline-strong: #41372a;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: calc(16px * var(--type-scale));
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background .4s var(--ease), color .4s var(--ease);
+}
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--amber); color: #fff; }
+
+/* ---- type helpers ---- */
+.display {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+}
+.serif { font-family: var(--display); }
+.label {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-weight: 600;
+  font-size: .68rem;
+  color: var(--muted);
+}
+.num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+
+/* ---- grain ---- */
+.grain::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  opacity: .05; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- focus ---- */
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
+
+/* scrollbar */
+.scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--hairline-strong); border-radius: 99px; }
+
+/* reveal on load — slide only (no opacity gating), so content is ALWAYS
+   visible even if the animation timeline is paused (background tabs). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { animation: reveal-up .7s var(--ease) both; }
+  @keyframes reveal-up { from { transform: translateY(18px); } to { transform: translateY(0); } }
+}
+
+/* hide scrollbar utility */
+.no-bar::-webkit-scrollbar { display: none; }
+.no-bar { scrollbar-width: none; }
