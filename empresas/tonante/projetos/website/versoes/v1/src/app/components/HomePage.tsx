@@ -1,26 +1,24 @@
 import { HeroSection } from "./HeroSection";
-import { DropDoDiaSection } from "./DropDoDiaSection";
-import { CategoryShowcase } from "./CategoryShowcase";
-import { EssentialsSection } from "./EssentialsSection";
-import { FlashDealsStrip } from "./FlashDealsStrip";
-import { ProductShelf } from "./ProductShelf";
-import { DealsHighlight } from "./DealsHighlight";
 import { TrustStrip } from "./TrustStrip";
+import { DropDoDiaSection } from "./DropDoDiaSection";
+import { FlashDealsStrip } from "./FlashDealsStrip";
+import { CategoryShowcase } from "./CategoryShowcase";
+import { ProductShelf } from "./ProductShelf";
+import { PromoPanel } from "./PromoPanel";
+import { MonteSeuKit } from "./MonteSeuKit";
+import { ShopByStyle } from "./ShopByStyle";
+import { LinhasDeViolao } from "./LinhasDeViolao";
 import { StoryBand } from "./StoryBand";
+import { RealMusicians } from "./RealMusicians";
 import { Pillars } from "./Pillars";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
 import { SEO } from "./SEO";
 import { allProducts } from "./productsData";
 
-// Seleções dinâmicas do catálogo Tonante (antes eram IDs fixos do PCYES que
-// não existem mais → shelves vazias).
+// Seleções dinâmicas do catálogo Tonante.
 const byReviews = [...allProducts].sort((a, b) => b.reviews - a.reviews);
 const bestSellerIds = byReviews.slice(0, 10).map((p) => p.id);
-const dealIds = [...allProducts]
-  .filter((p) => p.oldPriceNum && p.oldPriceNum > p.priceNum)
-  .slice(0, 8)
-  .map((p) => p.id);
 const novelties = [...allProducts].filter((p) => p.badge === "Novidade");
 const newArrivalIds = (novelties.length >= 6 ? novelties : byReviews.slice(10, 16))
   .slice(0, 6)
@@ -46,40 +44,49 @@ export function HomePage() {
           ],
         }}
       />
-      {/* Hero */}
+      {/* 1. Hero (carrossel de banners) */}
       <HeroSection />
 
-      {/* Benefícios (frete, parcelas, garantia, troca) */}
+      {/* 2. Vantagens */}
       <TrustStrip />
 
-      {/* Drop do dia (3 maiores descontos) */}
+      {/* 3. Drop do dia */}
       <DropDoDiaSection />
 
-      {/* Promoções da semana */}
+      {/* 4. Promoções da semana */}
       <FlashDealsStrip />
 
-      {/* Vitrine de categorias */}
+      {/* 5. Categorias — O que você toca hoje? */}
       <CategoryShowcase />
 
-      {/* Mais cobiçados */}
-      <DealsHighlight label="Os queridinhos" title="Mais cobiçados da casa" productIds={dealIds} />
-
-      {/* Mais vendidos */}
+      {/* 6. Top da semana (ranked) */}
       <ProductShelf label="Mais vendidos" title="Top da semana" productIds={bestSellerIds} showRanking />
 
-      {/* Essenciais */}
-      <EssentialsSection />
+      {/* 7. Hall das ofertas */}
+      <PromoPanel />
 
-      {/* Lançamentos */}
-      <ProductShelf label="Lançamentos" title="Recém-chegados" productIds={newArrivalIds} />
+      {/* 8. Monte seu kit (combo) */}
+      <MonteSeuKit />
 
-      {/* Herança 1954 */}
+      {/* 9. Pra cada jeito de tocar */}
+      <ShopByStyle />
+
+      {/* 10. Cada violão, uma experiência */}
+      <LinhasDeViolao />
+
+      {/* 11. Herança 1954 */}
       <StoryBand />
 
-      {/* Pilares de marca */}
+      {/* 12. Recém-chegados */}
+      <ProductShelf label="Lançamentos" title="Recém-chegados" productIds={newArrivalIds} />
+
+      {/* 13. Tonante por aí */}
+      <RealMusicians />
+
+      {/* 14. Pilares */}
       <Pillars />
 
-      {/* Institucional */}
+      {/* 15. Newsletter + Footer */}
       <Newsletter />
       <Footer />
     </>
