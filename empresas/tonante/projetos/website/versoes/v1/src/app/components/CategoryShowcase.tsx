@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Link } from "react-router";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { allProducts } from "./productsData";
 import { getCatalogHref } from "./productPresentation";
 import { CarouselDots } from "./CarouselDots";
 import { SectionHeader } from "./section";
@@ -16,112 +17,16 @@ interface CategoryItem {
   cta: string;
 }
 
+const catImg = (cat: string) =>
+  allProducts.find((p) => p.category === cat && p.image?.startsWith("http"))?.image ?? "";
+
 const CATEGORIES: CategoryItem[] = [
-  {
-    label: "Headsets",
-    description: "Áudio surround, drivers premium e isolamento total — escute cada passo antes do inimigo.",
-    image: "https://images.unsplash.com/photo-1599669454699-248893623440?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "headset" }),
-    cta: "Explorar headsets",
-  },
-  {
-    label: "Teclados Mecânicos",
-    description: "Switches Kailh, anti-ghosting e RGB. Construção em alumínio para responder no milisegundo.",
-    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "teclado" }),
-    cta: "Explorar teclados",
-  },
-  {
-    label: "Mouses Gamer",
-    description: "Sensores ópticos de alta precisão, polling 1000Hz e botões programáveis para FPS competitivo.",
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "mouse" }),
-    cta: "Explorar mouses",
-  },
-  {
-    label: "Monitores",
-    description: "Painéis IPS de 144Hz+ com 1ms de resposta. Cores reais para criação, fluidez para esports.",
-    image: "https://images.unsplash.com/photo-1547119957-637f8679db1e?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ category: "Monitores" }),
-    cta: "Explorar monitores",
-  },
-  {
-    label: "Cadeiras Gamer",
-    description: "Suporte lombar, encosto reclinável e materiais que aguentam maratonas de 12h sem cansaço.",
-    image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "cadeira" }),
-    cta: "Explorar cadeiras",
-  },
-  {
-    label: "Gabinetes",
-    description: "Vidro temperado, fluxo de ar otimizado e RGB sincronizado — sua build merece vitrine.",
-    image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "gabinete" }),
-    cta: "Explorar gabinetes",
-  },
-  {
-    label: "Placas de Vídeo",
-    description: "GPUs com Ray Tracing, DLSS e VRAM dedicada — performance gráfica de geração atual.",
-    image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "placa de video" }),
-    cta: "Explorar placas",
-  },
-  {
-    label: "Fontes",
-    description: "Fontes 80 Plus modulares com cabos sleeve. Energia limpa pra builds de 1000W+.",
-    image: "https://images.unsplash.com/photo-1587202372616-b43abea06c2a?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "fonte" }),
-    cta: "Explorar fontes",
-  },
-  {
-    label: "SSDs",
-    description: "NVMe Gen4 com velocidades de até 7000MB/s. Boot instantâneo e cargas sem espera.",
-    image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "ssd" }),
-    cta: "Explorar SSDs",
-  },
-  {
-    label: "Memórias RAM",
-    description: "DDR5 6000MHz+ com perfis XMP. Multitarefa, edição pesada e gaming sem gargalo.",
-    image: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "memoria" }),
-    cta: "Explorar memórias",
-  },
-  {
-    label: "Water Coolers",
-    description: "Refrigeração líquida AIO com pump silencioso. Mantém o CPU no frio sob carga máxima.",
-    image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "water cooler" }),
-    cta: "Explorar coolers",
-  },
-  {
-    label: "Microfones",
-    description: "Cardioides USB com tripé e ganho ajustável. Captação broadcast pra stream e podcast.",
-    image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "microfone" }),
-    cta: "Explorar microfones",
-  },
-  {
-    label: "Mousepads",
-    description: "Superfícies speed e control de tamanho XL. Base antiderrapante e bordas costuradas.",
-    image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "mousepad" }),
-    cta: "Explorar mousepads",
-  },
-  {
-    label: "Mini PCs",
-    description: "Computadores compactos com performance de desktop. Espaço otimizado, zero ruído.",
-    image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "mini computador" }),
-    cta: "Explorar mini PCs",
-  },
-  {
-    label: "Webcams",
-    description: "Full HD 1080p 60fps com autofoco. Calls profissionais e streams com qualidade real.",
-    image: "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=2000&q=85&auto=format&fit=crop",
-    href: getCatalogHref({ search: "webcam" }),
-    cta: "Explorar webcams",
-  },
+  { label: "Violões", description: "A alma da Tonante desde 1954 — do nylon clássico ao eletroacústico de palco.", image: catImg("Violões"), href: getCatalogHref({ category: "Violões" }), cta: "Ver violões" },
+  { label: "Guitarras", description: "Para quem leva o palco a sério. Humbucker, single-coil, HSS — do limpo ao distorcido.", image: catImg("Guitarras"), href: getCatalogHref({ category: "Guitarras" }), cta: "Ver guitarras" },
+  { label: "Contrabaixos", description: "O peso certo do groove. Jazz e Precision, 4 cordas, passivos e ativos.", image: catImg("Contrabaixos"), href: getCatalogHref({ category: "Contrabaixos" }), cta: "Ver contrabaixos" },
+  { label: "Cordas & Encordoamentos", description: "O toque que muda tudo. Para violão, guitarra, baixo, ukulele e viola.", image: catImg("Cordas & Encordoamentos"), href: getCatalogHref({ category: "Cordas & Encordoamentos" }), cta: "Ver cordas" },
+  { label: "Acessórios", description: "O que completa o seu som — capotraste, afinador, palhetas, cabos e mais.", image: catImg("Acessórios"), href: getCatalogHref({ category: "Acessórios" }), cta: "Ver acessórios" },
+  { label: "Suportes", description: "Seu instrumento sempre seguro. Suportes, pedestais, estantes e banquetas.", image: catImg("Suportes"), href: getCatalogHref({ category: "Suportes" }), cta: "Ver suportes" },
 ];
 
 const GAP_PX = 24;

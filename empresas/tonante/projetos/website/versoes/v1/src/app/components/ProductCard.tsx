@@ -108,6 +108,7 @@ export function ProductCard({
               src={image}
               alt={product.name}
               className="absolute inset-0 h-full w-full object-contain p-[7%] transition-transform duration-500 group-hover:scale-[1.05]"
+              style={{ mixBlendMode: "multiply" }}
             />
             {hoverMedia}
 

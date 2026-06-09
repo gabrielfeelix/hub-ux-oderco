@@ -47,8 +47,8 @@ function EssentialCard({ product }: EssentialCardProps) {
     <article
       className="essential-card group relative grid grid-cols-1 md:grid-cols-[2fr_3fr] overflow-hidden transition-all duration-300"
       style={{
-        background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
-        border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+        background: "linear-gradient(160deg, #faf7f0, #efe9dc)",
+        border: "1px solid #e4dccc",
         borderRadius: "var(--radius-card-lg)",
         minHeight: "460px",
       }}
@@ -70,7 +70,7 @@ function EssentialCard({ product }: EssentialCardProps) {
           src={image}
           alt={product.name}
           className="relative z-10 max-h-[200px] md:max-h-[280px] w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
-          style={{ filter: "drop-shadow(0 18px 28px rgba(0,0,0,0.55))" }}
+          style={{ mixBlendMode: "multiply" }}
         />
       </Link>
 
@@ -167,11 +167,10 @@ function EssentialCard({ product }: EssentialCardProps) {
 
         {/* Price + qty + CTA */}
         <div
-          data-keep-dark
           className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-xl px-5 py-3.5"
           style={{
-            background: "rgba(0, 0, 0, 0.45)",
-            border: "1px solid rgba(var(--foreground-rgb), 0.06)",
+            background: "var(--surface-2)",
+            border: "1px solid #e4dccc",
           }}
         >
           <span
@@ -201,11 +200,12 @@ function EssentialCard({ product }: EssentialCardProps) {
 }
 
 export function EssentialsSection() {
+  // Essenciais = acessórios e cordas mais acessíveis (antes IDs fixos PCYES).
   const products = useMemo(() => {
-    const byId = new Map(allProducts.map((p) => [p.id, p]));
-    return ESSENTIAL_IDS.map((id) => byId.get(id)).filter(
-      (p): p is Product => Boolean(p),
-    );
+    return [...allProducts]
+      .filter((p) => p.category === "Acessórios" || p.category === "Cordas & Encordoamentos")
+      .sort((a, b) => a.priceNum - b.priceNum)
+      .slice(0, 8) as Product[];
   }, []);
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -259,7 +259,7 @@ export function EssentialsSection() {
               marginBottom: "10px",
             }}
           >
-            // ITENS EM DESTAQUE
+            Itens em destaque
           </p>
           <h2
             className="text-ink-strong"
@@ -272,7 +272,7 @@ export function EssentialsSection() {
               maxWidth: "640px",
             }}
           >
-            Essenciais para começar seu setup
+            O que completa o seu som
           </h2>
         </div>
 
@@ -281,7 +281,7 @@ export function EssentialsSection() {
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
             aria-label="Anterior"
-            className="absolute left-3 md:left-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-edge bg-black/60 text-ink backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-ink-strong hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
+            className="absolute left-3 md:left-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#e4dccc] bg-[#fffdf8] text-[#1a1714] shadow-[0_2px_10px_rgba(26,23,20,0.10)] transition-all hover:border-[var(--primary)] hover:text-[var(--primary)] hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
           >
             <ChevronLeft size={18} strokeWidth={2.2} />
           </button>
@@ -290,7 +290,7 @@ export function EssentialsSection() {
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
             aria-label="Próximo"
-            className="absolute right-3 md:right-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-edge bg-black/60 text-ink backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-ink-strong hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
+            className="absolute right-3 md:right-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#e4dccc] bg-[#fffdf8] text-[#1a1714] shadow-[0_2px_10px_rgba(26,23,20,0.10)] transition-all hover:border-[var(--primary)] hover:text-[var(--primary)] hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer"
           >
             <ChevronRight size={18} strokeWidth={2.2} />
           </button>
