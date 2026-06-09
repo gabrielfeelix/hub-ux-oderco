@@ -49,27 +49,32 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
     { label: "M", value: pad(minutes) },
     { label: "S", value: pad(seconds) },
   ];
+  // Ref claude-design: pill brick-tint (sem glow), células creme, número tabular.
   return (
     <div
-      data-keep-dark
-      className="inline-flex items-center gap-3 rounded-full px-4 py-2.5"
+      className="inline-flex items-center gap-2.5 px-3.5 py-2.5"
       style={{
-        background: "rgba(0, 0, 0, 0.6)",
-        border: "1px solid rgba(200, 120, 0, 0.5)",
-        boxShadow: "0 0 28px -4px rgba(200, 120, 0, 0.55), inset 0 0 0 1px rgba(200, 120, 0, 0.08)",
+        background: "rgba(179, 54, 31, 0.07)",
+        border: "1px solid rgba(179, 54, 31, 0.22)",
+        borderRadius: "var(--radius-card-sm)",
       }}
     >
-      <Timer size={18} strokeWidth={2.2} style={{ color: "var(--primary)" }} />
-      <div className="flex items-center gap-2">
+      <Timer size={16} strokeWidth={2.2} style={{ color: "#b3361f" }} />
+      <div className="flex items-center gap-1.5">
         {units.map((u, i) => (
-          <span key={u.label} className="flex items-center gap-2">
+          <span key={u.label} className="flex items-center gap-1.5">
             <span
-              className="text-ink-strong tabular-nums"
+              className="num text-center"
               style={{
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "var(--text-base)",
+                background: "var(--surface-1)",
+                border: "1px solid var(--border)",
+                borderRadius: 8,
+                padding: "4px 7px",
+                minWidth: 30,
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "14px",
                 fontWeight: 700,
-                letterSpacing: "0.02em",
+                color: "var(--ink-strong)",
               }}
             >
               {u.value}
@@ -77,17 +82,15 @@ function CountdownChip({ days, hours, minutes, seconds }: { days: number; hours:
             <span
               style={{
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "var(--text-caption)",
-                fontWeight: 600,
-                color: "rgba(var(--foreground-rgb), 0.45)",
-                letterSpacing: "0.06em",
+                fontSize: "11px",
+                fontWeight: 700,
+                color: "var(--muted)",
+                letterSpacing: "0.04em",
               }}
             >
               {u.label}
             </span>
-            {i < units.length - 1 && (
-              <span style={{ color: "rgba(var(--foreground-rgb), 0.25)" }}>:</span>
-            )}
+            {i < units.length - 1 && <span style={{ color: "rgba(26,23,20,0.25)" }}>:</span>}
           </span>
         ))}
       </div>

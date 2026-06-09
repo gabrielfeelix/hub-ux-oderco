@@ -12,6 +12,7 @@ import { useCart } from "./CartContext";
 import { useFavorites } from "./FavoritesContext";
 import { useTheme } from "./ThemeProvider";
 import { Footer } from "./Footer";
+import { ProductCard } from "./ProductCard";
 import { allProducts, allTags as productTags, brands as productBrands, categories as productCategories, type Product } from "./productsData";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import {
@@ -1356,173 +1357,24 @@ export function ProductsPage() {
                   {gridMode === "grid" ? (
                     <div className="grid gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-14 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                       <AnimatePresence mode="popLayout">
-                    {paginatedProducts.map((product, i) => {
-                      const displayProduct = getColorMatchedProduct(product);
-                      const discount = getDiscount(displayProduct);
-                      const productImages = getProductImages(displayProduct);
-                      const imageKey = `${product.id}:${displayProduct.id}`;
-                      const imgIdx = getImageIndex(imageKey, productImages.length);
-                      const swatches = getProductSwatchesCached(product);
-                      const switchBadgeInfo = getSwitchBadgeInfo(displayProduct);
-                      const preOrderInfo = getPreOrderInfo(displayProduct.id);
-
-                      return (
-                        <motion.div key={`grid-${product.id}`} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3, delay: Math.min(i * 0.025, 0.35) }}
-                          className="group relative"
-                        >
-                          <div className={`relative overflow-hidden mb-4 aspect-[5/6] transition-all duration-300 deal-card-img ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "var(--radius-card-lg)", background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)", border: "1px solid rgba(var(--foreground-rgb), 0.08)" }}>
-                            {/* Inner shine */}
-                            <div className="pointer-events-none absolute inset-0 z-[1]" style={{ background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)", borderRadius: "var(--radius-card-lg)" }} />
-                            <Link to={`/produto/${displayProduct.id}`} className="block h-full">
-                              <div className="flex h-full w-full items-center justify-center p-2 sm:p-5 lg:p-6">
-                                <ImageWithFallback
-                                  src={productImages[imgIdx]}
-                                  alt={displayProduct.name}
-                                  loading="lazy"
-                                  decoding="async"
-                                  className="h-full w-full object-contain scale-100 sm:scale-[0.92] group-hover:scale-[0.97] transition-transform duration-500 ease-out"
-                                />
-                              </div>
-                            </Link>
-
-                            {/* Top-left: pre-order > discount > rating */}
-                            {preOrderInfo ? (
-                              <span className="absolute top-3 left-3 z-10">
-                                <PreOrderPill info={preOrderInfo} />
-                              </span>
-                            ) : discount > 0 ? (
-                              <DiscountBadge percent={discount} className="absolute top-3 left-3 z-10" />
-                            ) : (
-                              <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full px-2.5 py-1 backdrop-blur-md"
-                                style={{ background: "rgba(0,0,0,0.55)", border: "1px solid rgba(var(--foreground-rgb), 0.1)" }}>
-                                <Star size={11} className="fill-yellow-400 text-yellow-400" />
-                                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, color: "rgba(var(--foreground-rgb), 0.95)" }}>
-                                  {displayProduct.rating.toFixed(1)}
-                                </span>
-                              </div>
-                            )}
-                            {displayProduct.inStock === false && (
-                              <span className="absolute top-3 right-12 z-10 px-2.5 py-1 bg-foreground/80 text-background shadow-sm" style={{ borderRadius: "var(--radius)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600" }}>
-                                Esgotado
-                              </span>
-                            )}
-
-                            {/* Favorite + Quick View — top-right */}
-                            <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
-                              <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(displayProduct.id); }}
-                                className="w-9 h-9 lg:w-9 lg:h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/50 hover:scale-105 cursor-pointer"
-                                aria-label={isFavorite(displayProduct.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-                              >
-                                <Heart size={16} className={isFavorite(displayProduct.id) ? "fill-red-500 text-red-500" : "text-ink-strong"} strokeWidth={2} />
-                              </button>
-                              <button onClick={(e) => { e.preventDefault(); setQuickViewProduct(displayProduct); }}
-                                className="w-9 h-9 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75 hover:bg-black/50 hover:scale-105 hidden lg:flex cursor-pointer"
-                                aria-label="Visualização Rápida"
-                              >
-                                <Eye size={16} className="text-ink-strong" />
-                              </button>
-                            </div>
-
-                            {/* Carousel arrows (multi-image) */}
-                            {productImages.length > 1 && (
-                              <>
-                                {imgIdx > 0 && (
-                                  <button
-                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setImageIdx(imageKey, imgIdx - 1, productImages.length); }}
-                                    className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 text-ink-strong hover:bg-black/50 z-10"
-                                    aria-label="Imagem anterior"
-                                  >
-                                    <ChevronLeft size={18} />
-                                  </button>
-                                )}
-                                {imgIdx < productImages.length - 1 && (
-                                  <button
-                                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setImageIdx(imageKey, imgIdx + 1, productImages.length); }}
-                                    className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 lg:w-8 lg:h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 delay-75 text-ink-strong hover:bg-black/50 z-10"
-                                    aria-label="Próxima imagem"
-                                  >
-                                    <ChevronRight size={18} />
-                                  </button>
-                                )}
-                              </>
-                            )}
-
-                            {/* Quick add — floating pill on hover (desktop only) */}
-                            <button
-                              onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
-                              className="hidden lg:flex absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-full px-10 py-3 text-[var(--text-sm)] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 cursor-pointer"
-                              style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "var(--shadow-buy-cta-sm)" }}
-                            >
-                              <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
-                            </button>
-                          </div>
-
-                          {/* Product info */}
-                          <div className="mt-4 px-1">
-                            <Link to={`/produto/${displayProduct.id}`}>
-                              <h3 className="line-clamp-2 md:line-clamp-1 text-ink-strong"
-                                style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600, lineHeight: 1.3, letterSpacing: "-0.01em" }}>
-                                {displayProduct.name}
-                              </h3>
-                            </Link>
-
-                            <div className="mt-3">
-                              {swatches.length > 1 && (
-                                <div className="mb-2 flex items-center gap-1.5">
-                                  {swatches.map((sw) => (
-                                    <button
-                                      key={sw.productId}
-                                      className="p-3 lg:p-0 -m-3 lg:m-0 cursor-pointer flex items-center justify-center"
-                                      title={sw.label}
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        const variant = getProductVariantByColor(product, sw.label) ?? productById.get(sw.productId) ?? null;
-                                        if (variant) setSelectedVariantIds((prev) => ({ ...prev, [product.id]: variant.id }));
-                                      }}
-                                    >
-                                      <span
-                                        className="h-3 w-3 rounded-full block transition-all hover:scale-110"
-                                        style={{
-                                          backgroundColor: sw.color,
-                                          border: sw.productId === displayProduct.id ? "2px solid rgba(200, 120, 0,0.9)" : "1px solid rgba(var(--foreground-rgb), 0.18)",
-                                          boxShadow: sw.productId === displayProduct.id ? "0 0 8px rgba(200, 120, 0,0.5)" : "none",
-                                        }}
-                                      />
-                                    </button>
-                                  ))}
-                                </div>
-                              )}
-                              {displayProduct.oldPrice && (
-                                <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.38)" }}>
-                                  {displayProduct.oldPrice}
-                                </p>
-                              )}
-                              <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: 700, letterSpacing: "-0.015em" }}>
-                                {displayProduct.price}
-                              </p>
-                              <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.6)" }}>
-                                No PIX ou 10x de {(() => {
-                                  const inst = (displayProduct.priceNum / 10);
-                                  return `R$ ${inst.toFixed(2).replace(".", ",")}`;
-                                })()}
-                              </p>
-                            </div>
-
-                            {/* Mobile buy button — below info so the image stays clean.
-                                Desktop uses the floating hover pill above instead. */}
-                            <button
-                              onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(displayProduct); }}
-                              className="lg:hidden mt-3 flex w-full items-center justify-center gap-2 rounded-full py-2.5 cursor-pointer"
-                              style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "var(--shadow-buy-cta-sm)" }}
-                            >
-                              <ShoppingBag size={15} strokeWidth={2} /> Comprar
-                            </button>
-                          </div>
-                        </motion.div>
-                      );
-                    })}
+                    {paginatedProducts.map((product, i) => (
+                      <motion.div
+                        key={`grid-${product.id}`}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3, delay: Math.min(i * 0.025, 0.35) }}
+                      >
+                        <ProductCard
+                          product={product}
+                          variant="grid"
+                          swatches
+                          favorite
+                          onAdd={handleAddToCart}
+                          onFavorite={(pr) => toggleFavorite(pr.id)}
+                        />
+                      </motion.div>
+                    ))}
                   </AnimatePresence>
                 </div>
               ) : (

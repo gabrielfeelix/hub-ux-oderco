@@ -12,8 +12,9 @@ import { cn } from "../ui/utils";
  *
  * Desktop-only por padrao (hidden md:flex), como todos os consumidores usam.
  */
+// Ref claude-design: círculo creme com borda hairline + chevron ink, hover âmbar.
 const NAV_CHROME =
-  "z-30 hidden h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white/85 backdrop-blur-md transition-all hover:border-[var(--primary)]/60 hover:bg-[var(--primary)]/15 hover:text-white hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer md:flex";
+  "z-30 hidden h-11 w-11 items-center justify-center rounded-full border border-[#e4dccc] bg-[#fffdf8] text-[#1a1714] shadow-[0_2px_10px_rgba(26,23,20,0.10)] transition-all hover:border-[var(--primary)] hover:text-[var(--primary)] hover:scale-105 active:scale-95 disabled:opacity-0 disabled:pointer-events-none cursor-pointer md:flex";
 
 type CarouselNavButtonProps = ComponentProps<"button"> & {
   direction: "left" | "right";
