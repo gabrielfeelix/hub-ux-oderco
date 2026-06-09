@@ -325,6 +325,10 @@ function PriceRangeSlider({
 
 export function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
+  /* Echo-guard: the query string this component last wrote to the URL itself.
+     The URL→state effect skips re-hydrating when it sees its own echo, which
+     stops the URL↔state sync from ping-ponging (URL/cursor flicker). */
+  const lastWrittenSearchRef = useRef<string | null>(null);
   /**
    * Supports both URL shapes:
    *   /produtos?category=Periféricos&subcategory=Mouses  (legacy)
@@ -387,6 +391,11 @@ export function ProductsPage() {
   const isSubcategoryRoute = Boolean(activeCategoryLabel && initialSubcategory);
 
   useEffect(() => {
+    // Skip if this searchParams change is our own echo (state→URL write below).
+    // Re-hydrating here would recreate the filter Sets and bounce back into the
+    // state→URL effect — the ping-pong that made the URL/cursor flicker.
+    if (searchParams.toString() === lastWrittenSearchRef.current) return;
+
     // Prefer slug route params; fall back to querystring (legacy).
     const cat = slugCategory || searchParams.get("category") || "";
     const subcat = slugSubcategory || searchParams.get("subcategory") || "";
@@ -439,6 +448,8 @@ export function ProductsPage() {
     const next = sp.toString();
     const current = searchParams.toString();
     if (next !== current) {
+      // Record our own write so the URL→state effect ignores the echo.
+      lastWrittenSearchRef.current = next;
       setSearchParams(sp, { replace: true });
     }
   }, [priceMin, priceMax, onlyDiscount, selectedBrands, selectedAttributes, searchParams, setSearchParams]);
@@ -1294,7 +1305,7 @@ export function ProductsPage() {
               </div>
 
               {/* Grid / List */}
-              <div className="hidden sm:flex border border-foreground/10 overflow-hidden" style={{ borderRadius: "var(--radius-button)" }}>
+              <div className="flex border border-foreground/10 overflow-hidden" style={{ borderRadius: "var(--radius-button)" }}>
                 <button onClick={() => setGridMode("grid")}
                   className={`p-2 transition-colors ${gridMode === "grid" ? "bg-foreground/[0.08] text-foreground" : "text-foreground/40 hover:text-foreground/60"}`}
                   aria-label="Visualização em grade"
@@ -1524,33 +1535,47 @@ export function ProductsPage() {
                       return (
                         <motion.div key={`list-${product.id}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                           transition={{ duration: 0.25, delay: i * 0.02 }}
-                          className="group flex flex-col sm:flex-row sm:items-center gap-5 border border-foreground/10 hover:border-foreground/20 p-4 transition-all duration-300"
+                          className="group relative flex flex-row sm:items-center gap-4 sm:gap-5 border border-foreground/10 hover:border-foreground/20 p-3 sm:p-4 transition-all duration-300"
                           style={{ borderRadius: "var(--radius-card)" }}
                         >
-                          <Link to={`/produto/${displayProduct.id}`} className={`w-full sm:w-[140px] aspect-square sm:h-[140px] flex-shrink-0 overflow-hidden relative block transition-all ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "var(--radius-button)", background: "var(--surface-1)" }}>
-                            <div className="flex h-full w-full items-center justify-center p-3">
-                              <ImageWithFallback src={getPrimaryProductImage(displayProduct)} alt={displayProduct.name} loading="lazy" decoding="async" className="h-full w-full object-contain scale-[0.92] group-hover:scale-[0.97] transition-transform duration-700" />
+                          <Link to={`/produto/${displayProduct.id}`} className={`w-[104px] h-[104px] sm:w-[140px] sm:h-[140px] flex-shrink-0 overflow-hidden relative block transition-all ${displayProduct.inStock === false ? 'opacity-60 grayscale-[0.5]' : ''}`} style={{ borderRadius: "var(--radius-button)", background: "var(--surface-1)" }}>
+                            <div className="flex h-full w-full items-center justify-center p-2 sm:p-3">
+                              <ImageWithFallback src={getPrimaryProductImage(displayProduct)} alt={displayProduct.name} loading="lazy" decoding="async" className="h-full w-full object-contain group-hover:scale-[0.97] transition-transform duration-700" />
                             </div>
                             {discount > 0 && (
                               <span className="absolute top-2 left-2 px-2 py-1 bg-primary text-ink-strong" style={{ borderRadius: "var(--radius)", fontSize: "var(--text-caption)", fontWeight: "700" }}>{discount}% OFF</span>
                             )}
                           </Link>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-2">
+                            <div className="flex items-center gap-2 mb-1 sm:mb-2 pr-10 sm:pr-0">
                               <span className="text-foreground/40 uppercase font-semibold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.05em" }}>{displayProduct.category}</span>
-                              {displayProduct.brand && <span className="text-foreground/30 font-medium" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>· {displayProduct.brand}</span>}
+                              {displayProduct.brand && <span className="text-foreground/30 font-medium truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>· {displayProduct.brand}</span>}
                             </div>
                             <Link to={`/produto/${displayProduct.id}`}>
-                              <p className="text-foreground group-hover:text-foreground/70 transition-colors mb-2 text-lg" style={{ fontFamily: "var(--font-family-figtree)", fontWeight: "var(--font-weight-medium)", lineHeight: 1.3 }}>
+                              <p className="line-clamp-2 sm:line-clamp-1 text-foreground group-hover:text-foreground/70 transition-colors mb-1.5 sm:mb-2 text-base sm:text-lg pr-10 sm:pr-0" style={{ fontFamily: "var(--font-family-figtree)", fontWeight: "var(--font-weight-medium)", lineHeight: 1.3 }}>
                                 {displayProduct.name}
                               </p>
                             </Link>
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2">
-                              <p className="text-foreground text-xl" style={{ fontFamily: "var(--font-family-inter)", fontWeight: "700" }}>{displayProduct.price}</p>
+                            <div className="flex items-baseline gap-2 sm:gap-4">
+                              <p className="text-foreground text-lg sm:text-xl leading-none" style={{ fontFamily: "var(--font-family-inter)", fontWeight: "700" }}>{displayProduct.price}</p>
                               {displayProduct.oldPrice && <p className="text-foreground/40 line-through text-sm" style={{ fontFamily: "var(--font-family-inter)" }}>{displayProduct.oldPrice}</p>}
                             </div>
+                            <p className="mt-1 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.6)" }}>
+                              No PIX ou 10x de R$ {(displayProduct.priceNum / 10).toFixed(2).replace(".", ",")}
+                            </p>
+                            {/* Mobile buy button — full width below info */}
+                            <button onClick={() => handleAddToCart(displayProduct)}
+                              className="sm:hidden mt-2.5 flex w-full items-center justify-center gap-2 rounded-full py-2 cursor-pointer"
+                              style={{ background: "var(--gradient-buy)", color: "white", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 700, letterSpacing: "0.04em", boxShadow: "var(--shadow-buy-cta-sm)" }}
+                            ><ShoppingBag size={14} strokeWidth={2} /> Comprar</button>
                           </div>
-                          <div className="flex sm:flex-col items-center sm:items-end justify-between gap-3 flex-shrink-0 mt-4 sm:mt-0">
+                          {/* Favorite — absolute top-right on mobile, inline column on desktop */}
+                          <button onClick={() => toggleFavorite(displayProduct.id)}
+                            className="absolute top-2.5 right-2.5 sm:hidden w-9 h-9 border border-foreground/15 rounded-full flex items-center justify-center text-foreground/40 hover:text-foreground transition-all bg-black/30 backdrop-blur-md cursor-pointer"
+                            aria-label={isFavorite(displayProduct.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                          ><Heart size={15} className={isFavorite(displayProduct.id) ? "fill-red-500 text-red-500" : ""} strokeWidth={2} /></button>
+                          {/* Desktop actions column */}
+                          <div className="hidden sm:flex sm:flex-col items-end justify-between gap-3 flex-shrink-0 self-stretch">
                             <button onClick={() => toggleFavorite(displayProduct.id)}
                               className="w-10 h-10 border border-foreground/15 rounded-full flex items-center justify-center text-foreground/40 hover:text-foreground hover:border-foreground/30 transition-all bg-foreground/[0.02] cursor-pointer"
                               aria-label={isFavorite(displayProduct.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
