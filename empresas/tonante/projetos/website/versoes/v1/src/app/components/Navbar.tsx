@@ -15,7 +15,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { getCatalogHref, getPrimaryProductImage, getProductSubcategory, getProductSwatches, getVisibleCatalogProducts } from "./productPresentation";
 
 // Header ainda usa surface escura (reskin p/ creme = Fase 3) → wordmark branco.
-const TONANTE_LOGO = "/brand/tonante-wordmark-white.png";
+const TONANTE_LOGO = "/brand/tonante-wordmark-dark.png";
 
 // ─── Mega Menu Data ──────────────────────────────────────────────────────────
 
@@ -33,360 +33,136 @@ interface MegaSubItem { label: string; href: string; right: RightPanel }
 interface MegaMenu { title: string; subItems: MegaSubItem[] }
 
 const megaMenus: Record<string, MegaMenu> = {
-  hardware: {
-    title: "Hardware",
+  violoes: {
+    title: "Violões",
     subItems: [
       {
-        label: "Placas de Vídeo", href: "/produtos?category=Placas de Vídeo",
+        label: "Nylon / Clássico",
+        href: getCatalogHref({ category: "Violões", subcategory: "Nylon" }),
         right: {
-          type: "products", title: "Placas de Vídeo",
-          products: [
-            { id: 31, name: "GT 710 2GB DDR3", subtitle: "Low Profile", image: "https://cdn.oderco.com.br/produtos/282767/2D04A9618C5EF13EE0630300A8C0554C", price: "R$ 499,90", badge: "-20%" },
-            { id: 32, name: "GT 740 2GB GDDR5", subtitle: "128 Bits", image: "https://cdn.oderco.com.br/produtos/259330/189437062258193CE0630300A8C08D4D", price: "R$ 499,90" },
-            { id: 33, name: "GT740 4GB GDDR5", subtitle: "128 Bits High Perf", image: "https://cdn.oderco.com.br/produtos/261071/1982E845579812A0E0630300A8C04222", price: "R$ 499,90" },
-            { id: 34, name: "GT730 2GB DDR5", subtitle: "64 Bits Edge LP", image: "https://cdn.oderco.com.br/produtos/261089/1982E845579A12A0E0630300A8C04222", price: "R$ 499,90", badge: "-20%" },
-          ]
-        }
-      },
-      {
-        label: "SSD e HD", href: "/produtos?category=SSD e HD",
-        right: {
-          type: "products", title: "Armazenamento",
-          products: [
-            { id: 36, name: "SSD PCYES 256GB", subtitle: "M.2 NVMe PCIe 3.0", image: "https://cdn.oderco.com.br/produtos/202394/401A241D79BE4FABE0630300A8C0903C", price: "R$ 299,90" },
-            { id: 37, name: "SSD PCYES 512GB", subtitle: "M.2 NVMe 2200MB/s", image: "https://cdn.oderco.com.br/produtos/202394/401A241D79BE4FABE0630300A8C0903C", price: "R$ 299,90", badge: "-20%" },
-            { id: 39, name: "SSD PCYES 1TB", subtitle: "SATA III Alta Capacidade", image: "https://cdn.oderco.com.br/produtos/202396/401A241D79B44FABE0630300A8C0903C", price: "R$ 299,90" },
-          ]
-        }
-      },
-      {
-        label: "Refrigeração", href: "/produtos?category=Refrigeração",
-        right: {
-          type: "products", title: "Refrigeração",
-          products: [
-            { id: 41, name: "Cooler Nótus ST", subtitle: "Intel TDP 65W", image: "https://cdn.oderco.com.br/produtos/32846/3F9F1AE4EDB8A0D1E0630300A8C05422", price: "R$ 349,90" },
-            { id: 42, name: "Sangue Frio 3", subtitle: "Water Cooler 120mm", image: "https://cdn.oderco.com.br/produtos/210397/3D7FF909C0F830B1E0630300A8C042C0", price: "R$ 349,90" },
-            { id: 43, name: "Sangue Frio 3 ARGB", subtitle: "Water Cooler 120mm", image: "https://cdn.oderco.com.br/produtos/210410/3D7292BA47F8A9BFE0630300A8C09253", price: "R$ 349,90", badge: "-20%" },
-          ]
-        }
-      },
-      {
-        label: "Gabinetes", href: "/produtos?category=Gabinetes",
-        right: {
-          type: "products", title: "Gabinetes",
-          products: [
-            { id: 6, name: "Forcefield Max", subtitle: "Black Vulcan Vidro Temperado", image: "https://cdn.oderco.com.br/produtos/252557/3F00DCAA20B56D04E0630300A8C06874", price: "R$ 599,90" },
-            { id: 7, name: "Forcefield", subtitle: "Black Vulcan Vidro Temperado", image: "https://cdn.oderco.com.br/produtos/191991/3F00DCAA20E46D04E0630300A8C06874", price: "R$ 599,90", badge: "-20%" },
-            { id: 8, name: "Forcefield", subtitle: "White Ghost Vidro Temperado", image: "https://cdn.oderco.com.br/produtos/191992/3F00DCAA20EA6D04E0630300A8C06874", price: "R$ 599,90" },
-            { id: 9, name: "Set Black Vulcan", subtitle: "Vidro Temperado Lateral", image: "https://cdn.oderco.com.br/produtos/191993/3F00DCAA20D96D04E0630300A8C06874", price: "R$ 599,90" },
-          ]
-        }
-      },
-      {
-        label: "Monitores", href: "/produtos?category=Monitores",
-        right: {
-          type: "layouts", title: "Monitores por Resolução",
+          type: "layouts", title: "Violões de nylon",
           layouts: [
-            { label: "Full HD 1080p", desc: "Ideal para gaming e trabalho do dia a dia", href: "/produtos?category=Monitores" },
-            { label: "Quad HD 1440p", desc: "Qualidade e nitidez superiores", href: "/produtos?category=Monitores" },
-            { label: "Ultra HD 4K", desc: "Resolução máxima para criadores", href: "/produtos?category=Monitores" },
-            { label: "Curvo Ultrawide", desc: "Imersão total no setup", href: "/produtos?category=Monitores" },
-            { label: "Alta Taxa de Atualização", desc: "144Hz, 165Hz e 240Hz disponíveis", href: "/produtos?category=Monitores" },
-          ]
-        }
+            { label: "Para iniciantes", desc: "Braço macio e timbre redondo pra começar", href: getCatalogHref({ category: "Violões", subcategory: "Nylon" }) },
+            { label: "Erudito / concerto", desc: "Projeção e dedilhado pro repertório clássico", href: getCatalogHref({ category: "Violões", subcategory: "Nylon" }) },
+            { label: "Natural", desc: "Leve, claro e fácil de tocar", href: getCatalogHref({ category: "Violões", subcategory: "Nylon" }) },
+          ],
+        },
       },
       {
-        label: "Fontes", href: "/produtos",
+        label: "Aço / Folk",
+        href: getCatalogHref({ category: "Violões", subcategory: "Aço" }),
         right: {
-          type: "layouts", title: "Fontes por Certificação",
+          type: "layouts", title: "Violões de aço",
           layouts: [
-            { label: "80 Plus Bronze", desc: "Custo-benefício para montagens simples", href: "/produtos" },
-            { label: "80 Plus Gold", desc: "Alta eficiência para gaming", href: "/produtos" },
-            { label: "80 Plus Platinum", desc: "Máxima eficiência energética", href: "/produtos" },
-            { label: "Fontes Modulares", desc: "Organização de cabos facilitada", href: "/produtos" },
-            { label: "Fontes Semi-Modulares", desc: "Equilíbrio entre preço e organização", href: "/produtos" },
-          ]
-        }
+            { label: "Tampo maciço", desc: "Som encorpado que envelhece bonito", href: getCatalogHref({ category: "Violões", subcategory: "Aço" }) },
+            { label: "Eletroacústico", desc: "Captação ativa pra sair do quarto pro palco", href: getCatalogHref({ category: "Violões", subcategory: "Eletroacústico" }) },
+            { label: "Black / acetinado", desc: "Elegância escura no visual e no som", href: getCatalogHref({ category: "Violões", subcategory: "Aço" }) },
+          ],
+        },
       },
-    ]
+      {
+        label: "Linhas Tonante",
+        href: getCatalogHref({ category: "Violões" }),
+        right: {
+          type: "layouts", title: "Conheça as linhas",
+          layouts: [
+            { label: "Coral", desc: "Folk de tampo maciço, o mais vendido", href: getCatalogHref({ category: "Violões" }) },
+            { label: "Volcano", desc: "Eletroacústico com afinador embutido", href: getCatalogHref({ category: "Violões" }) },
+            { label: "Etna", desc: "Topo de linha, madeiras selecionadas", href: getCatalogHref({ category: "Violões" }) },
+            { label: "Citrino", desc: "Clássico natural, leve e versátil", href: getCatalogHref({ category: "Violões" }) },
+          ],
+        },
+      },
+    ],
   },
-
-  perifericos: {
-    title: "Periféricos",
+  guitarras: {
+    title: "Guitarras",
     subItems: [
       {
-        label: "Teclados", href: getCatalogHref({ category: "Periféricos", subcategory: "Teclados" }),
+        label: "Por formato",
+        href: getCatalogHref({ category: "Guitarras" }),
         right: {
-          type: "layouts", title: "Teclados por Layout",
+          type: "layouts", title: "Formatos",
           layouts: [
-            { label: "100% Full Size", desc: "Com teclado numérico completo", href: getCatalogHref({ category: "Periféricos", subcategory: "Teclados" }), image: "https://cdn.oderco.com.br/produtos/246231/3FA2133D8BCE330EE0630300A8C0F6B9" },
-            { label: "80% TKL", desc: "Sem teclado numérico", href: getCatalogHref({ category: "Periféricos", subcategory: "Teclados" }), image: "https://cdn.oderco.com.br/produtos/199408/3FA0B95161429B0EE0630300A8C04A18" },
-            { label: "75% Compact", desc: "Formato popular e otimizado", href: getCatalogHref({ category: "Periféricos", subcategory: "Teclados" }), image: "https://cdn.oderco.com.br/produtos/199409/3FA2133D8BC8330EE0630300A8C0F6B9" },
-            { label: "65% Compact", desc: "Focado nas setas direcionais", href: getCatalogHref({ category: "Periféricos", subcategory: "Teclados" }), image: "https://cdn.oderco.com.br/produtos/246230/3FA0FF24E03F4B06E0630300A8C0A92F" },
-            { label: "60% Mini", desc: "Ultra compacto para viagem", href: getCatalogHref({ category: "Periféricos", subcategory: "Teclados" }), image: "https://cdn.oderco.com.br/produtos/286135/25C7064E389DE6C2E0630300A8C0EDA5" },
-          ]
-        }
+            { label: "Les Paul", desc: "Corpo encorpado, peso e sustain", href: getCatalogHref({ category: "Guitarras" }) },
+            { label: "Stratocaster", desc: "Versatilidade do limpo ao crocante", href: getCatalogHref({ category: "Guitarras" }) },
+            { label: "Edição comemorativa", desc: "70 anos Tonante, acabamento exclusivo", href: getCatalogHref({ category: "Guitarras" }) },
+          ],
+        },
       },
       {
-        label: "Mouse", href: getCatalogHref({ category: "Periféricos", subcategory: "Mouses" }),
+        label: "Por captação",
+        href: getCatalogHref({ category: "Guitarras" }),
         right: {
-          type: "products", title: "Mouse Gamer",
-          products: [
-            { id: 16, name: "Basaran Black Vulcan", subtitle: "12400 DPI Silent Click", image: "https://cdn.oderco.com.br/produtos/199399/3F2E42F714F7871CE0630300A8C048F6", price: "R$ 249,90", badge: "-20%" },
-            { id: 17, name: "Basaran Stealth White", subtitle: "10000 DPI Sem Fio RGB", image: "https://cdn.oderco.com.br/produtos/199420/FBD0003333EA8CF3E0530300A8C0E348", price: "R$ 249,90" },
-            { id: 18, name: "Gaius RGB", subtitle: "12400 DPI 6 Botões", image: "https://cdn.oderco.com.br/produtos/199396/3F2E42F714EB871CE0630300A8C048F6", price: "R$ 249,90" },
-          ]
-        }
-      },
-      {
-        label: "Mousepads", href: getCatalogHref({ category: "Periféricos", subcategory: "Mousepads" }),
-        right: {
-          type: "products", title: "Mousepads",
-          products: [
-            { id: 11, name: "Obsidian G2D Black", subtitle: "500x400mm Speed", image: "https://cdn.oderco.com.br/produtos/207001/0813C43B72B06C60E0630300A8C0C984", price: "R$ 149,90" },
-            { id: 12, name: "Obsidian G3D Vidro", subtitle: "500x400mm Glass", image: "https://cdn.oderco.com.br/produtos/207002/FD6585990BA79601E0530300A8C09D90", price: "R$ 149,90" },
-            { id: 14, name: "Obsidian G2D Extended", subtitle: "900x420mm Desk Mat", image: "https://cdn.oderco.com.br/produtos/230652/3FA519DFE3CDF8BBE0630300A8C0CD12", price: "R$ 149,90" },
-            { id: 15, name: "Maze White Ghost", subtitle: "900x420mm Extended", image: "https://cdn.oderco.com.br/produtos/268133/3FA5BA5A4893B008E0630300A8C0D3E2", price: "R$ 149,90" },
-          ]
-        }
-      },
-      {
-        label: "Cadeiras", href: getCatalogHref({ category: "Cadeiras", subcategory: "Cadeiras Gamer" }),
-        right: {
-          type: "products", title: "Cadeiras Gamer",
-          products: [
-            { id: 1, name: "Mad Racer V8 Turbo", subtitle: "Amarela — Ergonômica", image: "https://cdn.oderco.com.br/produtos/210197/06D1CA7F36792E05E0630300A8C051C3", price: "R$ 1.299,90", badge: "-20%" },
-            { id: 2, name: "Sentinel Black Vulcan", subtitle: "Ergonômica Gamer", image: "https://cdn.oderco.com.br/produtos/212141/138B26D1B2A5AFE5E0630300A8C068DE", price: "R$ 1.299,90" },
-            { id: 3, name: "Sentinel Red Magma", subtitle: "Ergonômica Gamer", image: "https://cdn.oderco.com.br/produtos/212143/138B26D1B2AAAFE5E0630300A8C068DE", price: "R$ 1.299,90" },
-            { id: 4, name: "Sentinel Cobalt Blue", subtitle: "Ergonômica Gamer", image: "https://cdn.oderco.com.br/produtos/212146/138B26D1B2AFAFE5E0630300A8C068DE", price: "R$ 1.299,90" },
-          ]
-        }
-      },
-      {
-        label: "Headsets", href: getCatalogHref({ category: "Periféricos", subcategory: "Headsets" }),
-        right: {
-          type: "layouts", title: "Headsets por Conexão",
+          type: "layouts", title: "Captação",
           layouts: [
-            { label: "USB 7.1 Surround", desc: "Som envolvente para gaming", href: getCatalogHref({ category: "Periféricos", subcategory: "Headsets" }) },
-            { label: "P2 Analógico", desc: "Compatibilidade universal", href: getCatalogHref({ category: "Periféricos", subcategory: "Headsets" }) },
-            { label: "2.4 GHz Sem Fio", desc: "Liberdade e baixa latência", href: getCatalogHref({ category: "Periféricos", subcategory: "Headsets" }) },
-            { label: "Bluetooth 5.0", desc: "Multi-dispositivo e portátil", href: getCatalogHref({ category: "Periféricos", subcategory: "Headsets" }) },
-          ]
-        }
+            { label: "Humbucker", desc: "Presença e calor pra ganho alto", href: getCatalogHref({ category: "Guitarras" }) },
+            { label: "Single-coil", desc: "Brilho e definição clássicos", href: getCatalogHref({ category: "Guitarras" }) },
+            { label: "HSS", desc: "O melhor dos dois mundos", href: getCatalogHref({ category: "Guitarras" }) },
+          ],
+        },
       },
-      {
-        label: "Streaming", href: "/produtos?category=Streaming",
-        right: {
-          type: "layouts", title: "Streaming & Podcast",
-          layouts: [
-            { label: "Microfones USB", desc: "Qualidade estúdio plug & play", href: "/produtos?category=Streaming" },
-            { label: "Braço Articulado", desc: "Posicionamento profissional", href: "/produtos?category=Streaming" },
-            { label: "Webcams HD", desc: "Imagem nítida para lives e calls", href: "/produtos?category=Streaming" },
-            { label: "Interface de Áudio", desc: "Controle total do som", href: "/produtos?category=Streaming" },
-          ]
-        }
-      },
-    ]
+    ],
   },
-
-  computadores: {
-    title: "Computadores",
+  acessorios: {
+    title: "Acessórios",
     subItems: [
       {
-        label: "Mini PC", href: getCatalogHref({ category: "Computadores", subcategory: "Mini Computadores" }),
+        label: "Cordas & Encordoamentos",
+        href: getCatalogHref({ category: "Cordas & Encordoamentos" }),
         right: {
-          type: "featured", title: "Mini PC",
-          image: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800",
-          name: "PCYES Mini PC",
-          desc: "Potência em formato compacto. Ideal para escritório, escola e entretenimento.",
-          href: getCatalogHref({ category: "Computadores", subcategory: "Mini Computadores" })
-        }
-      },
-      {
-        label: "PCYES One", href: getCatalogHref({ category: "Computadores", subcategory: "All in One" }),
-        right: {
-          type: "featured", title: "PCYES One",
-          image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800",
-          name: "PCYES One — All in One",
-          desc: "Monitor e computador integrados. Design limpo, zero cabos, máxima praticidade.",
-          href: getCatalogHref({ category: "Computadores", subcategory: "All in One" })
-        }
-      },
-      {
-        label: "Workstation", href: "/produtos",
-        right: {
-          type: "layouts", title: "Workstation por Finalidade",
+          type: "layouts", title: "Cordas por instrumento",
           layouts: [
-            { label: "Edição de Vídeo", desc: "Processamento pesado e RAM de alta capacidade", href: "/produtos" },
-            { label: "Design Gráfico", desc: "GPU poderosa e display preciso", href: "/produtos" },
-            { label: "Desenvolvimento", desc: "Multitarefa extrema com SSD rápido", href: "/produtos" },
-            { label: "Renderização 3D", desc: "CPU multi-core e GPU profissional", href: "/produtos" },
-          ]
-        }
+            { label: "Violão", desc: "Timbre equilibrado e durável", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+            { label: "Guitarra", desc: "Bends macios, afinação estável", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+            { label: "Ukulele & Viola", desc: "Do som tropical ao ponteado caipira", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+          ],
+        },
       },
-    ]
-  },
-
-  pcgamer: {
-    title: "PC Gamer",
-    subItems: [
       {
-        label: "Entrada", href: "/produtos",
+        label: "Suportes & Estantes",
+        href: getCatalogHref({ category: "Suportes" }),
         right: {
-          type: "layouts", title: "PC Gamer Entrada",
+          type: "layouts", title: "Sempre seguro",
           layouts: [
-            { label: "Starter R$ 2.500", desc: "1080p @ 60fps — Jogos leves e esports", href: "/produtos" },
-            { label: "Entry R$ 3.500", desc: "1080p @ 100fps — Gaming do dia a dia", href: "/produtos" },
-            { label: "Budget R$ 4.500", desc: "1080p @ 144fps — Esports competitivo", href: "/produtos" },
-          ]
-        }
+            { label: "Suporte de instrumento", desc: "Violão e guitarra sempre em pé", href: getCatalogHref({ category: "Suportes" }) },
+            { label: "Teclado & caixa", desc: "Suportes em X e tripés ajustáveis", href: getCatalogHref({ category: "Suportes" }) },
+            { label: "Banquetas", desc: "Conforto do ensaio ao show", href: getCatalogHref({ category: "Suportes" }) },
+          ],
+        },
       },
       {
-        label: "Intermediário", href: "/produtos",
+        label: "Essenciais",
+        href: getCatalogHref({ category: "Acessórios" }),
         right: {
-          type: "layouts", title: "PC Gamer Intermediário",
+          type: "layouts", title: "O que completa o som",
           layouts: [
-            { label: "Mid R$ 5.500", desc: "1440p @ 60fps — AAA em alta qualidade", href: "/produtos" },
-            { label: "Standard R$ 7.000", desc: "1440p @ 144fps — Gaming premium", href: "/produtos" },
-            { label: "Plus R$ 8.500", desc: "4K @ 60fps — Qualidade máxima visual", href: "/produtos" },
-          ]
-        }
+            { label: "Capotraste", desc: "Muda o tom sem mudar o jeito de tocar", href: getCatalogHref({ category: "Acessórios" }) },
+            { label: "Afinadores & palhetas", desc: "Precisão e ataque na medida", href: getCatalogHref({ category: "Acessórios" }) },
+          ],
+        },
       },
-      {
-        label: "Avançado", href: "/produtos",
-        right: {
-          type: "layouts", title: "PC Gamer Avançado",
-          layouts: [
-            { label: "Pro R$ 10.000", desc: "4K @ 144fps — RTX ON em tudo", href: "/produtos" },
-            { label: "Elite R$ 15.000", desc: "4K @ 240fps — Competitivo de alto nível", href: "/produtos" },
-            { label: "Ultimate R$ 20.000+", desc: "Sem limites — O melhor do melhor", href: "/produtos" },
-          ]
-        }
-      },
-      {
-        label: "Pré-Montados", href: "/produtos",
-        right: {
-          type: "featured", title: "PCs Prontos",
-          image: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800",
-          name: "Desempenho garantido",
-          desc: "Máquinas testadas e prontas para jogar. Garantia total PCYES.",
-          href: "/produtos"
-        }
-      },
-    ]
-  },
-
-  collab: {
-    title: "Collabs",
-    subItems: [
-      {
-        label: "Maringá FC × PCYES", href: "/maringa-fc",
-        right: {
-          type: "featured", title: "Collab Oficial",
-          image: "https://pcyes-cdn.oderco.com.br/Produtos/Cadeira-Gamer/Maringafc/3.png",
-          name: "Maringá FC × PCYES",
-          desc: "Produtos exclusivos da parceria oficial entre PCYES e o Maringá Futebol Clube. Represente seu time.",
-          href: "/maringa-fc"
-        }
-      },
-    ]
-  },
-
-  drivers: {
-    title: "Drivers e Manuais",
-    subItems: [
-      {
-        label: "Headsets", href: "/drivers-e-manuais",
-        right: {
-          type: "downloads", title: "Headsets — Drivers",
-          items: [
-            { name: "Driver Headset Zyron USB 7.1", version: "v2.4.1", date: "Jan 2025", href: "#" },
-            { name: "Driver Headset Taranis RGB", version: "v1.9.3", date: "Mar 2024", href: "#" },
-            { name: "Manual do Usuário — Série Headset", version: "Rev. 3", date: "Dez 2024", href: "#" },
-          ]
-        }
-      },
-      {
-        label: "Teclados", href: "/drivers-e-manuais",
-        right: {
-          type: "downloads", title: "Teclados — Drivers & Software",
-          items: [
-            { name: "PCYES Lighting Control — Kuromori", version: "v3.1.0", date: "Fev 2025", href: "#" },
-            { name: "Driver Teclado Mecânico Universal", version: "v2.0.5", date: "Jan 2025", href: "#" },
-            { name: "Manual Kuromori Series", version: "Rev. 2", date: "Nov 2024", href: "#" },
-          ]
-        }
-      },
-      {
-        label: "Mouse", href: "/drivers-e-manuais",
-        right: {
-          type: "downloads", title: "Mouse — Drivers & Software",
-          items: [
-            { name: "PCYES Mouse Config — Basaran", version: "v2.2.0", date: "Mar 2025", href: "#" },
-            { name: "Driver Mouse Sem Fio Receptor 2.4G", version: "v1.4.2", date: "Fev 2025", href: "#" },
-            { name: "Manual Série Basaran / Gaius", version: "Rev. 1", date: "Out 2024", href: "#" },
-          ]
-        }
-      },
-      {
-        label: "Monitores", href: "/drivers-e-manuais",
-        right: {
-          type: "downloads", title: "Monitores — Manuais",
-          items: [
-            { name: "Manual Monitor PCYES Full HD", version: "Rev. 4", date: "Jan 2025", href: "#" },
-            { name: "Manual Monitor Curvo 144Hz", version: "Rev. 2", date: "Abr 2024", href: "#" },
-            { name: "Guia de Calibração de Cores", version: "v1.0", date: "Mai 2024", href: "#" },
-          ]
-        }
-      },
-      {
-        label: "Gabinetes", href: "/drivers-e-manuais",
-        right: {
-          type: "downloads", title: "Gabinetes — Manuais",
-          items: [
-            { name: "Manual Gabinete Forcefield Series", version: "Rev. 3", date: "Dez 2024", href: "#" },
-            { name: "Manual Gabinete Set Series", version: "Rev. 2", date: "Set 2024", href: "#" },
-            { name: "Guia de Montagem Universal", version: "v2.0", date: "Jul 2024", href: "#" },
-          ]
-        }
-      },
-      {
-        label: "Cadeiras", href: "/drivers-e-manuais",
-        right: {
-          type: "downloads", title: "Cadeiras — Manuais",
-          items: [
-            { name: "Manual Montagem Mad Racer V8", version: "Rev. 2", date: "Nov 2024", href: "#" },
-            { name: "Manual Série Sentinel", version: "Rev. 3", date: "Jan 2025", href: "#" },
-            { name: "Guia de Ajuste Ergonômico", version: "v1.1", date: "Ago 2024", href: "#" },
-          ]
-        }
-      },
-    ]
+    ],
   },
 };
-
-// ─── Nav Items ───────────────────────────────────────────────────────────────
 
 interface NavItem { label: string; href?: string; mega?: string; emphasis?: "green" | "build" }
 
 const navItems: NavItem[] = [
-  { label: "Novidades", href: "/produtos", emphasis: "green" },
-  { label: "Hardware", mega: "hardware", href: getCatalogHref({ category: "Hardware" }) },
-  { label: "Periféricos", mega: "perifericos", href: getCatalogHref({ category: "Periféricos" }) },
-  { label: "Computadores", mega: "computadores", href: getCatalogHref({ category: "Computadores" }) },
-  { label: "PC Gamer", mega: "pcgamer", href: getCatalogHref({ category: "Computadores" }) },
-  { label: "Collab", mega: "collab", href: "/maringa-fc" },
-  { label: "Pré-venda", href: "/pre-venda" },
-  { label: "Monte seu PC", href: "/monte-seu-pc", emphasis: "build" },
+  { label: "Loja", href: "/produtos" },
+  { label: "Violões", mega: "violoes", href: getCatalogHref({ category: "Violões" }) },
+  { label: "Guitarras", mega: "guitarras", href: getCatalogHref({ category: "Guitarras" }) },
+  { label: "Contrabaixos", href: getCatalogHref({ category: "Contrabaixos" }) },
+  { label: "Acessórios", mega: "acessorios", href: getCatalogHref({ category: "Acessórios" }) },
 ];
 
-const trending = ["Gabinete Spectrum", "Mouse Cobra", "Teclado Mecânico", "Headset 7.1"];
-const recent = ["Fontes modulares", "Cadeiras gaming"];
+const trending = ["Violão Coral", "Guitarra Cecille", "Capotraste", "Afinador"];
+const recent = ["Violões eletroacústicos", "Cordas de nylon"];
 
-const mostSearchedKeywords = ["Headsets", "Teclados", "Mouses", "Monitores", "Gabinetes", "Cadeiras", "Placas de Vídeo", "SSDs"];
-const mostSearchedProductIds = [436, 72, 329, 199, 446];
+const mostSearchedKeywords = ["Violões", "Guitarras", "Contrabaixos", "Cordas", "Capotraste", "Afinadores", "Suportes", "Palhetas"];
+const mostSearchedProductIds: number[] = [];
 
-const searchCategories = ["Todas as categorias", "Hardware", "Periféricos", "Computadores", "PC Gamer"];
+const searchCategories = ["Todas as categorias", "Violões", "Guitarras", "Contrabaixos", "Acessórios"];
 
 const isPlaceholderHref = (href?: string) => !href || href === "#";
 const resolveMenuHref = (href?: string) => (isPlaceholderHref(href) ? "/produtos" : href);
@@ -1975,7 +1751,7 @@ export function Navbar() {
                 initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute left-0 right-0 z-[52] overflow-hidden border-t border-foreground/5 shadow-[0_18px_45px_rgba(0,0,0,0.14)]"
-                style={{ backgroundColor: isDark ? "rgba(18,18,19,0.98)" : "rgba(250,250,250,0.99)", backdropFilter: "blur(34px)" }}
+                style={{ backgroundColor: isDark ? "rgba(18,18,19,0.98)" : "rgba(246,242,233,0.99)", backdropFilter: "blur(34px)" }}
                 onMouseEnter={() => handleMegaEnter(activeMega)} onMouseLeave={handleMegaLeave}
               >
                 <div className="mx-auto max-w-[1180px] px-5 py-6 md:px-8">

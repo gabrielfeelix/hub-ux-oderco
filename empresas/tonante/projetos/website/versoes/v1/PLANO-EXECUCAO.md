@@ -69,11 +69,13 @@ radius: 8/12/18/999 · sombras suaves (sem halo neon)
 - [x] Build OK; assets no dist.
 - Nota: fotos de produto são CDN (`cdn.oderco.com.br`) — remotas, tratadas na Fase 4 (dados). Sem cópia local.
 
-### Fase 3 — Chrome & tom de voz (componentes compartilhados)
-- [ ] `Navbar`: mega-menu PCYES → categorias Tonante (Violões/Guitarras/Contrabaixos/Acessórios/Cordas/Suportes). Logo script. Eyebrow `// CÓDIGO` → label editorial (uppercase, tracking).
-- [ ] `AnnouncementBar`: "FEITA DE HISTÓRIAS DESDE 1954 · FRETE GRÁTIS R$299 · ATÉ 12X SEM JUROS · GARANTIA TONANTE 2 ANOS".
-- [ ] `Footer`, `CTAButton` (labels "Adicionar à sacola"/"Comprar agora"), `Eyebrow`, badges → restyle.
-- [ ] Passada de copy (tom de voz: caloroso, artesanal, herança).
+### Fase 3 — Chrome & tom de voz (componentes compartilhados) ✅ CONCLUÍDA (core)
+- [x] `AnnouncementBar`: stage escuro Tonante + voz (Feita de Histórias 1954 / frete R$299 / 12x / garantia 2 anos). Removido tema Star Wars; texto creme explícito (fora do light-scope).
+- [x] `Navbar`: megaMenus PCYES → Tonante slim (violoes/guitarras/acessorios, tipo "layouts"). navItems = Loja/Violões/Guitarras/Contrabaixos/Acessórios. trending/search/keywords Tonante. Header já claro via `isDark=false`; logo wordmark dark; tons frios→creme.
+- [x] `Footer`: voz Tonante (colunas, missão, desc 1954, social placeholders, certificações), logo dark, bg creme.
+- [x] `CTAButton` já âmbar (gradiente buy retonado na Fase 1). `Eyebrow` âmbar = correto (bate screenshot).
+- [x] Build OK.
+- [ ] (Fase 5 polish) WelcomePopup copy "Built for Performance"; imagem de pagamentos PCYES; "//" eyebrows nos callers de conteúdo.
 
 ### Fase 4 — Modelo de catálogo
 - [ ] Mapear `claude-design/src/data.js` (TONANTE_DATA) + `catalog_data.js` (CSV real) → interface `Product` do v3.
