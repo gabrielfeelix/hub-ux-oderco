@@ -1,0 +1,161 @@
+# checkout oderço - wellington
+
+  Meeting started: 14/05/2026, 14:57:03
+  Duration: 21 minutes
+  Participants: Speaker 1, Speaker 2, Speaker 3
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/JVOnVZJFgTL70WWqoqBc?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Speaker 1: Perfeito. Deixa eu pegar aqui. Deixa eu... Ah, que boa a gente. Deixa eu ver... Aqui,
+00:11 Speaker 2: beleza. Vamos lá, você quer a V1?
+00:13 Speaker 3: Ó, essa aqui eu acho. Na parte de adicionar perguntas, as coisas foram bem tranquilo, assim, bem intuitivo, fácil, os dois estão ok. Tá. O que que eu... Uma impressão minha. Tá. A V1, V2 e V3, né? A V2, ela é a mais intuitiva. Eu achei ela com mais
+00:32 Speaker 2: cara de... Ah, essa aqui. Isso, eu achei ela com uma
+00:35 Speaker 3: cara um pouco mais... Profissional, vamos dizer assim, a V3 me dá uma impressão, sabe quando você tem um pacote de antivírus? Ah, tô
+00:45 Speaker 1: ligado, tô ligado. E faz sentido, faz sentido.
+00:48 Speaker 3: Então ele me deu essa impressão. Então pra mim ficou mais claro a V2, de todos, ainda mais também pela quantidade de itens que aparece aqui, bem destacado, numa forma clara pro cliente. Então beleza, os dois ali pra mim é... O único adentro seria isso. Na parte
+01:05 Speaker 2: de finalizar o pedido lá... Ah, já apertando aqui. Essa parte aqui, uma dúvida. Entre a V1, que tem esses produtos aqui, os cards, esse aqui e a V2, qual que você acha que é mais
+01:13 Speaker 3: fácil? A V2. Essa aqui. É, mesmo ele ficando menor aqui, o cliente ele tem acesso fácil depois de tirar o produto ali,
+01:19 Speaker 2: ó. Isso, exatamente isso. Então, eu creio que
+01:22 Speaker 3: ficou bem mais fácil do cliente fazer essa transição. Dá pra aumentar também os
+01:28 Speaker 2: produtos, só que o meu medo de aumentar a letra e o produto é que isso aqui vai aumentar. Isso aqui vai ficar escondido. Aí ele não vai conseguir ver
+01:33 Speaker 3: as informações. E aí tem um pequeno porém também. Às vezes também pode
+01:36 Speaker 1: cortar alguma informação do começo para o outro. Isso, exatamente isso.
+01:39 Speaker 3: Não tem problema. Assim, ao meu ver, tá num bom tamanho. Mas tem cliente que tem dificuldades
+01:45 Speaker 2: também, né? Sim, perfeito. Perfeito. Beleza, então... Tá, então... Mas aqui deu pra entender que isso aqui é clicável. Tá, beleza. Deu pra entender super tranquilo. Fechou. Então, com essa aqui. Beleza. Aí, beleza.
+01:57 Speaker 3: A questão do crédito de RL. Vamos começar por ele ali, que já... Aqui embaixo? Eu creio que o crédito de RMA poderia ser ajustável. Porque tem alguns clientes, por exemplo, que não gostam de utilizar todo o crédito num pedido só. Então ele pode escolher.
+02:14 Speaker 2: Pior que a gente tem até feito, pediram pra colocar inteiro.
+02:27 Speaker 1: Beleza.
+02:28 Speaker 3: Então tanto o crédito de depósito como o EMA, o cara poder escolher a quantidade que ele quer que abate nesse pedido, né? Faz
+02:34 Speaker 1: sentido.
+02:36 Speaker 3: Outra coisa também que eu notei... Uma opinião, eu creio que poderia ter uma lixeira aqui. O cara, às vezes, até para finalizar o pedido, ele, sei lá, não quer esse gabinete. Ou adicionar também. Ah, vou aumentar mais uma quantidade desse fone, porque...
+02:54 Speaker 1: Por
+02:57 Speaker 3: exemplo, o boleto mínimo é 300 reais, certo? Aí o cara quer fazer em duas e está dando 270. Como ele já está nessa tela, ele
+03:05 Speaker 1: pode adicionar. Ele aumenta ali. Uma boa ideia, na
+03:07 Speaker 2: verdade, eu nunca ouvi. lixeira, porque o meu medo era o seguinte, a pessoa chegar aqui, começar a fazer os cálculos e começar a tirar. Pensei, pô, se vai dar trabalho e ele tem que voltar, às vezes ele finaliza por causa que vai dar um pouquinho de trabalho ele voltar e já garante uma venda. Só que faz sentido poder aumentar e diminuir realmente, porque daí ele pode comprar mais produto, né? Até pelo desconto que ele já
+03:24 Speaker 3: tá tendo aqui e tal. Ou às vezes colocar lixeira, colocar o mais e o menos, e se o cara chegar no zero, aí coloca como se tiver, tem certeza que você quer tirar esse produto do carrinho ou algo do tipo.
+03:42 Speaker 2: Beleza. Beleza. Deixa eu ver. Ah, a parte do frete deu o
+03:45 Speaker 3: printador? Deu. A única coisa que eu... De dica, talvez, o buscar, você tem que clicar ali e ver mais o transportador para buscar. Então, eu vou deixar ele já na parte superior. Porque como o cara vai escolher o FOB, ele... Tipo, como a gente tem muita opção de transportadora, provavelmente ele vai procurar pelo nome. Tipo, VIP, Andorinha...
+04:10 Speaker 1: Perfeito.
+04:13 Speaker 2: Do SIF e da retirada.
+04:14 Speaker 3: Fez sentido? O SIF está ok. Eu só não sei como vai funcionar essa questão da entrega expressa,
+04:20 Speaker 2: mas... É, vai ser, pelo que a gente quer essa frete, tipo, de correio express, vai ser a CEDEX. Tá.
+04:27 Speaker 1: Mas será que é só para o produto pequeno?
+04:29 Speaker 3: Ou tipo assim, alguém não te passou nada ainda? Não. Boa pergunta.
+04:32 Speaker 2: Vim pro Rodrigo. Rodrigo, a gente, como que vai funcionar, sabe? Essa parte de entrega expressa com as sedex ou o
+04:42 Speaker 1: pack?
+04:42 Speaker 2: Se vai ser só entrega de produtos pequenos ou se
+04:45 Speaker 1: vai ser... No caso da Aldeça, ele não vai saber qual o transporte. Se é Pax, se é Braspresso, a gente vai colocar um
+04:54 Speaker 2: nome do Aldeça. Ah, entendi.
+04:57 Speaker 1: Porque é o seguinte, para cada região do país, segundo o João falou, tem transportadoras com melhor condição, melhor preço. Sim, é bem diferente. Só que aí o serviço é o mesmo, o serviço é econômico. Pode sair do sul, seria de outra... e para o sul e para o sul e para o sul. Ele vai ver o terço e o traço de trecho. Agora, se ele quiser uma entrega mais rápida, aí sim, vai ver o terço de express, mas também, quem é o terço de express? O melhor transportador da região dele, mas a gente decide. Entendi.
+05:31 Speaker 3: Beleza, legal. Só
+05:34 Speaker 1: para entender, o João e o Jamara mudam a descomportação no dia, se comportando o dia inteiro. A gente vai pagar um preço aqui e na reportação do TIA a gente está com um preço melhor. A gente vai pagar um preço no Express, vai receber no Prado, mas a gente pode ter um custo melhor. Consegue um custo da tabela ou vai ter um custo menor. Legal! Fechou.
+05:56 Speaker 2: Tá, o RMA poder escolher, você tinha falado. E o crédito, imagino que é a mesma coisa. Mesma coisa, tá legal.
+06:02 Speaker 3: A parte de forma de pagamento também tá bem simples, fácil de o cara entender. Tá, beleza. Do PIX, você vai colocar alguma parte pro cliente já anexar
+06:13 Speaker 2: o comprovante? Tem que ter questão. Atualmente, ele é feito por fora da plataforma, né? Por isso que tem que anexar o comprovante. Mas se a gente fosse disponibilizar aqui o PIX, o comprovante já vai estar com a gente. Isso aqui é feito pela plataforma do PIX aqui. Então ele já vai estar como pago, vamos dizer. Tanto é que por isso que quando você vai,
+06:27 Speaker 1: você compra online, você precisa mandar um comprovante,
+06:30 Speaker 3: porque não dá tempo, não mexa com o produto. Ah, então beleza, fechou. Beleza, adicionar as informações ali,
+06:36 Speaker 2: legal. Ah, isso aqui, faz sentido?
+06:39 Speaker 3: Ah, é legal. Por exemplo, eu tenho um cliente que eu nem chamo, porque ele não gosta de contato. Tipo, ele vai e faz o pedido lá. Então é uma opção dele, eu achei legal. A parte de observação, talvez eu não deixaria escondido. Deixaria aberto, no caso. Porque daí o cliente tem a
+06:55 Speaker 1: opção ali de... Tá, perfeito. Já vê, né? Beleza, e... Observações... Como é ou dois Ls? Dois Ls e MGTOM,
+07:07 Speaker 3: tá certo. Tá certo?
+07:09 Speaker 2: Observações sempre abertas. Beleza, boa observação. O que mais? Vamos
+07:14 Speaker 3: lá na parte superior. Não, acho que na parte superior também. Aí a parte do Fábio eu coloquei. A parte de entrega da retira
+07:25 Speaker 1: de cordão.
+07:29 Speaker 3: Eu já deixaria, por exemplo, na parte de retira, a parte de observação logo abaixa a retira. Porque tem alguns clientes, por exemplo, que eles querem colocar a embala em caixa de papelão que eu vou pedir para a transportadora colocar. Tipo, adicionar alguma observação ou a própria observação que está ali, às vezes na parte do retira é só subir ele para um pouco. Não sei se ficou com a... Faz sentido
+07:54 Speaker 1: sim. Embaixo. Beleza,
+08:03 Speaker 3: entendi aqui embaixo. Beleza. Cara, eu peguei
+08:08 Speaker 1: isso, assim, mas tá... Ah,
+08:11 Speaker 2: e tem a próxima fase, essa aqui.
+08:13 Speaker 3: No revisar e finalizar, pra mim tá bem ok. Se
+08:16 Speaker 2: fizer sentido, essa é a manduna que eu tenho. Quando a gente... Eu tô acostumado com B2C, a gente tá no B2B agora, pra você ter outra dinâmica, né? Por isso fiz uma tela de revisão. Normalmente quando a gente tá comprando muita coisa, pode acabar confundindo. Ainda mais quando a gente coloca aqui, tá 30 coisas aqui que cabe. Aí dá às vezes uma confusão, pô, o que que você... Eu já selecionei até agora. Por isso que eu pensei, tá? Então aqui a gente vai resumir. Então essa vai ser retirada, pagamento, produtos... E aí a observação, se tiver colocado, também aparece. Deixa eu colocar aqui. Pronto, aqui as observações. Aí aqui na direita, se tiver conto de desconto, ele consegue adicionar. Conto de desconto aqui agora, poder aplicar no total.
+08:50 Speaker 1: E o valor, que a gente já viu até então.
+08:53 Speaker 2: Aqui... A tela de pedido. Aqui que eu preciso, na verdade, da sua
+08:57 Speaker 1: opinião. O que você acha?
+09:02 Speaker 3: A chave Pix. Tá, ok. Pra mim tá super claro. Até uma pessoa mais velha vai
+09:10 Speaker 1: conseguir entender. Pedido confirmado. Até porque
+09:15 Speaker 2: o maior problema é o seguinte. A gente tá numa etapa, basicamente. A gente fechou uma nota fiscal e agora a gente tem pra segunda nota fiscal. Ou seja, o pedido foi confirmado. Aqui são os dados da sua nota fiscal. Só que a gente tem que levar ele de novo pra aquele carrinho. Até porque agora ele vai começar outra nota fiscal. fiscal, que é do Espírito Santo, filial do Espírito Santo. Por isso que o que é que eu acho, porque ele vai ter 500 de noção aqui, ó. Aí aqui embaixo vai ter uma mensagem. Talvez até mudar um pouco o
+09:39 Speaker 3: contrato. Eu talvez jogaria um pouco pra cima ali. Eu jogaria essa informação na parte, tipo, logo após ali, que o pedido está em separação. Aí não é a gente da filial Paraná aí, mais ou menos a metade do pedido. Aí, tipo, fechar seu pedido agora do Espírito Santo, que nem pra ali mesmo, sabe? Talvez eu colocaria esse pedido pago na parte do cabeçalho ali em cima do acompanhamento de pedido.
+10:03 Speaker 1: Deixa eu só ver, peraí. Pedido pago, deixa eu colocar pra cá.
+10:05 Speaker 2: Pronto. É esse pedido pago aqui. Isso, aqui
+10:08 Speaker 3: como se fosse um cabeçalho. E aí colocar aquela informação aqui pro cara fechar o pedido. Isso aqui vem embaixo dos
+10:13 Speaker 2: três, vem aqui mais ou menos. Tá.
+10:25 Speaker 3: Porque assim ó, essa informação que você colocou aqui é a mesma informação que até aqui ó. Isso. Então eu só mudaria isso. Colocaria como um cabeçalho ali na parte de informação. Eu acho que fica mais inigente. Faz sentido.
+10:38 Speaker 2: Isso aqui na verdade, ele também vai ser a forma de pagamento. Deixa eu até te mostrar. Espera aí.
+10:43 Speaker 1: Vou ter que voltar pra faixa. Tristeza. Espera aí. Vou começar aqui. Tá.
+10:54 Speaker 2: Tá vendo que esse aqui seria o pagamento. Mas realmente faz sentido, né? É o mais importante agora. Então, isso aqui sobe. Aí, quando ele fizer o pagamento, às vezes aparece isso aqui. Tá, mas é uma boa.
+11:02 Speaker 1: Deixa eu subir. Então, detalhes do pedido subir. E apontar no seu pedido. Descer. Fechou. Aí,
+11:11 Speaker 3: se quiser, às vezes, colocar depois do Espírito Santo, ver detalhes do pagamento. Talvez nem estaria detalhes do pedido. Deixar, tipo, detalhes do pagamento. Logo após... o cara fechar o pedido do Espírito Santo. Porque assim, o segundo passo principal dele, depois que ele pagou pra ele, tá ok. É ele fechar o outro pedido, né? Então a gente tem que tentar direcionar ele mais... Ah, isso.
+11:34 Speaker 2: Perfeito. Faz sentido. Beleza. Ok, então vamos agora fazer o...
+11:39 Speaker 1: Tá. Peraí.
+11:42 Speaker 2: Beleza. Então, torna G2. Escolhi para lá. Fiz e escolhi o frete. Escolhi PIX. Escolhi boleto aqui. Beleza. Revisei. Tá, revisei, finalizei.
+11:54 Speaker 1: Então,
+11:55 Speaker 2: aqui voltei agora no
+11:57 Speaker 3: carrinho. Beleza.
+11:58 Speaker 2: Isso aqui é compreensível o suficiente? Por quê? A minha ideia era voltar para aquela tela inicial que a gente tinha, que é essa tela...
+12:09 Speaker 1: É, com os dois. Deixa eu colocar um aqui.
+12:12 Speaker 2: Voltar pra essa aqui. Só que aí vai ficar confuso, porque essa tela é só de uma coisa, é de duas coisas. Aí vai voltar pra uma só, tipo, escolha o quê, sabe? Por isso que eu coloquei a tela que a gente já tem atualmente, que é essa aqui. Só mudei o papel layout. Mas dá pra entender?
+12:25 Speaker 3: Dá, porque fica interessante que a parte do pedido do Paraná foi concluída. Então fica claro pro cliente que agora ele tem que fechar o outro. Na minha visão tá bem claro, tá bem simples. Aí beleza, o cara foi lá, vai agora fechar, ele vai seguir o mesmo processo do
+12:41 Speaker 1: anterior, só que... Isso, exatamente.
+12:44 Speaker 2: Uma coisa que acho que dá pra mudar um pouquinho, vou ver, talvez é a cor, porque ele tá roxo, talvez alguns botões aqui ser
+12:50 Speaker 3: roxo, não sei, posso pensar nisso. Pode ser, tudo que for do Espírito Santo colocar numa paleta de cor e o que for maraná em outra paleta de cor aqui. Isso, exato. Legal. Uma coisa que faz falta no site hoje é o cliente acompanhar, o cliente retira acompanhar como que tá o processo da separação do pedido dele. Então, por exemplo, hoje lá no site ele aparece como confirmado, assim. E assim fica. Quando é separado o pedido, ele não troca de confirmado pra separado. Então, às vezes o cliente, tipo assim,
+13:28 Speaker 3: ah, ele quer saber como que tá o pedido, ele manda mensagem pra gente pra perguntar como que tá. Então, aí o que, tipo, ah...
+13:35 Speaker 2: pra cá, automaticamente. Isso, aí tipo assim,
+13:38 Speaker 3: separado, pronto pra retira, vamos colocar assim. Porque daí o cliente não precisa ficar perguntando pro construtor Qualquer resultado do jogo separado que possui Perfeito,
+13:54 Speaker 1: beleza Agora,
+13:56 Speaker 2: vamos pra V2 Tem mais alguma coisa sobre a V1?
+13:58 Speaker 3: Não, pra mim tá ótimo
+14:00 Speaker 1: Fechou Então,
+14:02 Speaker 2: da V2 aqui agora Que é o que a gente conversa, que é igual, na verdade Os três é igual, se o fato que o segundo pra você é melhor De poder escolher Sobre a V2, tem alguma crítica que você gostou de contar já? Não Tipo, ah, sei lá, o botão tá escondido, porque realmente tá. Mas eu pensei, é por isso que inclusive coloquei aqui. Porque a V3, ela veio de uma necessidade de... Quando eu olho isso aqui, tá, eu tenho que clicar, mas como é que eu clico no campo isso aqui? Ah, pera, ah, tem um botão, entendeu? Tipo, é esse meu medo. Aí eu pensei, tá, tem um botão selecionado e vai ter um botão flutuante. Só que isso dá a impressão de que realmente eu tô comprando um pacote de alguma coisa, assim, viagem, mas não é essa a ideia. Então
+14:36 Speaker 3: isso aqui faz mais sentido. Sim. Ó, o que talvez, assim, de observação, como a gente tem que passar o mouse pra V, de tirar... Deixar isso aqui claro, talvez. Porque sempre tem aquelas pessoas que têm maior dificuldade. Então, estando a informação mais clara aqui, que ele pode adicionar ou tirar, às vezes aparecer aqui caixa-mãe ou tal, ou colocar caixa-mãe informação aqui, entendeu? Sim, deixa eu já lá.
+15:12 Speaker 1: Tá, beleza. Então vamos lá.
+15:16 Speaker 2: Davi 2, o que você acha desse step, desse passo a passo?
+15:27 Speaker 3: Eu, particularmente, não gosto dessa parte que fica escondida, que eu tenho que ficar clicando pra ir, vamos dizer. A estética pra mim, quando a informação tá toda aberta e eu consegui ver tudo... Ao mesmo tempo aqui, né? Toda a visualização de uma forma assim, exatamente. Pra mim,
+15:46 Speaker 1: assim, ela fica muito mais clara. É bom saber essa visão.
+15:49 Speaker 3: Me dá uma impressão que eu fico... Sei lá, eu tenho que... Eu sou obrigado a fazer alguma coisa, entendeu? Hum, entendi.
+15:58 Speaker 1: Cara, que interessante.
+16:00 Speaker 2: Eu coloquei essa visão no dia 2 pra pessoa sentir... Tô pensando, tipo, tem um cara idoso às vezes, sabe? Tá entrando. Ele não sabe muito bem o que ele faz. Isso aqui é meio que dar a mão pra pessoa, sabe? Tá, vamos começar a dar entrega. Entendi. Como é que você quer remover? Aí a pessoa escolhe. Tá, às vezes não deixar aqui, deixar aqui o botão, porque ela tem que scrollar. Quando escolhe alguma coisa, isso aqui é erro de ver. Então tá, cliquei.
+16:22 Speaker 2: Tá, e agora como é que você quer pagar? Aí eu escolho o pagamento. É pra tentar dar a mão pra pessoa. Só que realmente, às vezes, isso aqui pode dar sensação de morosidade, que dá muito trabalho. Tipo, olha quantos lugares tem que clicar. Antigamente eu tinha só que ir numa telinha e pagar. Hoje em dia eu tenho que fazer, olha isso aqui. Já tava todo mundo em
+16:38 Speaker 1: uma informação. É, porque aqui a pessoa tem que fazer
+16:41 Speaker 2: acho que oito cliques. Hoje em dia é um clipe que ela faz. Ela só escolhe. Na verdade, ela tem que só selecionar, se não me engano, né? Tem um drop-down que ela vai clicando e selecionando. Aí aqui você vai e tem que ficar entrando na área de página. Cansa mais a pessoa mesmo.
+16:52 Speaker 1: Exato. Tá, então. Obrigado.
+17:05 Speaker 2: Tá, beleza. Mais uma coisa que você acha pertinente?
+17:11 Speaker 3: Carinho, alguma coisa que você achou? Carinho tá legal.
+17:15 Speaker 1: Eu ia
+17:16 Speaker 2: colocar a opção de colocar um cupom de desconto assim. É muito complexo fazer isso, porque... Como que a gente faz isso se a gente tem duas notas fiscais? Sabe? Notas fiscais. Um cupom de desconto aqui, sabe? Iria pra tudo.
+17:29 Speaker 3: A gente compõe o futuro da distribuição. Por exemplo, no vídeo, se eu entendo, a gente vai trabalhar, a gente está na plataforma do Mercado Livre lá, aí o Mercado Livre liga um cupom, eu consigo aplicar.
+17:39 Speaker 1: Mas, por exemplo, como que eu vou aplicar um cupom numa
+17:42 Speaker 2: distribuição? A ideia é que tenham promoções, tipo, por exemplo...
+17:48 Speaker 3: PCI Azulí, que a gente tem, você já participou? A PCI Azulí, que é uma semana só de PCI. Daí eles colocam um monte de desconto
+17:56 Speaker 2: nos produtos da PCI. Ah, isso! Quando eu criei esses casos, eles dão desconto direto no valor do produto aqui, né? Então, tipo assim, dê tanto por tanto. A ideia do cupom é incentivar alguma coisa, tipo, sei lá, por exemplo, tem o 7 do 7, que a gente tem no negócio hoje em dia, às vezes jogar para distribuição, um tipo de ação, sabe? Então, todo mundo que quer participar da ação, consegue cupom, até mesmo, às vezes, para saber... da onde ele tá vindo aquele cliente, sabe? Porque hoje em dia, quando a gente tem promoção, sei lá, de tanto por tanto,
+18:24 Speaker 1: todo
+18:25 Speaker 2: mundo vai ver o mesmo produto. Agora, quando você tem um cupom, você sabe de onde que ele veio, qual que é a promoção, que tipo de gatilho vocês deram. Às vezes, vocês têm um cupom de fechamento de venda, tipo, ah, o cliente não tá querendo comprar. Mas, se ele é um cliente que faz tempo que ele tá voltando agora, ele usa o cupom, retorna a 10, retorna a 2, pra ter um pouquinho de desconto e ajudar vocês a fechar uma coisa. Mas é essa ideia da distribuição.
+18:47 Speaker 2: Mas eles estavam querendo colocar agora o Giovanna, o pessoal tem. Mas enfim, beleza.
+18:55 Speaker 3: Nessa tela eu acho que fica interessante, já na parte do pagamento, que daí o cara escolhe igual a filial que ele quer utilizar o cupom.
+19:02 Speaker 2: Ah, é verdade. É outra coisa. Vai ter algumas telas, tipo assim, você percebeu o quê? Aqui a gente tem só uma filial, que é o Espírito Santo. Se eu venho para o carrinho, não aparece aquela tela de V1, V2, V3, V3. Ela aparece essa tela aqui. Entende? Porque não tem porque eu escolher uma coisa que já tá aqui na minha cara, sabe? Agora, se eu volto aqui, eu coloco alguma coisa do Paraná,
+19:22 Speaker 1: eu vim pra cá,
+19:23 Speaker 2: aí agora eu tenho que escolher porque são duas nossas fiscais. Aí eu venho aqui
+19:26 Speaker 3: e veste o fluxo. Não, legal, legal. Isso pra mim tá...
+19:29 Speaker 1: É, realmente tem muito clique mesmo. Tá bem intuitivo, assim. É muito clique mesmo.
+19:34 Speaker 2: Você acha que faz sentido? Aí que vem a pergunta. Você acha que faz sentido a gente ter o resumo da compra?
+19:40 Speaker 1: Deixa eu colocar aqui. Olha. Olha.
+19:49 Speaker 3: Eu não vejo, tipo, assim... Não vou falar que eu não vejo sentido, mas também não vou falar que não faz sentido, sabe? Porque pra mim seria um negócio...
+19:59 Speaker 1: Ah,
+20:01 Speaker 3: mas é interessante porque, assim, se o cara resolver... Ah, ficou muito caro, ele realmente viu que a compra não era do que ele esperava, ele só ia
+20:10 Speaker 2: simular o... É isso, é exatamente essa ideia. Porque, às vezes, se ele vier aqui e tá simulando, ele vai e compra direto nessa questão. Realmente é, pô, você quer ter certeza de seguir? Exato. Eu até pensei, aqui mesmo, pra pessoa poder editar alguma observação, aqui é onde ela vai ter controle do que ela escolheu, sabe? Tipo, ah, eu quero editar alguma coisa. Ah, tá. É, ela consegue voltar. É que aqui é outra extra step, né? Mas na V1, ela vem até o final. Aqui fica mais fácil, porque é só uma coisa que eu tenho que voltar. Ah tá, fechou. Aí fica mais fácil.
+20:39 Speaker 3: Ah, coloquei o transportador errado. Isso. Faz sentido. Exatamente isso. Faz sentido.
+20:45 Speaker 2: Beleza, beleza.
+20:47 Speaker 1: Fechou. Pra mim. E aquelas soluções que você falou, de jogar o plugin pra cá?
+20:52 Speaker 3: É, quando for o pedido de envio, as informações estão bem claras ali, estão bem nítidas. E quando for retirada aí, dá
+20:58 Speaker 1: pra... É, reduzir isso aqui. Dá, porque assim,
+21:01 Speaker 3: é emitido. Vai ser só... Foi emitida depois que foi retirado o produto. Então não precisa ir em rota, também não vai precisar.
+21:27 Speaker 3: Fechou, velho. Muito obrigado,
+21:28 Speaker 1: velho.
+  

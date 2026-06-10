@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f \"checkout oderço - wellington.txt:Zone.Identifier\" && grep -n \"label:\\\\|key:\\\\|'review'\\\\|NfStep\\\\|setNfStep\\\\|PaymentPage\\\\|/checkout\\\\|/sucesso\\\\|navigate\\(\" src/app/components/CheckoutPage.tsx | head -40)"
+    ],
+    "additionalDirectories": [
+      "/home/gabrielbarbosa/dev/ux-prototipos/empresas/oderco/projetos/checkout/cart-checkout-v3"
+    ]
+  }
+}
