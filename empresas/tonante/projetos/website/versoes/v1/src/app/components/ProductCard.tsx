@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router";
 import { Heart, Eye, ShoppingBag, Star, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
-import { getProductSwatches } from "./productPresentation";
+import { getProductSwatches, getPrimaryProductImage } from "./productPresentation";
 import { getInstallmentCount, getInstallmentValue } from "./productEnhancements";
 import { getCardSpecs } from "./productAttributes";
 import { DiscountBadge } from "./section";
@@ -107,17 +107,17 @@ export function ProductCard({
 
   return (
     <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-card-lg border border-[var(--border)] bg-surface-1 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d9d6d0] hover:shadow-[0_18px_44px_-20px_rgba(26,23,20,0.30)] ${className}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-card-lg border border-[var(--border)] bg-surface-1 transition-all duration-300 hover:-translate-y-1 hover:border-[#d9d6d0] hover:shadow-[0_18px_44px_-20px_rgba(26,23,20,0.30)] ${className}`}
       style={style}
     >
       <Link to={href} className="flex flex-1 flex-col">
         {/* área de imagem (well creme) */}
         <div className="relative p-3">
           <div
-            className="relative aspect-square overflow-hidden rounded-[7px]"
+            className="relative aspect-[4/5] overflow-hidden rounded-[7px]"
             style={{
-              // branco-quente limpo — produto destaca como foto premium e não
-              // se confunde com o creme da página (multiply fica perfeito sobre branco)
+              // well quente — produto domina o card (ref Gibson), proporção
+              // vertical porque instrumento é vertical
               background: "var(--well)",
               boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.07)",
             }}
@@ -125,14 +125,31 @@ export function ProductCard({
             <ImageWithFallback
               src={image}
               alt={product.name}
-              className="absolute inset-0 h-full w-full object-contain p-[7%] transition-transform duration-500 group-hover:scale-[1.05]"
+              className="absolute inset-0 h-full w-full object-contain p-[6%] transition-transform duration-500 group-hover:scale-[1.05]"
               style={{ mixBlendMode: "multiply" }}
             />
+            {/* hover-swap: 2ª foto entra em crossfade (só na foto base, não
+                durante navegação por chevron) — well opaco cobre a base */}
+            {nImg > 1 && imgIdx === 0 && (
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{ background: "var(--well)" }}
+              >
+                <ImageWithFallback
+                  src={gallery[1]}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-contain p-[6%]"
+                  style={{ mixBlendMode: "multiply" }}
+                />
+              </div>
+            )}
             {hoverMedia}
 
-            {/* badge topo-esquerda: ranking → desconto → badge */}
-            <div className="absolute left-3.5 top-3.5 z-20 flex flex-col items-start gap-1.5">
-              {rank !== undefined && (
+            {/* topo-esquerda: só o medalhão de ranking — badges viraram linha
+                tipográfica no conteúdo (ref Gibson "New | Limited"), foto limpa */}
+            {rank !== undefined && (
+              <div className="absolute left-3.5 top-3.5 z-20">
                 <span
                   className="flex h-8 w-8 items-center justify-center rounded-full"
                   style={{
@@ -147,22 +164,8 @@ export function ProductCard({
                 >
                   {rank}
                 </span>
-              )}
-              {rank === undefined && discount > 0 && <DiscountBadge percent={discount} />}
-              {rank === undefined && discount === 0 && product.badge && (
-                <span
-                  className="label rounded-pill"
-                  style={{
-                    padding: "5px 11px",
-                    background: "rgba(26,23,20,0.85)",
-                    color: "#f6f2e9",
-                    fontSize: "10px",
-                  }}
-                >
-                  {product.badge}
-                </span>
-              )}
-            </div>
+              </div>
+            )}
 
             {/* ações topo-direita: favoritar + espiar (hover) */}
             <div className="absolute right-3.5 top-3.5 z-20 flex flex-col gap-2 opacity-0 transition-all duration-200 group-hover:opacity-100">
@@ -251,11 +254,21 @@ export function ProductCard({
           </div>
         </div>
 
-        {/* conteúdo */}
+        {/* conteúdo — hierarquia Gibson: badges → nome → marca/categoria → specs */}
         <div className="flex flex-1 flex-col gap-2 px-4 pb-5">
-          <span className="label" style={{ fontSize: "var(--text-eyebrow)", color: "var(--amber-deep)" }}>
-            {eyebrow}
-          </span>
+          {(product.badge || discount > 0) && (
+            <span className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}>
+              {product.badge && product.badge !== "Oferta" && (
+                <span style={{ color: "var(--amber-deep)" }}>{product.badge}</span>
+              )}
+              {product.badge && product.badge !== "Oferta" && discount > 0 && (
+                <span aria-hidden="true" style={{ color: "var(--edge-strong)", fontWeight: 400 }}>|</span>
+              )}
+              {(discount > 0 || product.badge === "Oferta") && (
+                <span style={{ color: "#b3361f" }}>Oferta{discount > 0 ? ` · -${discount}%` : ""}</span>
+              )}
+            </span>
+          )}
           <h3
             className="line-clamp-2 text-ink-strong"
             style={{
@@ -268,6 +281,9 @@ export function ProductCard({
           >
             {product.name}
           </h3>
+          <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
+            {eyebrow}
+          </span>
 
           {/* specs-chave (derivadas do nome — §4.2.10; oculta se vazio) */}
           {cardSpecs.length > 0 && (
@@ -340,37 +356,43 @@ export function ProductCard({
         </div>
       </Link>
 
-      {/* swatches */}
+      {/* variantes — miniaturas reais do produto (ref Gibson), não bolinhas */}
       {swatchList.length > 0 && (
-        <div className="flex items-center gap-1.5 px-4 pb-4">
-          {swatchList.slice(0, 5).map((s) => (
-            <button
-              key={s.productId}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setSelectedSwatchId(s.productId === selectedSwatchId ? null : s.productId);
-                setImgIdx(0);
-              }}
-              className="inline-flex items-center justify-center cursor-pointer transition-all hover:scale-110"
-              aria-label={s.label}
-              type="button"
-            >
-              <span
-                className="block h-3 w-3 rounded-full"
-                style={{
-                  background: s.color,
-                  border:
-                    selectedSwatchId === s.productId
-                      ? "2px solid var(--amber)"
-                      : "1px solid rgba(26,23,20,0.18)",
+        <div className="flex items-center gap-2 px-4 pb-4">
+          {swatchList.slice(0, 3).map((s) => {
+            const variantProduct = allProducts.find((p) => p.id === s.productId);
+            const active = selectedSwatchId === s.productId;
+            return (
+              <button
+                key={s.productId}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setSelectedSwatchId(s.productId === selectedSwatchId ? null : s.productId);
+                  setImgIdx(0);
                 }}
-              />
-            </button>
-          ))}
-          {swatchList.length > 5 && (
-            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "var(--faint)" }}>
-              +{swatchList.length - 5}
+                className="relative h-11 w-11 flex-shrink-0 overflow-hidden cursor-pointer transition-all hover:scale-105"
+                aria-label={s.label}
+                aria-pressed={active}
+                type="button"
+                style={{
+                  borderRadius: 6,
+                  background: "var(--well)",
+                  border: active ? "1.5px solid var(--ink-strong)" : "1px solid var(--border)",
+                }}
+              >
+                <ImageWithFallback
+                  src={variantProduct ? getPrimaryProductImage(variantProduct) : product.image}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-contain p-1"
+                  style={{ mixBlendMode: "multiply" }}
+                />
+              </button>
+            );
+          })}
+          {swatchList.length > 3 && (
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 600, color: "var(--ink-meta)" }}>
+              +{swatchList.length - 3}
             </span>
           )}
         </div>

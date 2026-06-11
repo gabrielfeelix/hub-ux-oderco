@@ -106,13 +106,15 @@ function FamilyCard({ f }: { f: Family }) {
         background: `linear-gradient(170deg, ${f.from} 0%, ${f.to} 100%)`,
         textDecoration: "none",
         boxShadow: "0 18px 44px -22px rgba(26,23,20,0.40)",
-        aspectRatio: "300 / 420",
+        // altura definida pelo conteúdo (CTA nunca corta); flex stretch iguala os cards
       }}
       aria-label={`${f.title} — ${product.name}`}
     >
       <StringsTexture />
 
-      <div className="relative z-[1] flex h-full flex-col items-center px-6 pb-6 pt-7 text-center">
+      {/* sem z-index aqui: stacking context isolaria o multiply da imagem
+          (blend não atravessaria até o gradiente do card) */}
+      <div className="relative flex h-full flex-col items-center px-6 pb-6 pt-7 text-center">
         {/* calibre gigante — o "009/012/010" da ref */}
         <p className="num" style={{ fontFamily: "var(--font-family-inter)", fontWeight: 800, fontSize: "clamp(26px,2.4vw,34px)", letterSpacing: "0.02em", lineHeight: 1, color: "#fff", margin: 0 }}>
           {f.gauge}
@@ -124,16 +126,24 @@ function FamilyCard({ f }: { f: Family }) {
           {f.title}
         </p>
 
-        {/* embalagem real integrada ao fundo — multiply mata o branco do PNG */}
+        {/* embalagem real integrada ao fundo — multiply puro mata o branco do
+            JPG (sem filter junto: filter quebra o blend no Chromium) */}
         <div
-          className="relative mt-4 w-[74%] transition-transform duration-300 group-hover:scale-[1.05] group-hover:rotate-[1.5deg]"
+          className="relative mt-4 w-[62%] transition-transform duration-300 group-hover:scale-[1.05] group-hover:rotate-[1.5deg]"
           style={{ aspectRatio: "1" }}
         >
+          {/* spotlight atrás do produto — multiply sobre área clara = embalagem
+              escura ganha silhueta mesmo nos cards escuros */}
+          <div
+            aria-hidden="true"
+            className="absolute"
+            style={{ inset: "-16%", background: "radial-gradient(closest-side, rgba(255,255,255,0.30), transparent 72%)" }}
+          />
           <ImageWithFallback
             src={getPrimaryProductImage(product)}
             alt=""
             className="absolute inset-0 h-full w-full object-contain"
-            style={{ mixBlendMode: "multiply", filter: "contrast(1.05) saturate(1.05)" }}
+            style={{ mixBlendMode: "multiply" }}
           />
         </div>
 
