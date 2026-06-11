@@ -6,6 +6,7 @@ import { CategoryShowcase } from "./CategoryShowcase";
 import { ProductShelf } from "./ProductShelf";
 import { MonteSeuKit } from "./MonteSeuKit";
 import { LinhasDeViolao } from "./LinhasDeViolao";
+import { EncordoamentosShowcase } from "./EncordoamentosShowcase";
 import { StoryBand } from "./StoryBand";
 import { SocialProofBar } from "./SocialProofBar";
 import { MusicosTonante } from "./MusicosTonante";
@@ -72,6 +73,9 @@ export function HomePage() {
 
       {/* 7. Cada violão, uma experiência */}
       <LinhasDeViolao />
+
+      {/* 7b. Qual corda é a sua? — famílias de encordoamento (V3 §5) */}
+      <EncordoamentosShowcase />
 
       {/* 8. Monte seu kit (combo) */}
       <MonteSeuKit />
