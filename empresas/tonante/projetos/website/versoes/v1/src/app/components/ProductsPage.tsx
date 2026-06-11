@@ -1343,7 +1343,6 @@ export function ProductsPage() {
                           swatches
                           favorite
                           onAdd={handleAddToCart}
-                          onFavorite={(pr) => toggleFavorite(pr.id)}
                         />
                       </motion.div>
                     ))}

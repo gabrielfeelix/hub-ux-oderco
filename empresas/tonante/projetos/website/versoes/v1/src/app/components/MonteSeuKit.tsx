@@ -125,7 +125,7 @@ export function MonteSeuKit() {
             <span className="label" style={{ color: "var(--amber-deep)" }}>
               Instrumento base
             </span>
-            <Link to={`/produto/${base.id}`} className="relative block overflow-hidden rounded-[12px]" style={{ background: "linear-gradient(160deg,#faf7f0,#efe9dc)" }}>
+            <Link to={`/produto/${base.id}`} className="relative block overflow-hidden rounded-[12px]" style={{ background: "#fbfaf6", boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.06)" }}>
               <div className="relative aspect-[4/3]">
                 <ImageWithFallback src={getPrimaryProductImage(base)} alt={base.name} className="absolute inset-0 h-full w-full object-contain p-4" style={{ mixBlendMode: "multiply" }} />
               </div>
@@ -154,29 +154,32 @@ export function MonteSeuKit() {
                   <button
                     key={a.id}
                     onClick={() => toggle(a.id)}
-                    className="relative flex cursor-pointer flex-col gap-2 text-left"
+                    className="relative flex cursor-pointer flex-col overflow-hidden text-left"
                     style={{
                       background: "var(--surface-1)",
                       border: `1.5px solid ${on ? "var(--amber)" : "#e4dccc"}`,
                       borderRadius: "var(--radius-card-md)",
-                      padding: 12,
                       transition: "border-color .2s",
                     }}
                   >
-                    <span
-                      className="absolute right-2.5 top-2.5 grid h-[26px] w-[26px] place-items-center rounded-full"
-                      style={{ background: on ? "var(--amber)" : "rgba(255,255,255,0.9)", border: `1.5px solid ${on ? "var(--amber)" : "#d6cbb5"}`, color: on ? "#fff" : "var(--muted)" }}
-                    >
-                      {on ? <Check size={14} strokeWidth={2.6} /> : <Plus size={14} strokeWidth={2.6} />}
-                    </span>
-                    <div className="relative aspect-square overflow-hidden rounded-[10px]" style={{ background: "linear-gradient(160deg,#faf7f0,#efe9dc)" }}>
-                      <ImageWithFallback src={getPrimaryProductImage(a)} alt={a.name} className="absolute inset-0 h-full w-full object-contain p-2" style={{ mixBlendMode: "multiply" }} />
+                    {/* well no topo, flush nos cantos (card clipa) — sem borda
+                        âmbar vazando atrás da imagem */}
+                    <div className="relative aspect-square" style={{ background: "#fbfaf6" }}>
+                      <ImageWithFallback src={getPrimaryProductImage(a)} alt={a.name} className="absolute inset-0 h-full w-full object-contain p-3" style={{ mixBlendMode: "multiply" }} />
+                      <span
+                        className="absolute right-2.5 top-2.5 grid h-[26px] w-[26px] place-items-center rounded-full"
+                        style={{ background: on ? "var(--amber)" : "rgba(255,255,255,0.92)", border: `1.5px solid ${on ? "var(--amber)" : "#d6cbb5"}`, color: on ? "#fff" : "var(--muted)", boxShadow: "0 2px 6px -2px rgba(26,23,20,0.25)" }}
+                      >
+                        {on ? <Check size={14} strokeWidth={2.6} /> : <Plus size={14} strokeWidth={2.6} />}
+                      </span>
                     </div>
-                    <div className="line-clamp-2 text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "13px", lineHeight: 1.2 }}>
-                      {a.name}
-                    </div>
-                    <div style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: "var(--amber-deep)" }}>
-                      + {formatBRL(getPixPrice(a))}
+                    <div className="flex flex-col gap-1 p-3">
+                      <div className="line-clamp-2 text-ink-strong" style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "13px", lineHeight: 1.2 }}>
+                        {a.name}
+                      </div>
+                      <div style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: "var(--amber-deep)" }}>
+                        + {formatBRL(getPixPrice(a))}
+                      </div>
                     </div>
                   </button>
                 );

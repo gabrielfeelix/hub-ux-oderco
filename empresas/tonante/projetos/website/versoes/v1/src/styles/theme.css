@@ -564,6 +564,14 @@ html {
   box-shadow: inset 0 0 0 1px rgba(26, 23, 20, 0.06);
 }
 
+/* Onda sonora (equalizer) — barras pulsando em torno da linha central.
+   transform-origin center → cresce simétrico como waveform. reduced-motion
+   congela (regra global zera a duração). */
+@keyframes tn-eq {
+  0%, 100% { transform: scaleY(0.28); }
+  50% { transform: scaleY(1); }
+}
+
 /* Grão sutil de papel — afordância editorial Tonante. Opt-in via .grain. */
 .grain::before {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;

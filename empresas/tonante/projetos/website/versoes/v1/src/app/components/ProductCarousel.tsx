@@ -38,7 +38,7 @@ export function ProductCarousel({
   const [selectedVariants, setSelectedVariants] = useState<Record<string, Product>>({});
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const { addItem } = useCart();
-  const { addFavorite } = useFavorites();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const { isLoggedIn } = useAuth();
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark" || resolvedTheme === undefined;
@@ -304,10 +304,10 @@ export function ProductCarousel({
                     <div className="absolute top-4 right-4 opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button
                         className="w-11 h-11 md:w-9 md:h-9 bg-black/35 backdrop-blur-sm border border-edge rounded-full flex items-center justify-center text-ink hover:text-ink-strong hover:bg-black/50 transition-all duration-300"
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); addFavorite({ id: displayProduct.id, name: displayProduct.name, price: displayProduct.price, image: getPrimaryProductImage(displayProduct) }); }}
-                        aria-label="Favoritar"
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(displayProduct.id); }}
+                        aria-label={isFavorite(displayProduct.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
                       >
-                        <Heart size={14} className="text-current" strokeWidth={1.6} />
+                        <Heart size={14} strokeWidth={1.6} style={{ color: isFavorite(displayProduct.id) ? "#b3361f" : "currentColor", fill: isFavorite(displayProduct.id) ? "#b3361f" : "none" }} />
                       </button>
                     </div>
                   )}

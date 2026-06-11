@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
-import { X, ShoppingBag, Trash2, Truck, Tag, Loader2, Check, MapPin, ChevronDown, Gift, Sparkles } from "lucide-react";
+import { X, ShoppingBag, Trash2, Truck, Tag, Check, ChevronDown, Gift } from "lucide-react";
 import { useCart } from "./CartContext";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts } from "./productsData";
@@ -23,7 +23,7 @@ const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string 
 };
 
 const COUPONS: Record<string, number> = {
-  PCYES10: 10, PROMO20: 20, BEMVINDO: 15,
+  TONANTE10: 10, PROMO20: 20, BEMVINDO: 15,
 };
 
 const GIFT_THRESHOLD = 950;
@@ -216,61 +216,25 @@ export function CartDrawer() {
             )}
 
             {paidItems.length > 0 && (
-              <div className="border-b border-foreground/5 px-7 py-3.5">
-                <div className={`overflow-hidden rounded-card-md border ${giftUnlocked ? "border-primary/18 bg-primary/[0.06]" : "border-foreground/8 bg-foreground/[0.03]"}`}>
-                  <div className="px-4 py-3.5">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-start gap-3">
-                        <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl border border-primary/15 bg-primary/[0.08] text-primary">
-                          <Gift size={15} />
-                        </div>
-                        <div>
-                          <p className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: "600", lineHeight: 1.2 }}>
-                            Ganhe um brinde a partir de {formatPrice(GIFT_THRESHOLD)}
-                          </p>
-                          <p className="mt-1 text-foreground/42" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.45 }}>
-                            {giftUnlocked
-                              ? giftItem
-                                ? "Seu brinde já foi selecionado e adicionado ao carrinho."
-                                : "Você desbloqueou o presente. Escolha um item especial da PCYES."
-                              : `Faltam ${formatPrice(remainingForGift)} para desbloquear seu presente.`}
-                          </p>
-                        </div>
-                      </div>
-                      {giftUnlocked && (
-                        <button
-                          onClick={() => { setGiftDismissed(false); setGiftModalOpen(true); }}
-                          className="text-primary hover:opacity-80 transition-opacity cursor-pointer"
-                          style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.08em" }}
-                        >
-                          {giftItem ? "TROCAR" : "ESCOLHER"}
-                        </button>
-                      )}
-                    </div>
-
-                    <div className="mt-3">
-                      <div className="h-1.5 overflow-hidden rounded-full bg-foreground/6">
-                        <motion.div
-                          initial={false}
-                          animate={{ width: `${giftProgress}%` }}
-                          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                          className="h-full rounded-full bg-linear-to-r from-primary to-primary/65"
-                        />
-                      </div>
-                      <div className="mt-1.5 flex items-center justify-between">
-                        <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.12em" }}>
-                          0
-                        </span>
-                        <span className={`flex items-center gap-1.5 ${giftUnlocked ? "text-primary" : "text-foreground/35"}`} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.12em" }}>
-                          <Sparkles size={11} />
-                          BRINDE
-                        </span>
-                        <span className="text-foreground/25" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "600", letterSpacing: "0.12em" }}>
-                          {formatPrice(GIFT_THRESHOLD)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+              <div className="border-b border-foreground/5 px-7 py-3">
+                <div className={`flex items-center gap-2.5 rounded-card-md border px-3.5 py-2.5 ${giftUnlocked ? "border-primary/20 bg-primary/[0.06]" : "border-foreground/8 bg-foreground/[0.03]"}`}>
+                  <Gift size={16} className="flex-shrink-0 text-primary" strokeWidth={2} />
+                  <p className="flex-1 text-foreground/80" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: 1.35 }}>
+                    {giftUnlocked
+                      ? giftItem
+                        ? "Brinde selecionado ✓"
+                        : "Brinde desbloqueado! Escolha o seu presente."
+                      : <>Faltam <strong style={{ color: "var(--amber-deep)" }}>{formatPrice(remainingForGift)}</strong> para um brinde grátis</>}
+                  </p>
+                  {giftUnlocked && (
+                    <button
+                      onClick={() => { setGiftDismissed(false); setGiftModalOpen(true); }}
+                      className="flex-shrink-0 text-primary hover:opacity-80 transition-opacity cursor-pointer"
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "700", letterSpacing: "0.06em" }}
+                    >
+                      {giftItem ? "TROCAR" : "ESCOLHER"}
+                    </button>
+                  )}
                 </div>
               </div>
             )}
@@ -289,11 +253,11 @@ export function CartDrawer() {
                   <AnimatePresence>
                     {items.map((item) => (
                       <motion.div key={item.cartKey} layout initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30, height: 0 }} transition={{ duration: 0.3 }}
-                        className={`flex gap-4 p-3.5 border ${lastAdded?.cartKey === item.cartKey ? "border-primary/30 bg-primary/5" : item.isGift ? "border-primary/20 bg-primary/[0.04]" : "border-foreground/5 bg-foreground/[0.02]"} transition-colors duration-700`}
+                        className={`flex gap-4 p-3.5 border ${lastAdded?.cartKey === item.cartKey ? "border-primary/30 bg-primary/5" : item.isGift ? "border-primary/20 bg-primary/[0.04]" : "border-edge-subtle bg-surface-1"} transition-colors duration-700`}
                         style={{ borderRadius: "var(--radius-card)" }}
                       >
-                        <div className="w-[75px] h-[75px] flex-shrink-0 overflow-hidden relative" style={{ borderRadius: "var(--radius)", background: "var(--surface-1)" }}>
-                          <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                        <div className="w-[75px] h-[75px] flex-shrink-0 overflow-hidden relative" style={{ borderRadius: "var(--radius)", background: "#fbfaf6", boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.06)" }}>
+                          <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-contain p-2" style={{ mixBlendMode: "multiply" }} />
                           {item.isGift && (
                             <div className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
                               <Gift size={13} />
@@ -345,86 +309,6 @@ export function CartDrawer() {
             {items.length > 0 && (
               <div className="border-t border-foreground/5 px-7 py-5 space-y-3 max-h-[55vh] overflow-y-auto" style={{ scrollbarWidth: "none" }}>
                 <div>
-                  {shippingOptions && selectedShipping !== null && !shippingOpen ? (
-                    <div className="flex items-center justify-between w-full py-1.5">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <Truck size={12} className="text-primary flex-shrink-0" />
-                        <div className="min-w-0">
-                          <p className="text-foreground/75 truncate" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
-                            {shippingOptions[selectedShipping].name} · {shippingOptions[selectedShipping].price === 0 ? "Grátis" : formatPrice(shippingOptions[selectedShipping].price)}
-                          </p>
-                          <p className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
-                            CEP {cep} · {shippingOptions[selectedShipping].days}
-                          </p>
-                        </div>
-                      </div>
-                      <button onClick={() => setShippingOpen(true)}
-                        className="flex-shrink-0 text-primary/85 hover:text-primary transition-colors cursor-pointer"
-                        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.02em" }}
-                      >
-                        Alterar
-                      </button>
-                    </div>
-                  ) : (
-                    <button onClick={() => setShippingOpen(!shippingOpen)}
-                      className="flex items-center justify-between w-full py-2 px-3 cursor-pointer group transition-colors"
-                    >
-                      <div className="flex items-center gap-2">
-                        <MapPin size={12} className="text-foreground/45" />
-                        <span className="text-foreground/65 group-hover:text-foreground/85 transition-colors" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
-                          Calcular frete
-                        </span>
-                      </div>
-                      <ChevronDown size={11} className={`text-foreground/35 transition-transform duration-300 ${shippingOpen ? "rotate-180" : ""}`} />
-                    </button>
-                  )}
-                  <AnimatePresence>
-                    {shippingOpen && (
-                      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
-                        <div className="pt-3 space-y-2">
-                          <div className="flex gap-2">
-                            <input type="text" placeholder="00000-000" value={cep}
-                              onChange={(e) => setCep(formatCep(e.target.value))}
-                              onKeyDown={(e) => e.key === "Enter" && handleCepSearch()}
-                              className="flex-1 px-3 py-2 border border-foreground/8 bg-foreground/[0.03] text-foreground placeholder:text-foreground/15 focus:border-foreground/20 focus:outline-none transition-colors"
-                              style={{ borderRadius: "var(--radius-button)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }} />
-                            <button onClick={handleCepSearch} disabled={loadingCep || cep.replace(/\D/g, "").length < 8}
-                              className="px-3 py-2 text-foreground/30 hover:text-foreground/60 transition-all duration-300 disabled:opacity-20 cursor-pointer disabled:cursor-not-allowed"
-                              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
-                            >{loadingCep ? <Loader2 size={13} className="animate-spin" /> : "Calcular"}</button>
-                          </div>
-                          <AnimatePresence>
-                            {shippingOptions && (
-                              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-1">
-                                {shippingOptions.map((opt, idx) => (
-                                  <button key={opt.name} onClick={() => { setSelectedShipping(idx); setShippingOpen(false); }}
-                                    className={`w-full flex items-center justify-between px-3 py-2 border transition-all duration-300 cursor-pointer ${
-                                      selectedShipping === idx ? "border-primary/30 bg-primary/5" : "border-foreground/5 hover:border-foreground/10"
-                                    }`}
-                                    style={{ borderRadius: "var(--radius-button)" }}
-                                  >
-                                    <div className="flex items-center gap-2">
-                                      <Truck size={12} className={selectedShipping === idx ? "text-primary" : "text-foreground/25"} />
-                                      <div className="text-left">
-                                        <p className="text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>{opt.name}</p>
-                                        <p className="text-foreground/20" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>{opt.days}</p>
-                                      </div>
-                                    </div>
-                                    <span className={opt.price === 0 ? "text-green-500" : "text-foreground/40"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>
-                                      {opt.price === 0 ? "Grátis" : formatPrice(opt.price)}
-                                    </span>
-                                  </button>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                <div>
                   <button onClick={() => setCouponOpen(!couponOpen)}
                     className={`flex items-center justify-between w-full py-2 px-3 cursor-pointer group transition-colors ${
                       appliedCoupon ? "rounded-[var(--radius-card-sm)] border border-green-500/20 bg-green-500/5" : ""
@@ -471,7 +355,7 @@ export function CartDrawer() {
                           ) : (
                             <>
                               <div className="flex gap-2">
-                                <input type="text" placeholder="Ex: PCYES10" value={coupon}
+                                <input type="text" placeholder="Ex: TONANTE10" value={coupon}
                                   onChange={(e) => { setCoupon(e.target.value.toUpperCase()); setCouponError(""); }}
                                   onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
                                   className="flex-1 px-3 py-2 border border-foreground/8 bg-foreground/[0.03] text-foreground placeholder:text-foreground/15 focus:border-foreground/20 focus:outline-none transition-colors"
@@ -503,14 +387,10 @@ export function CartDrawer() {
                       <span className="text-green-500" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>-{formatPrice(discountValue)}</span>
                     </div>
                   )}
-                  {selectedShipping !== null && shippingOptions && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>Frete</span>
-                      <span className={shippingCost === 0 ? "text-green-500" : "text-foreground/50"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
-                        {shippingCost === 0 ? "Grátis" : formatPrice(shippingCost)}
-                      </span>
-                    </div>
-                  )}
+                  <div className="flex items-center justify-between">
+                    <span className="text-foreground/35" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>Frete</span>
+                    <span className="text-foreground/45" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>Calculado no checkout</span>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
@@ -519,19 +399,18 @@ export function CartDrawer() {
                 </div>
 
                 <button
-                  className="w-full py-4 rounded-full text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+                  className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full py-4 transition-transform hover:scale-[1.01] active:scale-[0.98]"
                   style={{
-                    background: "var(--gradient-buy)",
+                    background: "var(--primary)",
+                    color: "#fff",
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "var(--text-sm)",
-                    fontWeight: 800,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    boxShadow: "var(--shadow-buy-cta)",
+                    fontWeight: 700,
+                    boxShadow: "var(--shadow-buy-cta-sm)",
                   }}
                   onClick={() => { setIsOpen(false); navigate("/checkout"); }}
                   aria-label="Finalizar pedido"
-                >Finalizar pedido</button>
+                ><ShoppingBag size={17} strokeWidth={2} /> Finalizar pedido</button>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="w-full flex items-center justify-center border border-foreground/12 bg-transparent text-foreground/55 hover:text-foreground/85 hover:border-foreground/22 transition-colors cursor-pointer rounded-full"
@@ -664,7 +543,7 @@ export function CartDrawer() {
                           </div>
                           <div className="mt-auto flex items-center justify-between pt-4 md:mt-4 md:pt-0">
                             <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.18em", color: "rgba(var(--foreground-rgb), 0.4)" }}>
-                              PRESENTE PCYES
+                              PRESENTE TONANTE
                             </span>
                             <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.12em", color: isSelected ? "var(--primary)" : "rgba(var(--foreground-rgb), 0.45)" }}>
                               {isSelected ? "SELECIONADO" : "SELECIONAR"}

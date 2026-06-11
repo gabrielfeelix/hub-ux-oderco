@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { useCart } from "./CartContext";
-import { useFavorites } from "./FavoritesContext";
 import { allProducts, type Product } from "./productsData";
 import {
   getPrimaryProductImage,
@@ -48,7 +47,6 @@ export function ProductShelf({
   const [activeTab, setActiveTab] = useState(0);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const { addItem } = useCart();
-  const { addFavorite } = useFavorites();
 
   const current = tabs?.[activeTab];
   const effectiveEyebrow = current?.eyebrow ?? label;
@@ -179,14 +177,6 @@ export function ProductShelf({
                         : {}),
                     }}
                     onAdd={add}
-                    onFavorite={(p) =>
-                      addFavorite({
-                        id: p.id,
-                        name: p.name,
-                        price: p.price,
-                        image: getPrimaryProductImage(p),
-                      })
-                    }
                   />
                 </motion.div>
               );

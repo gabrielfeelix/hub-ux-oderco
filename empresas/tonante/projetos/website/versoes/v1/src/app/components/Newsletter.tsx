@@ -5,6 +5,38 @@ import { motion, useInView, AnimatePresence } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
 import { Eyebrow } from "./section";
 
+/** Onda sonora animada — assinatura "música" da Tonante (substitui as cordas
+    que passavam despercebidas). Barras âmbar pulsando em torno da linha central.
+    Decorativo: aria-hidden; congela com prefers-reduced-motion. */
+function EqualizerWave() {
+  const BARS = 48;
+  const center = (BARS - 1) / 2;
+  return (
+    <div aria-hidden="true" className="flex h-8 items-center justify-center gap-[3px]">
+      {Array.from({ length: BARS }).map((_, i) => {
+        const d = Math.abs(i - center) / center;          // 0 no centro → 1 nas pontas
+        const peak = 0.32 + 0.68 * (1 - d * d);           // envelope: alto no meio
+        const dur = 0.85 + ((i * 7) % 5) * 0.13;          // velocidades variadas
+        const delay = -(((i * 13) % 9) * 0.11);           // defasagem por barra
+        return (
+          <span
+            key={i}
+            style={{
+              width: 3,
+              height: `${Math.round(peak * 30)}px`,
+              borderRadius: 2,
+              background: "linear-gradient(180deg, var(--amber-bright) 0%, var(--amber-deep) 100%)",
+              transformOrigin: "center",
+              animation: `tn-eq ${dur}s ease-in-out ${delay}s infinite`,
+              opacity: 0.9,
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 export function Newsletter() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -38,6 +70,11 @@ export function Newsletter() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center"
         >
+          {/* Onda sonora — âncora visual "música" da seção */}
+          <div className="mb-5 flex justify-center">
+            <EqualizerWave />
+          </div>
+
           {/* Label */}
           <Eyebrow style={{ marginBottom: "16px" }}>FIQUE POR DENTRO</Eyebrow>
 
@@ -81,15 +118,14 @@ export function Newsletter() {
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5"
                 style={{
-                  background: "linear-gradient(135deg, rgba(200, 120, 0, 0.12) 0%, rgba(200, 120, 0, 0.04) 100%)",
-                  border: "1px solid rgba(200, 120, 0, 0.4)",
-                  boxShadow: "0 0 0 4px rgba(200, 120, 0, 0.04), 0 12px 28px -8px rgba(200, 120, 0, 0.35)",
+                  background: "rgba(200, 120, 0, 0.08)",
+                  border: "1px solid rgba(200, 120, 0, 0.32)",
                 }}
               >
                 <span
                   className="flex h-5 w-5 items-center justify-center rounded-full"
                   style={{
-                    background: "var(--gradient-brand)",
+                    background: "var(--primary)",
                     color: "white",
                   }}
                 >

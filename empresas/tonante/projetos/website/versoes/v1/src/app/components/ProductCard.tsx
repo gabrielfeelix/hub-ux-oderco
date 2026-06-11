@@ -10,6 +10,7 @@ import { getProductSwatches } from "./productPresentation";
 import { getInstallmentCount, getInstallmentValue } from "./productEnhancements";
 import { getCardSpecs } from "./productAttributes";
 import { DiscountBadge } from "./section";
+import { useFavorites } from "./FavoritesContext";
 
 /**
  * ProductCard — card de produto Tonante (porta o design do protótipo de marca
@@ -51,7 +52,9 @@ export function ProductCard({
   className = "",
   style,
 }: ProductCardProps) {
-  const [isFavorited, setIsFavorited] = useState(false);
+  // Favorito é estado global (Set por id) — toggle real add/remove.
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const isFavorited = isFavorite(product.id);
   const [selectedSwatchId, setSelectedSwatchId] = useState<number | null>(null);
   const [imgIdx, setImgIdx] = useState(0);
   const [quickOpen, setQuickOpen] = useState(false);
@@ -93,7 +96,7 @@ export function ProductCard({
   const handleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsFavorited(!isFavorited);
+    toggleFavorite(product.id);
     onFavorite?.(product);
   };
   const cycle = (e: React.MouseEvent, d: number) => {
