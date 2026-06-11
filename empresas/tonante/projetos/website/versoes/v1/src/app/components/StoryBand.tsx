@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
+import { SeloTonante } from "./section";
 
 // StoryBand — faixa de herança 1954 (porta _ref/src/home.jsx StoryBand).
 // Stage escuro quente, glow âmbar, símbolo gigante, headline serif com acento.
@@ -27,6 +28,14 @@ export function StoryBand() {
             aria-hidden="true"
             className="pointer-events-none absolute hidden select-none md:block"
             style={{ right: "6%", top: "50%", transform: "translateY(-50%)", width: 220, opacity: 0.35 }}
+          />
+          <SeloTonante
+            variant="70"
+            tone="light"
+            rotate
+            size={104}
+            className="absolute z-[3] hidden md:inline-block"
+            style={{ right: "clamp(28px,5vw,64px)", top: "clamp(28px,5vw,56px)", opacity: 0.92 }}
           />
           <div className="relative z-[2]" style={{ maxWidth: 600 }}>
             <p className="label" style={{ color: "var(--amber)", marginBottom: 18 }}>

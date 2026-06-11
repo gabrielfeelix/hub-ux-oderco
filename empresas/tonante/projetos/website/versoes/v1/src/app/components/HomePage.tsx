@@ -13,6 +13,7 @@ import { RealMusicians } from "./RealMusicians";
 import { Pillars } from "./Pillars";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
+import { StringDivider } from "./section";
 import { SEO } from "./SEO";
 import { allProducts } from "./productsData";
 
@@ -87,6 +88,9 @@ export function HomePage() {
       <Pillars />
 
       {/* 15. Newsletter + Footer */}
+      <div className="mx-auto w-full max-w-[1100px] px-6 md:px-10" style={{ marginBottom: "8px" }}>
+        <StringDivider />
+      </div>
       <Newsletter />
       <Footer />
     </>

@@ -208,6 +208,15 @@
   /* Dark stage Tonante (hero cinematográfico / footer / subtrees keep-dark). */
   --stage: #16130f;
   --stage-2: #211c16;
+
+  /* Tons das linhas de violão (§3.4) — swatch/chip por linha (usar c/ borda).
+     Derivados do par `tone` de cada linha em LinhasDeViolao.tsx. */
+  --tone-coral: #b5793c;     /* terracota — roda de bar */
+  --tone-volcano: #c9863f;   /* mel queimado — palco */
+  --tone-etna: #7d4a28;      /* marrom nobre — premium */
+  --tone-onix: #2c2823;      /* grafite — preto acetinado */
+  --tone-citrino: #cea862;   /* dourado claro — jovem */
+  --tone-lorenzzo: #9c7138;  /* mel escuro — clássico nylon */
 }
 
 /* Mobile: comprime o espaçamento de seção. */

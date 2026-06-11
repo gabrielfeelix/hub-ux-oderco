@@ -11,3 +11,6 @@ export { FieldInput } from "./FieldInput";
 export { QtyStepper } from "./QtyStepper";
 export { QuickAddButton } from "./QuickAddButton";
 export { CarouselNavButton } from "./CarouselNavButton";
+export { RosetaIcon } from "./RosetaIcon";
+export { StringDivider } from "./StringDivider";
+export { SeloTonante } from "./SeloTonante";
