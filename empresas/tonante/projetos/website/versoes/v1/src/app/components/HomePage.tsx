@@ -8,7 +8,7 @@ import { MonteSeuKit } from "./MonteSeuKit";
 import { LinhasDeViolao } from "./LinhasDeViolao";
 import { StoryBand } from "./StoryBand";
 import { SocialProofBar } from "./SocialProofBar";
-import { RealMusicians } from "./RealMusicians";
+import { MusicosTonante } from "./MusicosTonante";
 import { GuiaIniciante } from "./GuiaIniciante";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
@@ -80,8 +80,8 @@ export function HomePage() {
       <StoryBand />
       <SocialProofBar />
 
-      {/* 10. Tonante por aí */}
-      <RealMusicians />
+      {/* 10. Músicos Tonante — retratos P&B + modal vídeo/depoimento (V3 §4) */}
+      <MusicosTonante />
 
       {/* 12. Guia do primeiro violão (captura iniciante) */}
       <GuiaIniciante />
