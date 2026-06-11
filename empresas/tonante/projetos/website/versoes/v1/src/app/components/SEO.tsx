@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://pcyes.com.br";
-const SITE_NAME = "PCYES";
-const DEFAULT_TITLE = "PCYES — Built for Performance";
+const SITE_URL = "https://tonante.com.br";
+const SITE_NAME = "Tonante";
+const DEFAULT_TITLE = "Tonante — Violões, guitarras e acessórios desde 1954";
 const DEFAULT_DESC =
-  "Hardware, periféricos e setups feitos pra quem joga, edita e cria sem trava.";
-const DEFAULT_IMAGE = "https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/og-default.png";
+  "Violões, guitarras, contrabaixos, cordas e acessórios que fazem parte da sua história desde 1954.";
+const DEFAULT_IMAGE = "https://tonante.com.br/brand/tonante-wordmark-dark.png";
 
 type SEOProps = {
   title?: string;

@@ -71,7 +71,7 @@ export function Newsletter() {
             }}
           >
             Drops, ofertas e novidades{" "}
-            <span style={{ color: "rgba(var(--foreground-rgb), 0.45)" }}>direto no seu inbox.</span>
+            <span style={{ fontStyle: "italic", color: "var(--amber)" }}>direto no seu inbox.</span>
           </h2>
 
           {/* Subtitle */}

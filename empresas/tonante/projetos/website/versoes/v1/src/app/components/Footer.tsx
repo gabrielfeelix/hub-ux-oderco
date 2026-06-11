@@ -28,7 +28,7 @@ const columns = [
 ];
 
 const brandLogo = "/brand/tonante-wordmark-dark.png";
-const paymentMethodsImage = "https://www.pcyes.com.br/media/.renditions/wysiwyg/pagamentos.png";
+const paymentMethodsImage = "/img/pagamentos.png";
 
 // TODO(handles): confirmar os @ oficiais da Tonante (placeholders abaixo).
 const socialLinks = [
@@ -40,13 +40,8 @@ const socialLinks = [
 
 const certifications = [
   {
-    label: "Tonante",
-    image: brandLogo,
-    imageClassName: "w-[82px] h-[42px] object-contain",
-  },
-  {
     label: "RA 1000",
-    href: "https://www.reclameaqui.com.br/empresa/pc-yes/",
+    href: "https://www.reclameaqui.com.br/empresa/tonante/",
     image: "https://www.insiderstore.com.br/cdn/shop/files/SELO-RA_1.png?v=1773463245&width=140",
     imageClassName: "w-[66px] h-[66px] object-contain",
   },
@@ -59,11 +54,6 @@ const certifications = [
     label: "GPTW",
     image: "https://www.oderco.com.br/media/wysiwyg/Selo-Ranking-Paran_-2025.png",
     imageClassName: "w-[66px] h-[66px] object-contain",
-  },
-  {
-    label: "Google Site Seguro",
-    image: "https://www.insiderstore.com.br/cdn/shop/files/GOOGLE_BRANCO.png?v=1773463243&width=140",
-    imageClassName: "w-[64px] h-[64px] object-contain",
   },
   {
     label: "ABNT",
@@ -242,12 +232,14 @@ export function Footer() {
         <div className={`flex flex-col gap-10 pt-[33px] border-t md:grid md:grid-cols-3 md:items-center ${isDark ? "border-foreground/5" : "border-foreground/10"}`}>
           <div className="flex-1">
             <p className={isDark ? "text-foreground/50 mb-1" : "text-foreground/80 mb-1"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-bold)" }}>
-              Oderço Distribuidora de Eletrônicos LTDA - 09.301.845/0001-91
+              Tonante · Grupo Oderço
             </p>
             <p className={isDark ? "text-foreground/40" : "text-foreground/60"} style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: "1.6" }}>
+              Oderço Distribuidora de Eletrônicos LTDA · CNPJ 09.301.845/0001-91
+              <br/>
               Av. Paranavaí, 1906 - Parque Industrial Bandeirantes, Maringá - PR, 87070-130
               <br/>
-              &copy; {new Date().getFullYear()} Oderço Distribuidora | Todos os direitos reservados.
+              &copy; {new Date().getFullYear()} Tonante | Todos os direitos reservados.
             </p>
           </div>
           <div className="flex justify-center">

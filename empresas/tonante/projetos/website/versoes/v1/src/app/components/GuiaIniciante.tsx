@@ -5,6 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts } from "./productsData";
 import { getPrimaryProductImage, getCatalogHref } from "./productPresentation";
+import { SeloTonante } from "./section";
 
 // Destino do CTA: catálogo de Violões (63 itens, não-vazio). O catálogo NÃO tem
 // tag "iniciante" nos produtos (só em descrições) — curadoria de uma tag
@@ -83,6 +84,14 @@ export function GuiaIniciante() {
                 />
               </div>
             </div>
+            {/* Selo "Rei dos Violões" carimbado sobre o canto do card (manual p.5) */}
+            <SeloTonante
+              variant="rei"
+              tone="light"
+              size={84}
+              className="absolute bottom-6 left-6 z-[3] hidden md:block"
+              style={{ transform: "rotate(-8deg)" }}
+            />
           </div>
         </div>
       </div>

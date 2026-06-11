@@ -28,9 +28,9 @@ const rawProducts: Product[] = [
   {
     "id": 1,
     "sku": "152273",
-    "name": "Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD",
-    "price": "R$ 139,90",
-    "priceNum": 139.9,
+    "name": "Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD",
+    "price": "R$ 34,90",
+    "priceNum": 34.9,
     "rating": 4.5,
     "reviews": 141,
     "category": "Acessórios",
@@ -38,19 +38,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Palheta"
     ],
-    "brand": "Tonante",
+    "brand": "Ibox",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/1522731780914726.jpg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/1522731780914726.jpg"
     ],
     "inStock": true,
-    "description": "Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD</h2><p>Parte da linha Tonante de acessórios, o Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD — Ibox, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD</h2><p>Selecionado pela Tonante, o Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Palheta",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Ibox",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -63,7 +63,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Ibox"
       },
       {
         "label": "Garantia",
@@ -71,7 +71,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "palheta-ibox-1-0mm-c-20-pcs-vermelho-plp100rd-152273",
@@ -80,9 +80,9 @@ const rawProducts: Product[] = [
   {
     "id": 2,
     "sku": "17415",
-    "name": "Suporte P/microfone Girafa Smmax Preto",
-    "price": "R$ 459,90",
-    "priceNum": 459.9,
+    "name": "Suporte P/ Microfone Girafa Smmax Preto",
+    "price": "R$ 229,90",
+    "priceNum": 229.9,
     "rating": 4.9,
     "reviews": 329,
     "category": "Suportes",
@@ -90,19 +90,19 @@ const rawProducts: Product[] = [
       "Suportes",
       "Microfone"
     ],
-    "brand": "Tonante",
+    "brand": "SMMax",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/7/174151780914735.jpg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/7/174151780914735.jpg"
     ],
     "inStock": true,
-    "description": "Suporte P/microfone Girafa Smmax Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte P/microfone Girafa Smmax Preto</h2><p>Parte da linha Tonante de suportes, o Suporte P/microfone Girafa Smmax Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte P/ Microfone Girafa Smmax Preto — SMMax, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte P/ Microfone Girafa Smmax Preto</h2><p>Selecionado pela Tonante, o Suporte P/ Microfone Girafa Smmax Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: SMMax",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -115,7 +115,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "SMMax"
       },
       {
         "label": "Garantia",
@@ -123,7 +123,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "suporte-p-microfone-girafa-smmax-preto-17415",
@@ -132,7 +132,7 @@ const rawProducts: Product[] = [
   {
     "id": 3,
     "sku": "29570",
-    "name": "Suporte DE Parede P/ Violao/guitarra AGS",
+    "name": "Suporte de Parede P/ Violao/guitarra AGS",
     "price": "R$ 119,90",
     "priceNum": 119.9,
     "rating": 4.8,
@@ -147,8 +147,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/9/295701780914739.jpg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede P/ Violao/guitarra AGS — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede P/ Violao/guitarra AGS</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede P/ Violao/guitarra AGS carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede P/ Violao/guitarra AGS — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede P/ Violao/guitarra AGS</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede P/ Violao/guitarra AGS carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -186,7 +186,7 @@ const rawProducts: Product[] = [
   {
     "id": 4,
     "sku": "37641",
-    "name": "Microfone COM Cabo USB PODCAST-400U Preto",
+    "name": "Microfone com Cabo USB PODCAST-400U Preto",
     "price": "R$ 49,90",
     "priceNum": 49.9,
     "rating": 4.4,
@@ -203,8 +203,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/7/376411780050717.jpg"
     ],
     "inStock": true,
-    "description": "Microfone COM Cabo USB PODCAST-400U Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone COM Cabo USB PODCAST-400U Preto</h2><p>Parte da linha Tonante de acessórios, o Microfone COM Cabo USB PODCAST-400U Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone com Cabo USB PODCAST-400U Preto — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone com Cabo USB PODCAST-400U Preto</h2><p>Parte da linha Tonante de acessórios, o Microfone com Cabo USB PODCAST-400U Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone · Cabo",
       "Acabamento Tonante de fábrica",
@@ -239,7 +239,7 @@ const rawProducts: Product[] = [
   {
     "id": 5,
     "sku": "CP106936",
-    "name": "Estante Para Partitura Portátil COM Ajuste DE Altura - Dobrável COM BAG - TNE1954",
+    "name": "Estante Para Partitura Portátil com Ajuste de Altura - Dobrável com BAG - TNE1954",
     "price": "R$ 179,90",
     "priceNum": 179.9,
     "rating": 4.7,
@@ -256,8 +256,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/106936-17522920464015416.jpeg"
     ],
     "inStock": true,
-    "description": "Estante Para Partitura Portátil COM Ajuste DE Altura - Dobrável COM BAG - TNE1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Estante Para Partitura Portátil COM Ajuste DE Altura - Dobrável COM BAG - TNE1954</h2><p>Parte da linha Tonante de suportes, o Estante Para Partitura Portátil COM Ajuste DE Altura - Dobrável COM BAG - TNE1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Estante Para Partitura Portátil com Ajuste de Altura - Dobrável com BAG - TNE1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Estante Para Partitura Portátil com Ajuste de Altura - Dobrável com BAG - TNE1954</h2><p>Parte da linha Tonante de suportes, o Estante Para Partitura Portátil com Ajuste de Altura - Dobrável com BAG - TNE1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Dobrável · Capa",
       "Acabamento Tonante de fábrica",
@@ -292,9 +292,9 @@ const rawProducts: Product[] = [
   {
     "id": 6,
     "sku": "CP106942",
-    "name": "Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954",
-    "price": "R$ 369,90",
-    "priceNum": 369.9,
+    "name": "Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954",
+    "price": "R$ 189,90",
+    "priceNum": 189.9,
     "rating": 4.6,
     "reviews": 458,
     "category": "Suportes",
@@ -308,8 +308,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/106942-17522545549759688.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Dobrável",
       "Acabamento Tonante de fábrica",
@@ -344,9 +344,9 @@ const rawProducts: Product[] = [
   {
     "id": 7,
     "sku": "CP106943",
-    "name": "Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954",
-    "price": "R$ 389,90",
-    "priceNum": 389.9,
+    "name": "Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954",
+    "price": "R$ 199,90",
+    "priceNum": 199.9,
     "rating": 4.5,
     "reviews": 487,
     "category": "Suportes",
@@ -360,8 +360,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/106943-17522519523585391.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo E Violão - Tubular - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo e Violão - Tubular - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Dobrável",
       "Acabamento Tonante de fábrica",
@@ -396,9 +396,9 @@ const rawProducts: Product[] = [
   {
     "id": 8,
     "sku": "CP106944",
-    "name": "Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954",
-    "price": "R$ 369,90",
-    "priceNum": 369.9,
+    "name": "Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954",
+    "price": "R$ 189,90",
+    "priceNum": 189.9,
     "rating": 4.8,
     "reviews": 400,
     "category": "Suportes",
@@ -412,8 +412,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/106944-17522514183928029.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Dobrável",
       "Acabamento Tonante de fábrica",
@@ -444,8 +444,8 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "suporte-para-guitarra-baixo-e-violao-tipo-cavalete-dobravel-tns1954-cp106944",
     "productUrl": "https://tonante.com.br/suporte-para-guitarra-baixo-e-violao-tipo-cavalete-dobravel-tns1954-cp106944",
-    "oldPrice": "R$ 409,90",
-    "oldPriceNum": 409.9,
+    "oldPrice": "R$ 209,90",
+    "oldPriceNum": 209.9,
     "badge": "Oferta"
   },
   {
@@ -506,9 +506,9 @@ const rawProducts: Product[] = [
   {
     "id": 10,
     "sku": "CP106946",
-    "name": "Suporte DE Parede Para Guitarra, Baixo E Violão - TNS1954",
-    "price": "R$ 359,90",
-    "priceNum": 359.9,
+    "name": "Suporte de Parede Para Guitarra, Baixo e Violão - TNS1954",
+    "price": "R$ 189,90",
+    "priceNum": 189.9,
     "rating": 4.4,
     "reviews": 342,
     "category": "Suportes",
@@ -521,8 +521,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/106946-17523128018929446.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede Para Guitarra, Baixo E Violão - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede Para Guitarra, Baixo E Violão - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede Para Guitarra, Baixo E Violão - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede Para Guitarra, Baixo e Violão - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede Para Guitarra, Baixo e Violão - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede Para Guitarra, Baixo e Violão - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -557,7 +557,7 @@ const rawProducts: Product[] = [
   {
     "id": 11,
     "sku": "CP106947",
-    "name": "Pedestal Para Microfone Girafa COM Cachimbo - TNP1954",
+    "name": "Pedestal Para Microfone Girafa com Cachimbo - TNP1954",
     "price": "R$ 209,90",
     "priceNum": 209.9,
     "rating": 4.9,
@@ -573,8 +573,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/106947-17523431730061566.jpeg"
     ],
     "inStock": true,
-    "description": "Pedestal Para Microfone Girafa COM Cachimbo - TNP1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Pedestal Para Microfone Girafa COM Cachimbo - TNP1954</h2><p>Parte da linha Tonante de suportes, o Pedestal Para Microfone Girafa COM Cachimbo - TNP1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Pedestal Para Microfone Girafa com Cachimbo - TNP1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Pedestal Para Microfone Girafa com Cachimbo - TNP1954</h2><p>Parte da linha Tonante de suportes, o Pedestal Para Microfone Girafa com Cachimbo - TNP1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -609,7 +609,7 @@ const rawProducts: Product[] = [
   {
     "id": 12,
     "sku": "CP106949",
-    "name": "Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954",
+    "name": "Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954",
     "price": "R$ 229,90",
     "priceNum": 229.9,
     "rating": 4.7,
@@ -625,8 +625,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/106949-17523362357634390.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo E Violão - Tipo Cavalete - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Para Guitarra, Baixo e Violão - Tipo Cavalete - Dobrável - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Dobrável",
       "Acabamento Tonante de fábrica",
@@ -1413,7 +1413,7 @@ const rawProducts: Product[] = [
   {
     "id": 22,
     "sku": "CP108181",
-    "name": "Contrabaixo Elétrico - Theodor -nude Wood - 4 Cordas - TT1954NW",
+    "name": "Contrabaixo Elétrico - Theodor - Nude Wood - 4 Cordas - TT1954NW",
     "price": "R$ 2.390,00",
     "priceNum": 2390,
     "rating": 4.7,
@@ -1505,7 +1505,7 @@ const rawProducts: Product[] = [
   {
     "id": 23,
     "sku": "CP108182",
-    "name": "Contrabaixo Elétrico - Theodor -merlot - 4 Cordas - TT1954ML",
+    "name": "Contrabaixo Elétrico - Theodor - Merlot - 4 Cordas - TT1954ML",
     "price": "R$ 1.899,90",
     "priceNum": 1899.9,
     "rating": 4.4,
@@ -1523,7 +1523,7 @@ const rawProducts: Product[] = [
       "https://cdn.oderco.com.br/produtos/108182/108182-A6.png"
     ],
     "inStock": true,
-    "description": "Contrabaixo Elétrico - Theodor -merlot - 4 Cordas - TT1954ML — tradição Tonante desde 1954.",
+    "description": "Contrabaixo Elétrico - Theodor - Merlot - 4 Cordas - TT1954ML — tradição Tonante desde 1954.",
     "htmlDescription": "<section class=\"produto-descricao\"><h2>O Theodor</h2><p>É um baixo projetado para músicos que buscam qualidade &amp; versatilidade em um instrumento.\nCom corpo em Basswood, este instrumento oferece um som equilibrado, com boa definição e excelente resposta em todas as frequências. O braço em Maple garante resistência e durabilidade.</p><h3>Disponível em três opções de cores:</h3><p>- Nude Wood;\n- Merlot;\n- Deep Dark\nO Theodor oferece um visual elegante e moderno.</p>",
     "features": [
       "Tipo: Contrabaixo elétrico",
@@ -1593,7 +1593,7 @@ const rawProducts: Product[] = [
   {
     "id": 24,
     "sku": "CP108183",
-    "name": "Contrabaixo Elétrico - Theodor -deep Dark - 4 Cordas - TT1954DD",
+    "name": "Contrabaixo Elétrico - Theodor - Deep Dark - 4 Cordas - TT1954DD",
     "price": "R$ 2.749,90",
     "priceNum": 2749.9,
     "rating": 4.9,
@@ -1611,7 +1611,7 @@ const rawProducts: Product[] = [
       "https://cdn.oderco.com.br/produtos/108183/108183-A6.png"
     ],
     "inStock": true,
-    "description": "Contrabaixo Elétrico - Theodor -deep Dark - 4 Cordas - TT1954DD — tradição Tonante desde 1954.",
+    "description": "Contrabaixo Elétrico - Theodor - Deep Dark - 4 Cordas - TT1954DD — tradição Tonante desde 1954.",
     "htmlDescription": "<section class=\"produto-descricao\"><h2>O Theodor</h2><p>É um baixo projetado para músicos que buscam qualidade &amp; versatilidade em um instrumento.\nCom corpo em Basswood, este instrumento oferece um som equilibrado, com boa definição e excelente resposta em todas as frequências. O braço em Maple garante resistência e durabilidade.</p><h3>Disponível em três opções de cores:</h3><p>- Nude Wood;\n- Merlot;\n- Deep Dark\nO Theodor oferece um visual elegante e moderno.</p>",
     "features": [
       "Tipo: Contrabaixo elétrico",
@@ -1906,9 +1906,9 @@ const rawProducts: Product[] = [
   {
     "id": 29,
     "sku": "CP10964",
-    "name": "Cabo DE Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto",
-    "price": "R$ 2.439,90",
-    "priceNum": 2439.9,
+    "name": "Cabo de Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto",
+    "price": "R$ 144,90",
+    "priceNum": 144.9,
     "rating": 4.6,
     "reviews": 120,
     "category": "Guitarras",
@@ -1916,19 +1916,19 @@ const rawProducts: Product[] = [
       "Guitarras",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10964_1-17573495018096459.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10964_1-17573495018096459.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto</h2><p>Parte da linha Tonante de guitarras, o Cabo DE Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto</h2><p>Selecionado pela Tonante, o Cabo de Guitarra Ninja Cable 0,20 MM P10/P10 10FT 3,05M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -1941,7 +1941,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -1949,21 +1949,21 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guitarra-ninja-cable-0-20-mm-p10-p10-10ft-3-05m-preto-cp10964",
     "productUrl": "https://tonante.com.br/cabo-de-guitarra-ninja-cable-0-20-mm-p10-p10-10ft-3-05m-preto-cp10964",
-    "oldPrice": "R$ 3.069,90",
-    "oldPriceNum": 3069.9,
+    "oldPrice": "R$ 179,90",
+    "oldPriceNum": 179.9,
     "badge": "Oferta"
   },
   {
     "id": 30,
     "sku": "CP10966",
-    "name": "Cabo DE Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T",
-    "price": "R$ 249,90",
-    "priceNum": 249.9,
+    "name": "Cabo de Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.4,
     "reviews": 178,
     "category": "Acessórios",
@@ -1971,19 +1971,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10966_1-17573496127964037.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10966_1-17573496127964037.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T</h2><p>Selecionado pela Tonante, o Cabo de Microf. Ninja HG 0,20 MM P10/ XLR F. 03FT 0,91CM T é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -1996,7 +1996,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -2004,7 +2004,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-microf-ninja-hg-0-20-mm-p10-xlr-f-03ft-0-91cm-t-cp10966",
@@ -2013,7 +2013,7 @@ const rawProducts: Product[] = [
   {
     "id": 31,
     "sku": "CP10967",
-    "name": "Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT",
+    "name": "Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT",
     "price": "R$ 19,90",
     "priceNum": 19.9,
     "rating": 4.9,
@@ -2023,19 +2023,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10967_1-17573496501567971.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10967_1-17573496501567971.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT</h2><p>Selecionado pela Tonante, o Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 10FT 3,05M PT é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -2048,7 +2048,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -2056,7 +2056,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-microf-ninja-hg-0-20-mm-p10-xlr-f-10ft-3-05m-pt-cp10967",
@@ -2065,9 +2065,9 @@ const rawProducts: Product[] = [
   {
     "id": 32,
     "sku": "CP10968",
-    "name": "Cabo DE Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT",
-    "price": "R$ 199,90",
-    "priceNum": 199.9,
+    "name": "Cabo de Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.4,
     "reviews": 474,
     "category": "Acessórios",
@@ -2075,19 +2075,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10968_1-17573497860192444.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10968_1-17573497860192444.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT</h2><p>Selecionado pela Tonante, o Cabo de Microf. Ninja HG 0,20 MM P10/XLR Femea 15FT 4,57M PT é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -2100,7 +2100,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -2108,7 +2108,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-microf-ninja-hg-0-20-mm-p10-xlr-femea-15ft-4-57m-pt-cp10968",
@@ -2128,19 +2128,19 @@ const rawProducts: Product[] = [
       "Microfone",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10969-17458757270742827.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10969-17458757270742827.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo Para Microfone XLR M / XLR F Ninja LW 03FT 0,91M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microfone XLR M / XLR F Ninja LW 03FT 0,91M Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo Para Microfone XLR M / XLR F Ninja LW 03FT 0,91M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo Para Microfone XLR M / XLR F Ninja LW 03FT 0,91M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microfone XLR M / XLR F Ninja LW 03FT 0,91M Preto</h2><p>Selecionado pela Tonante, o Cabo Para Microfone XLR M / XLR F Ninja LW 03FT 0,91M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone · Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -2153,7 +2153,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -2161,7 +2161,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-para-microfone-xlr-m-xlr-f-ninja-lw-03ft-0-91m-preto-cp10969",
@@ -2171,8 +2171,8 @@ const rawProducts: Product[] = [
     "id": 34,
     "sku": "CP10971",
     "name": "Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F Ninja 15FT 4,57M Preto",
-    "price": "R$ 199,90",
-    "priceNum": 199.9,
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.8,
     "reviews": 366,
     "category": "Acessórios",
@@ -2180,19 +2180,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10971-17457919131095456.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/0/10971-17457919131095456.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F Ninja 15FT 4,57M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F Ninja 15FT 4,57M Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F Ninja 15FT 4,57M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F Ninja 15FT 4,57M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F Ninja 15FT 4,57M Preto</h2><p>Selecionado pela Tonante, o Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F Ninja 15FT 4,57M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -2205,7 +2205,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -2213,7 +2213,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-para-microf-ninja-lw-0-20-mm-xlr-m-xlr-f-ninja-15ft-4-57m-preto-cp10971",
@@ -2231,19 +2231,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/1/11002.jpg-17459198268275043.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/1/11002.jpg-17459198268275043.jpeg"
     ],
     "inStock": true,
-    "description": "Plug P10 Mono Ninja C/ Mola — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Plug P10 Mono Ninja C/ Mola</h2><p>Parte da linha Tonante de acessórios, o Plug P10 Mono Ninja C/ Mola carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Plug P10 Mono Ninja C/ Mola — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Plug P10 Mono Ninja C/ Mola</h2><p>Selecionado pela Tonante, o Plug P10 Mono Ninja C/ Mola é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -2256,7 +2256,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -2264,7 +2264,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "plug-p10-mono-ninja-c-mola-cp11002",
@@ -4077,7 +4077,7 @@ const rawProducts: Product[] = [
   {
     "id": 66,
     "sku": "CP112392",
-    "name": "Microfones Pulse PRO 2 SEM FIO + Receiver - SP801",
+    "name": "Microfones Pulse PRO 2 sem FIO + Receiver - SP801",
     "price": "R$ 59,90",
     "priceNum": 59.9,
     "rating": 4.8,
@@ -4093,8 +4093,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/1/112392-1-17642509856531753.jpeg"
     ],
     "inStock": true,
-    "description": "Microfones Pulse PRO 2 SEM FIO + Receiver - SP801 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfones Pulse PRO 2 SEM FIO + Receiver - SP801</h2><p>Parte da linha Tonante de acessórios, o Microfones Pulse PRO 2 SEM FIO + Receiver - SP801 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfones Pulse PRO 2 sem FIO + Receiver - SP801 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfones Pulse PRO 2 sem FIO + Receiver - SP801</h2><p>Parte da linha Tonante de acessórios, o Microfones Pulse PRO 2 sem FIO + Receiver - SP801 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -4184,9 +4184,9 @@ const rawProducts: Product[] = [
   {
     "id": 68,
     "sku": "CP13201",
-    "name": "Cabo DE Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil",
-    "price": "R$ 2.399,90",
-    "priceNum": 2399.9,
+    "name": "Cabo de Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil",
+    "price": "R$ 144,90",
+    "priceNum": 144.9,
     "rating": 4.9,
     "reviews": 399,
     "category": "Guitarras",
@@ -4194,19 +4194,19 @@ const rawProducts: Product[] = [
       "Guitarras",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13201_1-17573494242192622.png",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13201_1-17573494242192622.png"
     ],
     "inStock": true,
-    "description": "Cabo DE Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil</h2><p>Parte da linha Tonante de guitarras, o Cabo DE Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil</h2><p>Selecionado pela Tonante, o Cabo de Guitarra Angel TX 0,30MM P10/P10 90º 10FT 3,05M Textil é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -4219,7 +4219,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -4227,21 +4227,21 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guitarra-angel-tx-0-30mm-p10-p10-90-10ft-3-05m-textil-cp13201",
     "productUrl": "https://tonante.com.br/cabo-de-guitarra-angel-tx-0-30mm-p10-p10-90-10ft-3-05m-textil-cp13201",
-    "oldPrice": "R$ 3.099,90",
-    "oldPriceNum": 3099.9,
+    "oldPrice": "R$ 184,90",
+    "oldPriceNum": 184.9,
     "badge": "Oferta"
   },
   {
     "id": 69,
     "sku": "CP13202",
-    "name": "Cabo DE Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil",
-    "price": "R$ 4.309,90",
-    "priceNum": 4309.9,
+    "name": "Cabo de Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil",
+    "price": "R$ 179,90",
+    "priceNum": 179.9,
     "rating": 4.8,
     "reviews": 428,
     "category": "Guitarras",
@@ -4249,19 +4249,19 @@ const rawProducts: Product[] = [
       "Guitarras",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13202_1-17573492321702087.png",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13202_1-17573492321702087.png"
     ],
     "inStock": true,
-    "description": "Cabo DE Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil</h2><p>Parte da linha Tonante de guitarras, o Cabo DE Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil</h2><p>Selecionado pela Tonante, o Cabo de Guitarra Angel TX 0,30 MM P10/P10 90º 15FT 4,57M Textil é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -4274,7 +4274,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -4282,7 +4282,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guitarra-angel-tx-0-30-mm-p10-p10-90-15ft-4-57m-textil-cp13202",
@@ -4291,7 +4291,7 @@ const rawProducts: Product[] = [
   {
     "id": 70,
     "sku": "CP13205",
-    "name": "Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto",
+    "name": "Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto",
     "price": "R$ 29,90",
     "priceNum": 29.9,
     "rating": 4.5,
@@ -4301,19 +4301,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13205_1-17573497533487480.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13205_1-17573497533487480.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto</h2><p>Selecionado pela Tonante, o Cabo de Microf. Ninja HG 0,20 MM P10/XLR F. 25FT 7,62M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -4326,7 +4326,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -4334,7 +4334,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-microf-ninja-hg-0-20-mm-p10-xlr-f-25ft-7-62m-preto-cp13205",
@@ -4356,19 +4356,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13206-17569949626965955.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13206-17569949626965955.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F 20FT 6,10M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F 20FT 6,10M Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F 20FT 6,10M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F 20FT 6,10M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F 20FT 6,10M Preto</h2><p>Selecionado pela Tonante, o Cabo Para Microf. Ninja LW 0,20 MM XLR M/ XLR F 20FT 6,10M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -4381,7 +4381,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -4389,7 +4389,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-para-microf-ninja-lw-0-20-mm-xlr-m-xlr-f-20ft-6-10m-preto-cp13206",
@@ -4412,19 +4412,19 @@ const rawProducts: Product[] = [
       "Microfone",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13207-17569946547853736.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13207-17569946547853736.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo Para Microfone XLR M / XLR F Ninja LW 25FT 7,62M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microfone XLR M / XLR F Ninja LW 25FT 7,62M Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo Para Microfone XLR M / XLR F Ninja LW 25FT 7,62M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo Para Microfone XLR M / XLR F Ninja LW 25FT 7,62M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microfone XLR M / XLR F Ninja LW 25FT 7,62M Preto</h2><p>Selecionado pela Tonante, o Cabo Para Microfone XLR M / XLR F Ninja LW 25FT 7,62M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone · Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -4437,7 +4437,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -4445,7 +4445,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-para-microfone-xlr-m-xlr-f-ninja-lw-25ft-7-62m-preto-cp13207",
@@ -4454,9 +4454,9 @@ const rawProducts: Product[] = [
   {
     "id": 73,
     "sku": "CP13228",
-    "name": "Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto",
-    "price": "R$ 2.279,90",
-    "priceNum": 2279.9,
+    "name": "Cabo de Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto",
+    "price": "R$ 144,90",
+    "priceNum": 144.9,
     "rating": 4.4,
     "reviews": 402,
     "category": "Guitarras",
@@ -4464,19 +4464,19 @@ const rawProducts: Product[] = [
       "Guitarras",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13228_1-17573491218686946.png",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13228_1-17573491218686946.png"
     ],
     "inStock": true,
-    "description": "Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto</h2><p>Parte da linha Tonante de guitarras, o Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto</h2><p>Selecionado pela Tonante, o Cabo de Guitarra Angel L 0,30MM P10/P10 90º 10FT 3,05 M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -4489,7 +4489,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -4497,21 +4497,21 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guitarra-angel-l-0-30mm-p10-p10-90-10ft-3-05-m-preto-cp13228",
     "productUrl": "https://tonante.com.br/cabo-de-guitarra-angel-l-0-30mm-p10-p10-90-10ft-3-05-m-preto-cp13228",
-    "oldPrice": "R$ 2.389,90",
-    "oldPriceNum": 2389.9,
+    "oldPrice": "R$ 149,90",
+    "oldPriceNum": 149.9,
     "badge": "Oferta"
   },
   {
     "id": 74,
     "sku": "CP13230",
-    "name": "Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto",
-    "price": "R$ 2.849,90",
-    "priceNum": 2849.9,
+    "name": "Cabo de Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto",
+    "price": "R$ 154,90",
+    "priceNum": 154.9,
     "rating": 4.5,
     "reviews": 329,
     "category": "Guitarras",
@@ -4519,19 +4519,19 @@ const rawProducts: Product[] = [
       "Guitarras",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13230_1-17573491788535710.png",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/3/13230_1-17573491788535710.png"
     ],
     "inStock": true,
-    "description": "Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto</h2><p>Parte da linha Tonante de guitarras, o Cabo DE Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto</h2><p>Selecionado pela Tonante, o Cabo de Guitarra Angel L 0,30MM P10/P10 90º 20FT 6,10M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -4544,7 +4544,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -4552,7 +4552,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guitarra-angel-l-0-30mm-p10-p10-90-20ft-6-10m-preto-cp13230",
@@ -4665,7 +4665,7 @@ const rawProducts: Product[] = [
   {
     "id": 77,
     "sku": "CP146108",
-    "name": "Suporte Triplo Para Guitarra, Baixo E Violão -TNS1954",
+    "name": "Suporte Triplo Para Guitarra, Baixo e Violão -TNS1954",
     "price": "R$ 169,90",
     "priceNum": 169.9,
     "rating": 4.4,
@@ -4680,8 +4680,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/4/146108-17459061237573801.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte Triplo Para Guitarra, Baixo E Violão -TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Triplo Para Guitarra, Baixo E Violão -TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Triplo Para Guitarra, Baixo E Violão -TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte Triplo Para Guitarra, Baixo e Violão -TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Triplo Para Guitarra, Baixo e Violão -TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte Triplo Para Guitarra, Baixo e Violão -TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -4716,9 +4716,9 @@ const rawProducts: Product[] = [
   {
     "id": 78,
     "sku": "CP146109",
-    "name": "Suporte DE Parede Para Guitarra, Baixo E Violão Slatwall COM Regulagem - TNS1954",
-    "price": "R$ 269,90",
-    "priceNum": 269.9,
+    "name": "Suporte de Parede Para Guitarra, Baixo e Violão Slatwall com Regulagem - TNS1954",
+    "price": "R$ 149,90",
+    "priceNum": 149.9,
     "rating": 4.9,
     "reviews": 289,
     "category": "Suportes",
@@ -4731,8 +4731,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/4/146109-17523709938482355.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede Para Guitarra, Baixo E Violão Slatwall COM Regulagem - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede Para Guitarra, Baixo E Violão Slatwall COM Regulagem - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede Para Guitarra, Baixo E Violão Slatwall COM Regulagem - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede Para Guitarra, Baixo e Violão Slatwall com Regulagem - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede Para Guitarra, Baixo e Violão Slatwall com Regulagem - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede Para Guitarra, Baixo e Violão Slatwall com Regulagem - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -4767,7 +4767,7 @@ const rawProducts: Product[] = [
   {
     "id": 79,
     "sku": "CP146110",
-    "name": "Suporte DE Parede Para Guitarra, Baixo E Violão COM Trava - TNS1954",
+    "name": "Suporte de Parede Para Guitarra, Baixo e Violão com Trava - TNS1954",
     "price": "R$ 79,90",
     "priceNum": 79.9,
     "rating": 4.9,
@@ -4782,8 +4782,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/4/146110-17522530403104114.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede Para Guitarra, Baixo E Violão COM Trava - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede Para Guitarra, Baixo E Violão COM Trava - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede Para Guitarra, Baixo E Violão COM Trava - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede Para Guitarra, Baixo e Violão com Trava - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede Para Guitarra, Baixo e Violão com Trava - TNS1954</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede Para Guitarra, Baixo e Violão com Trava - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -4818,7 +4818,7 @@ const rawProducts: Product[] = [
   {
     "id": 80,
     "sku": "CP14855",
-    "name": "Microfone COM FIO Profissional FNK5",
+    "name": "Microfone com FIO Profissional FNK5",
     "price": "R$ 19,90",
     "priceNum": 19.9,
     "rating": 4.9,
@@ -4834,8 +4834,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/4/14855.jpg-17573354444459416.jpeg"
     ],
     "inStock": true,
-    "description": "Microfone COM FIO Profissional FNK5 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone COM FIO Profissional FNK5</h2><p>Parte da linha Tonante de acessórios, o Microfone COM FIO Profissional FNK5 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone com FIO Profissional FNK5 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone com FIO Profissional FNK5</h2><p>Parte da linha Tonante de acessórios, o Microfone com FIO Profissional FNK5 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -4870,7 +4870,7 @@ const rawProducts: Product[] = [
   {
     "id": 81,
     "sku": "CP152259",
-    "name": "Damper EM Couro E TAG EM Metal Prata Metal DMMD01",
+    "name": "Damper em Couro e TAG em Metal Prata Metal DMMD01",
     "price": "R$ 179,90",
     "priceNum": 179.9,
     "rating": 4.4,
@@ -4885,8 +4885,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152259-17458629760564369.jpeg"
     ],
     "inStock": true,
-    "description": "Damper EM Couro E TAG EM Metal Prata Metal DMMD01 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper EM Couro E TAG EM Metal Prata Metal DMMD01</h2><p>Parte da linha Tonante de acessórios, o Damper EM Couro E TAG EM Metal Prata Metal DMMD01 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Damper em Couro e TAG em Metal Prata Metal DMMD01 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper em Couro e TAG em Metal Prata Metal DMMD01</h2><p>Parte da linha Tonante de acessórios, o Damper em Couro e TAG em Metal Prata Metal DMMD01 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -4921,7 +4921,7 @@ const rawProducts: Product[] = [
   {
     "id": 82,
     "sku": "CP152260",
-    "name": "Damper EM Couro E TAG EM Metal Dourado Metalico DMMD02",
+    "name": "Damper em Couro e TAG em Metal Dourado Metalico DMMD02",
     "price": "R$ 129,90",
     "priceNum": 129.9,
     "rating": 4.6,
@@ -4936,8 +4936,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152260-17458693297278892.jpeg"
     ],
     "inStock": true,
-    "description": "Damper EM Couro E TAG EM Metal Dourado Metalico DMMD02 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper EM Couro E TAG EM Metal Dourado Metalico DMMD02</h2><p>Parte da linha Tonante de acessórios, o Damper EM Couro E TAG EM Metal Dourado Metalico DMMD02 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Damper em Couro e TAG em Metal Dourado Metalico DMMD02 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper em Couro e TAG em Metal Dourado Metalico DMMD02</h2><p>Parte da linha Tonante de acessórios, o Damper em Couro e TAG em Metal Dourado Metalico DMMD02 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -4973,7 +4973,7 @@ const rawProducts: Product[] = [
   {
     "id": 83,
     "sku": "CP152261",
-    "name": "Damper Ibox EM Couro E TAG EM Metal Vermelho Metalico DMMD04",
+    "name": "Damper Ibox em Couro e TAG em Metal Vermelho Metalico DMMD04",
     "price": "R$ 309,90",
     "priceNum": 309.9,
     "rating": 4.5,
@@ -4982,19 +4982,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "Ibox",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152261-17458494703688373.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152261-17458494703688373.jpeg"
     ],
     "inStock": true,
-    "description": "Damper Ibox EM Couro E TAG EM Metal Vermelho Metalico DMMD04 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper Ibox EM Couro E TAG EM Metal Vermelho Metalico DMMD04</h2><p>Parte da linha Tonante de acessórios, o Damper Ibox EM Couro E TAG EM Metal Vermelho Metalico DMMD04 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Damper Ibox em Couro e TAG em Metal Vermelho Metalico DMMD04 — Ibox, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper Ibox em Couro e TAG em Metal Vermelho Metalico DMMD04</h2><p>Selecionado pela Tonante, o Damper Ibox em Couro e TAG em Metal Vermelho Metalico DMMD04 é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Ibox",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5007,7 +5007,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Ibox"
       },
       {
         "label": "Garantia",
@@ -5015,7 +5015,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "damper-ibox-em-couro-e-tag-em-metal-vermelho-metalico-dmmd04-cp152261",
@@ -5024,7 +5024,7 @@ const rawProducts: Product[] = [
   {
     "id": 84,
     "sku": "CP152262",
-    "name": "Damper EM Couro E TAG EM Metal Preto DSMD02",
+    "name": "Damper em Couro e TAG em Metal Preto DSMD02",
     "price": "R$ 109,90",
     "priceNum": 109.9,
     "rating": 4.8,
@@ -5039,8 +5039,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152262-17459240515504932.jpeg"
     ],
     "inStock": true,
-    "description": "Damper EM Couro E TAG EM Metal Preto DSMD02 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper EM Couro E TAG EM Metal Preto DSMD02</h2><p>Parte da linha Tonante de acessórios, o Damper EM Couro E TAG EM Metal Preto DSMD02 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Damper em Couro e TAG em Metal Preto DSMD02 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper em Couro e TAG em Metal Preto DSMD02</h2><p>Parte da linha Tonante de acessórios, o Damper em Couro e TAG em Metal Preto DSMD02 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -5075,7 +5075,7 @@ const rawProducts: Product[] = [
   {
     "id": 85,
     "sku": "CP152264",
-    "name": "Damper EM Poliester E TAG EM Metal Marrom DTMD18",
+    "name": "Damper em Poliester e TAG em Metal Marrom DTMD18",
     "price": "R$ 99,90",
     "priceNum": 99.9,
     "rating": 4.4,
@@ -5090,8 +5090,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152264-17458916992041633.jpeg"
     ],
     "inStock": true,
-    "description": "Damper EM Poliester E TAG EM Metal Marrom DTMD18 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper EM Poliester E TAG EM Metal Marrom DTMD18</h2><p>Parte da linha Tonante de acessórios, o Damper EM Poliester E TAG EM Metal Marrom DTMD18 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Damper em Poliester e TAG em Metal Marrom DTMD18 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Damper em Poliester e TAG em Metal Marrom DTMD18</h2><p>Parte da linha Tonante de acessórios, o Damper em Poliester e TAG em Metal Marrom DTMD18 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -5126,9 +5126,9 @@ const rawProducts: Product[] = [
   {
     "id": 86,
     "sku": "CP152268",
-    "name": "Palheta Ibox 1.0MM C/ 20 PCS Preto PLP100BK",
-    "price": "R$ 329,90",
-    "priceNum": 329.9,
+    "name": "Palheta Ibox 1.0MM C/ 20 pçs Preto PLP100BK",
+    "price": "R$ 54,90",
+    "priceNum": 54.9,
     "rating": 4.8,
     "reviews": 406,
     "category": "Acessórios",
@@ -5136,19 +5136,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Palheta"
     ],
-    "brand": "Tonante",
+    "brand": "Ibox",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152268-17458725957963934.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152268-17458725957963934.jpeg"
     ],
     "inStock": true,
-    "description": "Palheta Ibox 1.0MM C/ 20 PCS Preto PLP100BK — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.0MM C/ 20 PCS Preto PLP100BK</h2><p>Parte da linha Tonante de acessórios, o Palheta Ibox 1.0MM C/ 20 PCS Preto PLP100BK carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Palheta Ibox 1.0MM C/ 20 pçs Preto PLP100BK — Ibox, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.0MM C/ 20 pçs Preto PLP100BK</h2><p>Selecionado pela Tonante, o Palheta Ibox 1.0MM C/ 20 pçs Preto PLP100BK é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Palheta",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Ibox",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5161,7 +5161,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Ibox"
       },
       {
         "label": "Garantia",
@@ -5169,7 +5169,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "palheta-ibox-1-0mm-c-20-pcs-preto-plp100bk-cp152268",
@@ -5178,9 +5178,9 @@ const rawProducts: Product[] = [
   {
     "id": 87,
     "sku": "CP152269",
-    "name": "Palheta Ibox 1.00MM C/ 20 PCS Azul PLP100BL",
-    "price": "R$ 319,90",
-    "priceNum": 319.9,
+    "name": "Palheta Ibox 1.00MM C/ 20 pçs Azul PLP100BL",
+    "price": "R$ 54,90",
+    "priceNum": 54.9,
     "rating": 4.7,
     "reviews": 435,
     "category": "Acessórios",
@@ -5188,19 +5188,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Palheta"
     ],
-    "brand": "Tonante",
+    "brand": "Ibox",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152269_2-17458614645401589.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152269_2-17458614645401589.jpeg"
     ],
     "inStock": true,
-    "description": "Palheta Ibox 1.00MM C/ 20 PCS Azul PLP100BL — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.00MM C/ 20 PCS Azul PLP100BL</h2><p>Parte da linha Tonante de acessórios, o Palheta Ibox 1.00MM C/ 20 PCS Azul PLP100BL carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Palheta Ibox 1.00MM C/ 20 pçs Azul PLP100BL — Ibox, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.00MM C/ 20 pçs Azul PLP100BL</h2><p>Selecionado pela Tonante, o Palheta Ibox 1.00MM C/ 20 pçs Azul PLP100BL é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Palheta",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Ibox",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5213,7 +5213,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Ibox"
       },
       {
         "label": "Garantia",
@@ -5221,7 +5221,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "palheta-ibox-1-00mm-c-20-pcs-azul-plp100bl-cp152269",
@@ -5230,9 +5230,9 @@ const rawProducts: Product[] = [
   {
     "id": 88,
     "sku": "CP152272",
-    "name": "Palheta Ibox 1.00MM C/ 20 PCS Laranja PLP100OG",
-    "price": "R$ 329,90",
-    "priceNum": 329.9,
+    "name": "Palheta Ibox 1.00MM C/ 20 pçs Laranja PLP100OG",
+    "price": "R$ 54,90",
+    "priceNum": 54.9,
     "rating": 4.5,
     "reviews": 213,
     "category": "Acessórios",
@@ -5240,19 +5240,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Palheta"
     ],
-    "brand": "Tonante",
+    "brand": "Ibox",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152272-17459172713903504.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152272-17459172713903504.jpeg"
     ],
     "inStock": true,
-    "description": "Palheta Ibox 1.00MM C/ 20 PCS Laranja PLP100OG — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.00MM C/ 20 PCS Laranja PLP100OG</h2><p>Parte da linha Tonante de acessórios, o Palheta Ibox 1.00MM C/ 20 PCS Laranja PLP100OG carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Palheta Ibox 1.00MM C/ 20 pçs Laranja PLP100OG — Ibox, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.00MM C/ 20 pçs Laranja PLP100OG</h2><p>Selecionado pela Tonante, o Palheta Ibox 1.00MM C/ 20 pçs Laranja PLP100OG é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Palheta",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Ibox",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5265,7 +5265,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Ibox"
       },
       {
         "label": "Garantia",
@@ -5273,21 +5273,21 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "palheta-ibox-1-00mm-c-20-pcs-laranja-plp100og-cp152272",
     "productUrl": "https://tonante.com.br/palheta-ibox-1-00mm-c-20-pcs-laranja-plp100og-cp152272",
-    "oldPrice": "R$ 429,90",
-    "oldPriceNum": 429.9,
+    "oldPrice": "R$ 69,90",
+    "oldPriceNum": 69.9,
     "badge": "Oferta"
   },
   {
     "id": 89,
     "sku": "CP152273",
-    "name": "Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD",
-    "price": "R$ 309,90",
-    "priceNum": 309.9,
+    "name": "Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD",
+    "price": "R$ 54,90",
+    "priceNum": 54.9,
     "rating": 4.6,
     "reviews": 184,
     "category": "Acessórios",
@@ -5295,19 +5295,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Palheta"
     ],
-    "brand": "Tonante",
+    "brand": "Ibox",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152273_2-17459165074785513.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152273_2-17459165074785513.jpeg"
     ],
     "inStock": true,
-    "description": "Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD</h2><p>Parte da linha Tonante de acessórios, o Palheta Ibox 1.0MM C/ 20 PCS Vermelho PLP100RD carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD — Ibox, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD</h2><p>Selecionado pela Tonante, o Palheta Ibox 1.0MM C/ 20 pçs Vermelho PLP100RD é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Palheta",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Ibox",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5320,7 +5320,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Ibox"
       },
       {
         "label": "Garantia",
@@ -5328,7 +5328,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "palheta-ibox-1-0mm-c-20-pcs-vermelho-plp100rd-cp152273",
@@ -5337,9 +5337,9 @@ const rawProducts: Product[] = [
   {
     "id": 90,
     "sku": "CP152274",
-    "name": "Roldanas Cromadas P/ Correias DE Instrumento RD01C",
-    "price": "R$ 249,90",
-    "priceNum": 249.9,
+    "name": "Roldanas Cromadas P/ Correias de Instrumento RD01C",
+    "price": "R$ 29,90",
+    "priceNum": 29.9,
     "rating": 4.9,
     "reviews": 271,
     "category": "Acessórios",
@@ -5352,8 +5352,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152274-17457143736195612.jpeg"
     ],
     "inStock": true,
-    "description": "Roldanas Cromadas P/ Correias DE Instrumento RD01C — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Roldanas Cromadas P/ Correias DE Instrumento RD01C</h2><p>Parte da linha Tonante de acessórios, o Roldanas Cromadas P/ Correias DE Instrumento RD01C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Roldanas Cromadas P/ Correias de Instrumento RD01C — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Roldanas Cromadas P/ Correias de Instrumento RD01C</h2><p>Parte da linha Tonante de acessórios, o Roldanas Cromadas P/ Correias de Instrumento RD01C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -5388,9 +5388,9 @@ const rawProducts: Product[] = [
   {
     "id": 91,
     "sku": "CP152275",
-    "name": "Correia Comfort 5CM Listras CK505 PT VM BR E CZ",
-    "price": "R$ 309,90",
-    "priceNum": 309.9,
+    "name": "Correia Comfort 5CM Listras CK505 PT VM BR e CZ",
+    "price": "R$ 139,90",
+    "priceNum": 139.9,
     "rating": 4.4,
     "reviews": 242,
     "category": "Acessórios",
@@ -5403,8 +5403,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152275_2-17458148519187147.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Comfort 5CM Listras CK505 PT VM BR E CZ — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Comfort 5CM Listras CK505 PT VM BR E CZ</h2><p>Parte da linha Tonante de acessórios, o Correia Comfort 5CM Listras CK505 PT VM BR E CZ carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Comfort 5CM Listras CK505 PT VM BR e CZ — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Comfort 5CM Listras CK505 PT VM BR e CZ</h2><p>Parte da linha Tonante de acessórios, o Correia Comfort 5CM Listras CK505 PT VM BR e CZ carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -5435,8 +5435,8 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "correia-comfort-5cm-listras-ck505-pt-vm-br-e-cz-cp152275",
     "productUrl": "https://tonante.com.br/correia-comfort-5cm-listras-ck505-pt-vm-br-e-cz-cp152275",
-    "oldPrice": "R$ 379,90",
-    "oldPriceNum": 379.9,
+    "oldPrice": "R$ 169,90",
+    "oldPriceNum": 169.9,
     "badge": "Oferta"
   },
   {
@@ -5545,8 +5545,8 @@ const rawProducts: Product[] = [
     "id": 94,
     "sku": "CP152278",
     "name": "Correia Luxo CL72I Preta",
-    "price": "R$ 269,90",
-    "priceNum": 269.9,
+    "price": "R$ 124,90",
+    "priceNum": 124.9,
     "rating": 4.5,
     "reviews": 387,
     "category": "Acessórios",
@@ -5591,16 +5591,16 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "correia-luxo-cl72i-preta-cp152278",
     "productUrl": "https://tonante.com.br/correia-luxo-cl72i-preta-cp152278",
-    "oldPrice": "R$ 299,90",
-    "oldPriceNum": 299.9,
+    "oldPrice": "R$ 139,90",
+    "oldPriceNum": 139.9,
     "badge": "Oferta"
   },
   {
     "id": 95,
     "sku": "CP152280",
-    "name": "Suporte Tripe P/ Caixa DE SOM Acustica Profissional TR3",
-    "price": "R$ 329,90",
-    "priceNum": 329.9,
+    "name": "Suporte Tripe P/ Caixa de Som Acustica Profissional TR3",
+    "price": "R$ 174,90",
+    "priceNum": 174.9,
     "rating": 4.6,
     "reviews": 374,
     "category": "Suportes",
@@ -5614,8 +5614,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152280_3-17458928618705847.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte Tripe P/ Caixa DE SOM Acustica Profissional TR3 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Tripe P/ Caixa DE SOM Acustica Profissional TR3</h2><p>Parte da linha Tonante de suportes, o Suporte Tripe P/ Caixa DE SOM Acustica Profissional TR3 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte Tripe P/ Caixa de Som Acustica Profissional TR3 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte Tripe P/ Caixa de Som Acustica Profissional TR3</h2><p>Parte da linha Tonante de suportes, o Suporte Tripe P/ Caixa de Som Acustica Profissional TR3 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acústico",
       "Acabamento Tonante de fábrica",
@@ -5651,7 +5651,7 @@ const rawProducts: Product[] = [
   {
     "id": 96,
     "sku": "CP152309",
-    "name": "Cabo DE Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT",
+    "name": "Cabo de Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT",
     "price": "R$ 79,90",
     "priceNum": 79.9,
     "rating": 4.8,
@@ -5667,8 +5667,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152309-17522774362702068.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo de Guit.shogun 0,75MM P10/P10 90º 20FT 6,10M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
       "Acabamento Tonante de fábrica",
@@ -5704,7 +5704,7 @@ const rawProducts: Product[] = [
   {
     "id": 97,
     "sku": "CP152310",
-    "name": "Cabo DE Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT",
+    "name": "Cabo de Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT",
     "price": "R$ 59,90",
     "priceNum": 59.9,
     "rating": 4.6,
@@ -5720,8 +5720,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152310-17522773803622010.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo de Guit. Shogun 0,75MM P10/P10 90º 15FT 4,57M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
       "Acabamento Tonante de fábrica",
@@ -5756,7 +5756,7 @@ const rawProducts: Product[] = [
   {
     "id": 98,
     "sku": "CP152315",
-    "name": "Cabo DE Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT",
+    "name": "Cabo de Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT",
     "price": "R$ 69,90",
     "priceNum": 69.9,
     "rating": 4.7,
@@ -5772,8 +5772,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152315-17523406741251824.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo de Guit. Samurai 0,30 MM P10/P10 15FT 4,57M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
       "Acabamento Tonante de fábrica",
@@ -5809,8 +5809,8 @@ const rawProducts: Product[] = [
     "id": 99,
     "sku": "CP152321",
     "name": "Cabo Para Microfone XLR M / XLR F Ninja LW 30FT 9,15M Preto",
-    "price": "R$ 189,90",
-    "priceNum": 189.9,
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.4,
     "reviews": 282,
     "category": "Acessórios",
@@ -5819,19 +5819,19 @@ const rawProducts: Product[] = [
       "Microfone",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152321-17569947824839406.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152321-17569947824839406.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo Para Microfone XLR M / XLR F Ninja LW 30FT 9,15M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microfone XLR M / XLR F Ninja LW 30FT 9,15M Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo Para Microfone XLR M / XLR F Ninja LW 30FT 9,15M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo Para Microfone XLR M / XLR F Ninja LW 30FT 9,15M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo Para Microfone XLR M / XLR F Ninja LW 30FT 9,15M Preto</h2><p>Selecionado pela Tonante, o Cabo Para Microfone XLR M / XLR F Ninja LW 30FT 9,15M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone · Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5844,7 +5844,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -5852,19 +5852,19 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-para-microfone-xlr-m-xlr-f-ninja-lw-30ft-9-15m-preto-cp152321",
     "productUrl": "https://tonante.com.br/cabo-para-microfone-xlr-m-xlr-f-ninja-lw-30ft-9-15m-preto-cp152321",
-    "oldPrice": "R$ 249,90",
-    "oldPriceNum": 249.9,
+    "oldPrice": "R$ 144,90",
+    "oldPriceNum": 144.9,
     "badge": "Oferta"
   },
   {
     "id": 100,
     "sku": "CP152324",
-    "name": "Plug P10 Ninja Estereo COM Mola",
+    "name": "Plug P10 Ninja Estereo com Mola",
     "price": "R$ 259,90",
     "priceNum": 259.9,
     "rating": 4.7,
@@ -5873,19 +5873,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152324-17458522658976617.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/152324-17458522658976617.jpeg"
     ],
     "inStock": true,
-    "description": "Plug P10 Ninja Estereo COM Mola — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Plug P10 Ninja Estereo COM Mola</h2><p>Parte da linha Tonante de acessórios, o Plug P10 Ninja Estereo COM Mola carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Plug P10 Ninja Estereo com Mola — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Plug P10 Ninja Estereo com Mola</h2><p>Selecionado pela Tonante, o Plug P10 Ninja Estereo com Mola é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5898,7 +5898,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -5906,7 +5906,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "plug-p10-ninja-estereo-com-mola-cp152324",
@@ -5915,7 +5915,7 @@ const rawProducts: Product[] = [
   {
     "id": 101,
     "sku": "CP157084",
-    "name": "Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT",
+    "name": "Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT",
     "price": "R$ 39,90",
     "priceNum": 39.9,
     "rating": 4.7,
@@ -5925,19 +5925,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157084_1-17573490355671638.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157084_1-17573490355671638.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT</h2><p>Selecionado pela Tonante, o Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 10FT 3,05M PT é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -5950,7 +5950,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -5958,7 +5958,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guit-ninja-l-cable-0-20-mm-p10-p10-90-10ft-3-05m-pt-cp157084",
@@ -5970,9 +5970,9 @@ const rawProducts: Product[] = [
   {
     "id": 102,
     "sku": "CP157085",
-    "name": "Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT",
-    "price": "R$ 289,90",
-    "priceNum": 289.9,
+    "name": "Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.8,
     "reviews": 292,
     "category": "Acessórios",
@@ -5980,19 +5980,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157085_1-17573490616384565.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157085_1-17573490616384565.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT</h2><p>Selecionado pela Tonante, o Cabo de Guit. Ninja L Cable 0,20 MM P10/P10 90° 15FT 4,57M PT é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -6005,7 +6005,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -6013,7 +6013,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guit-ninja-l-cable-0-20-mm-p10-p10-90-15ft-4-57m-pt-cp157085",
@@ -6022,9 +6022,9 @@ const rawProducts: Product[] = [
   {
     "id": 103,
     "sku": "CP157089",
-    "name": "Cabo DE Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto",
-    "price": "R$ 199,90",
-    "priceNum": 199.9,
+    "name": "Cabo de Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.8,
     "reviews": 170,
     "category": "Acessórios",
@@ -6032,19 +6032,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157089_1-17573495851921192.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157089_1-17573495851921192.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto</h2><p>Selecionado pela Tonante, o Cabo de Micrf. Ninja L Cable 0,20 MM P10/P10 90° 30FT 9,15M Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -6057,7 +6057,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -6065,21 +6065,21 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-micrf-ninja-l-cable-0-20-mm-p10-p10-90-30ft-9-15m-preto-cp157089",
     "productUrl": "https://tonante.com.br/cabo-de-micrf-ninja-l-cable-0-20-mm-p10-p10-90-30ft-9-15m-preto-cp157089",
-    "oldPrice": "R$ 249,90",
-    "oldPriceNum": 249.9,
+    "oldPrice": "R$ 134,90",
+    "oldPriceNum": 134.9,
     "badge": "Oferta"
   },
   {
     "id": 104,
     "sku": "CP157090",
-    "name": "Cabo DE Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT",
-    "price": "R$ 269,90",
-    "priceNum": 269.9,
+    "name": "Cabo de Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.4,
     "reviews": 278,
     "category": "Acessórios",
@@ -6087,19 +6087,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157090_1-17573495266677054.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157090_1-17573495266677054.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT</h2><p>Selecionado pela Tonante, o Cabo de Guit.ninja Cable 0,20 MM P10/P10 30FT 9,15M PT é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -6112,7 +6112,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -6120,7 +6120,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guit-ninja-cable-0-20-mm-p10-p10-30ft-9-15m-pt-cp157090",
@@ -6129,9 +6129,9 @@ const rawProducts: Product[] = [
   {
     "id": 105,
     "sku": "CP157093",
-    "name": "Cabo DE Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT",
-    "price": "R$ 239,90",
-    "priceNum": 239.9,
+    "name": "Cabo de Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.5,
     "reviews": 249,
     "category": "Acessórios",
@@ -6139,19 +6139,19 @@ const rawProducts: Product[] = [
       "Acessórios",
       "Cabo"
     ],
-    "brand": "Tonante",
+    "brand": "Santo Angelo",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157093_1-17573495532412015.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157093_1-17573495532412015.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT — Santo Angelo, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT</h2><p>Selecionado pela Tonante, o Cabo de Guit.ninja Cable 0,20 MM P10/10 20FT 6,10M PT é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cabo",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Santo Angelo",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -6164,7 +6164,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Santo Angelo"
       },
       {
         "label": "Garantia",
@@ -6172,7 +6172,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cabo-de-guit-ninja-cable-0-20-mm-p10-10-20ft-6-10m-pt-cp157093",
@@ -6181,9 +6181,9 @@ const rawProducts: Product[] = [
   {
     "id": 106,
     "sku": "CP157101",
-    "name": "Cabo DE Microfone X30 0,30MM 100 MT Preto",
-    "price": "R$ 239,90",
-    "priceNum": 239.9,
+    "name": "Cabo de Microfone X30 0,30MM 100 MT Preto",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.5,
     "reviews": 447,
     "category": "Acessórios",
@@ -6198,8 +6198,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/5/157101-17523339457239813.jpeg"
     ],
     "inStock": true,
-    "description": "Cabo DE Microfone X30 0,30MM 100 MT Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo DE Microfone X30 0,30MM 100 MT Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo DE Microfone X30 0,30MM 100 MT Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cabo de Microfone X30 0,30MM 100 MT Preto — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cabo de Microfone X30 0,30MM 100 MT Preto</h2><p>Parte da linha Tonante de acessórios, o Cabo de Microfone X30 0,30MM 100 MT Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone · Cabo",
       "Acabamento Tonante de fábrica",
@@ -6230,16 +6230,16 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "cabo-de-microfone-x30-0-30mm-100-mt-preto-cp157101",
     "productUrl": "https://tonante.com.br/cabo-de-microfone-x30-0-30mm-100-mt-preto-cp157101",
-    "oldPrice": "R$ 249,90",
-    "oldPriceNum": 249.9,
+    "oldPrice": "R$ 114,90",
+    "oldPriceNum": 114.9,
     "badge": "Oferta"
   },
   {
     "id": 107,
     "sku": "CP17415",
-    "name": "Suporte P/microfone Girafa Smmax Preto",
-    "price": "R$ 359,90",
-    "priceNum": 359.9,
+    "name": "Suporte P/ Microfone Girafa Smmax Preto",
+    "price": "R$ 189,90",
+    "priceNum": 189.9,
     "rating": 4.4,
     "reviews": 54,
     "category": "Suportes",
@@ -6247,19 +6247,19 @@ const rawProducts: Product[] = [
       "Suportes",
       "Microfone"
     ],
-    "brand": "Tonante",
+    "brand": "SMMax",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/7/17415.jpg-17458886356477024.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/7/17415.jpg-17458886356477024.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte P/microfone Girafa Smmax Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte P/microfone Girafa Smmax Preto</h2><p>Parte da linha Tonante de suportes, o Suporte P/microfone Girafa Smmax Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte P/ Microfone Girafa Smmax Preto — SMMax, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte P/ Microfone Girafa Smmax Preto</h2><p>Selecionado pela Tonante, o Suporte P/ Microfone Girafa Smmax Preto é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: SMMax",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -6272,7 +6272,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "SMMax"
       },
       {
         "label": "Garantia",
@@ -6280,21 +6280,21 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "suporte-p-microfone-girafa-smmax-preto-cp17415",
     "productUrl": "https://tonante.com.br/suporte-p-microfone-girafa-smmax-preto-cp17415",
-    "oldPrice": "R$ 409,90",
-    "oldPriceNum": 409.9,
+    "oldPrice": "R$ 214,90",
+    "oldPriceNum": 214.9,
     "badge": "Oferta"
   },
   {
     "id": 108,
     "sku": "CP17416",
     "name": "Suporte Portatil Para Violao SGV Preto",
-    "price": "R$ 239,90",
-    "priceNum": 239.9,
+    "price": "R$ 139,90",
+    "priceNum": 139.9,
     "rating": 4.7,
     "reviews": 141,
     "category": "Suportes",
@@ -6344,8 +6344,8 @@ const rawProducts: Product[] = [
     "id": 109,
     "sku": "CP17417",
     "name": "Suporte Para Teclado X30 Preto",
-    "price": "R$ 419,90",
-    "priceNum": 419.9,
+    "price": "R$ 214,90",
+    "priceNum": 214.9,
     "rating": 4.8,
     "reviews": 112,
     "category": "Suportes",
@@ -6394,9 +6394,9 @@ const rawProducts: Product[] = [
   {
     "id": 110,
     "sku": "CP17418",
-    "name": "Suporte DE Parede P/ Violao/guitarra SPF",
-    "price": "R$ 319,90",
-    "priceNum": 319.9,
+    "name": "Suporte de Parede P/ Violao/guitarra SPF",
+    "price": "R$ 169,90",
+    "priceNum": 169.9,
     "rating": 4.9,
     "reviews": 431,
     "category": "Suportes",
@@ -6409,8 +6409,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/7/17418_2-17459223422141673.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede P/ Violao/guitarra SPF — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede P/ Violao/guitarra SPF</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede P/ Violao/guitarra SPF carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede P/ Violao/guitarra SPF — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede P/ Violao/guitarra SPF</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede P/ Violao/guitarra SPF carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -6807,28 +6807,28 @@ const rawProducts: Product[] = [
   {
     "id": 118,
     "sku": "CP18593",
-    "name": "Limpador E Lubrificante DE Cordas D'addario - PW-XLR8",
-    "price": "R$ 319,90",
-    "priceNum": 319.9,
+    "name": "Limpador e Lubrificante de Cordas D'addario - PW-XLR8",
+    "price": "R$ 34,90",
+    "priceNum": 34.9,
     "rating": 4.4,
     "reviews": 296,
     "category": "Acessórios",
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "D'Addario",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/8/18593_1-17621817484905162.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/8/18593_1-17621817484905162.jpeg"
     ],
     "inStock": true,
-    "description": "Limpador E Lubrificante DE Cordas D'addario - PW-XLR8 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Limpador E Lubrificante DE Cordas D'addario - PW-XLR8</h2><p>Parte da linha Tonante de acessórios, o Limpador E Lubrificante DE Cordas D'addario - PW-XLR8 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Limpador e Lubrificante de Cordas D'addario - PW-XLR8 — D'Addario, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Limpador e Lubrificante de Cordas D'addario - PW-XLR8</h2><p>Selecionado pela Tonante, o Limpador e Lubrificante de Cordas D'addario - PW-XLR8 é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: D'Addario",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -6841,7 +6841,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "D'Addario"
       },
       {
         "label": "Garantia",
@@ -6849,7 +6849,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "limpador-e-lubrificante-de-cordas-d-addario-pw-xlr8-cp18593",
@@ -7020,7 +7020,7 @@ const rawProducts: Product[] = [
   {
     "id": 122,
     "sku": "CP191674",
-    "name": "Pedestal Para Caixa DE SOM - Preto - TNP1954",
+    "name": "Pedestal Para Caixa de Som - Preto - TNP1954",
     "price": "R$ 369,90",
     "priceNum": 369.9,
     "rating": 4.4,
@@ -7035,8 +7035,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/9/191674-17523643663122196.jpeg"
     ],
     "inStock": true,
-    "description": "Pedestal Para Caixa DE SOM - Preto - TNP1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Pedestal Para Caixa DE SOM - Preto - TNP1954</h2><p>Parte da linha Tonante de suportes, o Pedestal Para Caixa DE SOM - Preto - TNP1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Pedestal Para Caixa de Som - Preto - TNP1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Pedestal Para Caixa de Som - Preto - TNP1954</h2><p>Parte da linha Tonante de suportes, o Pedestal Para Caixa de Som - Preto - TNP1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -7494,7 +7494,7 @@ const rawProducts: Product[] = [
   {
     "id": 131,
     "sku": "CP23175",
-    "name": "Microfone SEM FIO UHF Lapela Mini-iii",
+    "name": "Microfone sem FIO UHF Lapela Mini-iii",
     "price": "R$ 279,90",
     "priceNum": 279.9,
     "rating": 4.6,
@@ -7510,8 +7510,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/3/23175.jpg-17459113365166824.jpeg"
     ],
     "inStock": true,
-    "description": "Microfone SEM FIO UHF Lapela Mini-iii — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone SEM FIO UHF Lapela Mini-iii</h2><p>Parte da linha Tonante de acessórios, o Microfone SEM FIO UHF Lapela Mini-iii carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone sem FIO UHF Lapela Mini-iii — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone sem FIO UHF Lapela Mini-iii</h2><p>Parte da linha Tonante de acessórios, o Microfone sem FIO UHF Lapela Mini-iii carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -7756,8 +7756,8 @@ const rawProducts: Product[] = [
     "id": 136,
     "sku": "CP23608",
     "name": "Suporte Para Caixa Acustica TR2 Preto",
-    "price": "R$ 379,90",
-    "priceNum": 379.9,
+    "price": "R$ 194,90",
+    "priceNum": 194.9,
     "rating": 4.7,
     "reviews": 177,
     "category": "Suportes",
@@ -7803,16 +7803,16 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "suporte-para-caixa-acustica-tr2-preto-cp23608",
     "productUrl": "https://tonante.com.br/suporte-para-caixa-acustica-tr2-preto-cp23608",
-    "oldPrice": "R$ 459,90",
-    "oldPriceNum": 459.9,
+    "oldPrice": "R$ 234,90",
+    "oldPriceNum": 234.9,
     "badge": "Oferta"
   },
   {
     "id": 137,
     "sku": "CP253640",
-    "name": "Estante Para Partitura Maestro COM Ajuste DE Altura - TNE1954",
-    "price": "R$ 349,90",
-    "priceNum": 349.9,
+    "name": "Estante Para Partitura Maestro com Ajuste de Altura - TNE1954",
+    "price": "R$ 139,90",
+    "priceNum": 139.9,
     "rating": 4.8,
     "reviews": 204,
     "category": "Suportes",
@@ -7825,8 +7825,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253640-17523302860378686.jpeg"
     ],
     "inStock": true,
-    "description": "Estante Para Partitura Maestro COM Ajuste DE Altura - TNE1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Estante Para Partitura Maestro COM Ajuste DE Altura - TNE1954</h2><p>Parte da linha Tonante de suportes, o Estante Para Partitura Maestro COM Ajuste DE Altura - TNE1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Estante Para Partitura Maestro com Ajuste de Altura - TNE1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Estante Para Partitura Maestro com Ajuste de Altura - TNE1954</h2><p>Parte da linha Tonante de suportes, o Estante Para Partitura Maestro com Ajuste de Altura - TNE1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -7861,7 +7861,7 @@ const rawProducts: Product[] = [
   {
     "id": 138,
     "sku": "CP253646",
-    "name": "Apoio DE PE Para Violonista - COR Preta - TNS1954",
+    "name": "Apoio de PE Para Violonista - cor Preta - TNS1954",
     "price": "R$ 129,90",
     "priceNum": 129.9,
     "rating": 4.6,
@@ -7876,8 +7876,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253646-17522530861643318.jpeg"
     ],
     "inStock": true,
-    "description": "Apoio DE PE Para Violonista - COR Preta - TNS1954 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Apoio DE PE Para Violonista - COR Preta - TNS1954</h2><p>Parte da linha Tonante de acessórios, o Apoio DE PE Para Violonista - COR Preta - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Apoio de PE Para Violonista - cor Preta - TNS1954 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Apoio de PE Para Violonista - cor Preta - TNS1954</h2><p>Parte da linha Tonante de acessórios, o Apoio de PE Para Violonista - cor Preta - TNS1954 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -7912,7 +7912,7 @@ const rawProducts: Product[] = [
   {
     "id": 139,
     "sku": "CP253874",
-    "name": "Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/violao 0.029 - 0.044 - Tnvch",
+    "name": "Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/ Violao 0.029 - 0.044 - Tnvch",
     "price": "R$ 29,90",
     "priceNum": 29.9,
     "rating": 4.9,
@@ -7928,8 +7928,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253874-5-17458280901488103.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/violao 0.029 - 0.044 - Tnvch — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/violao 0.029 - 0.044 - Tnvch</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/violao 0.029 - 0.044 - Tnvch carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/ Violao 0.029 - 0.044 - Tnvch — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/ Violao 0.029 - 0.044 - Tnvch</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Nylon Cobre Prata Tens. Alta Pesada P/ Violao 0.029 - 0.044 - Tnvch carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Nylon",
       "Acabamento Tonante de fábrica",
@@ -7967,7 +7967,7 @@ const rawProducts: Product[] = [
   {
     "id": 140,
     "sku": "CP253880",
-    "name": "Encordoamento 011 AÇO Bronze 85 15 P/violão 0.011 - 0.052 - TNVA11B85",
+    "name": "Encordoamento 011 Aço Bronze 85 15 P/ Violão 0.011 - 0.052 - TNVA11B85",
     "price": "R$ 59,90",
     "priceNum": 59.9,
     "rating": 4.4,
@@ -7984,8 +7984,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253880-17459063280908387.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento 011 AÇO Bronze 85 15 P/violão 0.011 - 0.052 - TNVA11B85 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 011 AÇO Bronze 85 15 P/violão 0.011 - 0.052 - TNVA11B85</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 011 AÇO Bronze 85 15 P/violão 0.011 - 0.052 - TNVA11B85 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento 011 Aço Bronze 85 15 P/ Violão 0.011 - 0.052 - TNVA11B85 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 011 Aço Bronze 85 15 P/ Violão 0.011 - 0.052 - TNVA11B85</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 011 Aço Bronze 85 15 P/ Violão 0.011 - 0.052 - TNVA11B85 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Aço · Bronze",
       "Acabamento Tonante de fábrica",
@@ -8023,7 +8023,7 @@ const rawProducts: Product[] = [
   {
     "id": 141,
     "sku": "CP253891",
-    "name": "Encordoamento 009 Níquel Plated Steel P/guitarra 0.009 - 0.042 - TNGE09N",
+    "name": "Encordoamento 009 Níquel Plated Steel P/ Guitarra 0.009 - 0.042 - TNGE09N",
     "price": "R$ 29,90",
     "priceNum": 29.9,
     "rating": 4.4,
@@ -8039,8 +8039,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253891-17459046427284450.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento 009 Níquel Plated Steel P/guitarra 0.009 - 0.042 - TNGE09N — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 009 Níquel Plated Steel P/guitarra 0.009 - 0.042 - TNGE09N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 009 Níquel Plated Steel P/guitarra 0.009 - 0.042 - TNGE09N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento 009 Níquel Plated Steel P/ Guitarra 0.009 - 0.042 - TNGE09N — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 009 Níquel Plated Steel P/ Guitarra 0.009 - 0.042 - TNGE09N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 009 Níquel Plated Steel P/ Guitarra 0.009 - 0.042 - TNGE09N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Níquel",
       "Acabamento Tonante de fábrica",
@@ -8075,7 +8075,7 @@ const rawProducts: Product[] = [
   {
     "id": 142,
     "sku": "CP253893",
-    "name": "Encordoamento 011 Níquel Plated Steel P/guitarra 0.011 - 0.049 - TNGE11N",
+    "name": "Encordoamento 011 Níquel Plated Steel P/ Guitarra 0.011 - 0.049 - TNGE11N",
     "price": "R$ 69,90",
     "priceNum": 69.9,
     "rating": 4.6,
@@ -8091,8 +8091,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253893-17458727054976449.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento 011 Níquel Plated Steel P/guitarra 0.011 - 0.049 - TNGE11N — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 011 Níquel Plated Steel P/guitarra 0.011 - 0.049 - TNGE11N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 011 Níquel Plated Steel P/guitarra 0.011 - 0.049 - TNGE11N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento 011 Níquel Plated Steel P/ Guitarra 0.011 - 0.049 - TNGE11N — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 011 Níquel Plated Steel P/ Guitarra 0.011 - 0.049 - TNGE11N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 011 Níquel Plated Steel P/ Guitarra 0.011 - 0.049 - TNGE11N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Níquel",
       "Acabamento Tonante de fábrica",
@@ -8127,7 +8127,7 @@ const rawProducts: Product[] = [
   {
     "id": 143,
     "sku": "CP253894",
-    "name": "Encordoamento 010 Níquel Plated Steel P/guitarra 0.010 - 0.046 - TNGE10N",
+    "name": "Encordoamento 010 Níquel Plated Steel P/ Guitarra 0.010 - 0.046 - TNGE10N",
     "price": "R$ 79,90",
     "priceNum": 79.9,
     "rating": 4.5,
@@ -8143,8 +8143,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253894-17458998293186562.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento 010 Níquel Plated Steel P/guitarra 0.010 - 0.046 - TNGE10N — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 010 Níquel Plated Steel P/guitarra 0.010 - 0.046 - TNGE10N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 010 Níquel Plated Steel P/guitarra 0.010 - 0.046 - TNGE10N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento 010 Níquel Plated Steel P/ Guitarra 0.010 - 0.046 - TNGE10N — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 010 Níquel Plated Steel P/ Guitarra 0.010 - 0.046 - TNGE10N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 010 Níquel Plated Steel P/ Guitarra 0.010 - 0.046 - TNGE10N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Níquel",
       "Acabamento Tonante de fábrica",
@@ -8179,7 +8179,7 @@ const rawProducts: Product[] = [
   {
     "id": 144,
     "sku": "CP253895",
-    "name": "Encordoamento Níquel Plated Steel C/bolinha P/cavaco 0.011 - 0.029 - RVCA11N",
+    "name": "Encordoamento Níquel Plated Steel C/ Bolinha P/ Cavaco 0.011 - 0.029 - RVCA11N",
     "price": "R$ 39,90",
     "priceNum": 39.9,
     "rating": 4.6,
@@ -8195,8 +8195,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253895-2-17458688921571993.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento Níquel Plated Steel C/bolinha P/cavaco 0.011 - 0.029 - RVCA11N — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Níquel Plated Steel C/bolinha P/cavaco 0.011 - 0.029 - RVCA11N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Níquel Plated Steel C/bolinha P/cavaco 0.011 - 0.029 - RVCA11N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento Níquel Plated Steel C/ Bolinha P/ Cavaco 0.011 - 0.029 - RVCA11N — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Níquel Plated Steel C/ Bolinha P/ Cavaco 0.011 - 0.029 - RVCA11N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Níquel Plated Steel C/ Bolinha P/ Cavaco 0.011 - 0.029 - RVCA11N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Níquel",
       "Acabamento Tonante de fábrica",
@@ -8231,7 +8231,7 @@ const rawProducts: Product[] = [
   {
     "id": 145,
     "sku": "CP253898",
-    "name": "Encordoamento 040 Níquel Plated Steel P/baixo 4 Cordas 0.040 - 0.095 - TNBE40N",
+    "name": "Encordoamento 040 Níquel Plated Steel P/ Baixo 4 Cordas 0.040 - 0.095 - TNBE40N",
     "price": "R$ 29,90",
     "priceNum": 29.9,
     "rating": 4.5,
@@ -8248,8 +8248,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253898-17459126435768742.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento 040 Níquel Plated Steel P/baixo 4 Cordas 0.040 - 0.095 - TNBE40N — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 040 Níquel Plated Steel P/baixo 4 Cordas 0.040 - 0.095 - TNBE40N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 040 Níquel Plated Steel P/baixo 4 Cordas 0.040 - 0.095 - TNBE40N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento 040 Níquel Plated Steel P/ Baixo 4 Cordas 0.040 - 0.095 - TNBE40N — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 040 Níquel Plated Steel P/ Baixo 4 Cordas 0.040 - 0.095 - TNBE40N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 040 Níquel Plated Steel P/ Baixo 4 Cordas 0.040 - 0.095 - TNBE40N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "4 cordas · Níquel",
       "Acabamento Tonante de fábrica",
@@ -8284,7 +8284,7 @@ const rawProducts: Product[] = [
   {
     "id": 146,
     "sku": "CP253899",
-    "name": "Encordoamento 045 Níquel Plated Steel P/baixo 4 Cordas 0.045 - 0.100 - TNBE45N",
+    "name": "Encordoamento 045 Níquel Plated Steel P/ Baixo 4 Cordas 0.045 - 0.100 - TNBE45N",
     "price": "R$ 39,90",
     "priceNum": 39.9,
     "rating": 4.6,
@@ -8301,8 +8301,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/253899-17458508093325430.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento 045 Níquel Plated Steel P/baixo 4 Cordas 0.045 - 0.100 - TNBE45N — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 045 Níquel Plated Steel P/baixo 4 Cordas 0.045 - 0.100 - TNBE45N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 045 Níquel Plated Steel P/baixo 4 Cordas 0.045 - 0.100 - TNBE45N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento 045 Níquel Plated Steel P/ Baixo 4 Cordas 0.045 - 0.100 - TNBE45N — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento 045 Níquel Plated Steel P/ Baixo 4 Cordas 0.045 - 0.100 - TNBE45N</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento 045 Níquel Plated Steel P/ Baixo 4 Cordas 0.045 - 0.100 - TNBE45N carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "4 cordas · Níquel",
       "Acabamento Tonante de fábrica",
@@ -8814,19 +8814,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Cordas & Encordoamentos"
     ],
-    "brand": "Tonante",
+    "brand": "Giannini",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/25424-17457930065039355.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/25424-17457930065039355.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento Guitarra GESGT9 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Guitarra GESGT9</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Guitarra GESGT9 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento Guitarra GESGT9 — Giannini, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Guitarra GESGT9</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Guitarra GESGT9 é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cordas & Encordoamentos",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Giannini",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -8839,7 +8839,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Giannini"
       },
       {
         "label": "Garantia",
@@ -8847,7 +8847,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "encordoamento-guitarra-gesgt9-cp25424",
@@ -8865,19 +8865,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Cordas & Encordoamentos"
     ],
-    "brand": "Tonante",
+    "brand": "Giannini",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/25425.jpg-17459152659418611.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/25425.jpg-17459152659418611.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento Guitarra GESGT10 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Guitarra GESGT10</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Guitarra GESGT10 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento Guitarra GESGT10 — Giannini, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento Guitarra GESGT10</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento Guitarra GESGT10 é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cordas & Encordoamentos",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: Giannini",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -8890,7 +8890,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "Giannini"
       },
       {
         "label": "Garantia",
@@ -8898,7 +8898,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "encordoamento-guitarra-gesgt10-cp25425",
@@ -8907,9 +8907,9 @@ const rawProducts: Product[] = [
   {
     "id": 158,
     "sku": "CP25664",
-    "name": "Suporte EM X Para Teclado X20",
-    "price": "R$ 239,90",
-    "priceNum": 239.9,
+    "name": "Suporte em X Para Teclado X20",
+    "price": "R$ 139,90",
+    "priceNum": 139.9,
     "rating": 4.7,
     "reviews": 391,
     "category": "Suportes",
@@ -8922,8 +8922,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/5/25664.jpg-17459261245325728.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte EM X Para Teclado X20 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte EM X Para Teclado X20</h2><p>Parte da linha Tonante de suportes, o Suporte EM X Para Teclado X20 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte em X Para Teclado X20 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte em X Para Teclado X20</h2><p>Parte da linha Tonante de suportes, o Suporte em X Para Teclado X20 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -9484,7 +9484,7 @@ const rawProducts: Product[] = [
   {
     "id": 169,
     "sku": "CP28993",
-    "name": "Microfone SEM FIO DE MAO VHF695",
+    "name": "Microfone sem FIO de MAO VHF695",
     "price": "R$ 289,90",
     "priceNum": 289.9,
     "rating": 4.9,
@@ -9500,8 +9500,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/8/28993-17458134330301208.jpeg"
     ],
     "inStock": true,
-    "description": "Microfone SEM FIO DE MAO VHF695 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone SEM FIO DE MAO VHF695</h2><p>Parte da linha Tonante de acessórios, o Microfone SEM FIO DE MAO VHF695 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone sem FIO de MAO VHF695 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone sem FIO de MAO VHF695</h2><p>Parte da linha Tonante de acessórios, o Microfone sem FIO de MAO VHF695 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -9539,7 +9539,7 @@ const rawProducts: Product[] = [
   {
     "id": 170,
     "sku": "CP28997",
-    "name": "Microfone COM FIO Profissional PRO",
+    "name": "Microfone com FIO Profissional PRO",
     "price": "R$ 199,90",
     "priceNum": 199.9,
     "rating": 4.5,
@@ -9555,8 +9555,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/8/28997-17539630769207113.jpeg"
     ],
     "inStock": true,
-    "description": "Microfone COM FIO Profissional PRO — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone COM FIO Profissional PRO</h2><p>Parte da linha Tonante de acessórios, o Microfone COM FIO Profissional PRO carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone com FIO Profissional PRO — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone com FIO Profissional PRO</h2><p>Parte da linha Tonante de acessórios, o Microfone com FIO Profissional PRO carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -10068,8 +10068,8 @@ const rawProducts: Product[] = [
     "id": 180,
     "sku": "CP29438",
     "name": "Suporte Para Violao GT1 Preto",
-    "price": "R$ 269,90",
-    "priceNum": 269.9,
+    "price": "R$ 149,90",
+    "priceNum": 149.9,
     "rating": 4.4,
     "reviews": 214,
     "category": "Suportes",
@@ -10114,8 +10114,8 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "suporte-para-violao-gt1-preto-cp29438",
     "productUrl": "https://tonante.com.br/suporte-para-violao-gt1-preto-cp29438",
-    "oldPrice": "R$ 359,90",
-    "oldPriceNum": 359.9,
+    "oldPrice": "R$ 199,90",
+    "oldPriceNum": 199.9,
     "badge": "Oferta"
   },
   {
@@ -10175,9 +10175,9 @@ const rawProducts: Product[] = [
   {
     "id": 182,
     "sku": "CP29441",
-    "name": "Suporte DE Parede Fixo 24CM 25KG SPC177",
-    "price": "R$ 369,90",
-    "priceNum": 369.9,
+    "name": "Suporte de Parede Fixo 24CM 25KG SPC177",
+    "price": "R$ 189,90",
+    "priceNum": 189.9,
     "rating": 4.4,
     "reviews": 430,
     "category": "Suportes",
@@ -10190,8 +10190,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/9/29441-17459045229614227.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede Fixo 24CM 25KG SPC177 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede Fixo 24CM 25KG SPC177</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede Fixo 24CM 25KG SPC177 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede Fixo 24CM 25KG SPC177 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede Fixo 24CM 25KG SPC177</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede Fixo 24CM 25KG SPC177 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -10226,7 +10226,7 @@ const rawProducts: Product[] = [
   {
     "id": 183,
     "sku": "CP29442",
-    "name": "Suporte DE Parede Regulavel 35KG Spcr",
+    "name": "Suporte de Parede Regulavel 35KG Spcr",
     "price": "R$ 129,90",
     "priceNum": 129.9,
     "rating": 4.5,
@@ -10241,8 +10241,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/9/29442-17459255409714100.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede Regulavel 35KG Spcr — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede Regulavel 35KG Spcr</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede Regulavel 35KG Spcr carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede Regulavel 35KG Spcr — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede Regulavel 35KG Spcr</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede Regulavel 35KG Spcr carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -10277,9 +10277,9 @@ const rawProducts: Product[] = [
   {
     "id": 184,
     "sku": "CP29570",
-    "name": "Suporte DE Parede P/ Violao/guitarra AGS",
-    "price": "R$ 429,90",
-    "priceNum": 429.9,
+    "name": "Suporte de Parede P/ Violao/guitarra AGS",
+    "price": "R$ 214,90",
+    "priceNum": 214.9,
     "rating": 4.9,
     "reviews": 81,
     "category": "Suportes",
@@ -10292,8 +10292,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/9/29570_2-17459181526727946.jpeg"
     ],
     "inStock": true,
-    "description": "Suporte DE Parede P/ Violao/guitarra AGS — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte DE Parede P/ Violao/guitarra AGS</h2><p>Parte da linha Tonante de suportes, o Suporte DE Parede P/ Violao/guitarra AGS carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Suporte de Parede P/ Violao/guitarra AGS — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Suporte de Parede P/ Violao/guitarra AGS</h2><p>Parte da linha Tonante de suportes, o Suporte de Parede P/ Violao/guitarra AGS carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Suportes",
       "Acabamento Tonante de fábrica",
@@ -10328,7 +10328,7 @@ const rawProducts: Product[] = [
   {
     "id": 185,
     "sku": "CP29581",
-    "name": "Microfone C/fio Profissional LS58 Champanhe",
+    "name": "Microfone C/ Fio Profissional LS58 Champanhe",
     "price": "R$ 159,90",
     "priceNum": 159.9,
     "rating": 4.5,
@@ -10344,8 +10344,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/2/9/29581-1-17707778359919208.png"
     ],
     "inStock": true,
-    "description": "Microfone C/fio Profissional LS58 Champanhe — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone C/fio Profissional LS58 Champanhe</h2><p>Parte da linha Tonante de acessórios, o Microfone C/fio Profissional LS58 Champanhe carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone C/ Fio Profissional LS58 Champanhe — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone C/ Fio Profissional LS58 Champanhe</h2><p>Parte da linha Tonante de acessórios, o Microfone C/ Fio Profissional LS58 Champanhe carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -10487,9 +10487,9 @@ const rawProducts: Product[] = [
   {
     "id": 188,
     "sku": "CP303442",
-    "name": "Correia Tonante DE Polipropileno Lisa Preta- TN01P",
-    "price": "R$ 329,90",
-    "priceNum": 329.9,
+    "name": "Correia Tonante de Polipropileno Lisa Preta- TN01P",
+    "price": "R$ 144,90",
+    "priceNum": 144.9,
     "rating": 4.8,
     "reviews": 192,
     "category": "Acessórios",
@@ -10502,8 +10502,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303442_1-17510478646444437.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Polipropileno Lisa Preta- TN01P — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Polipropileno Lisa Preta- TN01P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Polipropileno Lisa Preta- TN01P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Polipropileno Lisa Preta- TN01P — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Polipropileno Lisa Preta- TN01P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Polipropileno Lisa Preta- TN01P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10534,14 +10534,14 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "correia-tonante-de-polipropileno-lisa-preta-tn01p-cp303442",
     "productUrl": "https://tonante.com.br/correia-tonante-de-polipropileno-lisa-preta-tn01p-cp303442",
-    "oldPrice": "R$ 369,90",
-    "oldPriceNum": 369.9,
+    "oldPrice": "R$ 159,90",
+    "oldPriceNum": 159.9,
     "badge": "Oferta"
   },
   {
     "id": 189,
     "sku": "CP303447",
-    "name": "Correia Tonante DE Polipropileno Lisa Vermelha - TN04P",
+    "name": "Correia Tonante de Polipropileno Lisa Vermelha - TN04P",
     "price": "R$ 129,90",
     "priceNum": 129.9,
     "rating": 4.9,
@@ -10556,8 +10556,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303447_1-17510493049895374.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Polipropileno Lisa Vermelha - TN04P — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Polipropileno Lisa Vermelha - TN04P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Polipropileno Lisa Vermelha - TN04P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Polipropileno Lisa Vermelha - TN04P — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Polipropileno Lisa Vermelha - TN04P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Polipropileno Lisa Vermelha - TN04P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10592,7 +10592,7 @@ const rawProducts: Product[] = [
   {
     "id": 190,
     "sku": "CP303448",
-    "name": "Correia Tonante DE Polipropileno Lisa Azul-escura - TN03P",
+    "name": "Correia Tonante de Polipropileno Lisa Azul-escura - TN03P",
     "price": "R$ 59,90",
     "priceNum": 59.9,
     "rating": 4.8,
@@ -10607,8 +10607,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303448_1-17510493653606832.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Polipropileno Lisa Azul-escura - TN03P — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Polipropileno Lisa Azul-escura - TN03P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Polipropileno Lisa Azul-escura - TN03P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Polipropileno Lisa Azul-escura - TN03P — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Polipropileno Lisa Azul-escura - TN03P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Polipropileno Lisa Azul-escura - TN03P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10643,9 +10643,9 @@ const rawProducts: Product[] = [
   {
     "id": 191,
     "sku": "CP303449",
-    "name": "Correia Tonante DE Polipropileno Lisa Verde - TN05P",
-    "price": "R$ 219,90",
-    "priceNum": 219.9,
+    "name": "Correia Tonante de Polipropileno Lisa Verde - TN05P",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.7,
     "reviews": 47,
     "category": "Acessórios",
@@ -10658,8 +10658,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303449_1-17510494293286907.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Polipropileno Lisa Verde - TN05P — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Polipropileno Lisa Verde - TN05P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Polipropileno Lisa Verde - TN05P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Polipropileno Lisa Verde - TN05P — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Polipropileno Lisa Verde - TN05P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Polipropileno Lisa Verde - TN05P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10690,16 +10690,16 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "correia-tonante-de-polipropileno-lisa-verde-tn05p-cp303449",
     "productUrl": "https://tonante.com.br/correia-tonante-de-polipropileno-lisa-verde-tn05p-cp303449",
-    "oldPrice": "R$ 269,90",
-    "oldPriceNum": 269.9,
+    "oldPrice": "R$ 134,90",
+    "oldPriceNum": 134.9,
     "badge": "Oferta"
   },
   {
     "id": 192,
     "sku": "CP303453",
-    "name": "Correia Tonante DE Polipropileno Lisa Violeta- TN06P",
-    "price": "R$ 229,90",
-    "priceNum": 229.9,
+    "name": "Correia Tonante de Polipropileno Lisa Violeta- TN06P",
+    "price": "R$ 109,90",
+    "priceNum": 109.9,
     "rating": 4.4,
     "reviews": 254,
     "category": "Acessórios",
@@ -10712,8 +10712,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303453_1-17510495448917238.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Polipropileno Lisa Violeta- TN06P — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Polipropileno Lisa Violeta- TN06P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Polipropileno Lisa Violeta- TN06P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Polipropileno Lisa Violeta- TN06P — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Polipropileno Lisa Violeta- TN06P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Polipropileno Lisa Violeta- TN06P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10744,14 +10744,14 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "correia-tonante-de-polipropileno-lisa-violeta-tn06p-cp303453",
     "productUrl": "https://tonante.com.br/correia-tonante-de-polipropileno-lisa-violeta-tn06p-cp303453",
-    "oldPrice": "R$ 279,90",
-    "oldPriceNum": 279.9,
+    "oldPrice": "R$ 134,90",
+    "oldPriceNum": 134.9,
     "badge": "Oferta"
   },
   {
     "id": 193,
     "sku": "CP303456",
-    "name": "Correia Tonante DE Polipropileno Lisa Azul-clara - TN031P",
+    "name": "Correia Tonante de Polipropileno Lisa Azul-clara - TN031P",
     "price": "R$ 119,90",
     "priceNum": 119.9,
     "rating": 4.5,
@@ -10766,8 +10766,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303456_1-17510497854449071.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Polipropileno Lisa Azul-clara - TN031P — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Polipropileno Lisa Azul-clara - TN031P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Polipropileno Lisa Azul-clara - TN031P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Polipropileno Lisa Azul-clara - TN031P — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Polipropileno Lisa Azul-clara - TN031P</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Polipropileno Lisa Azul-clara - TN031P carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10802,9 +10802,9 @@ const rawProducts: Product[] = [
   {
     "id": 194,
     "sku": "CP303472",
-    "name": "Correia Tonante DE Poliéster Design Woodstock Vermelha - TN11S",
-    "price": "R$ 259,90",
-    "priceNum": 259.9,
+    "name": "Correia Tonante de Poliéster Design Woodstock Vermelha - TN11S",
+    "price": "R$ 119,90",
+    "priceNum": 119.9,
     "rating": 4.9,
     "reviews": 33,
     "category": "Acessórios",
@@ -10817,8 +10817,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303472_1-17510503865329860.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Design Woodstock Vermelha - TN11S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Design Woodstock Vermelha - TN11S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Design Woodstock Vermelha - TN11S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Design Woodstock Vermelha - TN11S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Design Woodstock Vermelha - TN11S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Design Woodstock Vermelha - TN11S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10853,9 +10853,9 @@ const rawProducts: Product[] = [
   {
     "id": 195,
     "sku": "CP303489",
-    "name": "Correia Tonante DE Poliéster Animal Print Chita - TN09S",
-    "price": "R$ 279,90",
-    "priceNum": 279.9,
+    "name": "Correia Tonante de Poliéster Animal Print Chita - TN09S",
+    "price": "R$ 129,90",
+    "priceNum": 129.9,
     "rating": 4.7,
     "reviews": 405,
     "category": "Acessórios",
@@ -10868,8 +10868,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303489_1-17510505050882630.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Animal Print Chita - TN09S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Animal Print Chita - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Animal Print Chita - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Animal Print Chita - TN09S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Animal Print Chita - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Animal Print Chita - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10905,9 +10905,9 @@ const rawProducts: Product[] = [
   {
     "id": 196,
     "sku": "CP303490",
-    "name": "Correia Tonante DE Poliéster Animal Print Cobra - TN09S",
-    "price": "R$ 299,90",
-    "priceNum": 299.9,
+    "name": "Correia Tonante de Poliéster Animal Print Cobra - TN09S",
+    "price": "R$ 134,90",
+    "priceNum": 134.9,
     "rating": 4.9,
     "reviews": 303,
     "category": "Acessórios",
@@ -10920,8 +10920,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303490_-17510506271663693.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Animal Print Cobra - TN09S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Animal Print Cobra - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Animal Print Cobra - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Animal Print Cobra - TN09S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Animal Print Cobra - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Animal Print Cobra - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -10956,9 +10956,9 @@ const rawProducts: Product[] = [
   {
     "id": 197,
     "sku": "CP303493",
-    "name": "Correia Tonante DE Poliéster Animal Print Tigre - TN09S",
-    "price": "R$ 339,90",
-    "priceNum": 339.9,
+    "name": "Correia Tonante de Poliéster Animal Print Tigre - TN09S",
+    "price": "R$ 149,90",
+    "priceNum": 149.9,
     "rating": 4.8,
     "reviews": 332,
     "category": "Acessórios",
@@ -10971,8 +10971,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303493_-17510508085356723.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Animal Print Tigre - TN09S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Animal Print Tigre - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Animal Print Tigre - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Animal Print Tigre - TN09S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Animal Print Tigre - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Animal Print Tigre - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11007,9 +11007,9 @@ const rawProducts: Product[] = [
   {
     "id": 198,
     "sku": "CP303506",
-    "name": "Correia Tonante DE Poliéster Animal Print Vaca - TN09S",
-    "price": "R$ 269,90",
-    "priceNum": 269.9,
+    "name": "Correia Tonante de Poliéster Animal Print Vaca - TN09S",
+    "price": "R$ 124,90",
+    "priceNum": 124.9,
     "rating": 4.5,
     "reviews": 225,
     "category": "Acessórios",
@@ -11022,8 +11022,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303506_1-17510507444664915.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Animal Print Vaca - TN09S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Animal Print Vaca - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Animal Print Vaca - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Animal Print Vaca - TN09S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Animal Print Vaca - TN09S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Animal Print Vaca - TN09S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11058,9 +11058,9 @@ const rawProducts: Product[] = [
   {
     "id": 199,
     "sku": "CP303507",
-    "name": "Correia Tonante DE Poliéster Estampa Floral Laranja - TN10S",
-    "price": "R$ 249,90",
-    "priceNum": 249.9,
+    "name": "Correia Tonante de Poliéster Estampa Floral Laranja - TN10S",
+    "price": "R$ 119,90",
+    "priceNum": 119.9,
     "rating": 4.6,
     "reviews": 196,
     "category": "Acessórios",
@@ -11073,8 +11073,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303507_1-17510515846911976.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Estampa Floral Laranja - TN10S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Estampa Floral Laranja - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Estampa Floral Laranja - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Estampa Floral Laranja - TN10S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Estampa Floral Laranja - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Estampa Floral Laranja - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11109,9 +11109,9 @@ const rawProducts: Product[] = [
   {
     "id": 200,
     "sku": "CP303508",
-    "name": "Correia Tonante DE Poliéster Estampa Floral Rosa - TN10S",
-    "price": "R$ 169,90",
-    "priceNum": 169.9,
+    "name": "Correia Tonante de Poliéster Estampa Floral Rosa - TN10S",
+    "price": "R$ 89,90",
+    "priceNum": 89.9,
     "rating": 4.9,
     "reviews": 161,
     "category": "Acessórios",
@@ -11124,8 +11124,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303508_1-17510516524816332.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Estampa Floral Rosa - TN10S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Estampa Floral Rosa - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Estampa Floral Rosa - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Estampa Floral Rosa - TN10S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Estampa Floral Rosa - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Estampa Floral Rosa - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11160,9 +11160,9 @@ const rawProducts: Product[] = [
   {
     "id": 201,
     "sku": "CP303509",
-    "name": "Correia Tonante DE Poliéster Estampa Floral Violeta - TN10S",
-    "price": "R$ 179,90",
-    "priceNum": 179.9,
+    "name": "Correia Tonante de Poliéster Estampa Floral Violeta - TN10S",
+    "price": "R$ 94,90",
+    "priceNum": 94.9,
     "rating": 4.4,
     "reviews": 132,
     "category": "Acessórios",
@@ -11175,8 +11175,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303509_1-17510516987597580.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Estampa Floral Violeta - TN10S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Estampa Floral Violeta - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Estampa Floral Violeta - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Estampa Floral Violeta - TN10S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Estampa Floral Violeta - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Estampa Floral Violeta - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11207,16 +11207,16 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "correia-tonante-de-poliester-estampa-floral-violeta-tn10s-cp303509",
     "productUrl": "https://tonante.com.br/correia-tonante-de-poliester-estampa-floral-violeta-tn10s-cp303509",
-    "oldPrice": "R$ 229,90",
-    "oldPriceNum": 229.9,
+    "oldPrice": "R$ 119,90",
+    "oldPriceNum": 119.9,
     "badge": "Oferta"
   },
   {
     "id": 202,
     "sku": "CP303510",
-    "name": "Correia Tonante DE Poliéster Estampa Floral Branca E Preta - TN10S",
-    "price": "R$ 309,90",
-    "priceNum": 309.9,
+    "name": "Correia Tonante de Poliéster Estampa Floral Branca e Preta - TN10S",
+    "price": "R$ 139,90",
+    "priceNum": 139.9,
     "rating": 4.6,
     "reviews": 240,
     "category": "Acessórios",
@@ -11229,8 +11229,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303510_1-17510517774514117.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Poliéster Estampa Floral Branca E Preta - TN10S — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Poliéster Estampa Floral Branca E Preta - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Poliéster Estampa Floral Branca E Preta - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Poliéster Estampa Floral Branca e Preta - TN10S — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Poliéster Estampa Floral Branca e Preta - TN10S</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Poliéster Estampa Floral Branca e Preta - TN10S carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11265,9 +11265,9 @@ const rawProducts: Product[] = [
   {
     "id": 203,
     "sku": "CP303571",
-    "name": "Correia Tonante DE Couro Argentino COR Preta -TN01C",
-    "price": "R$ 239,90",
-    "priceNum": 239.9,
+    "name": "Correia Tonante de Couro Argentino cor Preta -TN01C",
+    "price": "R$ 114,90",
+    "priceNum": 114.9,
     "rating": 4.5,
     "reviews": 123,
     "category": "Acessórios",
@@ -11280,8 +11280,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303571_1-17510518269735458.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Couro Argentino COR Preta -TN01C — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Couro Argentino COR Preta -TN01C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Couro Argentino COR Preta -TN01C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Couro Argentino cor Preta -TN01C — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Couro Argentino cor Preta -TN01C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Couro Argentino cor Preta -TN01C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11316,7 +11316,7 @@ const rawProducts: Product[] = [
   {
     "id": 204,
     "sku": "CP303572",
-    "name": "Correia Tonante DE Couro Argentino COR Marrom - TN02C",
+    "name": "Correia Tonante de Couro Argentino cor Marrom - TN02C",
     "price": "R$ 39,90",
     "priceNum": 39.9,
     "rating": 4.8,
@@ -11331,8 +11331,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303572_1-17510518891916846.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Couro Argentino COR Marrom - TN02C — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Couro Argentino COR Marrom - TN02C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Couro Argentino COR Marrom - TN02C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Couro Argentino cor Marrom - TN02C — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Couro Argentino cor Marrom - TN02C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Couro Argentino cor Marrom - TN02C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11367,9 +11367,9 @@ const rawProducts: Product[] = [
   {
     "id": 205,
     "sku": "CP303622",
-    "name": "Correia Tonante DE Couro Argentino COR Azul-escuro - TN03C",
-    "price": "R$ 319,90",
-    "priceNum": 319.9,
+    "name": "Correia Tonante de Couro Argentino cor Azul-escuro - TN03C",
+    "price": "R$ 144,90",
+    "priceNum": 144.9,
     "rating": 4.8,
     "reviews": 404,
     "category": "Acessórios",
@@ -11382,8 +11382,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303622_1-17510519470696200.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Couro Argentino COR Azul-escuro - TN03C — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Couro Argentino COR Azul-escuro - TN03C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Couro Argentino COR Azul-escuro - TN03C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Couro Argentino cor Azul-escuro - TN03C — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Couro Argentino cor Azul-escuro - TN03C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Couro Argentino cor Azul-escuro - TN03C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11418,9 +11418,9 @@ const rawProducts: Product[] = [
   {
     "id": 206,
     "sku": "CP303624",
-    "name": "Correia Tonante DE Couro Argentino COR Verde Militar - TN051C",
-    "price": "R$ 309,90",
-    "priceNum": 309.9,
+    "name": "Correia Tonante de Couro Argentino cor Verde Militar - TN051C",
+    "price": "R$ 139,90",
+    "priceNum": 139.9,
     "rating": 4.8,
     "reviews": 108,
     "category": "Acessórios",
@@ -11433,8 +11433,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303624_1-17510519966317051.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Couro Argentino COR Verde Militar - TN051C — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Couro Argentino COR Verde Militar - TN051C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Couro Argentino COR Verde Militar - TN051C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Couro Argentino cor Verde Militar - TN051C — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Couro Argentino cor Verde Militar - TN051C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Couro Argentino cor Verde Militar - TN051C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11520,7 +11520,7 @@ const rawProducts: Product[] = [
   {
     "id": 208,
     "sku": "CP303655",
-    "name": "Correia Tonante DE Couro Argentino COR Caramelo- TN12C",
+    "name": "Correia Tonante de Couro Argentino cor Caramelo- TN12C",
     "price": "R$ 29,90",
     "priceNum": 29.9,
     "rating": 4.8,
@@ -11535,8 +11535,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303655_-17510520416651491.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Couro Argentino COR Caramelo- TN12C — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Couro Argentino COR Caramelo- TN12C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Couro Argentino COR Caramelo- TN12C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Couro Argentino cor Caramelo- TN12C — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Couro Argentino cor Caramelo- TN12C</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Couro Argentino cor Caramelo- TN12C carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11622,7 +11622,7 @@ const rawProducts: Product[] = [
   {
     "id": 210,
     "sku": "CP303658",
-    "name": "Correia Tonante DE Camurça Argentina COR Preta -TN01CA",
+    "name": "Correia Tonante de Camurça Argentina cor Preta -TN01CA",
     "price": "R$ 89,90",
     "priceNum": 89.9,
     "rating": 4.9,
@@ -11637,8 +11637,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303658_1-17510520925152157.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Camurça Argentina COR Preta -TN01CA — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Camurça Argentina COR Preta -TN01CA</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Camurça Argentina COR Preta -TN01CA carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Camurça Argentina cor Preta -TN01CA — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Camurça Argentina cor Preta -TN01CA</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Camurça Argentina cor Preta -TN01CA carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11673,7 +11673,7 @@ const rawProducts: Product[] = [
   {
     "id": 211,
     "sku": "CP303659",
-    "name": "Correia Tonante DE Camurça Argentina COR Marrom - TN02CA",
+    "name": "Correia Tonante de Camurça Argentina cor Marrom - TN02CA",
     "price": "R$ 119,90",
     "priceNum": 119.9,
     "rating": 4.4,
@@ -11688,8 +11688,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303659_1-17510521839201627.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante DE Camurça Argentina COR Marrom - TN02CA — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante DE Camurça Argentina COR Marrom - TN02CA</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante DE Camurça Argentina COR Marrom - TN02CA carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante de Camurça Argentina cor Marrom - TN02CA — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante de Camurça Argentina cor Marrom - TN02CA</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante de Camurça Argentina cor Marrom - TN02CA carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -11778,9 +11778,9 @@ const rawProducts: Product[] = [
   {
     "id": 213,
     "sku": "CP303663",
-    "name": "Correia Tonante Talabarte DE Polipropileno COR Preta- TN01T",
-    "price": "R$ 279,90",
-    "priceNum": 279.9,
+    "name": "Correia Tonante Talabarte de Polipropileno cor Preta- TN01T",
+    "price": "R$ 64,90",
+    "priceNum": 64.9,
     "rating": 4.5,
     "reviews": 487,
     "category": "Acessórios",
@@ -11793,8 +11793,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/0/303663_1-17510522306704028.jpeg"
     ],
     "inStock": true,
-    "description": "Correia Tonante Talabarte DE Polipropileno COR Preta- TN01T — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante Talabarte DE Polipropileno COR Preta- TN01T</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante Talabarte DE Polipropileno COR Preta- TN01T carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Correia Tonante Talabarte de Polipropileno cor Preta- TN01T — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Correia Tonante Talabarte de Polipropileno cor Preta- TN01T</h2><p>Parte da linha Tonante de acessórios, o Correia Tonante Talabarte de Polipropileno cor Preta- TN01T carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
       "Acabamento Tonante de fábrica",
@@ -12619,7 +12619,7 @@ const rawProducts: Product[] = [
   {
     "id": 229,
     "sku": "CP320127",
-    "name": "KIT DE 7 Microfones Para Bateria SADRUM7",
+    "name": "KIT de 7 Microfones Para Bateria SADRUM7",
     "price": "R$ 169,90",
     "priceNum": 169.9,
     "rating": 4.5,
@@ -12635,8 +12635,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/2/320127_3-17491297447224493.jpeg"
     ],
     "inStock": true,
-    "description": "KIT DE 7 Microfones Para Bateria SADRUM7 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>KIT DE 7 Microfones Para Bateria SADRUM7</h2><p>Parte da linha Tonante de acessórios, o KIT DE 7 Microfones Para Bateria SADRUM7 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "KIT de 7 Microfones Para Bateria SADRUM7 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>KIT de 7 Microfones Para Bateria SADRUM7</h2><p>Parte da linha Tonante de acessórios, o KIT de 7 Microfones Para Bateria SADRUM7 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -12671,7 +12671,7 @@ const rawProducts: Product[] = [
   {
     "id": 230,
     "sku": "CP320131",
-    "name": "Microfone PRO UHF S/fio Duplo DE MAO Saclarity-ii",
+    "name": "Microfone PRO UHF S/fio Duplo de MAO Saclarity-ii",
     "price": "R$ 219,90",
     "priceNum": 219.9,
     "rating": 4.8,
@@ -12687,8 +12687,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/2/320131_1-17493168254213103.jpeg"
     ],
     "inStock": true,
-    "description": "Microfone PRO UHF S/fio Duplo DE MAO Saclarity-ii — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone PRO UHF S/fio Duplo DE MAO Saclarity-ii</h2><p>Parte da linha Tonante de acessórios, o Microfone PRO UHF S/fio Duplo DE MAO Saclarity-ii carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone PRO UHF S/fio Duplo de MAO Saclarity-ii — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone PRO UHF S/fio Duplo de MAO Saclarity-ii</h2><p>Parte da linha Tonante de acessórios, o Microfone PRO UHF S/fio Duplo de MAO Saclarity-ii carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone",
       "Acabamento Tonante de fábrica",
@@ -12883,7 +12883,7 @@ const rawProducts: Product[] = [
   {
     "id": 234,
     "sku": "CP32517",
-    "name": "Anti-feedback Abafador Violao DE Boca Oval Afov",
+    "name": "Anti-feedback Abafador Violao de Boca Oval Afov",
     "price": "R$ 839,90",
     "priceNum": 839.9,
     "rating": 4.4,
@@ -12898,8 +12898,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/2/32517-17459001808633468.jpeg"
     ],
     "inStock": true,
-    "description": "Anti-feedback Abafador Violao DE Boca Oval Afov — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Anti-feedback Abafador Violao DE Boca Oval Afov</h2><p>Parte da linha Tonante de violões, o Anti-feedback Abafador Violao DE Boca Oval Afov carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Anti-feedback Abafador Violao de Boca Oval Afov — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Anti-feedback Abafador Violao de Boca Oval Afov</h2><p>Parte da linha Tonante de violões, o Anti-feedback Abafador Violao de Boca Oval Afov carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Violões",
       "Acabamento Tonante de fábrica",
@@ -12934,7 +12934,7 @@ const rawProducts: Product[] = [
   {
     "id": 235,
     "sku": "CP32563",
-    "name": "Encordoamento P/cavaco C/bolinha Gescb",
+    "name": "Encordoamento P/ Cavaco C/ Bolinha Gescb",
     "price": "R$ 29,90",
     "priceNum": 29.9,
     "rating": 4.5,
@@ -12949,8 +12949,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/2/32563-17458348511256942.jpeg"
     ],
     "inStock": true,
-    "description": "Encordoamento P/cavaco C/bolinha Gescb — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento P/cavaco C/bolinha Gescb</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento P/cavaco C/bolinha Gescb carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Encordoamento P/ Cavaco C/ Bolinha Gescb — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Encordoamento P/ Cavaco C/ Bolinha Gescb</h2><p>Parte da linha Tonante de cordas &amp; encordoamentos, o Encordoamento P/ Cavaco C/ Bolinha Gescb carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Cordas & Encordoamentos",
       "Acabamento Tonante de fábrica",
@@ -13147,7 +13147,7 @@ const rawProducts: Product[] = [
   {
     "id": 239,
     "sku": "CP328666",
-    "name": "Violão Clássico Cutaway COM EQ Nylon TN39NCE Natural – TON",
+    "name": "Violão Clássico Cutaway com EQ Nylon TN39NCE Natural – TON",
     "price": "R$ 1.409,90",
     "priceNum": 1409.9,
     "rating": 4.7,
@@ -13164,8 +13164,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/2/328666-17706560169716879.jpeg"
     ],
     "inStock": true,
-    "description": "Violão Clássico Cutaway COM EQ Nylon TN39NCE Natural – TON — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão Clássico Cutaway COM EQ Nylon TN39NCE Natural – TON</h2><p>Parte da linha Tonante de violões, o Violão Clássico Cutaway COM EQ Nylon TN39NCE Natural – TON carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Violão Clássico Cutaway com EQ Nylon TN39NCE Natural – TON — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão Clássico Cutaway com EQ Nylon TN39NCE Natural – TON</h2><p>Parte da linha Tonante de violões, o Violão Clássico Cutaway com EQ Nylon TN39NCE Natural – TON carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Nylon · Clássico",
       "Acabamento Tonante de fábrica",
@@ -13201,7 +13201,7 @@ const rawProducts: Product[] = [
   {
     "id": 240,
     "sku": "CP328667",
-    "name": "Violão Clássico Cutaway COM EQ Nylon TN39NBCE Brown – TON",
+    "name": "Violão Clássico Cutaway com EQ Nylon TN39NBCE Brown – TON",
     "price": "R$ 1.489,90",
     "priceNum": 1489.9,
     "rating": 4.8,
@@ -13218,8 +13218,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/2/328667_1-17710630262929039.jpeg"
     ],
     "inStock": true,
-    "description": "Violão Clássico Cutaway COM EQ Nylon TN39NBCE Brown – TON — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão Clássico Cutaway COM EQ Nylon TN39NBCE Brown – TON</h2><p>Parte da linha Tonante de violões, o Violão Clássico Cutaway COM EQ Nylon TN39NBCE Brown – TON carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Violão Clássico Cutaway com EQ Nylon TN39NBCE Brown – TON — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão Clássico Cutaway com EQ Nylon TN39NBCE Brown – TON</h2><p>Parte da linha Tonante de violões, o Violão Clássico Cutaway com EQ Nylon TN39NBCE Brown – TON carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Nylon · Clássico",
       "Acabamento Tonante de fábrica",
@@ -13365,7 +13365,7 @@ const rawProducts: Product[] = [
   {
     "id": 243,
     "sku": "CP330516",
-    "name": "Suporte Para Teclado EM X Desmontável Ajustável TNS1954D",
+    "name": "Suporte Para Teclado em X Desmontável Ajustável TNS1954D",
     "price": "R$ 199,00",
     "priceNum": 199,
     "rating": 4.7,
@@ -13432,9 +13432,9 @@ const rawProducts: Product[] = [
   {
     "id": 244,
     "sku": "CP330543",
-    "name": "Suporte Tripé Para Caixa DE SOM Ajustável TNT1954",
-    "price": "R$ 249,00",
-    "priceNum": 249,
+    "name": "Suporte Tripé Para Caixa de Som Ajustável TNT1954",
+    "price": "R$ 139,90",
+    "priceNum": 139.9,
     "rating": 4.7,
     "reviews": 76,
     "category": "Suportes",
@@ -13481,9 +13481,9 @@ const rawProducts: Product[] = [
   {
     "id": 245,
     "sku": "CP330553",
-    "name": "Suporte Duplo Para Teclado EM X Desmontável TNS1954D",
-    "price": "R$ 449,90",
-    "priceNum": 449.9,
+    "name": "Suporte Duplo Para Teclado em X Desmontável TNS1954D",
+    "price": "R$ 224,90",
+    "priceNum": 224.9,
     "rating": 4.9,
     "reviews": 347,
     "category": "Suportes",
@@ -13498,7 +13498,7 @@ const rawProducts: Product[] = [
       "https://cdn.oderco.com.br/produtos/330553/330553-A5.png"
     ],
     "inStock": true,
-    "description": "Suporte Duplo Para Teclado EM X Desmontável TNS1954D — tradição Tonante desde 1954.",
+    "description": "Suporte Duplo Para Teclado em X Desmontável TNS1954D — tradição Tonante desde 1954.",
     "htmlDescription": "<section class=\"produto-descricao\"><h2>ESTRUTURA DUPLA PARA MAIS POSSIBILIDADES</h2><p>Possui estrutura reforçada em X, garantindo firmeza durante a execução, além de ajustes de altura e largura para melhor adaptação ao músico.</p><h3>PENSADO PARA PERFORMANCE PROFISSIONAL</h3><p>Desenvolvido para teclados maiores e pianos digitais, o suporte amplia suas possibilidades com máxima estabilidade. Oferece firmeza, organização e praticidade, garantindo mais controle, segurança e liberdade para o músico focar totalmente na execução.</p>",
     "features": [
       "Altura ajustável: 1–96 cm",
@@ -13530,8 +13530,8 @@ const rawProducts: Product[] = [
     ],
     "seoSlug": "suporte-duplo-para-teclado-em-x-desmontavel-tns1954d-cp330553",
     "productUrl": "https://tonante.com.br/suporte-duplo-para-teclado-em-x-desmontavel-tns1954d-cp330553",
-    "oldPrice": "R$ 579,90",
-    "oldPriceNum": 579.9,
+    "oldPrice": "R$ 289,90",
+    "oldPriceNum": 289.9,
     "badge": "Oferta"
   },
   {
@@ -13660,7 +13660,7 @@ const rawProducts: Product[] = [
   {
     "id": 248,
     "sku": "CP330674",
-    "name": "Suporte DE Chão Para Violão, Baixo E Guitarra COM Trava TNS1954",
+    "name": "Suporte de Chão Para Violão, Baixo e Guitarra com Trava TNS1954",
     "price": "R$ 149,00",
     "priceNum": 149,
     "rating": 4.8,
@@ -13826,9 +13826,9 @@ const rawProducts: Product[] = [
   {
     "id": 251,
     "sku": "CP338666",
-    "name": "Capotraste Para Violão EM Alumínio - Prata - CPT",
-    "price": "R$ 299,90",
-    "priceNum": 299.9,
+    "name": "Capotraste Para Violão em Alumínio - Prata - CPT",
+    "price": "R$ 89,90",
+    "priceNum": 89.9,
     "rating": 4.8,
     "reviews": 104,
     "category": "Acessórios",
@@ -13844,7 +13844,7 @@ const rawProducts: Product[] = [
       "https://cdn.oderco.com.br/produtos/338666/338666-A6.png"
     ],
     "inStock": true,
-    "description": "Capotraste Para Violão EM Alumínio - Prata - CPT — tradição Tonante desde 1954.",
+    "description": "Capotraste Para Violão em Alumínio - Prata - CPT — tradição Tonante desde 1954.",
     "htmlDescription": "<section class=\"produto-descricao\"><h2>Praticidade e precisão para acompanhar sua música</h2><p>Os Capotrastes Tonante CPT-30 foram desenvolvidos para proporcionar mudanças rápidas de tonalidade com segurança, conforto e praticidade. Disponíveis nas versões prata e preta, são ideais para violões com cordas de nylon, oferecendo excelente fixação e ótimo custo-benefício para músicos de todos os níveis.</p><h3>Leveza, resistência e encaixe seguro</h3><p>Produzidos em alumínio leve e resistente, os modelos CPT-30 garantem durabilidade e praticidade no uso diário. Seu sistema de encaixe facilita trocas rápidas durante apresentações, ensaios ou estudos, mantendo firmeza nas cordas e estabilidade na afinação.</p><h3>O acessório ideal para acompanhar cada acorde</h3><p>Compactos, resistentes e fáceis de transportar, os Capotrastes Tonante CPT-30 oferecem conforto e praticidade para músicos que buscam agilidade nas mudanças de tom sem abrir mão da qualidade. Uma solução versátil para diferentes estilos musicais e momentos de performance.</p>",
     "features": [
       "Modelo: CPT-30PR",
@@ -13902,7 +13902,7 @@ const rawProducts: Product[] = [
   {
     "id": 252,
     "sku": "CP338667",
-    "name": "Capotraste Para Violão EM Alumínio - Preto - CPT",
+    "name": "Capotraste Para Violão em Alumínio - Preto - CPT",
     "price": "R$ 89,00",
     "priceNum": 89,
     "rating": 4.7,
@@ -14032,7 +14032,7 @@ const rawProducts: Product[] = [
   {
     "id": 254,
     "sku": "CP342288",
-    "name": "Encordoamento 010 AÇO Bronze 85 15 P/violão 0.010 - 0.047 - Pack (C/3) - TNVA10B853",
+    "name": "Encordoamento 010 Aço Bronze 85 15 P/ Violão 0.010 - 0.047 - Pack (C/3) - TNVA10B853",
     "price": "R$ 49,00",
     "priceNum": 49,
     "rating": 4.8,
@@ -14109,7 +14109,7 @@ const rawProducts: Product[] = [
   {
     "id": 255,
     "sku": "CP342290",
-    "name": "Encordoamento 010 Níquel Plated Steel P/guitarra 0.010 - 0.046 - Pack (C/3) - TNGE10N3",
+    "name": "Encordoamento 010 Níquel Plated Steel P/ Guitarra 0.010 - 0.046 - Pack (C/3) - TNGE10N3",
     "price": "R$ 45,00",
     "priceNum": 45,
     "rating": 4.7,
@@ -14307,7 +14307,7 @@ const rawProducts: Product[] = [
   {
     "id": 258,
     "sku": "CP342294",
-    "name": "Encordoamento Viola Caipira Média Níquel COM Bolinha Cebolao RÉ - Tnvnr",
+    "name": "Encordoamento Viola Caipira Média Níquel com Bolinha Cebolao RÉ - Tnvnr",
     "price": "R$ 29,90",
     "priceNum": 29.9,
     "rating": 4.8,
@@ -14326,7 +14326,7 @@ const rawProducts: Product[] = [
       "https://cdn.oderco.com.br/produtos/342294/342294-A6.png"
     ],
     "inStock": true,
-    "description": "Encordoamento Viola Caipira Média Níquel COM Bolinha Cebolao RÉ - Tnvnr — tradição Tonante desde 1954.",
+    "description": "Encordoamento Viola Caipira Média Níquel com Bolinha Cebolao RÉ - Tnvnr — tradição Tonante desde 1954.",
     "htmlDescription": "<section class=\"produto-descricao\"><h2>TRADIÇÃO E RESISTÊNCIA NA CONSTRUÇÃO</h2><p>O revestimento em níquel com proteção anticorrosiva oferece maior vida útil e desempenho consistente.\nA construção com bolinha proporciona fixação segura e prática, mantendo a afinação estável no uso diário.</p><h3>APLICAÇÃO E USO</h3><p>Ideal para moda de viola e estilos da raiz brasileira.</p><h3>MAIS DETALHES</h3><p>Disponível nas versões Cebolão Ré (média) e Cebolão Mi (leve), atendendo diferentes preferências de tocabilidade.\nUm encordoamento feito para quem carrega a tradição da viola, com resistência e qualidade para acompanhar o dia a dia.</p>",
     "features": [
       "Tipo: Encordoamento para viola caipira",
@@ -14376,7 +14376,7 @@ const rawProducts: Product[] = [
   {
     "id": 259,
     "sku": "CP342295",
-    "name": "Encordoamento Viola Caipira Leve Níquel COM Bolinha Cebolao MI - Tnvnm",
+    "name": "Encordoamento Viola Caipira Leve Níquel com Bolinha Cebolao MI - Tnvnm",
     "price": "R$ 55,00",
     "priceNum": 55,
     "rating": 4.9,
@@ -14551,8 +14551,8 @@ const rawProducts: Product[] = [
     "id": 262,
     "sku": "CP34238",
     "name": "Afinador Cromatico Digital AF10 Branco",
-    "price": "R$ 179,90",
-    "priceNum": 179.9,
+    "price": "R$ 89,90",
+    "priceNum": 89.9,
     "rating": 4.8,
     "reviews": 88,
     "category": "Acessórios",
@@ -14718,19 +14718,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "D'Addario",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352800_1-17648493815847936.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352800_1-17648493815847936.jpeg"
     ],
     "inStock": true,
-    "description": "Polidor Creme Restore D'addario - Pwpl — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Polidor Creme Restore D'addario - Pwpl</h2><p>Parte da linha Tonante de acessórios, o Polidor Creme Restore D'addario - Pwpl carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Polidor Creme Restore D'addario - Pwpl — D'Addario, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Polidor Creme Restore D'addario - Pwpl</h2><p>Selecionado pela Tonante, o Polidor Creme Restore D'addario - Pwpl é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: D'Addario",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -14743,7 +14743,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "D'Addario"
       },
       {
         "label": "Garantia",
@@ -14751,7 +14751,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "polidor-creme-restore-d-addario-pwpl-cp352800",
@@ -14760,7 +14760,7 @@ const rawProducts: Product[] = [
   {
     "id": 266,
     "sku": "CP352804",
-    "name": "Cera Liquida Protetora DE Carnauba D'addario - Pw-pl",
+    "name": "Cera Liquida Protetora de Carnauba D'addario - Pw-pl",
     "price": "R$ 19,90",
     "priceNum": 19.9,
     "rating": 4.8,
@@ -14769,19 +14769,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "D'Addario",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352804_1-17648494161855651.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352804_1-17648494161855651.jpeg"
     ],
     "inStock": true,
-    "description": "Cera Liquida Protetora DE Carnauba D'addario - Pw-pl — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cera Liquida Protetora DE Carnauba D'addario - Pw-pl</h2><p>Parte da linha Tonante de acessórios, o Cera Liquida Protetora DE Carnauba D'addario - Pw-pl carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Cera Liquida Protetora de Carnauba D'addario - Pw-pl — D'Addario, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Cera Liquida Protetora de Carnauba D'addario - Pw-pl</h2><p>Selecionado pela Tonante, o Cera Liquida Protetora de Carnauba D'addario - Pw-pl é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: D'Addario",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -14794,7 +14794,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "D'Addario"
       },
       {
         "label": "Garantia",
@@ -14802,7 +14802,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "cera-liquida-protetora-de-carnauba-d-addario-pw-pl-cp352804",
@@ -14821,19 +14821,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "D'Addario",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352805_1-17621818172457670.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352805_1-17621818172457670.jpeg"
     ],
     "inStock": true,
-    "description": "Condicionador Hidratante Para Escalas D'addario - Pw-fbc — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Condicionador Hidratante Para Escalas D'addario - Pw-fbc</h2><p>Parte da linha Tonante de acessórios, o Condicionador Hidratante Para Escalas D'addario - Pw-fbc carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Condicionador Hidratante Para Escalas D'addario - Pw-fbc — D'Addario, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Condicionador Hidratante Para Escalas D'addario - Pw-fbc</h2><p>Selecionado pela Tonante, o Condicionador Hidratante Para Escalas D'addario - Pw-fbc é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: D'Addario",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -14846,7 +14846,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "D'Addario"
       },
       {
         "label": "Garantia",
@@ -14854,7 +14854,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "condicionador-hidratante-para-escalas-d-addario-pw-fbc-cp352805",
@@ -14872,19 +14872,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "D'Addario",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352813_1-17648494554714414.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352813_1-17648494554714414.jpeg"
     ],
     "inStock": true,
-    "description": "Polidor Spray Shine D'addario - PW-PL03 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Polidor Spray Shine D'addario - PW-PL03</h2><p>Parte da linha Tonante de acessórios, o Polidor Spray Shine D'addario - PW-PL03 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Polidor Spray Shine D'addario - PW-PL03 — D'Addario, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Polidor Spray Shine D'addario - PW-PL03</h2><p>Selecionado pela Tonante, o Polidor Spray Shine D'addario - PW-PL03 é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: D'Addario",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -14897,7 +14897,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "D'Addario"
       },
       {
         "label": "Garantia",
@@ -14905,7 +14905,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "polidor-spray-shine-d-addario-pw-pl03-cp352813",
@@ -14914,7 +14914,7 @@ const rawProducts: Product[] = [
   {
     "id": 269,
     "sku": "CP352833",
-    "name": "Óleo DE Limão Para Limpeza D'addario - Pw-lmn",
+    "name": "Óleo de Limão Para Limpeza D'addario - Pw-lmn",
     "price": "R$ 139,90",
     "priceNum": 139.9,
     "rating": 4.6,
@@ -14923,19 +14923,19 @@ const rawProducts: Product[] = [
     "tags": [
       "Acessórios"
     ],
-    "brand": "Tonante",
+    "brand": "D'Addario",
     "image": "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352833_1-17621817720784471.jpeg",
     "images": [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/352833_1-17621817720784471.jpeg"
     ],
     "inStock": true,
-    "description": "Óleo DE Limão Para Limpeza D'addario - Pw-lmn — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Óleo DE Limão Para Limpeza D'addario - Pw-lmn</h2><p>Parte da linha Tonante de acessórios, o Óleo DE Limão Para Limpeza D'addario - Pw-lmn carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Óleo de Limão Para Limpeza D'addario - Pw-lmn — D'Addario, marca parceira selecionada pela Tonante.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Óleo de Limão Para Limpeza D'addario - Pw-lmn</h2><p>Selecionado pela Tonante, o Óleo de Limão Para Limpeza D'addario - Pw-lmn é de uma marca parceira que passa pela curadoria Tonante: só entra no catálogo o que a gente usaria no próprio palco.</p><h3>Curadoria de quem entende</h3><p>Mais de meio século de música nos dá critério: testamos e escolhemos parceiros que entregam qualidade de verdade.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Acessórios",
-      "Acabamento Tonante de fábrica",
+      "Marca parceira: D'Addario",
       "Garantia de 2 anos",
-      "Tradição brasileira desde 1954"
+      "Curadoria Tonante"
     ],
     "specs": [
       {
@@ -14948,7 +14948,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Marca",
-        "value": "Tonante"
+        "value": "D'Addario"
       },
       {
         "label": "Garantia",
@@ -14956,7 +14956,7 @@ const rawProducts: Product[] = [
       },
       {
         "label": "Origem",
-        "value": "Brasil · tradição desde 1954"
+        "value": "Marca parceira · curadoria Tonante"
       }
     ],
     "seoSlug": "oleo-de-limao-para-limpeza-d-addario-pw-lmn-cp352833",
@@ -15019,7 +15019,7 @@ const rawProducts: Product[] = [
   {
     "id": 271,
     "sku": "CP357159",
-    "name": "Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb)",
+    "name": "Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb)",
     "price": "R$ 859,90",
     "priceNum": 859.9,
     "rating": 4.4,
@@ -15037,8 +15037,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/357159_1-17678224568006415.jpeg"
     ],
     "inStock": true,
-    "description": "Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb) — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb)</h2><p>Parte da linha Tonante de violões, o Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb) carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb) — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb)</h2><p>Parte da linha Tonante de violões, o Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Blue (ctb) carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Aço · Eletroacústico · Acústico",
       "Acabamento Tonante de fábrica",
@@ -15074,7 +15074,7 @@ const rawProducts: Product[] = [
   {
     "id": 272,
     "sku": "CP357160",
-    "name": "Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk)",
+    "name": "Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk)",
     "price": "R$ 2.379,90",
     "priceNum": 2379.9,
     "rating": 4.8,
@@ -15092,8 +15092,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/5/357160_1-17677966635888053.jpeg"
     ],
     "inStock": true,
-    "description": "Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk) — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk)</h2><p>Parte da linha Tonante de violões, o Violão AÇO Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk) carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk) — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk)</h2><p>Parte da linha Tonante de violões, o Violão Aço Eletroacústico Performance GDC-1 CEQ Color TOP Black (ctbk) carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Aço · Eletroacústico · Acústico",
       "Acabamento Tonante de fábrica",
@@ -15128,7 +15128,7 @@ const rawProducts: Product[] = [
   {
     "id": 273,
     "sku": "CP35892",
-    "name": "Capotraste Para Violao EM Alumínio - Prata - CPT10",
+    "name": "Capotraste Para Violao em Alumínio - Prata - CPT10",
     "price": "R$ 69,90",
     "priceNum": 69.9,
     "rating": 4.9,
@@ -15144,8 +15144,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/-/1-17458696672894743.jpeg"
     ],
     "inStock": true,
-    "description": "Capotraste Para Violao EM Alumínio - Prata - CPT10 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Capotraste Para Violao EM Alumínio - Prata - CPT10</h2><p>Parte da linha Tonante de acessórios, o Capotraste Para Violao EM Alumínio - Prata - CPT10 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Capotraste Para Violao em Alumínio - Prata - CPT10 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Capotraste Para Violao em Alumínio - Prata - CPT10</h2><p>Parte da linha Tonante de acessórios, o Capotraste Para Violao em Alumínio - Prata - CPT10 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Capotraste",
       "Acabamento Tonante de fábrica",
@@ -15183,7 +15183,7 @@ const rawProducts: Product[] = [
   {
     "id": 274,
     "sku": "CP35895",
-    "name": "Capotraste Para Violao EM Alumínio - Preto - CPT10",
+    "name": "Capotraste Para Violao em Alumínio - Preto - CPT10",
     "price": "R$ 39,90",
     "priceNum": 39.9,
     "rating": 4.8,
@@ -15199,8 +15199,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/-/1-17522997159603437.jpeg"
     ],
     "inStock": true,
-    "description": "Capotraste Para Violao EM Alumínio - Preto - CPT10 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Capotraste Para Violao EM Alumínio - Preto - CPT10</h2><p>Parte da linha Tonante de acessórios, o Capotraste Para Violao EM Alumínio - Preto - CPT10 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Capotraste Para Violao em Alumínio - Preto - CPT10 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Capotraste Para Violao em Alumínio - Preto - CPT10</h2><p>Parte da linha Tonante de acessórios, o Capotraste Para Violao em Alumínio - Preto - CPT10 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Capotraste",
       "Acabamento Tonante de fábrica",
@@ -15238,9 +15238,9 @@ const rawProducts: Product[] = [
   {
     "id": 275,
     "sku": "CP35896",
-    "name": "Capotraste Para Violao EM Liga DE Zinco - Preto - CPT20",
-    "price": "R$ 159,90",
-    "priceNum": 159.9,
+    "name": "Capotraste Para Violao em Liga de Zinco - Preto - CPT20",
+    "price": "R$ 54,90",
+    "priceNum": 54.9,
     "rating": 4.5,
     "reviews": 225,
     "category": "Acessórios",
@@ -15254,8 +15254,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/1/-/1-17459253901688909.jpeg"
     ],
     "inStock": true,
-    "description": "Capotraste Para Violao EM Liga DE Zinco - Preto - CPT20 — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Capotraste Para Violao EM Liga DE Zinco - Preto - CPT20</h2><p>Parte da linha Tonante de acessórios, o Capotraste Para Violao EM Liga DE Zinco - Preto - CPT20 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Capotraste Para Violao em Liga de Zinco - Preto - CPT20 — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Capotraste Para Violao em Liga de Zinco - Preto - CPT20</h2><p>Parte da linha Tonante de acessórios, o Capotraste Para Violao em Liga de Zinco - Preto - CPT20 carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Capotraste",
       "Acabamento Tonante de fábrica",
@@ -15718,7 +15718,7 @@ const rawProducts: Product[] = [
   {
     "id": 282,
     "sku": "CP37641",
-    "name": "Microfone COM Cabo USB PODCAST-400U Preto",
+    "name": "Microfone com Cabo USB PODCAST-400U Preto",
     "price": "R$ 119,90",
     "priceNum": 119.9,
     "rating": 4.7,
@@ -15735,8 +15735,8 @@ const rawProducts: Product[] = [
       "https://www.oderco.com.br/media/catalog/product/cache/c5b0e6136a6dd7f7d91d8b889ed40f35/3/7/37641-17523305064321759.jpeg"
     ],
     "inStock": true,
-    "description": "Microfone COM Cabo USB PODCAST-400U Preto — tradição Tonante desde 1954.",
-    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone COM Cabo USB PODCAST-400U Preto</h2><p>Parte da linha Tonante de acessórios, o Microfone COM Cabo USB PODCAST-400U Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
+    "description": "Microfone com Cabo USB PODCAST-400U Preto — tradição Tonante desde 1954.",
+    "htmlDescription": "<section class=\"produto-descricao\"><h2>Microfone com Cabo USB PODCAST-400U Preto</h2><p>Parte da linha Tonante de acessórios, o Microfone com Cabo USB PODCAST-400U Preto carrega a tradição de quem faz instrumento desde 1954. Qualidade de fábrica, pronto pra fazer parte da sua história musical.</p><h3>Cuidado de quem entende</h3><p>Mais de meio século de experiência em cada detalhe. Materiais selecionados e controle de qualidade rigoroso, do galpão ao palco.</p><h3>Pronto para tocar</h3><p>Sai da caixa ajustado e conferido. É só começar a tocar a sua próxima música.</p>",
     "features": [
       "Microfone · Cabo",
       "Acabamento Tonante de fábrica",

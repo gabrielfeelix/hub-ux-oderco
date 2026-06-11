@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { ShoppingBag, ArrowRight } from "lucide-react";
+import { ShoppingBag, ArrowRight, Star, Check } from "lucide-react";
 import { allProducts, type Product } from "./productsData";
 import { getVisibleCatalogProducts, getPrimaryProductImage } from "./productPresentation";
 import {
@@ -142,8 +142,9 @@ export function OfertasDaSemana() {
               className="relative flex h-full flex-col overflow-hidden rounded-card-lg border bg-surface-1"
               style={{ borderColor: "var(--edge)" }}
             >
-              <div className="relative">
-                <div className="deal-image-bg relative aspect-[4/3] overflow-hidden p-6">
+              {/* lg: flex-1 absorve a altura extra do rail (evita vazio sob o conteúdo) */}
+              <div className="relative lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+                <div className="deal-image-bg relative aspect-[4/3] overflow-hidden p-6 lg:aspect-auto lg:min-h-[300px] lg:flex-1">
                   <ImageWithFallback
                     src={heroImg}
                     alt={hero.name}
@@ -166,7 +167,7 @@ export function OfertasDaSemana() {
                 )}
               </div>
 
-              <div className="flex flex-1 flex-col gap-3 p-5 md:p-6">
+              <div className="flex flex-col gap-3 p-5 md:p-6">
                 <Link to={`/produto/${hero.id}`}>
                   <h3
                     className="line-clamp-2"
@@ -175,6 +176,24 @@ export function OfertasDaSemana() {
                     {hero.name}
                   </h3>
                 </Link>
+
+                {/* Prova social — mesmo padrão de estrelas do ProductCard */}
+                <div className="flex items-center gap-1.5" aria-label={`Avaliação ${hero.rating.toFixed(1)} de 5, ${hero.reviews} avaliações`}>
+                  <span className="flex items-center gap-0.5" aria-hidden="true">
+                    {[0, 1, 2, 3, 4].map((i) => (
+                      <Star
+                        key={i}
+                        size={14}
+                        strokeWidth={1.5}
+                        fill={hero.rating - i >= 0.5 ? "var(--amber)" : "none"}
+                        stroke={hero.rating - i >= 0.5 ? "var(--amber)" : "rgba(26,23,20,0.3)"}
+                      />
+                    ))}
+                  </span>
+                  <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
+                    {hero.rating.toFixed(1)} · {hero.reviews} avaliações
+                  </span>
+                </div>
 
                 <div className="flex flex-wrap items-baseline gap-2">
                   {hero.oldPriceNum && (

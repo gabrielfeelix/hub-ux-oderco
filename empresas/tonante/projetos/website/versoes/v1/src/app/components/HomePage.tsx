@@ -59,8 +59,17 @@ export function HomePage() {
       {/* 5. Categorias — O que você toca hoje? */}
       <CategoryShowcase />
 
-      {/* 6. Top da semana (ranked) */}
-      <ProductShelf label="Mais vendidos" title="Top da semana" productIds={bestSellerIds} showRanking />
+      {/* 6. Top da semana (ranked) + Recém-chegados em abas — enxuga 1 dobra */}
+      <ProductShelf
+        label="Mais vendidos"
+        title="Top da semana"
+        productIds={bestSellerIds}
+        showRanking
+        tabs={[
+          { tabLabel: "Mais vendidos", eyebrow: "Mais vendidos", title: "Top da semana", productIds: bestSellerIds, showRanking: true },
+          { tabLabel: "Lançamentos", eyebrow: "Lançamentos", title: "Recém-chegados", productIds: newArrivalIds },
+        ]}
+      />
 
       {/* 7. Cada violão, uma experiência */}
       <LinhasDeViolao />
@@ -72,10 +81,7 @@ export function HomePage() {
       <StoryBand />
       <SocialProofBar />
 
-      {/* 10. Recém-chegados */}
-      <ProductShelf label="Lançamentos" title="Recém-chegados" productIds={newArrivalIds} />
-
-      {/* 11. Tonante por aí */}
+      {/* 10. Tonante por aí */}
       <RealMusicians />
 
       {/* 12. Guia do primeiro violão (captura iniciante) */}

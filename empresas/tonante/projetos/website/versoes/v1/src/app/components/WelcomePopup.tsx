@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ArrowRight, Check, Facebook, Instagram, Youtube } from "lucide-react";
 
-const PCYES_LOGO = "/brand/tonante-wordmark-amber.png";
+const TONANTE_LOGO = "/brand/tonante-wordmark-amber.png";
 
 /** Logo do X (ex-Twitter) — lucide não tem; SVG mínimo. */
 function XLogo({ size = 18 }: { size?: number }) {
@@ -139,18 +139,18 @@ export function WelcomePopup() {
                   style={{ background: "radial-gradient(circle, rgba(200, 120, 0, 0.3) 0%, transparent 70%)" }} />
 
                 <div className="relative z-10 flex flex-col items-center px-10 text-center">
-                  <img src={PCYES_LOGO} alt="Tonante" className="w-[220px] mb-8 drop-shadow-[0_8px_24px_rgba(200,120,0,0.45)]" />
+                  <img src={TONANTE_LOGO} alt="Tonante" className="w-[220px] mb-8 drop-shadow-[0_8px_24px_rgba(200,120,0,0.45)]" />
                   <p
                     className="text-ink leading-snug"
                     style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: 700, letterSpacing: "-0.02em" }}
                   >
-                    Built for<br />Performance
+                    Feito pra<br />quem toca
                   </p>
                   <p
                     className="mt-4 text-ink-muted max-w-[260px]"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.55 }}
                   >
-                    Hardware, periféricos e setups feitos pra quem joga, edita e cria sem trava.
+                    Violões, cordas e acessórios que fazem parte da sua história desde 1954.
                   </p>
                 </div>
               </div>

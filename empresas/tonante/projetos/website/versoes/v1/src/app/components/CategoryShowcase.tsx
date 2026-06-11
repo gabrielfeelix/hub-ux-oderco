@@ -72,8 +72,10 @@ function CategoryCard({ cat, big, spanClass = "" }: { cat: Cat; big?: boolean; s
       <div
         className="pointer-events-none absolute inset-0"
         style={{
+          // scrim duplo: faixa inferior + lateral esquerda (onde o texto vive) —
+          // garante AA mesmo sobre fotos claras (ex.: Suportes).
           background: photo
-            ? "linear-gradient(180deg, rgba(20,16,12,0) 42%, rgba(20,16,12,.32) 72%, rgba(20,16,12,.74) 100%)"
+            ? "linear-gradient(90deg, rgba(20,16,12,.55) 0%, rgba(20,16,12,.18) 38%, rgba(20,16,12,0) 60%), linear-gradient(180deg, rgba(20,16,12,0) 38%, rgba(20,16,12,.38) 68%, rgba(20,16,12,.78) 100%)"
             : "transparent",
         }}
       />

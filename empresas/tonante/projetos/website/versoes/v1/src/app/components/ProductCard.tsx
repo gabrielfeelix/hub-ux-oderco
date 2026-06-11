@@ -75,10 +75,16 @@ export function ProductCard({
       ? Math.round(((oldPriceNum - product.priceNum) / oldPriceNum) * 100)
       : 0;
 
-  const eyebrow =
+  const eyebrowBase =
     (product.tags || []).filter((t) => t !== product.category).slice(0, 2).join(" · ") ||
     product.subcategory ||
     product.category;
+  // Marca terceira ganha destaque no eyebrow — loja oficial Tonante vende
+  // parceiros, mas não os disfarça de linha própria.
+  const eyebrow =
+    product.brand && product.brand !== "Tonante"
+      ? `${product.brand} · ${eyebrowBase}`
+      : eyebrowBase;
   const pix = product.priceNum * 0.9;
   const installments = getInstallmentCount(product.priceNum);
   const installmentValue = getInstallmentValue(product.priceNum);
