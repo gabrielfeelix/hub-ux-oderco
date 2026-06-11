@@ -104,7 +104,9 @@ export function OfertasDaSemana() {
     return [...visible]
       .filter((p) => p.oldPriceNum && p.oldPriceNum > p.priceNum)
       .sort((a, b) => (b.oldPriceNum! - b.priceNum) - (a.oldPriceNum! - a.priceNum))
-      .slice(0, 5)
+      // hero + 2 deals (rail em 1 linha): altura do hero ≈ 1 card, imagem
+      // preenche em vez de boiar num poço de 2 linhas. "Ver todas" cobre o resto.
+      .slice(0, 3)
       .map(withGuaranteedDiscount);
   }, []);
 

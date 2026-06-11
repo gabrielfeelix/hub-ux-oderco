@@ -1780,24 +1780,32 @@ export function Navbar() {
                           onMouseEnter={() => setActiveSubItem(sub.label)}
                           className="group flex min-w-[122px] flex-col items-center gap-3 pt-2 text-center outline-none"
                         >
-                          <span className="relative flex h-[118px] w-[118px] items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
+                          {/* disco quente + violão saindo por cima (3D). Imagem
+                              JPEG fundo-branco usa multiply p/ sumir o branco
+                              sobre o disco claro e o painel creme; profundidade
+                              vem da sombra do disco (drop-shadow viraria retângulo
+                              numa imagem opaca). */}
+                          <span className="relative flex h-[128px] w-[120px] items-end justify-center">
                             <span
-                              className="relative h-[102px] w-[102px] overflow-hidden rounded-full"
-                              style={{ background: "rgba(26,23,20,0.045)" }}
-                            >
-                              {image ? (
-                                <ImageWithFallback
-                                  src={image}
-                                  alt={sub.label}
-                                  className="absolute inset-0 h-full w-full object-contain p-3 transition-transform duration-300 group-hover:scale-[1.12]"
-                                  style={{ mixBlendMode: "multiply" }}
-                                />
-                              ) : (
-                                <span className="absolute inset-0 grid place-items-center">
-                                  <Grid2x2 size={34} className="text-foreground/35 transition-colors group-hover:text-primary" strokeWidth={1.5} />
-                                </span>
-                              )}
-                            </span>
+                              aria-hidden="true"
+                              className="absolute bottom-0 left-1/2 h-[96px] w-[96px] -translate-x-1/2 rounded-full transition-transform duration-300 group-hover:scale-105"
+                              style={{
+                                background: "radial-gradient(circle at 50% 38%, rgba(200,120,0,0.20), rgba(200,120,0,0.06) 70%)",
+                                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.55), 0 12px 24px -10px rgba(26,23,20,0.42)",
+                              }}
+                            />
+                            {image ? (
+                              <ImageWithFallback
+                                src={image}
+                                alt={sub.label}
+                                className="relative z-[1] h-[118px] w-auto max-w-[112%] object-contain object-bottom transition-transform duration-300 group-hover:-translate-y-2.5 group-hover:scale-[1.06]"
+                                style={{ mixBlendMode: "multiply" }}
+                              />
+                            ) : (
+                              <span className="relative z-[1] mb-2 grid h-[88px] w-[88px] place-items-center">
+                                <Grid2x2 size={34} className="text-foreground/35 transition-colors group-hover:text-primary" strokeWidth={1.5} />
+                              </span>
+                            )}
                           </span>
                           <span
                             className="max-w-[130px] text-foreground/78 transition-colors group-hover:text-foreground"

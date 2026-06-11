@@ -34,8 +34,14 @@ export function HeroSection() {
       style={{ background: "var(--surface-0)" }}
     >
       <div className="relative mx-auto" style={{ maxWidth: "1600px" }}>
-        {/* palco — mantém o aspecto da arte (597/250 ≈ 2.39:1) */}
-        <div className="relative overflow-hidden" style={{ aspectRatio: "597 / 250", borderRadius: "var(--radius-card-xl)", boxShadow: "var(--shadow-card)" }}>
+        {/* palco — aspecto da arte (597/250 ≈ 2.39:1), mas capado pela altura da
+            viewport p/ banner + chips de categoria caberem na 1ª dobra em
+            qualquer monitor. Reserva = header+pt (≈190) + dots (≈44) + chips
+            (≈84) + respiro. object-cover apara o excedente vertical. */}
+        <div
+          className="relative mx-auto w-full overflow-hidden max-h-[calc(100svh-230px)] md:max-h-[calc(100svh-340px)]"
+          style={{ aspectRatio: "597 / 250", borderRadius: "var(--radius-card-xl)", boxShadow: "var(--shadow-card)" }}
+        >
           {slides.map((s, i) => {
             const isActive = i === idx;
             return (

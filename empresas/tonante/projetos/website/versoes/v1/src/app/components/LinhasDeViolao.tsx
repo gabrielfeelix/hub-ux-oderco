@@ -213,6 +213,7 @@ export function LinhasDeViolao() {
           {LINES.map((l, i) => {
             const on = i === sel;
             const [la, lb] = l.tone;
+            const lprod = findProd(l.name);
             return (
               <button
                 key={l.name}
@@ -228,7 +229,27 @@ export function LinhasDeViolao() {
                   transition: "all .2s",
                 }}
               >
-                <span className="h-[30px] w-[30px] flex-shrink-0 rounded-full" style={{ background: `radial-gradient(circle at 35% 25%, ${la}, ${lb})` }} />
+                {/* disco da cor da linha + violão saindo de leve (multiply some o
+                    branco do JPEG sobre o disco colorido) */}
+                <span className="relative flex h-9 w-9 flex-shrink-0 items-end justify-center">
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-1/2 h-[30px] w-[30px] -translate-x-1/2 rounded-full"
+                    style={{
+                      background: `radial-gradient(circle at 38% 28%, ${la}, ${lb})`,
+                      boxShadow: on
+                        ? "0 0 0 2px var(--background), 0 4px 9px -3px rgba(0,0,0,.55)"
+                        : "0 2px 6px -2px rgba(0,0,0,.32)",
+                    }}
+                  />
+                  <img
+                    src={getPrimaryProductImage(lprod)}
+                    alt=""
+                    aria-hidden="true"
+                    className="relative z-[1] h-[42px] w-auto object-contain object-bottom"
+                    style={{ mixBlendMode: "multiply" }}
+                  />
+                </span>
                 <span className="text-left">
                   <span style={{ fontFamily: "var(--font-family-figtree)", display: "block", fontSize: "16px", fontWeight: 700, lineHeight: 1 }}>{l.name}</span>
                   <span style={{ fontSize: "11.5px", opacity: 0.7 }}>{l.vibe}</span>

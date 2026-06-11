@@ -39,6 +39,7 @@ const RECIPES: Record<Size, CSSProperties> = {
 export function DiscountBadge({ percent, children, size = "lg", className = "", style }: DiscountBadgeProps) {
   return (
     <span
+      data-keep-dark
       className={`inline-flex items-center text-white ${className}`}
       style={{ ...RECIPES[size], ...style }}
     >

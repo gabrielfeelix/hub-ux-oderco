@@ -25,16 +25,16 @@ function ChampionCard({ product, onAdd }: { product: Product; onAdd: (p: Product
   const n = getInstallmentCount(product.priceNum);
   return (
     <article
-      className="snap-start flex-shrink-0 overflow-hidden rounded-card-lg border bg-surface-1"
+      className="snap-start flex h-full flex-shrink-0 overflow-hidden rounded-card-lg border bg-surface-1"
       style={{ width: "clamp(300px, 90vw, 600px)", borderColor: "rgba(200,120,0,0.4)", boxShadow: "var(--shadow-category-active)" }}
     >
-      <div className="grid h-full grid-cols-1 sm:grid-cols-2">
-        <Link to={`/produto/${product.id}`} className="relative block">
-          <div className="deal-image-bg relative aspect-square overflow-hidden p-5">
+      <div className="grid h-full w-full grid-cols-1 sm:grid-cols-2">
+        <Link to={`/produto/${product.id}`} className="relative block h-full">
+          <div className="deal-image-bg relative h-full min-h-[300px] overflow-hidden p-5">
             <ImageWithFallback
               src={getPrimaryProductImage(product)}
               alt={product.name}
-              className="absolute inset-0 h-full w-full object-contain p-[8%]"
+              className="absolute inset-0 h-full w-full object-contain p-[7%]"
               style={{ mixBlendMode: "multiply" }}
             />
             <span
