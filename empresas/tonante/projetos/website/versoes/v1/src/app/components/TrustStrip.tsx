@@ -17,7 +17,7 @@ export function TrustStrip() {
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div
           className="grid grid-cols-2 overflow-hidden md:grid-cols-4"
-          style={{ gap: "1px", background: "#e4dccc", border: "1px solid #e4dccc", borderRadius: "var(--radius-card-lg)" }}
+          style={{ gap: "1px", background: "var(--border)", border: "1px solid var(--border)", borderRadius: "var(--radius-card-lg)" }}
         >
           {items.map(({ icon: Icon, title, sub }) => (
             <div key={title} className="flex items-center gap-3 px-5 py-5" style={{ background: "var(--surface-1)" }}>

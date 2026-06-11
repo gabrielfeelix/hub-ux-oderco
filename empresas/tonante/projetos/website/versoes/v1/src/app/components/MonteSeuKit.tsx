@@ -67,7 +67,7 @@ export function MonteSeuKit() {
   return (
     <section
       className="px-5 md:px-[72px]"
-      style={{ background: "var(--surface-2)", borderTop: "1px solid #e4dccc", borderBottom: "1px solid #e4dccc", paddingTop: 44, paddingBottom: 44 }}
+      style={{ background: "var(--surface-2)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", paddingTop: 44, paddingBottom: 44 }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-7">
@@ -83,21 +83,22 @@ export function MonteSeuKit() {
           </p>
         </div>
 
-        {/* presets — pré-populam o builder em 1 clique (§6.9) */}
-        <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {/* presets — pré-populam o builder em 1 clique (§6.9).
+            Mobile: 3 ícone-tabs (ícone em cima do título, sem descrição).
+            Desktop: linha com ícone + título + descrição. */}
+        <div className="mb-6 grid grid-cols-3 gap-2.5 sm:gap-3">
           {PRESETS.map((p, i) => {
             const on = i === presetIdx;
             return (
               <button
                 key={p.key}
                 onClick={() => choosePreset(i)}
-                className="flex cursor-pointer items-center gap-3 text-left transition-all"
+                className="flex cursor-pointer flex-col items-center gap-2 p-3 text-center transition-all sm:flex-row sm:items-center sm:gap-3 sm:px-4 sm:py-3.5 sm:text-left"
                 style={{
                   background: on ? "var(--ink-strong)" : "var(--surface-1)",
                   color: on ? "var(--background)" : "var(--ink-strong)",
                   border: `1.5px solid ${on ? "var(--ink-strong)" : "var(--edge)"}`,
                   borderRadius: "var(--radius-card-md)",
-                  padding: "13px 16px",
                 }}
               >
                 <span
@@ -107,10 +108,10 @@ export function MonteSeuKit() {
                   <ShoppingBag size={16} strokeWidth={2.2} />
                 </span>
                 <span>
-                  <span className="block" style={{ fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "14.5px", lineHeight: 1.1 }}>
+                  <span className="block" style={{ fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "13.5px", lineHeight: 1.15 }}>
                     {p.label}
                   </span>
-                  <span className="block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", opacity: 0.72, marginTop: 2 }}>
+                  <span className="mt-0.5 hidden sm:block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", opacity: 0.72 }}>
                     {p.desc}
                   </span>
                 </span>
@@ -121,11 +122,11 @@ export function MonteSeuKit() {
 
         <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[minmax(0,420px)_auto_1fr]">
           {/* base */}
-          <article className="flex flex-col gap-3" style={{ background: "var(--surface-1)", border: "1px solid #e4dccc", borderRadius: "var(--radius-card-lg)", padding: 16 }}>
+          <article className="flex flex-col gap-3" style={{ background: "var(--surface-1)", border: "1px solid var(--border)", borderRadius: "var(--radius-card-lg)", padding: 16 }}>
             <span className="label" style={{ color: "var(--amber-deep)" }}>
               Instrumento base
             </span>
-            <Link to={`/produto/${base.id}`} className="relative block overflow-hidden rounded-[12px]" style={{ background: "#fbfaf6", boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.06)" }}>
+            <Link to={`/produto/${base.id}`} className="relative block overflow-hidden rounded-[12px]" style={{ background: "var(--well)", boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.06)" }}>
               <div className="relative aspect-[4/3]">
                 <ImageWithFallback src={getPrimaryProductImage(base)} alt={base.name} className="absolute inset-0 h-full w-full object-contain p-4" style={{ mixBlendMode: "multiply" }} />
               </div>
@@ -157,18 +158,18 @@ export function MonteSeuKit() {
                     className="relative flex cursor-pointer flex-col overflow-hidden text-left"
                     style={{
                       background: "var(--surface-1)",
-                      border: `1.5px solid ${on ? "var(--amber)" : "#e4dccc"}`,
+                      border: `1.5px solid ${on ? "var(--amber)" : "var(--border)"}`,
                       borderRadius: "var(--radius-card-md)",
                       transition: "border-color .2s",
                     }}
                   >
                     {/* well no topo, flush nos cantos (card clipa) — sem borda
                         âmbar vazando atrás da imagem */}
-                    <div className="relative aspect-square" style={{ background: "#fbfaf6" }}>
+                    <div className="relative aspect-square" style={{ background: "var(--well)" }}>
                       <ImageWithFallback src={getPrimaryProductImage(a)} alt={a.name} className="absolute inset-0 h-full w-full object-contain p-3" style={{ mixBlendMode: "multiply" }} />
                       <span
                         className="absolute right-2.5 top-2.5 grid h-[26px] w-[26px] place-items-center rounded-full"
-                        style={{ background: on ? "var(--amber)" : "rgba(255,255,255,0.92)", border: `1.5px solid ${on ? "var(--amber)" : "#d6cbb5"}`, color: on ? "#fff" : "var(--muted)", boxShadow: "0 2px 6px -2px rgba(26,23,20,0.25)" }}
+                        style={{ background: on ? "var(--amber)" : "rgba(255,255,255,0.92)", border: `1.5px solid ${on ? "var(--amber)" : "#d9d6d0"}`, color: on ? "#fff" : "var(--muted)", boxShadow: "0 2px 6px -2px rgba(26,23,20,0.25)" }}
                       >
                         {on ? <Check size={14} strokeWidth={2.6} /> : <Plus size={14} strokeWidth={2.6} />}
                       </span>
@@ -189,7 +190,7 @@ export function MonteSeuKit() {
             {/* resumo (claro) */}
             <div
               className="flex flex-wrap items-center justify-between gap-4 px-5 py-4"
-              style={{ background: "var(--surface-1)", border: "1.5px solid #d6cbb5", borderRadius: "var(--radius-card-md)" }}
+              style={{ background: "var(--surface-1)", border: "1.5px solid #d9d6d0", borderRadius: "var(--radius-card-md)" }}
             >
               <div>
                 <div className="num" style={{ fontSize: "var(--text-meta)", color: "var(--ink-meta)", textDecoration: "line-through" }}>

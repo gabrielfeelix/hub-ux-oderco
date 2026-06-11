@@ -1959,8 +1959,8 @@ function ProductStandardDescription({ product, images }: { product: any; images:
     `${product.name} foi desenvolvido para entregar desempenho, acabamento e confiabilidade no uso diário.`;
 
   const productImageBg = {
-    background: "linear-gradient(160deg, #faf7f0, #efe9dc)",
-    border: "1px solid #e4dccc",
+    background: "linear-gradient(160deg, #f8f7f4, #efede8)",
+    border: "1px solid var(--border)",
     boxShadow: "var(--shadow-card-hairline)",
   } as const;
 
@@ -1972,7 +1972,7 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           style={{
             borderRadius: "var(--radius-card-xl)",
             background: "var(--surface-1)",
-            border: "1px solid #e4dccc",
+            border: "1px solid var(--border)",
             boxShadow: "var(--shadow-card)",
           }}
         >

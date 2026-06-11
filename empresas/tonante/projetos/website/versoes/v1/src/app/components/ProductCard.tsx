@@ -107,18 +107,18 @@ export function ProductCard({
 
   return (
     <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-card-lg border border-[#e4dccc] bg-surface-1 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d6cbb5] hover:shadow-[0_18px_44px_-20px_rgba(26,23,20,0.30)] ${className}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-card-lg border border-[var(--border)] bg-surface-1 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#d9d6d0] hover:shadow-[0_18px_44px_-20px_rgba(26,23,20,0.30)] ${className}`}
       style={style}
     >
       <Link to={href} className="flex flex-1 flex-col">
         {/* área de imagem (well creme) */}
         <div className="relative p-3">
           <div
-            className="relative aspect-square overflow-hidden rounded-[14px]"
+            className="relative aspect-square overflow-hidden rounded-[7px]"
             style={{
               // branco-quente limpo — produto destaca como foto premium e não
               // se confunde com o creme da página (multiply fica perfeito sobre branco)
-              background: "#fbfaf6",
+              background: "var(--well)",
               boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.07)",
             }}
           >
@@ -424,7 +424,7 @@ export function ProductCard({
             </button>
 
             {/* imagem */}
-            <div className="relative aspect-square md:aspect-auto" style={{ background: "linear-gradient(160deg, #faf7f0, #efe9dc)" }}>
+            <div className="relative aspect-square md:aspect-auto" style={{ background: "linear-gradient(160deg, #f8f7f4, #efede8)" }}>
               <ImageWithFallback src={image} alt={product.name} className="absolute inset-0 h-full w-full object-contain p-8" style={{ mixBlendMode: "multiply" }} />
               {discount > 0 && (
                 <span className="absolute left-5 top-5">
@@ -509,7 +509,7 @@ export function ProductCard({
                     navigate(href);
                   }}
                   className="rounded-pill cursor-pointer"
-                  style={{ background: "transparent", color: "var(--ink-strong)", padding: "12px 22px", border: "1.5px solid #d6cbb5", fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "14.5px" }}
+                  style={{ background: "transparent", color: "var(--ink-strong)", padding: "12px 22px", border: "1.5px solid #d9d6d0", fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "14.5px" }}
                 >
                   Ver página completa
                 </button>

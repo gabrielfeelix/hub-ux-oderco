@@ -63,7 +63,7 @@ export function HeroSection() {
             onClick={() => goTo(idx - 1)}
             aria-label="Banner anterior"
             className="absolute left-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full md:flex"
-            style={{ background: "rgba(255,253,248,0.92)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
+            style={{ background: "rgba(255,255,255,0.92)", border: "1px solid var(--border)", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
           >
             <ChevronLeft size={22} />
           </button>
@@ -71,7 +71,7 @@ export function HeroSection() {
             onClick={() => goTo(idx + 1)}
             aria-label="Próximo banner"
             className="absolute right-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full md:flex"
-            style={{ background: "rgba(255,253,248,0.92)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
+            style={{ background: "rgba(255,255,255,0.92)", border: "1px solid var(--border)", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
           >
             <ChevronRight size={22} />
           </button>
@@ -89,7 +89,7 @@ export function HeroSection() {
                 onClick={() => goTo(i)}
                 aria-label={`Banner ${i + 1}`}
                 className="h-[9px] rounded-full transition-all cursor-pointer"
-                style={{ width: i === idx ? 28 : 9, background: i === idx ? "var(--amber)" : "#d6cbb5", padding: 0, border: "none" }}
+                style={{ width: i === idx ? 28 : 9, background: i === idx ? "var(--amber)" : "#d9d6d0", padding: 0, border: "none" }}
               />
             ))}
           </div>

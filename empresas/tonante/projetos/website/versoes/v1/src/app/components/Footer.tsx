@@ -105,7 +105,7 @@ export function Footer() {
 
   if (isCheckout) {
     return (
-      <footer className="bg-[#efe9dc] border-t border-foreground/10 text-foreground py-12 mt-auto">
+      <footer className="bg-[#f6f5f2] border-t border-foreground/10 text-foreground py-12 mt-auto">
         <div className="mx-auto max-w-5xl px-5 md:px-8">
           <div className="flex flex-col items-center justify-center gap-6 text-center">
             <Link to="/" className="hover:opacity-80 transition-opacity" aria-label="Tonante">

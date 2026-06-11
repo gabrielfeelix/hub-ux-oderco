@@ -73,7 +73,7 @@ export function GuiaIniciante() {
             </span>
             <div
               className="relative overflow-hidden"
-              style={{ width: "min(72%, 250px)", transform: "rotate(-3deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#faf7f0,#efe9dc)", boxShadow: "0 30px 50px rgba(0,0,0,.5)" }}
+              style={{ width: "min(72%, 250px)", transform: "rotate(-3deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#f8f7f4,#efede8)", boxShadow: "0 30px 50px rgba(0,0,0,.5)" }}
             >
               <div className="relative aspect-[3/4]">
                 <ImageWithFallback
@@ -89,7 +89,7 @@ export function GuiaIniciante() {
               variant="rei"
               tone="light"
               size={84}
-              className="absolute bottom-6 left-6 z-[3] hidden md:block"
+              className="absolute bottom-6 left-6 z-[3] hidden lg:block"
               style={{ transform: "rotate(-8deg)" }}
             />
           </div>

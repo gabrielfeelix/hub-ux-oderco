@@ -26,7 +26,7 @@ export function StoryBand() {
             src="/brand/tonante-symbol-amber.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute hidden select-none md:block"
+            className="pointer-events-none absolute hidden select-none lg:block"
             style={{ right: "6%", top: "50%", transform: "translateY(-50%)", width: 220, opacity: 0.35 }}
           />
           <SeloTonante
@@ -34,7 +34,7 @@ export function StoryBand() {
             tone="light"
             rotate
             size={104}
-            className="absolute z-[3] hidden md:inline-block"
+            className="absolute z-[3] hidden lg:inline-block"
             style={{ right: "clamp(28px,5vw,64px)", top: "clamp(28px,5vw,56px)", opacity: 0.92 }}
           />
           <div className="relative z-[2]" style={{ maxWidth: 600 }}>

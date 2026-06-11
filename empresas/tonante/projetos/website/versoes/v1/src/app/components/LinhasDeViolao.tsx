@@ -140,7 +140,7 @@ export function LinhasDeViolao() {
           <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(0,0,0,.45), transparent 60%)" }} />
           <img src="/brand/tonante-symbol-white.png" alt="" aria-hidden="true" className="pointer-events-none absolute select-none" style={{ right: "4%", bottom: "-18%", width: "42%", opacity: 0.12 }} />
           {/* Selo "Rei dos Violões" — manual p.5: uso sancionado em material de violões */}
-          <SeloTonante variant="rei" tone="light" rotate size={92} className="absolute right-6 top-6 z-[3] hidden md:block" />
+          <SeloTonante variant="rei" tone="light" rotate size={92} className="absolute right-6 top-6 z-[3] hidden lg:block" />
           <div className="relative z-[2] p-7 md:p-[clamp(34px,5vw,64px)]">
             <span className="label" style={{ color: "rgba(255,255,255,.85)" }}>
               Linha {L.name} · {L.vibe}
@@ -200,7 +200,7 @@ export function LinhasDeViolao() {
           </div>
           {/* produto */}
           <div className="relative z-[2] hidden place-items-center p-8 md:grid">
-            <div className="relative overflow-hidden" style={{ width: "min(80%, 240px)", transform: "rotate(-4deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#faf7f0,#efe9dc)", boxShadow: "0 30px 50px rgba(0,0,0,.5)" }}>
+            <div className="relative overflow-hidden" style={{ width: "min(80%, 240px)", transform: "rotate(-4deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#f8f7f4,#efede8)", boxShadow: "0 30px 50px rgba(0,0,0,.5)" }}>
               <div className="relative aspect-[3/4]">
                 <ImageWithFallback src={getPrimaryProductImage(prod)} alt={prod.name} className="absolute inset-0 h-full w-full object-contain p-4" style={{ mixBlendMode: "multiply" }} />
               </div>
@@ -223,7 +223,7 @@ export function LinhasDeViolao() {
                   minWidth: 150,
                   padding: "12px 16px",
                   borderRadius: "var(--radius-card-sm)",
-                  border: `1.5px solid ${on ? "var(--ink-strong)" : "#e4dccc"}`,
+                  border: `1.5px solid ${on ? "var(--ink-strong)" : "var(--border)"}`,
                   background: on ? "var(--ink-strong)" : "var(--surface-1)",
                   color: on ? "var(--background)" : "var(--ink-strong)",
                   transition: "all .2s",

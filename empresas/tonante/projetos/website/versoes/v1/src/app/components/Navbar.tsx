@@ -104,6 +104,71 @@ const megaMenus: Record<string, MegaMenu> = {
       },
     ],
   },
+  contrabaixos: {
+    title: "Contrabaixos",
+    subItems: [
+      {
+        label: "JazzMine",
+        href: getCatalogHref({ category: "Contrabaixos" }),
+        right: {
+          type: "layouts", title: "Linha JazzMine",
+          layouts: [
+            { label: "4 cordas", desc: "O groove clássico, versátil pra tudo", href: getCatalogHref({ category: "Contrabaixos" }) },
+            { label: "5 cordas", desc: "Grave estendido pra estúdio e palco", href: getCatalogHref({ category: "Contrabaixos" }) },
+          ],
+        },
+      },
+      {
+        label: "Theodor",
+        href: getCatalogHref({ category: "Contrabaixos" }),
+        right: {
+          type: "layouts", title: "Linha Theodor",
+          layouts: [
+            { label: "4 cordas", desc: "Corpo encorpado, presença no mix", href: getCatalogHref({ category: "Contrabaixos" }) },
+            { label: "5 cordas", desc: "Peso e definição pro peso do groove", href: getCatalogHref({ category: "Contrabaixos" }) },
+          ],
+        },
+      },
+    ],
+  },
+  cordas: {
+    title: "Cordas & Encordoamentos",
+    subItems: [
+      {
+        label: "Violão",
+        href: getCatalogHref({ category: "Cordas & Encordoamentos" }),
+        right: {
+          type: "layouts", title: "Cordas de violão",
+          layouts: [
+            { label: "Aço", desc: "Brilho e projeção pro folk", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+            { label: "Nylon", desc: "Timbre redondo e macio", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+          ],
+        },
+      },
+      {
+        label: "Guitarra",
+        href: getCatalogHref({ category: "Cordas & Encordoamentos" }),
+        right: {
+          type: "layouts", title: "Cordas de guitarra",
+          layouts: [
+            { label: "Níquel", desc: "Bends macios, afinação estável", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+            { label: "Diversos calibres", desc: "Do 009 ao 011, seu ataque", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+          ],
+        },
+      },
+      {
+        label: "Contrabaixo",
+        href: getCatalogHref({ category: "Cordas & Encordoamentos" }),
+        right: {
+          type: "layouts", title: "Cordas de baixo",
+          layouts: [
+            { label: "4 cordas", desc: "Grave firme e duradouro", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+            { label: "5 cordas", desc: "Tensão equilibrada no Si grave", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+          ],
+        },
+      },
+    ],
+  },
   acessorios: {
     title: "Acessórios",
     subItems: [
@@ -152,6 +217,8 @@ interface NavItem { label: string; href?: string; mega?: string; emphasis?: "gre
 const MEGA_CATEGORY: Record<string, string> = {
   violoes: "Violões",
   guitarras: "Guitarras",
+  contrabaixos: "Contrabaixos",
+  cordas: "Cordas & Encordoamentos",
   acessorios: "Acessórios",
 };
 
@@ -159,9 +226,9 @@ const navItems: NavItem[] = [
   { label: "Loja", href: "/produtos" },
   { label: "Violões", mega: "violoes", href: getCatalogHref({ category: "Violões" }) },
   { label: "Guitarras", mega: "guitarras", href: getCatalogHref({ category: "Guitarras" }) },
-  { label: "Contrabaixos", href: getCatalogHref({ category: "Contrabaixos" }) },
+  { label: "Contrabaixos", mega: "contrabaixos", href: getCatalogHref({ category: "Contrabaixos" }) },
   { label: "Acessórios", mega: "acessorios", href: getCatalogHref({ category: "Acessórios" }) },
-  { label: "Cordas & Encordoamentos", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
+  { label: "Cordas & Encordoamentos", mega: "cordas", href: getCatalogHref({ category: "Cordas & Encordoamentos" }) },
   { label: "Suportes", href: getCatalogHref({ category: "Suportes" }) },
 ];
 
@@ -329,9 +396,14 @@ export function Navbar() {
 
   const mostSearchedProducts = useMemo(() => {
     if (searchCategoryMatch.length === 0) {
-      return mostSearchedProductIds
+      const byIds = mostSearchedProductIds
         .map((id) => visibleCatalogProducts.find((p) => p.id === id))
         .filter(Boolean) as Product[];
+      if (byIds.length) return byIds;
+      // fallback: mais avaliados do catálogo (mostSearchedProductIds está vazio)
+      return [...visibleCatalogProducts]
+        .sort((a, b) => (b.reviews ?? 0) - (a.reviews ?? 0))
+        .slice(0, 5);
     }
     return visibleCatalogProducts
       .filter((p) => searchCategoryMatch.includes(p.category))
@@ -989,7 +1061,7 @@ export function Navbar() {
         {/* Main nav */}
         <nav className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{
-            backgroundColor: "#f6f2e9",
+            backgroundColor: "#ffffff",
             borderBottom: "1px solid rgba(var(--foreground-rgb), 0.10)",
           }}
 	        >
@@ -1157,7 +1229,7 @@ export function Navbar() {
                   className="flex h-[44px] items-center overflow-hidden rounded-full border-[1.5px] transition-all"
                   style={{
                     background: "var(--surface-1)",
-                    borderColor: searchPanelOpen ? "var(--primary)" : "#d6cbb5",
+                    borderColor: searchPanelOpen ? "var(--primary)" : "#d9d6d0",
                     boxShadow: "none",
                   }}
                 >
@@ -1758,7 +1830,7 @@ export function Navbar() {
                 initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute left-0 right-0 z-[52] overflow-hidden border-t border-foreground/5 shadow-[0_18px_45px_rgba(0,0,0,0.14)]"
-                style={{ backgroundColor: isDark ? "rgba(18,18,19,0.98)" : "rgba(246,242,233,0.99)", backdropFilter: "blur(34px)" }}
+                style={{ backgroundColor: isDark ? "rgba(18,18,19,0.98)" : "rgba(255,255,255,0.98)", backdropFilter: "blur(34px)" }}
                 onMouseEnter={() => handleMegaEnter(activeMega)} onMouseLeave={handleMegaLeave}
               >
                 <div className="mx-auto max-w-[1180px] px-5 py-6 md:px-8">
