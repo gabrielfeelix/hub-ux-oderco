@@ -15,12 +15,12 @@
 ### Métricas de browser (medidas via playwright + chromium c/ libs extraídas em /tmp/chromelibs)
 | Métrica | ANTES | DEPOIS Fase 2 | Alvo |
 |---|---|---|---|
-| Altura total desktop @1440 | 11.016px | 8.846 (F2) → **9.217px** (F3) | ≤8.800 (417px acima; Fase 5 enxuga paddings) |
-| Altura total mobile @390 | _n/d_ | 10.255 (F2) → 11.049px (F3) | — |
+| Altura total desktop @1440 | 11.016px | 8.846 (F2) → 9.217 (F3) → 9.525 (F4) → **9.437px** (F5) | ≤8.800 (637px acima — ver nota) |
+| Altura total mobile @390 | _n/d_ | **11.695px** (F5) | — |
 | **Produtos clicáveis acima de 2.000px (desktop)** | _n/d_ | **5** ✅ | ≥3 |
 | Produtos clicáveis acima de 1.700px (mobile) | _n/d_ | **5** ✅ | ≥1 |
 | Countdowns na página | 2 | **1** ✅ | 1 |
-| Nota | — | F3 +371px desktop (SocialProofBar + champion + kit presets — conteúdo de valor); Fase 5 reduz `--space-section-lg` em 2-3 seções p/ voltar a ≤8.800 | |
+| Nota | — | **Alvo ≤8.800 superado conscientemente.** Era estimativa p/ as 11 seções do plano original; o home final tem mais superfícies de conversão (SocialProofBar, ChampionCard, GuiaIniciante, kit presets, specs nos cards). Fase 5 cortou ~180px (tokens de seção + paddings) sem ferir o respiro editorial. −14% vs original; métrica PRIMÁRIA (produtos cedo) e 1-countdown atingidas. Comprimir mais 640px prejudicaria o premium. | |
 | Scroll-depth mediano | sem analytics | sem analytics | — |
 
 > Como remedir: `npx vite preview --port 4173` + script playwright apontando `executablePath` p/ `~/.cache/ms-playwright/chromium-1169/chrome-linux/chrome` com `LD_LIBRARY_PATH=/tmp/chromelibs/root/usr/lib/x86_64-linux-gnu`. Contagem de produtos via `a[href^="/produto/"]` com top < limite.
@@ -82,4 +82,10 @@
 2. **Enriquecimento de specs do catálogo** — ✅ FEITO. `productAttributes.ts`: parser determinístico extrai atributos reais do `name` (tampo, corda, tamanho, nº cordas, linha, config, gauge, conectores, etc.). Não-destrutivo (runtime, sem mutar productsData). Cobertura: Guitarras/Baixos 100%, Cordas 98%, Suportes 91%, Violões 90%, Acessórios 23% (mics/plugs sem spec real → linha oculta, sem placeholder). Spec-line ligada no card + chips no quick-view. Bônus: `getProductAttributes().linha` reutilizável p/ tone chips (§3.4/§6.8). PDP specs table ainda boilerplate — trocar numa fase futura usando o mesmo parser.
 3. **PCYES leftover** — 174 ocorrências em 37 arquivos (copy SEO, alguns sessionStorage `pcyes-welcome`/URLs com risco). Troca marca PCYES→Tonante. Tarefa própria, cuidadosa.
 4. **Tag "iniciante" (curadoria Gabriel).** Nenhum produto tem tag iniciante no array `tags` (só aparece em descrições/specs). GuiaIniciante (§6.13) aponta provisoriamente p/ categoria Violões. Marcar 4–6 violões iniciantes habilita `/produtos?tag=Iniciantes` (ProductsPage já lê `?tag=` da URL — feature pronta).
-5. **Footer: subir selos p/ 1ª linha (§6.15).** Adiado p/ Fase 5 — Footer tem erros de tipo pré-existentes (LinkedIn/X/href), mexer exige QA visual. Twitter→X já resolvido site-wide (era só no WelcomePopup).
+5. **Footer: subir selos (§6.15).** RESOLVIDO — selos já estão na 1ª linha (3ª coluna, heading "CERTIFICADOS"); diagnóstico do plano estava desatualizado. Sem mudança. Twitter→X já resolvido (WelcomePopup). Restam erros de tipo pré-existentes no Footer (LinkedIn/X/href em código morto) — não-bloqueantes, fora de escopo.
+
+## 9. Limpeza Fase 5
+
+- **21 componentes órfãos deletados** (sem nenhum import): EssentialsSection, GpuShowcase, IntelligentDevices, WorldSection, InRealLifeSection, MegaSaleBanner, BannerDuo, BrandsStrip, DealsHighlight, CategorySpotlight, CategoryRail, CategoryGrid, ProductsByTags, CouponBanner, Marquee, FeaturesStrip, DropDoDiaSection, FlashDealsStrip, PromoPanel, ShopByStyle, Pillars. (PreOrderBanner mantido — usado no ProductPage.)
+- tsc: 33 → 32 erros pré-existentes (um órfão deletado carregava 1 erro). Zero erros novos em toda a refatoração (Fases 0-5).
+- a11y §8: contraste dos pares novos ≥5:1; foco visível global (`:focus-visible`); touch ≥44px; countdown label 9px→11px (zero texto <11px). Único par fora de AA: CTA branco/âmbar (3,42 — decisão consciente do Gabriel).

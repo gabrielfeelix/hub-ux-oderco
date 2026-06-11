@@ -82,7 +82,7 @@ function Countdown({ target }: { target: number }) {
             <span style={{ fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "18px", lineHeight: 1, color: "var(--ink-strong)" }}>
               {u.value}
             </span>
-            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ink-meta)", marginTop: 2 }}>
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--ink-meta)", marginTop: 2 }}>
               {u.label}
             </span>
           </span>

@@ -67,7 +67,7 @@ export function MonteSeuKit() {
   return (
     <section
       className="px-5 md:px-[72px]"
-      style={{ background: "var(--surface-2)", borderTop: "1px solid #e4dccc", borderBottom: "1px solid #e4dccc", paddingTop: 60, paddingBottom: 60 }}
+      style={{ background: "var(--surface-2)", borderTop: "1px solid #e4dccc", borderBottom: "1px solid #e4dccc", paddingTop: 44, paddingBottom: 44 }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
         <div className="mb-7">

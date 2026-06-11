@@ -179,7 +179,7 @@ export function ProductShelf({
   return (
     <section
       ref={ref}
-      className="px-5 py-16 md:px-[72px] md:py-20"
+      className="px-5 py-12 md:px-[72px] md:py-14"
       style={{ background: "var(--surface-0)" }}
     >
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>

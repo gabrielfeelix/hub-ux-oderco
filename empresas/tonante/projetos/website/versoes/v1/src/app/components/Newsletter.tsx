@@ -27,8 +27,8 @@ export function Newsletter() {
       className="relative overflow-hidden px-5 md:px-[72px]"
       style={{
         background: "var(--surface-0)",
-        paddingTop: "var(--space-section-lg)",
-        paddingBottom: "var(--space-section-lg)",
+        paddingTop: "var(--space-section-md)",
+        paddingBottom: "var(--space-section-md)",
       }}
     >
       {/* Backdrop glow */}

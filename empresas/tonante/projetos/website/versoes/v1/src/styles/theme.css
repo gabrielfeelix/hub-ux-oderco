@@ -109,9 +109,9 @@
   /* ---- Layout (largura/ritmo herdados do PCYES) ---- */
   --container-max: 1760px;
   --space-section-sm: 56px;
-  --space-section-md: 88px;
-  --space-section-lg: 128px;
-  --space-section-xl: 168px;
+  --space-section-md: 72px;
+  --space-section-lg: 100px;
+  --space-section-xl: 140px;
   --announce-h: 40px;
 
   /* ---- Família de raio de card ---- */
