@@ -126,25 +126,31 @@ function FamilyCard({ f }: { f: Family }) {
           {f.title}
         </p>
 
-        {/* embalagem real integrada ao fundo — multiply puro mata o branco do
-            JPG (sem filter junto: filter quebra o blend no Chromium) */}
+        {/* "pacote" físico pendurado (ref SG: o pacote branco É o objeto) —
+            embalagem legível em qualquer fundo, sem multiply apagado */}
         <div
-          className="relative mt-4 w-[62%] transition-transform duration-300 group-hover:scale-[1.05] group-hover:rotate-[1.5deg]"
-          style={{ aspectRatio: "1" }}
+          className="relative mt-4 w-[54%] transition-transform duration-300 group-hover:scale-[1.04] group-hover:rotate-[2deg]"
+          style={{
+            aspectRatio: "3 / 3.6",
+            background: "#fff",
+            borderRadius: 9,
+            boxShadow: "0 26px 40px -18px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.18)",
+            padding: "16px 8px 8px",
+          }}
         >
-          {/* spotlight atrás do produto — multiply sobre área clara = embalagem
-              escura ganha silhueta mesmo nos cards escuros */}
-          <div
+          {/* furo de pendurar do pacote */}
+          <span
             aria-hidden="true"
-            className="absolute"
-            style={{ inset: "-16%", background: "radial-gradient(closest-side, rgba(255,255,255,0.30), transparent 72%)" }}
+            className="absolute left-1/2 top-[7px] block -translate-x-1/2 rounded-full"
+            style={{ width: 9, height: 9, background: f.from, boxShadow: "inset 0 1px 2px rgba(0,0,0,0.35)" }}
           />
-          <ImageWithFallback
-            src={getPrimaryProductImage(product)}
-            alt=""
-            className="absolute inset-0 h-full w-full object-contain"
-            style={{ mixBlendMode: "multiply" }}
-          />
+          <div className="relative h-full w-full">
+            <ImageWithFallback
+              src={getPrimaryProductImage(product)}
+              alt=""
+              className="absolute inset-0 h-full w-full object-contain"
+            />
+          </div>
         </div>
 
         <div className="mt-auto w-full">
@@ -158,9 +164,12 @@ function FamilyCard({ f }: { f: Family }) {
               </span>
             ))}
           </div>
+          {/* CTA: fundo claro translúcido + fonte ink (legível em todo card);
+              hover vira branco sólido. Cor inline — classe text-white é
+              remapeada pra ink pelo light-scope. */}
           <span
-            className="mt-4 inline-flex items-center gap-2 rounded-pill text-white transition-colors group-hover:bg-white group-hover:text-[#1a1714]"
-            style={{ border: "1.5px solid rgba(255,255,255,0.85)", padding: "9px 20px", fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: 13.5 }}
+            className="mt-4 inline-flex items-center gap-2 rounded-pill transition-colors group-hover:bg-white"
+            style={{ background: "rgba(255,255,255,0.85)", color: "#1a1714", padding: "9px 20px", fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: 13.5 }}
           >
             <ArrowRight size={15} strokeWidth={2.4} />
             comprar · <span className="num">{product.price}</span>

@@ -1,4 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useParams, Link, useNavigate } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
@@ -27,7 +28,8 @@ import { CTAButton, DiscountBadge, QtyStepper } from "./section";
 import { SEO } from "./SEO";
 import { getProductSlug, getProductUrl } from "../lib/slug";
 import { TimbrePlayer } from "./TimbrePlayer";
-import { SpecTiles, LuthierBlock } from "./ProductMusicBlocks";
+import { ProductCard } from "./ProductCard";
+import { LuthierBlock } from "./ProductMusicBlocks";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -405,22 +407,21 @@ function AutoShippingCalculator({ productPrice }: { productPrice: number }) {
           placeholder="Digite seu CEP"
           value={cep}
           onChange={(e) => setCep(formatCep(e.target.value))}
-          className="w-full text-foreground placeholder-foreground/30 px-4 py-3 pr-11 focus:outline-none transition-all"
+          className="w-full text-foreground placeholder-foreground/35 px-4 py-3 pr-11 focus:outline-none transition-all"
           style={{
+            // input claro padrão da casa — foco âmbar (era cinza escuro + foco verde)
             borderRadius: "var(--radius-card-sm)",
-            border: "1px solid rgba(var(--foreground-rgb), 0.10)",
-            background: "rgba(var(--foreground-rgb), 0.04)",
+            border: "1px solid var(--border)",
+            background: "#fff",
             fontFamily: "var(--font-family-inter)",
             fontSize: "var(--text-sm)",
             letterSpacing: "0.02em",
           }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "rgba(34,197,94,0.55)";
-            e.currentTarget.style.background = "rgba(var(--foreground-rgb), 0.06)";
+            e.currentTarget.style.borderColor = "var(--amber)";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "rgba(var(--foreground-rgb), 0.10)";
-            e.currentTarget.style.background = "rgba(var(--foreground-rgb), 0.04)";
+            e.currentTarget.style.borderColor = "var(--border)";
           }}
         />
         <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
@@ -527,7 +528,9 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
     value: priceNum / (i + 1),
   }));
 
-  return (
+  // portal: o card de compra é sticky + overflow-hidden — sem portal o fixed
+  // quebra (modal renderizava preso no meio da página)
+  return createPortal(
     <AnimatePresence>
       {open && (
         <>
@@ -536,18 +539,21 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[110]"
+            style={{ background: "rgba(22,19,15,0.66)", backdropFilter: "blur(5px)" }}
             onClick={onClose}
           />
-          <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center pointer-events-none p-0 md:p-6">
+          <div className="fixed inset-0 z-[111] flex items-end md:items-center justify-center pointer-events-none p-0 md:p-6">
             <motion.div
               initial={{ opacity: 0, y: 40, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 40, scale: 0.96 }}
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
-              className="pointer-events-auto w-full max-w-[520px] bg-background border border-foreground/10 shadow-2xl overflow-hidden"
+              className="pointer-events-auto w-full max-w-[520px] overflow-hidden rounded-t-[20px] md:rounded-[18px]"
               style={{
-                borderRadius: "20px 20px 0 0",
+                background: "var(--surface-1)",
+                border: "1px solid var(--border)",
+                boxShadow: "var(--shadow-float)",
                 maxHeight: "min(85vh, 720px)",
               }}
               onClick={(e) => e.stopPropagation()}
@@ -593,15 +599,15 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                       </p>
                     </div>
                     <span
-                      className="px-2 py-0.5 bg-green-500/15 text-green-500 font-bold flex-shrink-0"
-                      style={{ borderRadius: "var(--radius)", fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)" }}
+                      className="px-2 py-0.5 font-bold flex-shrink-0"
+                      style={{ borderRadius: "var(--radius)", fontSize: "var(--text-caption)", fontFamily: "var(--font-family-inter)", background: "rgba(200,120,0,0.12)", color: "var(--amber-deep)" }}
                     >
                       10% OFF
                     </span>
                   </header>
                   <div
-                    className="flex items-baseline justify-between px-4 py-3 bg-green-500/[0.04] border border-green-500/20"
-                    style={{ borderRadius: "var(--radius-button)" }}
+                    className="flex items-baseline justify-between px-4 py-3"
+                    style={{ borderRadius: "var(--radius-button)", background: "rgba(200,120,0,0.05)", border: "1px solid rgba(200,120,0,0.22)" }}
                   >
                     <span
                       className="text-foreground/60"
@@ -610,8 +616,8 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                       Total à vista
                     </span>
                     <span
-                      className="text-green-500"
-                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600 }}
+                      className="num"
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-lg)", fontWeight: 700, color: "var(--amber-deep)" }}
                     >
                       {formatBRL(pixPrice)}
                     </span>
@@ -729,8 +735,8 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                       Total
                     </span>
                     <span
-                      className="text-foreground"
-                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 500 }}
+                      className="text-foreground num"
+                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-lg)", fontWeight: 700 }}
                     >
                       {formatBRL(priceNum)}
                     </span>
@@ -741,7 +747,8 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
           </div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }
 
@@ -774,19 +781,13 @@ function StickyPriceCard({
         className="p-5 lg:p-6 relative overflow-hidden"
         data-purchase-card="product-page"
         style={{
+          // card branco premium — borda + sombra suave, sem véu nem glow PCYES
           borderRadius: "var(--radius-card-lg)",
-          background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)",
-          border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-          boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+          background: "var(--surface-1)",
+          border: "1px solid var(--border)",
+          boxShadow: "0 1px 2px rgba(26,23,20,0.04), 0 18px 44px -30px rgba(26,23,20,0.28)",
         }}
       >
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background: "radial-gradient(circle at 30% 0%, rgba(var(--foreground-rgb), 0.05) 0%, transparent 55%)",
-            borderRadius: "var(--radius-card-lg)",
-          }}
-        />
         {/* Promo Timer */}
         <div className="relative mb-5">
           <CountdownTimer />
@@ -808,12 +809,13 @@ function StickyPriceCard({
 
           <div className="flex items-baseline gap-2 mb-1">
             <span
-              className="text-foreground leading-none"
+              className="text-foreground leading-none num"
               style={{
-                fontFamily: "var(--font-family-figtree)",
-                fontSize: "clamp(28px, 3.2vw, 36px)",
-                fontWeight: 600,
-                letterSpacing: "-0.02em",
+                // preço é balcão, não palco: Hanken tabular (V2 §2.2)
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "clamp(28px, 3vw, 32px)",
+                fontWeight: 700,
+                letterSpacing: "-0.01em",
               }}
             >
               {formatBRL(pixPrice)}
@@ -824,8 +826,8 @@ function StickyPriceCard({
             className="text-foreground/55 mb-2.5"
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
           >
-            no <span className="text-green-500 font-semibold">PIX</span> com{" "}
-            <span className="text-green-500 font-semibold">10% de desconto</span>
+            no <span className="font-semibold" style={{ color: "var(--amber-deep)" }}>PIX</span> com{" "}
+            <span className="font-semibold" style={{ color: "var(--amber-deep)" }}>10% de desconto</span>
           </p>
 
           <div className="h-px bg-foreground/6 my-3" />
@@ -857,8 +859,7 @@ function StickyPriceCard({
             <span className={`relative inline-flex rounded-full h-2 w-2 ${inStock ? "bg-green-500" : "bg-foreground/30"}`} />
           </span>
           <span
-            className={inStock ? "text-[#4CAF50]" : "text-foreground/45"}
-            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, color: inStock ? "var(--ink-meta)" : "var(--ink-subtle)" }}
           >
             {inStock ? `${stockLabel} · envio em 24h` : "Sem estoque"}
           </span>
@@ -885,7 +886,7 @@ function StickyPriceCard({
             disabled={!inStock}
             className="cursor-pointer disabled:cursor-not-allowed"
           >
-            <Zap size={15} strokeWidth={2.4} fill="currentColor" />
+            <ShoppingBag size={16} strokeWidth={2.2} />
             Comprar agora
           </CTAButton>
         </div>
@@ -950,7 +951,7 @@ function MobilePurchaseFlow({
                 fontWeight: 900,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                boxShadow: "0 6px 16px -4px rgba(249,115,22,0.55)",
+                boxShadow: "var(--shadow-brand-pill)",
               }}
             >
               <Rocket size={11} strokeWidth={2.6} />
@@ -1019,12 +1020,12 @@ function MobilePurchaseFlow({
               </p>
               <div className="flex items-baseline gap-2">
                 <span
-                  className="text-foreground leading-none"
+                  className="text-foreground leading-none num"
                   style={{
-                    fontFamily: "var(--font-family-figtree)",
-                    fontSize: "clamp(34px, 10vw, 44px)",
-                    fontWeight: 650,
-                    letterSpacing: "-0.02em",
+                    fontFamily: "var(--font-family-inter)",
+                    fontSize: "clamp(30px, 8vw, 38px)",
+                    fontWeight: 700,
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   {preOrderInfo!.preOrderPrice ?? product.price}
@@ -1048,12 +1049,12 @@ function MobilePurchaseFlow({
           ) : (
             <>
               <p
-                className="text-foreground leading-none mb-2"
+                className="text-foreground leading-none mb-2 num"
                 style={{
-                  fontFamily: "var(--font-family-figtree)",
-                  fontSize: "clamp(34px, 10vw, 44px)",
-                  fontWeight: 650,
-                  letterSpacing: "-0.02em",
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "clamp(30px, 8vw, 38px)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
                 }}
               >
                 {formatBRL(pixPrice)}
@@ -1192,9 +1193,8 @@ function MobilePurchaseFlow({
                   className="absolute inset-y-0 left-0"
                   style={{
                     width: `${reservedPct}%`,
-                    background: "linear-gradient(90deg, #e08c12 0%, #facc15 100%)",
+                    background: "var(--gradient-buy)",
                     borderRadius: "var(--radius-pill)",
-                    boxShadow: "0 0 16px rgba(200, 120, 0,0.45)",
                   }}
                 />
               </div>
@@ -1288,11 +1288,8 @@ function AboutProduct({ product, onSeeDescription }: { product: any; onSeeDescri
 
   return (
     <section>
-      <p
-        className="text-primary font-bold tracking-wide mb-4"
-        style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.3em" }}
-      >
-        // SOBRE O PRODUTO
+      <p className="label mb-4" style={{ color: "var(--amber-deep)" }}>
+        Sobre o produto
       </p>
 
       <ul key={product.id} className="space-y-3">
@@ -1343,17 +1340,19 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
   const [newReviewRating, setNewReviewRating] = useState(0);
   const [newReviewText, setNewReviewText] = useState("");
 
+  // reviews ilustrativas de loja de música (substituem as do template PCYES
+  // que falavam de setup/cabo/monitor com foto de PC)
   const reviews = [
     {
       id: 1,
       user: "Ricardo M.",
       rating: 5,
       date: "24 Mar 2026",
-      comment: "Simplesmente incrível. O acabamento é premium e o desempenho superou minhas expectativas. Recomendo muito para quem busca qualidade.",
+      comment: "Acabamento impecável e o som é quente, encorpado. Regulagem veio boa de fábrica — afinei e já saí tocando. Recomendo demais.",
       verified: true,
       images: [
-        "https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=900&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=900&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=900&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1505841993706-c8d90b412bc4?q=80&w=900&auto=format&fit=crop",
       ],
       likes: 12
     },
@@ -1362,10 +1361,10 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
       user: "Juliana S.",
       rating: 5,
       date: "15 Mar 2026",
-      comment: "Entrega super rápida e o produto veio muito bem embalado. A cor é linda e o material parece ser bem durável.",
+      comment: "Chegou super rápido e muito bem embalado, com proteção nas tarraxas. A cor ao vivo é ainda mais bonita que nas fotos.",
       verified: true,
       images: [
-        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=900&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?q=80&w=900&auto=format&fit=crop",
       ],
       likes: 8
     },
@@ -1374,10 +1373,10 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
       user: "Fabio L.",
       rating: 4,
       date: "02 Mar 2026",
-      comment: "Ótimo custo-benefício. O único ponto é que o cabo poderia ser um pouco mais longo, mas nada que atrapalhe o uso.",
+      comment: "Ótimo custo-benefício pra quem está começando. Só troquei as cordas por um encordoamento mais leve e ficou perfeito pros meus alunos.",
       verified: true,
       images: [
-        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=900&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?q=80&w=900&auto=format&fit=crop",
       ],
       likes: 4
     },
@@ -1386,11 +1385,11 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
       user: "Marina A.",
       rating: 5,
       date: "21 Fev 2026",
-      comment: "Gostei muito do visual minimalista. Combina com meu setup e a experiência no uso diário é bem fluida.",
+      comment: "Toco em roda de samba todo fim de semana e ele aguenta firme. Projeção ótima, não some no meio dos outros instrumentos.",
       verified: true,
       images: [
-        "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=900&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=900&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1549213783-8284d0336c4f?q=80&w=900&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=900&auto=format&fit=crop",
       ],
       likes: 19
     },
@@ -1399,7 +1398,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
       user: "Pedro C.",
       rating: 5,
       date: "08 Fev 2026",
-      comment: "A compra foi tranquila, chegou antes do prazo e o produto tem uma presença muito melhor pessoalmente.",
+      comment: "Meu primeiro instrumento foi um Tonante nos anos 90. Comprei esse pro meu filho começar — a história continua na família.",
       verified: true,
       likes: 7
     },
@@ -1408,10 +1407,10 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
       user: "Camila R.",
       rating: 4,
       date: "19 Jan 2026",
-      comment: "Produto muito bom. Só senti falta de uma embalagem um pouco mais premium, mas o produto em si é excelente.",
+      comment: "Instrumento muito bom pelo preço. O braço é confortável e ficou estável depois da primeira semana de afinação. Valeu cada centavo.",
       verified: true,
       images: [
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=900&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1584402617825-1a58712ae0b0?q=80&w=900&auto=format&fit=crop",
       ],
       likes: 5
     },
@@ -2001,45 +2000,53 @@ function ProductStandardDescription({ product, images }: { product: any; images:
           </section>
 
           <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
+            {/* trio editorial limpo — imagem no well + texto em ink; zero overlay
+                escuro/textShadow (PCYES). Copy neutra de loja de música. */}
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-              <article className="relative min-h-[360px] md:min-h-[540px] overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
-                <ImageWithFallback src={secondaryImage} alt={`${product.name} em destaque`} className="absolute inset-0 h-full w-full object-cover opacity-90" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-7">
-                  <h3 className="max-w-[420px] text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3vw, 32px)", lineHeight: 1.08, fontWeight: 700, textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
-                    Construção pensada para performance
+              <article className="flex flex-col overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", border: "1px solid var(--border)", background: "var(--surface-1)" }}>
+                <div className="relative min-h-[300px] flex-1" style={{ background: "var(--well)" }}>
+                  <ImageWithFallback src={secondaryImage} alt={`${product.name} em destaque`} className="absolute inset-0 h-full w-full object-contain p-8" style={{ mixBlendMode: "multiply" }} />
+                </div>
+                <div className="p-7">
+                  <h3 className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(22px, 2.6vw, 28px)", lineHeight: 1.1, fontWeight: 700 }}>
+                    Acabamento Tonante de fábrica
                   </h3>
-                  <p className="mt-3 max-w-[520px] text-ink" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.65, textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}>
-                    Produto pensado para setups exigentes, com materiais selecionados, visual limpo e desempenho consistente.
+                  <p className="mt-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.65, color: "var(--ink-soft)" }}>
+                    Materiais selecionados e conferência peça a peça antes do envio — o padrão da
+                    casa desde 1954.
                   </p>
                 </div>
               </article>
 
               <div className="grid gap-6">
-                <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
-                  <div className="relative z-10 max-w-full md:max-w-[58%] p-7">
-                    <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
-                      Design para o dia a dia
+                <article className="relative flex min-h-[240px] items-center overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", border: "1px solid var(--border)", background: "var(--surface-1)" }}>
+                  <div className="max-w-full p-7 md:max-w-[55%]">
+                    <h3 className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 2.2vw, 24px)", lineHeight: 1.12, fontWeight: 700 }}>
+                      Do ensaio ao palco
                     </h3>
-                    <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}>
-                      Visual moderno, presença equilibrada e experiência consistente para trabalho, estudo ou gameplay.
+                    <p className="mt-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6, color: "var(--ink-soft)" }}>
+                      Pensado pro dia a dia de quem toca: resistente na estrada, bonito de perto e
+                      fácil de manter.
                     </p>
                   </div>
-                  <ImageWithFallback src={tertiaryImage} alt={`${product.name} detalhe`} className="hidden md:block absolute inset-y-0 right-0 h-full w-[52%] object-contain p-6" />
-                  <div className="hidden md:block absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#161617] via-[#161617]/55 to-transparent pointer-events-none" />
+                  <div className="absolute inset-y-3 right-3 hidden w-[42%] md:block" style={{ background: "var(--well)", borderRadius: "var(--radius-card-md)" }}>
+                    <ImageWithFallback src={tertiaryImage} alt={`${product.name} detalhe`} className="absolute inset-0 h-full w-full object-contain p-4" style={{ mixBlendMode: "multiply" }} />
+                  </div>
                 </article>
 
-                <article className="relative min-h-[260px] overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
-                  <div className="relative z-10 max-w-full md:max-w-[58%] p-7">
-                    <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 5vw, 25px)", lineHeight: 1.1, fontWeight: 700 }}>
-                      Pronto para acompanhar seu ritmo
+                <article className="relative flex min-h-[240px] items-center overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", border: "1px solid var(--border)", background: "var(--surface-1)" }}>
+                  <div className="max-w-full p-7 md:max-w-[55%]">
+                    <h3 className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(19px, 2.2vw, 24px)", lineHeight: 1.12, fontWeight: 700 }}>
+                      Garantia e suporte de verdade
                     </h3>
-                    <p className="mt-3 text-foreground/68" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6 }}>
-                      Recursos essenciais reunidos em um produto confiável, bonito e fácil de integrar ao seu setup.
+                    <p className="mt-3" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.6, color: "var(--ink-soft)" }}>
+                      2 anos de garantia, atendimento brasileiro e a tradição de quem é o primeiro
+                      instrumento de gerações.
                     </p>
                   </div>
-                  <ImageWithFallback src={primaryImage} alt={`${product.name} em uso`} className="hidden md:block absolute inset-y-0 right-0 h-full w-[52%] object-contain p-6" />
-                  <div className="hidden md:block absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#161617] via-[#161617]/55 to-transparent pointer-events-none" />
+                  <div className="absolute inset-y-3 right-3 hidden w-[42%] md:block" style={{ background: "var(--well)", borderRadius: "var(--radius-card-md)" }}>
+                    <ImageWithFallback src={primaryImage} alt={`${product.name} em uso`} className="absolute inset-0 h-full w-full object-contain p-4" style={{ mixBlendMode: "multiply" }} />
+                  </div>
                 </article>
               </div>
             </div>
@@ -2062,49 +2069,34 @@ function ProductStandardDescription({ product, images }: { product: any; images:
             </div>
           </section>
 
-          <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
-            <p className="mb-3 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
-              // EM VÍDEO
-            </p>
-            <h3 className="mb-6 text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 3.4vw, 32px)", lineHeight: 1.08, fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Veja {product.name.split(" ").slice(0, 4).join(" ")} em ação
-            </h3>
-            <div className="relative aspect-video w-full overflow-hidden" style={{ borderRadius: "var(--radius-card-lg)", background: "var(--surface-0)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}>
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src={`https://www.youtube.com/embed/${product.id % 2 === 0 ? "dQw4w9WgXcQ" : "M7lc1UVf-VE"}?rel=0&modestbranding=1`}
-                title={`Vídeo ${product.name}`}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </section>
+          {/* vídeo placeholder do template removido — volta quando houver
+              gravação real do produto (campo futuro, ex. videoUrl) */}
 
           <section className="border-t border-edge-subtle px-6 py-10 md:px-10">
-            <article className="relative overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", ...productImageBg }}>
-              <div className="relative z-10 w-full p-7 md:w-[62%] md:p-9">
-                <p className="mb-4 text-primary tracking-[0.22em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
-                  // RAIO-X DO PRODUTO
+            <article className="relative overflow-hidden" style={{ borderRadius: "var(--radius-card-xl)", border: "1px solid var(--border)", background: "var(--surface-1)" }}>
+              <div className="relative z-10 w-full p-7 md:w-[60%] md:p-9">
+                <p className="label mb-4" style={{ color: "var(--amber-deep)" }}>
+                  Ficha técnica
                 </p>
-                <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(28px, 4vw, 38px)", lineHeight: 1.08, fontWeight: 700 }}>
+                <h3 className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(26px, 3.4vw, 34px)", lineHeight: 1.08, fontWeight: 700 }}>
                   Especificações técnicas
                 </h3>
                 <dl className="mt-6 grid gap-3">
                   {specs.slice(0, 8).map((spec: { label: string; value: string }) => (
-                    <div key={spec.label} className="grid gap-2 border-b border-edge-subtle pb-3 sm:grid-cols-[170px_1fr]">
-                      <dt className="text-foreground/48 tracking-[0.12em]" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 800 }}>
+                    <div key={spec.label} className="grid gap-2 border-b pb-3 sm:grid-cols-[170px_1fr]" style={{ borderColor: "var(--border)" }}>
+                      <dt style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink-meta)" }}>
                         {spec.label}
                       </dt>
-                      <dd className="text-foreground/85" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}>
+                      <dd style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600, color: "var(--ink-strong)" }}>
                         {spec.value}
                       </dd>
                     </div>
                   ))}
                 </dl>
               </div>
-              <ImageWithFallback src={tertiaryImage} alt={`${product.name} especificações`} className="absolute inset-y-0 right-0 hidden h-full w-[40%] object-contain p-6 md:block" />
-              <div className="absolute inset-y-0 left-0 w-[70%] bg-gradient-to-r from-[#161617] via-[#161617]/60 to-transparent pointer-events-none" />
+              <div className="absolute inset-y-4 right-4 hidden w-[35%] md:block" style={{ background: "var(--well)", borderRadius: "var(--radius-card-md)" }}>
+                <ImageWithFallback src={tertiaryImage} alt={`${product.name} especificações`} className="absolute inset-0 h-full w-full object-contain p-6" style={{ mixBlendMode: "multiply" }} />
+              </div>
             </article>
           </section>
         </div>
@@ -2366,8 +2358,6 @@ export function ProductPage() {
             className="order-2 w-full lg:order-none lg:w-[56%] xl:w-[58%] flex-shrink-0"
           >
             <ProductGallery images={galleryImages} name={product.name} isDark={isDark} />
-            {/* "Ouça este instrumento" (V3 §8.1) — abaixo da galeria */}
-            <TimbrePlayer product={product} className="mt-4" />
           </motion.div>
 
           {swatches.length > 1 && (
@@ -2386,14 +2376,16 @@ export function ProductPage() {
                     key={sw.productId}
                     title={sw.label}
                     onClick={() => navigate(`/produto/${sw.productId}`)}
-                    className={`w-8 h-8 rounded-full border-2 transition-all ${
-                      sw.productId === product.id
-                        ? "border-primary ring-2 ring-primary/25 ring-offset-2 ring-offset-background scale-105"
-                        : "border-foreground/15"
+                    className={`relative h-14 w-14 flex-shrink-0 overflow-hidden transition-all hover:scale-105 cursor-pointer ${
+                      sw.productId === product.id ? "ring-2 ring-primary/30 ring-offset-2 ring-offset-background" : ""
                     }`}
-                    style={{ backgroundColor: sw.color }}
+                    style={{ borderRadius: 8, background: "var(--well)", border: sw.productId === product.id ? "1.5px solid var(--ink-strong)" : "1px solid var(--border)" }}
                     aria-label={sw.label}
-                  />
+                  >
+                    {(() => { const vp = allProducts.find((pp) => pp.id === sw.productId); return (
+                      <ImageWithFallback src={vp ? getPrimaryProductImage(vp) : ""} alt={sw.label} className="absolute inset-0 h-full w-full object-contain p-1" style={{ mixBlendMode: "multiply" }} />
+                    ); })()}
+                  </button>
                 ))}
               </div>
             </div>
@@ -2537,18 +2529,23 @@ export function ProductPage() {
                       key={sw.productId}
                       title={sw.label}
                       onClick={() => navigate(`/produto/${sw.productId}`)}
-                      className={`w-8 h-8 rounded-full border-2 transition-all hover:scale-110 ${
-                        sw.productId === product.id
-                          ? "border-primary ring-2 ring-primary/25 ring-offset-2 ring-offset-background scale-105"
-                          : "border-foreground/15 hover:border-foreground/35"
+                      className={`relative h-14 w-14 flex-shrink-0 overflow-hidden transition-all hover:scale-105 cursor-pointer ${
+                        sw.productId === product.id ? "ring-2 ring-primary/30 ring-offset-2 ring-offset-background" : ""
                       }`}
-                      style={{ backgroundColor: sw.color }}
+                      style={{ borderRadius: 8, background: "var(--well)", border: sw.productId === product.id ? "1.5px solid var(--ink-strong)" : "1px solid var(--border)" }}
                       aria-label={sw.label}
-                    />
+                    >
+                      {(() => { const vp = allProducts.find((pp) => pp.id === sw.productId); return (
+                        <ImageWithFallback src={vp ? getPrimaryProductImage(vp) : ""} alt={sw.label} className="absolute inset-0 h-full w-full object-contain p-1" style={{ mixBlendMode: "multiply" }} />
+                      ); })()}
+                    </button>
                   ))}
                 </div>
               </div>
             )}
+
+            {/* "Ouça este instrumento" — junto da decisão: cor → timbre → sobre */}
+            <TimbrePlayer product={product} className="mb-6" />
 
             <div className="h-px bg-foreground/6 mb-6" />
 
@@ -2590,8 +2587,6 @@ export function ProductPage() {
 
           <div className="min-w-0 lg:col-start-1 lg:row-start-2">
             <div ref={descriptionRef} className="scroll-mt-[96px]">
-              {/* specs decisivas em tiles antes da descrição (V3 §8.3) */}
-              <SpecTiles product={product} />
               <ProductStandardDescription product={product} images={galleryImages} />
               {/* autoria (V3 §8.2) — só renderiza quando há luthier */}
               <LuthierBlock product={product} />
@@ -2616,10 +2611,10 @@ export function ProductPage() {
             >
               <div>
                 <p
-                  className="mb-3 text-primary"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.3em" }}
+                  className="mb-3 label"
+                  style={{ color: "var(--amber-deep)" }}
                 >
-                  // VOCÊ TAMBÉM VAI GOSTAR
+                  Você também vai gostar
                 </p>
                 <h2
                   className="text-foreground"
@@ -2638,98 +2633,23 @@ export function ProductPage() {
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
-              {related.map((rProduct, i) => {
-                const rDiscount = rProduct.oldPriceNum && rProduct.oldPriceNum > rProduct.priceNum
-                  ? Math.round(((rProduct.oldPriceNum - rProduct.priceNum) / rProduct.oldPriceNum) * 100)
-                  : 0;
-                const rInstallmentN = getInstallmentCount(rProduct.priceNum);
-                const rInstallment = formatBRL(getInstallmentValue(rProduct.priceNum));
-                return (
-                  <motion.div
-                    key={rProduct.id}
-                    initial={{ opacity: 0, y: 28 }}
-                    animate={relatedInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: i * 0.06 }}
-                    className="group cursor-pointer"
-                    onClick={() => { navigate(`/produto/${rProduct.id}`); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  >
-                    <div
-                      className="deal-card-img relative overflow-hidden aspect-[5/6] mb-4 transition-all duration-300"
-                      style={{
-                        borderRadius: "var(--radius-card-lg)",
-                        background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
-                        border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                      }}
-                    >
-                      <div
-                        className="pointer-events-none absolute inset-0"
-                        style={{
-                          background: "radial-gradient(circle at 30% 25%, rgba(var(--foreground-rgb), 0.06) 0%, transparent 55%)",
-                          borderRadius: "var(--radius-card-lg)",
-                        }}
-                      />
-                      <ImageWithFallback
-                        src={getPrimaryProductImage(rProduct)}
-                        alt={rProduct.name}
-                        className="absolute inset-0 h-full w-full object-contain p-4 md:p-8 transition-transform duration-500 group-hover:scale-[1.05]"
-                      />
-                      {rDiscount > 0 && (
-                        <span
-                          className="absolute z-20 inline-flex items-center text-ink-strong"
-                          style={{
-                            background: "var(--gradient-buy)",
-                            top: "12px",
-                            left: "12px",
-                            padding: "6px 12px",
-                            borderRadius: "var(--radius-card-sm)",
-                            fontFamily: "var(--font-family-figtree)",
-                            fontSize: "var(--text-base)",
-                            fontWeight: 900,
-                            letterSpacing: "-0.02em",
-                            boxShadow: "0 12px 28px -8px rgba(34,197,94,0.55)",
-                          }}
-                        >
-                          -{rDiscount}%
-                        </span>
-                      )}
-                      <button
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); addItem({ id: rProduct.id, name: rProduct.name, price: rProduct.price, image: getPrimaryProductImage(rProduct) }); toast.success("Adicionado!"); }}
-                        className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2 translate-y-0 whitespace-nowrap rounded-full px-10 py-3 opacity-100 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 cursor-pointer"
-                        style={{
-                          background: "var(--gradient-buy)",
-                          color: "white",
-                          fontFamily: "var(--font-family-inter)",
-                          fontSize: "var(--text-sm)",
-                          fontWeight: 700,
-                          letterSpacing: "0.04em",
-                          boxShadow: "var(--shadow-buy-cta-sm)",
-                        }}
-                      >
-                        <span className="inline-flex items-center gap-2"><ShoppingBag size={14} strokeWidth={2} /> Comprar</span>
-                      </button>
-                    </div>
-
-                    <div className="px-1">
-                      <h3 className="line-clamp-1 text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-base)", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
-                        {rProduct.name}
-                      </h3>
-                      <div className="mt-3">
-                        {rProduct.oldPrice && (
-                          <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.38)" }}>
-                            {rProduct.oldPrice}
-                          </p>
-                        )}
-                        <p className="text-ink-strong leading-none num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-price-lg)", fontWeight: 700, letterSpacing: "-0.01em" }}>
-                          {rProduct.price}
-                        </p>
-                        <p className="mt-1.5 leading-tight num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "var(--ink-meta)" }}>
-                          No PIX ou {rInstallmentN}x de {rInstallment}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
+              {related.map((rProduct, i) => (
+                <motion.div
+                  key={rProduct.id}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={relatedInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
+                >
+                  {/* card padrão da casa (v3) — consistência com home/listagem */}
+                  <ProductCard
+                    product={rProduct}
+                    onAdd={(p) => {
+                      addItem({ id: p.id, name: p.name, price: p.price, image: getPrimaryProductImage(p) });
+                      toast.success("Adicionado!");
+                    }}
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>

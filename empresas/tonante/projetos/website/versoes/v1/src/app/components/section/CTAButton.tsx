@@ -16,7 +16,10 @@ import { cn } from "../ui/utils";
  * Onde um consumidor precisa de sombra fora do padrao do tamanho, sobrescreva via className.
  */
 const ctaVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-pill text-[#fff] [&_svg]:text-[#fff] whitespace-nowrap font-bold transition-transform disabled:pointer-events-none disabled:opacity-50 hover:scale-[1.02] active:scale-[0.97] outline-none focus-visible:ring-ring/50 focus-visible:ring-[3px] [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  // [color:#fff] e não text-[#fff]: tailwind-merge não distingue arbitrários
+  // text-* (cor vs tamanho) e o text-[var(--text-sm)] do size engolia a cor —
+  // todo CTA ficava com fonte ink sobre âmbar.
+  "inline-flex items-center justify-center gap-2 rounded-pill [color:#fff] [&_svg]:text-[#fff] whitespace-nowrap font-bold transition-transform disabled:pointer-events-none disabled:opacity-50 hover:scale-[1.02] active:scale-[0.97] outline-none focus-visible:ring-ring/50 focus-visible:ring-[3px] [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -59,13 +62,16 @@ type CTAButtonAsLink = CTAVariantProps &
 
 type CTAButtonProps = CTAButtonAsButton | CTAButtonAsLink;
 
+// cor inline: garante texto branco contra qualquer merge/remap de classe
+const WHITE = { color: "#fff" } as const;
+
 export function CTAButton(props: CTAButtonProps) {
   if (props.as === "link") {
-    const { as: _as, variant, size, block, className, ...rest } = props;
-    return <Link {...rest} className={cn(ctaVariants({ variant, size, block, className }))} />;
+    const { as: _as, variant, size, block, className, style, ...rest } = props;
+    return <Link {...rest} style={{ ...WHITE, ...style }} className={cn(ctaVariants({ variant, size, block, className }))} />;
   }
-  const { as: _as, variant, size, block, className, ...rest } = props;
-  return <button {...rest} className={cn(ctaVariants({ variant, size, block, className }))} />;
+  const { as: _as, variant, size, block, className, style, ...rest } = props;
+  return <button {...rest} style={{ ...WHITE, ...style }} className={cn(ctaVariants({ variant, size, block, className }))} />;
 }
 
 export { ctaVariants };
