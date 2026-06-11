@@ -85,7 +85,7 @@ export function Newsletter() {
               maxWidth: "440px",
             }}
           >
-            Lançamentos exclusivos e cupons antes de qualquer um.
+            Cadastre o e-mail e ganhe <strong style={{ color: "var(--amber-deep)", fontWeight: 700 }}>10% OFF na primeira compra</strong>. Lançamentos e cupons antes de qualquer um.
           </p>
 
           {/* Form */}
@@ -190,7 +190,7 @@ export function Newsletter() {
                   style={{
                     fontFamily: "var(--font-family-inter)",
                     fontSize: "var(--text-caption)",
-                    color: "rgba(var(--foreground-rgb), 0.35)",
+                    color: "var(--ink-meta)",
                     letterSpacing: "0.01em",
                   }}
                 >

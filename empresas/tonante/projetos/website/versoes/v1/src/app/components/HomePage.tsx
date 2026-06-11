@@ -9,6 +9,7 @@ import { LinhasDeViolao } from "./LinhasDeViolao";
 import { StoryBand } from "./StoryBand";
 import { SocialProofBar } from "./SocialProofBar";
 import { RealMusicians } from "./RealMusicians";
+import { GuiaIniciante } from "./GuiaIniciante";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
 import { StringDivider } from "./section";
@@ -77,7 +78,10 @@ export function HomePage() {
       {/* 11. Tonante por aí */}
       <RealMusicians />
 
-      {/* 12. Newsletter + Footer */}
+      {/* 12. Guia do primeiro violão (captura iniciante) */}
+      <GuiaIniciante />
+
+      {/* 13. Newsletter + Footer */}
       <div className="mx-auto w-full max-w-[1100px] px-6 md:px-10" style={{ marginBottom: "8px" }}>
         <StringDivider />
       </div>

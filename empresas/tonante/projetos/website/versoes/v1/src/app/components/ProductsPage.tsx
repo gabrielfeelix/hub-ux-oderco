@@ -385,6 +385,9 @@ export function ProductsPage() {
 
     setOnlyDiscount(searchParams.get("promo") === "1");
 
+    const tag = searchParams.get("tag");
+    setSelectedTags(tag ? new Set(tag.split(",").filter(Boolean)) : new Set());
+
     const marcas = searchParams.get("marcas");
     setSelectedBrands(marcas ? new Set(marcas.split(",").filter(Boolean)) : new Set());
 

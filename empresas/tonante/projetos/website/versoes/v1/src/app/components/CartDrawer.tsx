@@ -27,6 +27,7 @@ const COUPONS: Record<string, number> = {
 };
 
 const GIFT_THRESHOLD = 950;
+const FREE_SHIPPING_THRESHOLD = 299;
 
 const USER_PCYES_POINTS = 480;
 
@@ -68,6 +69,9 @@ export function CartDrawer() {
   const giftUnlocked = subtotal >= GIFT_THRESHOLD;
   const giftProgress = Math.min(100, (subtotal / GIFT_THRESHOLD) * 100);
   const remainingForGift = Math.max(0, GIFT_THRESHOLD - subtotal);
+  const freeShipUnlocked = subtotal >= FREE_SHIPPING_THRESHOLD;
+  const freeShipProgress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
+  const remainingForFreeShip = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
 
   const giftOptions = useMemo(
     () => {
@@ -181,6 +185,35 @@ export function CartDrawer() {
                 <X size={18} aria-hidden="true" />
               </button>
             </div>
+
+            {/* Barra de frete grátis (CRO §6.17) — meta R$ 299 */}
+            {paidItems.length > 0 && (
+              <div className="border-b border-foreground/5 px-7 py-3.5">
+                <div className="mb-2 flex items-center gap-2">
+                  <Truck size={15} className="text-primary" strokeWidth={2} />
+                  {freeShipUnlocked ? (
+                    <span className="num text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}>
+                      🎉 Você ganhou frete grátis!
+                    </span>
+                  ) : (
+                    <span className="num text-foreground" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
+                      Faltam <strong style={{ color: "var(--amber-deep)" }}>{formatPrice(remainingForFreeShip)}</strong> para frete grátis
+                    </span>
+                  )}
+                </div>
+                <div className="h-2 w-full overflow-hidden rounded-full" style={{ background: "var(--surface-2)" }}>
+                  <div
+                    className="h-full rounded-full transition-[width] duration-500"
+                    style={{ width: `${freeShipProgress}%`, background: "var(--gradient-buy)" }}
+                    role="progressbar"
+                    aria-valuenow={Math.round(freeShipProgress)}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label="Progresso para frete grátis"
+                  />
+                </div>
+              </div>
+            )}
 
             {paidItems.length > 0 && (
               <div className="border-b border-foreground/5 px-7 py-3.5">

@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { X, ArrowRight, Check, Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import { X, ArrowRight, Check, Facebook, Instagram, Youtube } from "lucide-react";
 
 const PCYES_LOGO = "/brand/tonante-wordmark-amber.png";
 
+/** Logo do X (ex-Twitter) — lucide não tem; SVG mínimo. */
+function XLogo({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
 export function WelcomePopup() {
+  const location = useLocation();
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
@@ -12,13 +23,64 @@ export function WelcomePopup() {
 
   useEffect(() => { setMounted(true); }, []);
 
+  // conta páginas vistas na sessão (mobile só dispara a partir da 2ª)
+  useEffect(() => {
+    const n = Number(sessionStorage.getItem("tn-views") || "0") + 1;
+    sessionStorage.setItem("tn-views", String(n));
+  }, [location.pathname]);
+
+  // Trigger §6.16: scroll ≥40% OU 20s (o que vier primeiro); NUNCA com cookie
+  // consent aberto (espera fechar + 5s); mobile só a partir da 2ª página.
   useEffect(() => {
     if (!mounted) return;
-    const seen = sessionStorage.getItem("pcyes-welcome");
-    if (!seen) {
-      const timer = setTimeout(() => setVisible(true), 4000);
-      return () => clearTimeout(timer);
+    if (sessionStorage.getItem("pcyes-welcome")) return;
+
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const views = Number(sessionStorage.getItem("tn-views") || "1");
+    if (isMobile && views < 2) return;
+
+    let done = false;
+    let t20: ReturnType<typeof setTimeout> | undefined;
+    let poll: ReturnType<typeof setInterval> | undefined;
+    let delay: ReturnType<typeof setTimeout> | undefined;
+    let onScroll: (() => void) | undefined;
+
+    const show = () => {
+      if (done) return;
+      done = true;
+      cleanupListeners();
+      setVisible(true);
+    };
+    const cleanupListeners = () => {
+      if (t20) clearTimeout(t20);
+      if (onScroll) window.removeEventListener("scroll", onScroll);
+    };
+    const consentClosed = () => !!localStorage.getItem("pcyes-cookies");
+    const arm = () => {
+      t20 = setTimeout(show, 20000);
+      onScroll = () => {
+        const max = document.body.scrollHeight - window.innerHeight;
+        if (max > 0 && window.scrollY / max >= 0.4) show();
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+    };
+
+    if (consentClosed()) {
+      arm();
+    } else {
+      poll = setInterval(() => {
+        if (consentClosed()) {
+          if (poll) clearInterval(poll);
+          delay = setTimeout(arm, 5000); // espera consent fechar + 5s
+        }
+      }, 1000);
     }
+
+    return () => {
+      cleanupListeners();
+      if (poll) clearInterval(poll);
+      if (delay) clearTimeout(delay);
+    };
   }, [mounted]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -101,7 +163,7 @@ export function WelcomePopup() {
                       className="text-foreground mb-3"
                       style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-2xl)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.02em" }}
                     >
-                      Cadastre-se e ganhe <span className="text-primary">10% OFF</span><br />na primeira compra
+                      Ganhe <span className="text-primary">10% OFF</span><br />na primeira compra
                     </h3>
                     <p
                       className="text-foreground/55 mb-7"
@@ -122,8 +184,8 @@ export function WelcomePopup() {
                       />
                       <button
                         type="submit"
-                        className="w-full py-4 bg-neutral-950 text-ink-strong hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-                        style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600, letterSpacing: "0.02em" }}
+                        className="w-full py-4 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer hover:-translate-y-0.5"
+                        style={{ background: "var(--primary)", color: "#fff", borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 700, letterSpacing: "0.02em", boxShadow: "var(--shadow-buy-cta-sm)" }}
                       >
                         QUERO MEU DESCONTO <ArrowRight size={16} strokeWidth={2} />
                       </button>
@@ -133,7 +195,7 @@ export function WelcomePopup() {
                     <div className="mt-7 flex items-center justify-center gap-3">
                       {[
                         { Icon: Facebook, label: "Facebook", href: "#" },
-                        { Icon: Twitter, label: "X", href: "#" },
+                        { Icon: XLogo, label: "X", href: "#" },
                         { Icon: Instagram, label: "Instagram", href: "#" },
                         { Icon: Youtube, label: "YouTube", href: "#" },
                       ].map(({ Icon, label, href }) => (
