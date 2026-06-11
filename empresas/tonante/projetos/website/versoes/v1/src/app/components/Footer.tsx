@@ -141,6 +141,37 @@ export function Footer() {
       />
 
       <div className="relative z-[2] mx-auto w-full max-w-[1434px] px-5 pt-[72px] pb-10 md:px-12 xl:px-0">
+        {/* manifesto — reforço de marca no fim do funil (V3 §7.3, ref Izzo) */}
+        <div
+          className="mb-14 flex flex-col items-center pb-14 text-center"
+          style={{ borderBottom: "1px solid rgba(255,255,255,.12)" }}
+        >
+          <img
+            src="/brand/tonante-symbol-amber.png"
+            alt=""
+            aria-hidden="true"
+            className="h-12 w-auto select-none object-contain"
+            style={{ opacity: 0.9 }}
+          />
+          <p
+            className="m-0 mt-6 max-w-[640px]"
+            style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(20px, 2.4vw, 28px)", lineHeight: 1.4, color: "#f4ecdf" }}
+          >
+            Desde 1954, a Tonante é o primeiro acorde de milhões de brasileiros.
+            <br />
+            <em style={{ color: "var(--amber)" }}>Feita de Histórias. Feita pra tocar.</em>
+          </p>
+          <Link
+            to="/quem-somos"
+            className="mt-5 inline-flex min-h-[44px] items-center gap-1.5 transition-colors"
+            style={{ color: "#cabfae", fontFamily: "var(--font-family-inter)", fontSize: 14, fontWeight: 600 }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "#fff"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "#cabfae"; }}
+          >
+            Nossa história →
+          </Link>
+        </div>
+
         {/* topo: marca + 3 colunas */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-10">
           {/* marca + statement + social */}
