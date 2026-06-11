@@ -15,11 +15,12 @@
 ### Métricas de browser (medidas via playwright + chromium c/ libs extraídas em /tmp/chromelibs)
 | Métrica | ANTES | DEPOIS Fase 2 | Alvo |
 |---|---|---|---|
-| Altura total desktop @1440 | 11.016px | **8.846px** (−20%) | ≤8.800 (46px acima; Fase 3 enxuga) |
-| Altura total mobile @390 | _n/d_ | 10.255px | — |
+| Altura total desktop @1440 | 11.016px | 8.846 (F2) → **9.217px** (F3) | ≤8.800 (417px acima; Fase 5 enxuga paddings) |
+| Altura total mobile @390 | _n/d_ | 10.255 (F2) → 11.049px (F3) | — |
 | **Produtos clicáveis acima de 2.000px (desktop)** | _n/d_ | **5** ✅ | ≥3 |
 | Produtos clicáveis acima de 1.700px (mobile) | _n/d_ | **5** ✅ | ≥1 |
 | Countdowns na página | 2 | **1** ✅ | 1 |
+| Nota | — | F3 +371px desktop (SocialProofBar + champion + kit presets — conteúdo de valor); Fase 5 reduz `--space-section-lg` em 2-3 seções p/ voltar a ≤8.800 | |
 | Scroll-depth mediano | sem analytics | sem analytics | — |
 
 > Como remedir: `npx vite preview --port 4173` + script playwright apontando `executablePath` p/ `~/.cache/ms-playwright/chromium-1169/chrome-linux/chrome` com `LD_LIBRARY_PATH=/tmp/chromelibs/root/usr/lib/x86_64-linux-gnu`. Contagem de produtos via `a[href^="/produto/"]` com top < limite.
