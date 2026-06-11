@@ -172,7 +172,7 @@ export function CartDrawer() {
                 <ShoppingBag size={18} className="text-foreground" strokeWidth={1.5} />
                 <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: "var(--font-weight-medium)" }}>Carrinho</span>
                 <span className="px-2 py-0.5 bg-primary text-primary-foreground" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-medium)" }}>{totalItems}</span>
-                <span className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/10 text-yellow-500/70" style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}>
+                <span className="flex items-center gap-1 px-2 py-0.5" style={{ borderRadius: "var(--radius-pill)", background: "rgba(200,120,0,0.12)", color: "var(--amber-deep)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700 }}>
                   <PcyesCoin size={14} />
                   {formatInt(USER_PCYES_POINTS)}
                 </span>
@@ -256,8 +256,8 @@ export function CartDrawer() {
                         className={`flex gap-4 p-3.5 border ${lastAdded?.cartKey === item.cartKey ? "border-primary/30 bg-primary/5" : item.isGift ? "border-primary/20 bg-primary/[0.04]" : "border-edge-subtle bg-surface-1"} transition-colors duration-700`}
                         style={{ borderRadius: "var(--radius-card)" }}
                       >
-                        <div className="w-[75px] h-[75px] flex-shrink-0 overflow-hidden relative" style={{ borderRadius: "var(--radius)", background: "#fbfaf6", boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.06)" }}>
-                          <ImageWithFallback src={item.image} alt={item.name} className="w-full h-full object-contain p-2" style={{ mixBlendMode: "multiply" }} />
+                        <div className="w-[84px] flex-shrink-0 self-stretch overflow-hidden relative min-h-[84px]" style={{ borderRadius: "var(--radius)", background: "#fbfaf6", boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.06)" }}>
+                          <ImageWithFallback src={item.image} alt={item.name} className="absolute inset-0 h-full w-full object-contain p-2.5" style={{ mixBlendMode: "multiply" }} />
                           {item.isGift && (
                             <div className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
                               <Gift size={13} />
