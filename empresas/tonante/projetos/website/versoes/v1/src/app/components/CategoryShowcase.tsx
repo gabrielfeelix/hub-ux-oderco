@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts } from "./productsData";
 import { getCatalogHref } from "./productPresentation";
+import { formatBRL } from "./productEnhancements";
 
 // Categories — "O que você toca hoje?" (porta _ref/src/home.jsx Categories +
 // CategoryCard): grid com card grande (Violões) + fotos representativas, overlay
@@ -31,23 +32,27 @@ const IMG: Record<string, string> = {
   "Suportes": "https://images.unsplash.com/photo-1550985616-10810253b84d?w=1200&q=85&auto=format&fit=crop",
 };
 
-const meta = (label: string) => ({
-  count: allProducts.filter((p) => p.category === label).length,
-  photo: IMG[label] ?? "",
-});
+const meta = (label: string) => {
+  const ps = allProducts.filter((p) => p.category === label && p.priceNum > 0);
+  return {
+    count: ps.length,
+    photo: IMG[label] ?? "",
+    fromPrice: ps.length ? Math.min(...ps.map((p) => p.priceNum)) : 0,
+  };
+};
 
-function CategoryCard({ cat, big }: { cat: Cat; big?: boolean }) {
+function CategoryCard({ cat, big, spanClass = "" }: { cat: Cat; big?: boolean; spanClass?: string }) {
   const [hover, setHover] = useState(false);
-  const { count, photo } = meta(cat.label);
+  const { count, photo, fromPrice } = meta(cat.label);
   return (
     <Link
       to={getCatalogHref({ category: cat.label })}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`group relative flex flex-col justify-end overflow-hidden ${big ? "md:col-span-2" : ""}`}
+      className={`group relative flex flex-col justify-end overflow-hidden ${spanClass}`}
       style={{
         borderRadius: "var(--radius-card-lg)",
-        minHeight: big ? 320 : 220,
+        minHeight: big ? 320 : 200,
         padding: 24,
         color: "#fff",
         background: "radial-gradient(120% 120% at 75% 10%, #b5793c, #6e4220)",
@@ -82,16 +87,28 @@ function CategoryCard({ cat, big }: { cat: Cat; big?: boolean }) {
         />
       )}
       <div className="relative z-[2]">
-        <span className="label" style={{ color: "rgba(255,255,255,.82)", fontSize: "9.5px" }}>
+        <span className="label" style={{ color: "rgba(255,255,255,.85)", fontSize: "var(--text-eyebrow)" }}>
           {count} produtos
         </span>
-        <div style={{ fontFamily: "var(--font-family-figtree)", fontSize: big ? "40px" : "26px", fontWeight: 700, lineHeight: 1, margin: "8px 0 6px" }}>
+        <div style={{ fontFamily: "var(--font-family-figtree)", fontSize: big ? "44px" : "26px", fontWeight: 700, lineHeight: 1, margin: "8px 0 6px" }}>
           {cat.label}
         </div>
-        <div className="flex items-center gap-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "rgba(255,255,255,.88)" }}>
+        <div className="flex items-center gap-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "rgba(255,255,255,.9)" }}>
           {cat.blurb}
           <ArrowRight size={16} style={{ transform: hover ? "translateX(4px)" : "none", transition: "transform .3s" }} />
         </div>
+        {fromPrice > 0 && (
+          <div
+            className="num mt-3 inline-flex items-center rounded-pill"
+            style={{
+              fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", fontWeight: 600,
+              color: "#fff", background: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.28)",
+              padding: "4px 11px", backdropFilter: "blur(4px)",
+            }}
+          >
+            a partir de {formatBRL(fromPrice)}
+          </div>
+        )}
       </div>
     </Link>
   );
@@ -115,10 +132,13 @@ export function CategoryShowcase() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {CATS.map((c, i) => (
-            <CategoryCard key={c.label} cat={c} big={i === 0} />
-          ))}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[minmax(196px,1fr)]">
+          {CATS.map((c, i) => {
+            // grid editorial: Violões 2×2 dominante; Suportes faixa larga no rodapé.
+            const spanClass =
+              i === 0 ? "col-span-2 md:row-span-2" : i === 5 ? "col-span-2 md:col-span-4" : "";
+            return <CategoryCard key={c.label} cat={c} big={i === 0} spanClass={spanClass} />;
+          })}
         </div>
       </div>
     </section>

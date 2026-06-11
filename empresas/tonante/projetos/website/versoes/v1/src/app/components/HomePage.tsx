@@ -7,6 +7,7 @@ import { ProductShelf } from "./ProductShelf";
 import { MonteSeuKit } from "./MonteSeuKit";
 import { LinhasDeViolao } from "./LinhasDeViolao";
 import { StoryBand } from "./StoryBand";
+import { SocialProofBar } from "./SocialProofBar";
 import { RealMusicians } from "./RealMusicians";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
@@ -66,8 +67,9 @@ export function HomePage() {
       {/* 8. Monte seu kit (combo) */}
       <MonteSeuKit />
 
-      {/* 9. Herança 1954 */}
+      {/* 9. Herança 1954 + prova social */}
       <StoryBand />
+      <SocialProofBar />
 
       {/* 10. Recém-chegados */}
       <ProductShelf label="Lançamentos" title="Recém-chegados" productIds={newArrivalIds} />
