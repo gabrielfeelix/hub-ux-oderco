@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
-import { Eyebrow, CTAButton } from "./section";
+import { Eyebrow } from "./section";
 
 export function Newsletter() {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,24 +31,6 @@ export function Newsletter() {
         paddingBottom: "var(--space-section-md)",
       }}
     >
-      {/* Backdrop glow */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-70"
-        style={{
-          background:
-            "radial-gradient(700px 400px at 50% 50%, rgba(200, 120, 0, 0.10) 0%, transparent 60%)",
-        }}
-      />
-      {/* Faint grid texture */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(var(--foreground-rgb), 0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--foreground-rgb), 0.6) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
       <div className="relative mx-auto w-full" style={{ maxWidth: "720px" }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -152,9 +134,13 @@ export function Newsletter() {
                       boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
                     }}
                   />
-                  <CTAButton type="submit" variant="brand" size="md" block className="min-h-[44px] cursor-pointer">
-                    Assinar <ArrowRight size={13} strokeWidth={2.4} />
-                  </CTAButton>
+                  <button
+                    type="submit"
+                    className="inline-flex min-h-[44px] w-full cursor-pointer items-center justify-center gap-2 rounded-full transition-transform active:scale-[0.98]"
+                    style={{ background: "var(--primary)", color: "#fff", fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "var(--text-sm)" }}
+                  >
+                    Assinar <ArrowRight size={15} strokeWidth={2.2} />
+                  </button>
                 </div>
 
                 {/* Desktop pill (hidden on mobile) */}
@@ -180,9 +166,13 @@ export function Newsletter() {
                       paddingBottom: "10px",
                     }}
                   />
-                  <CTAButton type="submit" variant="brand" size="md" className="flex-shrink-0 cursor-pointer">
-                    Assinar <ArrowRight size={13} strokeWidth={2.4} />
-                  </CTAButton>
+                  <button
+                    type="submit"
+                    className="inline-flex flex-shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full px-7 py-2.5 transition-transform active:scale-[0.98]"
+                    style={{ background: "var(--primary)", color: "#fff", fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "var(--text-sm)" }}
+                  >
+                    Assinar <ArrowRight size={15} strokeWidth={2.2} />
+                  </button>
                 </div>
 
                 <p

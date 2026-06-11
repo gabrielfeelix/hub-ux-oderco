@@ -113,8 +113,10 @@ export function ProductCard({
           <div
             className="relative aspect-square overflow-hidden rounded-[14px]"
             style={{
-              background: "linear-gradient(160deg, #faf7f0, #efe9dc)",
-              boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.05)",
+              // branco-quente limpo — produto destaca como foto premium e não
+              // se confunde com o creme da página (multiply fica perfeito sobre branco)
+              background: "#fbfaf6",
+              boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.07)",
             }}
           >
             <ImageWithFallback

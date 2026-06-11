@@ -1,13 +1,14 @@
 import { Link, useLocation } from "react-router";
-import { Facebook, Instagram, Linkedin, Youtube, CreditCard, Zap, Barcode, ShieldCheck } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, ShieldCheck } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { getCatalogHref } from "./productPresentation";
 
 // Footer "stage" — tratamento escuro (var(--stage)) com glow âmbar e grão,
 // portado da referência de marca (_ref). Statement serif + headers âmbar +
-// bandeiras translúcidas ("Pague com") e cluster simétrico de certificados.
+// bandeiras reais (translúcidas) sob "Pague com" e cluster de certificados.
 const brandLogoWhite = "/brand/tonante-wordmark-white.png";
 const brandLogoDark = "/brand/tonante-wordmark-dark.png";
+const paymentMethodsImage = "/img/pagamentos.png";
 
 const footerColumns = [
   {
@@ -42,13 +43,6 @@ const footerColumns = [
       { label: "Seja um Revendedor", href: "/revendedor" },
     ],
   },
-] as const;
-
-const paymentMethods = [
-  { label: "Visa", Icon: CreditCard },
-  { label: "Master", Icon: CreditCard },
-  { label: "Pix", Icon: Zap },
-  { label: "Boleto", Icon: Barcode },
 ] as const;
 
 // TODO(handles): confirmar os @ oficiais da Tonante (placeholders abaixo).
@@ -120,14 +114,9 @@ export function Footer() {
             <p className="max-w-md text-[var(--text-sm)] text-foreground/60" style={{ fontFamily: "var(--font-family-inter)", lineHeight: "1.6" }}>
               Desde 1954, a Tonante conecta pessoas à música. Violões, guitarras, contrabaixos e acessórios feitos pra fazer parte da história de cada artista.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
-              <span className="label" style={{ color: "var(--amber-deep)", fontSize: 10, marginRight: 2 }}>Pague com</span>
-              {paymentMethods.map(({ label, Icon }) => (
-                <span key={label} className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5"
-                  style={{ borderColor: "var(--edge)", background: "var(--surface-1)", fontFamily: "var(--font-family-inter)", fontSize: 12.5, fontWeight: 600, color: "var(--ink-strong)" }}>
-                  <Icon size={15} style={{ color: "var(--amber-deep)" }} strokeWidth={2} /> {label}
-                </span>
-              ))}
+            <div className="flex flex-col items-center gap-2 pt-4">
+              <span className="label" style={{ color: "var(--amber-deep)", fontSize: 10 }}>Pague com</span>
+              <ImageWithFallback src={paymentMethodsImage} alt="Formas de pagamento: Visa, Mastercard, Amex, Hipercard, Elo, Pix e Boleto" className="h-7 w-auto max-w-full object-contain" />
             </div>
             <p className="text-foreground/40 mt-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
               &copy; {new Date().getFullYear()} Tonante | Todos os direitos reservados.
@@ -209,20 +198,15 @@ export function Footer() {
           className="mt-14 flex flex-col gap-8 pt-7 lg:flex-row lg:items-start lg:justify-between"
           style={{ borderTop: "1px solid rgba(255,255,255,.12)" }}
         >
-          {/* Pague com — pills translúcidas */}
+          {/* Pague com — bandeiras reais, suavizadas (translúcidas) no dark */}
           <div>
             <p className="label mb-3" style={{ color: "var(--amber)" }}>Pague com</p>
-            <div className="flex flex-wrap items-center gap-2.5">
-              {paymentMethods.map(({ label, Icon }) => (
-                <span
-                  key={label}
-                  className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2"
-                  style={{ background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.12)", fontSize: 12.5, fontWeight: 600, color: "#e9e1d4", fontFamily: "var(--font-family-inter)" }}
-                >
-                  <Icon size={15} strokeWidth={2} style={{ color: "var(--amber)" }} /> {label}
-                </span>
-              ))}
-            </div>
+            <ImageWithFallback
+              src={paymentMethodsImage}
+              alt="Formas de pagamento: Visa, Mastercard, Amex, Hipercard, Elo, Pix e Boleto"
+              className="h-8 w-auto max-w-full object-contain"
+              style={{ opacity: 0.86 }}
+            />
           </div>
 
           {/* Certificados — selos em chips claros (logos coloridos legíveis no dark) */}
@@ -230,14 +214,14 @@ export function Footer() {
             <p className="label mb-3 inline-flex items-center gap-1.5" style={{ color: "var(--amber)" }}>
               <ShieldCheck size={13} strokeWidth={2.2} /> Certificados
             </p>
-            <div className="flex flex-wrap items-center gap-2.5 lg:justify-end">
+            <div className="flex flex-wrap items-center gap-3 lg:justify-end">
               {certifications.map((cert) => {
                 const chip = (
                   <span
-                    className="inline-flex h-12 items-center justify-center rounded-lg px-3"
-                    style={{ background: "rgba(255,255,255,.92)", border: "1px solid rgba(255,255,255,.14)" }}
+                    className="inline-flex h-[60px] items-center justify-center rounded-xl px-4"
+                    style={{ background: "rgba(255,255,255,.93)", border: "1px solid rgba(255,255,255,.14)" }}
                   >
-                    <ImageWithFallback src={cert.image} alt={cert.label} className="h-7 w-auto max-w-[78px] object-contain" />
+                    <ImageWithFallback src={cert.image} alt={cert.label} className="h-10 w-auto max-w-[104px] object-contain" />
                   </span>
                 );
                 return cert.href ? (

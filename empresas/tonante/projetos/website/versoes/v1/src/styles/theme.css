@@ -557,11 +557,11 @@ html {
 .quiz-scroll-area { height: auto; max-height: none; }
 @media (min-width: 768px) { .quiz-scroll-area { height: min(420px, 55vh); } }
 
-/* Fundo de imagem de produto (mesmo padrão FlashDealsStrip) — warm. */
+/* Fundo de imagem de produto — branco-quente limpo (foto premium, sem ar
+   "areia/poeira"); destaca o produto do creme da página. */
 .deal-image-bg {
-  background:
-    radial-gradient(circle at 30% 25%, rgba(200, 120, 0, 0.06) 0%, transparent 55%),
-    linear-gradient(140deg, rgba(26, 23, 20, 0.05) 0%, rgba(26, 23, 20, 0.02) 100%);
+  background: #fbfaf6;
+  box-shadow: inset 0 0 0 1px rgba(26, 23, 20, 0.06);
 }
 
 /* Grão sutil de papel — afordância editorial Tonante. Opt-in via .grain. */
