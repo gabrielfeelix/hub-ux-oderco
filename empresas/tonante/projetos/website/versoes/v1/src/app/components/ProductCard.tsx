@@ -131,8 +131,10 @@ export function ProductCard({
                 <span
                   className="flex h-8 w-8 items-center justify-center rounded-full"
                   style={{
-                    background: "var(--ink-strong)",
-                    color: "var(--background)",
+                    // #1 ganha medalhão âmbar (ouro); demais ficam ink
+                    background: rank === 1 ? "var(--gradient-buy)" : "var(--ink-strong)",
+                    color: rank === 1 ? "#fff" : "var(--background)",
+                    boxShadow: rank === 1 ? "var(--shadow-medallion)" : undefined,
                     fontFamily: "var(--font-family-figtree)",
                     fontWeight: 700,
                     fontSize: "15px",

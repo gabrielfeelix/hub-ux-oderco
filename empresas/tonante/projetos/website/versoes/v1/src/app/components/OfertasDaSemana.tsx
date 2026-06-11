@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { ShoppingBag, ArrowRight, Star, Check } from "lucide-react";
+import { ShoppingBag, ArrowRight, Star } from "lucide-react";
 import { allProducts, type Product } from "./productsData";
 import { getVisibleCatalogProducts, getPrimaryProductImage } from "./productPresentation";
 import {
@@ -10,9 +10,8 @@ import {
   getInstallmentCount, getInstallmentValue,
 } from "./productEnhancements";
 import { useCart } from "./CartContext";
-import { ProductCard } from "./ProductCard";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { SectionHeader, SeloTonante } from "./section";
+import { SectionHeader, DiscountBadge } from "./section";
 
 /**
  * OfertasDaSemana — funde DropDoDia + FlashDealsStrip (§6.5). UMA temporalidade:
@@ -112,13 +111,6 @@ export function OfertasDaSemana() {
 
   if (picks.length === 0) return null;
 
-  const [hero, ...rail] = picks;
-  const heroImg = getPrimaryProductImage(hero);
-  const heroEconomy = getEconomy(hero);
-  const heroPix = getPixPrice(hero);
-  const heroN = getInstallmentCount(hero.priceNum);
-  const heroDiscount = getDiscountPct(hero);
-
   return (
     <section className="px-5 py-12 md:px-[72px] md:py-16" style={{ background: "var(--surface-0)" }}>
       <div className="mx-auto w-full" style={{ maxWidth: "1600px" }}>
@@ -137,120 +129,111 @@ export function OfertasDaSemana() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
-          {/* Deal Hero */}
-          <div className="lg:col-span-5">
-            <article
-              className="relative flex h-full flex-col overflow-hidden rounded-card-lg border bg-surface-1"
-              style={{ borderColor: "var(--edge)" }}
-            >
-              {/* lg: flex-1 absorve a altura extra do rail (evita vazio sob o conteúdo) */}
-              <div className="relative lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
-                <div className="deal-image-bg relative aspect-[4/3] overflow-hidden p-6 lg:aspect-auto lg:min-h-[300px] lg:flex-1">
-                  <ImageWithFallback
-                    src={heroImg}
-                    alt={hero.name}
-                    className="absolute inset-0 h-full w-full object-contain p-[8%]"
-                    style={{ mixBlendMode: "multiply" }}
-                  />
-                </div>
-                <SeloTonante variant="destaque" size={84} className="absolute left-4 top-4" />
-                {heroEconomy > 0 && (
-                  <span
-                    className="num absolute right-4 top-4 rounded-pill"
-                    style={{
-                      background: "var(--gradient-buy)", color: "#fff", fontWeight: 700,
-                      fontFamily: "var(--font-family-inter)", fontSize: "13px", padding: "6px 12px",
-                      boxShadow: "var(--shadow-buy-cta-sm)",
-                    }}
-                  >
-                    Economize {formatBRL(heroEconomy)}
-                  </span>
-                )}
-              </div>
-
-              <div className="flex flex-col gap-3 p-5 md:p-6">
-                <Link to={`/produto/${hero.id}`}>
-                  <h3
-                    className="line-clamp-2"
-                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "18px", fontWeight: 600, lineHeight: 1.3, color: "var(--ink-strong)" }}
-                  >
-                    {hero.name}
-                  </h3>
-                </Link>
-
-                {/* Prova social — mesmo padrão de estrelas do ProductCard */}
-                <div className="flex items-center gap-1.5" aria-label={`Avaliação ${hero.rating.toFixed(1)} de 5, ${hero.reviews} avaliações`}>
-                  <span className="flex items-center gap-0.5" aria-hidden="true">
-                    {[0, 1, 2, 3, 4].map((i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        strokeWidth={1.5}
-                        fill={hero.rating - i >= 0.5 ? "var(--amber)" : "none"}
-                        stroke={hero.rating - i >= 0.5 ? "var(--amber)" : "rgba(26,23,20,0.3)"}
-                      />
-                    ))}
-                  </span>
-                  <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
-                    {hero.rating.toFixed(1)} · {hero.reviews} avaliações
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap items-baseline gap-2">
-                  {hero.oldPriceNum && (
-                    <span className="line-through num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
-                      {hero.oldPrice}
-                    </span>
-                  )}
-                  <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-price-xl)", fontWeight: 700, letterSpacing: "-0.01em", color: "var(--amber-deep)" }}>
-                    {hero.price}
-                  </span>
-                  {heroDiscount > 0 && (
-                    <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", fontWeight: 700, color: "var(--amber-deep)" }}>
-                      −{heroDiscount}%
-                    </span>
-                  )}
-                </div>
-                <div className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-soft)" }}>
-                  No PIX <strong style={{ color: "var(--amber-deep)" }}>{formatBRL(heroPix)}</strong> · ou {heroN}x de {formatBRL(getInstallmentValue(hero.priceNum))}
-                </div>
-
-                <div className="mt-1 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <Countdown target={weekEnd} />
-                  <button
-                    type="button"
-                    onClick={() => add(hero)}
-                    className="inline-flex items-center justify-center gap-2 rounded-pill cursor-pointer"
-                    style={{
-                      background: "var(--primary)", color: "#fff", padding: "12px 20px",
-                      fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "14.5px",
-                      boxShadow: "var(--shadow-buy-cta-sm)",
-                    }}
-                  >
-                    <ShoppingBag size={17} strokeWidth={2} /> Comprar
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          {/* Rail dos demais deals */}
-          <div className="lg:col-span-7">
-            <div className="flex gap-4 overflow-x-auto pb-2 [scrollbar-width:none] lg:grid lg:grid-cols-2 lg:gap-5 lg:overflow-visible deals-track">
-              {rail.map((p) => (
-                <ProductCard
-                  key={p.id}
-                  product={p}
-                  emphasizeDiscount
-                  onAdd={add}
-                  className="w-[78vw] max-w-[300px] shrink-0 lg:w-auto lg:max-w-none"
-                />
-              ))}
-            </div>
-          </div>
+        {/* 3 cards iguais, cada um com countdown — padrão consistente (sem hero largo) */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {picks.map((p) => (
+            <DealCard key={p.id} product={p} weekEnd={weekEnd} onAdd={add} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+/** Card de oferta uniforme: imagem, nome, rating, preço, countdown e CTA. */
+function DealCard({ product, weekEnd, onAdd }: { product: Product; weekEnd: number; onAdd: (p: Product) => void }) {
+  const img = getPrimaryProductImage(product);
+  const economy = getEconomy(product);
+  const pix = getPixPrice(product);
+  const n = getInstallmentCount(product.priceNum);
+  const discount = getDiscountPct(product);
+  return (
+    <article
+      className="deal-card-img flex h-full flex-col overflow-hidden rounded-card-lg border bg-surface-1"
+      style={{ borderColor: "var(--edge)" }}
+    >
+      <Link to={`/produto/${product.id}`} className="block">
+        <div className="deal-image-bg relative aspect-[4/3] overflow-hidden p-5">
+          <ImageWithFallback
+            src={img}
+            alt={product.name}
+            className="absolute inset-0 h-full w-full object-contain p-[7%] transition-transform duration-500 hover:scale-[1.04]"
+            style={{ mixBlendMode: "multiply" }}
+          />
+          {discount > 0 && <DiscountBadge percent={discount} className="absolute left-3.5 top-3.5" />}
+          {economy > 0 && (
+            <span
+              className="num absolute right-3.5 top-3.5 rounded-pill"
+              style={{
+                background: "var(--gradient-buy)", color: "#fff", fontWeight: 700,
+                fontFamily: "var(--font-family-inter)", fontSize: "12px", padding: "5px 11px",
+                boxShadow: "var(--shadow-buy-cta-sm)",
+              }}
+            >
+              Economize {formatBRL(economy)}
+            </span>
+          )}
+        </div>
+      </Link>
+
+      <div className="flex flex-1 flex-col gap-2.5 p-5">
+        <Link to={`/produto/${product.id}`}>
+          <h3
+            className="line-clamp-2"
+            style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-product-name)", fontWeight: 600, lineHeight: 1.35, color: "var(--ink-strong)" }}
+          >
+            {product.name}
+          </h3>
+        </Link>
+
+        <div className="flex items-center gap-1.5" aria-label={`Avaliação ${product.rating.toFixed(1)} de 5, ${product.reviews} avaliações`}>
+          <span className="flex items-center gap-0.5" aria-hidden="true">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star
+                key={i}
+                size={13}
+                strokeWidth={1.5}
+                fill={product.rating - i >= 0.5 ? "var(--amber)" : "none"}
+                stroke={product.rating - i >= 0.5 ? "var(--amber)" : "rgba(26,23,20,0.3)"}
+              />
+            ))}
+          </span>
+          <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
+            {product.rating.toFixed(1)} · {product.reviews}
+          </span>
+        </div>
+
+        <div className="flex flex-wrap items-baseline gap-2">
+          {product.oldPriceNum && (
+            <span className="line-through num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
+              {product.oldPrice}
+            </span>
+          )}
+          <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-price-lg)", fontWeight: 700, letterSpacing: "-0.01em", color: "var(--amber-deep)" }}>
+            {product.price}
+          </span>
+        </div>
+        <div className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-soft)" }}>
+          No PIX <strong style={{ color: "var(--amber-deep)" }}>{formatBRL(pix)}</strong> · ou {n}x de {formatBRL(getInstallmentValue(product.priceNum))}
+        </div>
+
+        {/* countdown + CTA fixos no rodapé do card (mt-auto alinha os 3) */}
+        <div className="mt-auto flex flex-col gap-3 pt-2">
+          <Countdown target={weekEnd} />
+          <button
+            type="button"
+            onClick={() => onAdd(product)}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-pill cursor-pointer"
+            style={{
+              background: "var(--primary)", color: "#fff", padding: "12px 20px",
+              fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "14.5px",
+              boxShadow: "var(--shadow-buy-cta-sm)",
+            }}
+          >
+            <ShoppingBag size={17} strokeWidth={2} /> Comprar
+          </button>
+        </div>
+      </div>
+    </article>
   );
 }

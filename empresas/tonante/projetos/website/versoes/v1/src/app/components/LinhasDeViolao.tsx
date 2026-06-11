@@ -229,12 +229,13 @@ export function LinhasDeViolao() {
                   transition: "all .2s",
                 }}
               >
-                {/* disco da cor da linha + violão saindo de leve (multiply some o
-                    branco do JPEG sobre o disco colorido) */}
-                <span className="relative flex h-9 w-9 flex-shrink-0 items-end justify-center">
+                {/* disco da cor da linha + violão saindo por cima. Núcleo claro
+                    atrás garante contraste do violão (multiply) mesmo em discos
+                    escuros como Ônix. */}
+                <span className="relative flex h-[46px] w-11 flex-shrink-0 items-end justify-center">
                   <span
                     aria-hidden="true"
-                    className="absolute bottom-0 left-1/2 h-[30px] w-[30px] -translate-x-1/2 rounded-full"
+                    className="absolute bottom-0 left-1/2 h-[32px] w-[32px] -translate-x-1/2 rounded-full"
                     style={{
                       background: `radial-gradient(circle at 38% 28%, ${la}, ${lb})`,
                       boxShadow: on
@@ -242,11 +243,17 @@ export function LinhasDeViolao() {
                         : "0 2px 6px -2px rgba(0,0,0,.32)",
                     }}
                   />
+                  {/* halo claro p/ o violão ler sobre qualquer tom */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-[3px] left-1/2 h-[26px] w-[26px] -translate-x-1/2 rounded-full"
+                    style={{ background: "radial-gradient(circle, rgba(248,244,236,0.92) 0%, rgba(248,244,236,0.45) 55%, transparent 75%)" }}
+                  />
                   <img
                     src={getPrimaryProductImage(lprod)}
                     alt=""
                     aria-hidden="true"
-                    className="relative z-[1] h-[42px] w-auto object-contain object-bottom"
+                    className="relative z-[1] h-[54px] w-auto object-contain object-bottom"
                     style={{ mixBlendMode: "multiply" }}
                   />
                 </span>

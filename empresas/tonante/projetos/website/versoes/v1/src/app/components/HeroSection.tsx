@@ -62,7 +62,7 @@ export function HeroSection() {
           <button
             onClick={() => goTo(idx - 1)}
             aria-label="Banner anterior"
-            className="absolute left-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full md:flex"
+            className="absolute left-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full md:flex"
             style={{ background: "rgba(255,253,248,0.92)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
           >
             <ChevronLeft size={22} />
@@ -70,7 +70,7 @@ export function HeroSection() {
           <button
             onClick={() => goTo(idx + 1)}
             aria-label="Próximo banner"
-            className="absolute right-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full md:flex"
+            className="absolute right-4 top-1/2 z-[5] hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full md:flex"
             style={{ background: "rgba(255,253,248,0.92)", border: "1px solid #e4dccc", color: "var(--ink-strong)", boxShadow: "var(--shadow-card)" }}
           >
             <ChevronRight size={22} />
