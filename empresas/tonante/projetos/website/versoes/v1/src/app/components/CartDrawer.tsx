@@ -481,8 +481,8 @@ export function CartDrawer() {
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-foreground/50" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>Total</span>
-                  <span className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-xl)", fontWeight: "var(--font-weight-medium)" }}>{formatPrice(total)}</span>
+                  <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "var(--ink-meta)" }}>Total</span>
+                  <span className="text-foreground num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-xl)", fontWeight: 700 }}>{formatPrice(total)}</span>
                 </div>
 
                 <button

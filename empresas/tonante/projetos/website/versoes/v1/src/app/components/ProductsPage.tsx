@@ -13,6 +13,7 @@ import { useFavorites } from "./FavoritesContext";
 import { useTheme } from "./ThemeProvider";
 import { Footer } from "./Footer";
 import { ProductCard } from "./ProductCard";
+import { getInstallmentCount, getInstallmentValue } from "./productEnhancements";
 import { allProducts, allTags as productTags, brands as productBrands, categories as productCategories, type Product } from "./productsData";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import {
@@ -1079,7 +1080,7 @@ export function ProductsPage() {
         }
         description={
           activeCategoryLabel
-            ? `Veja todos os produtos da categoria ${activeCategoryLabel}${initialSubcategory ? ` / ${initialSubcategory}` : ""} na PCYES. Frete grátis acima de R$ 299, até 12x sem juros.`
+            ? `Veja todos os produtos da categoria ${activeCategoryLabel}${initialSubcategory ? ` / ${initialSubcategory}` : ""} na PCYES. Frete grátis acima de R$ 299, até 10x sem juros.`
             : "Tudo que conecta gente à música, num só lugar — com garantia oficial e frete grátis acima de R$ 299."
         }
         canonicalPath={
@@ -1161,7 +1162,7 @@ export function ProductsPage() {
               }}
             >
               {activeCategoryLabel
-                ? `Confira a linha completa de ${initialSubcategory ? `${initialSubcategory.toLowerCase()} ${activeCategoryLabel.toLowerCase()}` : activeCategoryLabel.toLowerCase()} PCYES. Garantia oficial, frete grátis acima de R$ 299, até 12x sem juros.`
+                ? `Confira a linha completa de ${initialSubcategory ? `${initialSubcategory.toLowerCase()} ${activeCategoryLabel.toLowerCase()}` : activeCategoryLabel.toLowerCase()} PCYES. Garantia oficial, frete grátis acima de R$ 299, até 10x sem juros.`
                 : "Tudo que conecta gente à música, num só lugar — com garantia oficial e frete grátis acima de R$ 299."}
             </p>
           </header>
@@ -1381,7 +1382,7 @@ export function ProductsPage() {
                               {displayProduct.oldPrice && <p className="text-foreground/40 line-through text-sm" style={{ fontFamily: "var(--font-family-inter)" }}>{displayProduct.oldPrice}</p>}
                             </div>
                             <p className="mt-1 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.6)" }}>
-                              No PIX ou 10x de R$ {(displayProduct.priceNum / 10).toFixed(2).replace(".", ",")}
+                              No PIX ou {getInstallmentCount(displayProduct.priceNum)}x de R$ {getInstallmentValue(displayProduct.priceNum).toFixed(2).replace(".", ",")}
                             </p>
                             {/* Mobile buy button — full width below info */}
                             <button onClick={() => handleAddToCart(displayProduct)}

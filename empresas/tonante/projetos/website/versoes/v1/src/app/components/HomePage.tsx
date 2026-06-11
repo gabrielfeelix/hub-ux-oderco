@@ -29,7 +29,7 @@ export function HomePage() {
     <>
       <SEO
         title="Violões, guitarras, contrabaixos e acessórios"
-        description="Loja oficial Tonante. Tradição brasileira desde 1954. Violões, guitarras, contrabaixos, cordas e acessórios. Frete grátis acima de R$ 299. Até 12x sem juros."
+        description="Loja oficial Tonante. Tradição brasileira desde 1954. Violões, guitarras, contrabaixos, cordas e acessórios. Frete grátis acima de R$ 299. Até 10x sem juros."
         canonicalPath="/"
         ogType="website"
         jsonLd={{

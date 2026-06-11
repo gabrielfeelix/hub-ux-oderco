@@ -1395,7 +1395,7 @@ export function CheckoutPage() {
                       {/* Traditional methods */}
                       <div className="grid grid-cols-1 gap-3 md:grid-cols-3 mb-6">
                         <PaymentOption icon={<PixLogo size={18} />} label="Pix" description="Aprovação instantânea · 10% OFF" badge="-10%" active={payment === "pix"} onClick={() => setPayment("pix")} color="#22c55e" accentBg="rgba(34,197,94,0.14)" />
-                        <PaymentOption icon={<CreditCard size={18} strokeWidth={2} />} label="Cartão" description="Até 12x · seu cartão salvo" active={payment === "credit"} onClick={() => setPayment("credit")} />
+                        <PaymentOption icon={<CreditCard size={18} strokeWidth={2} />} label="Cartão" description="Até 10x · seu cartão salvo" active={payment === "credit"} onClick={() => setPayment("credit")} />
                         <PaymentOption icon={<Wallet size={18} strokeWidth={2} />} label="Boleto" description="Vence em 3 dias úteis" active={payment === "boleto"} onClick={() => setPayment("boleto")} />
                       </div>
 

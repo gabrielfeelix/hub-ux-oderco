@@ -7,6 +7,7 @@ import { Heart, Eye, ShoppingBag, Star, ChevronLeft, ChevronRight, X } from "luc
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
 import { getProductSwatches } from "./productPresentation";
+import { getInstallmentCount, getInstallmentValue } from "./productEnhancements";
 import { DiscountBadge } from "./section";
 
 /**
@@ -78,7 +79,8 @@ export function ProductCard({
     product.subcategory ||
     product.category;
   const pix = product.priceNum * 0.9;
-  const installments = Math.min(10, Math.max(2, Math.round(product.priceNum / 250)));
+  const installments = getInstallmentCount(product.priceNum);
+  const installmentValue = getInstallmentValue(product.priceNum);
 
   const handleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -152,7 +154,7 @@ export function ProductCard({
               <button
                 onClick={handleFavorite}
                 aria-label="Favoritar"
-                className="flex h-9 w-9 items-center justify-center rounded-full shadow-[0_2px_8px_rgba(26,23,20,0.12)] transition-colors cursor-pointer"
+                className="flex h-11 w-11 md:h-9 md:w-9 items-center justify-center rounded-full shadow-[0_2px_8px_rgba(26,23,20,0.12)] transition-colors cursor-pointer"
                 style={{ background: "rgba(255,255,255,0.92)", color: isFavorited ? "#b3361f" : "#1a1714" }}
               >
                 <Heart size={16} strokeWidth={1.8} fill={isFavorited ? "#b3361f" : "none"} />
@@ -165,7 +167,7 @@ export function ProductCard({
                   setQuickOpen(true);
                 }}
                 aria-label="Espiar produto"
-                className="flex h-9 w-9 items-center justify-center rounded-full shadow-[0_2px_8px_rgba(26,23,20,0.12)] cursor-pointer"
+                className="flex h-11 w-11 md:h-9 md:w-9 items-center justify-center rounded-full shadow-[0_2px_8px_rgba(26,23,20,0.12)] cursor-pointer"
                 style={{ background: "rgba(255,255,255,0.92)", color: "#1a1714" }}
               >
                 <Eye size={16} strokeWidth={1.8} />
@@ -178,7 +180,7 @@ export function ProductCard({
                 <button
                   onClick={(e) => cycle(e, -1)}
                   aria-label="Imagem anterior"
-                  className="absolute left-3 top-[44%] z-20 flex h-8 w-8 items-center justify-center rounded-full opacity-0 transition-opacity group-hover:opacity-100 cursor-pointer"
+                  className="absolute left-2 top-[42%] z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full opacity-0 transition-opacity group-hover:opacity-100 cursor-pointer"
                   style={{ background: "rgba(255,255,255,0.85)", color: "#1a1714" }}
                 >
                   <ChevronLeft size={16} />
@@ -186,7 +188,7 @@ export function ProductCard({
                 <button
                   onClick={(e) => cycle(e, 1)}
                   aria-label="Próxima imagem"
-                  className="absolute right-3 top-[44%] z-20 flex h-8 w-8 items-center justify-center rounded-full opacity-0 transition-opacity group-hover:opacity-100 cursor-pointer"
+                  className="absolute right-2 top-[42%] z-20 flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-full opacity-0 transition-opacity group-hover:opacity-100 cursor-pointer"
                   style={{ background: "rgba(255,255,255,0.85)", color: "#1a1714" }}
                 >
                   <ChevronRight size={16} />
@@ -236,17 +238,17 @@ export function ProductCard({
 
         {/* conteúdo */}
         <div className="flex flex-1 flex-col gap-2 px-4 pb-5">
-          <span className="label" style={{ fontSize: "9.5px", color: "var(--amber-deep)" }}>
+          <span className="label" style={{ fontSize: "var(--text-eyebrow)", color: "var(--amber-deep)" }}>
             {eyebrow}
           </span>
           <h3
             className="line-clamp-2 text-ink-strong"
             style={{
-              fontFamily: "var(--font-family-figtree)",
-              fontSize: "20px",
+              fontFamily: "var(--font-family-inter)",
+              fontSize: "var(--text-product-name)",
               fontWeight: 600,
-              lineHeight: 1.08,
-              letterSpacing: "-0.01em",
+              lineHeight: 1.35,
+              letterSpacing: 0,
             }}
           >
             {product.name}
@@ -265,7 +267,7 @@ export function ProductCard({
                 />
               ))}
             </span>
-            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", color: "var(--muted)" }}>
+            <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
               {product.rating.toFixed(1)} · {product.reviews}
             </span>
           </span>
@@ -275,18 +277,19 @@ export function ProductCard({
             <div className="flex flex-wrap items-baseline gap-2">
               {oldPriceNum > product.priceNum && (
                 <span
-                  className="line-through"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "var(--faint)" }}
+                  className="line-through num"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}
                 >
                   {product.oldPrice ?? fmtBRL(oldPriceNum)}
                 </span>
               )}
               <span
+                className="num"
                 style={{
-                  fontFamily: "var(--font-family-figtree)",
-                  fontSize: "22px",
-                  fontWeight: 600,
-                  letterSpacing: "-0.02em",
+                  fontFamily: "var(--font-family-inter)",
+                  fontSize: "var(--text-price-lg)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
                   color: discount > 0 ? "var(--amber-deep)" : "var(--ink-strong)",
                 }}
               >
@@ -294,10 +297,11 @@ export function ProductCard({
               </span>
             </div>
             <div
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: "var(--ink-soft)", marginTop: 3 }}
+              className="num"
+              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-soft)", marginTop: 3 }}
             >
               No PIX <strong style={{ color: "var(--amber-deep)" }}>{fmtBRL(pix)}</strong> · ou {installments}x de{" "}
-              {fmtBRL(product.priceNum / installments)}
+              {fmtBRL(installmentValue)}
             </div>
           </div>
         </div>
@@ -351,7 +355,8 @@ export function ProductCard({
           style={{
             background: "var(--primary)",
             color: "#fff",
-            padding: "10px 16px",
+            padding: "11px 16px",
+            minHeight: 44,
             fontFamily: "var(--font-family-inter)",
             fontWeight: 700,
             fontSize: "13.5px",
@@ -400,7 +405,7 @@ export function ProductCard({
               <span className="label" style={{ fontSize: "10px", color: "var(--amber-deep)" }}>
                 {eyebrow}
               </span>
-              <h3 style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: 700, lineHeight: 1.05, color: "var(--ink-strong)" }}>
+              <h3 style={{ fontFamily: "var(--font-family-inter)", fontSize: "20px", fontWeight: 700, lineHeight: 1.25, letterSpacing: 0, color: "var(--ink-strong)" }}>
                 {product.name}
               </h3>
               <span className="flex items-center gap-1.5">
@@ -409,7 +414,7 @@ export function ProductCard({
                     <Star key={i} size={14} strokeWidth={1.5} fill={product.rating - i >= 0.5 ? "var(--amber)" : "none"} stroke={product.rating - i >= 0.5 ? "var(--amber)" : "rgba(26,23,20,0.3)"} />
                   ))}
                 </span>
-                <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "12.5px", color: "var(--muted)" }}>
+                <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
                   {product.rating.toFixed(1)} · {product.reviews} avaliações
                 </span>
               </span>
@@ -421,16 +426,16 @@ export function ProductCard({
               <div className="mt-auto pt-2">
                 <div className="flex flex-wrap items-baseline gap-2">
                   {oldPriceNum > product.priceNum && (
-                    <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "var(--faint)" }}>
+                    <span className="line-through num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
                       {product.oldPrice ?? fmtBRL(oldPriceNum)}
                     </span>
                   )}
-                  <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "30px", fontWeight: 600, letterSpacing: "-0.02em", color: discount > 0 ? "var(--amber-deep)" : "var(--ink-strong)" }}>
+                  <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-price-xl)", fontWeight: 700, letterSpacing: "-0.01em", color: discount > 0 ? "var(--amber-deep)" : "var(--ink-strong)" }}>
                     {product.price}
                   </span>
                 </div>
-                <div style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "var(--ink-soft)", marginTop: 3 }}>
-                  No PIX <strong style={{ color: "var(--amber-deep)" }}>{fmtBRL(pix)}</strong> · ou {installments}x de {fmtBRL(product.priceNum / installments)}
+                <div className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-soft)", marginTop: 3 }}>
+                  No PIX <strong style={{ color: "var(--amber-deep)" }}>{fmtBRL(pix)}</strong> · ou {installments}x de {fmtBRL(installmentValue)}
                 </div>
               </div>
               <div className="mt-3 flex flex-col gap-2.5">

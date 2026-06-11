@@ -8,7 +8,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
 import { allProducts, type Product } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
-import { getPixPrice, formatBRL } from "./productEnhancements";
+import { getPixPrice, formatBRL, getInstallmentCount, getInstallmentValue } from "./productEnhancements";
 import { SectionHeader, CTAButton, DiscountBadge } from "./section";
 
 function withGuaranteedDiscount(p: Product): Product {
@@ -194,7 +194,7 @@ export function DropDoDiaSection() {
                           color: "rgba(var(--foreground-rgb), 0.55)",
                         }}
                       >
-                        ou {product.price} em 10x sem juros
+                        ou {getInstallmentCount(product.priceNum)}x de {formatBRL(getInstallmentValue(product.priceNum))} sem juros
                       </p>
                       {economy > 0 && (
                         <p

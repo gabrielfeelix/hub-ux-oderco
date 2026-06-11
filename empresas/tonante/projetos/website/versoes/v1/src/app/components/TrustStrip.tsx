@@ -6,7 +6,7 @@ type Item = { icon: LucideIcon; title: string; sub: string };
 
 const items: Item[] = [
   { icon: Truck, title: "Frete grátis", sub: "acima de R$ 299" },
-  { icon: CreditCard, title: "Até 12x", sub: "sem juros" },
+  { icon: CreditCard, title: "Até 10x", sub: "sem juros" },
   { icon: ShieldCheck, title: "Garantia", sub: "2 anos Tonante" },
   { icon: RefreshCcw, title: "Troca fácil", sub: "até 30 dias" },
 ];

@@ -19,6 +19,7 @@ import {
   getVisibleCatalogProducts,
 } from "./productPresentation";
 import { toast } from "sonner";
+import { getInstallmentCount, getInstallmentValue } from "./productEnhancements";
 import { getPreOrderInfo } from "./PreOrderData";
 import type { PreOrderInfo } from "./PreOrderData";
 import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
@@ -519,7 +520,7 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
   }, [open, onClose]);
 
   const pixPrice = priceNum * 0.9;
-  const installments = Array.from({ length: 12 }, (_, i) => ({
+  const installments = Array.from({ length: getInstallmentCount(priceNum) }, (_, i) => ({
     n: i + 1,
     value: priceNum / (i + 1),
   }));
@@ -663,7 +664,7 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
                         ))}
                       </div>
                       <div className="divide-y divide-foreground/6">
-                        {installments.slice(6, 12).map((inst) => (
+                        {installments.slice(6).map((inst) => (
                           <div
                             key={inst.n}
                             className="flex items-center justify-between px-3.5 py-2.5"
@@ -832,7 +833,7 @@ function StickyPriceCard({
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", lineHeight: "1.55" }}
           >
             ou <span className="text-foreground font-semibold">{product.price}</span> em até{" "}
-            <span className="text-foreground font-semibold">12× {formatBRL(installment)}</span> sem juros
+            <span className="text-foreground font-semibold num">{getInstallmentCount(product.priceNum)}× {formatBRL(installment)}</span> sem juros
           </p>
 
           <button
@@ -1072,7 +1073,7 @@ function MobilePurchaseFlow({
             style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "1.6" }}
           >
             ou <span className="text-foreground font-bold">{product.price}</span> em até{" "}
-            <span className="text-foreground font-bold">12x de {formatBRL(installment)}</span> sem juros no cartão
+            <span className="text-foreground font-bold num">{getInstallmentCount(product.priceNum)}x de {formatBRL(installment)}</span> sem juros no cartão
           </p>
         )}
 
@@ -2235,7 +2236,8 @@ export function ProductPage() {
     : 0;
 
   const pixPrice = product.priceNum * 0.9;
-  const installment = product.priceNum / 12;
+  const installmentN = getInstallmentCount(product.priceNum);
+  const installment = getInstallmentValue(product.priceNum);
   const preOrderInfo = getPreOrderInfo(product.id);
 
   const handleAdd = () => {
@@ -2280,7 +2282,7 @@ export function ProductPage() {
     <div className="pt-[calc(56px+var(--announce-h))] lg:pt-[calc(180px+var(--announce-h))] notebook:pt-[calc(120px+var(--announce-h))]">
       <SEO
         title={product.name}
-        description={`Compre ${product.name} na PCYES. ${product.price ? `Por ${product.price}.` : ""} Frete grátis acima de R$ 299, até 12x sem juros.`}
+        description={`Compre ${product.name} na PCYES. ${product.price ? `Por ${product.price}.` : ""} Frete grátis acima de R$ 299, até 10x sem juros.`}
         canonicalPath={getProductUrl(product)}
         image={getPrimaryProductImage(product)}
         ogType="product"
@@ -2632,7 +2634,8 @@ export function ProductPage() {
                 const rDiscount = rProduct.oldPriceNum && rProduct.oldPriceNum > rProduct.priceNum
                   ? Math.round(((rProduct.oldPriceNum - rProduct.priceNum) / rProduct.oldPriceNum) * 100)
                   : 0;
-                const rInstallment = `R$ ${(rProduct.priceNum / 10).toFixed(2).replace(".", ",")}`;
+                const rInstallmentN = getInstallmentCount(rProduct.priceNum);
+                const rInstallment = formatBRL(getInstallmentValue(rProduct.priceNum));
                 return (
                   <motion.div
                     key={rProduct.id}
@@ -2708,11 +2711,11 @@ export function ProductPage() {
                             {rProduct.oldPrice}
                           </p>
                         )}
-                        <p className="text-ink-strong leading-none" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 700, letterSpacing: "-0.015em" }}>
+                        <p className="text-ink-strong leading-none num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-price-lg)", fontWeight: 700, letterSpacing: "-0.01em" }}>
                           {rProduct.price}
                         </p>
-                        <p className="mt-1.5 leading-tight" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.55)" }}>
-                          No PIX ou 10x de {rInstallment}
+                        <p className="mt-1.5 leading-tight num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "var(--ink-meta)" }}>
+                          No PIX ou {rInstallmentN}x de {rInstallment}
                         </p>
                       </div>
                     </div>

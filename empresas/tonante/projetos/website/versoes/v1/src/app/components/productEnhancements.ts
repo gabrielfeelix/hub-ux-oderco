@@ -27,6 +27,22 @@ export function getInstallment(p: Product): number {
   return Math.round((p.priceNum / 10) * 100) / 100;
 }
 
+/**
+ * Parcelamento padrão da loja (Fase 0 §4.2.7) — fonte ÚNICA da verdade.
+ * Política (decisão Gabriel 2026-06-11): até 10x sem juros, parcela mínima R$50.
+ * Usar em ProductCard, quick-view, DropDoDia, PDP, CartDrawer — nunca hardcode.
+ */
+export const MAX_INSTALLMENTS = 10;
+export const MIN_INSTALLMENT_VALUE = 50;
+export function getInstallmentCount(priceNum: number): number {
+  return Math.min(MAX_INSTALLMENTS, Math.max(1, Math.floor(priceNum / MIN_INSTALLMENT_VALUE)));
+}
+
+/** Valor de cada parcela no plano padrão. */
+export function getInstallmentValue(priceNum: number): number {
+  return Math.round((priceNum / getInstallmentCount(priceNum)) * 100) / 100;
+}
+
 export type SocialProof = {
   icon: "fire" | "eye" | "zap";
   text: string;
