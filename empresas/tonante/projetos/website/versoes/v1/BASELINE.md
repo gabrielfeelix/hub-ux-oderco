@@ -12,14 +12,17 @@
 - Countdowns na página: **2** (DropDoDia + FlashDealsStrip).
 - Categorias: só aparecem na **dobra 4** (CategoryShowcase).
 
-### Métricas que exigem browser (capturar quando rodar playwright — pendente libs chromium)
-| Métrica | ANTES | DEPOIS (Fase 5) |
-|---|---|---|
-| Altura total desktop @1440 | 11.016px (diag.) | _a medir_ |
-| Altura total mobile @390 | _a medir_ | _a medir_ |
-| **Produtos clicáveis acima de 2.000px (desktop)** | _a medir_ | alvo ≥3 |
-| Produtos clicáveis acima de 1.700px (mobile) | _a medir_ | alvo ≥1 |
-| Scroll-depth mediano | sem analytics | sem analytics |
+### Métricas de browser (medidas via playwright + chromium c/ libs extraídas em /tmp/chromelibs)
+| Métrica | ANTES | DEPOIS Fase 2 | Alvo |
+|---|---|---|---|
+| Altura total desktop @1440 | 11.016px | **8.846px** (−20%) | ≤8.800 (46px acima; Fase 3 enxuga) |
+| Altura total mobile @390 | _n/d_ | 10.255px | — |
+| **Produtos clicáveis acima de 2.000px (desktop)** | _n/d_ | **5** ✅ | ≥3 |
+| Produtos clicáveis acima de 1.700px (mobile) | _n/d_ | **5** ✅ | ≥1 |
+| Countdowns na página | 2 | **1** ✅ | 1 |
+| Scroll-depth mediano | sem analytics | sem analytics | — |
+
+> Como remedir: `npx vite preview --port 4173` + script playwright apontando `executablePath` p/ `~/.cache/ms-playwright/chromium-1169/chrome-linux/chrome` com `LD_LIBRARY_PATH=/tmp/chromelibs/root/usr/lib/x86_64-linux-gnu`. Contagem de produtos via `a[href^="/produto/"]` com top < limite.
 
 ## 2. Catálogo (fonte de verdade p/ SocialProofBar §6.10 — números REAIS)
 

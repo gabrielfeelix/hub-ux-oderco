@@ -1,16 +1,13 @@
 import { HeroSection } from "./HeroSection";
+import { CategoryChips } from "./CategoryChips";
 import { TrustStrip } from "./TrustStrip";
-import { DropDoDiaSection } from "./DropDoDiaSection";
-import { FlashDealsStrip } from "./FlashDealsStrip";
+import { OfertasDaSemana } from "./OfertasDaSemana";
 import { CategoryShowcase } from "./CategoryShowcase";
 import { ProductShelf } from "./ProductShelf";
-import { PromoPanel } from "./PromoPanel";
 import { MonteSeuKit } from "./MonteSeuKit";
-import { ShopByStyle } from "./ShopByStyle";
 import { LinhasDeViolao } from "./LinhasDeViolao";
 import { StoryBand } from "./StoryBand";
 import { RealMusicians } from "./RealMusicians";
-import { Pillars } from "./Pillars";
 import { Newsletter } from "./Newsletter";
 import { Footer } from "./Footer";
 import { StringDivider } from "./section";
@@ -48,14 +45,14 @@ export function HomePage() {
       {/* 1. Hero (carrossel de banners) */}
       <HeroSection />
 
-      {/* 2. Vantagens */}
+      {/* 2. Categorias — wayfinding sob o hero (loja-first) */}
+      <CategoryChips />
+
+      {/* 3. Vantagens */}
       <TrustStrip />
 
-      {/* 3. Drop do dia */}
-      <DropDoDiaSection />
-
-      {/* 4. Promoções da semana */}
-      <FlashDealsStrip />
+      {/* 4. Ofertas da semana (funde Drop do dia + Flash deals; 1 countdown) */}
+      <OfertasDaSemana />
 
       {/* 5. Categorias — O que você toca hoje? */}
       <CategoryShowcase />
@@ -63,31 +60,22 @@ export function HomePage() {
       {/* 6. Top da semana (ranked) */}
       <ProductShelf label="Mais vendidos" title="Top da semana" productIds={bestSellerIds} showRanking />
 
-      {/* 7. Hall das ofertas */}
-      <PromoPanel />
+      {/* 7. Cada violão, uma experiência */}
+      <LinhasDeViolao />
 
       {/* 8. Monte seu kit (combo) */}
       <MonteSeuKit />
 
-      {/* 9. Pra cada jeito de tocar */}
-      <ShopByStyle />
-
-      {/* 10. Cada violão, uma experiência */}
-      <LinhasDeViolao />
-
-      {/* 11. Herança 1954 */}
+      {/* 9. Herança 1954 */}
       <StoryBand />
 
-      {/* 12. Recém-chegados */}
+      {/* 10. Recém-chegados */}
       <ProductShelf label="Lançamentos" title="Recém-chegados" productIds={newArrivalIds} />
 
-      {/* 13. Tonante por aí */}
+      {/* 11. Tonante por aí */}
       <RealMusicians />
 
-      {/* 14. Pilares */}
-      <Pillars />
-
-      {/* 15. Newsletter + Footer */}
+      {/* 12. Newsletter + Footer */}
       <div className="mx-auto w-full max-w-[1100px] px-6 md:px-10" style={{ marginBottom: "8px" }}>
         <StringDivider />
       </div>
