@@ -14,14 +14,20 @@ const SHOTS: Shot[] = [
   { photo: u("photo-1505841993706-c8d90b412bc4"), handle: "@pedro.live" },
 ];
 
-function Card({ s }: { s: Shot }) {
+function Card({ s, seed }: { s: Shot; seed: number }) {
+  // rotação fixa por índice (estável entre renders, sem flicker) — foto impressa
+  const rot = (((seed * 37) % 5) - 2) * 0.75; // -1,5° .. +1,5°
   return (
-    <div className="relative flex-shrink-0 overflow-hidden" style={{ width: 280, height: 360, borderRadius: "var(--radius-card-lg)" }}>
-      <ImageWithFallback src={s.photo} alt={s.handle} className="absolute inset-0 h-full w-full object-cover" />
-      <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 45%, rgba(0,0,0,.62) 100%)" }} />
-      <div className="absolute bottom-3.5 left-4 z-[2] flex items-center gap-2" style={{ color: "#fff" }}>
-        <Instagram size={16} strokeWidth={1.8} />
-        <span style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "13.5px" }}>{s.handle}</span>
+    <div className="flex-shrink-0" style={{ transform: `rotate(${rot}deg)` }}>
+      <div style={{ background: "var(--surface-1)", padding: 6, borderRadius: 14, boxShadow: "0 16px 34px -14px rgba(26,23,20,0.38)" }}>
+        <div className="relative overflow-hidden" style={{ width: 268, height: 330, borderRadius: 9 }}>
+          <ImageWithFallback src={s.photo} alt={s.handle} className="absolute inset-0 h-full w-full object-cover" />
+          <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 55%, rgba(0,0,0,.45) 100%)" }} />
+          <div className="absolute bottom-3 left-3 z-[2] inline-flex items-center gap-1.5 rounded-pill" style={{ background: "rgba(26,23,20,0.45)", backdropFilter: "blur(6px)", padding: "5px 11px", color: "#fff" }}>
+            <Instagram size={14} strokeWidth={1.8} />
+            <span style={{ fontFamily: "var(--font-family-inter)", fontWeight: 600, fontSize: "13px" }}>{s.handle}</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -39,6 +45,10 @@ export function RealMusicians() {
           <h2 className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(28px,3.8vw,46px)", fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em", margin: 0 }}>
             Músicos de verdade, palcos de verdade
           </h2>
+          <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", color: "var(--ink-soft)", margin: "14px 0 0" }}>
+            Apareça aqui — use{" "}
+            <strong style={{ color: "var(--amber-deep)", fontWeight: 700 }}>#FeitaDeHistorias</strong>
+          </p>
         </div>
       </div>
 
@@ -46,7 +56,7 @@ export function RealMusicians() {
       <div className="tonante-marquee" style={{ overflow: "hidden", maskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)" }}>
         <div className="tonante-marquee-track flex gap-5" style={{ width: "max-content" }}>
           {loop.map((s, i) => (
-            <Card key={i} s={s} />
+            <Card key={i} s={s} seed={i % SHOTS.length} />
           ))}
         </div>
       </div>

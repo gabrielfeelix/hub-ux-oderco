@@ -9,14 +9,14 @@ import { getPrimaryProductImage } from "./productPresentation";
 
 // LinhasDeViolao — "Cada violão, uma experiência" (porta _ref/src/home_sections.jsx).
 // Palco imersivo por linha + seletor de linhas.
-type Line = { name: string; vibe: string; tone: [string, string]; desc: string };
+type Line = { name: string; vibe: string; tone: [string, string]; desc: string; pills: string[] };
 const LINES: Line[] = [
-  { name: "Coral", vibe: "Calor de roda de bar", tone: ["#b5793c", "#6e4220"], desc: "Madeira escura, som encorpado. A linha que aquece qualquer roda e pede uma canção de boteco." },
-  { name: "Volcano", vibe: "Energia que erupciona", tone: ["#d2a86a", "#9a6a33"], desc: "Eletroacústico pronto pro palco. Projeção potente pra quem toca pra ser ouvido." },
-  { name: "Etna", vibe: "Intensidade premium", tone: ["#b5793c", "#6e4220"], desc: "O topo da linha. Madeiras nobres e um som que preenche o ambiente do primeiro acorde." },
-  { name: "Ônix", vibe: "Elegância na escuridão", tone: ["#3a352f", "#16130f"], desc: "Preto acetinado, atitude pura. Pra quem quer presença no visual e no timbre." },
-  { name: "Citrino", vibe: "Brilho jovem", tone: ["#c9a06a", "#8a5e2c"], desc: "Leve e claro, fácil de tocar. O som que combina com o primeiro show e o primeiro amor." },
-  { name: "Lorenzzo", vibe: "Tradição clássica", tone: ["#c9a06a", "#8a5e2c"], desc: "Nylon atemporal. O clássico que ensinou gerações inteiras a tocar." },
+  { name: "Coral", vibe: "Calor de roda de bar", tone: ["#b5793c", "#6e4220"], desc: "Madeira escura, som encorpado. A linha que aquece qualquer roda e pede uma canção de boteco.", pills: ["madeira escura", "som encorpado", "roda de boteco"] },
+  { name: "Volcano", vibe: "Energia que erupciona", tone: ["#d2a86a", "#9a6a33"], desc: "Eletroacústico pronto pro palco. Projeção potente pra quem toca pra ser ouvido.", pills: ["eletroacústico", "projeção potente", "pronto pro palco"] },
+  { name: "Etna", vibe: "Intensidade premium", tone: ["#b5793c", "#6e4220"], desc: "O topo da linha. Madeiras nobres e um som que preenche o ambiente do primeiro acorde.", pills: ["madeiras nobres", "som premium", "topo da linha"] },
+  { name: "Ônix", vibe: "Elegância na escuridão", tone: ["#3a352f", "#16130f"], desc: "Preto acetinado, atitude pura. Pra quem quer presença no visual e no timbre.", pills: ["preto acetinado", "atitude", "presença"] },
+  { name: "Citrino", vibe: "Brilho jovem", tone: ["#c9a06a", "#8a5e2c"], desc: "Leve e claro, fácil de tocar. O som que combina com o primeiro show e o primeiro amor.", pills: ["leve", "som claro", "fácil de tocar"] },
+  { name: "Lorenzzo", vibe: "Tradição clássica", tone: ["#c9a06a", "#8a5e2c"], desc: "Nylon atemporal. O clássico que ensinou gerações inteiras a tocar.", pills: ["nylon", "clássico", "atemporal"] },
 ];
 
 const violoes = allProducts.filter((p) => p.category === "Violões");
@@ -57,12 +57,27 @@ export function LinhasDeViolao() {
             <span className="label" style={{ color: "rgba(255,255,255,.85)" }}>
               Linha {L.name} · {L.vibe}
             </span>
-            <h3 style={{ fontFamily: "var(--font-family-figtree)", fontWeight: 800, fontSize: "clamp(48px,8vw,100px)", lineHeight: 0.86, margin: "14px 0 0" }}>
+            <h3 style={{ fontFamily: "var(--font-family-figtree)", fontStyle: "italic", fontWeight: 800, fontSize: "clamp(48px,8vw,100px)", lineHeight: 0.86, margin: "14px 0 0" }}>
               {L.name}
             </h3>
             <p style={{ fontFamily: "var(--font-family-inter)", fontSize: "18px", color: "rgba(255,255,255,.92)", maxWidth: 420, margin: "18px 0 0", lineHeight: 1.55 }}>
               {L.desc}
             </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {L.pills.map((p) => (
+                <span
+                  key={p}
+                  style={{
+                    fontFamily: "var(--font-family-inter)", fontSize: "12.5px", fontWeight: 600,
+                    color: "#fff", background: "rgba(255,255,255,0.14)",
+                    border: "1px solid rgba(255,255,255,0.28)", borderRadius: "var(--radius-pill)",
+                    padding: "5px 12px", backdropFilter: "blur(4px)",
+                  }}
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
             <div className="mt-7 flex flex-wrap gap-3">
               <button
                 onClick={() => navigate(`/produto/${prod.id}`)}

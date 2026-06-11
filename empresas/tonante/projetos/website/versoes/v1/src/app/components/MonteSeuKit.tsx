@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { Plus, Check, ShoppingBag } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -10,30 +10,51 @@ import { getPrimaryProductImage } from "./productPresentation";
 import { getPixPrice, formatBRL } from "./productEnhancements";
 
 // MonteSeuKit — combo builder (porta _ref/src/home_sections.jsx FeaturedEssentials).
-// Instrumento base + add-ons selecionáveis, 8% off no kit.
+// Presets clicáveis (§6.9) pré-populam base + add-ons. 8% off no kit.
+const findOne = (...kw: string[]) =>
+  allProducts.find((p) => kw.some((k) => p.name.toLowerCase().includes(k.toLowerCase())));
+
+function resolveAddons(groups: string[][], exclude: Product): Product[] {
+  const out: Product[] = [];
+  for (const g of groups) {
+    const hit = allProducts.find(
+      (p) =>
+        g.some((k) => p.name.toLowerCase().includes(k.toLowerCase())) &&
+        p.id !== exclude.id &&
+        !out.some((o) => o.id === p.id),
+    );
+    if (hit) out.push(hit);
+  }
+  return out;
+}
+
+type Preset = { key: string; label: string; desc: string; base: Product; addons: Product[] };
+const PRESETS: Preset[] = [
+  { key: "iniciante", label: "Kit Iniciante", desc: "Pra dar os primeiros acordes",
+    baseKw: ["Lorenzzo", "Violão Clássico", "Violão"], groups: [["Capa", "Bag", "Case"], ["Afinador"], ["Palheta"]] },
+  { key: "palco", label: "Kit Palco", desc: "Pronto pra subir no palco",
+    baseKw: ["Cecille", "Guitarra Elétrica", "Guitarra"], groups: [["Cabo DE Guitarra", "Cabo"], ["Correia"], ["Suporte"]] },
+  { key: "estudio", label: "Kit Estúdio", desc: "Grave com qualidade",
+    baseKw: ["Microfone Profissional", "Microfone", "Podcast"], groups: [["Cabo DE Microf", "Cabo Para Microf", "Cabo"], ["Pedestal", "Suporte"], ["Plug"]] },
+].map((r) => {
+  const base = findOne(...r.baseKw) ?? allProducts[0];
+  return { key: r.key, label: r.label, desc: r.desc, base, addons: resolveAddons(r.groups, base) };
+});
+
 export function MonteSeuKit() {
   const { addItem } = useCart();
-  const base = useMemo(
-    () =>
-      allProducts.find((p) => p.name.includes("Cecille")) ??
-      allProducts.find((p) => p.category === "Guitarras") ??
-      allProducts[0],
-    [],
-  );
-  const addons = useMemo(() => {
-    const wants = ["Capotraste", "Suporte", "Encordoamento", "Afinador"];
-    const out: Product[] = [];
-    for (const w of wants) {
-      const hit = allProducts.find((p) => p.name.includes(w) && !out.includes(p));
-      if (hit) out.push(hit);
-      if (out.length >= 3) break;
-    }
-    return out;
-  }, []);
+  const [presetIdx, setPresetIdx] = useState(0);
+  const active = PRESETS[presetIdx];
+  const base = active.base;
+  const addons = active.addons;
 
-  const [sel, setSel] = useState<number[]>(addons.map((a) => a.id));
+  const [sel, setSel] = useState<number[]>(active.addons.map((a) => a.id));
   const chosen = addons.filter((a) => sel.includes(a.id));
   const toggle = (id: number) => setSel((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
+  const choosePreset = (i: number) => {
+    setPresetIdx(i);
+    setSel(PRESETS[i].addons.map((a) => a.id));
+  };
 
   const full = base.priceNum + chosen.reduce((s, a) => s + a.priceNum, 0);
   const combo = Math.round(full * 0.92 * 100) / 100;
@@ -62,6 +83,42 @@ export function MonteSeuKit() {
           </p>
         </div>
 
+        {/* presets — pré-populam o builder em 1 clique (§6.9) */}
+        <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {PRESETS.map((p, i) => {
+            const on = i === presetIdx;
+            return (
+              <button
+                key={p.key}
+                onClick={() => choosePreset(i)}
+                className="flex cursor-pointer items-center gap-3 text-left transition-all"
+                style={{
+                  background: on ? "var(--ink-strong)" : "var(--surface-1)",
+                  color: on ? "var(--background)" : "var(--ink-strong)",
+                  border: `1.5px solid ${on ? "var(--ink-strong)" : "var(--edge)"}`,
+                  borderRadius: "var(--radius-card-md)",
+                  padding: "13px 16px",
+                }}
+              >
+                <span
+                  className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full"
+                  style={{ background: on ? "var(--amber)" : "var(--surface-2)", color: on ? "#fff" : "var(--amber-deep)" }}
+                >
+                  <ShoppingBag size={16} strokeWidth={2.2} />
+                </span>
+                <span>
+                  <span className="block" style={{ fontFamily: "var(--font-family-inter)", fontWeight: 700, fontSize: "14.5px", lineHeight: 1.1 }}>
+                    {p.label}
+                  </span>
+                  <span className="block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", opacity: 0.72, marginTop: 2 }}>
+                    {p.desc}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
         <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[minmax(0,420px)_auto_1fr]">
           {/* base */}
           <article className="flex flex-col gap-3" style={{ background: "var(--surface-1)", border: "1px solid #e4dccc", borderRadius: "var(--radius-card-lg)", padding: 16 }}>
@@ -74,10 +131,10 @@ export function MonteSeuKit() {
               </div>
             </Link>
             <div>
-              <Link to={`/produto/${base.id}`} className="text-ink-strong" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600 }}>
+              <Link to={`/produto/${base.id}`} className="text-ink-strong line-clamp-2" style={{ fontFamily: "var(--font-family-inter)", fontSize: "15px", fontWeight: 600, lineHeight: 1.35 }}>
                 {base.name}
               </Link>
-              <div style={{ fontFamily: "var(--font-family-figtree)", fontSize: "20px", fontWeight: 600, color: "var(--amber-deep)", marginTop: 4 }}>
+              <div className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-price-lg)", fontWeight: 700, color: "var(--amber-deep)", marginTop: 4 }}>
                 {formatBRL(getPixPrice(base))}
               </div>
             </div>
@@ -132,12 +189,12 @@ export function MonteSeuKit() {
               style={{ background: "var(--surface-1)", border: "1.5px solid #d6cbb5", borderRadius: "var(--radius-card-md)" }}
             >
               <div>
-                <div className="num" style={{ fontSize: "12.5px", color: "var(--faint)", textDecoration: "line-through" }}>
+                <div className="num" style={{ fontSize: "var(--text-meta)", color: "var(--ink-meta)", textDecoration: "line-through" }}>
                   {formatBRL(full)}
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "26px", fontWeight: 700, color: "var(--ink-strong)" }}>{formatBRL(combo)}</span>
-                  <span style={{ fontSize: "11.5px", color: "var(--amber-deep)", fontWeight: 700 }}>economize {formatBRL(save)}</span>
+                  <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "26px", fontWeight: 700, letterSpacing: "-0.01em", color: "var(--ink-strong)" }}>{formatBRL(combo)}</span>
+                  <span className="num" style={{ fontSize: "11.5px", color: "var(--amber-deep)", fontWeight: 700 }}>economize {formatBRL(save)}</span>
                 </div>
               </div>
               <button
