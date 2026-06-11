@@ -26,6 +26,8 @@ import { PreOrderBanner, useCountdown } from "./PreOrderBanner";
 import { CTAButton, DiscountBadge, QtyStepper } from "./section";
 import { SEO } from "./SEO";
 import { getProductSlug, getProductUrl } from "../lib/slug";
+import { TimbrePlayer } from "./TimbrePlayer";
+import { SpecTiles, LuthierBlock } from "./ProductMusicBlocks";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -2364,6 +2366,8 @@ export function ProductPage() {
             className="order-2 w-full lg:order-none lg:w-[56%] xl:w-[58%] flex-shrink-0"
           >
             <ProductGallery images={galleryImages} name={product.name} isDark={isDark} />
+            {/* "Ouça este instrumento" (V3 §8.1) — abaixo da galeria */}
+            <TimbrePlayer product={product} className="mt-4" />
           </motion.div>
 
           {swatches.length > 1 && (
@@ -2586,7 +2590,11 @@ export function ProductPage() {
 
           <div className="min-w-0 lg:col-start-1 lg:row-start-2">
             <div ref={descriptionRef} className="scroll-mt-[96px]">
+              {/* specs decisivas em tiles antes da descrição (V3 §8.3) */}
+              <SpecTiles product={product} />
               <ProductStandardDescription product={product} images={galleryImages} />
+              {/* autoria (V3 §8.2) — só renderiza quando há luthier */}
+              <LuthierBlock product={product} />
             </div>
 
       {/* Reviews Section */}

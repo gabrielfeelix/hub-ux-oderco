@@ -7,7 +7,8 @@ import { Heart, Eye, ShoppingBag, Star, ChevronLeft, ChevronRight, X } from "luc
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
 import { getProductSwatches, getPrimaryProductImage } from "./productPresentation";
-import { getInstallmentCount, getInstallmentValue } from "./productEnhancements";
+import { getInstallmentCount, getInstallmentValue, getLuthier } from "./productEnhancements";
+import { TimbrePlayer } from "./TimbrePlayer";
 import { getCardSpecs } from "./productAttributes";
 import { DiscountBadge } from "./section";
 import { useFavorites } from "./FavoritesContext";
@@ -256,7 +257,7 @@ export function ProductCard({
 
         {/* conteúdo — hierarquia Gibson: badges → nome → marca/categoria → specs */}
         <div className="flex flex-1 flex-col gap-2 px-4 pb-5">
-          {(product.badge || discount > 0) && (
+          {(product.badge || discount > 0 || getLuthier(product)) && (
             <span className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}>
               {product.badge && product.badge !== "Oferta" && (
                 <span style={{ color: "var(--amber-deep)" }}>{product.badge}</span>
@@ -266,6 +267,15 @@ export function ProductCard({
               )}
               {(discount > 0 || product.badge === "Oferta") && (
                 <span style={{ color: "#b3361f" }}>Oferta{discount > 0 ? ` · -${discount}%` : ""}</span>
+              )}
+              {getLuthier(product) && (
+                <>
+                  {(product.badge || discount > 0) && (
+                    <span aria-hidden="true" style={{ color: "var(--edge-strong)", fontWeight: 400 }}>|</span>
+                  )}
+                  {/* raridade comunica valor (V3 §8.2) */}
+                  <span style={{ color: "var(--amber-deep)" }}>✍ Assinado</span>
+                </>
               )}
             </span>
           )}
@@ -463,6 +473,8 @@ export function ProductCard({
               <h3 style={{ fontFamily: "var(--font-family-inter)", fontSize: "20px", fontWeight: 700, lineHeight: 1.25, letterSpacing: 0, color: "var(--ink-strong)" }}>
                 {product.name}
               </h3>
+              {/* demonstração de timbre no espiar (V3 §8.1) */}
+              <TimbrePlayer product={product} variant="compact" className="w-fit" />
               <span className="flex items-center gap-1.5">
                 <span className="flex" style={{ color: "var(--amber)" }}>
                   {[0, 1, 2, 3, 4].map((i) => (

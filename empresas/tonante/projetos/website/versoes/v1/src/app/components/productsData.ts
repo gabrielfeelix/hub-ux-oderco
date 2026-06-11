@@ -22,6 +22,12 @@ export interface Product {
   specs?: { label: string; value: string }[];
   features?: string[];
   images?: string[];
+  /** mp3 gravado com o modelo (V3 §8.1) — quando existir, o TimbrePlayer
+      troca o timbre simulado pela gravação real */
+  audioSample?: string;
+  /** autoria do instrumento (V3 §8.2) — ver também LUTHIERS em
+      productEnhancements (override por id sem mexer no catálogo) */
+  luthier?: { name: string; title: string; photo?: string; bio?: string };
 }
 
 const rawProducts: Product[] = [

@@ -98,3 +98,31 @@ export function getDiscountGlow(discount: number): string {
   if (h === "hot") return "0 6px 22px -4px rgba(249,115,22,0.6)";
   return "0 6px 18px -4px rgba(16,185,129,0.55)";
 }
+
+/* ── Luthiers / autoria (V3 §8.2) ─────────────────────────────────────────
+   ⚠️ PLACEHOLDER: nomes e bios fictícios apenas para demonstração de layout.
+   Trocar pelos luthiers reais da Oderço antes de publicar. O campo
+   product.luthier (catálogo) tem precedência sobre este mapa. */
+export type Luthier = { name: string; title: string; photo?: string; bio?: string };
+
+const LUTHIERS: Record<number, Luthier> = {
+  // Violão Clássico Lorenzzo — linha clássica nylon
+  25: {
+    name: "Mestre Élcio Navarro",
+    title: "Luthier responsável · linha Lorenzzo",
+    photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80&auto=format&fit=crop",
+    bio: "Trinta anos de bancada. Ajusta cada tampo e regula cada braço da linha clássica antes de liberar pro acabamento.",
+  },
+  // Violão Elétrico Coral
+  52: {
+    name: "Helena Vasques",
+    title: "Luthier · linha Coral",
+    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80&auto=format&fit=crop",
+    bio: "Especialista em madeiras escuras e timbre encorpado. Assina a curadoria de tampos da Coral desde o relançamento.",
+  },
+};
+
+/** Autoria do instrumento: campo do catálogo ganha; senão, mapa local. */
+export function getLuthier(p: Product): Luthier | undefined {
+  return p.luthier ?? LUTHIERS[p.id];
+}
