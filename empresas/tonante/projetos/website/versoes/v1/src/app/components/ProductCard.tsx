@@ -8,6 +8,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
 import { getProductSwatches } from "./productPresentation";
 import { getInstallmentCount, getInstallmentValue } from "./productEnhancements";
+import { getCardSpecs } from "./productAttributes";
 import { DiscountBadge } from "./section";
 
 /**
@@ -81,6 +82,7 @@ export function ProductCard({
   const pix = product.priceNum * 0.9;
   const installments = getInstallmentCount(product.priceNum);
   const installmentValue = getInstallmentValue(product.priceNum);
+  const cardSpecs = getCardSpecs(product);
 
   const handleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -254,6 +256,24 @@ export function ProductCard({
             {product.name}
           </h3>
 
+          {/* specs-chave (derivadas do nome — §4.2.10; oculta se vazio) */}
+          {cardSpecs.length > 0 && (
+            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+              {cardSpecs.map((s, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5"
+                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}
+                >
+                  {i > 0 && (
+                    <span style={{ width: 3, height: 3, borderRadius: 9999, background: "var(--amber)" }} />
+                  )}
+                  {s}
+                </span>
+              ))}
+            </div>
+          )}
+
           {/* estrelas */}
           <span className="flex items-center gap-1.5">
             <span className="flex" style={{ color: "var(--amber)" }}>
@@ -418,6 +438,23 @@ export function ProductCard({
                   {product.rating.toFixed(1)} · {product.reviews} avaliações
                 </span>
               </span>
+              {cardSpecs.length > 0 && (
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {cardSpecs.map((s, i) => (
+                    <span
+                      key={i}
+                      className="rounded-pill"
+                      style={{
+                        fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", fontWeight: 600,
+                        color: "var(--ink-strong)", background: "var(--surface-2)",
+                        border: "1px solid var(--edge)", padding: "3px 10px",
+                      }}
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              )}
               {product.description && (
                 <p className="line-clamp-4" style={{ fontFamily: "var(--font-family-inter)", fontSize: "14px", color: "var(--ink-soft)", lineHeight: 1.55 }}>
                   {product.description}
