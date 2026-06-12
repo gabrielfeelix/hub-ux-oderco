@@ -6303,7 +6303,7 @@ export function MonteSeuPcPage() {
                               <SelectValue placeholder="Selecionar ordenação" />
                             </SelectTrigger>
                             <SelectContent
-                              className="rounded-card-sm border border-edge bg-surface-0 text-ink-strong shadow-2xl shadow-black/60"
+                              className="rounded-card-sm border border-edge bg-surface-0 text-ink-strong shadow-[var(--shadow-pop)] shadow-black/60"
                               style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                             >
                               <SelectItem value="suggested" className="rounded-[var(--radius-card)] focus:bg-primary/15 focus:text-ink-strong data-[state=checked]:text-primary">

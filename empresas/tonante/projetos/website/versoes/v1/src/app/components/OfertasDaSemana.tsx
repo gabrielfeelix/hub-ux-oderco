@@ -98,7 +98,7 @@ export function OfertasDaSemana() {
     return [...visible]
       .filter((p) => p.oldPriceNum && p.oldPriceNum > p.priceNum)
       .sort((a, b) => (b.oldPriceNum! - b.priceNum) - (a.oldPriceNum! - a.priceNum))
-      .slice(0, 3)
+      .slice(0, 4)
       .map(withGuaranteedDiscount);
   }, []);
 
@@ -132,7 +132,7 @@ export function OfertasDaSemana() {
         </div>
 
         {/* cards padrão da casa — consistência total com home/listagem */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {picks.map((p) => (
             <ProductCard key={p.id} product={p} onAdd={add} />
           ))}

@@ -540,7 +540,7 @@ function PaymentModal({ open, onClose, priceNum }: { open: boolean; onClose: () 
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[110]"
-            style={{ background: "rgba(22,19,15,0.66)", backdropFilter: "blur(5px)" }}
+            style={{ background: "rgba(17,17,19,0.68)", backdropFilter: "blur(5px)" }}
             onClick={onClose}
           />
           <div className="fixed inset-0 z-[111] flex items-end md:items-center justify-center pointer-events-none p-0 md:p-6">
@@ -1583,7 +1583,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -6, scale: 0.97 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute right-0 top-full z-30 mt-2 min-w-[180px] overflow-hidden rounded-card-sm border border-edge shadow-2xl"
+                        className="absolute right-0 top-full z-30 mt-2 min-w-[180px] overflow-hidden rounded-card-sm border border-edge shadow-[var(--shadow-pop)]"
                         style={{ background: "var(--surface-2)" }}
                         role="listbox"
                       >
@@ -1751,7 +1751,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               className="fixed inset-4 z-50 mx-auto flex max-w-[980px] items-start justify-center pointer-events-none md:inset-8 md:items-center md:overflow-hidden"
             >
               <div
-                className="grid w-full max-h-[calc(100vh-32px)] overflow-y-auto md:max-h-[88vh] md:overflow-hidden border border-edge shadow-2xl pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
+                className="grid w-full max-h-[calc(100vh-32px)] overflow-y-auto md:max-h-[88vh] md:overflow-hidden border border-edge shadow-[var(--shadow-pop)] pointer-events-auto md:grid-cols-[minmax(0,1.2fr)_360px]"
                 style={{
                   borderRadius: "var(--radius-card-md)",
                   background: isDark ? "rgba(16,16,17,0.98)" : "rgba(var(--foreground-rgb), 0.98)",
@@ -1835,14 +1835,14 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
               >
                 <button
                   onClick={() => moveReview(-1)}
-                  className="hidden md:flex pointer-events-auto absolute left-5 top-1/2 h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-2xl transition-transform hover:scale-105 hover:bg-white md:left-[7vw] cursor-pointer"
+                  className="hidden md:flex pointer-events-auto absolute left-5 top-1/2 h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-[var(--shadow-pop)] transition-transform hover:scale-105 hover:bg-white md:left-[7vw] cursor-pointer"
                   aria-label="Avaliação anterior"
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={() => moveReview(1)}
-                  className="hidden md:flex pointer-events-auto absolute right-5 top-1/2 h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-2xl transition-transform hover:scale-105 hover:bg-white md:right-[7vw] cursor-pointer"
+                  className="hidden md:flex pointer-events-auto absolute right-5 top-1/2 h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-[var(--shadow-pop)] transition-transform hover:scale-105 hover:bg-white md:right-[7vw] cursor-pointer"
                   aria-label="Próxima avaliação"
                 >
                   <ChevronRight size={24} />
@@ -1871,7 +1871,7 @@ function ReviewsSection({ product, isDark }: { product: any; isDark: boolean }) 
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 40, scale: 0.96 }}
                 transition={{ type: "spring", damping: 28, stiffness: 280 }}
-                className="pointer-events-auto w-full max-w-[500px] max-h-[90vh] overflow-y-auto bg-background border border-foreground/10 shadow-2xl p-6 rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
+                className="pointer-events-auto w-full max-w-[500px] max-h-[90vh] overflow-y-auto bg-background border border-foreground/10 shadow-[var(--shadow-pop)] p-6 rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-foreground" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 600 }}>

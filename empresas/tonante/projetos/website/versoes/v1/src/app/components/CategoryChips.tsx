@@ -36,32 +36,28 @@ export function CategoryChips() {
               <li key={c.label} className="shrink-0">
                 <Link
                   to={c.href}
-                  className="inline-flex items-center gap-2 rounded-pill transition-all hover:-translate-y-0.5"
+                  className="group/chip inline-flex items-center gap-2 rounded-pill transition-all hover:-translate-y-0.5"
                   style={{
                     minHeight: 44,
-                    padding: "10px 16px",
+                    padding: "10px 18px",
                     fontFamily: "var(--font-family-inter)",
                     fontWeight: 600,
-                    fontSize: "13px",
-                    background: c.cta ? "var(--gradient-buy)" : "var(--surface-1)",
-                    color: c.cta ? "#fff" : "var(--ink-strong)",
-                    border: c.cta ? "1px solid transparent" : "1px solid var(--edge)",
-                    boxShadow: c.cta ? "var(--shadow-buy-cta-sm)" : "none",
+                    fontSize: "14px",
+                    // não-cta: pill ink sólido (preto, rock) com texto creme;
+                    // cta "Ofertas": âmbar de marca. Sem look "vazadinho".
+                    background: c.cta ? "var(--gradient-brand)" : "var(--ink-strong)",
+                    color: c.cta ? "#fff" : "#f4f1ec",
+                    border: "1px solid transparent",
+                    boxShadow: "none",
                   }}
                   onMouseEnter={(e) => {
-                    if (!c.cta) {
-                      e.currentTarget.style.borderColor = "rgba(200,120,0,0.5)";
-                      e.currentTarget.style.boxShadow = "var(--shadow-deal-hover)";
-                    }
+                    if (!c.cta) e.currentTarget.style.background = "#000";
                   }}
                   onMouseLeave={(e) => {
-                    if (!c.cta) {
-                      e.currentTarget.style.borderColor = "var(--edge)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }
+                    if (!c.cta) e.currentTarget.style.background = "var(--ink-strong)";
                   }}
                 >
-                  <Icon size={18} strokeWidth={1.5} style={{ color: c.cta ? "#fff" : "var(--amber-deep)" }} />
+                  <Icon size={18} strokeWidth={1.6} style={{ color: c.cta ? "#fff" : "var(--amber-bright)" }} />
                   {c.label}
                 </Link>
               </li>

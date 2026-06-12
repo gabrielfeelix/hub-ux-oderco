@@ -99,7 +99,7 @@ function MusicianModal({ index, onClose, onNav }: { index: number; onClose: () =
       aria-modal="true"
       aria-label={`História de ${m.name}`}
       data-keep-dark
-      style={{ background: "rgba(22,19,15,0.92)", backdropFilter: "blur(8px)" }}
+      style={{ background: "rgba(17,17,19,0.93)", backdropFilter: "blur(8px)" }}
       onClick={onClose}
     >
       <div

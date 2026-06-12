@@ -1240,7 +1240,7 @@ export function ProductsPage() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -6, scale: 0.97 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 top-full z-30 mt-3 min-w-[120px] overflow-hidden border border-edge-subtle shadow-2xl"
+                      className="absolute right-0 top-full z-30 mt-3 min-w-[120px] overflow-hidden border border-edge-subtle shadow-[var(--shadow-pop)]"
                       style={{ borderRadius: "var(--radius-card-sm)", background: "var(--surface-1)" }}
                     >
                       <div className="border-b border-edge-subtle px-3 py-2 text-[var(--text-caption)] uppercase tracking-[0.14em] text-ink-subtle">
@@ -1554,7 +1554,7 @@ export function ProductsPage() {
             />
             <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 16 }}
               transition={{ type: "spring", damping: 26, stiffness: 320 }}
-              className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[1040px] md:max-w-[95vw] md:max-h-[90vh] z-50 overflow-y-auto p-6 md:p-8 shadow-2xl"
+              className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[1040px] md:max-w-[95vw] md:max-h-[90vh] z-50 overflow-y-auto p-6 md:p-8 shadow-[var(--shadow-pop)]"
               style={{ background: "var(--surface-0)", borderRadius: "var(--radius-card-lg)", border: "1px solid rgba(var(--foreground-rgb), 0.06)" }}
             >
               <button onClick={() => setQuickViewProduct(null)}

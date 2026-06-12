@@ -22,7 +22,7 @@ export function StoryBand() {
           className="grain relative overflow-hidden"
           style={{
             borderRadius: "var(--radius-card-xl)",
-            background: "linear-gradient(120deg, #16130f, #241d14)",
+            background: "linear-gradient(120deg, #131314, #1f1f21)",
             color: "#f3ebde",
             padding: "clamp(34px,6vw,72px)",
           }}

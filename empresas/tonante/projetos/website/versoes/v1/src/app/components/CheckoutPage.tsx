@@ -650,7 +650,7 @@ export function CheckoutPage() {
                 borderRadius: "var(--radius-card-lg)",
                 background: cardBg,
                 border: cardBorder,
-                boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                boxShadow: "var(--shadow-card)",
               }}
             >
               {/* Status pill */}
@@ -822,7 +822,7 @@ export function CheckoutPage() {
                   borderRadius: "var(--radius-card-lg)",
                   background: cardBg,
                   border: cardBorder,
-                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                  boxShadow: "var(--shadow-card)",
                 }}
               >
                 <div className="mb-5 flex items-center justify-between">
@@ -1347,7 +1347,7 @@ export function CheckoutPage() {
                             fontFamily: "var(--font-family-inter)",
                             fontSize: "var(--text-sm)",
                             fontWeight: 700,
-                            boxShadow: "0 4px 14px -4px rgba(0,0,0,0.4)",
+                            boxShadow: "var(--shadow-buy-cta-sm)",
                           }}
                         >
                           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
@@ -1732,7 +1732,7 @@ export function CheckoutPage() {
                   borderRadius: "var(--radius-card-lg)",
                   background: cardBg,
                   border: cardBorder,
-                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                  boxShadow: "var(--shadow-card)",
                 }}
               >
                 <p
@@ -2089,7 +2089,7 @@ export function CheckoutPage() {
                 background: "var(--surface-1)",
                 color: "#fff",
                 borderRadius: "20px 20px 0 0",
-                boxShadow: "0 -40px 100px rgba(0,0,0,0.55)",
+                boxShadow: "0 -16px 40px -20px rgba(26,23,20,0.20)",
               }}
             >
               <div className="flex items-center justify-between px-5 pb-3 pt-4">
@@ -2195,7 +2195,7 @@ export function CheckoutPage() {
               className="w-full max-w-[420px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
               style={{
                 background: "#fff",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
+                boxShadow: "var(--shadow-float)",
               }}
             >
               <div className="flex items-center justify-between px-5 pb-3 pt-5">
@@ -2275,7 +2275,7 @@ export function CheckoutPage() {
               className="w-full max-w-[440px] max-h-[90vh] overflow-y-auto rounded-t-[20px] md:rounded-[var(--radius-card-lg)]"
               style={{
                 background: "#fff",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
+                boxShadow: "var(--shadow-float)",
               }}
             >
               <div className="flex items-center justify-between px-5 py-4" style={{ background: "#FFF159" }}>

@@ -7,6 +7,7 @@ import { Heart, Eye, ShoppingBag, Star, ChevronLeft, ChevronRight, X } from "luc
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { allProducts, type Product } from "./productsData";
 import { getProductSwatches, getPrimaryProductImage } from "./productPresentation";
+import { getProductAttributes } from "./productAttributes";
 import { getInstallmentCount, getInstallmentValue, getLuthier } from "./productEnhancements";
 import { TimbrePlayer } from "./TimbrePlayer";
 import { getCardSpecs } from "./productAttributes";
@@ -79,16 +80,17 @@ export function ProductCard({
       ? Math.round(((oldPriceNum - product.priceNum) / oldPriceNum) * 100)
       : 0;
 
+  // linha de acabamento (ref Gibson "Iguana Burst"): cor/acabamento do nome,
+  // senão a subcategoria/linha.
+  const attrs = getProductAttributes(product);
+  const finish = attrs.cor || attrs.linha || product.subcategory;
+  // usados só no quick-view (espiar) — card resting é minimal
   const eyebrowBase =
     (product.tags || []).filter((t) => t !== product.category).slice(0, 2).join(" · ") ||
     product.subcategory ||
     product.category;
-  // Marca terceira ganha destaque no eyebrow — loja oficial Tonante vende
-  // parceiros, mas não os disfarça de linha própria.
   const eyebrow =
-    product.brand && product.brand !== "Tonante"
-      ? `${product.brand} · ${eyebrowBase}`
-      : eyebrowBase;
+    product.brand && product.brand !== "Tonante" ? `${product.brand} · ${eyebrowBase}` : eyebrowBase;
   const pix = product.priceNum * 0.9;
   const installments = getInstallmentCount(product.priceNum);
   const installmentValue = getInstallmentValue(product.priceNum);
@@ -108,25 +110,22 @@ export function ProductCard({
 
   return (
     <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-card-lg border border-[var(--border)] bg-surface-1 transition-all duration-300 hover:-translate-y-1 hover:border-[#d9d6d0] hover:shadow-[0_18px_44px_-20px_rgba(26,23,20,0.30)] ${className}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[8px] bg-white transition-shadow duration-300 shadow-[0_1px_3px_-1px_rgba(26,23,20,0.05),0_8px_22px_-12px_rgba(26,23,20,0.13)] hover:shadow-[0_6px_14px_-4px_rgba(26,23,20,0.09),0_18px_36px_-14px_rgba(26,23,20,0.20)] ${className}`}
       style={style}
     >
       <Link to={href} className="flex flex-1 flex-col">
-        {/* área de imagem (well creme) */}
-        <div className="relative p-3">
+        {/* imagem — well full-bleed lateral (ocupa o card de borda a borda) */}
+        <div className="relative">
           <div
-            className="relative aspect-[4/5] overflow-hidden rounded-[7px]"
+            className="relative aspect-[4/5] overflow-hidden"
             style={{
-              // well quente — produto domina o card (ref Gibson), proporção
-              // vertical porque instrumento é vertical
-              background: "var(--well)",
-              boxShadow: "inset 0 0 0 1px rgba(26,23,20,0.07)",
+              background: "linear-gradient(180deg, #f7f8f9 0%, #f1ece6 100%)",
             }}
           >
             <ImageWithFallback
               src={image}
               alt={product.name}
-              className="absolute inset-0 h-full w-full object-contain p-[6%] transition-transform duration-500 group-hover:scale-[1.05]"
+              className="absolute inset-0 h-full w-full object-contain p-[5%] transition-transform duration-500 group-hover:scale-[1.04]"
               style={{ mixBlendMode: "multiply" }}
             />
             {/* hover-swap: 2ª foto entra em crossfade (só na foto base, não
@@ -135,12 +134,12 @@ export function ProductCard({
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                style={{ background: "var(--well)" }}
+                style={{ background: "linear-gradient(180deg, #f7f8f9 0%, #f1ece6 100%)" }}
               >
                 <ImageWithFallback
                   src={gallery[1]}
                   alt=""
-                  className="absolute inset-0 h-full w-full object-contain p-[6%]"
+                  className="absolute inset-0 h-full w-full object-contain p-[5%]"
                   style={{ mixBlendMode: "multiply" }}
                 />
               </div>
@@ -155,7 +154,7 @@ export function ProductCard({
                   className="flex h-8 w-8 items-center justify-center rounded-full"
                   style={{
                     // #1 ganha medalhão âmbar (ouro); demais ficam ink
-                    background: rank === 1 ? "var(--gradient-buy)" : "var(--ink-strong)",
+                    background: rank === 1 ? "var(--gradient-brand)" : "var(--ink-strong)",
                     color: rank === 1 ? "#fff" : "var(--background)",
                     boxShadow: rank === 1 ? "var(--shadow-medallion)" : undefined,
                     fontFamily: "var(--font-family-figtree)",
@@ -228,42 +227,19 @@ export function ProductCard({
               </>
             )}
 
-            {/* Comprar (hover, base) — desktop */}
-            {onAdd && (
-              <div className="absolute inset-x-4 bottom-4 z-30 hidden translate-y-2.5 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 md:block">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    onAdd(product);
-                  }}
-                  className="flex w-full items-center justify-center gap-2 rounded-pill cursor-pointer"
-                  style={{
-                    background: "var(--primary)",
-                    color: "#fff",
-                    padding: "12px 16px",
-                    fontFamily: "var(--font-family-inter)",
-                    fontWeight: 700,
-                    fontSize: "14.5px",
-                    boxShadow: "var(--shadow-buy-cta-sm)",
-                  }}
-                >
-                  <ShoppingBag size={17} strokeWidth={2} /> Comprar
-                </button>
-              </div>
-            )}
           </div>
         </div>
 
-        {/* conteúdo — hierarquia Gibson: badges → nome → marca/categoria → specs */}
-        <div className="flex flex-1 flex-col gap-2 px-4 pb-5">
+        {/* conteúdo minimal (ref Gibson): badge → nome → marca → acabamento →
+            preço. Sem rating, specs, chips ou PIX — isso vive na PDP. */}
+        <div className="flex flex-1 flex-col gap-1 px-3.5 pb-4 pt-1.5">
           {(product.badge || discount > 0 || getLuthier(product)) && (
-            <span className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 700 }}>
+            <span className="flex items-center gap-1.5" style={{ fontFamily: "var(--font-family-inter)", fontSize: "12px", fontWeight: 500 }}>
               {product.badge && product.badge !== "Oferta" && (
                 <span style={{ color: "var(--amber-deep)" }}>{product.badge}</span>
               )}
               {product.badge && product.badge !== "Oferta" && discount > 0 && (
-                <span aria-hidden="true" style={{ color: "var(--edge-strong)", fontWeight: 400 }}>|</span>
+                <span aria-hidden="true" style={{ color: "var(--edge-strong)" }}>|</span>
               )}
               {(discount > 0 || product.badge === "Oferta") && (
                 <span style={{ color: "#b3361f" }}>Oferta{discount > 0 ? ` · -${discount}%` : ""}</span>
@@ -271,9 +247,8 @@ export function ProductCard({
               {getLuthier(product) && (
                 <>
                   {(product.badge || discount > 0) && (
-                    <span aria-hidden="true" style={{ color: "var(--edge-strong)", fontWeight: 400 }}>|</span>
+                    <span aria-hidden="true" style={{ color: "var(--edge-strong)" }}>|</span>
                   )}
-                  {/* raridade comunica valor (V3 §8.2) */}
                   <span style={{ color: "var(--amber-deep)" }}>✍ Assinado</span>
                 </>
               )}
@@ -283,92 +258,54 @@ export function ProductCard({
             className="line-clamp-2 text-ink-strong"
             style={{
               fontFamily: "var(--font-family-inter)",
-              fontSize: "var(--text-product-name)",
+              fontSize: "15px",
               fontWeight: 600,
-              lineHeight: 1.35,
+              lineHeight: 1.3,
               letterSpacing: 0,
             }}
           >
             {product.name}
           </h3>
-          <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
-            {eyebrow}
-          </span>
-
-          {/* specs-chave (derivadas do nome — §4.2.10; oculta se vazio) */}
-          {cardSpecs.length > 0 && (
-            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
-              {cardSpecs.map((s, i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center gap-1.5"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}
-                >
-                  {i > 0 && (
-                    <span style={{ width: 3, height: 3, borderRadius: 9999, background: "var(--amber)" }} />
-                  )}
-                  {s}
-                </span>
-              ))}
-            </div>
+          {product.brand && (
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", color: "var(--ink-meta)" }}>
+              {product.brand}
+            </span>
+          )}
+          {finish && (
+            <span style={{ fontFamily: "var(--font-family-inter)", fontSize: "13.5px", color: "var(--ink-meta)" }}>
+              {finish}
+            </span>
           )}
 
-          {/* estrelas */}
-          <span className="flex items-center gap-1.5">
-            <span className="flex" style={{ color: "var(--amber)" }}>
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star
-                  key={i}
-                  size={13}
-                  strokeWidth={1.5}
-                  fill={product.rating - i >= 0.5 ? "var(--amber)" : "none"}
-                  stroke={product.rating - i >= 0.5 ? "var(--amber)" : "rgba(26,23,20,0.3)"}
-                />
-              ))}
-            </span>
-            <span className="num" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}>
-              {product.rating.toFixed(1)} · {product.reviews}
-            </span>
-          </span>
-
-          {/* preço */}
-          <div className="mt-auto pt-1.5">
-            <div className="flex flex-wrap items-baseline gap-2">
-              {oldPriceNum > product.priceNum && (
-                <span
-                  className="line-through num"
-                  style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-meta)" }}
-                >
-                  {product.oldPrice ?? fmtBRL(oldPriceNum)}
-                </span>
-              )}
+          {/* preço — discreto (ref Gibson), sem parcelas no card */}
+          <div className="mt-auto flex flex-wrap items-baseline gap-2 pt-3">
+            {oldPriceNum > product.priceNum && (
               <span
-                className="num"
-                style={{
-                  fontFamily: "var(--font-family-inter)",
-                  fontSize: "var(--text-price-lg)",
-                  fontWeight: 700,
-                  letterSpacing: "-0.01em",
-                  color: discount > 0 ? "var(--amber-deep)" : "var(--ink-strong)",
-                }}
+                className="line-through num"
+                style={{ fontFamily: "var(--font-family-inter)", fontSize: "13px", color: "var(--ink-meta)" }}
               >
-                {product.price}
+                {product.oldPrice ?? fmtBRL(oldPriceNum)}
               </span>
-            </div>
-            <div
+            )}
+            <span
               className="num"
-              style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-meta)", color: "var(--ink-soft)", marginTop: 3 }}
+              style={{
+                fontFamily: "var(--font-family-inter)",
+                fontSize: "17px",
+                fontWeight: 600,
+                letterSpacing: "-0.01em",
+                color: discount > 0 ? "var(--amber-deep)" : "var(--ink-strong)",
+              }}
             >
-              No PIX <strong style={{ color: "var(--amber-deep)" }}>{fmtBRL(pix)}</strong> · ou {installments}x de{" "}
-              {fmtBRL(installmentValue)}
-            </div>
+              {product.price}
+            </span>
           </div>
         </div>
       </Link>
 
       {/* variantes — miniaturas reais do produto (ref Gibson), não bolinhas */}
       {swatchList.length > 0 && (
-        <div className="flex items-center gap-2 px-4 pb-4">
+        <div className="flex items-center gap-2 px-3.5 pb-4">
           {swatchList.slice(0, 3).map((s) => {
             const variantProduct = allProducts.find((p) => p.id === s.productId);
             const active = selectedSwatchId === s.productId;
@@ -406,29 +343,6 @@ export function ProductCard({
             </span>
           )}
         </div>
-      )}
-
-      {/* Comprar mobile (abaixo, fora do link) */}
-      {onAdd && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onAdd(product);
-          }}
-          className="mx-4 mb-4 flex items-center justify-center gap-2 rounded-pill cursor-pointer md:hidden"
-          style={{
-            background: "var(--primary)",
-            color: "#fff",
-            padding: "11px 16px",
-            minHeight: 44,
-            fontFamily: "var(--font-family-inter)",
-            fontWeight: 700,
-            fontSize: "13.5px",
-          }}
-        >
-          <ShoppingBag size={15} strokeWidth={2} /> Comprar
-        </button>
       )}
 
       {/* Quick view (espiar) — portal no body p/ escapar do transform/overflow do card */}

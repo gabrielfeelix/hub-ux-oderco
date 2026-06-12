@@ -127,65 +127,61 @@
      =================================================================== */
   --gradient-brand:           linear-gradient(135deg, var(--primary) 0%, #e08c12 100%);
   --gradient-discount:        linear-gradient(135deg, #b3261e 0%, #8f1d17 100%);
-  --gradient-buy:             linear-gradient(135deg, #c87800 0%, #a05f00 100%);
+  /* compra/carrinho = VERDE (decisão Gabriel): destaca o "comprar" do âmbar
+     de marca. Âmbar continua sendo o acento; verde é só ação de compra. */
+  --buy-green:                #1f9d57;
+  --buy-green-deep:           #15793f;
+  --gradient-buy:             linear-gradient(135deg, #1f9d57 0%, #15793f 100%);
   --gradient-preorder-orange: linear-gradient(135deg, #e08c12 0%, #c87800 100%);
   --gradient-preorder-red:    linear-gradient(135deg, #c87800 0%, #a05f00 100%);
   --gradient-hero-stroke:     linear-gradient(135deg, rgba(26,23,20,0.14) 0%, rgba(26,23,20,0.05) 100%);
   --gradient-hero-stroke-hover: linear-gradient(135deg, var(--primary) 0%, #e08c12 35%, rgba(200,120,0,0.45) 65%, rgba(200,120,0,0.12) 100%);
-  --gradient-category-grid:   linear-gradient(72.85deg, #16130f 44.62%, #211c16 100.35%);  /* dark stage cinematográfico */
+  --gradient-category-grid:   linear-gradient(72.85deg, #121213 44.62%, #1d1d1f 100.35%);  /* dark stage neutro (rock, não marrom) */
 
   /* ===================================================================
-     SOMBRAS — premium suaves, base âmbar/ink (substituem os halos neon).
-     Nomes mantidos do template; valores retonados p/ Tonante.
+     SOMBRAS — neutras, sutis, profissionais (V3). Sem glow colorido nem
+     halo neon herdado do PCYES: tudo base ink, alpha baixo, blur contido.
+     O acento âmbar fica na BORDA (hover), não na sombra.
      =================================================================== */
   --shadow-neon-red:
-    0 1px 2px rgba(26, 23, 20, 0.05),
-    0 22px 50px -24px rgba(26, 23, 20, 0.35),
-    0 0 0 1px rgba(200, 120, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
-  --shadow-neon-glow-deepen:
-    inset 0 0 60px -20px rgba(200, 120, 0, 0.10);
+    0 1px 2px rgba(26, 23, 20, 0.04),
+    0 10px 28px -18px rgba(26, 23, 20, 0.22);
+  --shadow-neon-glow-deepen: none;
   --shadow-hero-card-hover:
-    0 30px 70px -30px rgba(26, 23, 20, 0.45),
-    0 0 40px -16px rgba(200, 120, 0, 0.20);
+    0 14px 38px -24px rgba(26, 23, 20, 0.30);
   --shadow-category-active:
-    0 0 0 1px rgba(200, 120, 0, 0.40),
-    0 28px 60px -24px rgba(26, 23, 20, 0.40),
-    0 0 28px -8px rgba(200, 120, 0, 0.22);
+    0 12px 32px -22px rgba(26, 23, 20, 0.26);
   --shadow-essential-hover:
-    0 0 0 1px rgba(200, 120, 0, 0.16),
-    0 22px 50px -28px rgba(26, 23, 20, 0.30);
+    0 10px 28px -22px rgba(26, 23, 20, 0.22);
   --shadow-deal-hover:
-    0 0 0 1px rgba(200, 120, 0, 0.14),
-    0 20px 46px -28px rgba(26, 23, 20, 0.28);
+    0 10px 26px -22px rgba(26, 23, 20, 0.20);
   --shadow-profile-hover:
-    0 0 0 1px rgba(200, 120, 0, 0.12),
-    0 18px 40px -24px rgba(26, 23, 20, 0.24);
+    0 8px 22px -20px rgba(26, 23, 20, 0.18);
   --shadow-order-hover:
-    0 0 0 1px rgba(200, 120, 0, 0.08),
-    0 14px 30px -22px rgba(26, 23, 20, 0.22);
-  --shadow-buy-cta:        0 14px 30px -10px rgba(200,120,0,0.45);
-  --shadow-buy-cta-sm:     0 10px 24px -8px rgba(200,120,0,0.45);
-  --shadow-brand-cta:      0 14px 30px -10px rgba(200,120,0,0.45);
-  --shadow-brand-cta-sm:   0 8px 20px -8px rgba(200,120,0,0.45);
-  --shadow-brand-pill:     0 8px 20px -6px rgba(200,120,0,0.45);
-  --shadow-discount-badge: 0 12px 26px -8px rgba(179,38,30,0.40);
-  --shadow-discount-sm:    0 4px 12px -4px rgba(179,38,30,0.45);
-  --shadow-preorder-cta:   0 14px 30px -10px rgba(200,120,0,0.45);
-  --shadow-preorder-pill:  0 6px 14px -4px rgba(200,120,0,0.50);
-  --shadow-drawer-side:    -24px 0 60px -16px rgba(26, 23, 20, 0.25);
-  --shadow-search-open:    0 24px 60px -20px rgba(26, 23, 20, 0.30);
+    0 6px 18px -18px rgba(26, 23, 20, 0.16);
+  /* CTAs: lift neutro sutil — sem brilho âmbar/vermelho sob o botão */
+  --shadow-buy-cta:        0 6px 16px -8px rgba(26,23,20,0.28);
+  --shadow-buy-cta-sm:     0 3px 10px -5px rgba(26,23,20,0.24);
+  --shadow-brand-cta:      0 6px 16px -8px rgba(26,23,20,0.28);
+  --shadow-brand-cta-sm:   0 3px 10px -5px rgba(26,23,20,0.24);
+  --shadow-brand-pill:     0 3px 10px -5px rgba(26,23,20,0.22);
+  --shadow-discount-badge: 0 3px 10px -4px rgba(26,23,20,0.22);
+  --shadow-discount-sm:    0 2px 6px -3px rgba(26,23,20,0.20);
+  --shadow-preorder-cta:   0 6px 16px -8px rgba(26,23,20,0.28);
+  --shadow-preorder-pill:  0 3px 10px -5px rgba(26,23,20,0.22);
+  --shadow-drawer-side:    -14px 0 38px -22px rgba(26, 23, 20, 0.20);
+  --shadow-search-open:    0 16px 40px -24px rgba(26, 23, 20, 0.22);
 
-  /* Hairline superior — leve realce claro no topo dos cards creme. */
-  --shadow-card-hairline:  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  /* Hairline superior — leve realce claro no topo dos cards. */
+  --shadow-card-hairline:  inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
-  /* Glow âmbar compacto — medalhão de ranking e badges circulares. */
-  --shadow-medallion:      0 6px 16px -4px rgba(200, 120, 0, 0.45);
+  /* Medalhão de ranking — sombra neutra compacta (sem glow âmbar). */
+  --shadow-medallion:      0 3px 10px -4px rgba(26, 23, 20, 0.30);
 
-  /* Sombras nativas Tonante (premium, do protótipo de marca). */
-  --shadow-card:  0 1px 2px rgba(26,23,20,0.04), 0 8px 28px -16px rgba(26,23,20,0.26);
-  --shadow-float: 0 30px 70px -30px rgba(26,23,20,0.45);
-  --shadow-pop:   0 24px 60px -20px rgba(26,23,20,0.40);
+  /* Sombras nativas Tonante — base ink, sutis. */
+  --shadow-card:  0 1px 2px rgba(26,23,20,0.04), 0 6px 20px -16px rgba(26,23,20,0.20);
+  --shadow-float: 0 18px 44px -26px rgba(26,23,20,0.28);
+  --shadow-pop:   0 14px 36px -24px rgba(26,23,20,0.24);
 
   /* Easing house Tonante. */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -208,9 +204,9 @@
   --edge: rgba(26, 23, 20, 0.12);
   --edge-strong: rgba(26, 23, 20, 0.20);
 
-  /* Dark stage Tonante (hero cinematográfico / footer / subtrees keep-dark). */
-  --stage: #16130f;
-  --stage-2: #211c16;
+  /* Dark stage Tonante — preto neutro/charcoal (rock'n'roll, não marrom). */
+  --stage: #131314;
+  --stage-2: #1f1f21;
 
   /* Tons das linhas de violão (§3.4) — swatch/chip por linha (usar c/ borda).
      Derivados do par `tone` de cada linha em LinhasDeViolao.tsx. */
@@ -793,7 +789,7 @@ html.light [data-page-light-scope] .text-white\/85 { color: rgba(26,23,20,0.95) 
 html.light [data-page-light-scope] [data-keep-dark],
 html.light [data-page-light-scope] [data-keep-dark] * {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 22, 19, 15;
+  --background-rgb: 19, 19, 20;
 }
 
 html.light [data-page-light-scope] [data-keep-dark] .text-white,
@@ -815,4 +811,4 @@ html.light [data-page-light-scope] [data-keep-dark] .text-white\/30 { color: rgb
 
 /* Reseta bg-black dentro do subtree keep-dark p/ stage Tonante */
 html.light [data-page-light-scope] [data-keep-dark].bg-black,
-html.light [data-page-light-scope] [data-keep-dark] .bg-black { background-color: #16130f !important; }
+html.light [data-page-light-scope] [data-keep-dark] .bg-black { background-color: #131314 !important; }

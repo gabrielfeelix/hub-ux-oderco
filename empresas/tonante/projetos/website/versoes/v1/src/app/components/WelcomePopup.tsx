@@ -106,7 +106,7 @@ export function WelcomePopup() {
             className="fixed inset-0 z-[76] flex items-center justify-center p-4"
           >
             <div
-              className="relative w-full max-w-[920px] grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-card border border-border shadow-2xl"
+              className="relative w-full max-w-[920px] grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-card border border-border shadow-[var(--shadow-pop)]"
               style={{ borderRadius: "var(--radius-card-lg)" }}
             >
               <button

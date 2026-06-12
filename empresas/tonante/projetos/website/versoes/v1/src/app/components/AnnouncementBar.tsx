@@ -36,7 +36,7 @@ export function AnnouncementBar() {
       aria-label="Aviso"
       className="fixed inset-x-0 top-0 z-[60] w-full overflow-hidden"
       style={{
-        background: "linear-gradient(90deg, #16130f 0%, #211c16 50%, #16130f 100%)",
+        background: "linear-gradient(90deg, #131314 0%, #1f1f21 50%, #131314 100%)",
         borderBottom: "1px solid rgba(200,120,0,0.22)",
       }}
     >

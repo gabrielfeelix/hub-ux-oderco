@@ -131,7 +131,7 @@ export function LinhasDeViolao() {
           </div>
           {/* produto */}
           <div className="relative z-[2] hidden place-items-center p-8 md:grid">
-            <div className="relative overflow-hidden" style={{ width: "min(80%, 240px)", transform: "rotate(-4deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#f8f7f4,#efede8)", boxShadow: "0 30px 50px rgba(0,0,0,.5)" }}>
+            <div className="relative overflow-hidden" style={{ width: "min(80%, 240px)", transform: "rotate(-4deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#f8f7f4,#efede8)", boxShadow: "0 22px 40px -20px rgba(0,0,0,0.42)" }}>
               <div className="relative aspect-[3/4]">
                 <ImageWithFallback src={getPrimaryProductImage(prod)} alt={prod.name} className="absolute inset-0 h-full w-full object-contain p-4" style={{ mixBlendMode: "multiply" }} />
               </div>

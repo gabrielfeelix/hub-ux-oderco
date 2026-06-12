@@ -626,7 +626,7 @@ export function Navbar() {
             <ImageWithFallback
               src={visualSrc}
               alt={title}
-              className="relative h-full w-full object-contain drop-shadow-[0_18px_32px_rgba(0,0,0,0.3)] transition-transform duration-500 group-hover:scale-[1.08] group-hover:-translate-y-1"
+              className="relative h-full w-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.16)] transition-transform duration-500 group-hover:scale-[1.08] group-hover:-translate-y-1"
               loading="eager"
               referrerPolicy="no-referrer"
             />
@@ -730,7 +730,7 @@ export function Navbar() {
             <ImageWithFallback
               src={image}
               alt={title}
-              className="relative h-[132px] w-auto max-w-[92%] object-contain drop-shadow-[0_18px_32px_rgba(0,0,0,0.32)] transition-transform duration-500 group-hover:scale-[1.08] group-hover:-translate-y-1"
+              className="relative h-[132px] w-auto max-w-[92%] object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.16)] transition-transform duration-500 group-hover:scale-[1.08] group-hover:-translate-y-1"
               loading="eager"
               referrerPolicy="no-referrer"
             />
@@ -928,7 +928,7 @@ export function Navbar() {
               </div>
               <div className="relative flex min-h-[260px] items-center justify-center rounded-[var(--radius-card-xl)] border border-foreground/8 bg-background/60 p-6 overflow-hidden">
                 <div className="absolute inset-0 rounded-full bg-primary/10 blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                <ImageWithFallback src={panel.image} alt={panel.name} className="relative z-10 h-full max-h-[320px] w-auto max-w-[120%] object-contain drop-shadow-[0_28px_40px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:scale-[1.1] group-hover:-translate-x-2 group-hover:-translate-y-2" loading="eager" referrerPolicy="no-referrer" />
+                <ImageWithFallback src={panel.image} alt={panel.name} className="relative z-10 h-full max-h-[320px] w-auto max-w-[120%] object-contain drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)] transition-transform duration-700 group-hover:scale-[1.1] group-hover:-translate-x-2 group-hover:-translate-y-2" loading="eager" referrerPolicy="no-referrer" />
               </div>
             </Link>
           </motion.div>
@@ -1116,7 +1116,7 @@ export function Navbar() {
 		                        animate={{ opacity: 1, y: 0, scale: 1 }}
 		                        exit={{ opacity: 0, y: -6, scale: 0.985 }}
 		                        transition={{ duration: 0.16 }}
-		                        className="absolute -left-12 -right-12 top-[46px] z-[80] max-h-[58vh] overflow-y-auto rounded-card-sm border border-edge bg-surface-0/98 p-2 shadow-2xl backdrop-blur-2xl"
+		                        className="absolute -left-12 -right-12 top-[46px] z-[80] max-h-[58vh] overflow-y-auto rounded-card-sm border border-edge bg-surface-0/98 p-2 shadow-[var(--shadow-pop)] backdrop-blur-2xl"
 		                      >
 		                        {searchResults.length > 0 ? (
 		                          <>
@@ -1315,7 +1315,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.14 }}
-                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[var(--radius-card-sm)] border border-edge bg-surface-0 shadow-2xl"
+                      className="absolute left-0 top-[48px] z-[70] w-[220px] overflow-hidden rounded-[var(--radius-card-sm)] border border-edge bg-surface-0 shadow-[var(--shadow-pop)]"
                     >
                       {searchCategories.map((cat) => (
                         <button
@@ -1348,7 +1348,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute left-1/2 top-[58px] z-[60] w-[min(1320px,calc(100vw-64px))] -translate-x-1/2 overflow-hidden rounded-card-lg shadow-[0_28px_80px_rgba(0,0,0,0.55)]"
+                      className="absolute left-1/2 top-[58px] z-[60] w-[min(1320px,calc(100vw-64px))] -translate-x-1/2 overflow-hidden rounded-card-lg shadow-[var(--shadow-pop)]"
                       style={{
                         background: "var(--surface-2)",
                         border: "1px solid rgba(var(--foreground-rgb), 0.08)",
@@ -1387,10 +1387,9 @@ export function Navbar() {
                                     <div
                                       className="relative aspect-square overflow-hidden transition-all"
                                       style={{
-                                        background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
+                                        background: "var(--well)",
                                         borderRadius: "var(--radius-card-md)",
-                                        border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                                        boxShadow: "var(--shadow-card-hairline)",
+                                        border: "1px solid var(--border)",
                                       }}
                                     >
                                       {discount > 0 && (
@@ -1411,6 +1410,7 @@ export function Navbar() {
                                         src={img}
                                         alt={p.name}
                                         className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.06]"
+                                        style={{ mixBlendMode: "multiply" }}
                                       />
                                     </div>
                                     <p
@@ -1552,12 +1552,11 @@ export function Navbar() {
                                 >
                                   <div
                                     className="relative aspect-square overflow-hidden transition-all"
-                                    style={{
-                                      background: "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.10) 0%, rgba(var(--foreground-rgb), 0.03) 100%)",
-                                      borderRadius: "var(--radius-card-md)",
-                                      border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                                      boxShadow: "var(--shadow-card-hairline)",
-                                    }}
+                                      style={{
+                                        background: "var(--well)",
+                                        borderRadius: "var(--radius-card-md)",
+                                        border: "1px solid var(--border)",
+                                      }}
                                   >
                                     {discount > 0 && (
                                       <span
@@ -1577,6 +1576,7 @@ export function Navbar() {
                                       src={img}
                                       alt={p.name}
                                       className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.06]"
+                                      style={{ mixBlendMode: "multiply" }}
                                     />
                                   </div>
                                   <p
@@ -1768,7 +1768,7 @@ export function Navbar() {
               }`;
               const customStyle: React.CSSProperties = {
                 fontFamily: "var(--font-family-inter)",
-                fontSize: "var(--text-sm)",
+                fontSize: "16px", // +2px (era 14/--text-sm) — pedido Gabriel
                 fontWeight: isBuild ? 700 : 500,
               };
               if (isGreen) {

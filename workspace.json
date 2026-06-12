@@ -128,7 +128,28 @@
       "brandColor": "#111111",
       "logo": "/brand-assets/tonante-symbol.png",
       "description": "Experiencias para instrumentos, catalogos e jornadas de marca.",
-      "projects": []
+      "projects": [
+        {
+          "slug": "website",
+          "name": "Website Tonante",
+          "status": "prototipacao",
+          "handoffUrl": "/tonante/website/v1",
+          "selectedPrototypeId": "tonante-website-v1",
+          "prototypes": [
+            {
+              "id": "tonante-website-v1",
+              "name": "Website Tonante",
+              "version": "v1",
+              "slug": "tonante-website-v1",
+              "url": "/tonante/website/v1",
+              "source": "empresas/tonante/projetos/website/versoes/v1",
+              "notes": "E-commerce Tonante (V3 Luz e Historia): base branca, CTA verde, cards estilo Gibson, secao de musicos, encordoamentos, historia da marca e experiencia musical na PDP.",
+              "createdAt": "2026-06-12",
+              "isCurrent": true
+            }
+          ]
+        }
+      ]
     },
     {
       "slug": "quati",

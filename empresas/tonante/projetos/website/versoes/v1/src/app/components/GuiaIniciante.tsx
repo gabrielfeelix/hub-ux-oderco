@@ -35,7 +35,7 @@ export function GuiaIniciante() {
         <div
           data-keep-dark
           className="grain grid grid-cols-1 overflow-hidden md:grid-cols-2"
-          style={{ borderRadius: "var(--radius-card-xl)", background: "linear-gradient(120deg, #241d14, #16130f)", color: "#fff" }}
+          style={{ borderRadius: "var(--radius-card-xl)", background: "linear-gradient(120deg, #1f1f21, #131314)", color: "#fff" }}
         >
           {/* copy */}
           <div className="relative z-[2] flex flex-col justify-center p-8 md:p-[clamp(34px,5vw,64px)]">
@@ -73,7 +73,7 @@ export function GuiaIniciante() {
             </span>
             <div
               className="relative overflow-hidden"
-              style={{ width: "min(72%, 250px)", transform: "rotate(-3deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#f8f7f4,#efede8)", boxShadow: "0 30px 50px rgba(0,0,0,.5)" }}
+              style={{ width: "min(72%, 250px)", transform: "rotate(-3deg)", borderRadius: "var(--radius-card-lg)", background: "linear-gradient(160deg,#f8f7f4,#efede8)", boxShadow: "0 22px 40px -20px rgba(0,0,0,0.42)" }}
             >
               <div className="relative aspect-[3/4]">
                 <ImageWithFallback

@@ -84,7 +84,7 @@ function PreOrderCard({ info }: { info: PreOrderInfo }) {
         borderRadius: "var(--radius-card-lg)",
         background: "linear-gradient(135deg, #120608 0%, #1a080b 50%, #120608 100%)",
         border: "1px solid rgba(200, 120, 0,0.12)",
-        boxShadow: "0 20px 50px -20px rgba(0,0,0,0.55)",
+        boxShadow: "var(--shadow-pop)",
         transition: "border-color 0.4s ease, box-shadow 0.4s ease",
       }}
     >
@@ -417,7 +417,7 @@ function HeroSection({
               alt={featured.name}
               className="w-full h-full object-contain"
               style={{
-                filter: "drop-shadow(0 30px 50px rgba(0,0,0,0.6))",
+                filter: "drop-shadow(0 18px 30px rgba(0,0,0,0.22))",
               }}
             />
             {/* floating info card */}

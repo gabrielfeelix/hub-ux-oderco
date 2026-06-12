@@ -597,7 +597,7 @@ export function CartPage() {
                   borderRadius: "var(--radius-card-lg)",
                   background: cardBg,
                   border: cardBorder,
-                  boxShadow: "inset 0 1px 0 rgba(var(--foreground-rgb), 0.05), 0 24px 60px -20px rgba(0,0,0,0.5)",
+                  boxShadow: "var(--shadow-card)",
                 }}
               >
                 <p
@@ -999,7 +999,7 @@ export function CartPage() {
               style={{
                 background: "var(--surface-2)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.08)",
-                boxShadow: "0 40px 120px rgba(0,0,0,0.55), inset 0 1px 0 rgba(var(--foreground-rgb), 0.04)",
+                boxShadow: "var(--shadow-float)",
               }}
               onClick={(e) => e.stopPropagation()}
             >

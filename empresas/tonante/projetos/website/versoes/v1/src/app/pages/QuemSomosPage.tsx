@@ -66,7 +66,7 @@ export function QuemSomosPage() {
       <section
         data-keep-dark
         className="grain relative flex min-h-[88vh] items-center justify-center overflow-hidden"
-        style={{ background: "linear-gradient(160deg, #16130f 30%, #241d14 100%)" }}
+        style={{ background: "linear-gradient(160deg, #131314 30%, #1f1f21 100%)" }}
       >
         <div
           aria-hidden="true"
@@ -265,7 +265,7 @@ export function QuemSomosPage() {
       <section
         data-keep-dark
         className="grain relative overflow-hidden"
-        style={{ background: "linear-gradient(140deg, #16130f 40%, #241d14 100%)" }}
+        style={{ background: "linear-gradient(140deg, #131314 40%, #1f1f21 100%)" }}
       >
         <div
           aria-hidden="true"

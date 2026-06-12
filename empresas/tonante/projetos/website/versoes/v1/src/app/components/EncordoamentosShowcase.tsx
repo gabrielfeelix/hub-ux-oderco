@@ -134,7 +134,7 @@ function FamilyCard({ f }: { f: Family }) {
             aspectRatio: "3 / 3.6",
             background: "#fff",
             borderRadius: 9,
-            boxShadow: "0 26px 40px -18px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.18)",
+            boxShadow: "0 18px 30px -16px rgba(0,0,0,0.42), 0 2px 5px rgba(0,0,0,0.14)",
             padding: "16px 8px 8px",
           }}
         >

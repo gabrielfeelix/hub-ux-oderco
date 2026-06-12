@@ -81,7 +81,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.98 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-[10%] left-1/2 -translate-x-1/2 z-[71] w-[95%] max-w-[640px] bg-card border border-border/10 overflow-hidden shadow-2xl"
+            className="fixed top-[10%] left-1/2 -translate-x-1/2 z-[71] w-[95%] max-w-[640px] bg-card border border-border/10 overflow-hidden shadow-[var(--shadow-pop)]"
             style={{ borderRadius: "var(--radius-card-sm)" }}
           >
             {/* Search input */}

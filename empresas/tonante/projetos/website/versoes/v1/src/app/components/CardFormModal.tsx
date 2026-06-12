@@ -151,7 +151,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                 borderRadius: 16,
                 background: BRAND_THEMES[brand.toLowerCase().replace(/\s+/g, "")] ?? "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.12)",
-                boxShadow: "0 18px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
+                boxShadow: "var(--shadow-float)",
                 transition: "background 0.4s ease",
               }}
             >
@@ -211,7 +211,7 @@ export function CardFormModal({ open, onClose, initial, onSubmit }: Props) {
                 borderRadius: 16,
                 background: "linear-gradient(135deg, #1a1a1c 0%, #28282b 60%, #1a1a1c 100%)",
                 border: "1px solid rgba(var(--foreground-rgb), 0.12)",
-                boxShadow: "0 18px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(var(--foreground-rgb), 0.06)",
+                boxShadow: "var(--shadow-float)",
               }}
             >
               <div className="mt-6 h-10 w-full" style={{ background: "rgba(0,0,0,0.6)" }} />
