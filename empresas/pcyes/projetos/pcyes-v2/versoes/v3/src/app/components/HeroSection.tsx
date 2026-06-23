@@ -174,6 +174,8 @@ export function HeroSection() {
                         src={slide.src}
                         alt={slide.alt}
                         draggable={false}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        fetchPriority={i === 0 ? "high" : "auto"}
                         className="h-full w-full object-cover pointer-events-none select-none"
                         style={{
                           WebkitUserDrag: "none",
