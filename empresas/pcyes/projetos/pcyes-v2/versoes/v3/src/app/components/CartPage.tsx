@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useCart } from "./CartContext";
+import { useAuth } from "./AuthContext";
 import { useCheckoutPrefs } from "./CheckoutPrefsContext";
 import { Footer } from "./Footer";
 import { allProducts } from "./productsData";
@@ -47,6 +48,9 @@ export function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, setGiftItem } = useCart();
   const navigate = useNavigate();
   const { appliedCoupon, setAppliedCoupon, pointsApplied, setPointsApplied, pointsToUse, setPointsToUse } = useCheckoutPrefs();
+  const { isLoggedIn, promptLogin } = useAuth();
+  const handleFinalize = () =>
+    isLoggedIn ? navigate("/checkout") : promptLogin("/checkout");
   const [coupon, setCoupon] = useState("");
   const [couponError, setCouponError] = useState("");
   const [couponOpen, setCouponOpen] = useState(false);
@@ -956,7 +960,7 @@ export function CartPage() {
 
                 {/* CTA */}
                 <button
-                  onClick={() => navigate("/checkout")}
+                  onClick={handleFinalize}
                   className="mb-3 hidden w-full cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-3.5 text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.98] lg:inline-flex"
                   style={{
                     background: "var(--gradient-buy)",
@@ -1162,7 +1166,7 @@ export function CartPage() {
             </p>
           </div>
           <button
-            onClick={() => navigate("/checkout")}
+            onClick={handleFinalize}
             className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-ink-strong transition-transform active:scale-[0.97]"
             style={{
               minHeight: 46,
