@@ -1,0 +1,17 @@
+node_modules
+dist
+.git
+.vercel
+.env*.local
+.planning
+.claude
+.antigravitycli
+.vscode
+docs
+guidelines
+*.log
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+README.md
+ATTRIBUTIONS.md
