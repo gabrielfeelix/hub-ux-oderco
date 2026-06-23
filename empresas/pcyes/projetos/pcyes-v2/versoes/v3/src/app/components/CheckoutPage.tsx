@@ -316,7 +316,16 @@ function Line({ label, value, positive }: { label: string; value: string; positi
 export function CheckoutPage() {
   const { items, clearCart } = useCart();
   const navigate = useNavigate();
-  const { user, isLoggedIn, addAddress, addCard } = useAuth();
+  const { user, isLoggedIn, addAddress, addCard, promptLogin } = useAuth();
+  /* Guard: checkout exige login. Deslogado (URL/refresh) → carrinho + abre login.
+     Após logar, authRedirect("/checkout") traz o usuário de volta. */
+  useEffect(() => {
+    if (!isLoggedIn) {
+      promptLogin("/checkout");
+      navigate("/carrinho", { replace: true });
+    }
+  }, [isLoggedIn, promptLogin, navigate]);
+
   const [step, setStep] = useState<Step>(0);
   /* Picker state — quando logged in c/ endereços/cartões salvos, preenche o form
      da etapa correspondente automaticamente quando o usuário seleciona um. */
