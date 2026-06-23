@@ -496,9 +496,9 @@ export function CartDrawer() {
                     textTransform: "uppercase",
                     boxShadow: "var(--shadow-buy-cta)",
                   }}
-                  onClick={() => { setIsOpen(false); navigate("/checkout"); }}
-                  aria-label="Finalizar pedido"
-                >Finalizar pedido</button>
+                  onClick={() => { setIsOpen(false); navigate("/carrinho"); }}
+                  aria-label="Revisar pedido"
+                >Revisar pedido</button>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="w-full flex items-center justify-center border border-foreground/12 bg-transparent text-foreground/55 hover:text-foreground/85 hover:border-foreground/22 transition-colors cursor-pointer rounded-full"
