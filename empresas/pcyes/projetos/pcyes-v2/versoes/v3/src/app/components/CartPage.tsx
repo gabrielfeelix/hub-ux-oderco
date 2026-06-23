@@ -27,22 +27,8 @@ import { useCheckoutPrefs } from "./CheckoutPrefsContext";
 import { Footer } from "./Footer";
 import { allProducts } from "./productsData";
 import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPresentation";
-
-const COUPONS: Record<string, number> = {
-  PCYES10: 10,
-  PROMO20: 20,
-  BEMVINDO: 15,
-};
-
-const GIFT_THRESHOLD = 950;
-
-function parseBRL(s: string): number {
-  return Number(s.replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", ".")) || 0;
-}
-
-function formatBRL(n: number): string {
-  return `R$ ${n.toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
-}
+import { formatBRL, parseBRL, formatCep } from "../../utils/format";
+import { COUPONS, GIFT_THRESHOLD } from "../../utils/commerce";
 
 export function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, setGiftItem } = useCart();
@@ -171,11 +157,6 @@ export function CartPage() {
       setCouponError("Cupom inválido");
       setAppliedCoupon(null);
     }
-  };
-
-  const formatCep = (v: string) => {
-    const digits = v.replace(/\D/g, "").slice(0, 8);
-    return digits.length > 5 ? `${digits.slice(0, 5)}-${digits.slice(5)}` : digits;
   };
 
   const cardBg = "linear-gradient(135deg, rgba(var(--foreground-rgb), 0.06) 0%, rgba(var(--foreground-rgb), 0.02) 100%)";

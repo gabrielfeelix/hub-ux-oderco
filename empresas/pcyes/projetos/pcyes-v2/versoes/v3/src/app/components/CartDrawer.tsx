@@ -10,6 +10,8 @@ import { getPrimaryProductImage, getVisibleCatalogProducts } from "./productPres
 import { PcyesCoin } from "./PcyesCoin";
 import { useCheckoutPrefs } from "./CheckoutPrefsContext";
 import { BrindePill, QtyStepper } from "./section";
+import { formatCep } from "../../utils/format";
+import { COUPONS, GIFT_THRESHOLD } from "../../utils/commerce";
 
 const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string }[]> = {
   default: [
@@ -21,12 +23,6 @@ const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string 
     { name: "SEDEX", price: 24.9, days: "3-5 dias úteis" },
   ],
 };
-
-const COUPONS: Record<string, number> = {
-  PCYES10: 10, PROMO20: 20, BEMVINDO: 15,
-};
-
-const GIFT_THRESHOLD = 950;
 
 const USER_PCYES_POINTS = 480;
 
@@ -123,11 +119,6 @@ export function CartDrawer() {
       setCouponError("Cupom inválido");
       setAppliedCoupon(null);
     }
-  };
-
-  const formatCep = (v: string) => {
-    const digits = v.replace(/\D/g, "").slice(0, 8);
-    return digits.length > 5 ? `${digits.slice(0, 5)}-${digits.slice(5)}` : digits;
   };
 
   const confirmGift = () => {
