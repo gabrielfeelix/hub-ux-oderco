@@ -13,6 +13,7 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "./ui/t
 import { allProducts, type Product } from "./productsData";
 import { ThemeToggle } from "./ThemeToggle";
 import { getCatalogHref, getPrimaryProductImage, getProductSubcategory, getProductSwatches, getVisibleCatalogProducts } from "./productPresentation";
+import { searchProducts } from "../../utils/search";
 
 const PCYES_LOGO = "https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png";
 
@@ -578,11 +579,7 @@ export function Navbar() {
   const promoTop = (promoDismissed || !showExpanded || !showPromoBanner) ? 0 : 36;
   const isDark = resolvedTheme === "dark" || resolvedTheme === undefined;
 
-  const searchResults = searchQuery.trim().length > 0
-    ? visibleCatalogProducts
-      .filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.category.toLowerCase().includes(searchQuery.toLowerCase()))
-      .slice(0, 8)
-    : [];
+  const searchResults = searchProducts(searchQuery, visibleCatalogProducts, 8);
 
   const handleMegaEnter = (mega: string) => {
     if (megaTimeout.current) clearTimeout(megaTimeout.current);
