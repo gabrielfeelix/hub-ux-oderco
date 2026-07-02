@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Cookie } from "lucide-react";
+import { updateConsent } from "../../utils/analytics";
 
 export function CookieConsent() {
   const [mounted, setMounted] = useState(false);
@@ -19,9 +20,9 @@ export function CookieConsent() {
     }
   }, [mounted]);
 
-  const accept = () => { localStorage.setItem("pcyes-cookies", "accepted"); setVisible(false); };
-  const reject = () => { localStorage.setItem("pcyes-cookies", "rejected"); setVisible(false); };
-  const dismiss = () => { localStorage.setItem("pcyes-cookies", "dismissed"); setVisible(false); };
+  const accept = () => { localStorage.setItem("pcyes-cookies", "accepted"); updateConsent(true); setVisible(false); };
+  const reject = () => { localStorage.setItem("pcyes-cookies", "rejected"); updateConsent(false); setVisible(false); };
+  const dismiss = () => { localStorage.setItem("pcyes-cookies", "dismissed"); updateConsent(false); setVisible(false); };
 
   return (
     <AnimatePresence>

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { trackAddToCart } from "../../utils/analytics";
 
 export interface CartItem {
   cartKey: string;
@@ -55,6 +56,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setLastAdded(newItem);
     setIsOpen(true);
     setTimeout(() => setLastAdded(null), 2000);
+    if (!item.isGift) trackAddToCart({ id: item.id, name: item.name, price: item.price });
   }, []);
 
   const removeItem = useCallback((cartKey: string) => {

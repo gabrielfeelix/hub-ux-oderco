@@ -26,6 +26,7 @@ import { CTAButton, DiscountBadge, QtyStepper } from "./section";
 import { SEO } from "./SEO";
 import { getProductSlug, getProductUrl } from "../lib/slug";
 import { formatCep } from "../../utils/format";
+import { trackViewItem } from "../../utils/analytics";
 
 /* ── helpers ─────────────────────────────────────────── */
 
@@ -2159,6 +2160,20 @@ export function ProductPage() {
   const [qty, setQty] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const [showMobileStickyCta, setShowMobileStickyCta] = useState(false);
+
+  // GA4 view_item ao abrir/trocar de produto.
+  useEffect(() => {
+    if (product) {
+      trackViewItem({
+        id: product.id,
+        name: product.name,
+        priceNum: product.priceNum,
+        brand: product.brand,
+        category: product.category,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product?.id]);
 
   const relatedRef = useRef<HTMLDivElement>(null);
   const reviewsRef = useRef<HTMLDivElement>(null);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -32,6 +32,7 @@ import { AddressFormModal } from "./AddressFormModal";
 import { CardFormModal } from "./CardFormModal";
 import { Footer } from "./Footer";
 import { formatBRL, parseBRL, formatCep } from "../../utils/format";
+import { trackBeginCheckout, trackPurchase } from "../../utils/analytics";
 import { COUPONS } from "../../utils/commerce";
 import { toast } from "sonner";
 
@@ -507,6 +508,26 @@ export function CheckoutPage() {
   })();
 
   const snapshot = () => ({ items: [...items], total, paymentLabel });
+
+  // GA4 begin_checkout (1x ao entrar com itens) e purchase (1x ao confirmar).
+  const beginFired = useRef(false);
+  useEffect(() => {
+    if (beginFired.current || items.length === 0) return;
+    beginFired.current = true;
+    trackBeginCheckout(items, total);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items.length]);
+
+  const purchaseFired = useRef(false);
+  useEffect(() => {
+    if (!orderConfirmed || purchaseFired.current || !confirmedSnapshot) return;
+    purchaseFired.current = true;
+    trackPurchase({
+      id: `PCYES-${Date.now()}`,
+      value: confirmedSnapshot.total,
+      items: confirmedSnapshot.items,
+    });
+  }, [orderConfirmed, confirmedSnapshot]);
 
   const handleFinish = () => {
     if (payment === "pix") {
