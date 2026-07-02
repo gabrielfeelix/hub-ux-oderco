@@ -270,9 +270,12 @@ export function CartPage() {
               </h1>
             </div>
             <button
-              onClick={clearCart}
+              onClick={() => toast("Limpar todo o carrinho?", {
+                action: { label: "Limpar", onClick: () => clearCart() },
+              })}
               className="inline-flex items-center gap-1.5 cursor-pointer text-ink-subtle transition-colors hover:text-ink min-h-[44px] md:min-h-[24px]"
               style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
+              aria-label="Limpar carrinho"
             >
               <Trash2 size={13} strokeWidth={2} />
               Limpar

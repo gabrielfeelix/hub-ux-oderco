@@ -445,6 +445,10 @@ export function CheckoutPage() {
     } else {
       setAttempted(true);
       toast.error(step === 0 ? "Preencha os campos de endereço destacados." : step === 2 ? "Confira os dados do cartão." : "Complete este passo para continuar.");
+      // Foca o 1º campo inválido (a11y 3.3.1/2.4.3) após o re-render marcar aria-invalid.
+      setTimeout(() => {
+        document.querySelector<HTMLElement>('.checkout-field[aria-invalid="true"]')?.focus();
+      }, 0);
     }
   };
 
@@ -1201,7 +1205,7 @@ export function CheckoutPage() {
                               inputMode="numeric"
                               value={address.zip}
                               placeholder="00000-000"
-                              aria-invalid={!!cepError}
+                              aria-invalid={!!cepError || (attempted && address.zip.replace(/\D/g, "").length < 8)}
                               aria-describedby={cepError ? "cep-error" : undefined}
                               onChange={(e) => {
                                 const v = formatCep(e.target.value);
@@ -1224,6 +1228,7 @@ export function CheckoutPage() {
                           <input
                             value={address.recipient}
                             placeholder="Quem vai receber?"
+                            aria-invalid={attempted && !address.recipient}
                             onChange={(e) => setAddress((a) => ({ ...a, recipient: e.target.value }))}
                             className={`${inputClass} checkout-field`}
                             style={inputStyle}
@@ -1233,6 +1238,7 @@ export function CheckoutPage() {
                           <input
                             value={address.street}
                             placeholder="Nome da rua"
+                            aria-invalid={attempted && !address.street}
                             onChange={(e) => setAddress((a) => ({ ...a, street: e.target.value }))}
                             className={`${inputClass} checkout-field`}
                             style={inputStyle}
@@ -1243,6 +1249,7 @@ export function CheckoutPage() {
                             inputMode="numeric"
                             value={address.number}
                             placeholder="123"
+                            aria-invalid={attempted && !address.number}
                             onChange={(e) => setAddress((a) => ({ ...a, number: e.target.value.replace(/\D/g, "") }))}
                             className={`${inputClass} checkout-field`}
                             style={inputStyle}
@@ -1270,6 +1277,7 @@ export function CheckoutPage() {
                           <input
                             value={address.city}
                             placeholder="Cidade"
+                            aria-invalid={attempted && !address.city}
                             onChange={(e) => setAddress((a) => ({ ...a, city: e.target.value }))}
                             className={`${inputClass} checkout-field`}
                             style={inputStyle}
