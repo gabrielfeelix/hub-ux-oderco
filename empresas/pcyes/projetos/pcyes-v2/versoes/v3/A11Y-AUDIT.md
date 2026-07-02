@@ -26,7 +26,7 @@ Correções aplicadas e validadas com o harness a cada passo. Plano em [A11Y-FIX
 | **Total axe (22 páginas)** | **~217** | **0** |
 
 Estrutura: `<h1>` em todos os templates · `<main>` único por página (removidos aninhados/duplicados) · saltos de heading do PLP corrigidos (h2 sr-only).
-Resíduos best-practice (não-AA, axe=0): 3 saltos de heading em faq/monte-seu-pc/onde-encontrar (contextos `<aside>`/self-contained) — revisão manual.
+Resíduos best-practice (não-AA, axe=0): 3 saltos de heading em faq/monte-seu-pc/onde-encontrar (contextos `<aside>`/self-contained) — **revisados e aceitos (Fase 7)**: ocorrem dentro de sectioning elements (`<aside>`), os headings têm `fontSize` explícito (sem acoplamento visual ao nível da tag) e o axe passa 0. Não-AA, sem impacto de leitor de tela relevante. Não alterado para não arriscar hierarquia visual por ganho não-AA marginal.
 Sem erros de TypeScript novos (31 pré-existentes = 31 depois). Sem regressão visual (verificado por screenshot em home/PLP/PDP/landing).
 
 ---

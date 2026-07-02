@@ -39,7 +39,17 @@ Executado em **6 fases**, cada fase = **1 commit atômico**, verificado antes de
 > | 5 analytics | `9f52102b` | GA4/GTM + Consent Mode v2 + funil (view/add/begin/purchase) |
 > | 6 validação | (este) | reauditoria estrutural + docs atualizados |
 >
-> **Ativar em produção:** definir `VITE_GTM_ID` (analytics). Resíduos abertos (baixo impacto): 3 heading-skips best-practice (não-AA), h1/landmark no empty-state do checkout, cupom com sugestão (G6), line-clamp sliver (G7).
+> **Ativar em produção:** definir `VITE_GTM_ID` (analytics).
+>
+> ### Extra — auditoria independente (pós-plano)
+> Uma 2ª auditoria (independente) apontou o **bundle** como gargalo real de conversão. Fases extras entregues:
+>
+> | Fase | Commit | Resultado |
+> |---|---|---|
+> | 7 code-split do catálogo | `8e5c4f4e` | `htmlDescription` (621KB, morto) fora do bundle · descrições completas → chunk lazy da PDP · **first-load 440→332 KB gzip (-25%)** |
+> | CWV (RUM) | `4443b8a0` | LCP/INP/CLS/FCP/TTFB reais → dataLayer (lib `web-vitals`, chunk de 2.25KB) |
+>
+> **Resíduos revisados/aceitos:** 3 heading-skips (não-AA, `<aside>`, fontSize explícito — sem impacto). Empty-checkout: era **falso positivo** do harness (python 404 em rota sem prerender) — a página tem `<h1>` e `<main>`. Abertos de baixo impacto: cupom sugestão (G6), line-clamp sliver (G7), mover `specs`/`features` p/ lazy (~40KB gzip a mais, mexe no filtro da PLP).
 
 > **Decisão de layout (fixada):** o plano é **layout-neutral nas páginas normais**. O hero da home fica **exatamente como está** (carrossel de imagem). Nenhuma fase altera o visual das telas em estado normal — só se adicionam telas/feedbacks de **estado de erro** (404, toasts). M3 mira 89 (não 93) por não incluir o hero textual.
 

@@ -16,7 +16,7 @@
 | G6 cupom sem sugestão | 🟢 Baixa (aberto) | polimento opcional |
 | G7 line-clamp sliver (zoom≠100%) | 🟢 Baixa (aberto) | artefato Chromium, só em zoom ≠ 100% |
 
-**Achado novo (Fase 6):** `/checkout` no estado **carrinho vazio** renderiza sem `<h1>`/`<main>` (o template só monta com itens). Não é regressão — é o empty-state. Registrado para revisão (adicionar h1/landmark ao empty-state do checkout).
+**Correção (Fase 7):** o "achado" anterior de `/checkout` sem `<h1>`/`<main>` era **artefato do harness de teste** — o `python http.server` dá 404 em `/checkout` (rota sem prerender, sem SPA-fallback), então o app nem iniciava naquela medição. Na Vercel o `rewrites` serve o `index.html` e a página monta normalmente. O empty-state do checkout **já tem `<h1>`** (`CheckoutPage:657`) e fica dentro do `<main>` do `RootLayout`. **Nada a corrigir.**
 
 ---
 
