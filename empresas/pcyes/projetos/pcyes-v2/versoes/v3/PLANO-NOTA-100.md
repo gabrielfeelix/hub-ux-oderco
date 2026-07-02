@@ -22,9 +22,11 @@ Executado em **6 fases**, cada fase = **1 commit atômico**, verificado antes de
 |---|---|---|---|
 | SEO & Onpage | 83 | **96** | JSON-LD no HTML cru + SSG do corpo |
 | GEO & Indexação | 66 | **92** | Liberar IA + corpo crawlável (SSG) |
-| Estrutura & Conversão | 75 | **93** | Hero textual + fluxo de erro (QA P0/P1) |
+| Estrutura & Conversão | 75 | **89** | Fluxo de erro (QA P0/P1) — hero mantido |
 | Testes & Melhorias | 65 | **90** | Instrumentação GA4/GTM + KPIs |
-| **Média** | **72** | **~93** | |
+| **Média** | **72** | **~92** | |
+
+> **Decisão de layout (fixada):** o plano é **layout-neutral nas páginas normais**. O hero da home fica **exatamente como está** (carrossel de imagem). Nenhuma fase altera o visual das telas em estado normal — só se adicionam telas/feedbacks de **estado de erro** (404, toasts). M3 mira 89 (não 93) por não incluir o hero textual.
 
 > **Nota honesta:** 100 cravado em todos não é realista num protótipo. Teto de GEO depende de autoridade/tempo no ar (não só de código); AAA de contraste exige redesenhar a paleta (vermelho de marca não bate 7:1). Meta de ~93 = "excelente" em todos os módulos.
 
@@ -83,20 +85,21 @@ Executado em **6 fases**, cada fase = **1 commit atômico**, verificado antes de
 
 ---
 
-## Fase 4 — Conversão / CRO + robustez de erro (QA P0/P1)
+## Fase 4 — Robustez de erro (QA P0/P1)
 
-**Objetivo:** proposta de valor legível + fechar fricções que travam o usuário. Esforço: **~1 dia**. Impacto: M3 +15.
+**Objetivo:** fechar fricções que travam o usuário. **Sem mudança de layout em tela normal** — só feedback de estado de erro. Esforço: **~1 dia**. Impacto: M3 +14.
 
-- [ ] **Hero com H1 textual visível** + subtítulo + CTA primário (hoje é banner só-imagem, H1 `sr-only`) — deixa pronto para A/B.
+> **Hero mantido:** por decisão, o carrossel de imagem **não muda**. O H1 segue `sr-only` (invisível, só SEO/leitor de tela) — já existe, nada a fazer. O teste de hero textual fica como A/B opcional pós-Fase 5, decidido por dado real.
+
 - [ ] **G1** CEP inválido: `toast.error` + marca campo (`CheckoutPage`).
-- [ ] **G3** rota catch-all `path:"*"` → página 404 com busca/voltar/categorias (`routes.tsx`).
+- [ ] **G3** rota catch-all `path:"*"` → página 404 com busca/voltar/categorias (só aparece em URL quebrada).
 - [ ] **G2** erros por-campo no checkout: `aria-invalid` + `role="alert"` + foco no 1º inválido (fecha lacuna a11y 3.3.1/3.3.3).
 - [ ] **G4** undo na remoção do carrinho (sonner `action`) + confirmação em "limpar carrinho".
 - [ ] **G5** PIX expirado: ao timer `0`, UI "Gerar novo".
 
-**Arquivos:** `HeroSection.tsx`, `HomePage.tsx`, `CheckoutPage.tsx`, `routes.tsx`, `CartPage.tsx`, `CartDrawer.tsx`.
-**Aceite:** QA-AUDIT P0/P1 zerado; axe segue 0; fluxos de erro dão feedback.
-**Commit:** `feat(pcyes-v3): hero textual + robustez de erro (CEP/404/checkout/undo/PIX)`
+**Arquivos:** `CheckoutPage.tsx`, `routes.tsx`, novo `NotFoundPage.tsx`, `CartPage.tsx`, `CartDrawer.tsx`.
+**Aceite:** QA-AUDIT P0/P1 zerado; axe segue 0; fluxos de erro dão feedback; **home/PLP/PDP visualmente idênticas** (screenshot diff).
+**Commit:** `feat(pcyes-v3): robustez de erro (CEP/404/checkout/undo/PIX)`
 
 ---
 
