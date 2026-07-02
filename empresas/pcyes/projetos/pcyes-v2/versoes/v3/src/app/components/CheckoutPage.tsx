@@ -21,6 +21,7 @@ import {
   X,
   Copy,
   Clock,
+  RefreshCw,
   Ticket,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -32,6 +33,7 @@ import { CardFormModal } from "./CardFormModal";
 import { Footer } from "./Footer";
 import { formatBRL, parseBRL, formatCep } from "../../utils/format";
 import { COUPONS } from "../../utils/commerce";
+import { toast } from "sonner";
 
 type Step = 0 | 1 | 2 | 3;
 
@@ -82,16 +84,21 @@ const inputStyle: React.CSSProperties = {
   letterSpacing: "0.01em",
 };
 
-function Field({ label, children, required, className }: { label: string; children: React.ReactNode; required?: boolean; className?: string }) {
+function Field({ label, children, required, className, error }: { label: string; children: React.ReactNode; required?: boolean; className?: string; error?: string }) {
   return (
     <div className={className}>
       <label
-        className="mb-1.5 block text-ink-muted"
+        className={`mb-1.5 block ${error ? "text-primary" : "text-ink-muted"}`}
         style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}
       >
         {label} {required && <span className="text-primary">*</span>}
       </label>
       {children}
+      {error && (
+        <p role="alert" className="mt-1.5 text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: 0, textTransform: "none", fontWeight: 500 }}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }
@@ -333,6 +340,7 @@ export function CheckoutPage() {
     phone: "",
   });
   const [loadingCep, setLoadingCep] = useState(false);
+  const [cepError, setCepError] = useState("");
   const [selectedShipping, setSelectedShipping] = useState<string>("sedex");
   const [payment, setPayment] = useState<PaymentMethod>("pix");
   const [cardName, setCardName] = useState("");
@@ -357,6 +365,8 @@ export function CheckoutPage() {
   const [pixWaiting, setPixWaiting] = useState(false);
   const [pixCopied, setPixCopied] = useState(false);
   const [pixTimer, setPixTimer] = useState(600);
+  const [pixExpired, setPixExpired] = useState(false);
+  const [pixNonce, setPixNonce] = useState(0); // regenera o QR/timer
 
   const subtotal = useMemo(
     () => items.reduce((sum, item) => (item.isGift ? sum : sum + parseBRL(item.price) * item.quantity), 0),
@@ -423,6 +433,21 @@ export function CheckoutPage() {
 
   const canAdvance = step === 0 ? step0Valid : step === 1 ? step1Valid : step === 2 ? step2Valid : true;
 
+  // Botão "Continuar" clicável sempre (em vez de disabled mudo): se o passo está
+  // incompleto, marca os campos vazios (erro por campo + role=alert) em vez de
+  // só travar. Melhor p/ Nielsen (prevenção de erro) e p/ leitor de tela.
+  const [attempted, setAttempted] = useState(false);
+  const err = (cond: boolean, msg: string) => (attempted && cond ? msg : undefined);
+  const tryAdvance = () => {
+    if (canAdvance) {
+      setAttempted(false);
+      setStep((s) => (s + 1) as Step);
+    } else {
+      setAttempted(true);
+      toast.error(step === 0 ? "Preencha os campos de endereço destacados." : step === 2 ? "Confira os dados do cartão." : "Complete este passo para continuar.");
+    }
+  };
+
   const formatCardNumber = (v: string) =>
     v.replace(/\D/g, "").slice(0, 16).replace(/(.{4})/g, "$1 ").trim();
   const formatExp = (v: string) => {
@@ -440,6 +465,7 @@ export function CheckoutPage() {
     const digits = zip.replace(/\D/g, "");
     if (digits.length !== 8) return;
     setLoadingCep(true);
+    setCepError("");
     try {
       const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
       const data = await res.json();
@@ -451,9 +477,15 @@ export function CheckoutPage() {
           city: data.localidade || a.city,
           state: data.uf || a.state,
         }));
+      } else {
+        // CEP não existe na base dos Correios — avisar em vez de falhar em silêncio.
+        setCepError("CEP não encontrado. Confira o número.");
+        toast.error("CEP não encontrado. Confira o número digitado.");
       }
     } catch {
-      // Network error or invalid CEP — keep current field values
+      // Erro de rede — não trava o checkout, mas avisa e deixa preencher à mão.
+      setCepError("Não foi possível buscar o CEP. Preencha o endereço manualmente.");
+      toast.error("Não foi possível buscar o CEP agora. Preencha manualmente.");
     } finally {
       setLoadingCep(false);
     }
@@ -495,19 +527,34 @@ export function CheckoutPage() {
 
   // PIX waiting countdown + auto-confirm after ~8s
   useEffect(() => {
-    if (!pixWaiting) return;
+    if (!pixWaiting || pixExpired) return;
+    // Auto-confirma (simula "pagamento detectado") a menos que o código expire antes.
     const confirmTimer = setTimeout(() => {
       setConfirmedSnapshot(snapshot());
       setOrderConfirmed(true);
       clearCart();
     }, 8000);
-    const tick = setInterval(() => setPixTimer((t) => Math.max(0, t - 1)), 1000);
+    const tick = setInterval(() => setPixTimer((t) => {
+      if (t <= 1) {
+        clearInterval(tick);
+        clearTimeout(confirmTimer);
+        setPixExpired(true); // código expirou → oferece gerar um novo
+        return 0;
+      }
+      return t - 1;
+    }), 1000);
     return () => {
       clearTimeout(confirmTimer);
       clearInterval(tick);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pixWaiting]);
+  }, [pixWaiting, pixNonce]);
+
+  const regeneratePix = () => {
+    setPixExpired(false);
+    setPixTimer(600);
+    setPixNonce((n) => n + 1);
+  };
 
   useEffect(() => {
     if (pointsToUse > maxPointsRedeem) setPointsToUse(maxPointsRedeem);
@@ -663,25 +710,49 @@ export function CheckoutPage() {
                 }}
               >
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-65" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-yellow-400" />
+                  <span className={`absolute inline-flex h-full w-full rounded-full opacity-65 ${pixExpired ? "bg-primary" : "animate-ping bg-yellow-400"}`} />
+                  <span className={`relative inline-flex h-2 w-2 rounded-full ${pixExpired ? "bg-primary" : "bg-yellow-400"}`} />
                 </span>
-                Aguardando pagamento
+                {pixExpired ? "Código expirado" : "Aguardando pagamento"}
               </div>
 
-              {/* Timer */}
-              <div className="mb-6 inline-flex items-center gap-2 text-ink">
-                <Clock size={15} strokeWidth={2.2} />
-                <span
-                  className="tabular-nums"
-                  style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 800, letterSpacing: "0.04em" }}
-                >
-                  {m}:{s}
-                </span>
-                <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
-                  pra expirar
-                </span>
-              </div>
+              {/* Timer / expirado */}
+              {pixExpired ? (
+                <div className="mb-6 flex flex-col items-start gap-3">
+                  <p className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: 1.5 }}>
+                    O código PIX expirou. Gere um novo para concluir o pagamento.
+                  </p>
+                  <button
+                    onClick={regeneratePix}
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-primary-foreground transition-transform hover:scale-[1.03] active:scale-[0.98]"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", fontWeight: 600 }}
+                  >
+                    <RefreshCw size={15} strokeWidth={2.4} aria-hidden="true" /> Gerar novo código PIX
+                  </button>
+                </div>
+              ) : (
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="inline-flex items-center gap-2 text-ink">
+                    <Clock size={15} strokeWidth={2.2} />
+                    <span
+                      className="tabular-nums"
+                      style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-lg)", fontWeight: 800, letterSpacing: "0.04em" }}
+                    >
+                      {m}:{s}
+                    </span>
+                    <span className="text-ink-muted" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
+                      pra expirar
+                    </span>
+                  </div>
+                  <button
+                    onClick={regeneratePix}
+                    className="text-ink-subtle underline decoration-dotted underline-offset-4 transition-colors hover:text-ink"
+                    style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
+                  >
+                    Gerar novo código
+                  </button>
+                </div>
+              )}
 
               <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
                 {/* QR Code */}
@@ -1124,15 +1195,18 @@ export function CheckoutPage() {
                       {/* Form só aparece se: não logado / sem endereços salvos / clicou em 'Editar manualmente' (selectedAddressId === null) */}
                       {(!isLoggedIn || !user || user.addresses.length === 0 || selectedAddressId === null) && (
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                        <Field label="CEP" required>
+                        <Field label="CEP" required error={err(address.zip.replace(/\D/g, "").length < 8, "Informe um CEP válido")}>
                           <div className="relative">
                             <input
                               inputMode="numeric"
                               value={address.zip}
                               placeholder="00000-000"
+                              aria-invalid={!!cepError}
+                              aria-describedby={cepError ? "cep-error" : undefined}
                               onChange={(e) => {
                                 const v = formatCep(e.target.value);
                                 setAddress((a) => ({ ...a, zip: v }));
+                                if (cepError) setCepError("");
                                 if (v.replace(/\D/g, "").length === 8) handleCepLookup(v);
                               }}
                               className={`${inputClass} checkout-field`}
@@ -1140,8 +1214,13 @@ export function CheckoutPage() {
                             />
                             {loadingCep && <Loader2 size={14} className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-ink-muted" />}
                           </div>
+                          {cepError && (
+                            <p id="cep-error" role="alert" className="mt-1.5 text-primary" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}>
+                              {cepError}
+                            </p>
+                          )}
                         </Field>
-                        <Field label="Destinatário" required>
+                        <Field label="Destinatário" required error={err(!address.recipient, "Informe o destinatário")}>
                           <input
                             value={address.recipient}
                             placeholder="Quem vai receber?"
@@ -1150,7 +1229,7 @@ export function CheckoutPage() {
                             style={inputStyle}
                           />
                         </Field>
-                        <Field label="Rua / Avenida" required className="md:col-span-2">
+                        <Field label="Rua / Avenida" required className="md:col-span-2" error={err(!address.street, "Informe a rua")}>
                           <input
                             value={address.street}
                             placeholder="Nome da rua"
@@ -1159,7 +1238,7 @@ export function CheckoutPage() {
                             style={inputStyle}
                           />
                         </Field>
-                        <Field label="Número" required>
+                        <Field label="Número" required error={err(!address.number, "Informe o número")}>
                           <input
                             inputMode="numeric"
                             value={address.number}
@@ -1187,7 +1266,7 @@ export function CheckoutPage() {
                             style={inputStyle}
                           />
                         </Field>
-                        <Field label="Cidade" required>
+                        <Field label="Cidade" required error={err(!address.city, "Informe a cidade")}>
                           <input
                             value={address.city}
                             placeholder="Cidade"
@@ -1681,9 +1760,9 @@ export function CheckoutPage() {
 
                 {step < 3 ? (
                   <button
-                    onClick={() => setStep((s) => (s + 1) as Step)}
-                    disabled={!canAdvance}
-                    className="hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-ink-strong transition-transform hover:scale-[1.03] active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    onClick={tryAdvance}
+                    aria-disabled={!canAdvance}
+                    className={`hidden lg:inline-flex cursor-pointer items-center gap-2 rounded-full px-7 py-3 text-ink-strong transition-transform hover:scale-[1.03] active:scale-[0.97] ${!canAdvance ? "opacity-60" : ""}`}
                     style={{
                       background: "var(--gradient-brand)",
                       fontFamily: "var(--font-family-inter)",
@@ -2018,9 +2097,9 @@ export function CheckoutPage() {
           </div>
           {step < 3 ? (
             <button
-              onClick={() => setStep((s) => (s + 1) as Step)}
-              disabled={!canAdvance}
-              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-ink-strong transition-transform active:scale-[0.97] disabled:opacity-35 disabled:cursor-not-allowed disabled:active:scale-100"
+              onClick={tryAdvance}
+              aria-disabled={!canAdvance}
+              className={`inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-6 text-ink-strong transition-transform active:scale-[0.97] ${!canAdvance ? "opacity-60" : ""}`}
               style={{
                 minHeight: 46,
                 background: "var(--gradient-brand)",
