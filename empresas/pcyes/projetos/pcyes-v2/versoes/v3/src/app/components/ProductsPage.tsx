@@ -24,6 +24,7 @@ import {
   getVisibleCatalogProducts,
 } from "./productPresentation";
 import { getPreOrderInfo } from "./PreOrderData";
+import { searchProducts } from "../../utils/search";
 import { DiscountBadge, PreOrderPill } from "./section";
 import { SEO } from "./SEO";
 import { getCategoryUrl } from "../lib/slug";
@@ -514,23 +515,18 @@ export function ProductsPage() {
     const sp = new URLSearchParams(searchParams); sp.delete("category"); sp.delete("subcategory"); sp.delete("search"); setSearchParams(sp, { replace: true });
   };
 
+  // Busca fuzzy + sinônimos + acentos + ranking (utils/search.ts). Mapa
+  // id→posição de relevância, compartilhado pelo filtro e pelo sort "Relevância".
+  const searchOrder = useMemo<Map<number, number> | null>(() => {
+    if (!searchQuery.trim()) return null;
+    const ranked = searchProducts(searchQuery, validProducts.map((p) => ({ ...p, subcategory: getProductSubcategory(p) })));
+    return new Map(ranked.map((p, i) => [p.id, i]));
+  }, [searchQuery]);
+
   const productsWithoutPriceFilter = useMemo(() => {
     let result = [...validProducts];
-    if (searchQuery) {
-      const lowerQ = searchQuery.toLowerCase().trim();
-      const singularized = lowerQ.endsWith("s") ? lowerQ.slice(0, -1) : lowerQ;
-      const matchTerm = (text: string | undefined) => {
-        if (!text) return false;
-        const t = text.toLowerCase();
-        return t.includes(lowerQ) || t.includes(singularized);
-      };
-      result = result.filter((p) =>
-        matchTerm(p.name) ||
-        matchTerm(p.category) ||
-        matchTerm(getProductSubcategory(p)) ||
-        matchTerm(p.brand) ||
-        (p.tags ?? []).some((tag) => matchTerm(tag))
-      );
+    if (searchOrder) {
+      result = result.filter((p) => searchOrder.has(p.id));
     }
     if (selectedCategories.size > 0) result = result.filter((p) => selectedCategories.has(p.category));
     if (selectedFeaturedCategories.size > 0) {
@@ -579,7 +575,7 @@ export function ProductsPage() {
     if (inStockOnly) result = result.filter((p) => p.inStock !== false);
 
     return result;
-  }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories, selectedTags, selectedAttributes, selectedBrands, selectedSizes, onlyDiscount, selectedDiscounts, selectedRatings, inStockOnly, searchQuery]);
+  }, [selectedCategories, selectedFeaturedCategories, selectedSubcategories, selectedTags, selectedAttributes, selectedBrands, selectedSizes, onlyDiscount, selectedDiscounts, selectedRatings, inStockOnly, searchOrder]);
 
   const priceBounds = useMemo(() => {
     const productsForPrice = selectedColors.size > 0
@@ -767,6 +763,7 @@ export function ProductsPage() {
     if (selectedColors.size > 0) result = result.filter((p) => [...selectedColors].some((color) => productMatchesColor(p, color)));
 
     switch (sortBy) {
+      case "relevance": if (searchOrder) result.sort((a, b) => (searchOrder!.get(a.id) ?? 1e9) - (searchOrder!.get(b.id) ?? 1e9)); break;
       case "price-asc": result.sort((a, b) => a.priceNum - b.priceNum); break;
       case "price-desc": result.sort((a, b) => b.priceNum - a.priceNum); break;
       case "rating": result.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews); break;
@@ -776,7 +773,7 @@ export function ProductsPage() {
       case "za": result.sort((a, b) => b.name.localeCompare(a.name)); break;
     }
     return result;
-  }, [productsBeforeColorFilter, selectedColors, sortBy]);
+  }, [productsBeforeColorFilter, selectedColors, sortBy, searchOrder]);
 
   /* ── Reset page when filters change ── */
   useEffect(() => { setCurrentPage(1); }, [filtered, itemsPerPage]);
@@ -1115,6 +1112,11 @@ export function ProductsPage() {
           activeCategoryLabel
             ? getCategoryUrl(activeCategoryLabel, initialSubcategory || undefined)
             : "/produtos"
+        }
+        image={
+          activeCategoryLabel && filtered.length > 0
+            ? getPrimaryProductImage(filtered[0])
+            : undefined
         }
         ogType="website"
         robots={activeFilterCount > 0 ? "noindex" : "index"}

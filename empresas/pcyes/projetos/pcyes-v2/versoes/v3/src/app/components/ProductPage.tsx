@@ -2296,6 +2296,12 @@ export function ProductPage() {
 
   const liked = isFavorite(product.id);
 
+  // JSON-LD exige image absoluta (crawler não resolve caminho relativo).
+  const productImageRaw = getPrimaryProductImage(product);
+  const productImageAbs = /^https?:\/\//.test(productImageRaw)
+    ? productImageRaw
+    : `https://www.pcyes.com.br${productImageRaw}`;
+
   return (
     <div className="pt-[calc(56px+var(--announce-h))] lg:pt-[calc(180px+var(--announce-h))] notebook:pt-[calc(120px+var(--announce-h))]">
       <SEO
@@ -2309,10 +2315,20 @@ export function ProductPage() {
             "@context": "https://schema.org",
             "@type": "Product",
             name: product.name,
-            image: getPrimaryProductImage(product),
+            image: productImageAbs,
             sku: product.sku ? String(product.sku) : undefined,
             brand: { "@type": "Brand", name: "PCYES" },
             category: product.category,
+            aggregateRating:
+              product.reviews > 0
+                ? {
+                    "@type": "AggregateRating",
+                    ratingValue: product.rating,
+                    reviewCount: product.reviews,
+                    bestRating: 5,
+                    worstRating: 1,
+                  }
+                : undefined,
             offers: {
               "@type": "Offer",
               priceCurrency: "BRL",
