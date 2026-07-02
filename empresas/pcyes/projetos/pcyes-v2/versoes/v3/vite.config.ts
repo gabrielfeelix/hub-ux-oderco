@@ -3,6 +3,13 @@ import path from 'path'
 import fs from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { allProducts } from './src/app/components/productsData'
+import {
+  getProductUrl,
+  getCategorySlug,
+  getSubcategorySlug,
+  getCategoryFromSlug,
+} from './src/app/lib/slug'
 
 const prototypeBasePath = process.env.PROTOTYPE_BASE_PATH || '/'
 const prototypeOutDir = process.env.PROTOTYPE_OUT_DIR || 'dist'
@@ -81,6 +88,97 @@ function prerenderSeoHtml() {
   }
   const set = (html: string, re: RegExp, val: string) =>
     html.replace(re, (_m, a, b) => `${a}${val}${b}`)
+
+  // ── JSON-LD no HTML cru (Fase 2) ──────────────────────────────
+  // Indexa o catálogo estático para emitir dados estruturados por rota
+  // ANTES do JavaScript. Crawlers que não executam JS (Bing, scrapers
+  // sociais, LLMs) passam a ver Product/Breadcrumb/CollectionPage.
+  const productByUrl = new Map<string, any>()
+  const subLabelBySlug = new Map<string, string>()
+  for (const prod of allProducts as any[]) {
+    productByUrl.set(getProductUrl(prod), prod)
+    if (prod.subcategory) {
+      const key = `${getCategorySlug(prod.category)}/${getSubcategorySlug(prod.subcategory)}`
+      if (!subLabelBySlug.has(key)) subLabelBySlug.set(key, prod.subcategory)
+    }
+  }
+  const abs = (img?: string): string | undefined =>
+    !img ? undefined : /^https?:\/\//.test(img) ? img : `${SITE}${img.startsWith('/') ? img : `/${img}`}`
+
+  const orgLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'PCYES',
+    url: SITE,
+    logo: 'https://pcyes-cdn.oderco.com.br/Logotipos/PCYES/Simbolo-Logo-Horiz-Vermelho.png',
+    sameAs: ['https://www.instagram.com/pcyesoficial', 'https://www.youtube.com/@pcyesoficial'],
+  }
+
+  const productLd = (prod: any, url: string): any[] => {
+    const product = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: prod.name,
+      image: abs(prod.images?.[0] ?? prod.image),
+      sku: prod.sku ? String(prod.sku) : undefined,
+      brand: { '@type': 'Brand', name: prod.brand || 'PCYES' },
+      category: prod.category,
+      aggregateRating:
+        prod.reviews > 0
+          ? { '@type': 'AggregateRating', ratingValue: prod.rating, reviewCount: prod.reviews, bestRating: 5, worstRating: 1 }
+          : undefined,
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'BRL',
+        price: prod.priceNum,
+        availability: prod.inStock === false ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+        url: `${SITE}${url}`,
+      },
+    }
+    const catSlug = url.split('/').filter(Boolean)[0]
+    const catLabel = getCategoryFromSlug(catSlug) || prod.category
+    const items: any[] = [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: catLabel, item: `${SITE}/${catSlug}/` },
+    ]
+    if (prod.subcategory) {
+      const subSlug = getSubcategorySlug(prod.subcategory)
+      items.push({ '@type': 'ListItem', position: 3, name: prod.subcategory, item: `${SITE}/${catSlug}/${subSlug}/` })
+      items.push({ '@type': 'ListItem', position: 4, name: prod.name })
+    } else {
+      items.push({ '@type': 'ListItem', position: 3, name: prod.name })
+    }
+    return [product, { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items }]
+  }
+
+  const categoryLd = (p: string): any[] | null => {
+    const segs = p.split('/').filter(Boolean)
+    const catLabel = getCategoryFromSlug(segs[0])
+    if (!catLabel) return null
+    const items: any[] = [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: catLabel, item: `${SITE}/${segs[0]}/` },
+    ]
+    let name = catLabel
+    if (segs[1]) {
+      const subLabel = subLabelBySlug.get(`${segs[0]}/${segs[1]}`) || segs[1]
+      items.push({ '@type': 'ListItem', position: 3, name: subLabel, item: `${SITE}/${segs[0]}/${segs[1]}/` })
+      name = `${subLabel} ${catLabel}`
+    }
+    return [
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items },
+      { '@context': 'https://schema.org', '@type': 'CollectionPage', name, url: `${SITE}${p}`, isPartOf: { '@type': 'WebSite', name: 'PCYES', url: SITE } },
+    ]
+  }
+
+  const injectLd = (html: string, blobs: any[] | null): string => {
+    if (!blobs || !blobs.length) return html
+    const scripts = blobs
+      .map((b) => `<script type="application/ld+json">${JSON.stringify(b)}</script>`)
+      .join('')
+    return html.replace('</head>', `${scripts}</head>`)
+  }
+
   return {
     name: 'prerender-seo-html',
     closeBundle() {
@@ -91,10 +189,13 @@ function prerenderSeoHtml() {
       const tpl = fs.readFileSync(tplPath, 'utf8')
       const locs = [...fs.readFileSync(smPath, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
       let count = 0
+      let ld = 0
+      // Home: injeta Organization no index.html raiz (canonical já é a home).
+      fs.writeFileSync(tplPath, injectLd(tpl, [orgLd]))
       for (const loc of locs) {
         if (!loc.startsWith(SITE)) continue
         const p = loc.slice(SITE.length) || '/'
-        if (p === '/') continue // home = index.html (canonical já é a home)
+        if (p === '/') continue
         let html = set(tpl, /(<link rel="canonical" href=")[^"]*(")/, loc)
         html = set(html, /(<meta property="og:url" content=")[^"]*(")/, loc)
         const meta = META[p]
@@ -105,13 +206,25 @@ function prerenderSeoHtml() {
           html = set(html, /(<meta property="og:title" content=")[^"]*(")/, full)
           html = set(html, /(<meta property="og:description" content=")[^"]*(")/, meta[1])
         }
+        // JSON-LD por tipo de rota: produto > categoria/subcategoria > (nada).
+        const segs = p.split('/').filter(Boolean)
+        const prod = productByUrl.get(p)
+        const blobs = prod
+          ? productLd(prod, p)
+          : segs.length <= 2 && getCategoryFromSlug(segs[0])
+            ? categoryLd(p)
+            : null
+        if (blobs) {
+          html = injectLd(html, blobs)
+          ld++
+        }
         const dir = path.join(outDir, p)
         fs.mkdirSync(dir, { recursive: true })
         fs.writeFileSync(path.join(dir, 'index.html'), html)
         count++
       }
       // eslint-disable-next-line no-console
-      console.log(`[prerender-seo] ${count} rotas com canonical self-referring no HTML cru`)
+      console.log(`[prerender-seo] ${count} rotas canonical no HTML cru · ${ld} com JSON-LD + home Organization`)
     },
   }
 }
