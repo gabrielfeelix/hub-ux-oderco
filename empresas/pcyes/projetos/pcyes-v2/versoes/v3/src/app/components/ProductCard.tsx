@@ -212,7 +212,7 @@ export function ProductCard({
               style={{
                 fontFamily: "var(--font-family-inter)",
                 fontSize: "var(--text-sm)",
-                color: "rgba(var(--foreground-rgb), 0.38)",
+                color: "rgba(var(--foreground-rgb), 0.62)",
               }}
             >
               {product.oldPrice ?? `R$ ${oldPriceNum.toFixed(2).replace(".", ",")}`}
