@@ -6194,7 +6194,7 @@ export function MonteSeuPcPage() {
                     }}
                   />
 
-                  <main className="mx-auto grid max-w-[1520px] grid-cols-1 gap-6 px-5 py-6 pb-28 md:px-8 lg:grid-cols-[1fr_380px] lg:pb-6">
+                  <div className="mx-auto grid max-w-[1520px] grid-cols-1 gap-6 px-5 py-6 pb-28 md:px-8 lg:grid-cols-[1fr_380px] lg:pb-6">
                     <section className="min-w-0">
                       <div className="mb-4 hidden flex-col gap-3 lg:flex lg:flex-row lg:items-end lg:justify-between">
                         <div>
@@ -6506,7 +6506,7 @@ export function MonteSeuPcPage() {
                         }}
                       />
                     </aside>
-                  </main>
+                  </div>
 
                   {/* Mobile fixed action bar */}
                   <div

@@ -1351,6 +1351,9 @@ export function ProductsPage() {
                       <div className="w-10 h-10 border-4 border-foreground/10 border-t-foreground rounded-full animate-spin shadow-lg" />
                     </div>
                   )}
+                  {/* WCAG 1.3.1 — section heading so product-card <h3>s don't skip
+                      a level under the page <h1> (visually hidden). */}
+                  <h2 className="sr-only">Produtos</h2>
                   {gridMode === "grid" ? (
                     <div className="grid gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-14 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                       <AnimatePresence mode="popLayout">

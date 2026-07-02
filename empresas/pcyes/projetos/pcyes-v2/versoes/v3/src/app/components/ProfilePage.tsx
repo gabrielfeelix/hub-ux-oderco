@@ -208,9 +208,9 @@ export function ProfilePage() {
       <div className="pt-[calc(56px+var(--announce-h))] md:pt-[calc(150px+var(--announce-h))] min-h-screen flex items-center justify-center px-8">
         <div className="text-center max-w-md">
           <User size={40} className="text-foreground/30 mx-auto mb-6" />
-          <h2 className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-2xl)", fontWeight: "var(--font-weight-light)" }}>
+          <h1 className="text-foreground mb-3" style={{ fontFamily: "var(--font-family-figtree)", fontSize: "var(--text-2xl)", fontWeight: "var(--font-weight-light)" }}>
             Acesse sua conta
-          </h2>
+          </h1>
           <p className="text-foreground/50 mb-8" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", lineHeight: "1.7" }}>
             Faça login para acessar seus pedidos, favoritos e informações.
           </p>
