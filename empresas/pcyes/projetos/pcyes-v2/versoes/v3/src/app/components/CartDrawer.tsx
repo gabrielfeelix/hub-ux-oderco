@@ -13,6 +13,7 @@ import { BrindePill, PreOrderPill, QtyStepper } from "./section";
 import { getPreOrderInfo } from "./PreOrderData";
 import { formatCep } from "../../utils/format";
 import { COUPONS, GIFT_THRESHOLD } from "../../utils/commerce";
+import { toast } from "sonner";
 
 const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string }[]> = {
   default: [
@@ -28,7 +29,14 @@ const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string 
 const USER_PCYES_POINTS = 480;
 
 export function CartDrawer() {
-  const { items, isOpen, setIsOpen, removeItem, updateQuantity, totalItems, lastAdded, setGiftItem, clearCart } = useCart();
+  const { items, isOpen, setIsOpen, removeItem, restoreItem, updateQuantity, totalItems, lastAdded, setGiftItem, clearCart } = useCart();
+  const removeWithUndo = (item: (typeof items)[number]) => {
+    const idx = items.findIndex((i) => i.cartKey === item.cartKey);
+    removeItem(item.cartKey);
+    toast(`${item.name.split(" ").slice(0, 4).join(" ")}… removido`, {
+      action: { label: "Desfazer", onClick: () => restoreItem(item, idx) },
+    });
+  };
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark" || resolvedTheme === undefined;
   const navigate = useNavigate();
@@ -117,7 +125,7 @@ export function CartDrawer() {
       setCouponError("");
       setCouponOpen(false);
     } else {
-      setCouponError("Cupom inválido");
+      setCouponError(`Cupom inválido. Tente: ${Object.keys(COUPONS).join(", ")}`);
       setAppliedCoupon(null);
     }
   };
@@ -290,7 +298,7 @@ export function CartDrawer() {
                                 onChange={(next) => updateQuantity(item.cartKey, next)}
                               />
                             )}
-                            <button onClick={() => item.isGift ? setGiftItem(null) : removeItem(item.cartKey)} aria-label={item.isGift ? "Remover brinde" : `Remover ${item.name}`} className="text-foreground/20 hover:text-primary transition-colors cursor-pointer">
+                            <button onClick={() => item.isGift ? setGiftItem(null) : removeWithUndo(item)} aria-label={item.isGift ? "Remover brinde" : `Remover ${item.name}`} className="text-foreground/20 hover:text-primary transition-colors cursor-pointer">
                               <Trash2 size={14} />
                             </button>
                           </div>
@@ -499,7 +507,9 @@ export function CartDrawer() {
                 >Continuar comprando</button>
                 <div className="flex items-center justify-center pt-1">
                   <button
-                    onClick={() => clearCart()}
+                    onClick={() => toast("Limpar todo o carrinho?", {
+                      action: { label: "Limpar", onClick: () => clearCart() },
+                    })}
                     className="inline-flex items-center gap-1 text-foreground/30 hover:text-primary transition-colors cursor-pointer"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                     aria-label="Limpar carrinho"

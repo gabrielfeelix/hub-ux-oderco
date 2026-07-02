@@ -19,6 +19,7 @@ interface CartContextType {
   items: CartItem[];
   addItem: (item: AddCartItemInput) => void;
   removeItem: (cartKey: string) => void;
+  restoreItem: (item: CartItem, index?: number) => void;
   clearCart: () => void;
   updateQuantity: (cartKey: string, quantity: number) => void;
   setGiftItem: (item: AddCartItemInput | null) => void;
@@ -60,6 +61,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems((prev) => prev.filter((i) => i.cartKey !== cartKey));
   }, []);
 
+  // Reinsere um item removido preservando quantidade e posição (undo do toast).
+  const restoreItem = useCallback((item: CartItem, index?: number) => {
+    setItems((prev) => {
+      if (prev.some((i) => i.cartKey === item.cartKey)) return prev;
+      if (index === undefined || index < 0 || index > prev.length) return [...prev, item];
+      const next = [...prev];
+      next.splice(index, 0, item);
+      return next;
+    });
+  }, []);
+
   const clearCart = useCallback(() => {
     setItems([]);
   }, []);
@@ -92,7 +104,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, clearCart, updateQuantity, setGiftItem, totalItems, isOpen, setIsOpen, lastAdded }}>
+    <CartContext.Provider value={{ items, addItem, removeItem, restoreItem, clearCart, updateQuantity, setGiftItem, totalItems, isOpen, setIsOpen, lastAdded }}>
       {children}
     </CartContext.Provider>
   );

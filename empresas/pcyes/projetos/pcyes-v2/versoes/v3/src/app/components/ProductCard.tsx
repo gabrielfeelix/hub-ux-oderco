@@ -200,6 +200,11 @@ export function ProductCard({
             fontWeight: 600,
             lineHeight: 1.25,
             letterSpacing: "-0.01em",
+            // Cap rígido em N×line-height (em) além do -webkit-line-clamp: em zoom
+            // fracionário o clamp pode vazar 1px da linha seguinte; o max-height
+            // em `em` acompanha o zoom e recorta limpo.
+            maxHeight: cfg.clamp === "line-clamp-2" ? "2.5em" : "1.25em",
+            overflow: "hidden",
           }}
         >
           {product.name}

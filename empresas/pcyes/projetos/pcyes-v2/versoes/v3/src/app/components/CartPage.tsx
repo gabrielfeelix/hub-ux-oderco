@@ -31,9 +31,17 @@ import { getPreOrderInfo } from "./PreOrderData";
 import { PreOrderPill } from "./section";
 import { formatBRL, parseBRL, formatCep } from "../../utils/format";
 import { COUPONS, GIFT_THRESHOLD } from "../../utils/commerce";
+import { toast } from "sonner";
 
 export function CartPage() {
-  const { items, removeItem, updateQuantity, clearCart, setGiftItem } = useCart();
+  const { items, removeItem, restoreItem, updateQuantity, clearCart, setGiftItem } = useCart();
+  const removeWithUndo = (item: (typeof items)[number]) => {
+    const idx = items.findIndex((i) => i.cartKey === item.cartKey);
+    removeItem(item.cartKey);
+    toast(`${item.name.split(" ").slice(0, 4).join(" ")}… removido`, {
+      action: { label: "Desfazer", onClick: () => restoreItem(item, idx) },
+    });
+  };
   const navigate = useNavigate();
   const { appliedCoupon, setAppliedCoupon, pointsApplied, setPointsApplied, pointsToUse, setPointsToUse } = useCheckoutPrefs();
   const { isLoggedIn, promptLogin } = useAuth();
@@ -155,7 +163,7 @@ export function CartPage() {
       setCouponError("");
       setCouponOpen(false);
     } else {
-      setCouponError("Cupom inválido");
+      setCouponError(`Cupom inválido. Tente: ${Object.keys(COUPONS).join(", ")}`);
       setAppliedCoupon(null);
     }
   };
@@ -466,7 +474,7 @@ export function CartPage() {
                             {item.name}
                           </Link>
                           <button
-                            onClick={() => removeItem(item.cartKey)}
+                            onClick={() => removeWithUndo(item)}
                             className="flex h-11 w-11 md:h-8 md:w-8 flex-shrink-0 cursor-pointer items-center justify-center rounded-full text-ink-subtle transition-colors hover:bg-white/[0.06] hover:text-primary"
                             aria-label="Remover item"
                           >
