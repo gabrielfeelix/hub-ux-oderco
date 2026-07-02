@@ -10,6 +10,27 @@
 
 ---
 
+## ✅ Status: REMEDIADO (Fases 0–4)
+
+Correções aplicadas e validadas com o harness a cada passo. Plano em [A11Y-FIX-PLAN.md](A11Y-FIX-PLAN.md).
+
+| Regra (axe, WCAG 2.2 AA) | Antes | Depois |
+|---|---:|---:|
+| color-contrast (1.4.3) | 129 | **0** |
+| target-size (2.5.8) | 88 | **0** |
+| button-name (4.1.2) | 6 | **0** |
+| label / select-name (3.3.2/4.1.2) | 7 | **0** |
+| aria-required-attr / -children (1.3.1) | 7 | **0** |
+| scrollable-region-focusable (2.1.1) | 3 | **0** |
+| frame-title (4.1.2) | 1 | **0** |
+| **Total axe (22 páginas)** | **~217** | **0** |
+
+Estrutura: `<h1>` em todos os templates · `<main>` único por página (removidos aninhados/duplicados) · saltos de heading do PLP corrigidos (h2 sr-only).
+Resíduos best-practice (não-AA, axe=0): 3 saltos de heading em faq/monte-seu-pc/onde-encontrar (contextos `<aside>`/self-contained) — revisão manual.
+Sem erros de TypeScript novos (31 pré-existentes = 31 depois). Sem regressão visual (verificado por screenshot em home/PLP/PDP/landing).
+
+---
+
 ## Resumo executivo
 
 | Severidade | Regra | WCAG | Páginas | Ocorrências |
