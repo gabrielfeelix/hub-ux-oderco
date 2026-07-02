@@ -984,7 +984,7 @@ export function CheckoutPage() {
                     key={s.key}
                     onClick={() => done && setStep(s.key as Step)}
                     disabled={!done}
-                    className="flex flex-1 items-center gap-2 min-h-[44px] md:min-h-0 disabled:cursor-not-allowed"
+                    className="flex flex-1 items-center gap-2 min-h-[44px] md:min-h-[24px] disabled:cursor-not-allowed"
                   >
                     <div
                       className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-all"
@@ -1092,7 +1092,7 @@ export function CheckoutPage() {
                                       <button
                                         type="button"
                                         onClick={(e) => { e.stopPropagation(); setSelectedAddressId(null); }}
-                                        className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-ink hover:text-ink-strong transition-all cursor-pointer"
+                                        className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-[24px] md:px-2 text-ink hover:text-ink-strong transition-all cursor-pointer"
                                         style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                                       >
                                         Editar
@@ -1437,7 +1437,7 @@ export function CheckoutPage() {
                                           <button
                                             type="button"
                                             onClick={(e) => { e.stopPropagation(); setSelectedCardId(null); }}
-                                            className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-0 md:px-2 text-ink hover:text-ink-strong transition-all cursor-pointer"
+                                            className="flex-shrink-0 inline-flex items-center px-3 py-1 min-h-[44px] md:min-h-[24px] md:px-2 text-ink hover:text-ink-strong transition-all cursor-pointer"
                                             style={{ borderRadius: 6, background: "rgba(var(--foreground-rgb), 0.06)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600 }}
                                           >
                                             Editar
@@ -1672,7 +1672,7 @@ export function CheckoutPage() {
               <div className="mt-6 flex items-center justify-between gap-3">
                 <button
                   onClick={() => (step === 0 ? navigate("/carrinho") : setStep((s) => (s - 1) as Step))}
-                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-3 min-h-[44px] md:min-h-0 text-ink-muted transition-colors hover:bg-white/[0.05] hover:text-ink-strong"
+                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-3 min-h-[44px] md:min-h-[24px] text-ink-muted transition-colors hover:bg-white/[0.05] hover:text-ink-strong"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
                 >
                   <ChevronLeft size={14} strokeWidth={2.4} />
@@ -1792,7 +1792,7 @@ export function CheckoutPage() {
                 <div className="mb-3">
                   <button
                     onClick={() => setCouponOpen((v) => !v)}
-                    className={`flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-2.5 min-h-[44px] md:min-h-0 transition-colors ${
+                    className={`flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-2.5 min-h-[44px] md:min-h-[24px] transition-colors ${
                       appliedCoupon ? "rounded-card-sm border border-green-500/25 bg-green-500/[0.06]" : "rounded-card-sm border border-edge-subtle hover:border-edge hover:bg-white/[0.03]"
                     }`}
                     aria-expanded={couponOpen}
@@ -1844,7 +1844,7 @@ export function CheckoutPage() {
                           <button
                             onClick={handleApplyCoupon}
                             disabled={!coupon.trim()}
-                            className="cursor-pointer rounded-[var(--radius-card-sm)] px-4 py-2 min-h-[44px] md:min-h-0 text-ink-strong transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+                            className="cursor-pointer rounded-[var(--radius-card-sm)] px-4 py-2 min-h-[44px] md:min-h-[24px] text-ink-strong transition-transform hover:scale-[1.02] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
                             style={{
                               background: "var(--gradient-brand)",
                               fontFamily: "var(--font-family-inter)",
@@ -1878,7 +1878,7 @@ export function CheckoutPage() {
                 >
                   <button
                     onClick={() => { setPointsApplied((v) => !v); setPointsOpen((v) => !v); }}
-                    className="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2.5 min-h-[44px] md:min-h-0"
+                    className="flex w-full cursor-pointer items-center justify-between gap-2 px-3 py-2.5 min-h-[44px] md:min-h-[24px]"
                     aria-expanded={pointsApplied}
                   >
                     <span className="flex items-center gap-2">

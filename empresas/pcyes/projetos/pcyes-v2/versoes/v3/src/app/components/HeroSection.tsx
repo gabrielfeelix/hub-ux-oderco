@@ -258,7 +258,7 @@ export function HeroSection() {
             <button
               key={i}
               onClick={() => goTo(i)}
-              className="flex h-11 cursor-pointer items-center justify-center px-1.5"
+              className="flex h-11 min-w-[24px] cursor-pointer items-center justify-center px-1.5"
               aria-label={`Banner ${i + 1}`}
             >
               <span

@@ -274,8 +274,7 @@ function PriceRangeSlider({
           onTouchStart={handlePointerDown("min")}
           className="absolute top-1/2 w-11 h-11 -translate-x-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing z-10 flex items-center justify-center"
           style={{ left: `${minPct}%`, touchAction: "none" }}
-          aria-label="Preço mínimo"
-          role="slider"
+          aria-hidden="true"
         >
           <div className="w-5 h-5 rounded-full bg-primary border-2 border-background shadow-md" />
         </div>
@@ -285,8 +284,7 @@ function PriceRangeSlider({
           onTouchStart={handlePointerDown("max")}
           className="absolute top-1/2 w-11 h-11 -translate-x-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing z-10 flex items-center justify-center"
           style={{ left: `${maxPct}%`, touchAction: "none" }}
-          aria-label="Preço máximo"
-          role="slider"
+          aria-hidden="true"
         >
           <div className="w-5 h-5 rounded-full bg-primary border-2 border-background shadow-md" />
         </div>
@@ -297,7 +295,7 @@ function PriceRangeSlider({
         <div className="flex-1">
           <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.06em" }}>MÍN</label>
           <input
-            type="text" inputMode="numeric" value={formatBRL(safeMin)}
+            type="text" inputMode="numeric" aria-label="Preço mínimo" value={formatBRL(safeMin)}
             onChange={(e) => onMinChange(Math.max(minBound, Math.min(parseInt(e.target.value.replace(/\D/g, "")) || minBound, max)))}
             onBlur={onApply}
             className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
@@ -307,7 +305,7 @@ function PriceRangeSlider({
         <div className="flex-1">
           <label className="text-foreground/40 mb-1.5 block" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", letterSpacing: "0.06em" }}>MÁX</label>
           <input
-            type="text" inputMode="numeric" value={formatBRL(safeMax)}
+            type="text" inputMode="numeric" aria-label="Preço máximo" value={formatBRL(safeMax)}
             onChange={(e) => onMaxChange(Math.min(maxBound, Math.max(parseInt(e.target.value.replace(/\D/g, "")) || maxBound, min)))}
             onBlur={onApply}
             className="w-full min-h-[44px] border border-foreground/15 px-3 py-2 bg-transparent text-foreground focus:border-foreground/30 focus:outline-none transition-colors text-center"
@@ -827,7 +825,7 @@ export function ProductsPage() {
       ))}
       {inStockOnly && <FilterPill label="Em estoque" onRemove={() => setInStockOnly(false)} />}
       {activeFilterCount > 0 && (
-        <button onClick={clearAll} className="inline-flex items-center text-foreground/50 hover:text-foreground underline px-2 py-1 min-h-[44px] lg:min-h-0 text-[var(--text-caption)] font-inter transition-colors">Limpar tudo</button>
+        <button onClick={clearAll} className="inline-flex items-center text-foreground/50 hover:text-foreground underline px-2 py-1 min-h-[44px] lg:min-h-[24px] text-[var(--text-caption)] font-inter transition-colors">Limpar tudo</button>
       )}
     </>
   );
@@ -889,7 +887,7 @@ export function ProductsPage() {
               <button
                 key={label}
                 onClick={() => toggleFeaturedCategory(label)}
-                className="flex w-full items-center justify-between gap-3 py-2 min-h-[44px] lg:min-h-0 text-left group/item cursor-pointer"
+                className="flex w-full items-center justify-between gap-3 py-2 min-h-[44px] lg:min-h-[24px] text-left group/item cursor-pointer"
               >
                 <span
                   className={`transition-colors flex-1 ${isSelected ? "text-foreground font-medium" : "text-foreground/72 group-hover/item:text-foreground"}`}
@@ -908,11 +906,11 @@ export function ProductsPage() {
 
       {availableBrands.length > 0 && (
         <FilterSection title="Marca" expanded={expandedSections.brands} onToggle={() => toggleSection("brands")}>
-          <div className="space-y-1 pt-1 max-h-[260px] overflow-y-auto pr-1" style={{ scrollbarWidth: "thin" }}>
+          <div tabIndex={0} role="group" aria-label="Opções de filtro — role para ver mais" className="space-y-1 pt-1 max-h-[260px] overflow-y-auto pr-1" style={{ scrollbarWidth: "thin" }}>
             {availableBrands.map(({ label, count }) => {
               const active = selectedBrands.has(label);
               return (
-                <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
+                <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-[24px] cursor-pointer group/item">
                   <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedBrands, label)} />
                   <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                     {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={"var(--surface-0)"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -938,7 +936,7 @@ export function ProductsPage() {
                   key={label}
                   type="button"
                   onClick={() => toggleSet(setSelectedSizes, label)}
-                  className={`flex items-center gap-1.5 px-3 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/55 hover:border-foreground/25"}`}
+                  className={`flex items-center gap-1.5 px-3 py-2 min-h-[44px] lg:min-h-[24px] border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/55 hover:border-foreground/25"}`}
                   style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
                   aria-pressed={active}
                 >
@@ -953,11 +951,11 @@ export function ProductsPage() {
 
       {availableAttributes.length > 0 && (
         <FilterSection title="Atributos" expanded={expandedSections.attributes} onToggle={() => toggleSection("attributes")}>
-          <div className="space-y-1 pt-1 max-h-[260px] overflow-y-auto pr-1" style={{ scrollbarWidth: "thin" }}>
+          <div tabIndex={0} role="group" aria-label="Opções de filtro — role para ver mais" className="space-y-1 pt-1 max-h-[260px] overflow-y-auto pr-1" style={{ scrollbarWidth: "thin" }}>
             {availableAttributes.map(({ label, count }) => {
               const active = selectedAttributes.has(label);
               return (
-                <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
+                <label key={label} className="flex items-center gap-3 py-1.5 min-h-[44px] lg:min-h-[24px] cursor-pointer group/item">
                   <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedAttributes, label)} />
                   <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                     {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={"var(--surface-0)"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -1023,7 +1021,7 @@ export function ProductsPage() {
 
       {/* Promoção */}
       <FilterSection title="Promoção" expanded={expandedSections.promo} onToggle={() => toggleSection("promo")}>
-        <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
+        <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-[24px] cursor-pointer group/item">
           <input type="checkbox" className="hidden" checked={onlyDiscount} onChange={() => setOnlyDiscount(!onlyDiscount)} />
           <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${onlyDiscount ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
             {onlyDiscount && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={"var(--surface-0)"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -1034,7 +1032,7 @@ export function ProductsPage() {
           const count = productsBeforeColorFilter.filter((pr) => getDiscount(getColorMatchedProduct(pr)) >= pct).length;
           const active = selectedDiscounts.has(pct);
           return (
-            <label key={pct} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
+            <label key={pct} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-[24px] cursor-pointer group/item">
               <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedDiscounts, pct)} />
               <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                 {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={"var(--surface-0)"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -1053,7 +1051,7 @@ export function ProductsPage() {
             const active = selectedTags.has(tag);
             return (
               <button key={tag} onClick={() => toggleSet(setSelectedTags, tag)}
-                className={`flex items-center px-4 py-2 min-h-[44px] lg:min-h-0 border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/50 hover:border-foreground/25"
+                className={`flex items-center px-4 py-2 min-h-[44px] lg:min-h-[24px] border transition-colors ${active ? "border-foreground/30 bg-foreground/5 text-foreground" : "border-foreground/10 text-foreground/50 hover:border-foreground/25"
                   }`}
                 style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
               >{tag}</button>
@@ -1067,7 +1065,7 @@ export function ProductsPage() {
         {[5, 4.5, 4, 3.5, 3].map((r) => {
           const active = selectedRatings.has(r);
           return (
-            <label key={r} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
+            <label key={r} className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-[24px] cursor-pointer group/item">
               <input type="checkbox" className="hidden" checked={active} onChange={() => toggleSet(setSelectedRatings, r)} />
               <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${active ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
                 {active && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={"var(--surface-0)"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -1083,7 +1081,7 @@ export function ProductsPage() {
 
       {/* Em estoque */}
       <div>
-        <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-0 cursor-pointer group/item">
+        <label className="flex items-center gap-3 py-2 min-h-[44px] lg:min-h-[24px] cursor-pointer group/item">
           <input type="checkbox" className="hidden" checked={inStockOnly} onChange={() => setInStockOnly(!inStockOnly)} />
           <span className={`w-4 h-4 border flex items-center justify-center flex-shrink-0 transition-colors ${inStockOnly ? "border-foreground bg-foreground" : "border-foreground/20 group-hover/item:border-foreground/40"}`} style={{ borderRadius: "var(--radius)" }}>
             {inStockOnly && <svg width="10" height="10" viewBox="0 0 8 8"><path d="M1.5 4L3 5.5L6.5 2.5" stroke={"var(--surface-0)"} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>}
@@ -1218,7 +1216,7 @@ export function ProductsPage() {
               {/* Sort */}
               <div className="relative">
                 <button onClick={() => setSortDropdownOpen(!sortDropdownOpen)}
-                  className="flex items-center gap-2 min-h-[44px] lg:min-h-0 text-foreground/50 hover:text-foreground/80 transition-colors"
+                  className="flex items-center gap-2 min-h-[44px] lg:min-h-[24px] text-foreground/50 hover:text-foreground/80 transition-colors"
                   style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                 >
                   <ArrowUpDown size={14} />
@@ -1248,7 +1246,7 @@ export function ProductsPage() {
                 <button
                   type="button"
                   onClick={() => setItemsPerPageDropdownOpen((prev) => !prev)}
-                  className={`relative inline-flex h-9 min-h-[44px] lg:min-h-0 min-w-[62px] items-center justify-between gap-2 rounded-[var(--radius-card-sm)] border px-3 transition-all cursor-pointer ${
+                  className={`relative inline-flex h-9 min-h-[44px] lg:min-h-[24px] min-w-[62px] items-center justify-between gap-2 rounded-[var(--radius-card-sm)] border px-3 transition-all cursor-pointer ${
                     itemsPerPageDropdownOpen
                       ? "border-primary/50 bg-foreground/[0.06] text-foreground shadow-[0_0_0_1px_rgba(255,59,48,0.16)]"
                       : "border-foreground/10 bg-foreground/[0.03] text-foreground hover:border-foreground/20"
@@ -1473,7 +1471,7 @@ export function ProductsPage() {
                                   {swatches.map((sw) => (
                                     <button
                                       key={sw.productId}
-                                      className="p-3 lg:p-0 -m-3 lg:m-0 cursor-pointer flex items-center justify-center"
+                                      className="p-3 lg:p-1.5 -m-3 lg:m-0 cursor-pointer flex items-center justify-center"
                                       title={sw.label}
                                       onClick={(e) => {
                                         e.preventDefault();
@@ -1495,7 +1493,7 @@ export function ProductsPage() {
                                 </div>
                               )}
                               {displayProduct.oldPrice && (
-                                <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.38)" }}>
+                                <p className="line-through leading-none mb-1" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)", color: "rgba(var(--foreground-rgb), 0.62)" }}>
                                   {displayProduct.oldPrice}
                                 </p>
                               )}
@@ -1823,7 +1821,7 @@ export function ProductsPage() {
                       {quickViewProduct.price}
                     </p>
                     {quickViewProduct.oldPrice && (
-                      <p className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", color: "rgba(var(--foreground-rgb), 0.35)" }}>
+                      <p className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-base)", color: "rgba(var(--foreground-rgb), 0.62)" }}>
                         {quickViewProduct.oldPrice}
                       </p>
                     )}
@@ -1942,7 +1940,7 @@ function FilterSection({ title, expanded = true, onToggle, children }: { title: 
   const toggle = onToggle ?? (() => setOpen(!open));
   return (
     <div className="border-b border-foreground/5 py-4 last:border-0">
-      <button onClick={toggle} className="flex items-center justify-between w-full mb-1 group outline-none" aria-expanded={open}>
+      <button onClick={toggle} className="flex min-h-[24px] items-center justify-between w-full mb-1 group outline-none" aria-expanded={open}>
         <span className="text-foreground/80 tracking-[0.08em] font-bold" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}>{title.toUpperCase()}</span>
         <ChevronDown size={14} className={`text-foreground/40 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
@@ -1960,7 +1958,7 @@ function FilterSection({ title, expanded = true, onToggle, children }: { title: 
 function FilterPill({ label, onRemove }: { label: string; onRemove: () => void }) {
   return (
     <button onClick={onRemove}
-      className="flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] lg:min-h-0 bg-foreground/[0.06] text-foreground/80 border border-foreground/10 hover:border-foreground/25 hover:bg-foreground/[0.08] transition-colors font-medium"
+      className="flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] lg:min-h-[24px] bg-foreground/[0.06] text-foreground/80 border border-foreground/10 hover:border-foreground/25 hover:bg-foreground/[0.08] transition-colors font-medium"
       style={{ borderRadius: "var(--radius-pill)", fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)" }}
       aria-label={`Remover filtro ${label}`}
     >

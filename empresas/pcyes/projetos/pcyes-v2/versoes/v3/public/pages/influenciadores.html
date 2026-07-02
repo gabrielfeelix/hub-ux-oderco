@@ -387,7 +387,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--red);
+  background: #d21d23; /* WCAG 1.4.3: var(--red) #ff2b2e gave #fff 3.72:1 → #d21d23 ≈5:1 */
   color: #fff;
   font-family: 'Figtree', sans-serif;
   font-weight: 600;
@@ -643,7 +643,7 @@
   margin-bottom: 8px;
 }
 
-#pcyes-influencers .landing-form-subtitle { font-size: 16px; color: #787878; text-align: center; }
+#pcyes-influencers .landing-form-subtitle { font-size: 16px; color: rgba(255,255,255,0.72); text-align: center; } /* WCAG 1.4.3: #787878 gave 4.24:1 → 0.72 (≥4.5:1) */
 
 #pcyes-influencers .steps-row {
   display: flex;
@@ -695,7 +695,7 @@
 #pcyes-influencers .step-circle--done     { background: rgba(255,0,4,0.12); color: var(--red); border: 1px solid rgba(255,0,4,0.4); }
 
 #pcyes-influencers .pcyes-step-label { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: #fff; white-space: nowrap; transition: color .3s; }
-#pcyes-influencers .step-label--inactive { color: #4a4a4a; font-weight: 400; }
+#pcyes-influencers .step-label--inactive { color: #808080; font-weight: 400; } /* WCAG 1.4.3: #4a4a4a gave 2.11:1 → #808080 ≈4.75:1 */
 #pcyes-influencers .step-label--done { color: rgba(255,43,46,0.7); }
 
 #pcyes-influencers .step-connector {

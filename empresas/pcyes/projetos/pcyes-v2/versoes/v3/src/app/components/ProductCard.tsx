@@ -260,7 +260,7 @@ export function ProductCard({
                 e.stopPropagation();
                 setSelectedSwatchId(s.productId === selectedSwatchId ? null : s.productId);
               }}
-              className="inline-flex items-center justify-center p-4 -m-4 md:p-0 md:m-0 cursor-pointer transition-all hover:scale-110"
+              className="inline-flex items-center justify-center p-4 -m-4 md:p-1.5 md:-m-1.5 cursor-pointer transition-all hover:scale-110"
               aria-label={s.label}
               type="button"
             >

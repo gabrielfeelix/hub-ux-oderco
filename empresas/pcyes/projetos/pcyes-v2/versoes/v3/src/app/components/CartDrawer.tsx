@@ -615,7 +615,7 @@ export function CartDrawer() {
                             {product.name}
                           </p>
                           <div className="mt-3 flex items-baseline gap-2 md:mt-4">
-                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.32)" }}>
+                            <span className="line-through" style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", color: "rgba(var(--foreground-rgb), 0.62)" }}>
                               {product.price}
                             </span>
                             <span style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(16px, 4.6vw, 22px)", fontWeight: 700, color: "#22c55e", letterSpacing: "-0.015em" }}>
@@ -640,7 +640,7 @@ export function CartDrawer() {
                   <div className="flex items-center justify-between border-t border-edge-subtle px-6 py-5 md:px-9 md:py-6">
                     <button
                       onClick={() => { setGiftModalOpen(false); setGiftDismissed(true); setSelectedGiftId(null); }}
-                      className="inline-flex items-center cursor-pointer text-ink-muted transition-colors hover:text-ink min-h-[44px] px-3 md:min-h-0 md:px-0"
+                      className="inline-flex items-center cursor-pointer text-ink-muted transition-colors hover:text-ink min-h-[44px] px-3 md:min-h-[24px] md:px-0"
                       style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-caption)", fontWeight: 600, letterSpacing: "0.06em" }}
                     >
                       Agora não
@@ -648,7 +648,7 @@ export function CartDrawer() {
                     <button
                       onClick={confirmGift}
                       disabled={!selectedGiftId}
-                      className="cursor-pointer rounded-full px-7 py-3 text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-0"
+                      className="cursor-pointer rounded-full px-7 py-3 text-ink-strong transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:scale-100 min-h-[44px] md:min-h-[24px]"
                       style={{
                         background: "var(--gradient-brand)",
                         fontFamily: "var(--font-family-inter)",
