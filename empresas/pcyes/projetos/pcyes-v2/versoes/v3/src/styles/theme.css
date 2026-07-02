@@ -556,6 +556,28 @@ input:-webkit-autofill:active {
   }
 }
 
+/* === WCAG 2.4.7 (AA) — Focus Visible ===
+   The codebase disables focus outlines in ~65 places (focus:outline-none /
+   outline-none) for a clean mouse UX, but that left KEYBOARD focus invisible.
+   This restores a strong, consistent focus ring for keyboard users only
+   (:focus-visible), overriding those per-component resets. Mouse clicks
+   (:focus without :focus-visible) stay ring-free. Placed outside @layer so
+   the !important reliably wins over component `outline` utilities.
+   The 2px offset puts the ring on the surrounding surface, so it stays
+   visible even on same-color (e.g. red) buttons. WCAG 1.4.11 / 2.4.11 met:
+   --ring clears 3:1 against page surfaces. */
+*:focus-visible {
+  outline: 2px solid var(--ring) !important;
+  outline-offset: 2px !important;
+  border-radius: 2px;
+}
+/* Elements that intentionally scroll into view under a sticky header keep
+   clearance so the focused element is never obscured (2.4.11, new in 2.2). */
+:focus-visible {
+  scroll-margin-top: 96px;
+  scroll-margin-bottom: 24px;
+}
+
 /**
  * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
  */

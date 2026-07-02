@@ -1237,7 +1237,7 @@ export function Navbar() {
 		                      value={searchQuery}
 		                      onChange={(e) => setSearchQuery(e.target.value)}
 		                      placeholder="Buscar"
-		                      className="h-full min-w-0 flex-1 bg-transparent px-2 text-ink-strong outline-none placeholder:text-ink-strong/48"
+		                      aria-label="Buscar produtos" className="h-full min-w-0 flex-1 bg-transparent px-2 text-ink-strong outline-none placeholder:text-ink-strong/48"
 		                      style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
 		                    />
 		                    {searchQuery && (
@@ -1401,7 +1401,7 @@ export function Navbar() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setSearchPanelOpen(true)}
                     placeholder="O que você está procurando?"
-                    className="h-full min-w-0 flex-1 bg-transparent px-4 text-ink-strong outline-none placeholder:text-ink-subtle"
+                    aria-label="Buscar produtos" className="h-full min-w-0 flex-1 bg-transparent px-4 text-ink-strong outline-none placeholder:text-ink-subtle"
                     style={{ fontFamily: "var(--font-family-inter)", fontSize: "var(--text-sm)" }}
                   />
 
@@ -2057,6 +2057,7 @@ export function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Buscar produtos, categorias..."
+                    aria-label="Buscar produtos"
                     className="min-w-0 flex-1 bg-transparent text-ink-strong outline-none placeholder:text-ink-strong/34"
                     style={{ fontFamily: "var(--font-family-figtree)", fontSize: "clamp(24px, 7vw, 46px)", fontWeight: 500, lineHeight: 1.05 }}
                   />
