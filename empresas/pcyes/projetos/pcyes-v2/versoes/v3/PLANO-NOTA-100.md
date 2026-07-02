@@ -26,6 +26,21 @@ Executado em **6 fases**, cada fase = **1 commit atômico**, verificado antes de
 | Testes & Melhorias | 65 | **90** | Instrumentação GA4/GTM + KPIs |
 | **Média** | **72** | **~92** | |
 
+> ## ✅ EXECUTADO — 6/6 fases concluídas
+>
+> Todas as fases entregues e commitadas na branch `tonante/website-v1` (sem push; `main` = deploy prod). TypeScript manteve o baseline de 31 erros pré-existentes em todas as fases (zero regressão). Verificações em Chrome headless (CDP) confirmaram: bloco SEO removido no mount (zero UX), funil no dataLayer, GTM não injetado sem ID, e 1 `<h1>`/`<main>` por página.
+>
+> | Fase | Commit | Resultado |
+> |---|---|---|
+> | 1 robots + schema | `e5d4060b` `59d07d87` | IA liberada · `aggregateRating` · OG/JSON-LD absolutos |
+> | 2 JSON-LD no cru | `45d28d48` | 586/596 rotas com schema no HTML cru |
+> | 3 SSG data-driven | `4defdca2` | 596 rotas + home com corpo no HTML cru, zero UX (verificado headless) |
+> | 4 robustez de erro | `fd38b9dd` | G1–G5 fechados (maioria já em código) + aria-invalid/foco + clear confirmado |
+> | 5 analytics | `9f52102b` | GA4/GTM + Consent Mode v2 + funil (view/add/begin/purchase) |
+> | 6 validação | (este) | reauditoria estrutural + docs atualizados |
+>
+> **Ativar em produção:** definir `VITE_GTM_ID` (analytics). Resíduos abertos (baixo impacto): 3 heading-skips best-practice (não-AA), h1/landmark no empty-state do checkout, cupom com sugestão (G6), line-clamp sliver (G7).
+
 > **Decisão de layout (fixada):** o plano é **layout-neutral nas páginas normais**. O hero da home fica **exatamente como está** (carrossel de imagem). Nenhuma fase altera o visual das telas em estado normal — só se adicionam telas/feedbacks de **estado de erro** (404, toasts). M3 mira 89 (não 93) por não incluir o hero textual.
 
 > **Nota honesta:** 100 cravado em todos não é realista num protótipo. Teto de GEO depende de autoridade/tempo no ar (não só de código); AAA de contraste exige redesenhar a paleta (vermelho de marca não bate 7:1). Meta de ~93 = "excelente" em todos os módulos.

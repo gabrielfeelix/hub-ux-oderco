@@ -4,6 +4,22 @@
 
 ---
 
+## ✅ Status de resolução (Plano Nota-100, Fase 4)
+
+| Gap | Status | Onde |
+|---|---|---|
+| G1 CEP inválido em silêncio | ✅ Resolvido | `CheckoutPage.handleCepLookup` — `toast.error` + `cepError` + `aria-invalid` |
+| G2 checkout sem erro por-campo | ✅ Resolvido | `err()` + `role="alert"` + `aria-invalid` nos 5 obrigatórios + foco no 1º inválido |
+| G3 sem catch-all 404 | ✅ Resolvido | `routes.tsx` `path:"*"` → `NotFoundPage` + `CategoryRoute` valida slug |
+| G4 remoção sem undo | ✅ Resolvido | `removeWithUndo` (sonner `action`) + "Limpar" confirmado em Cart**Page** e Cart**Drawer** |
+| G5 PIX sem ação ao expirar | ✅ Resolvido | `pixExpired` + `regeneratePix` ("Gerar novo código PIX") |
+| G6 cupom sem sugestão | 🟢 Baixa (aberto) | polimento opcional |
+| G7 line-clamp sliver (zoom≠100%) | 🟢 Baixa (aberto) | artefato Chromium, só em zoom ≠ 100% |
+
+**Achado novo (Fase 6):** `/checkout` no estado **carrinho vazio** renderiza sem `<h1>`/`<main>` (o template só monta com itens). Não é regressão — é o empty-state. Registrado para revisão (adicionar h1/landmark ao empty-state do checkout).
+
+---
+
 ## 1. Bug do truncamento de título (o "texto vazando abaixo do …")
 
 **Investigação:** inspecionei o DOM real dos títulos de produto (CDP). O `-webkit-line-clamp` renderiza **limpo** (2 linhas + "…", sem vazamento) em zoom 100% no meu render controlado. O `display: computed = flow-root` que aparece é o **headless reportando** o `-webkit-box` (nenhuma regra CSS define `flow-root`; forçar `display:-webkit-box !important` não altera o computed).
