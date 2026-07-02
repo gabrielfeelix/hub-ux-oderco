@@ -106,9 +106,66 @@ Definidas em `src/app/routes.tsx`. Principais: `/` (home),
 
 ## Deploy
 
-Vercel — `vercel --prod` a partir da raiz do monorepo `ux-prototipos`.
-Subpastas de `public/` precisam estar listadas em
-`prototypePublicRoots` no `vite.config.ts`, senão dão 404.
+Este protótipo é publicado em dois lugares, com o mesmo código servido por dois projetos Vercel diferentes. Este diretório (no monorepo) é a fonte da verdade. O standalone é uma cópia só de código, sincronizada a partir daqui.
+
+| Alvo | URL | Fonte | Publica quando |
+|------|-----|-------|----------------|
+| Hub interno | https://ux-oderco.vercel.app/pcyes/pcyes-v2/v3 | este monorepo | push na `main` do monorepo |
+| Standalone (devs) | https://pcyes-v3-codigo-fonte.vercel.app | repo `pcyes-v3-codigo-fonte` | push na `main` desse repo |
+
+`dist/` é gerado no build e ignorado pelo git. A Vercel builda a partir do código, não do `dist/` commitado.
+
+### 1. Deploy do hub (monorepo)
+
+O projeto Vercel `ux-oderco` está ligado ao GitHub do monorepo e faz deploy de produção a cada push na `main`. O build roda `scripts/build-prototypes.mjs`, que compila cada protótipo do hub e serve o PCYES v3 em `/pcyes/pcyes-v2/v3`.
+
+```bash
+# na raiz do monorepo, com o trabalho commitado na main
+git push origin main
+```
+
+Isso rebuilda todos os protótipos do hub (todas as empresas), não só o PCYES. Leva alguns minutos. Alternativa manual: `vercel --prod` a partir da raiz do monorepo.
+
+### 2. Deploy do standalone (repo dos devs)
+
+O standalone é um repo git próprio em `/home/gabrielbarbosa/dev/v3-codigo-fonte` (remote `pcyes-v3-codigo-fonte`, público). Push na `main` dele dispara o deploy automático na Vercel.
+
+Antes de publicar, sincronizar o código a partir daqui:
+
+```bash
+H=/home/gabrielbarbosa/dev/ux-prototipos/empresas/pcyes/projetos/pcyes-v2/versoes/v3
+D=/home/gabrielbarbosa/dev/v3-codigo-fonte
+
+# 1. Espelhar codigo e assets (com --delete para remover arquivos deletados)
+rsync -rc --delete "$H/src/"    "$D/src/"
+rsync -rc --delete "$H/public/" "$D/public/"
+
+# 2. Copiar configs de build (NAO copiar README, ATTRIBUTIONS nem .gitignore)
+for f in index.html package.json package-lock.json tsconfig.json \
+         vite.config.ts postcss.config.mjs vercel.json; do
+  cp -p "$H/$f" "$D/$f"
+done
+cp -p "$H/SEO.md" "$D/SEO.md"   # doc de SEO para os devs
+
+# 3. Build (tem que terminar verde)
+cd "$D" && npm install && npm run build
+
+# 4. Publicar (dispara o deploy na Vercel)
+git add -A
+git commit -m "sync: atualiza prototipo a partir do monorepo"
+git push origin main
+```
+
+O runbook completo (o que copiar, o que nunca copiar, checagens antes de publicar) está em `ATUALIZAR-PROTOTIPO.md`. Atalho: pedir ao Claude "atualiza o protótipo".
+
+### Como o build gera o SEO
+
+`npm run build` roda o Vite com os plugins definidos em `vite.config.ts`:
+
+- `deferMainCss`: tira o bundle CSS do caminho crítico de renderização.
+- `prerenderSeoHtml`: gera um `index.html` por rota do sitemap, com canonical self-referring, JSON-LD e o corpo da página já no HTML cru.
+
+Os padrões de SEO estão documentados em `SEO.md`. Subpastas novas de `public/` precisam ser listadas em `prototypePublicRoots` no `vite.config.ts`, senão dão 404 no hub.
 
 ## Pendências conhecidas
 
