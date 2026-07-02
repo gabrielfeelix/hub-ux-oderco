@@ -31,6 +31,42 @@ Sem erros de TypeScript novos (31 pré-existentes = 31 depois). Sem regressão v
 
 ---
 
+## 🔬 Análise profunda (Fase 6) — teclado, leitor de tela, níveis, breakpoints
+
+Auditoria estendida por DOM renderizado: nível WCAG A/AA/AAA separado, qualidade de `alt`, inventário de foco/nomes, e responsividade em 5 viewports.
+
+### Níveis WCAG (10 páginas representativas)
+| Nível | Status |
+|---|---|
+| **A** | ✅ 0 violations |
+| **AA** | ✅ 0 violations |
+| **AAA** | ⚠️ só `color-contrast-enhanced` (7:1) — 55 nós. Aspiracional: o tema dark + vermelho de marca não atinge 7:1 sem redesenhar a paleta. Restante do AAA passa. |
+| best-practice | `region` no checkout (modais portaled fora de landmark, moderate) + 2 saltos de heading. Não-AA. |
+
+### Cego / leitor de tela
+- **Imagens:** 0 sem `alt`, 0 com `alt` genérico ("image"/"banner") nas ~180 imagens auditadas → o leitor de tela anuncia descrição real, não nome de arquivo. Decorativas marcadas (`alt=""`/`aria-hidden`).
+- **Nomes acessíveis:** todo interativo tem nome (axe button-name/link-name/label = 0). Corrigidos na Fase 6: 3 buscas (placeholder→`aria-label`), fechar-cookies (ícone X sem nome).
+- **Landmarks:** `<main>` único, `<nav>`/`<header>`/`<footer>` presentes; `role`/`aria` corretos (tablist→group, slider→inputs).
+- Ao dar **Tab**, o AT anuncia o componente certo (botão "Próximo anúncio", "Buscar produtos", "Fechar", etc.) com role + nome.
+
+### Teclado
+- **Foco visível (2.4.7):** era o gap principal — 65 `outline-none` deixavam o foco de teclado invisível. Ring global `*:focus-visible` agora garante foco visível nas **22 páginas**.
+- **Ordem de tab:** sem `tabindex` positivo (0 ocorrências) → ordem segue o DOM. Regiões roláveis agora focáveis.
+- **2.4.11** (foco não obscurecido): `scroll-margin` p/ header sticky.
+- ⏳ Manual restante: percorrer Tab de ponta a ponta com AT real (NVDA/VoiceOver) — automação não substitui.
+
+### Breakpoints / responsivo
+Overflow horizontal medido em **7 páginas × 5 viewports** (desktop-lg 1440, desktop-sm 1280, tablet 768, mobile-lg 414, mobile-sm 360):
+
+| Resultado | |
+|---|---|
+| Overflow horizontal | **0 em 35/35 combinações** ✅ |
+| Quebras de layout | nenhuma |
+
+Confirmado por screenshot: home/PLP/checkout/monte-seu-pc adaptam limpo em tablet e mobile-sm (hamburger, hero, builder, modal de login). Nenhum breakpoint quebra.
+
+---
+
 ## Resumo executivo
 
 | Severidade | Regra | WCAG | Páginas | Ocorrências |
