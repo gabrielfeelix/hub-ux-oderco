@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import { allProducts } from './src/app/components/productsData'
+import { allProducts, categories } from './src/app/components/productsData'
 import {
   getProductUrl,
   getCategorySlug,
@@ -95,11 +95,17 @@ function prerenderSeoHtml() {
   // sociais, LLMs) passam a ver Product/Breadcrumb/CollectionPage.
   const productByUrl = new Map<string, any>()
   const subLabelBySlug = new Map<string, string>()
+  const productsByCat = new Map<string, any[]>()
+  const productsByCatSub = new Map<string, any[]>()
   for (const prod of allProducts as any[]) {
     productByUrl.set(getProductUrl(prod), prod)
+    const catSlug = getCategorySlug(prod.category)
+    ;(productsByCat.get(catSlug) ?? productsByCat.set(catSlug, []).get(catSlug)!).push(prod)
     if (prod.subcategory) {
-      const key = `${getCategorySlug(prod.category)}/${getSubcategorySlug(prod.subcategory)}`
+      const subSlug = getSubcategorySlug(prod.subcategory)
+      const key = `${catSlug}/${subSlug}`
       if (!subLabelBySlug.has(key)) subLabelBySlug.set(key, prod.subcategory)
+      ;(productsByCatSub.get(key) ?? productsByCatSub.set(key, []).get(key)!).push(prod)
     }
   }
   const abs = (img?: string): string | undefined =>
@@ -179,6 +185,82 @@ function prerenderSeoHtml() {
     return html.replace('</head>', `${scripts}</head>`)
   }
 
+  // ── Conteúdo textual no HTML cru (Fase 3) ─────────────────────
+  // Bloco sr-only com o conteúdo-chave da rota (h1, nome, preço, descrição,
+  // breadcrumb, links internos) montado a partir do catálogo estático.
+  // main.tsx REMOVE o bloco antes de montar o React → zero mudança de UI,
+  // zero flash, zero hidratação. Crawler sem JS (Bing/LLM/social) lê o corpo.
+  const esc = (s: any): string =>
+    String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  const SR_STYLE =
+    'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0'
+  const wrapSeo = (inner: string) =>
+    `<div id="seo-prerender" aria-hidden="true" style="${SR_STYLE}">${inner}</div>`
+
+  const homeSeo = () => {
+    const links = categories
+      .map((c) => `<a href="/${getCategorySlug(c)}/">${esc(c)}</a>`)
+      .join('')
+    return wrapSeo(
+      `<h1>PCYES — Hardware, periféricos e setups gamer</h1>` +
+        `<p>Loja oficial PCYES. Hardware, periféricos, computadores, monitores, cadeiras e setups gamer. Frete grátis acima de R$ 299, até 12x sem juros e 10% no PIX.</p>` +
+        `<nav aria-label="Categorias">${links}</nav>`,
+    )
+  }
+
+  const productSeo = (prod: any, url: string) => {
+    const segs = url.split('/').filter(Boolean)
+    const catSlug = segs[0]
+    const catLabel = getCategoryFromSlug(catSlug) || prod.category
+    const crumbs = [`<a href="/">Home</a>`, `<a href="/${catSlug}/">${esc(catLabel)}</a>`]
+    if (prod.subcategory) {
+      const subSlug = getSubcategorySlug(prod.subcategory)
+      crumbs.push(`<a href="/${catSlug}/${subSlug}/">${esc(prod.subcategory)}</a>`)
+    }
+    const feats = Array.isArray(prod.features) && prod.features.length
+      ? `<ul>${prod.features.slice(0, 10).map((f: any) => `<li>${esc(f)}</li>`).join('')}</ul>`
+      : ''
+    return wrapSeo(
+      `<nav aria-label="Breadcrumb">${crumbs.join(' / ')}</nav>` +
+        `<h1>${esc(prod.name)}</h1>` +
+        `<p>${esc(prod.price)}${prod.oldPrice ? ` (de ${esc(prod.oldPrice)})` : ''}</p>` +
+        (prod.description ? `<p>${esc(prod.description).slice(0, 2000)}</p>` : '') +
+        feats,
+    )
+  }
+
+  const categorySeo = (p: string) => {
+    const segs = p.split('/').filter(Boolean)
+    const catLabel = getCategoryFromSlug(segs[0])
+    if (!catLabel) return null
+    let name = catLabel
+    let list = productsByCat.get(segs[0]) ?? []
+    if (segs[1]) {
+      const key = `${segs[0]}/${segs[1]}`
+      const subLabel = subLabelBySlug.get(key) || segs[1]
+      name = `${subLabel} — ${catLabel}`
+      list = productsByCatSub.get(key) ?? []
+    }
+    const items = list
+      .slice(0, 60)
+      .map((pr) => `<li><a href="${getProductUrl(pr)}">${esc(pr.name)}</a> — ${esc(pr.price)}</li>`)
+      .join('')
+    return wrapSeo(
+      `<h1>${esc(name)}</h1>` +
+        `<p>Produtos da categoria ${esc(name)} na PCYES. Frete grátis acima de R$ 299, até 12x sem juros.</p>` +
+        `<ul>${items}</ul>`,
+    )
+  }
+
+  const institutionalSeo = (p: string) => {
+    const meta = META[p]
+    if (!meta) return null
+    return wrapSeo(`<h1>${esc(meta[0])}</h1><p>${esc(meta[1])}</p>`)
+  }
+
+  const injectSeo = (html: string, block: string | null): string =>
+    !block ? html : html.replace('<div id="root"></div>', `${block}<div id="root"></div>`)
+
   return {
     name: 'prerender-seo-html',
     closeBundle() {
@@ -190,8 +272,9 @@ function prerenderSeoHtml() {
       const locs = [...fs.readFileSync(smPath, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
       let count = 0
       let ld = 0
-      // Home: injeta Organization no index.html raiz (canonical já é a home).
-      fs.writeFileSync(tplPath, injectLd(tpl, [orgLd]))
+      let body = 0
+      // Home: Organization + bloco de conteúdo no index.html raiz.
+      fs.writeFileSync(tplPath, injectSeo(injectLd(tpl, [orgLd]), homeSeo()))
       for (const loc of locs) {
         if (!loc.startsWith(SITE)) continue
         const p = loc.slice(SITE.length) || '/'
@@ -206,17 +289,23 @@ function prerenderSeoHtml() {
           html = set(html, /(<meta property="og:title" content=")[^"]*(")/, full)
           html = set(html, /(<meta property="og:description" content=")[^"]*(")/, meta[1])
         }
-        // JSON-LD por tipo de rota: produto > categoria/subcategoria > (nada).
+        // Por tipo de rota: produto > categoria/subcategoria > institucional.
         const segs = p.split('/').filter(Boolean)
         const prod = productByUrl.get(p)
-        const blobs = prod
-          ? productLd(prod, p)
-          : segs.length <= 2 && getCategoryFromSlug(segs[0])
-            ? categoryLd(p)
-            : null
+        const isCategory = !prod && segs.length <= 2 && !!getCategoryFromSlug(segs[0])
+        const blobs = prod ? productLd(prod, p) : isCategory ? categoryLd(p) : null
         if (blobs) {
           html = injectLd(html, blobs)
           ld++
+        }
+        const seo = prod
+          ? productSeo(prod, p)
+          : isCategory
+            ? categorySeo(p)
+            : institutionalSeo(p)
+        if (seo) {
+          html = injectSeo(html, seo)
+          body++
         }
         const dir = path.join(outDir, p)
         fs.mkdirSync(dir, { recursive: true })
@@ -224,7 +313,7 @@ function prerenderSeoHtml() {
         count++
       }
       // eslint-disable-next-line no-console
-      console.log(`[prerender-seo] ${count} rotas canonical no HTML cru · ${ld} com JSON-LD + home Organization`)
+      console.log(`[prerender-seo] ${count} rotas canonical · ${ld} JSON-LD · ${body} com corpo no HTML cru (+home)`)
     },
   }
 }
