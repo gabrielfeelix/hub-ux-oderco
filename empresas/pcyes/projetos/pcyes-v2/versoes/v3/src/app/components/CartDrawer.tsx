@@ -11,8 +11,8 @@ import { PcyesCoin } from "./PcyesCoin";
 import { useCheckoutPrefs } from "./CheckoutPrefsContext";
 import { BrindePill, PreOrderPill, QtyStepper } from "./section";
 import { getPreOrderInfo } from "./PreOrderData";
-import { formatCep } from "../../utils/format";
-import { COUPONS, GIFT_THRESHOLD } from "../../utils/commerce";
+import { formatBRL, parseBRL, formatCep } from "../../utils/format";
+import { COUPONS, GIFT_THRESHOLD, maxRedeemablePoints, pointsToBRL } from "../../utils/commerce";
 import { toast } from "sonner";
 
 const MOCK_SHIPPING: Record<string, { name: string; price: number; days: string }[]> = {
@@ -40,7 +40,7 @@ export function CartDrawer() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark" || resolvedTheme === undefined;
   const navigate = useNavigate();
-  const { pointsApplied, setPointsApplied } = useCheckoutPrefs();
+  const { pointsApplied, setPointsApplied, pointsToUse } = useCheckoutPrefs();
 
   const [shippingOpen, setShippingOpen] = useState(false);
   const [couponOpen, setCouponOpen] = useState(false);
@@ -57,8 +57,8 @@ export function CartDrawer() {
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
   const [couponError, setCouponError] = useState("");
 
-  const parsePrice = (p: string) => parseFloat(p.replace("R$ ", "").replace(".", "").replace(",", "."));
-  const formatPrice = (n: number) => `R$ ${n.toFixed(2).replace(".", ",")}`;
+  const parsePrice = parseBRL;
+  const formatPrice = formatBRL;
   const formatInt = (n: number) => n.toLocaleString("pt-BR");
 
   const paidItems = items.filter((item) => !item.isGift);
@@ -67,8 +67,9 @@ export function CartDrawer() {
   const discountPct = appliedCoupon ? COUPONS[appliedCoupon] || 0 : 0;
   const discountValue = subtotal * (discountPct / 100);
   const shippingCost = selectedShipping !== null && shippingOptions ? shippingOptions[selectedShipping].price : 0;
-  const maxPointsRedeem = Math.min(USER_PCYES_POINTS, Math.floor((subtotal - discountValue) * 0.3));
-  const pointsValue = pointsApplied ? maxPointsRedeem : 0;
+  const maxPointsRedeem = maxRedeemablePoints(USER_PCYES_POINTS, subtotal - discountValue);
+  const pointsUsed = pointsApplied ? Math.min(pointsToUse, maxPointsRedeem) : 0;
+  const pointsValue = pointsToBRL(pointsUsed);
   const total = Math.max(0, subtotal - discountValue + shippingCost - pointsValue);
   const giftUnlocked = subtotal >= GIFT_THRESHOLD;
   const giftProgress = Math.min(100, (subtotal / GIFT_THRESHOLD) * 100);
