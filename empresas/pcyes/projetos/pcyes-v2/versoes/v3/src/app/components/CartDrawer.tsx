@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "./ThemeProvider";
@@ -90,24 +90,28 @@ export function CartDrawer() {
     [],
   );
 
+  // Só abre o modal de brinde na BORDA de subida do subtotal (cruzou o limite
+  // ao adicionar item) — nunca só por reabrir o drawer com o carrinho já acima.
+  const prevUnlockedRef = useRef<boolean | null>(null);
   useEffect(() => {
-    if (!giftUnlocked && giftItem) {
-      setGiftItem(null);
-      setGiftModalOpen(false);
-      setGiftDismissed(false);
-      return;
-    }
+    // Primeira execução: registra o estado atual sem disparar nada.
+    if (prevUnlockedRef.current === null) prevUnlockedRef.current = giftUnlocked;
 
     if (!giftUnlocked) {
-      setGiftDismissed(false);
+      if (giftItem) setGiftItem(null);
       setGiftModalOpen(false);
+      setGiftDismissed(false);
+      prevUnlockedRef.current = false;
       return;
     }
 
-    if (giftUnlocked && !giftItem && !giftDismissed && paidItems.length > 0) {
+    const justCrossed = prevUnlockedRef.current === false;
+    prevUnlockedRef.current = true;
+
+    if (justCrossed && !giftItem && !giftDismissed) {
       setGiftModalOpen(true);
     }
-  }, [giftDismissed, giftItem, giftUnlocked, paidItems.length, setGiftItem]);
+  }, [giftDismissed, giftItem, giftUnlocked, setGiftItem]);
 
   const handleCepSearch = () => {
     if (cep.replace(/\D/g, "").length < 8) return;
