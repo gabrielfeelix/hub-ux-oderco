@@ -153,6 +153,12 @@ export function CartSidebar() {
   const subtotalPR = useMemo(() => itemsPR.reduce((s, i) => s + i.price * i.quantity, 0), [itemsPR]);
   const subtotalES = useMemo(() => itemsES.reduce((s, i) => s + i.price * i.quantity, 0), [itemsES]);
 
+  /* ── Tab da filial ativa (só aparece com 2 notas). Troca os produtos exibidos. ── */
+  const [activeTab, setActiveTab] = useState<'PR' | 'ES'>('PR');
+  const effectiveTab: 'PR' | 'ES' = activeTab === 'PR'
+    ? (itemsPR.length > 0 ? 'PR' : 'ES')
+    : (itemsES.length > 0 ? 'ES' : 'PR');
+
   /* ── Handlers ── */
   const handleCheckout = useCallback(() => {
     closeCart();
@@ -222,6 +228,38 @@ export function CartSidebar() {
               </div>
             </div>
 
+            {/* ── Tabs de filial (PR/ES) — troca os produtos exibidos ── */}
+            {hasMultipleNFs && (
+              <div className="flex shrink-0" style={{ borderBottom: '1px solid var(--muted)' }}>
+                {(['PR', 'ES'] as const).map(f => {
+                  const isActive = effectiveTab === f;
+                  const count = f === 'PR' ? itemsPR.length : itemsES.length;
+                  const color = f === 'PR' ? 'var(--nf-pr)' : 'var(--nf-es)';
+                  return (
+                    <button
+                      key={f}
+                      onClick={() => setActiveTab(f)}
+                      className="flex-1 flex items-center justify-center gap-2 py-3 bg-transparent border-none cursor-pointer transition-all"
+                      style={{
+                        borderBottom: `2.5px solid ${isActive ? color : 'transparent'}`,
+                        background: isActive ? 'var(--background)' : 'transparent',
+                        fontFamily: 'var(--font-red-hat-display)',
+                      }}
+                    >
+                      <NfBadge filial={f} />
+                      <span style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', color: isActive ? color : 'var(--muted-foreground)', fontFamily: 'var(--font-red-hat-display)' }}>
+                        Filial {f}
+                      </span>
+                      <span className="rounded-full flex items-center justify-center shrink-0"
+                        style={{ minWidth: 18, height: 18, padding: '0 5px', background: isActive ? color : 'var(--muted)', color: isActive ? 'var(--primary-foreground)' : 'var(--muted-foreground)', fontSize: 10, fontWeight: 'var(--font-weight-bold)', fontVariantNumeric: 'tabular-nums' }}>
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
             {/* ── Items list ── */}
             <div className="flex-1 overflow-y-auto min-h-0">
               {items.length === 0 ? (
@@ -251,71 +289,40 @@ export function CartSidebar() {
                   </button>
                 </div>
               ) : (
-                /* Grouped items */
-                <div>
-                  {/* ── Group: NF Paraná ── */}
-                  {itemsPR.length > 0 && (
+                /* Items — filtrados pela tab quando há 2 notas ── */
+                (() => {
+                  const showFilial: 'PR' | 'ES' = hasMultipleNFs ? effectiveTab : (itemsPR.length > 0 ? 'PR' : 'ES');
+                  const grpItems = showFilial === 'PR' ? itemsPR : itemsES;
+                  const grpSub = showFilial === 'PR' ? subtotalPR : subtotalES;
+                  return (
                     <div>
-                      {hasMultipleNFs && (
-                        <div className="flex items-center gap-2.5 px-5 pt-4 pb-3"
-                          style={{ borderBottom: '1px solid var(--muted)' }}>
-                          <NfBadge filial="PR" />
-                          <span style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', color: 'var(--nf-pr)', fontFamily: 'var(--font-red-hat-display)' }}>
-                            Filial PR
+                      {/* header leve da filial ativa (só single-NF; no multi a tab já rotula) */}
+                      {!hasMultipleNFs && (
+                        <div className="flex items-center gap-2.5 px-5 pt-4 pb-3" style={{ borderBottom: '1px solid var(--muted)' }}>
+                          <NfBadge filial={showFilial} />
+                          <span style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', color: showFilial === 'PR' ? 'var(--nf-pr)' : 'var(--nf-es)', fontFamily: 'var(--font-red-hat-display)' }}>
+                            Filial {showFilial}
                           </span>
                           <span className="ml-auto" style={{ fontSize: 'var(--text-2xs)', color: 'var(--muted-foreground)', fontFamily: 'var(--font-red-hat-display)' }}>
-                            {itemsPR.length} {itemsPR.length === 1 ? 'item' : 'itens'}
+                            {grpItems.length} {grpItems.length === 1 ? 'item' : 'itens'}
                           </span>
                         </div>
                       )}
-                      <ShippingProgress filial="PR" subtotal={subtotalPR} />
-                      {/* Items */}
-                      {itemsPR.map((item, idx) => (
+                      <ShippingProgress filial={showFilial} subtotal={grpSub} />
+                      {grpItems.map((item, idx) => (
                         <CartItemRow
                           key={item.id}
                           item={item}
-                          filialKey="PR"
-                          showBadge={!hasMultipleNFs}
-                          hasDivider={idx < itemsPR.length - 1 || itemsES.length > 0}
+                          filialKey={showFilial}
+                          showBadge={false}
+                          hasDivider={idx < grpItems.length - 1}
                           onRemove={removeItem}
                           onQtyChange={updateQuantity}
                         />
                       ))}
                     </div>
-                  )}
-
-                  {/* ── Group: NF Espírito Santo ── */}
-                  {itemsES.length > 0 && (
-                    <div>
-                      {/* Group header */}
-                      {hasMultipleNFs && (
-                        <div className="flex items-center gap-2.5 px-5 pt-5 pb-3 mt-2"
-                          style={{ borderBottom: '1px solid var(--muted)', borderTop: '6px solid var(--background)' }}>
-                          <NfBadge filial="ES" />
-                          <span style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--font-weight-bold)', color: 'var(--nf-es)', fontFamily: 'var(--font-red-hat-display)' }}>
-                            Filial ES
-                          </span>
-                          <span className="ml-auto" style={{ fontSize: 'var(--text-2xs)', color: 'var(--muted-foreground)', fontFamily: 'var(--font-red-hat-display)' }}>
-                            {itemsES.length} {itemsES.length === 1 ? 'item' : 'itens'}
-                          </span>
-                        </div>
-                      )}
-                      <ShippingProgress filial="ES" subtotal={subtotalES} />
-                      {/* Items */}
-                      {itemsES.map((item, idx) => (
-                        <CartItemRow
-                          key={item.id}
-                          item={item}
-                          filialKey="ES"
-                          showBadge={!hasMultipleNFs}
-                          hasDivider={idx < itemsES.length - 1}
-                          onRemove={removeItem}
-                          onQtyChange={updateQuantity}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
+                  );
+                })()
               )}
             </div>
 
